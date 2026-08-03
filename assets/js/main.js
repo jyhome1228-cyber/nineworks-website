@@ -1,4 +1,9 @@
 (() => {
+  const refinementStylesheet = document.createElement('link');
+  refinementStylesheet.rel = 'stylesheet';
+  refinementStylesheet.href = 'assets/css/refine.css?v=20260804-1';
+  document.head.appendChild(refinementStylesheet);
+
   const body = document.body;
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('[data-menu-trigger]');
