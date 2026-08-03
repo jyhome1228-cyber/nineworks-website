@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="나인웍스 디자인 프로젝트 문의 페이지입니다.">
+  <title>Contact — NINEWORKS</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="site-logo" href="index.html" aria-label="나인웍스 홈">NINEWORKS</a>
+      <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>
+    </header>
+
+    <aside class="menu-overlay" aria-hidden="true" data-menu-overlay>
+      <nav class="menu-nav" aria-label="주요 메뉴">
+        <a href="about.html">About</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="contact.html">Contact</a>
+      </nav>
+      <div class="menu-footer"><p>NINEWORKS<br>Design Studio · Seoul, Korea</p><div class="menu-social"><a href="#">Instagram</a><a href="#">Behance</a><a href="mailto:contact@9works.kr">Email</a></div></div>
+    </aside>
+
+    <main>
+      <section class="page-hero container">
+        <div><p class="eyebrow reveal">Start a Project</p><h1 class="page-title reveal">Tell us about your next project.</h1></div>
+        <div class="page-hero__bottom reveal"><p class="page-hero__copy lead">새로운 브랜드를 준비하고 있거나 기존 브랜드의 인상을 다시 정리하고 있다면 프로젝트에 대해 이야기해 주세요.</p></div>
+      </section>
+
+      <section class="section container section-line">
+        <div class="contact-layout">
+          <aside class="contact-info reveal">
+            <div class="contact-info__group">
+              <p class="contact-info__label">General Inquiry</p>
+              <a href="mailto:contact@9works.kr">contact@9works.kr</a>
+            </div>
+            <div class="contact-info__group">
+              <p class="contact-info__label">Instagram</p>
+              <a href="#">@nineworks.lab</a>
+            </div>
+            <div class="contact-info__group">
+              <p class="contact-info__label">Office</p>
+              <p>Seoul, Korea</p>
+            </div>
+            <div class="contact-info__group">
+              <p class="contact-info__label">Response</p>
+              <p class="copy">문의 내용을 검토한 뒤 영업일 기준 2~3일 이내에 답변드립니다.</p>
+            </div>
+          </aside>
+
+          <form class="contact-form reveal" data-mail-form>
+            <div class="form-row"><label class="form-label" for="name">Name *</label><input class="form-control" id="name" name="name" type="text" placeholder="담당자명을 입력해 주세요" required></div>
+            <div class="form-row"><label class="form-label" for="company">Company / Brand *</label><input class="form-control" id="company" name="company" type="text" placeholder="회사명 또는 브랜드명을 입력해 주세요" required></div>
+            <div class="form-row"><label class="form-label" for="email">Email *</label><input class="form-control" id="email" name="email" type="email" placeholder="회신받을 이메일을 입력해 주세요" required></div>
+            <div class="form-row"><label class="form-label" for="phone">Phone</label><input class="form-control" id="phone" name="phone" type="tel" placeholder="연락처를 입력해 주세요"></div>
+            <div class="form-row">
+              <label class="form-label" for="projectType">Project Type *</label>
+              <select class="form-control" id="projectType" name="projectType" required>
+                <option value="" selected disabled>필요한 작업을 선택해 주세요</option>
+                <option>Brand Identity</option><option>Package Design</option><option>Digital Design</option><option>Editorial Design</option><option>Content & Art Direction</option><option>Spatial Graphic</option><option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="budget">Budget</label>
+              <select class="form-control" id="budget" name="budget">
+                <option value="" selected>예상 예산을 선택해 주세요</option>
+                <option>500만원 이하</option><option>500만~1,000만원</option><option>1,000만~3,000만원</option><option>3,000만원 이상</option><option>협의 필요</option>
+              </select>
+            </div>
+            <div class="form-row"><label class="form-label" for="schedule">Schedule</label><input class="form-control" id="schedule" name="schedule" type="text" placeholder="희망 시작일 또는 오픈 일정을 입력해 주세요"></div>
+            <div class="form-row"><label class="form-label" for="message">Project Details *</label><textarea class="form-control" id="message" name="message" placeholder="프로젝트의 배경, 필요한 작업, 참고할 내용과 현재 고민을 자유롭게 작성해 주세요" required></textarea></div>
+            <button class="form-submit" type="submit"><span>SEND INQUIRY</span><span>↗</span></button>
+            <p class="muted" style="margin-top:16px;font-size:12px">현재 문의 버튼은 사용자의 기본 메일 앱을 열어 작성 내용을 전송합니다. 정식 오픈 전 서버형 문의 접수로 연결할 예정입니다.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <p class="site-footer__brand">NINEWORKS</p>
+      <div class="site-footer__links"><a href="about.html">About</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="contact.html">Contact</a></div>
+      <div class="site-footer__bottom"><span>Seoul, Korea</span><span>© <span data-current-year></span> NINEWORKS. All rights reserved.</span></div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
