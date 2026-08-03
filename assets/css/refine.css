@@ -1,0 +1,354 @@
+:root {
+  --gutter: clamp(18px, 1.35vw, 28px);
+  --section-y: clamp(76px, 7vw, 124px);
+  --display: clamp(50px, 5.8vw, 104px);
+  --title: clamp(38px, 4vw, 68px);
+  --subtitle: clamp(28px, 2.7vw, 46px);
+  --body: clamp(14px, .92vw, 16px);
+}
+
+body {
+  line-height: 1.58;
+  letter-spacing: -.022em;
+}
+
+.container {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.site-header {
+  height: 68px;
+}
+
+.site-logo {
+  font-size: 16px;
+}
+
+.menu-nav a {
+  font-size: clamp(40px, 4.2vw, 66px);
+  line-height: 1.04;
+}
+
+.eyebrow {
+  margin-bottom: 20px;
+  font-size: 11px;
+}
+
+.display-title {
+  max-width: 15ch;
+  font-size: var(--display);
+  line-height: .94;
+  letter-spacing: -.065em;
+}
+
+.page-title {
+  font-size: var(--title);
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+.section-title {
+  font-size: var(--subtitle);
+  line-height: 1.06;
+  letter-spacing: -.045em;
+}
+
+.lead {
+  max-width: 650px;
+  font-size: clamp(17px, 1.2vw, 22px);
+  line-height: 1.55;
+  letter-spacing: -.032em;
+}
+
+.copy {
+  max-width: 650px;
+}
+
+.hero {
+  min-height: calc(72svh - var(--header-h));
+  padding-top: clamp(54px, 6vw, 92px);
+  padding-bottom: 26px;
+}
+
+.hero__descriptor {
+  max-width: 560px;
+  font-size: clamp(15px, 1.05vw, 18px);
+}
+
+.split-copy,
+.about-preview,
+.category-intro {
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.split-copy > :first-child,
+.about-preview > :first-child,
+.category-intro > :first-child {
+  grid-column: 1 / span 5;
+}
+
+.split-copy > :last-child,
+.about-preview > :last-child,
+.category-intro > :last-child {
+  grid-column: 7 / -1;
+}
+
+.split-copy__right,
+.about-preview__body {
+  align-self: start;
+  padding-top: 0;
+}
+
+.about-preview__statement {
+  max-width: 13ch;
+  font-size: clamp(30px, 3vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -.048em;
+}
+
+.section,
+.section--tight {
+  scroll-margin-top: calc(var(--header-h) + 44px);
+}
+
+.page-hero {
+  min-height: 52vh;
+  padding-top: clamp(64px, 7vw, 110px);
+  padding-bottom: 30px;
+}
+
+.page-hero__copy {
+  width: min(100%, 650px);
+}
+
+.large-statement {
+  max-width: 16ch;
+  font-size: clamp(40px, 4.6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -.058em;
+}
+
+.category-nav button,
+.category-nav a {
+  min-width: 140px;
+  padding: 17px 20px;
+  font-size: 12px;
+}
+
+.category-intro {
+  padding-top: clamp(44px, 4.5vw, 72px);
+  padding-bottom: clamp(44px, 4.5vw, 72px);
+}
+
+.category-intro__title {
+  font-size: clamp(36px, 3.5vw, 58px);
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+/* Works / Projects: consistent three-column layout */
+.project-grid {
+  display: grid;
+  gap: clamp(14px, 1.15vw, 22px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-card,
+.project-card--wide,
+.project-card--third {
+  grid-column: auto;
+}
+
+.project-card .project-visual,
+.project-card--wide .project-visual,
+.project-card--third .project-visual {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.project-card .project-visual > span {
+  max-width: 82%;
+  font-size: clamp(24px, 2.8vw, 48px);
+  line-height: .95;
+  letter-spacing: -.055em;
+}
+
+.project-card__meta {
+  display: block;
+  padding-top: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.project-card__meta strong {
+  display: block;
+  font-weight: 500;
+}
+
+.project-card__category {
+  display: block;
+  margin-top: 2px;
+  color: #6f6f6f;
+  font-size: 11px;
+  text-align: left;
+}
+
+.service-tab {
+  padding: 18px 0;
+  grid-template-columns: 72px minmax(0, 1fr) 26px;
+}
+
+.service-tab__name {
+  font-size: clamp(22px, 2.1vw, 36px);
+  letter-spacing: -.04em;
+}
+
+.service-tab__mark {
+  font-size: 21px;
+  text-align: right;
+}
+
+.service-panel {
+  padding-top: 34px;
+}
+
+.capability-row {
+  padding: 24px 0;
+}
+
+.capability-row__title {
+  font-size: clamp(22px, 2vw, 34px);
+}
+
+.archive-card .project-visual > span {
+  font-size: clamp(24px, 3.8vw, 68px);
+}
+
+.magazine-item__title {
+  font-size: clamp(20px, 1.7vw, 29px);
+}
+
+.cta {
+  min-height: 54vh;
+}
+
+.cta__title {
+  max-width: 14ch;
+  font-size: clamp(46px, 5.8vw, 96px);
+  line-height: .94;
+  letter-spacing: -.062em;
+}
+
+.next-project__title {
+  font-size: clamp(44px, 5.8vw, 94px);
+  line-height: .94;
+  letter-spacing: -.062em;
+}
+
+.case-hero__head {
+  align-items: end;
+}
+
+.site-footer {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+@media (max-width: 1080px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .split-copy > :first-child,
+  .about-preview > :first-child,
+  .category-intro > :first-child {
+    grid-column: 1 / span 6;
+  }
+
+  .split-copy > :last-child,
+  .about-preview > :last-child,
+  .category-intro > :last-child {
+    grid-column: 7 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 18px;
+    --section-y: 76px;
+    --display: clamp(46px, 14vw, 66px);
+    --title: clamp(36px, 11vw, 54px);
+    --subtitle: clamp(28px, 9vw, 42px);
+  }
+
+  .site-header {
+    height: 62px;
+  }
+
+  .hero {
+    min-height: calc(76svh - var(--header-h));
+    padding-top: 44px;
+  }
+
+  .hero__bottom {
+    gap: 22px;
+  }
+
+  .split-copy,
+  .about-preview,
+  .category-intro {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .split-copy > :first-child,
+  .split-copy > :last-child,
+  .about-preview > :first-child,
+  .about-preview > :last-child,
+  .category-intro > :first-child,
+  .category-intro > :last-child {
+    grid-column: 1;
+  }
+
+  .page-hero {
+    min-height: 46vh;
+    padding-top: 54px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .project-card .project-visual,
+  .project-card--wide .project-visual,
+  .project-card--third .project-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-card .project-visual > span {
+    font-size: clamp(25px, 9vw, 42px);
+  }
+
+  .project-card__meta {
+    display: block;
+  }
+
+  .service-tab {
+    grid-template-columns: 38px minmax(0, 1fr) 20px;
+  }
+
+  .service-tab__name {
+    font-size: 22px;
+  }
+
+  .cta__title,
+  .next-project__title {
+    font-size: clamp(42px, 13vw, 64px);
+  }
+}
