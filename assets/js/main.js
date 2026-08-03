@@ -1,8 +1,16 @@
 (() => {
-  const refinementStylesheet = document.createElement('link');
-  refinementStylesheet.rel = 'stylesheet';
-  refinementStylesheet.href = 'assets/css/refine.css?v=20260804-1';
-  document.head.appendChild(refinementStylesheet);
+  const loadStylesheet = (href) => {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = href;
+    document.head.appendChild(stylesheet);
+  };
+
+  loadStylesheet('assets/css/refine.css?v=20260804-2');
+
+  if (document.querySelector('.project-detail')) {
+    loadStylesheet('assets/css/project-detail.css?v=20260804-1');
+  }
 
   const body = document.body;
   const header = document.querySelector('.site-header');
@@ -76,6 +84,29 @@
       const target = tab.dataset.serviceTab;
       serviceTabs.forEach((item) => item.classList.toggle('is-active', item === tab));
       servicePanels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.servicePanel === target));
+    });
+  });
+
+  document.querySelectorAll('[data-language-scope]').forEach((scope) => {
+    const buttons = scope.querySelectorAll('[data-language-button]');
+    const copies = scope.querySelectorAll('[data-language-copy]');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const language = button.dataset.languageButton;
+
+        buttons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle('is-active', isActive);
+          item.setAttribute('aria-pressed', String(isActive));
+        });
+
+        copies.forEach((copy) => {
+          const isActive = copy.dataset.languageCopy === language;
+          copy.classList.toggle('is-active', isActive);
+          copy.hidden = !isActive;
+        });
+      });
     });
   });
 
