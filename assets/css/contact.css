@@ -1,0 +1,328 @@
+.contact-page .contact-hero {
+  display: grid;
+  min-height: 50vh;
+  align-content: space-between;
+  gap: 50px;
+  padding-top: clamp(60px, 7vw, 108px);
+  padding-bottom: clamp(38px, 4vw, 64px);
+}
+
+.contact-page .contact-hero__title {
+  max-width: 15ch;
+  font-size: clamp(42px, 5.2vw, 84px);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -.06em;
+}
+
+.contact-page .contact-hero__bottom {
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.contact-page .contact-hero__bottom p {
+  grid-column: 7 / -1;
+  max-width: 650px;
+}
+
+.contact-directory {
+  display: grid;
+  gap: var(--gutter);
+  padding-top: clamp(54px, 6vw, 92px);
+  padding-bottom: clamp(54px, 6vw, 92px);
+  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.contact-directory__title {
+  grid-column: 1 / span 5;
+}
+
+.contact-directory__title h2 {
+  max-width: 12ch;
+  font-size: clamp(30px, 3vw, 48px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.048em;
+}
+
+.contact-directory__content {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  grid-column: 7 / -1;
+}
+
+.contact-directory__row {
+  display: grid;
+  gap: 26px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: 120px minmax(0, 1fr);
+}
+
+.contact-directory__label {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.contact-directory__value {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.contact-form-section {
+  padding-top: clamp(68px, 7vw, 112px);
+  padding-bottom: clamp(78px, 8vw, 128px);
+  border-top: 1px solid var(--line);
+}
+
+.contact-form-head {
+  display: grid;
+  gap: var(--gutter);
+  margin-bottom: clamp(52px, 6vw, 92px);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.contact-form-head > div:first-child {
+  grid-column: 1 / span 5;
+}
+
+.contact-form-head > div:last-child {
+  grid-column: 7 / -1;
+}
+
+.contact-form-head h2 {
+  font-size: clamp(32px, 3.4vw, 54px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -.052em;
+}
+
+.inquiry-form {
+  display: grid;
+  gap: clamp(64px, 7vw, 104px);
+}
+
+.form-group {
+  display: grid;
+  gap: var(--gutter);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.form-group__heading {
+  grid-column: 1 / span 4;
+}
+
+.form-group__heading .eyebrow {
+  margin-bottom: 14px;
+}
+
+.form-group__heading h3 {
+  font-size: clamp(24px, 2.3vw, 36px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.form-group__fields {
+  border-top: 1px solid var(--ink);
+  grid-column: 5 / -1;
+}
+
+.inquiry-form .form-row {
+  display: grid;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: 190px minmax(0, 1fr);
+}
+
+.inquiry-form .form-label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.inquiry-form .form-control {
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.inquiry-form textarea.form-control {
+  min-height: 180px;
+}
+
+.choice-block {
+  padding: 24px 0 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.choice-block__label {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice-card {
+  position: relative;
+  display: grid;
+  min-height: 92px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: border-color .2s ease, background .2s ease;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.choice-card:hover {
+  border-color: var(--ink);
+}
+
+.choice-card input {
+  width: 15px;
+  height: 15px;
+  margin: 2px 0 0;
+  accent-color: var(--ink);
+}
+
+.choice-card strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.choice-card span {
+  display: block;
+  color: #6f6f6f;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.choice-card:has(input:checked) {
+  border-color: var(--ink);
+  background: rgba(0, 0, 0, .035);
+}
+
+.form-pair {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-pair .form-row {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.consent-row input {
+  width: 15px;
+  height: 15px;
+  margin: 2px 0 0;
+  accent-color: var(--ink);
+}
+
+.consent-row a {
+  border-bottom: 1px solid currentColor;
+}
+
+.contact-page .form-submit {
+  margin-top: 28px;
+  font-size: clamp(20px, 1.9vw, 30px);
+}
+
+.form-note {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+@media (max-width: 980px) {
+  .contact-page .contact-hero__bottom p,
+  .contact-directory__content,
+  .contact-form-head > div:last-child {
+    grid-column: 6 / -1;
+  }
+
+  .contact-directory__title,
+  .contact-form-head > div:first-child {
+    grid-column: 1 / span 5;
+  }
+
+  .form-group__heading {
+    grid-column: 1 / span 4;
+  }
+
+  .form-group__fields {
+    grid-column: 5 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .contact-page .contact-hero {
+    min-height: 44vh;
+    padding-top: 50px;
+  }
+
+  .contact-page .contact-hero__title {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+
+  .contact-page .contact-hero__bottom,
+  .contact-directory,
+  .contact-form-head,
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page .contact-hero__bottom p,
+  .contact-directory__title,
+  .contact-directory__content,
+  .contact-form-head > div:first-child,
+  .contact-form-head > div:last-child,
+  .form-group__heading,
+  .form-group__fields {
+    grid-column: 1;
+  }
+
+  .contact-directory,
+  .contact-form-head,
+  .form-group {
+    gap: 34px;
+  }
+
+  .contact-directory__row,
+  .inquiry-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .choice-grid,
+  .form-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-card {
+    min-height: 82px;
+  }
+}
