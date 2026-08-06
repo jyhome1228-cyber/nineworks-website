@@ -6,7 +6,7 @@
     document.head.appendChild(stylesheet);
   };
 
-  loadStylesheet('assets/css/refine.css?v=20260804-3');
+  loadStylesheet('assets/css/refine.css?v=20260807-1');
 
   if (document.querySelector('.project-detail')) {
     loadStylesheet('assets/css/project-detail.css?v=20260804-2');
@@ -20,6 +20,16 @@
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('[data-menu-trigger]');
   const menu = document.querySelector('[data-menu-overlay]');
+
+  document.querySelectorAll('.menu-nav').forEach((nav) => {
+    if (!nav.querySelector('a[href="research.html"]')) {
+      const researchLink = document.createElement('a');
+      researchLink.href = 'research.html';
+      researchLink.textContent = 'Research';
+      const contactLink = nav.querySelector('a[href="contact.html"]');
+      nav.insertBefore(researchLink, contactLink || null);
+    }
+  });
 
   document.querySelectorAll('a[href="mailto:contact@9works.kr"]').forEach((link) => {
     link.href = 'mailto:info@9works.kr';
@@ -131,6 +141,7 @@
           <a href="project.html">Project</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="magazine.html">Magazine</a>
+          <a href="research.html">Research</a>
           <a href="contact.html">Contact</a>
           <a href="privacy.html">Privacy</a>
         </nav>
