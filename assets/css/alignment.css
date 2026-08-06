@@ -1,0 +1,288 @@
+/* Global alignment pass — shared across About, Project, Portfolio and editorial pages */
+
+.page-hero {
+  display: grid;
+  min-height: auto;
+  align-content: end;
+  align-items: end;
+  gap: var(--gutter);
+  padding-top: clamp(72px, 7vw, 112px);
+  padding-bottom: clamp(52px, 5vw, 76px);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.page-hero > :first-child {
+  grid-column: 1 / span 5;
+}
+
+.page-hero__bottom {
+  display: block;
+  grid-column: 7 / -1;
+}
+
+.page-hero__copy {
+  width: 100%;
+  max-width: 620px;
+}
+
+.page-hero .page-title {
+  max-width: 15ch;
+}
+
+.split-copy,
+.about-preview,
+.category-intro {
+  align-items: start;
+}
+
+.split-copy > :first-child,
+.about-preview > :first-child,
+.category-intro > :first-child {
+  grid-column: 1 / span 5;
+}
+
+.split-copy > :last-child,
+.about-preview > :last-child,
+.category-intro > :last-child {
+  grid-column: 7 / -1;
+}
+
+.split-copy__right,
+.about-preview__body {
+  align-self: start;
+  padding-top: 0;
+}
+
+/* Project paths + About capabilities use one shared 12-column baseline */
+.capability-list {
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+
+.capability-row {
+  display: grid;
+  align-items: start;
+  gap: var(--gutter);
+  padding: 22px 0 24px;
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.capability-row > :nth-child(1) {
+  grid-column: 1;
+}
+
+.capability-row > :nth-child(2) {
+  min-width: 0;
+  grid-column: 2 / span 4;
+}
+
+.capability-row > :nth-child(3) {
+  min-width: 0;
+  grid-column: 7 / -1;
+}
+
+.capability-row__title {
+  margin: 0;
+  font-size: clamp(21px, 1.7vw, 30px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.capability-row__copy {
+  width: 100%;
+  max-width: 650px;
+  color: #333;
+  font-size: 13px;
+  line-height: 1.58;
+}
+
+/* Project case-study list: always an even 3-column grid on desktop */
+.project-grid {
+  display: grid;
+  align-items: start;
+  gap: clamp(16px, 1.2vw, 22px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.project-card,
+.project-card--wide,
+.project-card--third {
+  min-width: 0;
+  grid-column: auto;
+}
+
+.project-card .project-visual,
+.project-card--wide .project-visual,
+.project-card--third .project-visual {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.project-card__meta {
+  display: grid;
+  align-items: start;
+  gap: 8px;
+  padding-top: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.project-card__meta strong {
+  font-weight: 500;
+}
+
+.project-card__category {
+  margin-top: 0;
+  color: #666;
+  text-align: right;
+  white-space: normal;
+}
+
+/* Portfolio archive: remove mixed-width masonry and use the same 3-column rhythm */
+.archive-grid {
+  display: grid;
+  align-items: start;
+  gap: clamp(16px, 1.2vw, 22px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.archive-card,
+.archive-card:nth-child(5n + 1),
+.archive-card:nth-child(5n + 4) {
+  min-width: 0;
+  grid-column: auto;
+}
+
+.archive-card .project-visual,
+.archive-card:nth-child(5n + 1) .project-visual,
+.archive-card:nth-child(5n + 4) .project-visual {
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.archive-card__meta {
+  display: grid;
+  align-items: start;
+  gap: 8px;
+  padding-top: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.archive-card__meta strong {
+  font-weight: 500;
+}
+
+.archive-card__meta span {
+  color: #666;
+  text-align: right;
+}
+
+/* Keep category intro on the same baseline as every other section */
+.category-intro {
+  padding-top: clamp(46px, 4.2vw, 68px);
+  padding-bottom: clamp(46px, 4.2vw, 68px);
+}
+
+.category-intro__title {
+  max-width: 11ch;
+}
+
+/* About clients: equal cells and consistent type baseline */
+.client-grid {
+  width: 100%;
+}
+
+.client-grid li {
+  min-height: 128px;
+  padding: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .project-grid,
+  .archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-hero > :first-child {
+    grid-column: 1 / span 6;
+  }
+
+  .page-hero__bottom {
+    grid-column: 7 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .page-hero {
+    gap: 30px;
+    padding-top: 48px;
+    padding-bottom: 42px;
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero > :first-child,
+  .page-hero__bottom {
+    grid-column: 1;
+  }
+
+  .page-hero .page-title {
+    max-width: none;
+  }
+
+  .capability-row {
+    gap: 10px 14px;
+    padding: 19px 0 21px;
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+
+  .capability-row > :nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .capability-row > :nth-child(2),
+  .capability-row > :nth-child(3) {
+    grid-column: 2;
+  }
+
+  .capability-row__title {
+    font-size: 22px;
+  }
+
+  .project-grid,
+  .archive-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .project-card .project-visual,
+  .project-card--wide .project-visual,
+  .project-card--third .project-visual,
+  .archive-card .project-visual,
+  .archive-card:nth-child(5n + 1) .project-visual,
+  .archive-card:nth-child(5n + 4) .project-visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-card__meta,
+  .archive-card__meta {
+    gap: 3px;
+    grid-template-columns: 1fr;
+  }
+
+  .project-card__category,
+  .archive-card__meta span {
+    text-align: left;
+  }
+
+  .client-grid li {
+    min-height: 100px;
+  }
+}
