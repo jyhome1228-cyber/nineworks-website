@@ -7,6 +7,7 @@
   };
 
   loadStylesheet('assets/css/refine.css?v=20260807-1');
+  loadStylesheet('assets/css/alignment.css?v=20260807-1');
 
   if (document.querySelector('.project-detail')) {
     loadStylesheet('assets/css/project-detail.css?v=20260804-2');
