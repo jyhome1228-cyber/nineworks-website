@@ -1,8 +1,11 @@
 /* Portfolio detail interaction refinements */
 @media (min-width: 901px) {
+  /* Exact two-column split */
   .portfolio-split-detail {
-    grid-template-columns: minmax(420px, 40vw) minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
     align-items: stretch;
+    width: 100%;
     border-top: 0;
   }
 
@@ -10,7 +13,7 @@
     align-self: stretch;
     height: auto;
     min-height: 100%;
-    border-right: 0;
+    border-right: 0 !important;
   }
 
   .portfolio-detail-sidebar__inner {
@@ -21,9 +24,9 @@
     min-height: 0;
     flex-direction: column;
     padding-top: clamp(42px, 3.6vw, 62px);
-    padding-right: clamp(28px, 3vw, 52px);
+    padding-right: clamp(34px, 3.4vw, 64px);
     padding-bottom: 28px;
-    padding-left: clamp(28px, 3vw, 52px);
+    padding-left: clamp(34px, 3.4vw, 64px);
     overflow-x: hidden;
     overflow-y: auto;
     background: #f3f3f1;
@@ -42,20 +45,45 @@
   }
 
   .portfolio-detail-sidebar__inner > * {
-    width: min(100%, 440px);
+    width: min(100%, 460px);
   }
 
+  /* Right column is aligned to the browser's right edge. */
   .portfolio-detail-scroll {
-    max-width: none;
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
     padding-top: clamp(28px, 2.5vw, 44px);
-    padding-right: clamp(24px, 2vw, 38px);
-    padding-left: clamp(12px, 1.1vw, 22px);
+    padding-right: 0 !important;
+    padding-bottom: clamp(100px, 8vw, 140px);
+    padding-left: clamp(24px, 2vw, 38px);
+  }
+
+  .portfolio-scroll-media,
+  .portfolio-scroll-stack,
+  .portfolio-scroll-section,
+  .portfolio-scroll-credit {
+    width: 100%;
   }
 
   .portfolio-scroll-media img,
   .portfolio-scroll-stack img,
   .portfolio-scroll-grid img {
-    width: min(100%, 1120px);
+    display: block;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  /* Keep copy readable while media reaches the right edge. */
+  .portfolio-scroll-section__head,
+  .portfolio-scroll-copy,
+  .portfolio-scroll-credit > p,
+  .portfolio-scroll-credit dl {
+    width: calc(100% - clamp(28px, 2.4vw, 48px));
+    margin-right: clamp(28px, 2.4vw, 48px);
   }
 }
 
@@ -127,9 +155,8 @@
   transform: translateY(-50%) scale(1);
 }
 
-/* A little more breathing room around project story */
 .portfolio-detail-story {
-  max-width: 410px;
+  max-width: 420px;
 }
 
 .portfolio-detail-story .language-copy,
@@ -220,6 +247,19 @@
     top: auto;
     height: auto;
     overflow: visible;
+  }
+
+  .portfolio-detail-scroll {
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+
+  .portfolio-scroll-section__head,
+  .portfolio-scroll-copy,
+  .portfolio-scroll-credit > p,
+  .portfolio-scroll-credit dl {
+    width: 100%;
+    margin-right: 0;
   }
 
   .portfolio-scroll-section {
