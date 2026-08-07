@@ -80,6 +80,20 @@ body.is-menu-open .menu-trigger::after {
   letter-spacing: -.03em;
 }
 
+/* Large intro/lead copy: keep Korean words intact and let sentence breaks feel intentional. */
+.hero__descriptor,
+.page-hero__copy,
+.portfolio-hero__copy,
+.magazine-hero__copy,
+.solutions-hero__copy,
+.category-intro > .lead,
+.split-copy__right.lead,
+.about-preview__body > .lead {
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+
 .copy {
   max-width: 650px;
 }
