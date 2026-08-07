@@ -32,17 +32,21 @@
   const projectFromArchive = (project) => {
     if (!project) return null;
     const archive = window.NW_IMAGE_ARCHIVE?.w?.[project.id];
+    const sourceSummary = window.NW_SUMMARY_ARCHIVE?.[project.id];
     const category = Array.isArray(project.filters)
       ? project.filters.map((item) => item.charAt(0).toUpperCase() + item.slice(1)).join(' · ')
       : '';
-    const overview = `${project.title} 프로젝트는 ${project.subtitle || project.scope || '브랜드의 시각적 경험'}을 중심으로 진행한 나인웍스의 디자인 작업입니다. 브랜드의 핵심 인상이 실제 사용 환경과 다양한 접점에서 일관되게 이어지도록 아이덴티티, 이미지, 정보 구조와 응용 디자인을 함께 정리했습니다.`;
+    const overview = sourceSummary?.[1] || `${project.title} 프로젝트는 ${project.subtitle || project.scope || '브랜드의 시각적 경험'}을 중심으로 진행한 나인웍스의 디자인 작업입니다. 브랜드의 핵심 인상이 실제 사용 환경과 다양한 접점에서 일관되게 이어지도록 아이덴티티, 이미지, 정보 구조와 응용 디자인을 함께 정리했습니다.`;
+    const lead = sourceSummary?.[0] || project.subtitle || project.scope;
 
     const archiveSections = Array.isArray(archive?.[1]) ? archive[1] : [];
     const sections = archiveSections.map(([title, images], index) => ({
       label: title || `Visual Archive ${String(index + 1).padStart(2, '0')}`,
       title: title || `Visual Archive ${String(index + 1).padStart(2, '0')}`,
       paragraphs: [
-        `${project.title} 프로젝트에서 ${title || '주요 비주얼'}을 중심으로 전개한 작업입니다. 결과물이 개별 이미지로 분리되어 보이기보다 하나의 브랜드 경험으로 연결되도록 시각적 톤과 적용 방식을 일관된 흐름으로 구성했습니다.`
+        index === 0
+          ? overview
+          : `${project.title} 프로젝트에서 ${title || '주요 비주얼'}을 중심으로 전개한 작업입니다. 결과물이 개별 이미지로 분리되어 보이기보다 하나의 브랜드 경험으로 연결되도록 시각적 톤과 적용 방식을 일관된 흐름으로 구성했습니다.`
       ],
       images: Array.isArray(images) ? images.map(expandArchiveUrl) : []
     }));
@@ -51,7 +55,7 @@
       id: project.id,
       title: project.title,
       subtitle: project.subtitle,
-      lead: project.subtitle || project.scope,
+      lead,
       summary: overview,
       client: project.client,
       scope: project.scope,
