@@ -28,10 +28,17 @@
   const menuButton = document.querySelector('[data-menu-trigger]');
   const menu = document.querySelector('[data-menu-overlay]');
   const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
+  const pathname = window.location.pathname;
+  const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
 
   if (isPortfolioDetail) {
-    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-2');
-    loadScript('assets/js/portfolio-scroll.js?v=20260807-1');
+    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-3');
+    loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
+  }
+
+  if (isHome) {
+    loadStylesheet('assets/css/home-portfolio.css?v=20260807-1');
+    loadScript('assets/js/home-portfolio.js?v=20260807-1');
   }
 
   document.querySelectorAll('.menu-nav').forEach((nav) => {
