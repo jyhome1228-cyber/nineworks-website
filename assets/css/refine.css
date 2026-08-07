@@ -25,7 +25,23 @@ body {
 }
 
 .site-logo {
-  font-size: 16px;
+  width: 118px;
+  height: 18px;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  background: url('../logo-nineworks.svg') left center / contain no-repeat;
+}
+
+body.is-menu-open .site-header {
+  border-bottom-color: var(--line);
+  background: var(--bg);
+  backdrop-filter: none;
+}
+
+body.is-menu-open .menu-trigger::before,
+body.is-menu-open .menu-trigger::after {
+  background: var(--ink);
 }
 
 .menu-nav a {
@@ -258,7 +274,6 @@ body {
   font-size: clamp(20px, 1.8vw, 30px);
 }
 
-/* Shared legal footer */
 .site-footer {
   display: block;
   width: 100%;
@@ -348,6 +363,11 @@ body {
     --display: clamp(42px, 12.5vw, 58px);
     --title: clamp(34px, 10vw, 48px);
     --subtitle: clamp(27px, 8vw, 38px);
+  }
+
+  .site-logo {
+    width: 104px;
+    height: 15px;
   }
 
   .hero {
