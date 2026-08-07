@@ -30,7 +30,7 @@
   const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
 
   if (isPortfolioDetail) {
-    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-1');
+    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-2');
     loadScript('assets/js/portfolio-scroll.js?v=20260807-1');
   }
 
