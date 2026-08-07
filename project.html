@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="나인웍스의 프로젝트 유형과 대표 디자인 케이스 스터디를 살펴보세요.">
+  <meta name="description" content="나인웍스의 프로젝트 유형과 실제 디자인 프로젝트를 살펴보세요.">
   <title>Project — NINEWORKS</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260808-3">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/project-random.css?v=20260808-1">
 </head>
 <body>
   <div class="site-shell">
@@ -16,7 +18,7 @@
 
     <aside class="menu-overlay" aria-hidden="true" data-menu-overlay>
       <nav class="menu-nav" aria-label="주요 메뉴">
-        <a href="about.html">About</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="research.html">Research</a><a href="contact.html">Contact</a>
+        <a href="about.html">About</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a>
       </nav>
       <div class="menu-footer"><p>NINEWORKS<br>Design Studio · Incheon, Korea</p><div class="menu-social"><a href="#">Instagram</a><a href="#">Behance</a><a href="mailto:info@9works.kr">Email</a></div></div>
     </aside>
@@ -24,7 +26,7 @@
     <main>
       <section class="page-hero container">
         <div><p class="eyebrow reveal">Selected Case Studies</p><h1 class="page-title reveal">Project</h1></div>
-        <div class="page-hero__bottom reveal"><p class="page-hero__copy lead">브랜드가 처한 단계와 필요한 디자인의 범위를 함께 살펴보고, 실제 프로젝트를 통해 나인웍스의 접근 방식을 확인할 수 있습니다.</p></div>
+        <div class="page-hero__bottom reveal"><p class="page-hero__copy lead">브랜드가 처한 단계와 필요한 디자인의 범위를 살펴보고, 실제 진행한 프로젝트를 통해 나인웍스의 접근 방식과 결과물을 확인할 수 있습니다.</p></div>
       </section>
 
       <section class="section container section-line">
@@ -57,38 +59,42 @@
         </div>
       </section>
 
-      <div class="category-nav" data-filter-group data-filter-target=".project-filter-item">
-        <button class="is-active" type="button" data-filter="all">ALL</button>
-        <button type="button" data-filter="identity">BRAND IDENTITY</button>
-        <button type="button" data-filter="package">PACKAGE</button>
-        <button type="button" data-filter="digital">DIGITAL</button>
-        <button type="button" data-filter="editorial">EDITORIAL</button>
-        <button type="button" data-filter="content">CONTENT</button>
+      <div class="category-nav project-category-nav" data-project-filter>
+        <button class="is-active" type="button" data-project-filter-value="all">ALL</button>
+        <button type="button" data-project-filter-value="branding">BRAND IDENTITY</button>
+        <button type="button" data-project-filter-value="package">PACKAGE</button>
+        <button type="button" data-project-filter-value="digital">DIGITAL</button>
+        <button type="button" data-project-filter-value="editorial">EDITORIAL</button>
+        <button type="button" data-project-filter-value="content">CONTENT</button>
+        <button type="button" data-project-filter-value="space">SPACE</button>
       </div>
 
       <section class="container category-intro">
         <h2 class="category-intro__title reveal">Selected<br>Projects</h2>
-        <p class="lead reveal">대표 케이스 스터디입니다. 각 프로젝트에서 기획 배경, 디자인 방향, 아이덴티티 시스템과 실제 적용 결과를 확인할 수 있습니다.</p>
+        <p class="lead reveal">실제 포트폴리오 아카이브에서 작업을 매번 새롭게 선별해 보여줍니다. 카테고리를 선택하면 해당 분야의 실제 프로젝트가 다시 구성되며, 각 카드는 바로 상세 페이지로 연결됩니다.</p>
       </section>
 
       <section class="section--tight container">
-        <div class="project-grid">
-          <article class="project-card project-filter-item reveal" data-category="identity package content"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--lorve"><span>L’ORVÉ</span></div><div class="project-card__meta"><strong>L’ORVÉ</strong><span class="project-card__category">Brand Identity · Package · Art Direction · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="identity digital editorial" id="healthmi"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--healthmi"><span>健康美</span></div><div class="project-card__meta"><strong>HEALTHMI</strong><span class="project-card__category">Brand Renewal · Digital · Editorial · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="identity package content" id="odebell"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--odebell"><span>ODE BELL</span></div><div class="project-card__meta"><strong>ODE BELL</strong><span class="project-card__category">Identity · Package · Art Direction · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="identity digital content" id="relim"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--relim"><span>RELIM</span></div><div class="project-card__meta"><strong>RELIM</strong><span class="project-card__category">Brand Experience · Digital · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="digital editorial" id="terracle"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--terracle"><span>TERRACLE</span></div><div class="project-card__meta"><strong>TERRACLE</strong><span class="project-card__category">Digital · Editorial · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="package content" id="essential"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--essential"><span>ESSENTIAL TABLE</span></div><div class="project-card__meta"><strong>ESSENTIAL TABLE</strong><span class="project-card__category">Package · Content · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="identity editorial content"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--jncos"><span>JN COS TECH</span></div><div class="project-card__meta"><strong>JN COS TECH</strong><span class="project-card__category">Identity · Editorial · Content · 2026</span></div></a></article>
-          <article class="project-card project-filter-item reveal" data-category="digital content"><a class="project-card__link" href="project-lorve.html"><div class="project-card__visual project-visual visual--amingj"><span>AMINGJ</span></div><div class="project-card__meta"><strong>AMINGJ</strong><span class="project-card__category">Digital · Content · 2026</span></div></a></article>
+        <div class="project-random-head reveal">
+          <p class="project-random-head__meta"><span>LIVE ARCHIVE</span><span data-project-count>12</span></p>
+          <button class="project-random-shuffle" type="button" data-project-shuffle>SHUFFLE PROJECTS ↻</button>
         </div>
+        <div class="project-grid" data-project-grid></div>
       </section>
 
-      <section class="cta" style="margin-top:var(--section-y)"><div class="container"><p class="eyebrow reveal">Start a Project</p><h2 class="cta__title reveal">Not sure where to start?</h2></div><div class="container cta__bottom reveal"><p>현재 상황과 필요한 디자인을 알려주세요.<br>적절한 프로젝트 범위를 함께 정리합니다.</p><a class="text-link" href="contact.html">CONTACT NINEWORKS <span>↗</span></a></div></section>
+      <section class="cta" style="margin-top:var(--section-y)">
+        <div class="container"><p class="eyebrow reveal">Start a Project</p><h2 class="cta__title reveal">Not sure where to start?</h2></div>
+        <div class="container cta__bottom reveal"><p>현재 상황과 필요한 디자인을 알려주세요.<br>적절한 프로젝트 범위를 함께 정리합니다.</p><a class="text-link" href="contact.html">CONTACT NINEWORKS <span>↗</span></a></div>
+      </section>
     </main>
 
     <footer class="site-footer container"></footer>
   </div>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/portfolio-list-1.js?v=20260808-1"></script>
+  <script src="assets/js/portfolio-list-2.js?v=20260808-1"></script>
+  <script src="assets/js/portfolio-list-3.js?v=20260808-1"></script>
+  <script src="assets/js/portfolio-list-4.js?v=20260808-1"></script>
+  <script src="assets/js/main.js?v=20260808-3"></script>
+  <script src="assets/js/project-random.js?v=20260808-1"></script>
 </body>
 </html>
