@@ -45,8 +45,8 @@
   }
 
   if (isHome) {
-    loadStylesheet('assets/css/home-portfolio.css?v=20260808-3');
-    loadScript('assets/js/home-portfolio.js?v=20260808-3');
+    loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
+    loadScript('assets/js/home-portfolio.js?v=20260808-4');
   }
 
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
