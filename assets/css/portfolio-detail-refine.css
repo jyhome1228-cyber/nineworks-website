@@ -1,0 +1,195 @@
+/* Portfolio detail interaction refinements */
+@media (min-width: 901px) {
+  .portfolio-split-detail {
+    grid-template-columns: minmax(420px, 40vw) minmax(0, 1fr);
+    border-top: 0;
+  }
+
+  .portfolio-detail-sidebar {
+    border-right: 0;
+  }
+
+  .portfolio-detail-sidebar__inner {
+    top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+    min-height: 0;
+    padding-top: clamp(42px, 3.6vw, 62px);
+    padding-right: clamp(28px, 3vw, 52px);
+    padding-bottom: 28px;
+    padding-left: clamp(28px, 3vw, 52px);
+    overflow: hidden;
+    transition: top .32s var(--ease), height .32s var(--ease);
+  }
+
+  .portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner {
+    top: 0;
+    height: 100vh;
+    min-height: 0;
+  }
+
+  .portfolio-detail-sidebar__inner > * {
+    width: min(100%, 440px);
+  }
+
+  .portfolio-detail-scroll {
+    max-width: none;
+    padding-top: clamp(28px, 2.5vw, 44px);
+    padding-right: clamp(24px, 2vw, 38px);
+    padding-left: clamp(12px, 1.1vw, 22px);
+  }
+
+  .portfolio-scroll-media img,
+  .portfolio-scroll-stack img,
+  .portfolio-scroll-grid img {
+    width: min(100%, 1120px);
+  }
+}
+
+/* Remove divider rules and let whitespace separate chapters */
+.portfolio-detail-sidebar {
+  border-right: 0 !important;
+}
+
+.portfolio-scroll-section {
+  border-top: 0 !important;
+  padding-top: clamp(48px, 4.6vw, 78px);
+}
+
+.portfolio-scroll-section + .portfolio-scroll-section {
+  margin-top: clamp(94px, 7.4vw, 132px);
+}
+
+.portfolio-scroll-credit {
+  border-top: 0 !important;
+  padding-top: 0;
+}
+
+/* Sidebar chapter navigation */
+.portfolio-detail-index a {
+  position: relative;
+  color: #777;
+  transition: color .2s ease, opacity .2s ease, transform .25s var(--ease);
+}
+
+.portfolio-detail-index a span {
+  transition: color .2s ease;
+}
+
+.portfolio-detail-index a::after {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #111;
+  content: '';
+  opacity: 0;
+  transform: translateY(-50%) scale(.5);
+  transition: opacity .2s ease, transform .25s var(--ease);
+}
+
+.portfolio-detail-index a.is-active {
+  color: #111;
+  font-weight: 600;
+  transform: translateX(4px);
+}
+
+.portfolio-detail-index a.is-active span {
+  color: #111;
+}
+
+.portfolio-detail-index a.is-active::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* A little more breathing room around project story */
+.portfolio-detail-story {
+  max-width: 410px;
+}
+
+.portfolio-detail-story .language-copy,
+.portfolio-dynamic-page .portfolio-detail-story__summary {
+  line-height: 1.82;
+}
+
+.portfolio-scroll-copy {
+  max-width: 820px;
+}
+
+.portfolio-scroll-section__head {
+  margin-bottom: 34px;
+}
+
+.portfolio-scroll-section__head h2 {
+  max-width: 19ch;
+}
+
+@media (max-height: 850px) and (min-width: 901px) {
+  .portfolio-detail-sidebar__inner {
+    padding-top: 28px;
+    padding-bottom: 20px;
+  }
+
+  .portfolio-detail-kicker {
+    margin-bottom: 16px;
+  }
+
+  .portfolio-detail-sidebar h1 {
+    font-size: clamp(42px, 3.7vw, 60px);
+  }
+
+  .portfolio-detail-scope {
+    margin-top: 14px;
+  }
+
+  .portfolio-language-control {
+    margin-top: 24px;
+    margin-bottom: 18px;
+    padding-top: 14px;
+  }
+
+  .portfolio-detail-story__lead {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .portfolio-detail-story .language-copy,
+  .portfolio-dynamic-page .portfolio-detail-story__summary {
+    font-size: 12.5px;
+    line-height: 1.62;
+  }
+
+  .portfolio-detail-facts {
+    margin-top: 22px;
+  }
+
+  .portfolio-detail-facts > div {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .portfolio-detail-index {
+    margin-top: 22px;
+  }
+
+  .portfolio-detail-index a {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-detail-sidebar {
+    border-bottom: 0;
+  }
+
+  .portfolio-scroll-section {
+    padding-top: 46px;
+  }
+
+  .portfolio-scroll-section + .portfolio-scroll-section {
+    margin-top: 70px;
+  }
+}
