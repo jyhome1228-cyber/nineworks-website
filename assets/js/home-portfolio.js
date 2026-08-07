@@ -1,4 +1,17 @@
 (() => {
+  const hero = document.querySelector('main .hero');
+  if (hero && !hero.querySelector('.home-brand-signal')) {
+    const signal = document.createElement('div');
+    signal.className = 'home-brand-signal';
+    signal.setAttribute('aria-hidden', 'true');
+    signal.innerHTML = `
+      <svg viewBox="0 0 1200 180" preserveAspectRatio="none">
+        <path class="home-brand-signal__base" pathLength="1880" d="M0 90H216L248 90L266 86L280 52L299 132L320 22L342 113L360 90H612L630 90L646 74L660 108L679 46L698 126L716 90H1200"/>
+        <path class="home-brand-signal__pulse" pathLength="1880" d="M0 90H216L248 90L266 86L280 52L299 132L320 22L342 113L360 90H612L630 90L646 74L660 108L679 46L698 126L716 90H1200"/>
+      </svg>`;
+    hero.prepend(signal);
+  }
+
   const grid = document.querySelector('main .project-grid');
 
   const projects = [
@@ -59,7 +72,7 @@
   magazineItems.forEach((item, index) => {
     const data = magazine[index];
     if (!data) return;
-    item.href = `magazine.html#mag-${encodeURIComponent(data.id)}`;
+    item.href = `magazine-detail.html?article=${encodeURIComponent(data.id)}`;
     const title = item.querySelector('.magazine-item__title');
     const meta = item.querySelector('.magazine-item__meta');
     if (title) title.textContent = data.title;
