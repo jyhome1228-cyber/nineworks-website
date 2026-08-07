@@ -1,5 +1,10 @@
 /* Global alignment pass — shared across About, Project, Portfolio and editorial pages */
 
+.site-logo {
+  width: clamp(172px, 10vw, 190px) !important;
+  height: 25px !important;
+}
+
 .page-hero {
   display: grid;
   min-height: auto;
@@ -220,6 +225,11 @@
 }
 
 @media (max-width: 760px) {
+  .site-logo {
+    width: 150px !important;
+    height: 21px !important;
+  }
+
   .page-hero {
     gap: 30px;
     padding-top: 48px;
