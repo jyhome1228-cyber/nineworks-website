@@ -82,8 +82,8 @@
   .portfolio-scroll-copy,
   .portfolio-scroll-credit > p,
   .portfolio-scroll-credit dl {
-    width: calc(100% - clamp(28px, 2.4vw, 48px));
-    margin-right: clamp(28px, 2.4vw, 48px);
+    width: calc(100% - clamp(34px, 3vw, 56px));
+    margin-right: clamp(34px, 3vw, 56px);
   }
 }
 
@@ -98,11 +98,11 @@
 
 .portfolio-scroll-section {
   border-top: 0 !important;
-  padding-top: clamp(48px, 4.6vw, 78px);
+  padding-top: clamp(52px, 4.8vw, 82px);
 }
 
 .portfolio-scroll-section + .portfolio-scroll-section {
-  margin-top: clamp(94px, 7.4vw, 132px);
+  margin-top: clamp(104px, 8vw, 144px);
 }
 
 .portfolio-scroll-credit {
@@ -155,6 +155,70 @@
   transform: translateY(-50%) scale(1);
 }
 
+/* Typography hierarchy: label -> title -> copy */
+.portfolio-scroll-section__head {
+  margin-bottom: clamp(38px, 3.2vw, 52px) !important;
+}
+
+.portfolio-scroll-section__meta,
+.portfolio-section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: clamp(20px, 1.7vw, 28px) !important;
+  color: #858585;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: .035em;
+}
+
+.portfolio-scroll-section__index,
+.portfolio-section-label > span {
+  flex: 0 0 auto;
+  min-width: 28px;
+  color: #666;
+}
+
+.portfolio-scroll-section__head h2 {
+  max-width: 22ch !important;
+  margin: 0;
+  font-size: clamp(25px, 2.05vw, 34px) !important;
+  font-weight: 500;
+  line-height: 1.16 !important;
+  letter-spacing: -.038em !important;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.portfolio-dynamic-page .portfolio-scroll-section__sub {
+  max-width: 680px;
+  margin-top: 20px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+.portfolio-scroll-copy {
+  max-width: 700px !important;
+  margin-bottom: clamp(46px, 4vw, 64px) !important;
+}
+
+.portfolio-detail-page .portfolio-scroll-copy p,
+.portfolio-detail-page .portfolio-scroll-copy .language-copy {
+  color: #303030;
+  font-size: 13.5px !important;
+  line-height: 1.88 !important;
+  letter-spacing: -.018em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.portfolio-detail-page .portfolio-scroll-copy p + p,
+.portfolio-detail-page .portfolio-scroll-copy .language-copy p + p {
+  margin-top: 20px;
+}
+
 .portfolio-detail-story {
   max-width: 420px;
 }
@@ -162,18 +226,7 @@
 .portfolio-detail-story .language-copy,
 .portfolio-dynamic-page .portfolio-detail-story__summary {
   line-height: 1.82;
-}
-
-.portfolio-scroll-copy {
-  max-width: 820px;
-}
-
-.portfolio-scroll-section__head {
-  margin-bottom: 34px;
-}
-
-.portfolio-scroll-section__head h2 {
-  max-width: 19ch;
+  word-break: keep-all;
 }
 
 @media (max-height: 850px) and (min-width: 901px) {
@@ -267,6 +320,27 @@
   }
 
   .portfolio-scroll-section + .portfolio-scroll-section {
-    margin-top: 70px;
+    margin-top: 76px;
+  }
+
+  .portfolio-scroll-section__meta,
+  .portfolio-section-label {
+    margin-bottom: 16px !important;
+  }
+
+  .portfolio-scroll-section__head {
+    margin-bottom: 30px !important;
+  }
+
+  .portfolio-scroll-section__head h2 {
+    max-width: none !important;
+    font-size: clamp(25px, 7vw, 34px) !important;
+    line-height: 1.18 !important;
+  }
+
+  .portfolio-detail-page .portfolio-scroll-copy p,
+  .portfolio-detail-page .portfolio-scroll-copy .language-copy {
+    font-size: 13.5px !important;
+    line-height: 1.82 !important;
   }
 }
