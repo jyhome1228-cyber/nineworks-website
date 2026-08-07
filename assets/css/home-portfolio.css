@@ -2,27 +2,46 @@
 .home-project-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .55s var(--ease),filter .3s ease}
 .project-card__link:hover .home-project-media img{transform:scale(1.015);filter:saturate(.94)}
 
-/* Home hero — quiet grid + moving points */
+/* Home hero — quiet grid + four points travelling only on grid lines */
 .hero{position:relative;overflow:hidden;isolation:isolate;background:#f2f2ef;color:#111}
 .hero>.hero__top,.hero>.hero__bottom{position:relative;z-index:3}
-.home-design-motion{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none;background-image:linear-gradient(to right,rgba(16,14,24,.055) 1px,transparent 1px),linear-gradient(to bottom,rgba(16,14,24,.04) 1px,transparent 1px);background-size:8.333333% 100%,100% 58px}
-.home-design-motion::after{position:absolute;inset:0;background:linear-gradient(90deg,rgba(242,242,239,.1) 0,rgba(242,242,239,.42) 48%,rgba(242,242,239,.08) 100%);content:''}
-.home-grid-dot{position:absolute;z-index:2;width:7px;height:7px;border-radius:50%;background:#171717;opacity:.72;transform:translate(-50%,-50%);will-change:transform,left,top}
-.home-grid-dot--1{left:58.333%;top:29%;animation:nwDot1 13s ease-in-out infinite}
-.home-grid-dot--2{left:75%;top:41%;width:5px;height:5px;opacity:.42;animation:nwDot2 17s ease-in-out infinite}
-.home-grid-dot--3{left:83.333%;top:64%;width:9px;height:9px;opacity:.82;animation:nwDot3 19s ease-in-out infinite}
-.home-grid-dot--4{left:66.666%;top:76%;width:4px;height:4px;opacity:.36;animation:nwDot4 15s ease-in-out infinite}
-.home-grid-dot--5{left:91.666%;top:24%;width:6px;height:6px;opacity:.5;animation:nwDot5 21s ease-in-out infinite}
-.home-grid-dot--6{left:50%;top:58%;width:5px;height:5px;opacity:.3;animation:nwDot6 18s ease-in-out infinite}
-.home-grid-dot--7{left:79.166%;top:82%;width:4px;height:4px;opacity:.28;animation:nwDot7 23s ease-in-out infinite}
+.home-design-motion{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none;background-image:linear-gradient(to right,rgba(16,14,24,.052) 1px,transparent 1px),linear-gradient(to bottom,rgba(16,14,24,.043) 1px,transparent 1px);background-size:8.333333% 12.5%}
+.home-design-motion::after{position:absolute;inset:0;background:linear-gradient(90deg,rgba(242,242,239,.06),rgba(242,242,239,.2) 48%,rgba(242,242,239,.04));content:'';pointer-events:none}
+.home-grid-dot{position:absolute;z-index:2;width:6px;height:6px;border-radius:50%;background:#151515;transform:translate(-50%,-50%);will-change:left,top}
+.home-grid-dot--1{left:58.333333%;top:25%;opacity:.78;animation:nwDotGrid1 16s linear infinite}
+.home-grid-dot--2{left:75%;top:62.5%;width:5px;height:5px;opacity:.5;animation:nwDotGrid2 19s linear infinite}
+.home-grid-dot--3{left:91.666667%;top:37.5%;width:8px;height:8px;opacity:.72;animation:nwDotGrid3 22s linear infinite}
+.home-grid-dot--4{left:66.666667%;top:75%;width:4px;height:4px;opacity:.38;animation:nwDotGrid4 18s linear infinite}
 
-@keyframes nwDot1{0%,100%{left:58.333%;top:29%}30%{left:66.666%;top:41%}62%{left:75%;top:29%}82%{left:66.666%;top:53%}}
-@keyframes nwDot2{0%,100%{left:75%;top:41%}28%{left:83.333%;top:53%}55%{left:75%;top:65%}78%{left:91.666%;top:53%}}
-@keyframes nwDot3{0%,100%{left:83.333%;top:64%}26%{left:75%;top:53%}54%{left:91.666%;top:64%}81%{left:83.333%;top:76%}}
-@keyframes nwDot4{0%,100%{left:66.666%;top:76%}25%{left:58.333%;top:64%}50%{left:66.666%;top:53%}75%{left:75%;top:76%}}
-@keyframes nwDot5{0%,100%{left:91.666%;top:24%}34%{left:83.333%;top:35%}68%{left:91.666%;top:47%}}
-@keyframes nwDot6{0%,100%{left:50%;top:58%}33%{left:58.333%;top:47%}66%{left:50%;top:70%}}
-@keyframes nwDot7{0%,100%{left:79.166%;top:82%}34%{left:87.5%;top:70%}67%{left:70.833%;top:70%}}
+/* Every segment changes one axis only, so the dots visibly ride the grid. */
+@keyframes nwDotGrid1{
+  0%{left:58.333333%;top:25%}
+  30%{left:83.333333%;top:25%}
+  55%{left:83.333333%;top:50%}
+  80%{left:66.666667%;top:50%}
+  100%{left:66.666667%;top:25%}
+}
+@keyframes nwDotGrid2{
+  0%{left:75%;top:62.5%}
+  28%{left:75%;top:37.5%}
+  58%{left:91.666667%;top:37.5%}
+  78%{left:91.666667%;top:62.5%}
+  100%{left:75%;top:62.5%}
+}
+@keyframes nwDotGrid3{
+  0%{left:91.666667%;top:37.5%}
+  25%{left:75%;top:37.5%}
+  50%{left:75%;top:75%}
+  76%{left:91.666667%;top:75%}
+  100%{left:91.666667%;top:37.5%}
+}
+@keyframes nwDotGrid4{
+  0%{left:66.666667%;top:75%}
+  32%{left:50%;top:75%}
+  58%{left:50%;top:50%}
+  82%{left:66.666667%;top:50%}
+  100%{left:66.666667%;top:75%}
+}
 
 @media(prefers-reduced-motion:reduce){.home-grid-dot{animation:none!important}}
 
@@ -63,6 +82,19 @@ section:has(.archive-grid) .split-copy__right .copy{font-size:clamp(13px,.9vw,15
   .home-archive-grid{grid-template-columns:1fr!important;gap:32px!important}
   .home-archive-card__info{grid-template-columns:1fr;gap:4px}
   .home-archive-card__info span{max-width:none;text-align:left}
-  .home-design-motion{background-size:25% 100%,100% 50px}
-  .home-grid-dot--1{left:75%;top:32%}.home-grid-dot--2{left:50%;top:48%}.home-grid-dot--3{left:75%;top:68%}.home-grid-dot--4{left:50%;top:78%}.home-grid-dot--5{left:87.5%;top:44%}.home-grid-dot--6{display:none}.home-grid-dot--7{display:none}
+  .home-design-motion{background-size:25% 12.5%}
+  .home-grid-dot--1{animation-name:nwDotGrid1Mobile}
+  .home-grid-dot--2{animation-name:nwDotGrid2Mobile}
+  .home-grid-dot--3{animation-name:nwDotGrid3Mobile}
+  .home-grid-dot--4{display:none}
+}
+
+@keyframes nwDotGrid1Mobile{
+  0%{left:50%;top:25%}30%{left:100%;top:25%}55%{left:100%;top:50%}80%{left:75%;top:50%}100%{left:75%;top:25%}
+}
+@keyframes nwDotGrid2Mobile{
+  0%{left:75%;top:62.5%}30%{left:75%;top:37.5%}60%{left:100%;top:37.5%}80%{left:100%;top:62.5%}100%{left:75%;top:62.5%}
+}
+@keyframes nwDotGrid3Mobile{
+  0%{left:100%;top:37.5%}30%{left:75%;top:37.5%}55%{left:75%;top:75%}80%{left:100%;top:75%}100%{left:100%;top:37.5%}
 }
