@@ -2,26 +2,13 @@
   const hero = document.querySelector('main .hero');
   if (hero) {
     hero.querySelector('.home-brand-signal')?.remove();
-    if (!hero.querySelector('.home-design-motion')) {
-      const motion = document.createElement('div');
-      motion.className = 'home-design-motion';
-      motion.setAttribute('aria-hidden', 'true');
-      motion.innerHTML = `
-        <span class="home-design-motion__scan"></span>
-        <span class="home-design-motion__rule"></span>
-        <div class="home-design-motion__frame">
-          <i class="home-design-motion__handle home-design-motion__handle--tl"></i>
-          <i class="home-design-motion__handle home-design-motion__handle--tr"></i>
-          <i class="home-design-motion__handle home-design-motion__handle--bl"></i>
-          <i class="home-design-motion__handle home-design-motion__handle--br"></i>
-          <span class="home-design-motion__bar home-design-motion__bar--a"></span>
-          <span class="home-design-motion__bar home-design-motion__bar--b"></span>
-          <span class="home-design-motion__bar home-design-motion__bar--c"></span>
-          <span class="home-design-motion__block"></span>
-          <span class="home-design-motion__index">09 / VISUAL SYSTEM</span>
-        </div>`;
-      hero.prepend(motion);
-    }
+    hero.querySelector('.home-design-motion')?.remove();
+
+    const motion = document.createElement('div');
+    motion.className = 'home-design-motion';
+    motion.setAttribute('aria-hidden', 'true');
+    motion.innerHTML = Array.from({ length: 7 }, (_, index) => `<span class="home-grid-dot home-grid-dot--${index + 1}"></span>`).join('');
+    hero.prepend(motion);
   }
 
   const grid = document.querySelector('main .project-grid');
