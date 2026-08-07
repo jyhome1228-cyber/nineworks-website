@@ -13,6 +13,7 @@
   };
 
   loadScript('assets/js/seo.js?v=20260808-1');
+  loadScript('assets/js/typography.js?v=20260808-1');
 
   /* Force a cache-busted favicon on every page. */
   document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
@@ -22,7 +23,7 @@
   favicon.href = 'favicon.svg?v=20260808-2';
   document.head.appendChild(favicon);
 
-  loadStylesheet('assets/css/refine.css?v=20260808-1');
+  loadStylesheet('assets/css/refine.css?v=20260808-2');
   loadStylesheet('assets/css/alignment.css?v=20260808-1');
 
   if (document.querySelector('.project-detail')) {
