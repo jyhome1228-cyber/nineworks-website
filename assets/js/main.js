@@ -37,8 +37,8 @@
   }
 
   if (isHome) {
-    loadStylesheet('assets/css/home-portfolio.css?v=20260807-1');
-    loadScript('assets/js/home-portfolio.js?v=20260807-1');
+    loadStylesheet('assets/css/home-portfolio.css?v=20260807-2');
+    loadScript('assets/js/home-portfolio.js?v=20260807-2');
   }
 
   document.querySelectorAll('.menu-nav').forEach((nav) => {
