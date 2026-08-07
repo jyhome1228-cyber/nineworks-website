@@ -10,17 +10,6 @@
     return true;
   });
 
-  const detailMap = {
-    'wooje-stay': 'portfolio-wooje.html',
-    'ouga': 'portfolio-detail.html?work=ouga',
-    'centellian-24': 'portfolio-detail.html?work=centellian-24',
-    'hollys': 'portfolio-detail.html?work=hollys',
-    'cocos-matcha': 'portfolio-detail.html?work=coco',
-    'somsomlike': 'portfolio-detail.html?work=somsomlike',
-    '1616-brunch-coffee': 'portfolio-detail.html?work=1616',
-    'chapter': 'portfolio-detail.html?work=chapter'
-  };
-
   const escapeHTML = (value = '') => String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
@@ -29,12 +18,10 @@
     .replaceAll("'", '&#039;');
 
   grid.innerHTML = projects.map((project) => {
-    const href = detailMap[project.id] || '#';
-    const detailReady = Boolean(detailMap[project.id]);
-    const pending = detailReady ? '' : ' data-portfolio-pending';
+    const href = `portfolio-detail.html?work=${encodeURIComponent(project.id)}`;
     return `
       <article class="portfolio-card portfolio-filter-item reveal" data-category="${escapeHTML(project.filters.join(' '))}">
-        <a class="portfolio-card__link" href="${href}"${pending} aria-label="${escapeHTML(project.title)} 포트폴리오${detailReady ? ' 상세 보기' : ''}">
+        <a class="portfolio-card__link" href="${href}" aria-label="${escapeHTML(project.title)} 포트폴리오 상세 보기">
           <div class="portfolio-card__media"><img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.title)}" loading="lazy"></div>
           <div class="portfolio-card__info">
             <div><strong>${escapeHTML(project.title)}</strong><span>${escapeHTML(project.subtitle)}</span></div>
@@ -43,10 +30,6 @@
         </a>
       </article>`;
   }).join('');
-
-  grid.querySelectorAll('[data-portfolio-pending]').forEach((link) => {
-    link.addEventListener('click', (event) => event.preventDefault());
-  });
 
   const revealItems = grid.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
