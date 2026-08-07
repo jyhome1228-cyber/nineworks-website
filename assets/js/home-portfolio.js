@@ -1,15 +1,27 @@
 (() => {
   const hero = document.querySelector('main .hero');
-  if (hero && !hero.querySelector('.home-brand-signal')) {
-    const signal = document.createElement('div');
-    signal.className = 'home-brand-signal';
-    signal.setAttribute('aria-hidden', 'true');
-    signal.innerHTML = `
-      <svg viewBox="0 0 1200 180" preserveAspectRatio="none">
-        <path class="home-brand-signal__base" pathLength="1880" d="M0 90H216L248 90L266 86L280 52L299 132L320 22L342 113L360 90H612L630 90L646 74L660 108L679 46L698 126L716 90H1200"/>
-        <path class="home-brand-signal__pulse" pathLength="1880" d="M0 90H216L248 90L266 86L280 52L299 132L320 22L342 113L360 90H612L630 90L646 74L660 108L679 46L698 126L716 90H1200"/>
-      </svg>`;
-    hero.prepend(signal);
+  if (hero) {
+    hero.querySelector('.home-brand-signal')?.remove();
+    if (!hero.querySelector('.home-design-motion')) {
+      const motion = document.createElement('div');
+      motion.className = 'home-design-motion';
+      motion.setAttribute('aria-hidden', 'true');
+      motion.innerHTML = `
+        <span class="home-design-motion__scan"></span>
+        <span class="home-design-motion__rule"></span>
+        <div class="home-design-motion__frame">
+          <i class="home-design-motion__handle home-design-motion__handle--tl"></i>
+          <i class="home-design-motion__handle home-design-motion__handle--tr"></i>
+          <i class="home-design-motion__handle home-design-motion__handle--bl"></i>
+          <i class="home-design-motion__handle home-design-motion__handle--br"></i>
+          <span class="home-design-motion__bar home-design-motion__bar--a"></span>
+          <span class="home-design-motion__bar home-design-motion__bar--b"></span>
+          <span class="home-design-motion__bar home-design-motion__bar--c"></span>
+          <span class="home-design-motion__block"></span>
+          <span class="home-design-motion__index">09 / VISUAL SYSTEM</span>
+        </div>`;
+      hero.prepend(motion);
+    }
   }
 
   const grid = document.querySelector('main .project-grid');
