@@ -12,8 +12,16 @@
     document.body.appendChild(script);
   };
 
-  loadStylesheet('assets/css/refine.css?v=20260807-7');
-  loadStylesheet('assets/css/alignment.css?v=20260807-1');
+  /* Force a cache-busted favicon on every page. */
+  document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = 'favicon.svg?v=20260808-1';
+  document.head.appendChild(favicon);
+
+  loadStylesheet('assets/css/refine.css?v=20260808-1');
+  loadStylesheet('assets/css/alignment.css?v=20260808-1');
 
   if (document.querySelector('.project-detail')) {
     loadStylesheet('assets/css/project-detail.css?v=20260804-2');
@@ -37,8 +45,8 @@
   }
 
   if (isHome) {
-    loadStylesheet('assets/css/home-portfolio.css?v=20260807-3');
-    loadScript('assets/js/home-portfolio.js?v=20260807-3');
+    loadStylesheet('assets/css/home-portfolio.css?v=20260808-1');
+    loadScript('assets/js/home-portfolio.js?v=20260808-1');
   }
 
   /* Research is retired. Replace every remaining legacy link with Solutions. */
