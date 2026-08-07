@@ -12,6 +12,8 @@
     document.body.appendChild(script);
   };
 
+  loadScript('assets/js/seo.js?v=20260808-1');
+
   /* Force a cache-busted favicon on every page. */
   document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
   const favicon = document.createElement('link');
