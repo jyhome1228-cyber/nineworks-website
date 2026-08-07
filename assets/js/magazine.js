@@ -18,17 +18,19 @@
     .replaceAll("'", '&#039;');
 
   grid.innerHTML = data.map((article, index) => `
-    <article class="magazine-card reveal" id="mag-${escapeHTML(article.id)}" data-category="${escapeHTML(article.category)}">
-      <figure class="magazine-card__media">
-        <img src="${escapeHTML(article.thumbnail)}" alt="${escapeHTML(article.title)}" loading="${index < 6 ? 'eager' : 'lazy'}">
-      </figure>
-      <div class="magazine-card__meta">
-        <span>${String(index + 1).padStart(2, '0')}</span>
-        <span>${escapeHTML(label[article.category] || article.category)}</span>
-      </div>
-      <h3>${escapeHTML(article.title)}</h3>
-      <p class="magazine-card__summary">${escapeHTML(article.subtitle)}</p>
-      <span class="magazine-card__status">Reading Note</span>
+    <article class="magazine-card" id="mag-${escapeHTML(article.id)}" data-category="${escapeHTML(article.category)}">
+      <a class="magazine-card__link" href="#mag-${escapeHTML(article.id)}" aria-label="${escapeHTML(article.title)}">
+        <figure class="magazine-card__media">
+          <img src="${escapeHTML(article.thumbnail)}" alt="${escapeHTML(article.title)}" loading="${index < 6 ? 'eager' : 'lazy'}">
+        </figure>
+        <div class="magazine-card__meta">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <span>${escapeHTML(label[article.category] || article.category)}</span>
+        </div>
+        <h3>${escapeHTML(article.title)}</h3>
+        <p class="magazine-card__summary">${escapeHTML(article.subtitle)}</p>
+        <span class="magazine-card__status">Reading Note</span>
+      </a>
     </article>`).join('');
 
   const applyFilter = (filter) => {
@@ -44,4 +46,6 @@
   filters.forEach((button) => {
     button.addEventListener('click', () => applyFilter(button.dataset.magazineFilter));
   });
+
+  applyFilter('all');
 })();
