@@ -45,11 +45,10 @@
   }
 
   if (isHome) {
-    loadStylesheet('assets/css/home-portfolio.css?v=20260808-2');
-    loadScript('assets/js/home-portfolio.js?v=20260808-2');
+    loadStylesheet('assets/css/home-portfolio.css?v=20260808-3');
+    loadScript('assets/js/home-portfolio.js?v=20260808-3');
   }
 
-  /* Research is retired. Replace every remaining legacy link with Solutions. */
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
     link.href = 'solutions.html';
     const text = link.textContent.trim();
