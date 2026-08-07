@@ -1,0 +1,43 @@
+/* Semantic wrapping for Korean portfolio copy */
+.portfolio-detail-page .portfolio-scroll-section__head h2,
+.portfolio-detail-page .portfolio-detail-story__lead,
+.portfolio-detail-page .portfolio-scroll-section__sub,
+.portfolio-detail-page .portfolio-scroll-copy p,
+.portfolio-detail-page .portfolio-detail-story__summary {
+  white-space: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  line-break: strict;
+  hyphens: none;
+}
+
+/* Give chapter titles enough measure so Korean words never get stranded by a narrow box. */
+.portfolio-detail-page .portfolio-scroll-section__head h2 {
+  width: min(100%, 880px);
+  max-width: 26ch !important;
+  font-size: clamp(24px, 1.85vw, 32px) !important;
+  line-height: 1.28 !important;
+  letter-spacing: -.032em !important;
+  text-wrap: pretty;
+}
+
+.portfolio-detail-page .portfolio-detail-story__lead {
+  max-width: 36ch;
+  line-height: 1.62 !important;
+  text-wrap: pretty;
+}
+
+.portfolio-detail-page .portfolio-scroll-section__sub,
+.portfolio-detail-page .portfolio-scroll-copy p,
+.portfolio-detail-page .portfolio-detail-story__summary {
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .portfolio-detail-page .portfolio-scroll-section__head h2 {
+    width: 100%;
+    max-width: none !important;
+    font-size: clamp(24px, 6.6vw, 31px) !important;
+    line-height: 1.3 !important;
+  }
+}
