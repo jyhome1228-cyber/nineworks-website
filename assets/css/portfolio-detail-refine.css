@@ -171,6 +171,8 @@
   font-weight: 500;
   line-height: 1.45;
   letter-spacing: .035em;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .portfolio-scroll-section__index,
@@ -180,15 +182,18 @@
   color: #666;
 }
 
+/* Keep Korean headings in meaningful phrase groups instead of mechanical breaks. */
 .portfolio-scroll-section__head h2 {
-  max-width: 22ch !important;
+  max-width: 18ch !important;
   margin: 0;
   font-size: clamp(25px, 2.05vw, 34px) !important;
   font-weight: 500;
-  line-height: 1.16 !important;
+  line-height: 1.18 !important;
   letter-spacing: -.038em !important;
   word-break: keep-all;
   overflow-wrap: normal;
+  line-break: strict;
+  text-wrap: balance;
 }
 
 .portfolio-dynamic-page .portfolio-scroll-section__sub {
@@ -197,6 +202,8 @@
   font-size: 13.5px;
   line-height: 1.75;
   word-break: keep-all;
+  line-break: strict;
+  text-wrap: pretty;
 }
 
 .portfolio-scroll-copy {
@@ -212,6 +219,8 @@
   letter-spacing: -.018em;
   word-break: keep-all;
   overflow-wrap: break-word;
+  line-break: strict;
+  text-wrap: pretty;
 }
 
 .portfolio-detail-page .portfolio-scroll-copy p + p,
@@ -227,6 +236,8 @@
 .portfolio-dynamic-page .portfolio-detail-story__summary {
   line-height: 1.82;
   word-break: keep-all;
+  line-break: strict;
+  text-wrap: pretty;
 }
 
 @media (max-height: 850px) and (min-width: 901px) {
@@ -333,9 +344,10 @@
   }
 
   .portfolio-scroll-section__head h2 {
-    max-width: none !important;
+    max-width: 19ch !important;
     font-size: clamp(25px, 7vw, 34px) !important;
-    line-height: 1.18 !important;
+    line-height: 1.2 !important;
+    text-wrap: balance;
   }
 
   .portfolio-detail-page .portfolio-scroll-copy p,
