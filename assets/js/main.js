@@ -21,6 +21,7 @@
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('[data-menu-trigger]');
   const menu = document.querySelector('[data-menu-overlay]');
+  const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
 
   document.querySelectorAll('.menu-nav').forEach((nav) => {
     if (!nav.querySelector('a[href="research.html"]')) {
@@ -40,10 +41,26 @@
   const menuOffice = document.querySelector('.menu-footer > p');
   if (menuOffice) menuOffice.innerHTML = 'NINEWORKS<br>Design Studio · Incheon, Korea';
 
+  const syncDetailHeader = () => {
+    if (!isPortfolioDetail || !header) return;
+    const shouldHide = window.scrollY > 40 && !body.classList.contains('is-menu-open');
+    header.classList.toggle('is-hidden', shouldHide);
+    body.classList.toggle('is-detail-header-hidden', shouldHide);
+  };
+
   const setMenu = (open) => {
     body.classList.toggle('is-menu-open', open);
     menuButton?.setAttribute('aria-expanded', String(open));
     menu?.setAttribute('aria-hidden', String(!open));
+
+    if (isPortfolioDetail) {
+      if (open) {
+        header?.classList.remove('is-hidden');
+        body.classList.remove('is-detail-header-hidden');
+      } else {
+        syncDetailHeader();
+      }
+    }
   };
 
   menuButton?.addEventListener('click', () => {
@@ -60,6 +77,7 @@
 
   const updateHeader = () => {
     header?.classList.toggle('is-scrolled', window.scrollY > 10);
+    syncDetailHeader();
   };
 
   updateHeader();
