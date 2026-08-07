@@ -1,0 +1,49 @@
+/* Portfolio detail interaction refinement */
+@media (min-width: 901px) {
+  .portfolio-detail-page .portfolio-split-detail {
+    border-top: 0 !important;
+  }
+
+  .portfolio-detail-page .portfolio-detail-sidebar {
+    border-right: 0 !important;
+  }
+
+  .portfolio-detail-page .portfolio-detail-sidebar__inner {
+    top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+    min-height: 0;
+    overflow: hidden;
+    transition: top .34s var(--ease), height .34s var(--ease);
+  }
+
+  .portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner {
+    top: 0;
+    height: 100vh;
+    min-height: 0;
+  }
+
+  .portfolio-detail-page .portfolio-detail-scroll {
+    align-self: start;
+  }
+}
+
+/* Do not draw an artificial divider between chapters. */
+.portfolio-detail-page .portfolio-scroll-section {
+  border-top: 0 !important;
+}
+
+.portfolio-detail-page .portfolio-scroll-section + .portfolio-scroll-section {
+  margin-top: clamp(96px, 8vw, 138px);
+}
+
+@media (max-width: 900px) {
+  .portfolio-detail-page .portfolio-detail-sidebar {
+    border-right: 0 !important;
+  }
+
+  .portfolio-detail-page .portfolio-detail-sidebar__inner,
+  .portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner {
+    height: auto;
+    overflow: visible;
+  }
+}
