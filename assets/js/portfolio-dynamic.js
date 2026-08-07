@@ -16,12 +16,36 @@
     root.innerHTML = `<section class="portfolio-not-found"><p class="eyebrow">Portfolio</p><h1>Project not found.</h1><a class="text-link" href="portfolio.html">BACK TO PORTFOLIO <span>↗</span></a></section>`;
   };
 
-  const projectFromList = (project) => {
+  const listedProject = () => Array.isArray(window.NW_PORTFOLIO)
+    ? window.NW_PORTFOLIO.find((project) => project.id === id)
+    : null;
+
+  const expandArchiveUrl = (value = '') => {
+    const archive = window.NW_IMAGE_ARCHIVE;
+    if (!value || !archive) return value;
+    if (value.startsWith('@B')) return `${archive.b}${value.slice(2)}`;
+    if (value.startsWith('@U')) return value.slice(2);
+    if (/^https?:\/\//i.test(value)) return value;
+    return `${archive.p}${value}`;
+  };
+
+  const projectFromArchive = (project) => {
     if (!project) return null;
+    const archive = window.NW_IMAGE_ARCHIVE?.w?.[project.id];
     const category = Array.isArray(project.filters)
       ? project.filters.map((item) => item.charAt(0).toUpperCase() + item.slice(1)).join(' · ')
       : '';
-    const overview = `${project.title} 프로젝트는 ${project.subtitle || project.scope || '브랜드의 시각적 경험'}을 중심으로 진행한 나인웍스의 디자인 작업입니다. 브랜드가 필요한 접점과 실제 사용 환경을 고려해 이미지, 정보 구조와 응용 디자인이 하나의 인상으로 이어지도록 정리했습니다.`;
+    const overview = `${project.title} 프로젝트는 ${project.subtitle || project.scope || '브랜드의 시각적 경험'}을 중심으로 진행한 나인웍스의 디자인 작업입니다. 브랜드의 핵심 인상이 실제 사용 환경과 다양한 접점에서 일관되게 이어지도록 아이덴티티, 이미지, 정보 구조와 응용 디자인을 함께 정리했습니다.`;
+
+    const archiveSections = Array.isArray(archive?.[1]) ? archive[1] : [];
+    const sections = archiveSections.map(([title, images], index) => ({
+      label: title || `Visual Archive ${String(index + 1).padStart(2, '0')}`,
+      title: title || `Visual Archive ${String(index + 1).padStart(2, '0')}`,
+      paragraphs: [
+        `${project.title} 프로젝트에서 ${title || '주요 비주얼'}을 중심으로 전개한 작업입니다. 결과물이 개별 이미지로 분리되어 보이기보다 하나의 브랜드 경험으로 연결되도록 시각적 톤과 적용 방식을 일관된 흐름으로 구성했습니다.`
+      ],
+      images: Array.isArray(images) ? images.map(expandArchiveUrl) : []
+    }));
 
     return {
       id: project.id,
@@ -33,15 +57,8 @@
       scope: project.scope,
       category,
       role: 'Design Direction · NINEWORKS',
-      thumbnail: project.thumbnail,
-      sections: [
-        {
-          label: 'Project Overview',
-          title: project.title,
-          paragraphs: [overview],
-          images: []
-        }
-      ]
+      thumbnail: expandArchiveUrl(archive?.[0]) || project.thumbnail,
+      sections: sections.length ? sections : [{ label: 'Project Overview', title: project.title, paragraphs: [overview], images: [] }]
     };
   };
 
@@ -103,16 +120,13 @@
     return;
   }
 
-  const listed = Array.isArray(window.NW_PORTFOLIO)
-    ? window.NW_PORTFOLIO.find((project) => project.id === id)
-    : null;
-
-  const fallback = projectFromList(listed);
-  if (!fallback) return renderNotFound();
+  const project = listedProject();
+  const archiveFallback = projectFromArchive(project);
+  if (!archiveFallback) return renderNotFound();
 
   const legacyScript = document.createElement('script');
   legacyScript.src = `assets/js/works/${id}.js`;
-  legacyScript.onload = () => render(window.NW_WORK || fallback);
-  legacyScript.onerror = () => render(fallback);
+  legacyScript.onload = () => render(window.NW_WORK || archiveFallback);
+  legacyScript.onerror = () => render(archiveFallback);
   document.body.appendChild(legacyScript);
 })();
