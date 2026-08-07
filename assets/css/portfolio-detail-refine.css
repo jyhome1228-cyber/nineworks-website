@@ -2,28 +2,42 @@
 @media (min-width: 901px) {
   .portfolio-split-detail {
     grid-template-columns: minmax(420px, 40vw) minmax(0, 1fr);
+    align-items: stretch;
     border-top: 0;
   }
 
   .portfolio-detail-sidebar {
+    align-self: stretch;
+    height: auto;
+    min-height: 100%;
     border-right: 0;
   }
 
   .portfolio-detail-sidebar__inner {
+    position: sticky !important;
     top: var(--header-h);
-    height: calc(100vh - var(--header-h));
+    display: flex;
+    height: calc(100svh - var(--header-h));
     min-height: 0;
+    flex-direction: column;
     padding-top: clamp(42px, 3.6vw, 62px);
     padding-right: clamp(28px, 3vw, 52px);
     padding-bottom: 28px;
     padding-left: clamp(28px, 3vw, 52px);
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #f3f3f1;
+    scrollbar-width: none;
     transition: top .32s var(--ease), height .32s var(--ease);
+  }
+
+  .portfolio-detail-sidebar__inner::-webkit-scrollbar {
+    display: none;
   }
 
   .portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner {
     top: 0;
-    height: 100vh;
+    height: 100svh;
     min-height: 0;
   }
 
@@ -46,6 +60,10 @@
 }
 
 /* Remove divider rules and let whitespace separate chapters */
+.portfolio-split-detail {
+  border-top: 0 !important;
+}
+
 .portfolio-detail-sidebar {
   border-right: 0 !important;
 }
@@ -68,6 +86,7 @@
 .portfolio-detail-index a {
   position: relative;
   color: #777;
+  cursor: pointer;
   transition: color .2s ease, opacity .2s ease, transform .25s var(--ease);
 }
 
@@ -87,6 +106,10 @@
   opacity: 0;
   transform: translateY(-50%) scale(.5);
   transition: opacity .2s ease, transform .25s var(--ease);
+}
+
+.portfolio-detail-index a:hover {
+  color: #111;
 }
 
 .portfolio-detail-index a.is-active {
@@ -181,8 +204,22 @@
 }
 
 @media (max-width: 900px) {
+  .portfolio-split-detail {
+    display: block;
+  }
+
   .portfolio-detail-sidebar {
+    height: auto;
+    min-height: 0;
     border-bottom: 0;
+  }
+
+  .portfolio-detail-sidebar__inner,
+  .portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner {
+    position: relative !important;
+    top: auto;
+    height: auto;
+    overflow: visible;
   }
 
   .portfolio-scroll-section {
