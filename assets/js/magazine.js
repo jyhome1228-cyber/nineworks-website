@@ -9,6 +9,7 @@
   const escapeHTML = (value='') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 
   const first = data[0];
+  featured.id = `mag-${first.id}`;
   featured.dataset.category = first.category;
   featured.innerHTML = `
     <figure class="magazine-feature__media"><img src="${escapeHTML(first.thumbnail)}" alt="${escapeHTML(first.title)}"></figure>
