@@ -12,7 +12,7 @@
     document.body.appendChild(script);
   };
 
-  loadStylesheet('assets/css/refine.css?v=20260807-1');
+  loadStylesheet('assets/css/refine.css?v=20260807-6');
   loadStylesheet('assets/css/alignment.css?v=20260807-1');
 
   if (document.querySelector('.project-detail')) {
@@ -20,7 +20,7 @@
   }
 
   if (document.body.classList.contains('contact-page')) {
-    loadStylesheet('assets/css/contact.css?v=20260807-2');
+    loadStylesheet('assets/css/contact.css?v=20260807-4');
   }
 
   const body = document.body;
