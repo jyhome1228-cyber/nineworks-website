@@ -12,7 +12,7 @@
     document.body.appendChild(script);
   };
 
-  loadStylesheet('assets/css/refine.css?v=20260807-6');
+  loadStylesheet('assets/css/refine.css?v=20260807-7');
   loadStylesheet('assets/css/alignment.css?v=20260807-1');
 
   if (document.querySelector('.project-detail')) {
@@ -37,8 +37,8 @@
   }
 
   if (isHome) {
-    loadStylesheet('assets/css/home-portfolio.css?v=20260807-2');
-    loadScript('assets/js/home-portfolio.js?v=20260807-2');
+    loadStylesheet('assets/css/home-portfolio.css?v=20260807-3');
+    loadScript('assets/js/home-portfolio.js?v=20260807-3');
   }
 
   /* Research is retired. Replace every remaining legacy link with Solutions. */
