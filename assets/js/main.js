@@ -32,7 +32,7 @@
   const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
 
   if (isPortfolioDetail) {
-    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-3');
+    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-4');
     loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
   }
 
