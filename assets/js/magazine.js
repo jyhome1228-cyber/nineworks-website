@@ -19,7 +19,7 @@
 
   grid.innerHTML = data.map((article, index) => `
     <article class="magazine-card" id="mag-${escapeHTML(article.id)}" data-category="${escapeHTML(article.category)}">
-      <a class="magazine-card__link" href="#mag-${escapeHTML(article.id)}" aria-label="${escapeHTML(article.title)}">
+      <a class="magazine-card__link" href="magazine-detail.html?article=${encodeURIComponent(article.id)}" aria-label="${escapeHTML(article.title)} 읽기">
         <figure class="magazine-card__media">
           <img src="${escapeHTML(article.thumbnail)}" alt="${escapeHTML(article.title)}" loading="${index < 6 ? 'eager' : 'lazy'}">
         </figure>
@@ -29,7 +29,7 @@
         </div>
         <h3>${escapeHTML(article.title)}</h3>
         <p class="magazine-card__summary">${escapeHTML(article.subtitle)}</p>
-        <span class="magazine-card__status">Reading Note</span>
+        <span class="magazine-card__status">Read Article ↗</span>
       </a>
     </article>`).join('');
 
