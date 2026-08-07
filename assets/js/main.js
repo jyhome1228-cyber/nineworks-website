@@ -41,13 +41,21 @@
     loadScript('assets/js/home-portfolio.js?v=20260807-2');
   }
 
+  /* Research is retired. Replace every remaining legacy link with Solutions. */
+  document.querySelectorAll('a[href="research.html"]').forEach((link) => {
+    link.href = 'solutions.html';
+    const text = link.textContent.trim();
+    if (/research/i.test(text)) link.textContent = text.replace(/research/ig, 'Solutions');
+  });
+
   document.querySelectorAll('.menu-nav').forEach((nav) => {
-    if (!nav.querySelector('a[href="research.html"]')) {
-      const researchLink = document.createElement('a');
-      researchLink.href = 'research.html';
-      researchLink.textContent = 'Research';
+    nav.querySelectorAll('a[href="research.html"]').forEach((link) => link.remove());
+    if (!nav.querySelector('a[href="solutions.html"]')) {
+      const solutionsLink = document.createElement('a');
+      solutionsLink.href = 'solutions.html';
+      solutionsLink.textContent = 'Solutions';
       const contactLink = nav.querySelector('a[href="contact.html"]');
-      nav.insertBefore(researchLink, contactLink || null);
+      nav.insertBefore(solutionsLink, contactLink || null);
     }
   });
 
@@ -166,7 +174,7 @@
           <a href="project.html">Project</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="magazine.html">Magazine</a>
-          <a href="research.html">Research</a>
+          <a href="solutions.html">Solutions</a>
           <a href="contact.html">Contact</a>
           <a href="privacy.html">Privacy</a>
         </nav>
