@@ -7,7 +7,7 @@
     const motion = document.createElement('div');
     motion.className = 'home-design-motion';
     motion.setAttribute('aria-hidden', 'true');
-    motion.innerHTML = Array.from({ length: 7 }, (_, index) => `<span class="home-grid-dot home-grid-dot--${index + 1}"></span>`).join('');
+    motion.innerHTML = Array.from({ length: 4 }, (_, index) => `<span class="home-grid-dot home-grid-dot--${index + 1}"></span>`).join('');
     hero.prepend(motion);
   }
 
