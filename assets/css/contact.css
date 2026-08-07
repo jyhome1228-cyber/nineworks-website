@@ -58,17 +58,9 @@
 .consent-row input{width:14px;height:14px;margin:2px 0 0;accent-color:var(--ink)}
 .consent-row a{border-bottom:1px solid currentColor}
 
-@media(max-width:1080px){
-  .contact-page .contact-hero>div:first-child,.contact-directory__title,.contact-form-head>div:first-child,.form-group__heading{grid-column:1/span 5}
-  .contact-page .contact-hero__bottom,.contact-directory__content,.contact-form-head>div:last-child,.form-group__fields{grid-column:6/-1}
-  .form-submit-section>div{grid-column:6/span 3}
-  .contact-page .form-submit{grid-column:9/-1}
-}
-
 @media(max-width:900px){
   .form-group__heading{position:static}
   .contact-directory__row{grid-template-columns:82px minmax(0,1fr)}
-  .compact-choice-grid{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:760px){
