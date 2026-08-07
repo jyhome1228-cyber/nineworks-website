@@ -1,0 +1,29 @@
+name: Generate Kakao Preview
+
+on:
+  push:
+    paths:
+      - 'assets/kakao-preview.svg'
+      - '.github/workflows/generate-kakao-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SVG renderer
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+      - name: Render 1200x630 PNG
+        run: rsvg-convert -w 1200 -h 630 assets/kakao-preview.svg -o assets/kakao-preview.png
+      - name: Commit PNG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/kakao-preview.png
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Render Kakao social preview"
+          git push
