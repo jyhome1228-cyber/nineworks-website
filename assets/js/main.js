@@ -6,6 +6,12 @@
     document.head.appendChild(stylesheet);
   };
 
+  const loadScript = (src) => {
+    const script = document.createElement('script');
+    script.src = src;
+    document.body.appendChild(script);
+  };
+
   loadStylesheet('assets/css/refine.css?v=20260807-1');
   loadStylesheet('assets/css/alignment.css?v=20260807-1');
 
@@ -22,6 +28,11 @@
   const menuButton = document.querySelector('[data-menu-trigger]');
   const menu = document.querySelector('[data-menu-overlay]');
   const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
+
+  if (isPortfolioDetail) {
+    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-1');
+    loadScript('assets/js/portfolio-scroll.js?v=20260807-1');
+  }
 
   document.querySelectorAll('.menu-nav').forEach((nav) => {
     if (!nav.querySelector('a[href="research.html"]')) {
@@ -41,25 +52,14 @@
   const menuOffice = document.querySelector('.menu-footer > p');
   if (menuOffice) menuOffice.innerHTML = 'NINEWORKS<br>Design Studio · Incheon, Korea';
 
-  const syncDetailHeader = () => {
-    if (!isPortfolioDetail || !header) return;
-    const shouldHide = window.scrollY > 40 && !body.classList.contains('is-menu-open');
-    header.classList.toggle('is-hidden', shouldHide);
-    body.classList.toggle('is-detail-header-hidden', shouldHide);
-  };
-
   const setMenu = (open) => {
     body.classList.toggle('is-menu-open', open);
     menuButton?.setAttribute('aria-expanded', String(open));
     menu?.setAttribute('aria-hidden', String(!open));
 
-    if (isPortfolioDetail) {
-      if (open) {
-        header?.classList.remove('is-hidden');
-        body.classList.remove('is-detail-header-hidden');
-      } else {
-        syncDetailHeader();
-      }
+    if (isPortfolioDetail && open) {
+      header?.classList.remove('is-hidden');
+      body.classList.remove('is-detail-header-hidden');
     }
   };
 
@@ -77,7 +77,6 @@
 
   const updateHeader = () => {
     header?.classList.toggle('is-scrolled', window.scrollY > 10);
-    syncDetailHeader();
   };
 
   updateHeader();
