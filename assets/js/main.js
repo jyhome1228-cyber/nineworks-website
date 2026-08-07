@@ -14,7 +14,7 @@
   }
 
   if (document.body.classList.contains('contact-page')) {
-    loadStylesheet('assets/css/contact.css?v=20260804-1');
+    loadStylesheet('assets/css/contact.css?v=20260807-2');
   }
 
   const body = document.body;
@@ -167,8 +167,8 @@
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
-        <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 915호 &nbsp;&nbsp; <strong>전화</strong> · 032-208-5650 / 010-5422-5650</p>
-        <p>NINEWORKS Office, Room 915, 1039, Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
+        <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 916호 &nbsp;&nbsp; <strong>전화</strong> · 010-5422-5650</p>
+        <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
         <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
       </div>
       <div class="site-footer__bottom">
@@ -192,33 +192,42 @@
     const projectName = data.get('projectName') || '';
     const projectTypes = data.getAll('projectType');
     const services = data.getAll('service');
-    const budget = data.get('budget') || '';
-    const startDate = data.get('startDate') || data.get('schedule') || '';
-    const endDate = data.get('endDate') || '';
+    const requirements = data.get('requirements') || '';
     const message = data.get('message') || '';
+    const reference = data.get('reference') || '';
+    const budget = data.get('budget') || '';
+    const status = data.get('status') || '';
+    const startDate = data.get('startDate') || '';
+    const endDate = data.get('endDate') || '';
 
     if (mailForm.classList.contains('inquiry-form') && projectTypes.length === 0) {
-      window.alert('필요한 프로젝트 유형을 한 개 이상 선택해 주세요.');
+      window.alert('필요한 작업 유형을 한 개 이상 선택해 주세요.');
       mailForm.querySelector('input[name="projectType"]')?.focus();
       return;
     }
 
     const subject = `[NINEWORKS 프로젝트 문의] ${projectName || company || name}`;
     const bodyText = [
+      '[CONTACT INFORMATION]',
       `담당자: ${name}`,
       `회사/브랜드: ${company}`,
       `이메일: ${email}`,
       `연락처: ${phone}`,
-      `프로젝트명: ${projectName}`,
-      `프로젝트 유형: ${projectTypes.length ? projectTypes.join(', ') : data.get('projectType') || ''}`,
-      `포함 희망 항목: ${services.join(', ')}`,
-      `예상 예산: ${budget}`,
-      `시작 희망일: ${startDate}`,
-      `종료 희망일: ${endDate}`,
       '',
-      '프로젝트 내용',
-      message
-    ].join('\n');
+      '[PROJECT SCOPE]',
+      `프로젝트명: ${projectName}`,
+      `작업 유형: ${projectTypes.join(', ')}`,
+      services.length ? `포함 희망 항목: ${services.join(', ')}` : '',
+      `요청사항 / 필요한 결과물: ${requirements}`,
+      `프로젝트 배경 / 현재 상황: ${message}`,
+      `참고 링크: ${reference}`,
+      '',
+      '[BUDGET & SCHEDULE]',
+      `예상 예산: ${budget}`,
+      `현재 진행 상태: ${status}`,
+      `작업 시작 희망일: ${startDate}`,
+      `목표 작업 완료일: ${endDate}`
+    ].filter(Boolean).join('\n');
 
     window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
   });
