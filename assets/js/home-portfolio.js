@@ -59,7 +59,7 @@
   magazineItems.forEach((item, index) => {
     const data = magazine[index];
     if (!data) return;
-    item.href = `magazine-detail.html?article=${encodeURIComponent(data.id)}`;
+    item.href = `magazine.html#mag-${encodeURIComponent(data.id)}`;
     const title = item.querySelector('.magazine-item__title');
     const meta = item.querySelector('.magazine-item__meta');
     if (title) title.textContent = data.title;
