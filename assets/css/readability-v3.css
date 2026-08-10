@@ -1,0 +1,156 @@
+/* NINEWORKS readability pass — 2026-08-10 */
+:root{
+  --gutter:clamp(20px,1.8vw,34px);
+  --section-y:clamp(84px,7.2vw,118px);
+  --body:clamp(15.5px,.92vw,16.5px);
+}
+
+body{font-size:var(--body);line-height:1.7;letter-spacing:-.018em}
+.container{width:min(100%,1640px);max-width:1640px;margin-right:auto;margin-left:auto}
+
+.eyebrow{margin-bottom:16px;font-size:11px;line-height:1.2;letter-spacing:.055em}
+.display-title{max-width:11ch;font-size:clamp(54px,4.2vw,80px);line-height:.96;letter-spacing:-.058em}
+.page-title{font-size:clamp(38px,3.25vw,56px);line-height:1.02}
+.section-title{font-size:clamp(30px,2.55vw,44px);line-height:1.08}
+.lead{max-width:700px;font-size:clamp(17.5px,1.08vw,20px);line-height:1.68;letter-spacing:-.026em}
+.copy{max-width:700px;color:#303030;font-size:clamp(15px,.88vw,16px);line-height:1.78;word-break:keep-all;text-wrap:pretty}
+.text-link{font-size:12.5px}
+
+.section{padding-top:var(--section-y);padding-bottom:var(--section-y)}
+.section--tight{padding-top:clamp(58px,5vw,84px);padding-bottom:clamp(72px,6vw,98px)}
+.page-hero{min-height:42vh;padding-top:clamp(50px,5vw,76px);padding-bottom:clamp(38px,3.8vw,58px)}
+.page-hero__copy,.portfolio-hero__copy,.magazine-hero__copy,.solutions-hero__copy{max-width:700px!important;font-size:clamp(15.5px,.92vw,16.5px)!important;line-height:1.78!important;color:#333}
+
+/* Pull text blocks closer together on large displays. */
+.split-copy,.about-preview,.category-intro{column-gap:clamp(44px,5vw,84px)}
+.split-copy>:first-child,.about-preview>:first-child,.category-intro>:first-child{grid-column:1/span 4}
+.split-copy>:last-child,.about-preview>:last-child,.category-intro>:last-child{grid-column:6/-1}
+.split-copy__right,.about-preview__body{max-width:720px}
+
+/* HOME — less empty hero, more editorial project rhythm. */
+.hero{min-height:calc(66svh - var(--header-h));padding-top:clamp(46px,4.5vw,72px);padding-bottom:34px}
+.hero__descriptor{max-width:650px;font-size:clamp(15.5px,.95vw,17px);line-height:1.72}
+.hero__meta{font-size:11px;line-height:1.55}
+.home-grid-dot--4{display:none!important}
+.home-design-motion{opacity:.78}
+
+/* First project archive on home gets visual rhythm instead of six equal cards. */
+main>.section:first-of-type .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,1.4vw,24px)}
+main>.section:first-of-type .project-card{grid-column:auto}
+main>.section:first-of-type .project-card:nth-child(1){grid-column:span 7}
+main>.section:first-of-type .project-card:nth-child(2){grid-column:span 5}
+main>.section:first-of-type .project-card:nth-child(3){grid-column:span 5}
+main>.section:first-of-type .project-card:nth-child(4){grid-column:span 7}
+main>.section:first-of-type .project-card:nth-child(5){grid-column:span 7}
+main>.section:first-of-type .project-card:nth-child(6){grid-column:span 5}
+main>.section:first-of-type .project-card .project-visual{aspect-ratio:16/10}
+.project-card__meta{padding-top:12px;font-size:13px;line-height:1.5}
+.project-card__category{font-size:11.5px}
+
+/* HOME service area: show only one explanation and keep it close to the selected row. */
+section:has(.service-tabs) .service-panel:not(.is-active){display:none!important}
+section:has(.service-tabs) .service-panel.is-active{display:grid!important;grid-template-columns:minmax(0,680px) minmax(220px,320px);justify-content:space-between;gap:clamp(40px,5vw,78px);padding-top:30px}
+.service-tabs{margin-top:8px}
+.service-tab{min-height:66px;padding:17px 0;grid-template-columns:54px minmax(0,1fr) 24px}
+.service-tab__name{font-size:clamp(20px,1.45vw,25px);line-height:1.2}
+.service-tab__mark{font-size:18px}
+.service-panel .lead{font-size:clamp(16.5px,1vw,18px)!important;line-height:1.72!important}
+.service-panel__services{max-width:320px;color:#666;font-size:12px!important;line-height:1.75!important;text-align:left!important}
+
+/* Numbered lists — keep related information in one reading field. */
+.capability-list{border-top:1px solid var(--ink)}
+.capability-list .capability-row{display:grid!important;grid-template-columns:52px minmax(220px,310px) minmax(0,650px)!important;grid-template-rows:auto!important;justify-content:start;column-gap:clamp(24px,3vw,48px)!important;row-gap:0!important;align-items:start;padding:clamp(25px,2.2vw,32px) 0!important;border-bottom:1px solid var(--line)}
+.capability-list .capability-row>span{grid-column:1!important;grid-row:1!important;margin:5px 0 0!important;color:#8a8a8a;font-size:11px!important;line-height:1.2!important}
+.capability-list .capability-row__title,.capability-list .capability-row>div:nth-child(2){grid-column:2!important;grid-row:1!important;margin:0!important}
+.capability-list .capability-row__title{font-size:clamp(21px,1.55vw,26px)!important;line-height:1.18!important;letter-spacing:-.035em!important}
+.capability-list .capability-row__copy{grid-column:3!important;grid-row:1!important;max-width:650px!important;margin:0!important;color:#3f3f3f!important;font-size:clamp(14.5px,.86vw,15.5px)!important;line-height:1.75!important;word-break:keep-all;text-wrap:pretty}
+.capability-list .capability-row__copy p{font-size:inherit;line-height:inherit}
+.capability-list .capability-row__copy p+p{margin-top:8px!important;color:#727272;font-size:12px}
+
+/* ABOUT — denser, easier to scan. */
+.about-page .page-hero{min-height:46vh!important}
+.about-origin,.about-profile,.about-experience,.about-awards{padding-top:clamp(72px,6.3vw,100px)!important;padding-bottom:clamp(72px,6.3vw,100px)!important}
+.about-origin__body .lead,.about-profile__lead{font-size:clamp(17px,1.02vw,19px)!important;line-height:1.72!important}
+.about-principle{min-height:250px!important;padding-top:24px!important;padding-bottom:30px!important}
+.about-principle__number{margin-bottom:clamp(42px,4vw,64px)!important}
+.about-principle h3{font-size:clamp(21px,1.45vw,25px)!important}
+.about-principle p{font-size:14.5px!important;line-height:1.75!important}
+.about-record{grid-template-columns:140px minmax(0,1fr)!important;padding:16px 0!important}
+.about-record dt{font-size:11.5px!important}.about-record dd{font-size:14.5px!important;line-height:1.7!important}
+.experience-list li,.award-list li{padding:16px 0!important;font-size:13.5px!important;line-height:1.6!important}
+
+/* SOLUTIONS — keep 9 services compact and readable. */
+.solutions-hero{min-height:42vh!important;padding-top:clamp(54px,5vw,80px)!important;padding-bottom:clamp(42px,4vw,62px)!important}
+.solutions-intro,.solutions-note{padding-top:clamp(66px,5.5vw,88px)!important;padding-bottom:clamp(66px,5.5vw,88px)!important}
+.solution-row{grid-template-columns:minmax(270px,360px) minmax(0,760px)!important;justify-content:start;column-gap:clamp(50px,6vw,92px)!important;row-gap:18px!important;padding:clamp(32px,3vw,44px) 0!important}
+.solution-row__title h2{font-size:clamp(22px,1.65vw,28px)!important;line-height:1.2!important}
+.solution-row__title p{font-size:12px!important;margin-top:8px!important}
+.solution-row__body{grid-template-columns:minmax(0,1fr) minmax(180px,230px)!important;gap:clamp(30px,3.5vw,52px)!important}
+.solution-row__body>p{font-size:15px!important;line-height:1.78!important}
+.solution-row__deliverables{font-size:12px!important;line-height:1.6!important}
+
+/* PROJECT / PORTFOLIO cards — metadata should be readable, not footnotes. */
+.project-random-copy strong,.portfolio-card__info strong{font-size:13.5px!important;line-height:1.45!important}
+.project-random-copy span,.project-random-meta .project-card__category,.portfolio-card__info div>span,.portfolio-card__scope{font-size:11.5px!important;line-height:1.55!important}
+.category-intro{padding-top:clamp(48px,4vw,68px)!important;padding-bottom:clamp(48px,4vw,68px)!important}
+.category-intro__title{font-size:clamp(32px,2.6vw,44px)!important}
+.category-nav button,.category-nav a{min-width:0;padding:15px 18px;font-size:11.5px}
+
+/* MAGAZINE — summaries are content, not captions. */
+.magazine-page .magazine-hero{min-height:34vh!important;padding-top:clamp(48px,4.5vw,72px)!important;padding-bottom:42px!important}
+.magazine-grid{gap:clamp(46px,4vw,66px) clamp(18px,1.5vw,26px)!important}
+.magazine-card__meta{font-size:10.5px!important}
+.magazine-card h3{max-width:24ch!important;font-size:clamp(19px,1.38vw,23px)!important;line-height:1.36!important}
+.magazine-card__summary{max-width:46ch!important;margin-top:11px!important;color:#555!important;font-size:13.5px!important;line-height:1.7!important}
+
+/* CONTACT — increase form legibility without making it heavy. */
+.contact-page .contact-hero__bottom p,.contact-form-head p{font-size:15.5px!important;line-height:1.75!important}
+.contact-directory__value{font-size:14.5px!important}.contact-directory__english{font-size:12px!important}
+.form-group__heading p{max-width:340px!important;font-size:13px!important;line-height:1.7!important}
+.field-block label,.compact-choice-title{font-size:12.5px!important}
+.field-block input,.field-block textarea,.field-block select{font-size:15px!important}
+.compact-choice-grid span{font-size:12.5px!important}.compact-choice-grid small{font-size:11px!important}
+
+/* PORTFOLIO / MAGAZINE DETAIL — long-form copy needs a true reading size. */
+.portfolio-detail-story .language-copy,.portfolio-detail-story__summary{font-size:15px!important;line-height:1.8!important}
+.portfolio-detail-facts>div,.portfolio-detail-index a{font-size:12.5px!important}
+.portfolio-detail-page .portfolio-scroll-copy p,.portfolio-detail-page .portfolio-scroll-copy .language-copy,.magazine-detail-copy p{font-size:15px!important;line-height:1.82!important;letter-spacing:-.012em!important}
+.portfolio-scroll-section__head h2{font-size:clamp(26px,2vw,34px)!important;line-height:1.2!important}
+
+.site-footer__links,.site-footer__legal{font-size:12px!important}.site-footer__bottom{font-size:11px!important}
+
+@media(max-width:1080px){
+  .container{max-width:100%}
+  main>.section:first-of-type .project-card:nth-child(n){grid-column:span 6}
+  .capability-list .capability-row{grid-template-columns:44px minmax(190px,260px) minmax(0,1fr)!important}
+  .solution-row{grid-template-columns:minmax(230px,300px) minmax(0,1fr)!important;column-gap:42px!important}
+}
+
+@media(max-width:760px){
+  :root{--section-y:72px;--body:15.5px}
+  .container{width:100%;max-width:none}
+  .display-title{font-size:clamp(44px,12vw,58px);max-width:10ch}
+  .page-title{font-size:clamp(34px,9.5vw,46px)}
+  .section-title{font-size:clamp(27px,7.5vw,36px)}
+  .lead{font-size:17px;line-height:1.68}
+  .copy{font-size:15px;line-height:1.75}
+  .hero{min-height:calc(70svh - var(--header-h));padding-top:38px;padding-bottom:26px}
+  .hero__bottom{align-items:flex-start;flex-direction:column;gap:18px}
+  .hero__meta{text-align:left}
+  .split-copy,.about-preview,.category-intro{gap:28px}
+  .split-copy>:first-child,.split-copy>:last-child,.about-preview>:first-child,.about-preview>:last-child,.category-intro>:first-child,.category-intro>:last-child{grid-column:1}
+  main>.section:first-of-type .project-grid{grid-template-columns:1fr!important;gap:34px!important}
+  main>.section:first-of-type .project-card:nth-child(n){grid-column:1!important}
+  section:has(.service-tabs) .service-panel.is-active{grid-template-columns:1fr!important;gap:14px!important}
+  .service-tab{grid-template-columns:36px minmax(0,1fr) 18px;min-height:60px;padding:15px 0}
+  .service-tab__name{font-size:20px}
+  .capability-list .capability-row{grid-template-columns:36px minmax(0,1fr)!important;row-gap:12px!important;padding:24px 0!important}
+  .capability-list .capability-row>span{grid-column:1!important;grid-row:1!important}
+  .capability-list .capability-row__title,.capability-list .capability-row>div:nth-child(2){grid-column:2!important;grid-row:1!important}
+  .capability-list .capability-row__copy{grid-column:2!important;grid-row:2!important;font-size:14.5px!important}
+  .solution-row{grid-template-columns:1fr!important;padding:28px 0!important}
+  .solution-row__number,.solution-row__title,.solution-row__body{grid-column:1!important}
+  .solution-row__body{grid-template-columns:1fr!important;gap:16px!important}
+  .magazine-card__summary{font-size:13.5px!important}
+  .portfolio-detail-page .portfolio-scroll-copy p,.portfolio-detail-page .portfolio-scroll-copy .language-copy,.magazine-detail-copy p{font-size:14.5px!important;line-height:1.8!important}
+}
