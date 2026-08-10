@@ -48,7 +48,8 @@
 
   if (isHome) {
     loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
-    loadScript('assets/js/home-portfolio.js?v=20260810-1');
+    loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-1');
+    loadScript('assets/js/home-portfolio.js?v=20260810-2');
   }
 
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
