@@ -52,6 +52,9 @@
     loadScript('assets/js/home-portfolio.js?v=20260808-4');
   }
 
+  /* Always load last so readability wins over page-level legacy sizing. */
+  loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
+
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
     link.href = 'solutions.html';
     const text = link.textContent.trim();
