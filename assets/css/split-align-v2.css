@@ -1,0 +1,96 @@
+/* NINEWORKS — shared split alignment / 2026-08-11 */
+
+/* Every two-column editorial section uses the same right-column starting axis. */
+.split-copy>:last-child,
+.split-copy__right,
+.page-hero__bottom,
+.portfolio-page .portfolio-hero__copy,
+.magazine-page .magazine-hero__copy,
+.solutions-hero__copy,
+.solutions-intro>div:last-child,
+.solutions-note>div:last-child,
+.about-origin__body,
+.about-profile__content,
+.about-experience__body,
+.about-awards__body,
+.category-intro>:last-child,
+.contact-page .contact-hero__bottom{
+  justify-self:start!important;
+  margin-right:auto!important;
+  margin-left:0!important;
+  text-align:left!important;
+}
+
+/* ABOUT numbered rows: number above the left title, right copy starts exactly on column 7. */
+.about-page .capability-list .capability-row{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  grid-template-rows:auto!important;
+  gap:var(--nw-pad,var(--gutter))!important;
+  align-items:start!important;
+  padding:clamp(30px,2.7vw,42px) 0!important;
+}
+.about-page .capability-list .capability-row>span{
+  position:absolute!important;
+  top:clamp(28px,2.4vw,38px)!important;
+  left:0!important;
+  margin:0!important;
+  font-size:12.5px!important;
+  line-height:1!important;
+}
+.about-page .capability-list .capability-row>div:nth-child(2),
+.about-page .capability-list .capability-row__title{
+  grid-column:1/span 5!important;
+  grid-row:1!important;
+  align-self:start!important;
+  padding-top:32px!important;
+  margin:0!important;
+  text-align:left!important;
+}
+.about-page .capability-list .capability-row__copy{
+  grid-column:7/-1!important;
+  grid-row:1!important;
+  justify-self:start!important;
+  align-self:start!important;
+  width:100%!important;
+  max-width:720px!important;
+  padding-top:32px!important;
+  margin:0!important;
+  text-align:left!important;
+}
+
+/* Project path rows use the same editorial axis when shown as two main information blocks. */
+body.page-project .capability-list .capability-row{
+  grid-template-columns:72px minmax(260px,4fr) minmax(0,7fr)!important;
+}
+body.page-project .capability-list .capability-row__copy{
+  justify-self:start!important;
+  margin-left:0!important;
+  text-align:left!important;
+}
+
+@media(max-width:760px){
+  .about-page .capability-list .capability-row{
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    padding:28px 0 32px!important;
+  }
+  .about-page .capability-list .capability-row>span{
+    top:28px!important;
+  }
+  .about-page .capability-list .capability-row>div:nth-child(2),
+  .about-page .capability-list .capability-row__title,
+  .about-page .capability-list .capability-row__copy{
+    grid-column:1!important;
+    grid-row:auto!important;
+  }
+  .about-page .capability-list .capability-row__title,
+  .about-page .capability-list .capability-row>div:nth-child(2){
+    padding-top:32px!important;
+    margin-bottom:18px!important;
+  }
+  .about-page .capability-list .capability-row__copy{
+    padding-top:0!important;
+  }
+}
