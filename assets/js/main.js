@@ -15,7 +15,6 @@
   loadScript('assets/js/seo.js?v=20260808-1');
   loadScript('assets/js/typography.js?v=20260808-1');
 
-  /* Force a cache-busted favicon on every page. */
   document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
   const favicon = document.createElement('link');
   favicon.rel = 'icon';
@@ -49,10 +48,9 @@
 
   if (isHome) {
     loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
-    loadScript('assets/js/home-portfolio.js?v=20260808-4');
+    loadScript('assets/js/home-portfolio.js?v=20260810-1');
   }
 
-  /* Always load last so readability wins over page-level legacy sizing. */
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
 
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
