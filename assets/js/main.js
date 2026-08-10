@@ -39,7 +39,10 @@
   const menu = document.querySelector('[data-menu-overlay]');
   const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
   const pathname = window.location.pathname;
+  const fileName = pathname.split('/').filter(Boolean).pop() || 'index.html';
   const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
+  const pageSlug = isHome ? 'home' : fileName.replace(/\.html$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+  body.classList.add(`page-${pageSlug}`);
 
   if (isPortfolioDetail) {
     loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-4');
@@ -53,7 +56,7 @@
   }
 
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
-  loadStylesheet('assets/css/fullwidth-v1.css?v=20260810-1');
+  loadStylesheet('assets/css/fullwidth-v1.css?v=20260810-2');
 
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
     link.href = 'solutions.html';
@@ -71,6 +74,18 @@
       nav.insertBefore(solutionsLink, contactLink || null);
     }
   });
+
+  const markCurrentNavigation = () => {
+    const current = isHome ? 'index.html' : fileName;
+    document.querySelectorAll('.menu-nav a, .site-footer__links a').forEach((link) => {
+      const href = (link.getAttribute('href') || '').split('?')[0].split('#')[0];
+      const isCurrent = href === current || (pageSlug === 'portfolio-detail' && href === 'portfolio.html') || (pageSlug === 'magazine-detail' && href === 'magazine.html');
+      link.classList.toggle('is-current', isCurrent);
+      if (isCurrent) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  markCurrentNavigation();
 
   document.querySelectorAll('a[href="mailto:contact@9works.kr"]').forEach((link) => {
     link.href = 'mailto:info@9works.kr';
@@ -178,6 +193,7 @@
         <div class="site-footer__social"><a href="#">Instagram</a><a href="#">Behance</a></div>
       </div>`;
   });
+  markCurrentNavigation();
 
   document.querySelectorAll('[data-current-year]').forEach((item) => { item.textContent = new Date().getFullYear(); });
 
