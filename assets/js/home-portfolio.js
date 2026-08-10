@@ -2,14 +2,41 @@
   const style = document.createElement('style');
   style.textContent = `
     @media (min-width:1081px){
-      .hero + .section .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,1.4vw,24px)}
-      .hero + .section .project-card:nth-child(1){grid-column:span 7}.hero + .section .project-card:nth-child(2){grid-column:span 5}
-      .hero + .section .project-card:nth-child(3){grid-column:span 5}.hero + .section .project-card:nth-child(4){grid-column:span 7}
-      .hero + .section .project-card:nth-child(5){grid-column:span 7}.hero + .section .project-card:nth-child(6){grid-column:span 5}
-      .hero + .section .project-card .project-visual{aspect-ratio:16/10}
+      .hero + .section .project-grid{
+        display:grid!important;
+        grid-template-columns:repeat(3,minmax(0,1fr))!important;
+        gap:clamp(16px,1.4vw,24px)!important;
+        align-items:stretch;
+      }
+      .hero + .section .project-card{
+        grid-column:auto!important;
+        height:100%;
+        min-width:0;
+      }
+      .hero + .section .project-card__link{
+        display:flex;
+        height:100%;
+        flex-direction:column;
+      }
+      .hero + .section .project-card .project-visual{
+        width:100%;
+        min-height:0!important;
+        aspect-ratio:16/10;
+        flex:0 0 auto;
+      }
+      .hero + .section .project-card__meta{
+        min-height:54px;
+        flex:1 0 auto;
+      }
     }
-    @media (max-width:1080px) and (min-width:761px){.hero + .section .project-card{grid-column:span 6!important}}
-    @media (max-width:760px){.hero + .section .project-grid{grid-template-columns:1fr!important}.hero + .section .project-card{grid-column:1!important}}
+    @media (max-width:1080px) and (min-width:761px){
+      .hero + .section .project-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+      .hero + .section .project-card{grid-column:auto!important}
+    }
+    @media (max-width:760px){
+      .hero + .section .project-grid{display:grid!important;grid-template-columns:1fr!important}
+      .hero + .section .project-card{grid-column:1!important}
+    }
   `;
   document.head.appendChild(style);
 
@@ -17,8 +44,14 @@
   if (hero) {
     ['.home-brand-signal','.home-design-motion','.home-practice-grid','.home-practice-field','.home-practice-caption'].forEach((selector) => hero.querySelector(selector)?.remove());
 
+    const title = hero.querySelector('.display-title');
+    if (title) title.innerHTML = 'We design<br>how brands<br>are seen.';
+
     const descriptor = hero.querySelector('.hero__descriptor');
     if (descriptor) descriptor.textContent = '브랜드가 무엇으로 기억되어야 하는지부터 정의합니다. 아이덴티티, 패키지, 디지털과 에디토리얼을 하나의 시각 언어로 연결합니다.';
+
+    /* Legacy bottom-right meta clashes with the practice index and is no longer needed. */
+    hero.querySelector('.hero__meta')?.remove();
 
     const accents = ['#8b4637','#315d48','#31597d','#9a6b23','#6d4c64','#47636b'];
     const groups = [
@@ -104,5 +137,13 @@
     { id:'granhand-verbal-branding', title:'말로 빚어낸 향기, 그랑핸드의 버벌 브랜딩', meta:'Brand Story' },
     { id:'nudeake', title:'손톱만 한 크로와상을 드셔보셨나요?', meta:'Retail Experience' }
   ];
-  magazineItems.forEach((item,index) => { const data=magazine[index]; if(!data)return; item.href=`magazine-detail.html?article=${encodeURIComponent(data.id)}`; item.querySelector('.magazine-item__title') && (item.querySelector('.magazine-item__title').textContent=data.title); item.querySelector('.magazine-item__meta') && (item.querySelector('.magazine-item__meta').textContent=data.meta); });
+  magazineItems.forEach((item,index) => {
+    const data=magazine[index];
+    if(!data) return;
+    item.href=`magazine-detail.html?article=${encodeURIComponent(data.id)}`;
+    const titleEl=item.querySelector('.magazine-item__title');
+    const metaEl=item.querySelector('.magazine-item__meta');
+    if(titleEl) titleEl.textContent=data.title;
+    if(metaEl) metaEl.textContent=data.meta;
+  });
 })();
