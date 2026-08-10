@@ -35,6 +35,81 @@
     });
   };
 
+  const ensureFooterStyles = () => {
+    if (document.querySelector('link[data-footer-v2]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'assets/css/footer-v2.css?v=20260811-1';
+    link.dataset.footerV2 = 'true';
+    document.head.appendChild(link);
+  };
+
+  const footerMarkup = () => `
+    <div class="site-footer__top">
+      <a class="site-footer__brand" href="index.html">NINEWORKS<sup>©</sup></a>
+      <p class="site-footer__statement">Research-led design studio building clear brand systems across identity, package, editorial and digital experiences.</p>
+    </div>
+    <div class="site-footer__grid">
+      <div class="site-footer__col">
+        <span class="site-footer__label">Studio</span>
+        <p>NINEWORKS / 나인웍스</p>
+        <p>Design Studio</p>
+        <p>Incheon, Republic of Korea</p>
+      </div>
+      <div class="site-footer__col">
+        <span class="site-footer__label">Contact</span>
+        <a href="mailto:info@9works.kr">info@9works.kr</a>
+        <a href="tel:+821054225650">+82 10 5422 5650</a>
+        <p style="margin-top:12px">Project inquiry<br>Brand collaboration<br>Research &amp; education</p>
+      </div>
+      <div class="site-footer__col site-footer__col--explore">
+        <span class="site-footer__label">Explore</span>
+        <a href="about.html">About</a>
+        <a href="designer.html">Designer</a>
+        <a href="project.html">Project</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="magazine.html">Magazine</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="site-footer__col">
+        <span class="site-footer__label">Legal</span>
+        <a href="privacy.html">Privacy Policy / 개인정보처리방침</a>
+        <a href="email-refusal.html">Email Collection Refusal / 이메일무단수집거부</a>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
+      <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 916호</p>
+      <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
+      <p><strong>연락처</strong> · 010-5422-5650 &nbsp;&nbsp; <strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© ${new Date().getFullYear()} NINEWORKS. Design Studio. All rights reserved.</span>
+      <div class="site-footer__social"><a href="https://www.behance.net/the9works" target="_blank" rel="noreferrer">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter" target="_blank" rel="noreferrer">Brunch</a></div>
+    </div>`;
+
+  const enhanceFooter = () => {
+    ensureFooterStyles();
+    document.querySelectorAll('.site-footer').forEach((footer) => {
+      if (footer.dataset.footerV2 === 'true' && footer.querySelector('.site-footer__grid')) return;
+      footer.innerHTML = footerMarkup();
+      footer.dataset.footerV2 = 'true';
+    });
+  };
+
+  const watchFooter = () => {
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll('.site-footer').forEach((footer) => {
+        if (!footer.querySelector('.site-footer__grid')) {
+          footer.dataset.footerV2 = '';
+          enhanceFooter();
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+
   const refinePracticeIndex = () => {
     const groups = document.querySelectorAll('.home-practice-group');
     if (!groups.length) return;
@@ -81,7 +156,6 @@
   const refineDesignerProfile = () => {
     if (!document.body.classList.contains('designer-page')) return;
 
-    /* Career = professional affiliations only. Teaching belongs in its own section. */
     const career = findDesignerSection('Professional Experience');
     if (career) {
       career.querySelectorAll('.designer-record').forEach((record) => {
@@ -92,14 +166,12 @@
       });
     }
 
-    /* Teaching follows education/research so academic history reads as one sequence. */
     const education = findDesignerSection('Education & Research');
     const teaching = findDesignerSection('Teaching & Seminar');
     if (education && teaching && education.nextElementSibling !== teaching) {
       education.insertAdjacentElement('afterend', teaching);
     }
 
-    /* Add web implementation skills without overstating a software-engineering role. */
     const capabilities = findDesignerSection('Capabilities');
     const records = capabilities?.querySelector('.designer-records');
     if (records) {
@@ -126,6 +198,7 @@
     const body = document.body;
     ensureDesignerNavigation();
     refineDesignerProfile();
+    enhanceFooter();
 
     if (body.classList.contains('page-home')) {
       setText('.hero__descriptor', '브랜드를 디자인하기 전에 먼저 관찰하고 조사합니다. 시장과 제품, 경쟁 환경과 사용 경험을 읽고 시각적 가설을 세운 뒤, 발견한 기준을 아이덴티티·패키지·디지털·에디토리얼 시스템으로 확장합니다.');
@@ -171,7 +244,9 @@
   };
 
   applyCopy();
+  watchFooter();
   window.addEventListener('load', applyCopy, { once:true });
-  setTimeout(applyCopy, 250);
-  setTimeout(applyCopy, 900);
+  setTimeout(applyCopy, 120);
+  setTimeout(applyCopy, 500);
+  setTimeout(applyCopy, 1200);
 })();
