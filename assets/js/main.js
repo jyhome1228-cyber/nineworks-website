@@ -48,11 +48,12 @@
 
   if (isHome) {
     loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
-    loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-1');
-    loadScript('assets/js/home-portfolio.js?v=20260810-2');
+    loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-2');
+    loadScript('assets/js/home-portfolio.js?v=20260810-3');
   }
 
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
+  loadStylesheet('assets/css/fullwidth-v1.css?v=20260810-1');
 
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
     link.href = 'solutions.html';
@@ -83,29 +84,17 @@
     body.classList.toggle('is-menu-open', open);
     menuButton?.setAttribute('aria-expanded', String(open));
     menu?.setAttribute('aria-hidden', String(!open));
-
     if (isPortfolioDetail && open) {
       header?.classList.remove('is-hidden');
       body.classList.remove('is-detail-header-hidden');
     }
   };
 
-  menuButton?.addEventListener('click', () => {
-    setMenu(!body.classList.contains('is-menu-open'));
-  });
+  menuButton?.addEventListener('click', () => setMenu(!body.classList.contains('is-menu-open')));
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
 
-  menu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => setMenu(false));
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMenu(false);
-  });
-
-  const updateHeader = () => {
-    header?.classList.toggle('is-scrolled', window.scrollY > 10);
-  };
-
+  const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 10);
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
@@ -119,7 +108,6 @@
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -30px' });
-
     revealItems.forEach((item) => observer.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));
@@ -129,11 +117,9 @@
     const buttons = group.querySelectorAll('[data-filter]');
     const targetSelector = group.dataset.filterTarget;
     const items = document.querySelectorAll(targetSelector);
-
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
         const filter = button.dataset.filter;
-
         buttons.forEach((item) => item.classList.toggle('is-active', item === button));
         items.forEach((item) => {
           const categories = (item.dataset.category || '').split(' ');
@@ -145,7 +131,6 @@
 
   const serviceTabs = document.querySelectorAll('[data-service-tab]');
   const servicePanels = document.querySelectorAll('[data-service-panel]');
-
   serviceTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       const target = tab.dataset.serviceTab;
@@ -157,17 +142,14 @@
   document.querySelectorAll('[data-language-scope]').forEach((scope) => {
     const buttons = scope.querySelectorAll('[data-language-button]');
     const copies = scope.querySelectorAll('[data-language-copy]');
-
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
         const language = button.dataset.languageButton;
-
         buttons.forEach((item) => {
           const isActive = item === button;
           item.classList.toggle('is-active', isActive);
           item.setAttribute('aria-pressed', String(isActive));
         });
-
         copies.forEach((copy) => {
           const isActive = copy.dataset.languageCopy === language;
           copy.classList.toggle('is-active', isActive);
@@ -182,13 +164,7 @@
       <div class="site-footer__head">
         <a class="site-footer__brand" href="index.html">NINEWORKS</a>
         <nav class="site-footer__links" aria-label="푸터 메뉴">
-          <a href="about.html">About</a>
-          <a href="project.html">Project</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="magazine.html">Magazine</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="contact.html">Contact</a>
-          <a href="privacy.html">Privacy</a>
+          <a href="about.html">About</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a>
         </nav>
       </div>
       <div class="site-footer__legal">
@@ -203,9 +179,7 @@
       </div>`;
   });
 
-  document.querySelectorAll('[data-current-year]').forEach((item) => {
-    item.textContent = new Date().getFullYear();
-  });
+  document.querySelectorAll('[data-current-year]').forEach((item) => { item.textContent = new Date().getFullYear(); });
 
   const mailForm = document.querySelector('[data-mail-form]');
   mailForm?.addEventListener('submit', (event) => {
@@ -234,27 +208,12 @@
 
     const subject = `[NINEWORKS 프로젝트 문의] ${projectName || company || name}`;
     const bodyText = [
-      '[CONTACT INFORMATION]',
-      `담당자: ${name}`,
-      `회사/브랜드: ${company}`,
-      `이메일: ${email}`,
-      `연락처: ${phone}`,
-      '',
-      '[PROJECT SCOPE]',
-      `프로젝트명: ${projectName}`,
-      `작업 유형: ${projectTypes.join(', ')}`,
+      '[CONTACT INFORMATION]',`담당자: ${name}`,`회사/브랜드: ${company}`,`이메일: ${email}`,`연락처: ${phone}`,'',
+      '[PROJECT SCOPE]',`프로젝트명: ${projectName}`,`작업 유형: ${projectTypes.join(', ')}`,
       services.length ? `포함 희망 항목: ${services.join(', ')}` : '',
-      `요청사항 / 필요한 결과물: ${requirements}`,
-      `프로젝트 배경 / 현재 상황: ${message}`,
-      `참고 링크: ${reference}`,
-      '',
-      '[BUDGET & SCHEDULE]',
-      `예상 예산: ${budget}`,
-      `현재 진행 상태: ${status}`,
-      `작업 시작 희망일: ${startDate}`,
-      `목표 작업 완료일: ${endDate}`
+      `요청사항 / 필요한 결과물: ${requirements}`,`프로젝트 배경 / 현재 상황: ${message}`,`참고 링크: ${reference}`,'',
+      '[BUDGET & SCHEDULE]',`예상 예산: ${budget}`,`현재 진행 상태: ${status}`,`작업 시작 희망일: ${startDate}`,`목표 작업 완료일: ${endDate}`
     ].filter(Boolean).join('\n');
-
     window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
   });
 })();
