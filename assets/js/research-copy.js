@@ -63,9 +63,69 @@
     });
   };
 
+  const findDesignerSection = (needle) => {
+    return Array.from(document.querySelectorAll('.designer-page .designer-section')).find((section) => {
+      const eyebrow = section.querySelector('.eyebrow');
+      return eyebrow && eyebrow.textContent.includes(needle);
+    });
+  };
+
+  const createCapabilityRecord = ({ number, title, copy, key }) => {
+    const row = document.createElement('div');
+    row.className = 'designer-record';
+    row.dataset.designerCapability = key;
+    row.innerHTML = `<span class="designer-record__year">${number}</span><strong class="designer-record__title">${title}</strong><div class="designer-record__copy">${copy}</div>`;
+    return row;
+  };
+
+  const refineDesignerProfile = () => {
+    if (!document.body.classList.contains('designer-page')) return;
+
+    /* Career = professional affiliations only. Teaching belongs in its own section. */
+    const career = findDesignerSection('Professional Experience');
+    if (career) {
+      career.querySelectorAll('.designer-record').forEach((record) => {
+        const text = record.textContent;
+        if (text.includes('서일대학교') || text.includes('Seoil University') || text.includes('청운대학교') || text.includes('Chungwoon University')) {
+          record.remove();
+        }
+      });
+    }
+
+    /* Teaching follows education/research so academic history reads as one sequence. */
+    const education = findDesignerSection('Education & Research');
+    const teaching = findDesignerSection('Teaching & Seminar');
+    if (education && teaching && education.nextElementSibling !== teaching) {
+      education.insertAdjacentElement('afterend', teaching);
+    }
+
+    /* Add web implementation skills without overstating a software-engineering role. */
+    const capabilities = findDesignerSection('Capabilities');
+    const records = capabilities?.querySelector('.designer-records');
+    if (records) {
+      if (!records.querySelector('[data-designer-capability="publishing"]')) {
+        records.appendChild(createCapabilityRecord({
+          number: '08',
+          key: 'publishing',
+          title: 'Web Publishing & UI Implementation / 웹 퍼블리싱·UI 구현',
+          copy: 'Figma 기반 화면을 HTML·CSS로 구현 · 반응형 레이아웃과 정보 위계를 고려한 마크업 · 카페24·아임웹 등 기존 플랫폼의 템플릿/CSS 커스터마이징 · GitHub Pages 기반 정적 웹사이트 구축 및 배포'
+        }));
+      }
+      if (!records.querySelector('[data-designer-capability="frontend"]')) {
+        records.appendChild(createCapabilityRecord({
+          number: '09',
+          key: 'frontend',
+          title: 'Front-end Development / 프론트엔드 개발',
+          copy: 'JavaScript 기반 인터랙션과 UI 로직 구현 · Firebase Authentication 및 데이터 연동 · 관리자·예약·캘린더·폼 등 업무형 웹 기능 프로토타입 개발 · GitHub 기반 버전관리와 웹 배포'
+        }));
+      }
+    }
+  };
+
   const applyCopy = () => {
     const body = document.body;
     ensureDesignerNavigation();
+    refineDesignerProfile();
 
     if (body.classList.contains('page-home')) {
       setText('.hero__descriptor', '브랜드를 디자인하기 전에 먼저 관찰하고 조사합니다. 시장과 제품, 경쟁 환경과 사용 경험을 읽고 시각적 가설을 세운 뒤, 발견한 기준을 아이덴티티·패키지·디지털·에디토리얼 시스템으로 확장합니다.');
