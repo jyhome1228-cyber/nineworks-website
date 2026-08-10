@@ -4,6 +4,37 @@
     if (el) el.textContent = text;
   };
 
+  const ensureDesignerNavigation = () => {
+    document.querySelectorAll('.menu-nav').forEach((nav) => {
+      if (!nav.querySelector('a[href="designer.html"]')) {
+        const link = document.createElement('a');
+        link.href = 'designer.html';
+        link.textContent = 'Designer';
+        const about = nav.querySelector('a[href="about.html"]');
+        if (about) about.insertAdjacentElement('afterend', link);
+        else nav.prepend(link);
+      }
+    });
+
+    document.querySelectorAll('.site-footer__links').forEach((nav) => {
+      if (!nav.querySelector('a[href="designer.html"]')) {
+        const link = document.createElement('a');
+        link.href = 'designer.html';
+        link.textContent = 'Designer';
+        const about = nav.querySelector('a[href="about.html"]');
+        if (about) about.insertAdjacentElement('afterend', link);
+        else nav.prepend(link);
+      }
+    });
+
+    document.querySelectorAll('.menu-nav a[href="designer.html"]').forEach((link) => {
+      if (window.location.pathname.endsWith('/designer.html')) {
+        link.classList.add('is-current');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  };
+
   const refinePracticeIndex = () => {
     const groups = document.querySelectorAll('.home-practice-group');
     if (!groups.length) return;
@@ -34,6 +65,7 @@
 
   const applyCopy = () => {
     const body = document.body;
+    ensureDesignerNavigation();
 
     if (body.classList.contains('page-home')) {
       setText('.hero__descriptor', '브랜드를 디자인하기 전에 먼저 관찰하고 조사합니다. 시장과 제품, 경쟁 환경과 사용 경험을 읽고 시각적 가설을 세운 뒤, 발견한 기준을 아이덴티티·패키지·디지털·에디토리얼 시스템으로 확장합니다.');
@@ -49,6 +81,7 @@
     }
 
     if (body.classList.contains('about-page')) {
+      document.querySelector('.about-profile')?.remove();
       setText('.page-hero__copy', '나인웍스는 디자인을 장식보다 탐구의 과정으로 봅니다. 브랜드의 배경과 시장, 제품과 사용자 경험을 조사하고 그 안에서 발견한 단서를 아이덴티티, 패키지, 화면, 콘텐츠와 공간을 연결하는 시각 시스템으로 만듭니다.');
       setText('.about-origin__body .lead', '2017년부터 다양한 브랜드와 제품을 다루며, 무엇을 만드는가보다 왜 그렇게 보여야 하는가를 먼저 질문해왔습니다.');
       setText('.section .split-copy__right', '좋은 디자인은 취향에서만 나오지 않습니다. 관찰한 사실과 브랜드의 맥락을 바탕으로 가설을 세우고, 시각 실험을 통해 가장 명확한 기준을 찾아갑니다.');
