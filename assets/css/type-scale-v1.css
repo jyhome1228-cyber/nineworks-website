@@ -1,17 +1,14 @@
 /* NINEWORKS — small text legibility pass / 2026-08-10 */
 
-/* Keep headline scale intact; raise body, metadata, labels and footer copy. */
 body{font-size:17px!important}
 .eyebrow{font-size:12.5px!important;line-height:1.25!important}
 .copy{font-size:17px!important;line-height:1.82!important}
 .lead{font-size:clamp(19px,1.15vw,22px)!important;line-height:1.68!important}
 .text-link{font-size:14.5px!important}
 
-/* Menu annotations */
 .menu-nav a::after{font-size:12px!important;line-height:1.35!important}
 .menu-footer,.menu-footer p,.menu-social{font-size:13px!important;line-height:1.65!important}
 
-/* Home practice index */
 .home-practice-group__head{font-size:11px!important;line-height:1.25!important}
 .home-practice-group__head span:last-child{font-size:10.5px!important}
 .home-practice-word{font-size:13px!important;line-height:1.35!important}
@@ -21,7 +18,6 @@ body{font-size:17px!important}
 .home-practice-caption{font-size:11px!important;line-height:1.55!important}
 .home-practice-caption strong{font-size:12px!important}
 
-/* Filters and archive metadata */
 .category-nav button,.category-nav a{font-size:12.5px!important}
 .project-card__meta,.portfolio-card__info,.home-archive-card__info{font-size:15px!important;line-height:1.55!important}
 .project-card__meta strong,.portfolio-card__info strong,.home-archive-card__info strong{font-size:15.5px!important}
@@ -30,7 +26,6 @@ body{font-size:17px!important}
 .magazine-card__meta{font-size:12.5px!important}
 .magazine-card__summary{font-size:15.5px!important;line-height:1.72!important}
 
-/* Numbered rows / about */
 .capability-list .capability-row>span,.solution-row__number,.about-principle__number{font-size:12.5px!important}
 .capability-list .capability-row__copy{font-size:16.5px!important;line-height:1.78!important}
 .capability-list .capability-row__copy p+p{font-size:13.5px!important}
@@ -39,13 +34,11 @@ body{font-size:17px!important}
 .about-record dd{font-size:16px!important;line-height:1.75!important}
 .experience-list li,.award-list li{font-size:15px!important;line-height:1.68!important}
 
-/* Solutions */
 .solutions-hero__copy .copy,.solutions-intro .copy,.solutions-note .copy{font-size:17px!important;line-height:1.82!important}
 .solution-row__title p{font-size:13.5px!important}
 .solution-row__body>p{font-size:16.5px!important;line-height:1.82!important}
 .solution-row__deliverables{font-size:13.5px!important;line-height:1.6!important}
 
-/* Contact / form */
 .contact-page .contact-hero__bottom p,.contact-form-head p{font-size:17.5px!important;line-height:1.78!important}
 .contact-directory__label{font-size:12.5px!important}
 .contact-directory__value{font-size:16px!important;line-height:1.72!important}
@@ -59,11 +52,9 @@ body{font-size:17px!important}
 .form-submit-section>div>p{font-size:13.5px!important;line-height:1.7!important}
 .consent-row{font-size:13.5px!important;line-height:1.6!important}
 
-/* Long-form detail copy */
 .portfolio-detail-story .language-copy,.portfolio-detail-story__summary,.portfolio-detail-page .portfolio-scroll-copy p,.portfolio-detail-page .portfolio-scroll-copy .language-copy,.magazine-detail-copy p{font-size:17px!important;line-height:1.82!important}
 .portfolio-detail-facts>div,.portfolio-detail-index a{font-size:14.5px!important}
 
-/* Footer — no more 10–11px footnote feeling. */
 .site-footer{padding-top:48px!important;padding-bottom:38px!important}
 .site-footer__brand{font-size:17px!important}
 .site-footer__links{gap:22px!important;font-size:13.5px!important;line-height:1.5!important}
@@ -78,15 +69,53 @@ body{font-size:17px!important}
   .copy{font-size:16.5px!important;line-height:1.78!important}
   .lead{font-size:18.5px!important;line-height:1.68!important}
   .menu-nav a::after{font-size:10.5px!important}
-  .page-home .home-practice-group__head{font-size:11px!important}
-  .page-home .home-practice-word{font-size:14px!important;line-height:1.42!important}
-  .page-home .home-practice-word--lead{font-size:19px!important}
-  .page-home .home-practice-word--sub{font-size:15px!important}
-  .page-home .hero__descriptor{font-size:18px!important;line-height:1.7!important}
+
+  /* Mobile home: all 9 research/practice fields visible in a 3 x 3 system. */
+  .page-home .hero{min-height:max(1120px,108svh)!important}
+  .page-home .home-practice-field{
+    top:27%!important;
+    right:18px!important;
+    bottom:18%!important;
+    left:18px!important;
+    display:grid!important;
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:0 9px!important;
+  }
+  .page-home .home-practice-column,
+  .page-home .home-practice-column:nth-child(3){
+    display:grid!important;
+    grid-template-rows:repeat(3,minmax(0,1fr))!important;
+    padding-left:8px!important;
+  }
+  .page-home .home-practice-column:first-child{padding-left:0!important}
+  .page-home .home-practice-group{padding:10px 0!important;justify-content:center!important}
+  .page-home .home-practice-group__head{margin-bottom:7px!important;font-size:9px!important;letter-spacing:.045em!important}
+  .page-home .home-practice-group__head span:last-child{display:none!important}
+  .page-home .home-practice-terms{grid-template-columns:1fr!important;gap:0!important}
+  .page-home .home-practice-word{
+    padding:1.5px 0!important;
+    font-size:10.5px!important;
+    line-height:1.32!important;
+    white-space:normal!important;
+    word-break:keep-all!important;
+  }
+  .page-home .home-practice-word--lead{font-size:14.5px!important;line-height:1.14!important;margin-bottom:5px!important}
+  .page-home .home-practice-word--sub{font-size:11px!important}
+  .page-home .home-practice-word:nth-child(n+5){display:none!important}
+  .page-home .hero__descriptor{font-size:17px!important;line-height:1.68!important}
+
   .contact-directory__value{font-size:15.5px!important}
   .field-block input,.field-block textarea,.field-block select{font-size:16.5px!important}
   .site-footer__brand{font-size:16.5px!important}
   .site-footer__links{font-size:13.5px!important;gap:14px 18px!important}
   .site-footer__legal{font-size:13px!important}
   .site-footer__bottom{font-size:12.5px!important}
+}
+
+@media(max-width:420px){
+  .page-home .home-practice-field{gap:0 7px!important}
+  .page-home .home-practice-column{padding-left:6px!important}
+  .page-home .home-practice-group__head{font-size:8.5px!important}
+  .page-home .home-practice-word{font-size:10px!important}
+  .page-home .home-practice-word--lead{font-size:13.5px!important}
 }
