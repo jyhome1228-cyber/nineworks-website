@@ -3,7 +3,8 @@
 
 .about-page .about-origin,.about-page .about-profile,.about-page .about-experience,.about-page .about-awards{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter);padding-top:clamp(76px,6.5vw,108px);padding-bottom:clamp(76px,6.5vw,108px);border-top:1px solid var(--line)}
 .about-page .about-origin__title,.about-page .about-profile__intro,.about-page .about-experience__head,.about-page .about-awards__head{grid-column:1/span 5}
-.about-page .about-origin__body,.about-page .about-profile__content,.about-page .about-experience__body,.about-page .about-awards__body{grid-column:7/-1}
+.about-page .about-origin__body,.about-page .about-profile__content,.about-page .about-experience__body,.about-page .about-awards__body{grid-column:7/-1;justify-self:start!important;margin-left:0!important;text-align:left!important}
+.about-page .split-copy__right{justify-self:start!important;margin-left:0!important;text-align:left!important}
 .about-page .about-origin__title h2,.about-page .about-experience__head h2,.about-page .about-awards__head h2{max-width:12ch;margin:0;font-size:clamp(34px,3.2vw,52px);font-weight:500;line-height:1.08;letter-spacing:-.052em}
 .about-page .about-origin__body{max-width:760px}.about-page .about-origin__body .lead{font-size:clamp(18px,1.25vw,22px);line-height:1.68}.about-page .about-origin__body p{word-break:keep-all;text-wrap:pretty}.about-page .about-origin__body .copy{margin-top:22px}
 
@@ -14,11 +15,11 @@
 .about-page .about-principle h3{margin:0;font-size:clamp(23px,1.65vw,29px);font-weight:500;line-height:1.14;letter-spacing:-.04em}
 .about-page .about-principle p{margin:18px 0 0;color:#555;font-size:16px;line-height:1.8;word-break:keep-all;text-wrap:pretty}
 
-/* Number above title; title and copy start from two clean axes. */
-.about-page .capability-list .capability-row{position:relative;display:grid!important;grid-template-columns:minmax(280px,.82fr) minmax(0,1.35fr)!important;gap:clamp(52px,7vw,120px)!important;align-items:start!important;padding:clamp(30px,2.6vw,40px) 0!important;border-bottom:1px solid var(--line)!important}
+/* Number above title; every right-side explanation begins on the same column-7 axis. */
+.about-page .capability-list .capability-row{position:relative;display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:var(--nw-pad,var(--gutter))!important;align-items:start!important;padding:clamp(30px,2.6vw,40px) 0!important;border-bottom:1px solid var(--line)!important}
 .about-page .capability-list .capability-row>span{position:absolute!important;top:clamp(28px,2.3vw,36px)!important;left:0!important;display:block!important;margin:0!important;color:#8a8a8a!important;font-size:12.5px!important;line-height:1!important;letter-spacing:.05em}
-.about-page .capability-list .capability-row__title{grid-column:1!important;grid-row:1!important;padding-top:32px!important;margin:0!important;font-size:clamp(25px,1.85vw,31px)!important;font-weight:500!important;line-height:1.12!important;letter-spacing:-.045em!important}
-.about-page .capability-list .capability-row__copy{grid-column:2!important;grid-row:1!important;align-self:start!important;max-width:760px!important;padding-top:32px!important;margin:0!important;color:#3a3a3a!important;font-size:16.5px!important;line-height:1.8!important;word-break:keep-all!important;text-wrap:pretty}
+.about-page .capability-list .capability-row__title{grid-column:1/span 5!important;grid-row:1!important;padding-top:32px!important;margin:0!important;font-size:clamp(25px,1.85vw,31px)!important;font-weight:500!important;line-height:1.12!important;letter-spacing:-.045em!important;text-align:left!important}
+.about-page .capability-list .capability-row__copy{grid-column:7/-1!important;grid-row:1!important;justify-self:start!important;align-self:start!important;width:100%!important;max-width:720px!important;padding-top:32px!important;margin:0!important;color:#3a3a3a!important;font-size:16.5px!important;line-height:1.8!important;text-align:left!important;word-break:keep-all!important;text-wrap:pretty}
 
 /* Creative direction profile: one composed studio profile, not scattered blocks. */
 .about-page .about-profile{position:relative;align-items:start!important}
