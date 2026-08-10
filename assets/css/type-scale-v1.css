@@ -1,0 +1,92 @@
+/* NINEWORKS — small text legibility pass / 2026-08-10 */
+
+/* Keep headline scale intact; raise body, metadata, labels and footer copy. */
+body{font-size:17px!important}
+.eyebrow{font-size:12.5px!important;line-height:1.25!important}
+.copy{font-size:17px!important;line-height:1.82!important}
+.lead{font-size:clamp(19px,1.15vw,22px)!important;line-height:1.68!important}
+.text-link{font-size:14.5px!important}
+
+/* Menu annotations */
+.menu-nav a::after{font-size:12px!important;line-height:1.35!important}
+.menu-footer,.menu-footer p,.menu-social{font-size:13px!important;line-height:1.65!important}
+
+/* Home practice index */
+.home-practice-group__head{font-size:11px!important;line-height:1.25!important}
+.home-practice-group__head span:last-child{font-size:10.5px!important}
+.home-practice-word{font-size:13px!important;line-height:1.35!important}
+.home-practice-word--lead{font-size:18px!important;line-height:1.2!important}
+.home-practice-word--sub{font-size:14px!important}
+.hero__descriptor{font-size:17.5px!important;line-height:1.72!important}
+.home-practice-caption{font-size:11px!important;line-height:1.55!important}
+.home-practice-caption strong{font-size:12px!important}
+
+/* Filters and archive metadata */
+.category-nav button,.category-nav a{font-size:12.5px!important}
+.project-card__meta,.portfolio-card__info,.home-archive-card__info{font-size:15px!important;line-height:1.55!important}
+.project-card__meta strong,.portfolio-card__info strong,.home-archive-card__info strong{font-size:15.5px!important}
+.project-card__category,.portfolio-card__scope,.portfolio-card__info div>span,.home-archive-card__info span{font-size:13.5px!important;line-height:1.55!important}
+.project-random-head__meta,.project-random-shuffle{font-size:12.5px!important}
+.magazine-card__meta{font-size:12.5px!important}
+.magazine-card__summary{font-size:15.5px!important;line-height:1.72!important}
+
+/* Numbered rows / about */
+.capability-list .capability-row>span,.solution-row__number,.about-principle__number{font-size:12.5px!important}
+.capability-list .capability-row__copy{font-size:16.5px!important;line-height:1.78!important}
+.capability-list .capability-row__copy p+p{font-size:13.5px!important}
+.about-principle p{font-size:16px!important;line-height:1.8!important}
+.about-record dt{font-size:12.5px!important}
+.about-record dd{font-size:16px!important;line-height:1.75!important}
+.experience-list li,.award-list li{font-size:15px!important;line-height:1.68!important}
+
+/* Solutions */
+.solutions-hero__copy .copy,.solutions-intro .copy,.solutions-note .copy{font-size:17px!important;line-height:1.82!important}
+.solution-row__title p{font-size:13.5px!important}
+.solution-row__body>p{font-size:16.5px!important;line-height:1.82!important}
+.solution-row__deliverables{font-size:13.5px!important;line-height:1.6!important}
+
+/* Contact / form */
+.contact-page .contact-hero__bottom p,.contact-form-head p{font-size:17.5px!important;line-height:1.78!important}
+.contact-directory__label{font-size:12.5px!important}
+.contact-directory__value{font-size:16px!important;line-height:1.72!important}
+.contact-directory__english{font-size:13.5px!important;line-height:1.6!important}
+.form-group__number{font-size:12.5px!important}
+.form-group__heading p{font-size:15px!important;line-height:1.72!important}
+.field-block label,.compact-choice-title{font-size:14.5px!important}
+.field-block input,.field-block textarea,.field-block select{font-size:17px!important;line-height:1.65!important}
+.compact-choice-grid span{font-size:14.5px!important}
+.compact-choice-grid small{font-size:13px!important;line-height:1.5!important}
+.form-submit-section>div>p{font-size:13.5px!important;line-height:1.7!important}
+.consent-row{font-size:13.5px!important;line-height:1.6!important}
+
+/* Long-form detail copy */
+.portfolio-detail-story .language-copy,.portfolio-detail-story__summary,.portfolio-detail-page .portfolio-scroll-copy p,.portfolio-detail-page .portfolio-scroll-copy .language-copy,.magazine-detail-copy p{font-size:17px!important;line-height:1.82!important}
+.portfolio-detail-facts>div,.portfolio-detail-index a{font-size:14.5px!important}
+
+/* Footer — no more 10–11px footnote feeling. */
+.site-footer{padding-top:48px!important;padding-bottom:38px!important}
+.site-footer__brand{font-size:17px!important}
+.site-footer__links{gap:22px!important;font-size:13.5px!important;line-height:1.5!important}
+.site-footer__legal{gap:10px!important;max-width:none!important;font-size:13px!important;line-height:1.72!important}
+.site-footer__legal strong{font-weight:600!important}
+.site-footer__bottom{margin-top:38px!important;padding-top:20px!important;font-size:12.5px!important;line-height:1.6!important}
+.site-footer__social{gap:20px!important}
+
+@media(max-width:760px){
+  body{font-size:16.5px!important}
+  .eyebrow{font-size:12px!important}
+  .copy{font-size:16.5px!important;line-height:1.78!important}
+  .lead{font-size:18.5px!important;line-height:1.68!important}
+  .menu-nav a::after{font-size:10.5px!important}
+  .page-home .home-practice-group__head{font-size:11px!important}
+  .page-home .home-practice-word{font-size:14px!important;line-height:1.42!important}
+  .page-home .home-practice-word--lead{font-size:19px!important}
+  .page-home .home-practice-word--sub{font-size:15px!important}
+  .page-home .hero__descriptor{font-size:18px!important;line-height:1.7!important}
+  .contact-directory__value{font-size:15.5px!important}
+  .field-block input,.field-block textarea,.field-block select{font-size:16.5px!important}
+  .site-footer__brand{font-size:16.5px!important}
+  .site-footer__links{font-size:13.5px!important;gap:14px 18px!important}
+  .site-footer__legal{font-size:13px!important}
+  .site-footer__bottom{font-size:12.5px!important}
+}
