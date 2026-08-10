@@ -13,6 +13,7 @@
   white-space:normal;
 }
 .menu-nav a[href="about.html"]::after{content:'Studio · Research · Method'!important}
+.menu-nav a[href="designer.html"]::after{content:'Designer · Researcher · Educator'!important}
 .menu-nav a[href="project.html"]::after{content:'Selected Case Studies'!important}
 .menu-nav a[href="portfolio.html"]::after{content:'Work Archive'!important}
 .menu-nav a[href="magazine.html"]::after{content:'Research Notes & Essays'!important}
