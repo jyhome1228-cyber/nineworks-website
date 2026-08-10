@@ -48,8 +48,8 @@
 
   if (isHome) {
     loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
-    loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-2');
-    loadScript('assets/js/home-portfolio.js?v=20260810-3');
+    loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-3');
+    loadScript('assets/js/home-portfolio.js?v=20260810-4');
   }
 
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
