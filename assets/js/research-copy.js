@@ -4,6 +4,34 @@
     if (el) el.textContent = text;
   };
 
+  const refinePracticeIndex = () => {
+    const groups = document.querySelectorAll('.home-practice-group');
+    if (!groups.length) return;
+
+    const researchFields = [
+      { lead:'Brand Strategy', terms:['Market Research','Competitor Mapping','Positioning','Brand Architecture','Verbal Framework'] },
+      { lead:'Identity Systems', terms:['Visual Research','Semiotic Study','Logotype','Typography System','Color System'] },
+      { lead:'Packaging', terms:['Material Study','Structural Research','Print Test','Label System','Production Spec'] },
+      { lead:'Editorial', terms:['Information Architecture','Content Mapping','Grid Study','Publication System','Print Direction'] },
+      { lead:'Digital Experience', terms:['User Flow Study','Content Architecture','Wireframe','Prototype','Responsive System'] },
+      { lead:'Art Direction', terms:['Image Research','Visual Narrative','Key Visual','Photography Direction','Motion Study'] },
+      { lead:'Spatial Graphic', terms:['Context Research','Wayfinding Study','Signage','Exhibition','Retail Experience'] },
+      { lead:'Communication Design', terms:['Information Design','Presentation System','Data Visual','Template System','Internal Guide'] },
+      { lead:'Brand Renewal', terms:['Brand Audit','Asset Review','Design Governance','Launch System','Design Operation'] }
+    ];
+
+    groups.forEach((group, index) => {
+      const data = researchFields[index];
+      if (!data) return;
+      const lead = group.querySelector('.home-practice-word--lead');
+      if (lead) lead.textContent = data.lead;
+      const words = Array.from(group.querySelectorAll('.home-practice-word:not(.home-practice-word--lead)'));
+      words.forEach((word, wordIndex) => {
+        if (data.terms[wordIndex]) word.textContent = data.terms[wordIndex];
+      });
+    });
+  };
+
   const applyCopy = () => {
     const body = document.body;
 
@@ -12,6 +40,7 @@
       setText('.about-preview__body .lead', '나인웍스는 관찰과 리서치를 통해 브랜드의 문제를 정의하고, 발견한 근거를 선명한 시각 기준으로 번역하는 디자인 스튜디오입니다.');
       setText('.about-preview__body .copy', '시장과 제품, 고객의 행동과 기존 브랜드 자산을 함께 검토합니다. 결과물 하나를 만드는 데서 멈추지 않고, 여러 접점에서 반복해 사용할 수 있는 타이포그래피·이미지·레이아웃·그래픽의 규칙을 구축합니다.');
       setText('section:has(.service-tabs) .split-copy__right', '각 디자인 업무는 조사와 분석에서 시작합니다. 브랜드가 놓인 맥락을 이해한 뒤 필요한 시각 언어를 정의하고, 제품·화면·인쇄·콘텐츠·공간까지 하나의 시스템으로 연결합니다.');
+      refinePracticeIndex();
       const magazineSection = Array.from(document.querySelectorAll('.section')).find((section) => section.querySelector('.magazine-list'));
       if (magazineSection) {
         const copy = magazineSection.querySelector('.split-copy__right');
