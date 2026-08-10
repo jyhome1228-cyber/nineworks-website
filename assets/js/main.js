@@ -53,6 +53,7 @@
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
   loadStylesheet('assets/css/fullwidth-v1.css?v=20260810-2');
   loadStylesheet('assets/css/research-studio-v1.css?v=20260810-1');
+  loadStylesheet('assets/css/type-scale-v1.css?v=20260810-1');
   loadScript('assets/js/research-copy.js?v=20260810-1');
 
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
