@@ -1,15 +1,11 @@
 (() => {
-  /* Home-only editorial rhythm. Kept in JS so it follows the dynamically rendered cards. */
   const style = document.createElement('style');
   style.textContent = `
     @media (min-width:1081px){
       .hero + .section .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,1.4vw,24px)}
-      .hero + .section .project-card:nth-child(1){grid-column:span 7}
-      .hero + .section .project-card:nth-child(2){grid-column:span 5}
-      .hero + .section .project-card:nth-child(3){grid-column:span 5}
-      .hero + .section .project-card:nth-child(4){grid-column:span 7}
-      .hero + .section .project-card:nth-child(5){grid-column:span 7}
-      .hero + .section .project-card:nth-child(6){grid-column:span 5}
+      .hero + .section .project-card:nth-child(1){grid-column:span 7}.hero + .section .project-card:nth-child(2){grid-column:span 5}
+      .hero + .section .project-card:nth-child(3){grid-column:span 5}.hero + .section .project-card:nth-child(4){grid-column:span 7}
+      .hero + .section .project-card:nth-child(5){grid-column:span 7}.hero + .section .project-card:nth-child(6){grid-column:span 5}
       .hero + .section .project-card .project-visual{aspect-ratio:16/10}
     }
     @media (max-width:1080px) and (min-width:761px){.hero + .section .project-card{grid-column:span 6!important}}
@@ -19,26 +15,22 @@
 
   const hero = document.querySelector('main .hero');
   if (hero) {
-    hero.querySelector('.home-brand-signal')?.remove();
-    hero.querySelector('.home-design-motion')?.remove();
-    hero.querySelector('.home-practice-grid')?.remove();
-    hero.querySelector('.home-practice-field')?.remove();
-    hero.querySelector('.home-practice-caption')?.remove();
+    ['.home-brand-signal','.home-design-motion','.home-practice-grid','.home-practice-field','.home-practice-caption'].forEach((selector) => hero.querySelector(selector)?.remove());
 
     const descriptor = hero.querySelector('.hero__descriptor');
     if (descriptor) descriptor.textContent = '브랜드가 무엇으로 기억되어야 하는지부터 정의합니다. 아이덴티티, 패키지, 디지털과 에디토리얼을 하나의 시각 언어로 연결합니다.';
 
-    const accents = ['#8b4637','#315d48','#31597d','#9a6b23','#6d4c64'];
-    const practices = [
-      ['Brand Strategy','l'],['Identity Systems','m'],['Naming',''],['Verbal Identity',''],
-      ['Logotype','m'],['Typography','l'],['Color Systems',''],['Graphic Language','m'],
-      ['Brand Guidelines',''],['Packaging','l'],['Structural Package',''],['Label Design','m'],
-      ['Print Production',''],['Editorial','l'],['Company Profile',''],['IR / Proposal','m'],
-      ['Catalog',''],['Publication',''],['Website','l'],['UX / UI','m'],
-      ['Digital Experience','m'],['Commerce',''],['Detail Page',''],['Campaign','m'],
-      ['Content Direction',''],['Art Direction','l'],['Photography Direction',''],['Product Visual','m'],
-      ['Key Visual',''],['Spatial Graphic','l'],['Signage',''],['Exhibition','m'],
-      ['Retail Visual',''],['Motion',''],['Launch System','m'],['Brand Renewal','l']
+    const accents = ['#8b4637','#315d48','#31597d','#9a6b23','#6d4c64','#47636b'];
+    const groups = [
+      {title:'01 / Strategy',lead:'Brand Strategy',terms:['Research & Audit','Positioning','Brand Architecture','Naming','Verbal Identity']},
+      {title:'02 / Identity',lead:'Identity Systems',terms:['Logotype','Typography','Color Systems','Graphic Language','Brand Guidelines']},
+      {title:'03 / Package',lead:'Packaging',terms:['Structural Package','Container Design','Label Design','Product Graphic','Print Production']},
+      {title:'04 / Editorial',lead:'Editorial',terms:['Company Profile','IR / Proposal','Catalog','Brochure','Publication']},
+      {title:'05 / Digital',lead:'Digital Experience',terms:['Website','UX / UI','Landing Page','Detail Page','Commerce']},
+      {title:'06 / Content',lead:'Art Direction',terms:['Key Visual','Photography Direction','Product Visual','Social Content','Motion']},
+      {title:'07 / Space',lead:'Spatial Graphic',terms:['Signage','Exhibition','Retail Visual','Pop-up Graphic','Wayfinding']},
+      {title:'08 / Corporate',lead:'Communication Design',terms:['Presentation','Sales Kit','Infographic','Recruitment Visual','Internal System']},
+      {title:'09 / Growth',lead:'Brand Renewal',terms:['Launch System','Campaign System','Content Guideline','Design Operation','Asset Library']}
     ];
 
     const grid = document.createElement('div');
@@ -48,15 +40,25 @@
     const field = document.createElement('div');
     field.className = 'home-practice-field';
     field.setAttribute('aria-label','NINEWORKS design practice index');
-    field.innerHTML = practices.map(([label,size],index) => {
-      const modifier = size ? ` home-practice-word--${size}` : '';
-      const light = index % 7 === 5 ? ' home-practice-word--light' : '';
-      return `<a class="home-practice-word${modifier}${light}" href="solutions.html" style="--accent:${accents[index % accents.length]}">${label}</a>`;
-    }).join('');
 
-    const caption = document.createElement('p');
+    const columns = [groups.slice(0,3), groups.slice(3,6), groups.slice(6,9)];
+    field.innerHTML = columns.map((column, columnIndex) => `
+      <div class="home-practice-column">
+        ${column.map((group, groupIndex) => {
+          const baseIndex = columnIndex * 3 + groupIndex;
+          return `<section class="home-practice-group">
+            <p class="home-practice-group__head"><span>${group.title}</span><span>06 fields</span></p>
+            <div class="home-practice-terms">
+              <a class="home-practice-word home-practice-word--lead" href="solutions.html" style="--accent:${accents[baseIndex % accents.length]}">${group.lead}</a>
+              ${group.terms.map((term,index) => `<a class="home-practice-word${index===0?' home-practice-word--sub':''}${index===4?' home-practice-word--light':''}" href="solutions.html" style="--accent:${accents[(baseIndex+index+1) % accents.length]}">${term}</a>`).join('')}
+            </div>
+          </section>`;
+        }).join('')}
+      </div>`).join('');
+
+    const caption = document.createElement('div');
     caption.className = 'home-practice-caption';
-    caption.innerHTML = '<strong>Practice Index / 36</strong>Strategy · Identity · Package · Digital · Editorial · Space';
+    caption.innerHTML = '<strong>Practice Index / 54</strong><span>Strategy · Identity · Package · Editorial · Digital · Content · Space · Corporate · Growth</span>';
 
     hero.prepend(grid);
     hero.appendChild(field);
@@ -64,7 +66,6 @@
   }
 
   const grid = document.querySelector('main .project-grid');
-
   const projects = [
     { id:'wooje-stay', title:'WOOJE STAY', meta:'Brand Identity · Hospitality', image:'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/12f3c9f6011ab.png' },
     { id:'ouga', title:'OUGA', meta:'Brand Identity · Package', image:'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/7b326d236b1ba.png' },
@@ -75,32 +76,15 @@
   ];
 
   if (grid) {
-    grid.innerHTML = projects.map((project) => `
-      <article class="project-card reveal is-visible">
-        <a class="project-card__link" href="portfolio-detail.html?work=${encodeURIComponent(project.id)}">
-          <div class="project-card__visual project-visual home-project-media">
-            <img src="${project.image}" alt="${project.title}" loading="lazy">
-          </div>
-          <div class="project-card__meta">
-            <strong>${project.title}</strong>
-            <span class="project-card__category">${project.meta}</span>
-          </div>
-        </a>
-      </article>`).join('');
-
-    const section = grid.closest('section');
-    const allLink = section?.querySelector('a.text-link');
-    if (allLink) {
-      allLink.href = 'portfolio.html';
-      allLink.innerHTML = 'VIEW ALL PORTFOLIO <span>↗</span>';
-    }
+    grid.innerHTML = projects.map((project) => `<article class="project-card reveal is-visible"><a class="project-card__link" href="portfolio-detail.html?work=${encodeURIComponent(project.id)}"><div class="project-card__visual project-visual home-project-media"><img src="${project.image}" alt="${project.title}" loading="lazy"></div><div class="project-card__meta"><strong>${project.title}</strong><span class="project-card__category">${project.meta}</span></div></a></article>`).join('');
+    const allLink = grid.closest('section')?.querySelector('a.text-link');
+    if (allLink) { allLink.href='portfolio.html'; allLink.innerHTML='VIEW ALL PORTFOLIO <span>↗</span>'; }
   }
 
   const aboutLead = document.querySelector('.about-preview__body .lead');
   if (aboutLead) aboutLead.textContent = '나인웍스는 브랜드의 생각을 선명한 시각 기준으로 만들고, 그 기준이 제품과 화면, 콘텐츠와 인쇄물에서 같은 인상으로 이어지도록 설계합니다.';
 
-  const serviceSection = document.querySelector('.service-tabs')?.closest('section');
-  const serviceIntro = serviceSection?.querySelector('.split-copy__right');
+  const serviceIntro = document.querySelector('.service-tabs')?.closest('section')?.querySelector('.split-copy__right');
   if (serviceIntro) serviceIntro.textContent = '브랜드의 중심이 되는 아이덴티티에서 출발해 패키지, 디지털, 편집과 콘텐츠까지 실제 운영에 필요한 접점을 하나의 시각 체계로 연결합니다.';
 
   const archiveGrid = document.querySelector('.archive-grid');
@@ -110,15 +94,8 @@
       { id:'eat', title:'%EAT', meta:'Pet Food · Brand & Package', image:'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/65b7ff1d94064.png' },
       { id:'breeze-coffee', title:'Breeze Coffee', meta:'Coffee Salon · Brand System', image:'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/5c12e36ae2396.png' }
     ];
-
     archiveGrid.classList.add('home-archive-grid');
-    archiveGrid.innerHTML = archive.map((project) => `
-      <article class="home-archive-card reveal is-visible">
-        <a href="portfolio-detail.html?work=${encodeURIComponent(project.id)}">
-          <figure class="home-archive-card__media"><img src="${project.image}" alt="${project.title}" loading="lazy"></figure>
-          <div class="home-archive-card__info"><strong>${project.title}</strong><span>${project.meta}</span></div>
-        </a>
-      </article>`).join('');
+    archiveGrid.innerHTML = archive.map((project) => `<article class="home-archive-card reveal is-visible"><a href="portfolio-detail.html?work=${encodeURIComponent(project.id)}"><figure class="home-archive-card__media"><img src="${project.image}" alt="${project.title}" loading="lazy"></figure><div class="home-archive-card__info"><strong>${project.title}</strong><span>${project.meta}</span></div></a></article>`).join('');
   }
 
   const magazineItems = document.querySelectorAll('.magazine-list .magazine-item');
@@ -127,13 +104,5 @@
     { id:'granhand-verbal-branding', title:'말로 빚어낸 향기, 그랑핸드의 버벌 브랜딩', meta:'Brand Story' },
     { id:'nudeake', title:'손톱만 한 크로와상을 드셔보셨나요?', meta:'Retail Experience' }
   ];
-  magazineItems.forEach((item, index) => {
-    const data = magazine[index];
-    if (!data) return;
-    item.href = `magazine-detail.html?article=${encodeURIComponent(data.id)}`;
-    const title = item.querySelector('.magazine-item__title');
-    const meta = item.querySelector('.magazine-item__meta');
-    if (title) title.textContent = data.title;
-    if (meta) meta.textContent = data.meta;
-  });
+  magazineItems.forEach((item,index) => { const data=magazine[index]; if(!data)return; item.href=`magazine-detail.html?article=${encodeURIComponent(data.id)}`; item.querySelector('.magazine-item__title') && (item.querySelector('.magazine-item__title').textContent=data.title); item.querySelector('.magazine-item__meta') && (item.querySelector('.magazine-item__meta').textContent=data.meta); });
 })();
