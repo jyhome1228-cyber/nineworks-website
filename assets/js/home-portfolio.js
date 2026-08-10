@@ -1,8 +1,29 @@
 (() => {
+  /* Home-only editorial rhythm. Kept in JS so it follows the dynamically rendered cards. */
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (min-width:1081px){
+      .hero + .section .project-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,1.4vw,24px)}
+      .hero + .section .project-card:nth-child(1){grid-column:span 7}
+      .hero + .section .project-card:nth-child(2){grid-column:span 5}
+      .hero + .section .project-card:nth-child(3){grid-column:span 5}
+      .hero + .section .project-card:nth-child(4){grid-column:span 7}
+      .hero + .section .project-card:nth-child(5){grid-column:span 7}
+      .hero + .section .project-card:nth-child(6){grid-column:span 5}
+      .hero + .section .project-card .project-visual{aspect-ratio:16/10}
+    }
+    @media (max-width:1080px) and (min-width:761px){.hero + .section .project-card{grid-column:span 6!important}}
+    @media (max-width:760px){.hero + .section .project-grid{grid-template-columns:1fr!important}.hero + .section .project-card{grid-column:1!important}}
+  `;
+  document.head.appendChild(style);
+
   const hero = document.querySelector('main .hero');
   if (hero) {
     hero.querySelector('.home-brand-signal')?.remove();
     hero.querySelector('.home-design-motion')?.remove();
+
+    const descriptor = hero.querySelector('.hero__descriptor');
+    if (descriptor) descriptor.textContent = '브랜드가 무엇으로 기억되어야 하는지부터 정의합니다. 아이덴티티, 패키지, 디지털과 에디토리얼을 하나의 시각 언어로 연결합니다.';
 
     const motion = document.createElement('div');
     motion.className = 'home-design-motion';
@@ -43,6 +64,13 @@
       allLink.innerHTML = 'VIEW ALL PORTFOLIO <span>↗</span>';
     }
   }
+
+  const aboutLead = document.querySelector('.about-preview__body .lead');
+  if (aboutLead) aboutLead.textContent = '나인웍스는 브랜드의 생각을 선명한 시각 기준으로 만들고, 그 기준이 제품과 화면, 콘텐츠와 인쇄물에서 같은 인상으로 이어지도록 설계합니다.';
+
+  const serviceSection = document.querySelector('.service-tabs')?.closest('section');
+  const serviceIntro = serviceSection?.querySelector('.split-copy__right');
+  if (serviceIntro) serviceIntro.textContent = '브랜드의 중심이 되는 아이덴티티에서 출발해 패키지, 디지털, 편집과 콘텐츠까지 실제 운영에 필요한 접점을 하나의 시각 체계로 연결합니다.';
 
   const archiveGrid = document.querySelector('.archive-grid');
   if (archiveGrid) {
