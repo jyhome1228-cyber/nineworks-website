@@ -50,6 +50,10 @@
     loadScript('assets/js/home-portfolio.js?v=20260810-5');
   }
 
+  if (body.classList.contains('designer-page') || pageSlug === 'designer') {
+    loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
+  }
+
   loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
   loadStylesheet('assets/css/fullwidth-v1.css?v=20260810-2');
   loadStylesheet('assets/css/research-studio-v1.css?v=20260810-1');
