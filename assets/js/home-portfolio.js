@@ -21,15 +21,46 @@
   if (hero) {
     hero.querySelector('.home-brand-signal')?.remove();
     hero.querySelector('.home-design-motion')?.remove();
+    hero.querySelector('.home-practice-grid')?.remove();
+    hero.querySelector('.home-practice-field')?.remove();
+    hero.querySelector('.home-practice-caption')?.remove();
 
     const descriptor = hero.querySelector('.hero__descriptor');
     if (descriptor) descriptor.textContent = '브랜드가 무엇으로 기억되어야 하는지부터 정의합니다. 아이덴티티, 패키지, 디지털과 에디토리얼을 하나의 시각 언어로 연결합니다.';
 
-    const motion = document.createElement('div');
-    motion.className = 'home-design-motion';
-    motion.setAttribute('aria-hidden', 'true');
-    motion.innerHTML = Array.from({ length: 4 }, (_, index) => `<span class="home-grid-dot home-grid-dot--${index + 1}"></span>`).join('');
-    hero.prepend(motion);
+    const accents = ['#8b4637','#315d48','#31597d','#9a6b23','#6d4c64'];
+    const practices = [
+      ['Brand Strategy','l'],['Identity Systems','m'],['Naming',''],['Verbal Identity',''],
+      ['Logotype','m'],['Typography','l'],['Color Systems',''],['Graphic Language','m'],
+      ['Brand Guidelines',''],['Packaging','l'],['Structural Package',''],['Label Design','m'],
+      ['Print Production',''],['Editorial','l'],['Company Profile',''],['IR / Proposal','m'],
+      ['Catalog',''],['Publication',''],['Website','l'],['UX / UI','m'],
+      ['Digital Experience','m'],['Commerce',''],['Detail Page',''],['Campaign','m'],
+      ['Content Direction',''],['Art Direction','l'],['Photography Direction',''],['Product Visual','m'],
+      ['Key Visual',''],['Spatial Graphic','l'],['Signage',''],['Exhibition','m'],
+      ['Retail Visual',''],['Motion',''],['Launch System','m'],['Brand Renewal','l']
+    ];
+
+    const grid = document.createElement('div');
+    grid.className = 'home-practice-grid';
+    grid.setAttribute('aria-hidden','true');
+
+    const field = document.createElement('div');
+    field.className = 'home-practice-field';
+    field.setAttribute('aria-label','NINEWORKS design practice index');
+    field.innerHTML = practices.map(([label,size],index) => {
+      const modifier = size ? ` home-practice-word--${size}` : '';
+      const light = index % 7 === 5 ? ' home-practice-word--light' : '';
+      return `<a class="home-practice-word${modifier}${light}" href="solutions.html" style="--accent:${accents[index % accents.length]}">${label}</a>`;
+    }).join('');
+
+    const caption = document.createElement('p');
+    caption.className = 'home-practice-caption';
+    caption.innerHTML = '<strong>Practice Index / 36</strong>Strategy · Identity · Package · Digital · Editorial · Space';
+
+    hero.prepend(grid);
+    hero.appendChild(field);
+    hero.appendChild(caption);
   }
 
   const grid = document.querySelector('main .project-grid');
