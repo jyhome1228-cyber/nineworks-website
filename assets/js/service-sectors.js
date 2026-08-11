@@ -5,11 +5,12 @@
   const sectorLinks = [
     { href:'membership.html', label:'Membership' },
     { href:'print.html', label:'Print' },
-    { href:'digital-build.html', label:'Digital Build' }
+    { href:'develop.html', label:'Develop' }
   ];
   const path = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
   const isPrintPath = path === 'print.html' || path.startsWith('print-') || path.startsWith('package-') || path === 'production.html';
-  const isSectorCurrent = (item) => path === item.href || (item.href === 'print.html' && isPrintPath);
+  const isDevelopPath = path === 'develop.html' || path === 'digital-build.html';
+  const isSectorCurrent = (item) => path === item.href || (item.href === 'print.html' && isPrintPath) || (item.href === 'develop.html' && isDevelopPath);
 
   const ensureHeaderLinks = () => {
     document.querySelectorAll('.site-header').forEach((header) => {
@@ -91,7 +92,8 @@
       const lines = [`[NINEWORKS ${sector} INQUIRY]`, ''];
       grouped.forEach((values, key) => lines.push(`${labelMap[key] || key}: ${values.join(', ')}`));
       if (sector.includes('PARTNER')) lines.push('', '※ 파트너 등록은 검토 후 프로젝트 조건에 맞을 경우 개별 연락드립니다.');
-      else lines.push('', '※ 인쇄용 파일·칼선·레퍼런스는 자료 링크를 통해 공유해 주세요.');
+      else if (sector.includes('PRINT') || sector.includes('PACKAGE')) lines.push('', '※ 인쇄용 파일·칼선·레퍼런스는 자료 링크를 통해 공유해 주세요.');
+      else lines.push('', '※ 기획서·피그마·레퍼런스는 자료 링크를 통해 공유해 주세요.');
       const subject = `[NINEWORKS ${sector}] ${company || name || '견적 문의'}`;
       window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
     });
