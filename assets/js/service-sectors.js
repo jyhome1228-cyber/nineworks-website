@@ -82,6 +82,69 @@
     });
   };
 
+  const ensurePrintVendorNetwork = () => {
+    if (!printRequestPaths.has(path)) return;
+    if (!document.querySelector('link[data-print-vendor-strip]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'assets/css/print-vendor-strip.css?v=20260811-1';
+      link.dataset.printVendorStrip = 'true';
+      document.head.appendChild(link);
+    }
+
+    document.querySelectorAll('main').forEach((main) => {
+      if (main.querySelector('.print-vendor-strip')) return;
+      const section = document.createElement('section');
+      section.className = 'print-vendor-strip container';
+      section.innerHTML = `
+        <div class="print-vendor-strip__head">
+          <div>
+            <span class="print-vendor-strip__eyebrow">Collaboration / Order Network</span>
+            <h2>협력·발주 네트워크</h2>
+            <p>나인웍스는 프로젝트 사양과 일정에 따라 공정별 협력·발주처를 조합해 제작을 진행합니다.</p>
+          </div>
+          <a class="print-vendor-strip__partner" href="print-partner.html">인쇄·제조 파트너 협력 문의 <span>↗</span></a>
+        </div>
+        <div class="print-vendor-strip__grid">
+          <article class="print-vendor-group">
+            <span class="print-vendor-group__label">01 / Material</span>
+            <h3>종이 / 원단</h3>
+            <ul><li>(주)동원특수</li><li>(주)타라유통</li><li>삼원특수지(주)</li><li>기타</li></ul>
+          </article>
+          <article class="print-vendor-group">
+            <span class="print-vendor-group__label">02 / Printing</span>
+            <h3>인쇄소</h3>
+            <ul><li>파인비</li><li>에이프린트</li><li>오프린트미</li><li>원프린팅(파주) · 옵셋인쇄</li><li>북토리 3공장 · 옵셋인쇄 (300g 이하)</li><li>보광피앤피 · UV인쇄</li><li>디자인포인트 · 실크스크린인쇄</li></ul>
+          </article>
+          <article class="print-vendor-group">
+            <span class="print-vendor-group__label">03 / Die</span>
+            <h3>목형</h3>
+            <ul><li>온유레이저 (파주)</li><li>수레이저 (파주)</li></ul>
+          </article>
+          <article class="print-vendor-group">
+            <span class="print-vendor-group__label">04 / Coating</span>
+            <h3>코팅</h3>
+            <ul><li>광명코팅 (파주) · 부분에폭시, 라미네이팅</li><li>수도코팅 (장항동) · 라미네이팅</li></ul>
+          </article>
+          <article class="print-vendor-group">
+            <span class="print-vendor-group__label">05 / Foil & Emboss</span>
+            <h3>박 / 형압</h3>
+            <ul><li>영일금박 (파주)</li><li>디엠금박 (장항동)</li></ul>
+          </article>
+          <article class="print-vendor-group">
+            <span class="print-vendor-group__label">06 / Thomson & Assembly</span>
+            <h3>톤슨 / 접착</h3>
+            <ul><li>에스제이 (장항동)</li><li>재은문화 (장항동)</li></ul>
+          </article>
+        </div>
+        <div class="print-vendor-strip__bottom">
+          <span>※ 프로젝트 조건에 따라 실제 발주처와 공정 조합은 달라질 수 있습니다.</span>
+          <span>신규 인쇄소·제조사 협업 문의: <a href="print-partner.html">파트너 등록 페이지</a></span>
+        </div>`;
+      main.appendChild(section);
+    });
+  };
+
   const bindQuoteBuilder = (form) => {
     if (!form.matches('[data-quote-form]') || form.dataset.quoteBound === 'true') return;
     form.dataset.quoteBound = 'true';
@@ -140,6 +203,7 @@
     ensureHeaderLinks();
     ensureMenuLinks();
     enhancePrintMaterials();
+    ensurePrintVendorNetwork();
     document.querySelectorAll('[data-sector-form], [data-quote-form]').forEach(bindForm);
   };
   init();
