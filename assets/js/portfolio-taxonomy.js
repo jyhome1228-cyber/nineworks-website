@@ -18,8 +18,18 @@
     'tne-epc',
     'relim',
     'aesost',
-    'kekomi'
+    'kekomi',
+    'the-petrichor'
   ]);
+
+  const petrichor = window.NW_PORTFOLIO.find((project) => project?.id === 'the-petrichor');
+  if (petrichor) Object.assign(petrichor, {
+    title: 'THE PETRICHOR',
+    client: 'THE PETRICHOR / 더 페트리셔',
+    subtitle: 'Skincare Brand Commerce Website, Membership & Content Experience',
+    scope: 'Imweb · Custom Code · Photography · Product Detail · Review · Event · Membership · Commerce',
+    thumbnail: 'https://cdn.imweb.me/upload/S20260219b829e728b3f2e/c403d1292f536.png'
+  });
 
   window.NW_PORTFOLIO.forEach((project) => {
     if (!project || !project.id) return;
