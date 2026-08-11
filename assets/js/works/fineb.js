@@ -2,14 +2,86 @@ window.NW_WORK={
   id:'fineb',
   title:'FINE.B',
   subtitle:'Printing Company Website & Online Quote System',
-  lead:'복잡한 인쇄 제작 과정을 고객에게는 이해하기 쉬운 선택 흐름으로, 운영자에게는 관리 가능한 업무 시스템으로 바꿨습니다.',
-  summary:'FINE.B는 패키지·인쇄 제작사의 전문성을 디지털 환경에서 명확하게 전달하고, 상담부터 견적 요청, 내부 관리까지 하나의 흐름으로 연결하기 위해 진행한 웹사이트 및 시스템 구축 프로젝트입니다. NINEWORKS는 브랜드 메시지 정리, 정보구조, UX/UI, 반응형 프론트엔드, 제작 사양 기반 견적 플로우, Firestore 데이터 구조와 관리자 운영 화면까지 기획·디자인·개발 전반을 통합했습니다.',
+  lead:'웹사이트를 디자인하는 데서 끝내지 않고, 인쇄 제작 상담이 실제 데이터와 운영 업무로 이어지는 디지털 시스템을 설계했습니다.',
+  summary:'FINE.B 프로젝트는 패키지·인쇄 제작사의 전문성을 온라인에서 설명하는 브랜드 웹사이트와, 복잡한 제작 사양을 단계별로 수집하는 견적 시스템, 접수 데이터를 관리하는 관리자 환경을 하나의 서비스 구조로 구축한 DEVELOP 프로젝트입니다. NINEWORKS는 요구사항 정의와 메뉴 구조, UX/UI, 반응형 프론트엔드, JavaScript 견적 로직, Firebase 데이터 구조, 관리자 워크플로우, GitHub 기반 배포 구조까지 기획·디자인·구축 전반을 통합했습니다.',
   client:'FINE.B / 파인비',
-  scope:'Brand & Content Strategy · UX/UI · Responsive Website · Quote System · Admin · Firebase',
-  category:'Develop · Branding',
-  role:'Planning · Design Direction · UX/UI · Front-end · System Development / NINEWORKS',
+  scope:'Planning · IA · UX/UI · HTML/CSS/JavaScript · Quote Logic · Firebase · Admin · Deployment',
+  category:'Develop · Digital System · Branding',
+  role:'Service Planning · Design Direction · UX/UI · Front-end · Data Structure · Admin System / NINEWORKS',
   year:'2026',
+  liveUrl:'https://finebpkg.com/',
   thumbnail:'https://cdn.imweb.me/upload/S20260219b829e728b3f2e/545e2714325da.png',
+  develop:{
+    version:'FINE.B / BUILD 2026',
+    title:'From information architecture to a working production system.',
+    stats:[
+      {label:'PROJECT TYPE',value:'B2B WEBSITE + WEB APP',copy:'제작사 홈페이지와 업무형 견적 시스템을 하나의 프로젝트로 구축'},
+      {label:'FRONT-END',value:'HTML5 · CSS3 · VANILLA JS',copy:'프레임워크 의존도를 낮춘 멀티페이지 정적 프론트엔드와 상태 기반 인터랙션'},
+      {label:'DATA LAYER',value:'FIREBASE FIRESTORE · STORAGE',copy:'견적·샘플·문의·포트폴리오·방문자 데이터를 중앙 저장소로 연결'},
+      {label:'DELIVERY',value:'GITHUB · MAIN · FINEBPKG.COM',copy:'Git 기반 버전 관리와 커스텀 도메인 운영을 고려한 배포 구조'}
+    ],
+    planningCopy:'인쇄업의 전문 용어를 그대로 화면에 옮기지 않고 고객의 질문 순서와 내부 상담 절차를 기준으로 요구사항을 재구성했습니다.',
+    planning:[
+      {no:'01 / REQUIREMENT',title:'Requirement Definition',copy:'회사소개용 사이트가 아니라 실제 견적 전환과 제작 상담을 만드는 업무 도구로 프로젝트 목표를 정의했습니다.'},
+      {no:'02 / USER FLOW',title:'Customer Journey',copy:'제작품목 탐색 → 공정 이해 → 가이드 확인 → 샘플 또는 견적 요청으로 이어지는 고객 흐름을 설계했습니다.'},
+      {no:'03 / QUOTE LOGIC',title:'Specification Model',copy:'박스 구조, 수량, W/D/H, 종이, 평량, 인쇄, 코팅, 후가공처럼 견적에 필요한 변수를 데이터 항목으로 구조화했습니다.'},
+      {no:'04 / OPERATION',title:'Admin Workflow',copy:'견적이 접수된 이후 신규·확인중·진행중·견적완료·완료·보류로 이어지는 내부 처리 단계를 정의했습니다.'},
+      {no:'05 / CONTENT IA',title:'Information Architecture',copy:'제작품목과 제작공정, 주문제작 가이드, 포트폴리오와 FAQ를 서로 중복되지 않는 정보 계층으로 재정리했습니다.'},
+      {no:'06 / SCALE',title:'Operating Extension',copy:'포트폴리오 CMS, 방문자 집계, 문의 검색과 휴지통처럼 실제 운영 과정에서 필요한 기능까지 확장할 수 있도록 설계했습니다.'}
+    ],
+    architectureCopy:'브랜드 콘텐츠, 견적 입력, 클라우드 데이터와 관리자 화면을 각각 분리하면서도 하나의 서비스 흐름으로 연결했습니다.',
+    architecture:[
+      {no:'01 / PUBLIC',title:'Customer Website',copy:'브랜드·제작품목·공정·가이드·포트폴리오를 제공하는 반응형 멀티페이지 웹'},
+      {no:'02 / LOGIC',title:'Quote Engine',copy:'JavaScript state와 validation을 이용해 제작 사양을 단계형 UI로 수집하고 요약'},
+      {no:'03 / CLOUD',title:'Firebase Data',copy:'quotes · samples · inquiries · portfolio · visits 컬렉션 및 Storage 이미지 연결'},
+      {no:'04 / OPS',title:'Admin Console',copy:'문의 상태 관리, 검색, 상세보기, 포트폴리오 관리, 방문자 통계를 위한 운영 화면'}
+    ],
+    stackCopy:'현재 운영 코드 기준으로 프론트엔드와 Firebase 모듈을 직접 연결하는 구조이며, 별도의 무거운 프레임워크 없이 서비스 기능을 구성했습니다.',
+    stack:[
+      {no:'01 / MARKUP',title:'HTML5',copy:'Semantic multi-page structure · SEO metadata · form structure'},
+      {no:'02 / INTERFACE',title:'CSS3',copy:'Responsive Grid/Flex · desktop/mobile layout · admin UI system'},
+      {no:'03 / APPLICATION',title:'Vanilla JavaScript',copy:'DOM rendering · state management · validation · step navigation'},
+      {no:'04 / MODULE',title:'ES Modules',copy:'dynamic import · Firebase client separation · admin module composition'},
+      {no:'05 / BACKEND',title:'Firebase JS SDK 12.17.1',copy:'Firestore document data · Storage asset upload · serverTimestamp'},
+      {no:'06 / VERSION',title:'GitHub',copy:'Public repository · main branch · source/version management'},
+      {no:'07 / DATABASE',title:'Cloud Firestore',copy:'quotes · samples · inquiries · portfolio · visits collections'},
+      {no:'08 / ASSET',title:'Firebase Storage',copy:'관리자 포트폴리오 이미지 업로드와 URL 반환'},
+      {no:'09 / DOMAIN',title:'finebpkg.com',copy:'CNAME 기반 custom domain mapping'}
+    ],
+    sitemapCopy:'사용자용 콘텐츠 메뉴와 전환 메뉴, 내부 운영 도구를 분리해 각각의 목적이 선명하게 보이도록 구성했습니다.',
+    sitemap:[
+      {no:'01 / COMPANY & CONTENT',title:'Public Information',items:['HOME / 메인','ABOUT / 회사소개','PRODUCTION / 제작품목','PROCESS / 제작과정','WORKS / 포트폴리오','GUIDE / 주문제작가이드','FAQ / 자주묻는질문']},
+      {no:'02 / CONVERSION',title:'Request Flow',items:['SAMPLE / 샘플제작','INQUIRY / 제작문의','QUOTE / 견적내기','5 STEP PRODUCTION SPEC','CONTACT DATA + PRIVACY']},
+      {no:'03 / OPERATION',title:'Admin System',items:['ADMIN / 문의관리','QUOTE · SAMPLE · INQUIRY','STATUS WORKFLOW','SEARCH / FILTER','TRASH / RESTORE','PORTFOLIO CMS','VISITOR STATS']}
+    ],
+    dataFlowCopy:'사용자 입력을 단순 이메일로 끝내지 않고 Firestore 문서로 저장한 뒤 관리자 화면에서 다시 업무 상태로 관리하는 흐름을 구성했습니다.',
+    dataFlow:[
+      {no:'01',title:'User Selection',copy:'박스·수량·사이즈 선택'},
+      {no:'02',title:'JS State',copy:'선택값을 state 객체에 유지'},
+      {no:'03',title:'Validation',copy:'필수 사양 단계별 검증'},
+      {no:'04',title:'Payload',copy:'spec + contact 데이터 구성'},
+      {no:'05',title:'Firestore',copy:'신규 상태로 중앙 저장'},
+      {no:'06',title:'Admin Workflow',copy:'검색·상태변경·운영 처리'}
+    ],
+    codeMapCopy:'코드 자체를 보여주기보다 어떤 로직 단위로 시스템을 나누었는지 드러나도록 핵심 함수와 상태 구조를 정리했습니다.',
+    codeMap:[
+      {label:'QUOTE STATE',file:'quote-app.js',code:'const state = { step, product, qty, w, d, h, paper, gsm, printMethod, printColor, printSide, coating, finishes, insert };',copy:'견적 화면에서 선택한 제작 조건을 하나의 상태 객체로 유지합니다.'},
+      {label:'PUBLIC REQUEST',file:'firebase-client.js',code:"savePublicRequest('quote', payload) → Firestore / quotes / document",copy:'고객 요청을 신규 상태의 Firestore 문서로 저장하고 serverTimestamp를 함께 기록합니다.'},
+      {label:'ADMIN READ',file:'admin.js',code:'fetchAdminRequests(type) → renderStats() → renderList() → renderDetail()',copy:'견적·샘플·제작문의 데이터를 불러와 통계, 목록, 상세 화면으로 나눠 렌더링합니다.'},
+      {label:'PORTFOLIO CMS',file:'firebase-client.js',code:'uploadPortfolioImage(projectId, file) → Firebase Storage → getDownloadURL()',copy:'관리자에서 추가한 포트폴리오 이미지를 Storage에 올리고 공개 URL을 프로젝트 데이터와 연결합니다.'}
+    ],
+    deploymentCopy:'코드와 데이터가 한곳에 얽히지 않도록 정적 프론트엔드, Git 버전 관리, Firebase 데이터 계층을 분리했습니다.',
+    deployment:[
+      {label:'Repository',value:'jyhome1228-cyber/fineb_pkg'},
+      {label:'Branch',value:'main'},
+      {label:'Frontend',value:'Static HTML / CSS / JavaScript'},
+      {label:'Cloud',value:'Firebase Firestore + Firebase Storage'},
+      {label:'Domain',value:'finebpkg.com / CNAME'},
+      {label:'Data Model',value:'quotes · samples · inquiries · portfolio · visits'},
+      {label:'Fallback',value:'LocalStorage temporary request backup'},
+      {label:'Operation',value:'Admin status workflow · portfolio CMS · visitor dashboard'}
+    ]
+  },
   sections:[
     {
       label:'Project Strategy',
@@ -51,7 +123,7 @@ window.NW_WORK={
       label:'Build & Delivery',
       title:'기획·디자인·개발·배포까지 하나의 프로젝트로.',
       paragraphs:[
-        '프로젝트는 브랜드 메시지와 콘텐츠 구조를 정리하는 단계에서 시작해 UX/UI 디자인, HTML·CSS·JavaScript 기반 반응형 프론트엔드, 견적 로직, Firebase 연동, 관리자 화면, 검색 노출을 위한 기본 SEO와 배포 구조까지 하나의 흐름으로 진행했습니다.',
+        '프로젝트는 요구사항과 브랜드 메시지, 콘텐츠 구조를 정의하는 단계에서 시작해 UX/UI 디자인, HTML·CSS·JavaScript 기반 반응형 프론트엔드, 견적 로직, Firebase 연동, 관리자 화면과 운영 기능을 하나의 흐름으로 진행했습니다.',
         '디자인과 개발을 분리하지 않고 실제 제작사의 상담 방식과 운영 프로세스를 기준으로 화면과 기능을 함께 설계한 것이 핵심입니다. 결과적으로 파인비의 전문성을 보여주는 홈페이지와 고객의 문의를 구체적인 제작 사양으로 전환하는 견적 시스템, 그리고 이를 내부에서 관리하는 운영 환경을 하나의 디지털 시스템으로 구축했습니다.'
       ],
       images:[]
