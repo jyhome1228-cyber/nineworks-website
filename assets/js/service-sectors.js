@@ -12,7 +12,7 @@
   const isPrintPath = path === 'print.html' || path.startsWith('print-') || path.startsWith('package-') || path === 'production.html';
   const isDevelopPath = path === 'develop.html' || path === 'digital-build.html';
   const isClientPath = path === 'client-register.html';
-  const printRequestPaths = new Set(['print-business-card.html','print-editorial.html','package-production.html','package-sample.html']);
+  const printRequestPaths = new Set(['print-editorial.html','package-production.html','package-sample.html']);
   const isSectorCurrent = (item) => path === item.href || (item.href === 'print.html' && isPrintPath) || (item.href === 'develop.html' && isDevelopPath) || (item.href === 'client-register.html' && isClientPath);
 
   const ensureHeaderLinks = () => {
@@ -66,8 +66,7 @@
       if (form.querySelector('.material-transfer')) return;
       const messageField = form.querySelector('textarea[name="message"]')?.closest('.quote-field');
       const referenceField = form.querySelector('input[name="reference"]')?.closest('.quote-field');
-      const subject = path === 'print-business-card.html' ? '[NINEWORKS] 명함 인쇄 자료 전달' : '[NINEWORKS PRINT] 제작 자료 전달';
-      const mailHref = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}`;
+      const mailHref = `mailto:info@9works.kr?subject=${encodeURIComponent('[NINEWORKS PRINT] 제작 자료 전달')}`;
       const panel = document.createElement('div');
       panel.className = 'material-transfer quote-field--wide';
       panel.innerHTML = `
@@ -133,7 +132,7 @@
           </article>
           <article class="print-vendor-group">
             <span class="print-vendor-group__label">06 / Thomson & Assembly</span>
-            <h3>톤슨 / 접착</h3>
+            <h3>톰슨 / 접착</h3>
             <ul><li>에스제이 (장항동)</li><li>재은문화 (장항동)</li></ul>
           </article>
         </div>
@@ -183,18 +182,16 @@
       const sector = form.dataset.sectorLabel || 'SERVICE';
       const company = fd.get('company') || '';
       const name = fd.get('name') || '';
-      const isBusinessCard = sector.includes('BUSINESS CARD');
       const isClientRegistration = sector.includes('CLIENT REGISTRATION');
-      const heading = isBusinessCard ? `[NINEWORKS BUSINESS CARD PRINT REQUEST]` : isClientRegistration ? `[NINEWORKS CLIENT REGISTRATION]` : `[NINEWORKS ${sector} INQUIRY]`;
+      const heading = isClientRegistration ? `[NINEWORKS CLIENT REGISTRATION]` : `[NINEWORKS ${sector} INQUIRY]`;
       const lines = [heading, ''];
       grouped.forEach((values, key) => lines.push(`${labelMap[key] || key}: ${values.join(', ')}`));
-      if (isBusinessCard) lines.push('', '※ 명함 인쇄 요청은 나인웍스 등록 클라이언트 전용 무상 지원 서비스이며 개별 주문은 받지 않습니다.', '※ 인쇄 파일이 있는 경우 info@9works.kr로 별도 전달해 주세요.');
-      else if (isClientRegistration) lines.push('', '※ 클라이언트 등록은 내부 확인 후 안내되며 등록 즉시 모든 전용 서비스 이용이 확정되는 것은 아닙니다.');
+      if (isClientRegistration) lines.push('', '※ 클라이언트 등록은 내부 확인 후 안내되며 등록 즉시 모든 전용 서비스 이용이 확정되는 것은 아닙니다.');
       else if (sector.includes('PARTNER')) lines.push('', '※ 파트너 등록은 검토 후 프로젝트 조건에 맞을 경우 개별 연락드립니다.');
       else if (sector.includes('PRINT') || sector.includes('PACKAGE')) lines.push('', '※ 인쇄용 파일·칼선·이미지 등 자료는 info@9works.kr로 별도 전달해 주세요.');
       else lines.push('', '※ 기획서·피그마·레퍼런스는 자료 링크 또는 info@9works.kr로 공유해 주세요.');
-      const defaultLabel = isBusinessCard ? '명함 인쇄 요청' : isClientRegistration ? '클라이언트 등록' : '견적 문의';
-      const subject = isBusinessCard ? `[NINEWORKS 명함 인쇄 요청] ${company || name || ''}` : isClientRegistration ? `[NINEWORKS 클라이언트 등록] ${company || name || ''}` : `[NINEWORKS ${sector}] ${company || name || defaultLabel}`;
+      const defaultLabel = isClientRegistration ? '클라이언트 등록' : '견적 문의';
+      const subject = isClientRegistration ? `[NINEWORKS 클라이언트 등록] ${company || name || ''}` : `[NINEWORKS ${sector}] ${company || name || defaultLabel}`;
       window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
     });
   };
