@@ -13,7 +13,7 @@
     document.body.appendChild(script);
   };
 
-  loadScript('assets/js/seo.js?v=20260808-1');
+  loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/typography.js?v=20260808-1');
 
   document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
@@ -39,6 +39,9 @@
   const pageSlug = isHome ? 'home' : fileName.replace(/\.html$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
   const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
   body.classList.add(`page-${pageSlug}`);
+
+  // Keep the public home URL canonical. GitHub Pages may expose /index.html as the same document.
+  document.querySelectorAll('a[href="index.html"]').forEach((link) => link.setAttribute('href', '/'));
 
   if (document.querySelector('.project-detail')) loadStylesheet('assets/css/project-detail.css?v=20260804-2');
   if (body.classList.contains('contact-page')) loadStylesheet('assets/css/contact.css?v=20260807-4');
@@ -165,7 +168,7 @@
   document.querySelectorAll('.site-footer').forEach((footer) => {
     footer.innerHTML = `
       <div class="site-footer__head">
-        <a class="site-footer__brand" href="index.html">NINEWORKS</a>
+        <a class="site-footer__brand" href="/">NINEWORKS</a>
         <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="designer.html">Designer</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
