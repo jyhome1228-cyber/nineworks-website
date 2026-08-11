@@ -10,9 +10,47 @@
     return true;
   }).map((project) => ({ ...project, archive: false }));
 
-  const visualArchive = Array.isArray(window.NW_PORTFOLIO_ARCHIVE)
+  const rawVisualArchive = Array.isArray(window.NW_PORTFOLIO_ARCHIVE)
     ? window.NW_PORTFOLIO_ARCHIVE
     : [];
+
+  const getSourceOrder = (item) => {
+    const explicit = Number(item.order ?? item.sourceOrder ?? item.index);
+    if (Number.isFinite(explicit) && explicit > 0) return explicit;
+    const match = String(item.id || '').match(/(\d+)(?!.*\d)/);
+    return match ? Number(match[1]) : 0;
+  };
+
+  const getPackagePriority = (item) => {
+    const text = `${item.title || ''} ${item.subtitle || ''}`.toLowerCase();
+    if (/hollys|할리스/.test(text)) return 300;
+    if (/yonsei|연세|kids\s?ten|키즈텐|healthd|헬씨드/.test(text)) return 200;
+    if (/gong\s?cha|공차/.test(text)) return 100;
+    return 0;
+  };
+
+  /*
+    PACKAGE archive rule:
+    1) recognizable recent client work first: HOLLYS → Yonsei/KIDS TEN/HEALTHD → GONG CHA
+    2) within each group, the larger source number is treated as the newer work
+    Other archive categories keep the source order they were supplied in.
+  */
+  const visualArchive = rawVisualArchive
+    .map((item, originalIndex) => ({ ...item, __originalIndex: originalIndex }))
+    .sort((a, b) => {
+      const aPackage = (a.filters || []).includes('package');
+      const bPackage = (b.filters || []).includes('package');
+
+      if (aPackage && bPackage) {
+        const priorityDiff = getPackagePriority(b) - getPackagePriority(a);
+        if (priorityDiff) return priorityDiff;
+        const orderDiff = getSourceOrder(b) - getSourceOrder(a);
+        if (orderDiff) return orderDiff;
+      }
+
+      return a.__originalIndex - b.__originalIndex;
+    })
+    .map(({ __originalIndex, ...item }) => item);
 
   const allWorks = [...caseStudies, ...visualArchive];
   const escapeHTML = (value = '') => String(value)
@@ -33,7 +71,7 @@
     },
     package: {
       title: 'Package Design',
-      copy: '식품, 건강기능식품, 뷰티, 리빙과 소비재를 중심으로 실제 제작한 패키지 디자인을 단일 이미지 아카이브로 정리했습니다.'
+      copy: '최근 작업과 주요 브랜드 프로젝트를 우선으로, 식품·건강기능식품·뷰티·리빙·소비재 패키지 디자인을 정리했습니다.'
     },
     editorial: {
       title: 'Editorial Design',
