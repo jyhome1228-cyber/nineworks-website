@@ -14,7 +14,8 @@
   ]);
 
   const develop = new Set([
-    'fineb'
+    'fineb',
+    'tne-epc'
   ]);
 
   window.NW_PORTFOLIO.forEach((project) => {
