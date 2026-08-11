@@ -76,6 +76,9 @@
   border-bottom:1px solid rgba(17,17,17,.16)!important;
   text-align:left!important;
 }
+.sector-page .sector-intake__form .intake-options > .intake-option:last-child:nth-child(odd){
+  grid-column:1/-1!important;
+}
 
 /* Print hub now contains three services after removing the business-card support page. */
 body.print-page .print-menu{
