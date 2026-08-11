@@ -26,6 +26,7 @@
   loadStylesheet('assets/css/refine.css?v=20260808-2');
   loadStylesheet('assets/css/alignment.css?v=20260808-1');
   loadStylesheet('assets/css/service-sectors.css?v=20260811-2');
+  loadStylesheet('assets/css/service-type-fix.css?v=20260811-1');
   loadScript('assets/js/service-sectors.js?v=20260811-4');
 
   const body = document.body;
