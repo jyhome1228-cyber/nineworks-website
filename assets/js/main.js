@@ -1,12 +1,13 @@
 (() => {
   const loadStylesheet = (href) => {
+    if (document.querySelector(`link[href="${href}"]`)) return;
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
     stylesheet.href = href;
     document.head.appendChild(stylesheet);
   };
-
   const loadScript = (src) => {
+    if (document.querySelector(`script[src="${src}"]`)) return;
     const script = document.createElement('script');
     script.src = src;
     document.body.appendChild(script);
@@ -24,34 +25,31 @@
 
   loadStylesheet('assets/css/refine.css?v=20260808-2');
   loadStylesheet('assets/css/alignment.css?v=20260808-1');
-  loadStylesheet('assets/css/service-sectors.css?v=20260811-1');
-  loadScript('assets/js/service-sectors.js?v=20260811-1');
-
-  if (document.querySelector('.project-detail')) loadStylesheet('assets/css/project-detail.css?v=20260804-2');
-  if (document.body.classList.contains('contact-page')) loadStylesheet('assets/css/contact.css?v=20260807-4');
+  loadStylesheet('assets/css/service-sectors.css?v=20260811-2');
+  loadScript('assets/js/service-sectors.js?v=20260811-2');
 
   const body = document.body;
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('[data-menu-trigger]');
   const menu = document.querySelector('[data-menu-overlay]');
-  const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
   const pathname = window.location.pathname;
   const fileName = pathname.split('/').filter(Boolean).pop() || 'index.html';
   const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
   const pageSlug = isHome ? 'home' : fileName.replace(/\.html$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+  const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
   body.classList.add(`page-${pageSlug}`);
 
+  if (document.querySelector('.project-detail')) loadStylesheet('assets/css/project-detail.css?v=20260804-2');
+  if (body.classList.contains('contact-page')) loadStylesheet('assets/css/contact.css?v=20260807-4');
   if (isPortfolioDetail) {
     loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-4');
     loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
   }
-
   if (isHome) {
     loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
     loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-3');
     loadScript('assets/js/home-portfolio.js?v=20260810-5');
   }
-
   if (body.classList.contains('designer-page') || pageSlug === 'designer') {
     loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   }
@@ -64,18 +62,15 @@
 
   document.querySelectorAll('a[href="research.html"]').forEach((link) => {
     link.href = 'solutions.html';
-    const text = link.textContent.trim();
-    if (/research/i.test(text)) link.textContent = text.replace(/research/ig, 'Solutions');
+    if (/research/i.test(link.textContent)) link.textContent = link.textContent.replace(/research/ig, 'Solutions');
   });
-
   document.querySelectorAll('.menu-nav').forEach((nav) => {
     nav.querySelectorAll('a[href="research.html"]').forEach((link) => link.remove());
     if (!nav.querySelector('a[href="solutions.html"]')) {
-      const solutionsLink = document.createElement('a');
-      solutionsLink.href = 'solutions.html';
-      solutionsLink.textContent = 'Solutions';
-      const contactLink = nav.querySelector('a[href="contact.html"]');
-      nav.insertBefore(solutionsLink, contactLink || null);
+      const link = document.createElement('a');
+      link.href = 'solutions.html';
+      link.textContent = 'Solutions';
+      nav.insertBefore(link, nav.querySelector('a[href="contact.html"]') || null);
     }
   });
 
@@ -83,9 +78,9 @@
     const current = isHome ? 'index.html' : fileName;
     document.querySelectorAll('.menu-nav a, .site-footer__links a').forEach((link) => {
       const href = (link.getAttribute('href') || '').split('?')[0].split('#')[0];
-      const isCurrent = href === current || (pageSlug === 'portfolio-detail' && href === 'portfolio.html') || (pageSlug === 'magazine-detail' && href === 'magazine.html');
-      link.classList.toggle('is-current', isCurrent);
-      if (isCurrent) link.setAttribute('aria-current', 'page');
+      const active = href === current || (pageSlug === 'portfolio-detail' && href === 'portfolio.html') || (pageSlug === 'magazine-detail' && href === 'magazine.html');
+      link.classList.toggle('is-current', active);
+      if (active) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
   };
@@ -95,7 +90,6 @@
     link.href = 'mailto:info@9works.kr';
     if (link.textContent.trim() === 'contact@9works.kr') link.textContent = 'info@9works.kr';
   });
-
   const menuOffice = document.querySelector('.menu-footer > p');
   if (menuOffice) menuOffice.innerHTML = 'NINEWORKS<br>Design Studio · Incheon, Korea';
 
@@ -130,13 +124,11 @@
   } else revealItems.forEach((item) => item.classList.add('is-visible'));
 
   document.querySelectorAll('[data-filter-group]').forEach((group) => {
-    const buttons = group.querySelectorAll('[data-filter]');
     const targetSelector = group.dataset.filterTarget;
-    const items = document.querySelectorAll(targetSelector);
-    buttons.forEach((button) => button.addEventListener('click', () => {
+    group.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
       const filter = button.dataset.filter;
-      buttons.forEach((item) => item.classList.toggle('is-active', item === button));
-      items.forEach((item) => {
+      group.querySelectorAll('[data-filter]').forEach((item) => item.classList.toggle('is-active', item === button));
+      document.querySelectorAll(targetSelector).forEach((item) => {
         const categories = (item.dataset.category || '').split(' ');
         item.hidden = filter !== 'all' && !categories.includes(filter);
       });
@@ -181,7 +173,7 @@
         <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
         <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
       </div>
-      <div class="site-footer__bottom"><span>© <span data-current-year></span> NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="#">Instagram</a><a href="#">Behance</a></div></div>`;
+      <div class="site-footer__bottom"><span>© <span data-current-year></span> NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="#">Instagram</a><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
   });
   markCurrentNavigation();
   document.querySelectorAll('[data-current-year]').forEach((item) => { item.textContent = new Date().getFullYear(); });
