@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Admin 권한 문서는 Firebase Console 또는 신뢰 가능한 서버 환경에서만 생성합니다.
+    match /admins/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow list: if false;
+      allow create, update, delete: if false;
+    }
+
+    // 공개 콘텐츠: 공개 상태의 문서만 외부 읽기 허용, 쓰기는 관리자만 허용합니다.
+    match /portfolios/{documentId} {
+      allow get, list: if isAdmin() || resource.data.published == true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /projects/{documentId} {
+      allow get, list: if isAdmin() || resource.data.published == true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /magazines/{documentId} {
+      allow get, list: if isAdmin() || resource.data.published == true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 문의 저장은 다음 단계에서 공개 폼과 연결하면서 create 규칙을 별도로 검증해 엽니다.
+    match /inquiries/{documentId} {
+      allow read, create, update, delete: if isAdmin();
+    }
+
+    match /clients/{documentId} {
+      allow read, create, update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
