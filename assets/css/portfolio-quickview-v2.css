@@ -1,0 +1,106 @@
+/* NINEWORKS — refined quick view for visual archive + detail page gallery */
+.portfolio-card--archive .portfolio-card__media::after{
+  content:attr(data-quick-label)!important;
+  right:12px!important;
+  bottom:12px!important;
+  padding:7px 10px!important;
+  border:1px solid rgba(255,255,255,.62)!important;
+  border-radius:0!important;
+  background:rgba(17,17,17,.42)!important;
+  color:#fff!important;
+  font-size:9px!important;
+  letter-spacing:.08em!important;
+}
+
+.portfolio-quickview{
+  grid-template-rows:auto minmax(0,1fr) auto!important;
+  background:rgba(239,239,236,.985)!important;
+}
+.portfolio-quickview__head{
+  position:relative;
+  z-index:2;
+  align-items:flex-start!important;
+  min-height:92px;
+  padding:20px var(--nw-pad,var(--gutter)) 18px!important;
+  background:rgba(239,239,236,.96);
+  backdrop-filter:blur(14px);
+}
+.portfolio-quickview__heading{display:grid;gap:7px;min-width:0}
+.portfolio-quickview__label{font-size:10.5px!important;letter-spacing:.075em!important}
+.portfolio-quickview__head-title{
+  margin:0;
+  max-width:70vw;
+  font-size:clamp(22px,2vw,34px);
+  font-weight:500;
+  line-height:1.08;
+  letter-spacing:-.045em;
+  word-break:keep-all;
+}
+.portfolio-quickview__close{
+  position:relative;
+  display:flex!important;
+  align-items:center;
+  gap:12px!important;
+  flex:0 0 auto;
+  padding:3px 0 8px!important;
+  border-bottom:1px solid #111!important;
+  font-size:11px!important;
+  letter-spacing:.06em!important;
+}
+.portfolio-quickview__close::after{display:none!important}
+.portfolio-quickview__close i{position:relative;display:block;width:17px;height:17px}
+.portfolio-quickview__close i::before,.portfolio-quickview__close i::after{
+  position:absolute;top:50%;left:50%;width:18px;height:1px;background:#111;content:''
+}
+.portfolio-quickview__close i::before{transform:translate(-50%,-50%) rotate(45deg)}
+.portfolio-quickview__close i::after{transform:translate(-50%,-50%) rotate(-45deg)}
+
+.portfolio-quickview__stage{
+  display:block!important;
+  min-height:0;
+  padding:clamp(22px,2.7vw,44px) var(--nw-pad,var(--gutter)) clamp(56px,6vw,96px)!important;
+  overflow:auto!important;
+  scroll-behavior:smooth;
+}
+.portfolio-quickview__image-wrap{
+  width:min(1120px,100%);
+  margin:0 auto;
+  padding:0;
+  background:#fff;
+}
+.portfolio-quickview__image-wrap + .portfolio-quickview__image-wrap{margin-top:18px}
+.portfolio-quickview__image-wrap img{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:auto!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  box-shadow:none!important;
+}
+.portfolio-quickview:not(.is-gallery) .portfolio-quickview__stage{
+  display:grid!important;
+  place-items:center!important;
+}
+.portfolio-quickview:not(.is-gallery) .portfolio-quickview__image-wrap{width:auto;max-width:min(1180px,94vw);background:transparent}
+.portfolio-quickview:not(.is-gallery) .portfolio-quickview__image-wrap img{width:auto!important;max-width:100%!important;max-height:72vh!important}
+
+.portfolio-quickview__foot{
+  min-height:58px;
+  padding:15px var(--nw-pad,var(--gutter))!important;
+  color:#777;
+  background:rgba(239,239,236,.98);
+}
+.portfolio-quickview__category,.portfolio-quickview__counter{font-size:10.5px!important;letter-spacing:.065em;text-transform:uppercase}
+
+@media(max-width:760px){
+  .portfolio-quickview__head{min-height:78px;padding:16px 18px 14px!important}
+  .portfolio-quickview__head-title{max-width:72vw;font-size:22px}
+  .portfolio-quickview__close{padding-bottom:6px!important}
+  .portfolio-quickview__close span{display:none}
+  .portfolio-quickview__stage{padding:14px 12px 48px!important}
+  .portfolio-quickview__image-wrap{width:100%}
+  .portfolio-quickview__image-wrap + .portfolio-quickview__image-wrap{margin-top:10px}
+  .portfolio-quickview__foot{min-height:54px;padding:13px 18px!important;align-items:center!important;flex-direction:row!important;gap:14px!important}
+  .portfolio-card--archive .portfolio-card__media::after{opacity:1!important;transform:none!important}
+}
