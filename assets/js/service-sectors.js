@@ -42,7 +42,8 @@
     quantity:'수량', size:'규격', customSize:'직접 입력 규격', material:'소재 / 지류', color:'인쇄 / 색상', sides:'인쇄 면', pages:'페이지 / 접지', binding:'제본 / 가공', finishing:'후가공',
     designStatus:'디자인 파일 상태', dielineStatus:'칼선 / 도면 상태', proof:'교정 / 샘플', deliveryDate:'희망 납기', deliveryLocation:'배송 지역',
     digitalType:'프로젝트 유형', buildStatus:'신규 / 리뉴얼', currentUrl:'현재 사이트 / 서비스 URL', functions:'필요 기능', platform:'현재 또는 희망 플랫폼', integrations:'연동 필요 항목',
-    budget:'예상 예산', reference:'자료 / 레퍼런스 링크', message:'추가 요청사항'
+    budget:'예상 예산', reference:'자료 / 레퍼런스 링크', message:'추가 요청사항',
+    partnerCategory:'파트너 공정', location:'공장 / 사업장 지역', equipment:'주요 설비 / 전문 공정', minOrder:'주요 최소수량 / 적정수량', leadTime:'평균 제작 소요기간', website:'홈페이지 / 포트폴리오', capacity:'월 생산 가능량 / 특징'
   };
 
   const readValues = (form, name) => Array.from(form.querySelectorAll(`[name="${CSS.escape(name)}"]`))
@@ -89,7 +90,8 @@
       const name = fd.get('name') || '';
       const lines = [`[NINEWORKS ${sector} INQUIRY]`, ''];
       grouped.forEach((values, key) => lines.push(`${labelMap[key] || key}: ${values.join(', ')}`));
-      lines.push('', '※ 인쇄용 파일·칼선·레퍼런스는 자료 링크를 통해 공유해 주세요.');
+      if (sector.includes('PARTNER')) lines.push('', '※ 파트너 등록은 검토 후 프로젝트 조건에 맞을 경우 개별 연락드립니다.');
+      else lines.push('', '※ 인쇄용 파일·칼선·레퍼런스는 자료 링크를 통해 공유해 주세요.');
       const subject = `[NINEWORKS ${sector}] ${company || name || '견적 문의'}`;
       window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
     });
