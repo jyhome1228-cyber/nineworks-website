@@ -24,6 +24,8 @@
 
   loadStylesheet('assets/css/refine.css?v=20260808-2');
   loadStylesheet('assets/css/alignment.css?v=20260808-1');
+  loadStylesheet('assets/css/service-sectors.css?v=20260811-1');
+  loadScript('assets/js/service-sectors.js?v=20260811-1');
 
   if (document.querySelector('.project-detail')) loadStylesheet('assets/css/project-detail.css?v=20260804-2');
   if (document.body.classList.contains('contact-page')) loadStylesheet('assets/css/contact.css?v=20260807-4');
