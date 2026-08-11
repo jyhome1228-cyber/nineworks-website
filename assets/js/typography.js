@@ -30,6 +30,38 @@
 
   const run = () => document.querySelectorAll(selectors.join(',')).forEach(applySentenceBreaks);
 
+  const addAboutMenuShortcut = () => {
+    const nav = document.querySelector('.site-service-nav');
+    if (!nav) return false;
+    if (nav.querySelector('[data-about-menu-shortcut]')) return true;
+
+    const shortcut = document.createElement('a');
+    shortcut.href = '#';
+    shortcut.textContent = 'About';
+    shortcut.dataset.aboutMenuShortcut = 'true';
+    shortcut.setAttribute('role', 'button');
+    shortcut.setAttribute('aria-label', '전체 메뉴 열기');
+    shortcut.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('[data-menu-trigger]')?.click();
+    });
+    nav.insertBefore(shortcut, nav.firstChild);
+    return true;
+  };
+
+  const observeServiceNavigation = () => {
+    if (addAboutMenuShortcut()) return;
+    const observer = new MutationObserver(() => {
+      if (addAboutMenuShortcut()) observer.disconnect();
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    window.setTimeout(() => observer.disconnect(), 4000);
+  };
+
   run();
-  document.addEventListener('DOMContentLoaded', run, { once: true });
+  observeServiceNavigation();
+  document.addEventListener('DOMContentLoaded', () => {
+    run();
+    observeServiceNavigation();
+  }, { once: true });
 })();
