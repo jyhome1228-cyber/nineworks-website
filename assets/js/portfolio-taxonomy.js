@@ -13,11 +13,20 @@
     'centellian-24'
   ]);
 
+  const develop = new Set([
+    'fineb'
+  ]);
+
   window.NW_PORTFOLIO.forEach((project) => {
     if (!project || !project.id) return;
 
     if (eventOnly.has(project.id)) {
       project.filters = ['event'];
+      return;
+    }
+
+    if (develop.has(project.id)) {
+      project.filters = ['develop', 'branding'];
       return;
     }
 
