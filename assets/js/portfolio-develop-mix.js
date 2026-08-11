@@ -94,6 +94,21 @@
     headingData.forEach((data, index) => rewriteDevHeading(pairs[index]?.[0], ...data));
   };
 
+  const aesostCopy = (system, pairs) => {
+    const introTitle = system.querySelector('.dev-case-system__title');
+    if (introTitle) introTitle.textContent = '회원의 활동과 콘텐츠가 쌓이는 커뮤니티 플랫폼으로.';
+    const headingData = [
+      ['A / PLATFORM PLANNING','방문자와 회원의 역할을 먼저 나눴습니다.','비회원의 콘텐츠 탐색과 회원의 게시글 작성·관리 흐름을 구분하고 가입 이후 반복되는 활동 구조를 기준으로 플랫폼을 설계했습니다.'],
+      ['B / COMMUNITY ARCHITECTURE','탐색·작성·개인 페이지가 하나의 커뮤니티 경험으로 이어집니다.','커뮤니티 피드와 게시글 상세, 작성자 페이지가 단절되지 않고 서로 새로운 탐색 경로가 되도록 정보 구조를 연결했습니다.'],
+      ['C / MEMBER SYSTEM','가입부터 글쓰기와 마이페이지까지 회원 흐름을 구성했습니다.','회원 상태에 따라 작성 기능과 관리 기능이 활성화되고 본인이 만든 콘텐츠와 프로필 정보를 다시 관리할 수 있도록 설계했습니다.'],
+      ['D / INFORMATION ARCHITECTURE','커뮤니티와 개인 프로필, 매거진의 역할을 분리했습니다.','사용자 생성 콘텐츠와 회원 스펙 정보, 편집형 매거진을 서로 다른 콘텐츠 타입으로 정의해 탐색 목적이 명확하게 보이도록 구성했습니다.'],
+      ['E / PUBLISHING FLOW','회원의 활동이 플랫폼 콘텐츠로 축적되는 구조를 만들었습니다.','가입 이후 작성한 게시물이 피드와 상세 페이지에 노출되고 다시 마이페이지와 개인 프로필 관리로 이어지는 반복 흐름을 설계했습니다.'],
+      ['F / PROFILE & CONTENT STRUCTURE','개인 스펙 페이지와 매거진을 별도 콘텐츠 시스템으로 정리했습니다.','회원마다 다른 프로필·스펙을 같은 정보 위계로 보여주고 매거진은 읽기 중심의 콘텐츠 경험으로 분리해 플랫폼 안에서 연결했습니다.'],
+      ['G / DEPLOYMENT & OPERATION','회원과 콘텐츠가 늘어나도 확장 가능한 운영 구조로 구성했습니다.','회원·게시글·스펙·매거진의 기능 범위를 분리해 콘텐츠 증가와 사용자 활동 확장에도 대응할 수 있는 플랫폼 구조로 정리했습니다.']
+    ];
+    headingData.forEach((data, index) => rewriteDevHeading(pairs[index]?.[0], ...data));
+  };
+
   const mixDevelopCase = () => {
     if (!document.body.classList.contains('portfolio-develop-mode')) return false;
     const system = document.querySelector('.dev-case-system');
@@ -109,6 +124,7 @@
     if (workId === 'fineb') finebCopy(sections, system, pairs);
     else if (workId === 'tne-epc') tneCopy(system, pairs);
     else if (workId === 'relim') relimCopy(system, pairs);
+    else if (workId === 'aesost') aesostCopy(system, pairs);
 
     sections[0].insertAdjacentElement('afterend', system);
     system.insertAdjacentElement('afterend', createBlock([pairs[0]]));
