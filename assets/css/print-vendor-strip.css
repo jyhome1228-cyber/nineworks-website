@@ -1,0 +1,18 @@
+/* NINEWORKS — compact collaboration / order network for PRINT detail pages */
+.print-vendor-strip{padding-top:42px!important;padding-bottom:58px!important;border-top:1px solid rgba(17,17,17,.18)}
+.print-vendor-strip__head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-bottom:20px}
+.print-vendor-strip__eyebrow{display:block;margin-bottom:7px;color:#8a8a8a;font-size:9.5px;line-height:1;letter-spacing:.075em;text-transform:uppercase}
+.print-vendor-strip__head h2{margin:0;font-size:17px;font-weight:500;line-height:1.25;letter-spacing:-.03em}
+.print-vendor-strip__head p{max-width:620px;margin:6px 0 0;color:#777;font-size:11.5px;line-height:1.65;word-break:keep-all}
+.print-vendor-strip__partner{display:inline-flex;align-items:center;gap:8px;padding-bottom:3px;border-bottom:1px solid currentColor;font-size:10.5px;font-weight:500;line-height:1.3;white-space:nowrap}
+.print-vendor-strip__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1px solid #111;border-left:1px solid rgba(17,17,17,.14)}
+.print-vendor-group{min-width:0;padding:15px 14px 17px;border-right:1px solid rgba(17,17,17,.14);border-bottom:1px solid rgba(17,17,17,.14)}
+.print-vendor-group__label{display:block;margin-bottom:11px;color:#888;font-size:9px;font-weight:500;line-height:1.2;letter-spacing:.065em;text-transform:uppercase}
+.print-vendor-group h3{margin:0 0 9px;font-size:12.5px;font-weight:500;line-height:1.35;letter-spacing:-.02em}
+.print-vendor-group ul{display:grid;gap:5px;margin:0;padding:0;list-style:none}
+.print-vendor-group li{color:#666;font-size:10.5px;line-height:1.48;word-break:keep-all}
+.print-vendor-strip__bottom{display:flex;justify-content:space-between;gap:24px;align-items:center;padding-top:13px;color:#888;font-size:9.5px;line-height:1.55}
+.print-vendor-strip__bottom a{color:#333;border-bottom:1px solid currentColor}
+@media(max-width:1180px){.print-vendor-strip__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.print-vendor-strip{padding-top:34px!important;padding-bottom:44px!important}.print-vendor-strip__head{grid-template-columns:1fr;gap:14px;align-items:start}.print-vendor-strip__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.print-vendor-strip__partner{width:max-content}.print-vendor-strip__bottom{align-items:flex-start;flex-direction:column;gap:8px}}
+@media(max-width:480px){.print-vendor-strip__grid{grid-template-columns:1fr}}
