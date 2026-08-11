@@ -17,7 +17,8 @@
     'fineb',
     'tne-epc',
     'relim',
-    'aesost'
+    'aesost',
+    'kekomi'
   ]);
 
   window.NW_PORTFOLIO.forEach((project) => {
