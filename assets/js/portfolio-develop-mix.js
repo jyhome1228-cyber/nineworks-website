@@ -79,6 +79,21 @@
     headingData.forEach((data, index) => rewriteDevHeading(pairs[index]?.[0], ...data));
   };
 
+  const relimCopy = (system, pairs) => {
+    const introTitle = system.querySelector('.dev-case-system__title');
+    if (introTitle) introTitle.textContent = '고객 질문 데이터부터 예약과 운영까지, 하나의 서비스 시스템으로.';
+    const headingData = [
+      ['A / SERVICE PLANNING','고객이 예약 전에 무엇을 궁금해하는지부터 정의했습니다.','공간 소개보다 먼저 이용시간, 요금, 숙박, 준비물, 예약과 환불처럼 실제 고객이 반복해서 묻는 정보를 기준으로 서비스 구조를 설계했습니다.'],
+      ['B / SYSTEM ARCHITECTURE','브랜드 사이트와 고객지원·커뮤니티를 하나의 흐름으로 연결했습니다.','정적 공간 콘텐츠, FAQ 검색, Firebase 회원·리뷰·문의와 관리자 기능이 각자의 역할을 유지하면서 자연스럽게 이어지도록 구성했습니다.'],
+      ['C / DEVELOPMENT STACK','정적 프론트엔드와 필요한 클라우드 기능만 분리했습니다.','HTML·CSS·Vanilla JavaScript를 중심으로 화면을 구축하고 회원과 운영 데이터가 필요한 영역만 Firebase Auth와 Firestore로 연결했습니다.'],
+      ['D / INFORMATION ARCHITECTURE','공간 안내와 예약 지원, 커뮤니티를 목적별로 분리했습니다.','소개·시설·갤러리·이용안내·예약·위치와 FAQ, 리뷰, 문의, 관리자 기능을 사용 목적에 따라 정리했습니다.'],
+      ['E / CUSTOMER KNOWLEDGE FLOW','약 2,000건의 DM을 검색 가능한 FAQ 데이터로 바꿨습니다.','실제 인스타그램 DM JSON에서 반복 질문과 유사 표현을 분류해 FAQ 데이터로 만들고 검색으로 해결되지 않는 질문은 회원 문의와 관리자 답변으로 연결했습니다.'],
+      ['F / CODE & DATA STRUCTURE','FAQ, 리뷰, 문의와 관리자 기능을 역할별 코드로 나눴습니다.','검색 데이터, 실시간 리뷰, 비공개 문의와 관리자 답변, 방문자 집계를 독립된 모듈로 구성해 유지보수 가능한 구조로 정리했습니다.'],
+      ['G / DEPLOYMENT & SEARCH','배포 이후 예약 전환과 검색 노출까지 함께 고려했습니다.','GitHub Pages와 커스텀 도메인, 캠핏 예약, 네이버 지도, GA4와 Google·Naver SEO 설정을 연결해 실제 운영 환경까지 완성했습니다.']
+    ];
+    headingData.forEach((data, index) => rewriteDevHeading(pairs[index]?.[0], ...data));
+  };
+
   const mixDevelopCase = () => {
     if (!document.body.classList.contains('portfolio-develop-mode')) return false;
     const system = document.querySelector('.dev-case-system');
@@ -93,6 +108,7 @@
 
     if (workId === 'fineb') finebCopy(sections, system, pairs);
     else if (workId === 'tne-epc') tneCopy(system, pairs);
+    else if (workId === 'relim') relimCopy(system, pairs);
 
     sections[0].insertAdjacentElement('afterend', system);
     system.insertAdjacentElement('afterend', createBlock([pairs[0]]));
