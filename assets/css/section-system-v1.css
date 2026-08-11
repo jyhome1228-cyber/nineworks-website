@@ -1,0 +1,171 @@
+/* NINEWORKS — section framing system
+   Gives information-heavy sections a clear starting rule, compact header rhythm,
+   and consistent boundaries without changing image/hero/CTA sections. */
+
+:root{
+  --nw-rule:rgba(17,17,17,.16);
+  --nw-rule-strong:rgba(17,17,17,.72);
+}
+
+/* ---------------------------------------------------------
+   01. GENERAL INFORMATION SECTION BOUNDARIES
+   --------------------------------------------------------- */
+main > .section:not(.section-line):not(.cta),
+main > .section--tight:not(.cta),
+main > .category-intro.container{
+  position:relative;
+  border-top:1px solid var(--nw-rule);
+}
+
+/* Some editorial sections already use their own line. Keep one consistent value. */
+.section-line,
+.solutions-intro,
+.solutions-note,
+.about-page .about-origin,
+.about-page .about-profile,
+.about-page .about-experience,
+.about-page .about-awards{
+  border-top-color:var(--nw-rule)!important;
+}
+
+/* A list/grid should visually lock to the copy immediately above it. */
+.capability-list,
+.solutions-list,
+.about-principles,
+.experience-list,
+.award-list,
+.service-tabs{
+  border-top-color:var(--nw-rule-strong)!important;
+}
+
+/* ---------------------------------------------------------
+   02. SERVICE / CLIENT FORM SECTIONS
+   Current sections looked unfinished because each block only had a bottom rule,
+   while the number and title floated far apart. */
+.sector-intake__form > .intake-section{
+  margin:0!important;
+  padding:clamp(22px,2vw,30px) 0 clamp(38px,3.2vw,50px)!important;
+  border-top:1px solid var(--nw-rule)!important;
+  border-bottom:0!important;
+}
+
+.sector-intake__form > .intake-section:last-of-type{
+  margin-bottom:28px!important;
+  border-bottom:1px solid var(--nw-rule)!important;
+}
+
+.sector-intake__form .intake-section__head{
+  display:grid!important;
+  grid-template-columns:54px minmax(0,1fr)!important;
+  gap:14px!important;
+  align-items:start!important;
+  justify-content:initial!important;
+  margin:0 0 clamp(22px,2vw,30px)!important;
+}
+
+.sector-intake__form .intake-section__head > span{
+  padding-top:4px!important;
+  color:#8a8a8a!important;
+  font-size:11.5px!important;
+  line-height:1!important;
+  letter-spacing:.055em!important;
+}
+
+.sector-intake__form .intake-section__head > h3{
+  justify-self:start!important;
+  margin:0!important;
+  font-size:clamp(18px,1.25vw,21px)!important;
+  font-weight:500!important;
+  line-height:1.26!important;
+  letter-spacing:-.03em!important;
+  text-align:left!important;
+}
+
+.sector-intake__form .intake-field legend,
+.sector-intake__form .intake-field > label{
+  margin-bottom:12px!important;
+}
+
+/* Make option groups read as one finished component rather than detached boxes. */
+.sector-intake__form .intake-options{
+  border-top:1px solid var(--nw-rule)!important;
+  border-left:1px solid var(--nw-rule)!important;
+}
+.sector-intake__form .intake-option span{
+  border-right:1px solid var(--nw-rule)!important;
+  border-bottom:1px solid var(--nw-rule)!important;
+  border-left:0!important;
+}
+.sector-intake__form .intake-option:nth-child(odd) span{
+  border-left:0!important;
+}
+
+/* ---------------------------------------------------------
+   03. QUICK QUOTE / PRINT BUILDER RHYTHM
+   --------------------------------------------------------- */
+.quote-steps > .quote-step{
+  margin:0!important;
+  padding:clamp(24px,2.4vw,34px) 0 clamp(34px,3vw,46px)!important;
+  border-top:1px solid var(--nw-rule)!important;
+  border-bottom:0!important;
+}
+.quote-steps > .quote-step:last-child{
+  border-bottom:1px solid var(--nw-rule)!important;
+}
+.quote-step__head{
+  margin-bottom:22px!important;
+}
+
+/* ---------------------------------------------------------
+   04. PARTNER REGISTRATION
+   --------------------------------------------------------- */
+.partner-register__form > .partner-form-section{
+  margin:0!important;
+  padding:clamp(22px,2vw,30px) 0 clamp(36px,3vw,46px)!important;
+  border-top:1px solid var(--nw-rule)!important;
+  border-bottom:0!important;
+}
+.partner-register__form > .partner-form-section:last-of-type{
+  margin-bottom:28px!important;
+  border-bottom:1px solid var(--nw-rule)!important;
+}
+.partner-form-section__head{
+  display:grid!important;
+  grid-template-columns:54px minmax(0,1fr)!important;
+  gap:14px!important;
+  align-items:start!important;
+  margin-bottom:24px!important;
+}
+.partner-form-section__head h3{
+  justify-self:start!important;
+  font-size:clamp(18px,1.2vw,21px)!important;
+  line-height:1.28!important;
+}
+
+/* ---------------------------------------------------------
+   05. SMALL GRID / LIST DETAILS
+   --------------------------------------------------------- */
+.project-random-head,
+.portfolio-index-head__meta,
+.print-partner-cta{
+  border-color:var(--nw-rule)!important;
+}
+
+@media(max-width:760px){
+  .sector-intake__form > .intake-section{
+    padding:22px 0 34px!important;
+  }
+  .sector-intake__form .intake-section__head,
+  .partner-form-section__head{
+    grid-template-columns:38px minmax(0,1fr)!important;
+    gap:10px!important;
+    margin-bottom:20px!important;
+  }
+  .sector-intake__form .intake-section__head > h3,
+  .partner-form-section__head h3{
+    font-size:18px!important;
+  }
+  .quote-steps > .quote-step{
+    padding:22px 0 32px!important;
+  }
+}
