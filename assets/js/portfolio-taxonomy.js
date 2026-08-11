@@ -16,7 +16,8 @@
   const develop = new Set([
     'fineb',
     'tne-epc',
-    'relim'
+    'relim',
+    'aesost'
   ]);
 
   window.NW_PORTFOLIO.forEach((project) => {
