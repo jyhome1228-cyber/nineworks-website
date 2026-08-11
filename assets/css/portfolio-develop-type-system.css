@@ -1,16 +1,17 @@
 /* NINEWORKS — DEVELOP typography system
-   One section-title size, one body size, one meta size. */
+   Compact hierarchy aligned to the standard portfolio sections below. */
 .portfolio-develop-mode{
-  --case-title-size:clamp(36px,2.5vw,42px);
-  --case-body-size:15px;
-  --case-meta-size:11.5px;
-  --case-card-title-size:17px;
-  --case-body-line:1.8;
-  --case-title-line:1.12;
-  --case-copy-width:840px;
+  --case-title-size:clamp(30px,2vw,34px);
+  --case-body-size:14.5px;
+  --case-meta-size:10.5px;
+  --case-card-title-size:16px;
+  --case-card-body-size:13px;
+  --case-body-line:1.78;
+  --case-title-line:1.18;
+  --case-copy-width:820px;
 }
 
-/* 01. SECTION TITLES — 기존 Project Strategy / Website UX / DEVELOP 제목을 모두 동일하게 */
+/* 01. SECTION TITLES — DEVELOP 제목을 기존 프로젝트 섹션의 작은 위계에 통일 */
 .portfolio-develop-mode .portfolio-scroll-section__head h2,
 .portfolio-develop-mode .dev-case-heading h3,
 .portfolio-develop-mode .dev-case-system__title{
@@ -20,31 +21,26 @@
   font-size:var(--case-title-size)!important;
   font-weight:500!important;
   line-height:var(--case-title-line)!important;
-  letter-spacing:-.045em!important;
+  letter-spacing:-.043em!important;
   word-break:keep-all!important;
   overflow-wrap:normal!important;
 }
 
-/* 02. BODY COPY — 모든 설명 문단을 같은 크기와 행간으로 */
+/* 02. BODY COPY — 섹션 본문은 하나의 크기로 */
 .portfolio-develop-mode .portfolio-scroll-copy,
 .portfolio-develop-mode .dev-case-heading p{
   max-width:var(--case-copy-width)!important;
 }
 .portfolio-develop-mode .portfolio-scroll-copy p,
-.portfolio-develop-mode .dev-case-heading p,
-.portfolio-develop-mode .dev-case-stat p,
-.portfolio-develop-mode .dev-planning-card p,
-.portfolio-develop-mode .dev-architecture__node p,
-.portfolio-develop-mode .dev-stack-card p,
-.portfolio-develop-mode .dev-data-flow__step p,
-.portfolio-develop-mode .dev-code-card p{
+.portfolio-develop-mode .dev-case-heading p{
   font-size:var(--case-body-size)!important;
   line-height:var(--case-body-line)!important;
   letter-spacing:-.02em!important;
   word-break:keep-all!important;
+  color:#3d3d3d!important;
 }
 
-/* 03. META — 02 / Website & UX Design, A / Planning Framework 같은 라벨을 같은 레벨로 */
+/* 03. META — 02 / Website & UX Design, A / Planning Framework */
 .portfolio-develop-mode .portfolio-scroll-section__meta,
 .portfolio-develop-mode .portfolio-scroll-section__index,
 .portfolio-develop-mode .portfolio-scroll-section__label,
@@ -54,67 +50,67 @@
   line-height:1.45!important;
   letter-spacing:.035em!important;
   color:#888!important;
+  font-weight:400!important;
 }
 
-/* DEVELOP 제목 블록을 일반 프로젝트 섹션과 같은 한 줄 위계로 정리 */
+/* DEVELOP 제목 블록도 기존 섹션과 같은 메타 → 제목 → 본문 순서 */
 .portfolio-develop-mode .dev-case-heading{
   display:block!important;
-  margin:0 0 30px!important;
+  margin:0 0 24px!important;
   padding:0!important;
   border:0!important;
 }
 .portfolio-develop-mode .dev-case-heading>span{
   display:block!important;
-  margin:0 0 clamp(38px,3.4vw,52px)!important;
+  margin:0 0 30px!important;
   padding:0!important;
   font-family:inherit!important;
   text-transform:none!important;
 }
 .portfolio-develop-mode .dev-case-heading p{
   display:block!important;
-  margin:clamp(34px,3vw,44px) 0 0!important;
-  color:#3d3d3d!important;
+  margin:28px 0 0!important;
 }
 
-/* 기존 프로젝트 섹션도 동일한 수직 리듬으로 */
+/* 기존 프로젝트 섹션 수직 리듬도 동일하게 축소 */
 .portfolio-develop-mode .portfolio-scroll-section__head{
-  margin-bottom:clamp(34px,3vw,44px)!important;
+  margin-bottom:28px!important;
 }
 .portfolio-develop-mode .portfolio-scroll-section__meta{
   display:flex!important;
   align-items:center!important;
-  gap:42px!important;
-  margin-bottom:clamp(38px,3.4vw,52px)!important;
+  gap:36px!important;
+  margin-bottom:30px!important;
 }
 .portfolio-develop-mode .portfolio-scroll-copy{
-  margin-bottom:clamp(40px,3.5vw,54px)!important;
+  margin-bottom:38px!important;
 }
 .portfolio-develop-mode .portfolio-scroll-copy p+p{
-  margin-top:20px!important;
+  margin-top:16px!important;
 }
 
-/* DEVELOP 인포그래픽 블록 간격: 제목과 표가 붙거나 따로 노는 현상 방지 */
+/* DEVELOP 블록 사이 간격도 과하게 벌어지지 않도록 */
 .portfolio-develop-mode .dev-inline-block{
-  margin:clamp(78px,6.5vw,104px) 0 0!important;
+  margin:64px 0 0!important;
 }
 .portfolio-develop-mode .dev-inline-block .dev-case-heading:not(:first-child){
-  margin-top:clamp(82px,7vw,112px)!important;
+  margin-top:70px!important;
 }
 .portfolio-develop-mode .dev-case-system{
-  margin:clamp(70px,6vw,96px) 0 0!important;
+  margin:58px 0 0!important;
   padding-top:0!important;
   border-top:0!important;
 }
 .portfolio-develop-mode .dev-case-system__eyebrow{
-  margin-bottom:clamp(38px,3.4vw,52px)!important;
+  margin-bottom:30px!important;
   font-family:inherit!important;
   text-transform:none!important;
 }
 .portfolio-develop-mode .dev-case-system__title{
-  margin-bottom:34px!important;
+  margin-bottom:28px!important;
 }
 
-/* 04. CARD TYPOGRAPHY — 카드 제목은 한 단계 아래, 설명은 동일한 본문 크기 */
+/* 04. CARD TYPOGRAPHY — 본문보다 한 단계 아래 */
 .portfolio-develop-mode .dev-case-stat strong,
 .portfolio-develop-mode .dev-planning-card h4,
 .portfolio-develop-mode .dev-architecture__node strong,
@@ -128,12 +124,23 @@
   word-break:keep-all!important;
 }
 
-/* 표 안의 항목도 최소 크기 통일 */
+.portfolio-develop-mode .dev-case-stat p,
+.portfolio-develop-mode .dev-planning-card p,
+.portfolio-develop-mode .dev-architecture__node p,
+.portfolio-develop-mode .dev-stack-card p,
+.portfolio-develop-mode .dev-data-flow__step p,
+.portfolio-develop-mode .dev-code-card p{
+  font-size:var(--case-card-body-size)!important;
+  line-height:1.68!important;
+  letter-spacing:-.018em!important;
+  word-break:keep-all!important;
+}
+
 .portfolio-develop-mode .dev-sitemap__group li,
 .portfolio-develop-mode .dev-deployment__row,
 .portfolio-develop-mode .dev-deployment__row strong{
-  font-size:14px!important;
-  line-height:1.6!important;
+  font-size:13px!important;
+  line-height:1.58!important;
 }
 .portfolio-develop-mode .dev-deployment__row span,
 .portfolio-develop-mode .dev-planning-card span,
@@ -143,30 +150,31 @@
 .portfolio-develop-mode .dev-code-card__head,
 .portfolio-develop-mode .dev-sitemap__group>span,
 .portfolio-develop-mode .dev-case-stat__label{
-  font-size:11px!important;
+  font-size:10px!important;
   line-height:1.45!important;
 }
 
-/* 박스 높이는 텍스트 기준으로 자연스럽게 확장 */
+/* 박스 높이도 축소된 글자에 맞춤 */
 .portfolio-develop-mode .dev-planning-card,
 .portfolio-develop-mode .dev-architecture__node,
 .portfolio-develop-mode .dev-stack-card,
 .portfolio-develop-mode .dev-data-flow__step{
   height:auto!important;
 }
-.portfolio-develop-mode .dev-planning-card{min-height:236px!important}
-.portfolio-develop-mode .dev-stack-card{min-height:170px!important}
-.portfolio-develop-mode .dev-data-flow__step{min-height:150px!important}
+.portfolio-develop-mode .dev-planning-card{min-height:205px!important}
+.portfolio-develop-mode .dev-architecture__node{min-height:178px!important}
+.portfolio-develop-mode .dev-stack-card{min-height:148px!important}
+.portfolio-develop-mode .dev-data-flow__step{min-height:132px!important}
 
 @media(max-width:900px){
-  .portfolio-develop-mode{--case-title-size:clamp(32px,5vw,38px);--case-body-size:14.5px}
-  .portfolio-develop-mode .portfolio-scroll-section__meta{gap:28px!important}
+  .portfolio-develop-mode{--case-title-size:clamp(29px,4.2vw,32px);--case-body-size:14px}
+  .portfolio-develop-mode .portfolio-scroll-section__meta{gap:26px!important}
 }
 
 @media(max-width:760px){
-  .portfolio-develop-mode{--case-title-size:clamp(29px,8vw,35px);--case-body-size:14px;--case-meta-size:11px}
-  .portfolio-develop-mode .portfolio-scroll-section__meta{gap:20px!important;margin-bottom:32px!important}
-  .portfolio-develop-mode .dev-case-heading>span{margin-bottom:32px!important}
-  .portfolio-develop-mode .dev-case-heading p{margin-top:28px!important}
-  .portfolio-develop-mode .dev-inline-block{margin-top:68px!important}
+  .portfolio-develop-mode{--case-title-size:clamp(27px,7.2vw,31px);--case-body-size:13.5px;--case-meta-size:10px;--case-card-title-size:15.5px;--case-card-body-size:12.5px}
+  .portfolio-develop-mode .portfolio-scroll-section__meta{gap:18px!important;margin-bottom:26px!important}
+  .portfolio-develop-mode .dev-case-heading>span{margin-bottom:26px!important}
+  .portfolio-develop-mode .dev-case-heading p{margin-top:24px!important}
+  .portfolio-develop-mode .dev-inline-block{margin-top:56px!important}
 }
