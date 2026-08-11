@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="나인웍스의 브랜드, 패키지, 에디토리얼, 이벤트 디자인 포트폴리오 아카이브입니다.">
+  <meta name="description" content="나인웍스의 브랜딩 케이스스터디와 패키지, 에디토리얼, IR·PPT, 상세페이지, 이벤트 디자인 아카이브입니다.">
   <title>Portfolio — NINEWORKS</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/portfolio.css?v=20260810-9">
+  <link rel="stylesheet" href="assets/css/portfolio-archive-v1.css?v=20260811-1">
   <style>
     .portfolio-page .portfolio-filter.category-nav {
       box-sizing: border-box;
@@ -17,7 +18,6 @@
       border-bottom: 1px solid rgba(17,17,17,.16) !important;
       background: rgba(242,242,240,.96) !important;
     }
-
     .portfolio-page .portfolio-filter.category-nav button {
       min-width: clamp(108px, 8.5vw, 142px) !important;
       min-height: 58px;
@@ -30,40 +30,14 @@
       letter-spacing: .045em;
       transition: color .2s ease, background .2s ease;
     }
-
-    .portfolio-page .portfolio-filter.category-nav button:first-child {
-      border-left: 1px solid rgba(17,17,17,.16) !important;
-    }
-
-    .portfolio-page .portfolio-filter.category-nav button:hover {
-      color: #111 !important;
-      background: rgba(17,17,17,.035) !important;
-    }
-
-    .portfolio-page .portfolio-filter.category-nav button.is-active {
-      color: #fff !important;
-      background: #111 !important;
-    }
-
-    .portfolio-page .portfolio-list.container {
-      padding-top: clamp(42px, 4vw, 62px) !important;
-    }
-
-    @media (max-width: 760px) {
-      .portfolio-page .portfolio-filter.category-nav {
-        padding-right: 18px !important;
-        padding-left: 18px !important;
-      }
-
-      .portfolio-page .portfolio-filter.category-nav button {
-        min-width: auto !important;
-        min-height: 52px;
-        padding: 0 18px !important;
-      }
-
-      .portfolio-page .portfolio-list.container {
-        padding-top: 32px !important;
-      }
+    .portfolio-page .portfolio-filter.category-nav button:first-child {border-left:1px solid rgba(17,17,17,.16)!important}
+    .portfolio-page .portfolio-filter.category-nav button:hover {color:#111!important;background:rgba(17,17,17,.035)!important}
+    .portfolio-page .portfolio-filter.category-nav button.is-active {color:#fff!important;background:#111!important}
+    .portfolio-page .portfolio-list.container {padding-top:clamp(34px,3.2vw,50px)!important}
+    @media(max-width:760px){
+      .portfolio-page .portfolio-filter.category-nav{padding-right:18px!important;padding-left:18px!important}
+      .portfolio-page .portfolio-filter.category-nav button{min-width:auto!important;min-height:52px;padding:0 18px!important}
+      .portfolio-page .portfolio-list.container{padding-top:28px!important}
     }
   </style>
 </head>
@@ -76,15 +50,15 @@
 
     <aside class="menu-overlay" aria-hidden="true" data-menu-overlay>
       <nav class="menu-nav" aria-label="주요 메뉴">
-        <a href="about.html">About</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a>
+        <a href="about.html">About</a><a href="designer.html">Designer</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a>
       </nav>
-      <div class="menu-footer"><p>NINEWORKS<br>Design Studio · Incheon, Korea</p><div class="menu-social"><a href="#">Instagram</a><a href="#">Behance</a><a href="mailto:info@9works.kr">Email</a></div></div>
+      <div class="menu-footer"><p>NINEWORKS<br>Design Studio · Incheon, Korea</p><div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div></div>
     </aside>
 
     <main>
       <section class="portfolio-hero container">
-        <div><p class="eyebrow reveal">Selected Works</p><h1 class="page-title reveal">Portfolio</h1></div>
-        <p class="portfolio-hero__copy reveal">브랜드 아이덴티티부터 패키지, 에디토리얼과 이벤트 비주얼까지 나인웍스가 진행한 디자인 작업을 한곳에 모았습니다.</p>
+        <div><p class="eyebrow reveal">Work Archive</p><h1 class="page-title reveal">Portfolio</h1></div>
+        <p class="portfolio-hero__copy reveal">브랜드의 방향을 만드는 케이스스터디와 실제 제작한 패키지, 에디토리얼, IR·PPT, 상세페이지와 이벤트 디자인을 한곳에서 확인할 수 있습니다.</p>
       </section>
 
       <div class="category-nav portfolio-filter" data-filter-group data-filter-target=".portfolio-filter-item">
@@ -92,8 +66,21 @@
         <button type="button" data-filter="branding">BRANDING</button>
         <button type="button" data-filter="package">PACKAGE</button>
         <button type="button" data-filter="editorial">EDITORIAL</button>
+        <button type="button" data-filter="ir">IR / PPT</button>
+        <button type="button" data-filter="detailpage">DETAIL PAGE</button>
         <button type="button" data-filter="event">EVENT</button>
       </div>
+
+      <section class="portfolio-index-head container">
+        <div class="portfolio-index-head__title">
+          <p class="eyebrow">Selected Category</p>
+          <h2 data-portfolio-index-title>All Works</h2>
+        </div>
+        <div class="portfolio-index-head__meta">
+          <p data-portfolio-index-copy>브랜딩 케이스스터디와 단일 제작물 아카이브를 함께 모았습니다.</p>
+          <span class="portfolio-index-head__count" data-portfolio-index-count></span>
+        </div>
+      </section>
 
       <section class="portfolio-list container">
         <div class="portfolio-grid" data-portfolio-grid></div>
@@ -112,8 +99,9 @@
   <script src="assets/js/portfolio-list-2.js?v=20260810-2"></script>
   <script src="assets/js/portfolio-list-3.js?v=20260810-2"></script>
   <script src="assets/js/portfolio-list-4.js?v=20260810-2"></script>
-  <script src="assets/js/portfolio-taxonomy.js?v=20260811-1"></script>
-  <script src="assets/js/main.js?v=20260810-7"></script>
-  <script src="assets/js/portfolio.js?v=20260810-1"></script>
+  <script src="assets/js/portfolio-taxonomy.js?v=20260811-2"></script>
+  <script src="assets/js/portfolio-archive-data.js?v=20260811-1"></script>
+  <script src="assets/js/main.js?v=20260811-2"></script>
+  <script src="assets/js/portfolio.js?v=20260811-2"></script>
 </body>
 </html>
