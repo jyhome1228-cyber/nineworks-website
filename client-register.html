@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="나인웍스 클라이언트 등록 요청 페이지. 기존 협업사와 진행 중인 클라이언트의 회사·담당자 정보를 등록하고 전용 지원 서비스를 이용할 수 있습니다.">
+  <link rel="canonical" href="https://9works.kr/client-register.html">
+  <title>Client Registration — NINEWORKS</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/service-sectors.css?v=20260811-3">
+</head>
+<body class="sector-page client-register-page">
+<div class="site-shell">
+  <header class="site-header"><a class="site-logo" href="index.html" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
+  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay><nav class="menu-nav"><a href="about.html">About</a><a href="designer.html">Designer</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a></nav><div class="menu-footer"><p>NINEWORKS<br>Design Studio · Incheon, Korea</p></div></aside>
+
+  <main>
+    <section class="sector-hero container">
+      <div class="sector-hero__title"><span class="sector-code">Client / Registration</span><h1>Client<br>Registration.</h1></div>
+      <div class="sector-hero__copy"><p class="lead">나인웍스와 프로젝트를 진행 중이거나 기존 협업 이력이 있는 회사·브랜드의 클라이언트 등록을 받습니다.</p><p class="copy">등록 정보를 기준으로 프로젝트 연락처와 회사 정보를 정리하고, 명함 무상 인쇄 요청 등 일부 클라이언트 전용 지원 서비스를 연결합니다. 등록 요청 후 내부 확인을 거쳐 클라이언트 등록 여부를 안내합니다.</p></div>
+    </section>
+
+    <section class="sector-overview container">
+      <div class="sector-overview__title"><p class="eyebrow">Client Benefits</p><h2>One record,<br>easier support.</h2></div>
+      <div class="sector-overview__body"><p class="lead">클라이언트 정보를 한 번 등록해두면 이후 제작·운영 요청을 더 빠르게 연결할 수 있습니다.</p><ul class="client-benefit-list"><li><span>01</span><div><strong>Client-only Support</strong>등록 확인 후 명함 무상 인쇄 요청 등 클라이언트 전용 지원 서비스 이용.</div></li><li><span>02</span><div><strong>Project Continuity</strong>기존 프로젝트와 담당자 정보를 기준으로 후속 디자인·PRINT·DEVELOP 요청 연결.</div></li><li><span>03</span><div><strong>Updated Contact</strong>담당자·회사 정보가 변경된 경우 최신 정보로 다시 등록 요청 가능.</div></li></ul></div>
+    </section>
+
+    <section class="sector-intake container">
+      <div class="sector-intake__head"><p class="eyebrow">Client Registration</p><h2>Register your company.</h2><p>신규 일반 문의가 아니라 나인웍스와 실제 프로젝트·유지보수·멤버십 등 협업 관계가 있거나 등록을 안내받은 경우 작성해 주세요.</p></div>
+      <form class="sector-intake__form" data-sector-form data-sector-label="CLIENT REGISTRATION">
+        <div class="intake-section"><div class="intake-section__head"><span>01</span><h3>등록 상태를 알려주세요.</h3></div><div class="intake-field intake-field--wide"><div class="intake-options"><label class="intake-option"><input type="radio" name="clientStatus" value="현재 프로젝트 진행 중" required><span>현재 프로젝트 진행 중</span></label><label class="intake-option"><input type="radio" name="clientStatus" value="기존 프로젝트 완료"><span>기존 프로젝트 완료</span></label><label class="intake-option"><input type="radio" name="clientStatus" value="멤버십 / 유지보수 이용 중"><span>멤버십 / 유지보수 이용 중</span></label><label class="intake-option"><input type="radio" name="clientStatus" value="나인웍스 안내로 신규 등록"><span>안내받아 신규 등록</span></label></div></div></div>
+
+        <div class="intake-section"><div class="intake-section__head"><span>02</span><h3>회사 / 브랜드 정보를 입력해 주세요.</h3></div><div class="intake-grid"><div class="intake-field"><label for="client-company">회사 / 브랜드명</label><input id="client-company" name="company" required></div><div class="intake-field"><label for="client-type">회사 / 사업 유형</label><input id="client-type" name="companyType" placeholder="법인 / 개인사업자 / 기관 / 브랜드 등"></div><div class="intake-field"><label for="client-business">사업자등록번호</label><input id="client-business" name="businessNumber" placeholder="선택 입력"></div><div class="intake-field"><label for="client-site">웹사이트 / SNS</label><input id="client-site" name="website" type="text" placeholder="9works.kr 또는 @brand"></div><div class="intake-field intake-field--wide"><label for="client-address">주소</label><input id="client-address" name="address" placeholder="사업장 / 배송지 기준 주소"></div></div></div>
+
+        <div class="intake-section"><div class="intake-section__head"><span>03</span><h3>담당자 정보를 입력해 주세요.</h3></div><div class="intake-grid"><div class="intake-field"><label for="client-name">담당자명</label><input id="client-name" name="name" required></div><div class="intake-field"><label for="client-phone">연락처</label><input id="client-phone" name="phone" type="tel" required></div><div class="intake-field"><label for="client-email">이메일</label><input id="client-email" name="email" type="email" required></div><div class="intake-field"><label for="client-history">기존 프로젝트명</label><input id="client-history" name="projectHistory" placeholder="예: 브랜드 리뉴얼 / 홈페이지 제작"></div></div></div>
+
+        <div class="intake-section"><div class="intake-section__head"><span>04</span><h3>주로 이용할 서비스를 선택해 주세요.</h3></div><div class="intake-field intake-field--wide"><div class="intake-options"><label class="intake-option"><input type="checkbox" name="serviceInterest" value="Design"><span>Design</span></label><label class="intake-option"><input type="checkbox" name="serviceInterest" value="Membership"><span>Membership</span></label><label class="intake-option"><input type="checkbox" name="serviceInterest" value="Print"><span>Print</span></label><label class="intake-option"><input type="checkbox" name="serviceInterest" value="Develop"><span>Develop</span></label></div></div><div class="intake-grid" style="margin-top:28px"><div class="intake-field intake-field--wide"><label for="client-message">추가 메모</label><textarea id="client-message" name="message" placeholder="담당자 변경, 배송지, 프로젝트 관련 참고사항 등이 있으면 적어주세요."></textarea></div></div></div>
+
+        <label class="intake-consent"><input type="checkbox" name="privacy" required><span><a href="privacy.html" target="_blank">개인정보처리방침</a>을 확인했으며 클라이언트 등록 검토를 위한 정보 제공에 동의합니다.</span></label>
+        <button class="intake-submit" type="submit"><span>CLIENT 등록 요청 보내기</span><span>↗</span></button>
+        <p class="intake-note">등록 요청은 내부 확인 후 처리됩니다. 등록이 확인되기 전에는 클라이언트 전용 명함 무상 인쇄 요청 서비스를 이용할 수 없습니다.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer container"></footer>
+</div>
+<script src="assets/js/main.js?v=20260811-4"></script>
+<script src="assets/js/service-sectors.js?v=20260811-6"></script>
+</body>
+</html>
