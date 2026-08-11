@@ -8,6 +8,8 @@
     { href:'digital-build.html', label:'Digital Build' }
   ];
   const path = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+  const isPrintPath = path === 'print.html' || path.startsWith('print-') || path.startsWith('package-') || path === 'production.html';
+  const isSectorCurrent = (item) => path === item.href || (item.href === 'print.html' && isPrintPath);
 
   const ensureHeaderLinks = () => {
     document.querySelectorAll('.site-header').forEach((header) => {
@@ -15,7 +17,7 @@
       const nav = document.createElement('nav');
       nav.className = 'site-service-nav';
       nav.setAttribute('aria-label', '서비스 바로가기');
-      nav.innerHTML = sectorLinks.map((item) => `<a href="${item.href}"${path === item.href ? ' class="is-current" aria-current="page"' : ''}>${item.label}</a>`).join('');
+      nav.innerHTML = sectorLinks.map((item) => `<a href="${item.href}"${isSectorCurrent(item) ? ' class="is-current" aria-current="page"' : ''}>${item.label}</a>`).join('');
       const trigger = header.querySelector('[data-menu-trigger]');
       header.insertBefore(nav, trigger || null);
     });
@@ -26,7 +28,7 @@
       if (overlay.querySelector('.menu-sector-links')) return;
       const block = document.createElement('div');
       block.className = 'menu-sector-links';
-      block.innerHTML = `<span class="menu-sector-links__label">Services</span>${sectorLinks.map((item) => `<a href="${item.href}"><span>${item.label}</span><span>↗</span></a>`).join('')}`;
+      block.innerHTML = `<span class="menu-sector-links__label">Services</span>${sectorLinks.map((item) => `<a href="${item.href}"${isSectorCurrent(item) ? ' class="is-current" aria-current="page"' : ''}><span>${item.label}</span><span>↗</span></a>`).join('')}`;
       const footer = overlay.querySelector('.menu-footer');
       if (footer) footer.insertAdjacentElement('beforebegin', block);
       else overlay.appendChild(block);
@@ -43,12 +45,9 @@
     budget:'예상 예산', reference:'자료 / 레퍼런스 링크', message:'추가 요청사항'
   };
 
-  const readValues = (form, name) => {
-    return Array.from(form.querySelectorAll(`[name="${CSS.escape(name)}"]`))
-      .filter((el) => (el.type === 'checkbox' || el.type === 'radio') ? el.checked : String(el.value || '').trim())
-      .map((el) => String(el.value || '').trim())
-      .filter(Boolean);
-  };
+  const readValues = (form, name) => Array.from(form.querySelectorAll(`[name="${CSS.escape(name)}"]`))
+    .filter((el) => (el.type === 'checkbox' || el.type === 'radio') ? el.checked : String(el.value || '').trim())
+    .map((el) => String(el.value || '').trim()).filter(Boolean);
 
   const bindQuoteBuilder = (form) => {
     if (!form.matches('[data-quote-form]') || form.dataset.quoteBound === 'true') return;
