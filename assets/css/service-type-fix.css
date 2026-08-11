@@ -1,0 +1,34 @@
+/* NINEWORKS — service hero typography refinement */
+.sector-page .sector-hero h1{
+  line-height:1.01 !important;
+  letter-spacing:-.052em !important;
+}
+
+.client-register-page .sector-hero{
+  min-height:54vh !important;
+}
+.client-register-page .sector-hero__title{
+  grid-column:1/span 6;
+}
+.client-register-page .sector-hero h1{
+  max-width:9.5ch !important;
+  font-size:clamp(54px,5.2vw,84px) !important;
+  line-height:1.02 !important;
+  letter-spacing:-.055em !important;
+  word-break:normal !important;
+}
+.client-register-page .sector-code{
+  margin-bottom:24px !important;
+}
+
+@media(max-width:760px){
+  .sector-page .sector-hero h1{
+    line-height:1.03 !important;
+    letter-spacing:-.045em !important;
+  }
+  .client-register-page .sector-hero h1{
+    max-width:10ch !important;
+    font-size:clamp(46px,13vw,62px) !important;
+    line-height:1.04 !important;
+  }
+}
