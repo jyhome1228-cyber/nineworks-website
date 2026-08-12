@@ -36,37 +36,15 @@
     .portfolio-page .portfolio-filter.category-nav button.is-active {color:#fff!important;background:#111!important}
     .portfolio-page .portfolio-list.container {padding-top:clamp(34px,3.2vw,50px)!important}
 
-    .portfolio-card--develop .portfolio-card__actions {
-      margin-top: 12px;
-    }
+    .portfolio-card--develop .portfolio-card__actions {margin-top:12px}
     .portfolio-card--develop .portfolio-card__live {
-      display: flex;
-      width: 100%;
-      min-height: 40px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      box-sizing: border-box;
-      padding: 10px 12px;
-      border: 1px solid rgba(17,17,17,.24);
-      color: #111;
-      background: transparent;
-      font-size: 10px;
-      font-weight: 600;
-      line-height: 1;
-      letter-spacing: .075em;
-      text-transform: uppercase;
-      transition: background .2s ease, color .2s ease, border-color .2s ease;
+      display:flex;width:100%;min-height:40px;align-items:center;justify-content:space-between;gap:18px;
+      box-sizing:border-box;padding:10px 12px;border:1px solid rgba(17,17,17,.24);color:#111;background:transparent;
+      font-size:10px;font-weight:600;line-height:1;letter-spacing:.075em;text-transform:uppercase;
+      transition:background .2s ease,color .2s ease,border-color .2s ease;
     }
-    .portfolio-card--develop .portfolio-card__live:hover {
-      border-color: #111;
-      color: #fff;
-      background: #111;
-    }
-    .portfolio-card--develop .portfolio-card__live span:last-child {
-      font-size: 13px;
-      line-height: 1;
-    }
+    .portfolio-card--develop .portfolio-card__live:hover {border-color:#111;color:#fff;background:#111}
+    .portfolio-card--develop .portfolio-card__live span:last-child {font-size:13px;line-height:1}
 
     @media(max-width:760px){
       .portfolio-page .portfolio-filter.category-nav{padding-right:18px!important;padding-left:18px!important}
@@ -143,16 +121,15 @@
   <script>
     (() => {
       const liveSites = {
-        'fineb': 'https://finebpkg.com/',
+        fineb: 'https://finebpkg.com/',
         'tne-epc': 'https://tneepc.com/',
-        'relim': 'https://re-lim.com/',
-        'aesost': 'https://aesost.com/index.html',
-        'kekomi': 'https://kekomi.co.kr/',
+        relim: 'https://re-lim.com/',
+        aesost: 'https://aesost.com/index.html',
+        kekomi: 'https://kekomi.co.kr/',
         'the-petrichor': 'https://thepetrichor.co.kr/'
       };
 
       document.querySelectorAll('.portfolio-card[data-category~="develop"]').forEach((card) => {
-        if (card.querySelector('[data-develop-live-cta]')) return;
         const detailLink = card.querySelector('.portfolio-card__link[href*="portfolio-detail.html?work="]');
         if (!detailLink) return;
 
@@ -162,7 +139,11 @@
         const liveUrl = liveSites[id];
         if (!liveUrl) return;
 
+        // Force a fresh detail document so an older cached loader cannot survive.
+        detailLink.setAttribute('href', `portfolio-detail.html?work=${encodeURIComponent(id)}&v=20260812-8`);
+
         card.classList.add('portfolio-card--develop');
+        if (card.querySelector('[data-develop-live-cta]')) return;
         const actions = document.createElement('div');
         actions.className = 'portfolio-card__actions';
         actions.innerHTML = `<a class="portfolio-card__live" data-develop-live-cta href="${liveUrl}" target="_blank" rel="noopener noreferrer" aria-label="${id} live site"><span>VIEW LIVE SITE</span><span>↗</span></a>`;
