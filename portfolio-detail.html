@@ -6,6 +6,12 @@
   <meta name="description" content="NINEWORKS portfolio project">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Portfolio — NINEWORKS</title>
+  <script>
+    (() => {
+      const work = new URLSearchParams(location.search).get('work') || '';
+      if (work === 'the-petrichor') location.replace('portfolio-the-petrichor.html?v=20260812-10');
+    })();
+  </script>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/portfolio.css?v=20260807-6">
   <link rel="stylesheet" href="assets/css/portfolio-dynamic.css?v=20260807-2">
@@ -40,10 +46,8 @@
 <script src="assets/js/works/image-archive-2.js"></script>
 <script src="assets/js/works/image-archive-3.js"></script>
 <script src="assets/js/works/summary-archive.js"></script>
-<!-- THE PETRICHOR is pre-registered from a dedicated safe bundle so the legacy dynamic case loader is never used for this project. -->
-<script src="assets/js/works/the-petrichor-safe.js?v=20260812-1"></script>
 <script src="assets/js/main.js?v=20260811-2"></script>
-<script src="assets/js/portfolio-dynamic.js?v=20260812-9"></script>
+<script src="assets/js/portfolio-dynamic.js?v=20260812-10"></script>
 
 <script>
 (() => {
@@ -52,8 +56,7 @@
     'tne-epc': 'https://tneepc.com/',
     relim: 'https://re-lim.com/',
     aesost: 'https://aesost.com/index.html',
-    kekomi: 'https://kekomi.co.kr/',
-    'the-petrichor': 'https://thepetrichor.co.kr/'
+    kekomi: 'https://kekomi.co.kr/'
   };
 
   const escapeHTML = (value = '') => String(value)
