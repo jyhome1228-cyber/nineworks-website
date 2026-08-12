@@ -10,6 +10,18 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const developDetailPages = {
+    fineb: 'portfolio-fineb.html?v=20260812-10',
+    'tne-epc': 'portfolio-tne-epc.html?v=20260812-10',
+    relim: 'portfolio-relim.html?v=20260812-10',
+    aesost: 'portfolio-aesost.html?v=20260812-10',
+    kekomi: 'portfolio-kekomi.html?v=20260812-10',
+    'the-petrichor': 'portfolio-the-petrichor.html?v=20260812-10'
+  };
+
+  const detailHref = (project) => developDetailPages[project.id]
+    || `portfolio-detail.html?work=${encodeURIComponent(project.id)}`;
+
   const seen = new Set();
   const allProjects = window.NW_PORTFOLIO.filter((project) => {
     const key = `${project.client}|${project.title}`.toLowerCase();
@@ -36,7 +48,7 @@
 
     grid.innerHTML = selected.map((project, index) => `
       <article class="project-card project-filter-item is-visible" data-category="${escapeHTML((project.filters || []).join(' '))}" style="--random-index:${index}">
-        <a class="project-card__link" href="portfolio-detail.html?work=${encodeURIComponent(project.id)}" aria-label="${escapeHTML(project.title)} 프로젝트 상세 보기">
+        <a class="project-card__link" href="${detailHref(project)}" aria-label="${escapeHTML(project.title)} 프로젝트 상세 보기">
           <div class="project-card__visual project-visual project-random-media">
             <img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.title)}" loading="lazy">
             <span class="project-random-index">${String(index + 1).padStart(2, '0')}</span>
