@@ -13,6 +13,9 @@
     'centellian-24'
   ]);
 
+  // Existing DEVELOP cases remain explicit for backward compatibility.
+  // Future cases do not need to be added here: a `develop` filter in the
+  // shared portfolio list is preserved automatically below.
   const develop = new Set([
     'fineb',
     'tne-epc',
@@ -39,7 +42,8 @@
       return;
     }
 
-    if (develop.has(project.id)) {
+    const incomingFilters = Array.isArray(project.filters) ? project.filters : [];
+    if (develop.has(project.id) || incomingFilters.includes('develop')) {
       project.filters = ['develop', 'branding'];
       return;
     }
