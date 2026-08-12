@@ -139,8 +139,7 @@
         const liveUrl = liveSites[id];
         if (!liveUrl) return;
 
-        // Force a fresh detail document so an older cached loader cannot survive.
-        detailLink.setAttribute('href', `portfolio-detail.html?work=${encodeURIComponent(id)}&v=20260812-8`);
+        detailLink.setAttribute('href', `portfolio-detail.html?work=${encodeURIComponent(id)}&v=20260812-9`);
 
         card.classList.add('portfolio-card--develop');
         if (card.querySelector('[data-develop-live-cta]')) return;
