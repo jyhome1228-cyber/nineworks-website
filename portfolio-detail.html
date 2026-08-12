@@ -40,8 +40,10 @@
 <script src="assets/js/works/image-archive-2.js"></script>
 <script src="assets/js/works/image-archive-3.js"></script>
 <script src="assets/js/works/summary-archive.js"></script>
+<!-- THE PETRICHOR is pre-registered from a dedicated safe bundle so the legacy dynamic case loader is never used for this project. -->
+<script src="assets/js/works/the-petrichor-safe.js?v=20260812-1"></script>
 <script src="assets/js/main.js?v=20260811-2"></script>
-<script src="assets/js/portfolio-dynamic.js?v=20260812-8"></script>
+<script src="assets/js/portfolio-dynamic.js?v=20260812-9"></script>
 
 <script>
 (() => {
@@ -58,7 +60,7 @@
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
+    .replace(/\"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
   const fallbackRender = () => {
