@@ -53,10 +53,10 @@
   font-weight:400!important;
 }
 
-/* DEVELOP 제목 블록도 기존 섹션과 같은 메타 → 제목 → 본문 순서 */
+/* DEVELOP 제목 블록 — 이전 콘텐츠와 충분히 분리한 뒤 메타 → 제목 → 본문 순서 */
 .portfolio-develop-mode .dev-case-heading{
   display:block!important;
-  margin:0 0 24px!important;
+  margin:clamp(92px,7vw,120px) 0 28px!important;
   padding:0!important;
   border:0!important;
 }
@@ -72,7 +72,7 @@
   margin:28px 0 0!important;
 }
 
-/* 기존 프로젝트 섹션 수직 리듬도 동일하게 축소 */
+/* 기존 프로젝트 섹션 수직 리듬 */
 .portfolio-develop-mode .portfolio-scroll-section__head{
   margin-bottom:28px!important;
 }
@@ -89,12 +89,12 @@
   margin-top:16px!important;
 }
 
-/* DEVELOP 블록 사이 간격도 과하게 벌어지지 않도록 */
+/* DEVELOP 블록 사이 간격 */
 .portfolio-develop-mode .dev-inline-block{
   margin:64px 0 0!important;
 }
 .portfolio-develop-mode .dev-inline-block .dev-case-heading:not(:first-child){
-  margin-top:70px!important;
+  margin-top:clamp(92px,7vw,120px)!important;
 }
 .portfolio-develop-mode .dev-case-system{
   margin:58px 0 0!important;
@@ -174,7 +174,9 @@
 @media(max-width:760px){
   .portfolio-develop-mode{--case-title-size:clamp(27px,7.2vw,31px);--case-body-size:13.5px;--case-meta-size:10px;--case-card-title-size:15.5px;--case-card-body-size:12.5px}
   .portfolio-develop-mode .portfolio-scroll-section__meta{gap:18px!important;margin-bottom:26px!important}
+  .portfolio-develop-mode .dev-case-heading{margin-top:72px!important;margin-bottom:24px!important}
   .portfolio-develop-mode .dev-case-heading>span{margin-bottom:26px!important}
   .portfolio-develop-mode .dev-case-heading p{margin-top:24px!important}
   .portfolio-develop-mode .dev-inline-block{margin-top:56px!important}
+  .portfolio-develop-mode .dev-inline-block .dev-case-heading:not(:first-child){margin-top:72px!important}
 }
