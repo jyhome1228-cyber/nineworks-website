@@ -48,22 +48,53 @@
   ];
 
   const accents = ['#8b4637', '#315d48', '#31597d', '#8d6430', '#6d4c64', '#47636b'];
+  const VERSION = '3';
+  let fieldObserver = null;
+  let lockTimer = null;
 
   const typeStyle = (text, order) => {
     const chars = Math.max(4, text.length);
-    const delay = 80 + order * 34;
-    const duration = Math.max(170, Math.min(520, chars * 17));
+    const delay = 90 + order * 30;
+    const duration = Math.max(160, Math.min(500, chars * 16));
     return `--type-delay:${delay}ms;--type-duration:${duration}ms;--type-steps:${chars}`;
   };
 
-  const renderPractice = () => {
+  const isCorrect = (field) => {
+    if (!field) return false;
+    const sections = field.querySelectorAll('.home-practice-group');
+    if (sections.length !== groups.length) return false;
+    return groups.every((group, index) => {
+      const section = sections[index];
+      const title = section?.querySelector('.home-practice-group__head span:first-child')?.textContent?.trim();
+      const lead = section?.querySelector('.home-practice-word--lead')?.textContent?.trim();
+      return title === group.title && lead === group.lead;
+    });
+  };
+
+  const watchField = (field) => {
+    fieldObserver?.disconnect();
+    fieldObserver = new MutationObserver(() => {
+      if (isCorrect(field)) return;
+      fieldObserver.disconnect();
+      renderPractice(true);
+    });
+    fieldObserver.observe(field, { childList: true, subtree: true, characterData: true });
+  };
+
+  const renderPractice = (force = false) => {
     const hero = document.querySelector('main .hero');
     const field = hero?.querySelector('.home-practice-field');
     if (!hero || !field) return false;
-    if (field.dataset.practiceVersion === '2') return true;
 
-    field.dataset.practiceVersion = '2';
+    if (!force && field.dataset.practiceVersion === VERSION && isCorrect(field)) {
+      watchField(field);
+      return true;
+    }
+
+    fieldObserver?.disconnect();
+    field.dataset.practiceVersion = VERSION;
     field.setAttribute('aria-label', 'NINEWORKS practice index: brand, design and digital development');
+    field.classList.remove('is-practice-typing', 'is-practice-typed');
 
     let typeOrder = 0;
     const columns = [groups.slice(0, 3), groups.slice(3, 6), groups.slice(6, 9)];
@@ -92,14 +123,12 @@
       </div>`).join('');
 
     const descriptor = hero.querySelector('.hero__descriptor');
-    if (descriptor) {
-      descriptor.textContent = '브랜드 전략과 아이덴티티부터 패키지, 디지털 시스템, 콘텐츠와 공간까지 하나의 시각 언어와 작동하는 구조로 연결합니다.';
-    }
+    if (descriptor) descriptor.textContent = '브랜드 전략과 아이덴티티부터 패키지, 디지털 시스템, 콘텐츠와 공간까지 하나의 시각 언어와 작동하는 구조로 연결합니다.';
 
     const caption = hero.querySelector('.home-practice-caption');
-    if (caption) {
-      caption.innerHTML = '<strong>Practice Index / 54</strong><span>Brand · Package · Editorial · Develop · Digital · Content · Space · Corporate · Growth</span>';
-    }
+    if (caption) caption.innerHTML = '<strong>Practice Index / 54</strong><span>Brand · Package · Editorial · Develop · Digital · Content · Space · Corporate · Growth</span>';
+
+    watchField(field);
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       field.classList.add('is-practice-typed');
@@ -107,22 +136,40 @@
     }
 
     requestAnimationFrame(() => {
-      field.classList.add('is-practice-typing');
-      const lastDelay = 80 + Math.max(0, typeOrder - 1) * 34;
+      requestAnimationFrame(() => field.classList.add('is-practice-typing'));
+      const lastDelay = 90 + Math.max(0, typeOrder - 1) * 30;
       window.setTimeout(() => {
         field.classList.remove('is-practice-typing');
         field.classList.add('is-practice-typed');
-      }, lastDelay + 760);
+      }, lastDelay + 720);
     });
 
     return true;
   };
 
-  if (renderPractice()) return;
+  const enforce = () => {
+    const hero = document.querySelector('main .hero');
+    const field = hero?.querySelector('.home-practice-field');
+    if (!field) return false;
+    if (!isCorrect(field)) renderPractice(true);
+    else watchField(field);
+    return true;
+  };
 
-  const observer = new MutationObserver(() => {
-    if (renderPractice()) observer.disconnect();
-  });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
-  window.setTimeout(() => observer.disconnect(), 7000);
+  if (!renderPractice()) {
+    const observer = new MutationObserver(() => {
+      if (renderPractice()) observer.disconnect();
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    window.setTimeout(() => observer.disconnect(), 8000);
+  }
+
+  // Legacy copy scripts are loaded dynamically. Re-check briefly after page load,
+  // then the field-level MutationObserver keeps the final practice data locked.
+  let checks = 0;
+  lockTimer = window.setInterval(() => {
+    enforce();
+    checks += 1;
+    if (checks >= 20) window.clearInterval(lockTimer);
+  }, 250);
 })();
