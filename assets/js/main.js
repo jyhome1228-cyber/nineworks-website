@@ -52,7 +52,9 @@
   if (isHome) {
     loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
     loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-3');
+    loadStylesheet('assets/css/home-practice-v2.css?v=20260812-1');
     loadScript('assets/js/home-portfolio.js?v=20260810-5');
+    loadScript('assets/js/home-practice-v2.js?v=20260812-1');
   }
   if (body.classList.contains('designer-page') || pageSlug === 'designer') {
     loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
