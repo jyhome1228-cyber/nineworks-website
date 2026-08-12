@@ -2,11 +2,13 @@
   const grid = document.querySelector('[data-develop-work-grid]');
   if (!grid || !Array.isArray(window.NW_PORTFOLIO)) return;
 
-  const preferredOrder = ['the-petrichor', 'kekomi', 'aesost', 'relim', 'tne-epc', 'fineb'];
-  const orderIndex = new Map(preferredOrder.map((id, index) => [id, index]));
+  // The DEVELOP page reads directly from the shared portfolio dataset.
+  // New DEVELOP cases appended to any portfolio list automatically appear here,
+  // with the newest appended case shown first. No project ID maintenance is needed.
   const projects = window.NW_PORTFOLIO
     .filter((project) => Array.isArray(project.filters) && project.filters.includes('develop'))
-    .sort((a, b) => (orderIndex.get(a.id) ?? 999) - (orderIndex.get(b.id) ?? 999));
+    .slice()
+    .reverse();
 
   const escapeHTML = (value = '') => String(value)
     .replaceAll('&', '&amp;')
