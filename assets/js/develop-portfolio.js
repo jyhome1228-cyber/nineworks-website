@@ -17,9 +17,11 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const detailHref = (project) => project.detailUrl || `portfolio-detail.html?work=${encodeURIComponent(project.id)}`;
+
   grid.innerHTML = projects.map((project) => `
     <article class="develop-work-card">
-      <a class="develop-work-card__link" href="portfolio-detail.html?work=${encodeURIComponent(project.id)}">
+      <a class="develop-work-card__link" href="${escapeHTML(detailHref(project))}">
         <div class="develop-work-card__media">
           <img src="${escapeHTML(project.thumbnail || '')}" alt="${escapeHTML(project.title)} develop project" loading="lazy">
         </div>
