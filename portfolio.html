@@ -139,7 +139,9 @@
         const liveUrl = liveSites[id];
         if (!liveUrl) return;
 
-        detailLink.setAttribute('href', `portfolio-detail.html?work=${encodeURIComponent(id)}&v=20260812-9`);
+        detailLink.setAttribute('href', id === 'the-petrichor'
+          ? 'portfolio-the-petrichor.html?v=20260812-10'
+          : `portfolio-detail.html?work=${encodeURIComponent(id)}&v=20260812-10`);
 
         card.classList.add('portfolio-card--develop');
         if (card.querySelector('[data-develop-live-cta]')) return;
