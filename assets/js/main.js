@@ -1,35 +1,37 @@
 (() => {
   const body = document.body;
-  const pathname = window.location.pathname;
-  const fileName = pathname.split('/').filter(Boolean).pop() || 'index.html';
-  const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
-  const pageSlug = isHome ? 'home' : fileName.replace(/\.html$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
-  const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
-  const isSectorPage = body.classList.contains('sector-page');
+  const path = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+  const isHome = path === 'index.html' || window.location.pathname.endsWith('/');
+  const pageKey = isHome ? 'home' : path.replace(/\.html$/i, '');
 
   const assetPath = (value = '') => {
     try { return new URL(value, document.baseURI).pathname; }
     catch { return String(value).split('?')[0]; }
   };
   const hasAsset = (selector, attr, value) => Array.from(document.querySelectorAll(selector))
-    .some((node) => assetPath(node.getAttribute(attr) || node[attr] || '') === assetPath(value));
-  const loadStylesheet = (href) => {
+    .some((node) => assetPath(node.getAttribute(attr) || '') === assetPath(value));
+  const loadStyle = (href) => {
     if (hasAsset('link[rel="stylesheet"]', 'href', href)) return;
-    const stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    stylesheet.href = href;
-    document.head.appendChild(stylesheet);
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
   };
   const loadScript = (src) => {
     if (hasAsset('script[src]', 'src', src)) return;
     const script = document.createElement('script');
     script.src = src;
-    script.async = false;
-    document.body.appendChild(script);
+    script.defer = true;
+    document.head.appendChild(script);
   };
 
+  loadStyle('assets/css/clarity-20260814.css?v=20260814-2');
   loadScript('assets/js/seo.js?v=20260811-3');
-  loadScript('assets/js/typography.js?v=20260808-1');
+  if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
+  if (body.classList.contains('portfolio-detail-page')) {
+    loadStyle('assets/css/portfolio-detail-refine.css?v=20260807-4');
+    loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
+  }
 
   document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
   const favicon = document.createElement('link');
@@ -38,110 +40,115 @@
   favicon.href = 'favicon.svg?v=20260808-2';
   document.head.appendChild(favicon);
 
-  loadStylesheet('assets/css/refine.css?v=20260808-2');
-  loadStylesheet('assets/css/alignment.css?v=20260808-1');
-  if (!isSectorPage) loadStylesheet('assets/css/service-sectors.css?v=20260811-3');
-  loadStylesheet('assets/css/service-type-fix.css?v=20260811-1');
-  if (!isSectorPage) loadScript('assets/js/service-sectors.js?v=20260811-7');
+  body.classList.add(`page-${pageKey}`);
 
   const header = document.querySelector('.site-header');
-  const menuButton = document.querySelector('[data-menu-trigger]');
-  const menu = document.querySelector('[data-menu-overlay]');
-  body.classList.add(`page-${pageSlug}`);
+  const overlay = document.querySelector('[data-menu-overlay]');
+  const isServicePage = /^(solutions|develop|print|print-editorial|print-partner|package-production|package-sample|membership|client-register)$/.test(pageKey);
 
-  // Keep the public home URL canonical. GitHub Pages may expose /index.html as the same document.
-  document.querySelectorAll('a[href="index.html"]').forEach((link) => link.setAttribute('href', '/'));
-
-  if (document.querySelector('.project-detail')) loadStylesheet('assets/css/project-detail.css?v=20260804-2');
-  if (body.classList.contains('contact-page')) loadStylesheet('assets/css/contact.css?v=20260807-4');
-  if (isPortfolioDetail) {
-    loadStylesheet('assets/css/portfolio-detail-refine.css?v=20260807-4');
-    loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
+  if (header) {
+    header.innerHTML = `
+      <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
+      <nav class="site-primary-nav" aria-label="주요 메뉴">
+        <a href="about.html" data-nav-key="about">ABOUT</a>
+        <a href="portfolio.html" data-nav-key="work">WORK</a>
+        <a href="magazine.html" data-nav-key="magazine">MAGAZINE</a>
+        <a href="contact.html" data-nav-key="contact">CONTACT</a>
+      </nav>
+      <div class="site-header__actions">
+        <div class="site-service-menu" data-service-menu>
+          <button class="site-service-button${isServicePage ? ' is-current' : ''}" type="button" aria-expanded="false" aria-controls="site-service-dropdown" data-service-toggle>
+            <span>SERVICES</span><span class="site-service-button__mark">＋</span>
+          </button>
+          <div class="site-service-dropdown" id="site-service-dropdown" aria-hidden="true" data-service-dropdown>
+            <a href="solutions.html#branding"><span>01</span><strong>BRANDING</strong><small>Strategy · Identity · Package</small></a>
+            <a href="develop.html"><span>02</span><strong>DEVELOP</strong><small>Website · Commerce · System</small></a>
+            <a href="print.html"><span>03</span><strong>PRINT</strong><small>Package · Editorial · Production</small></a>
+            <a href="membership.html"><span>04</span><strong>MEMBERSHIP</strong><small>Ongoing design support</small></a>
+          </div>
+        </div>
+        <a class="site-header__action" href="contact.html">START A PROJECT <span>↗</span></a>
+      </div>
+      <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>`;
   }
-  if (isHome) {
-    loadStylesheet('assets/css/home-portfolio.css?v=20260808-4');
-    loadStylesheet('assets/css/home-editorial-hero.css?v=20260810-3');
-    loadStylesheet('assets/css/home-practice-v2.css?v=20260812-1');
-    loadScript('assets/js/home-portfolio.js?v=20260810-5');
-    loadScript('assets/js/home-practice-v2.js?v=20260812-1');
+
+  if (overlay) {
+    overlay.innerHTML = `
+      <nav class="menu-nav" aria-label="모바일 주요 메뉴">
+        <a href="about.html">ABOUT</a>
+        <a href="portfolio.html">WORK</a>
+        <a href="solutions.html">SERVICES</a>
+        <a href="magazine.html">MAGAZINE</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+      <div class="menu-service-links" aria-label="서비스 바로가기">
+        <a href="solutions.html#branding">BRANDING <span>↗</span></a>
+        <a href="develop.html">DEVELOP <span>↗</span></a>
+        <a href="print.html">PRINT <span>↗</span></a>
+        <a href="membership.html">MEMBERSHIP <span>↗</span></a>
+      </div>
+      <div class="menu-footer"><p>NINEWORKS<br>Design Studio · Incheon, Korea</p><a href="mailto:info@9works.kr">info@9works.kr</a></div>`;
   }
-  if (body.classList.contains('designer-page') || pageSlug === 'designer') {
-    loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
-  }
 
-  loadStylesheet('assets/css/readability-v3.css?v=20260810-1');
-  loadStylesheet('assets/css/fullwidth-v1.css?v=20260810-2');
-  loadStylesheet('assets/css/research-studio-v1.css?v=20260810-1');
-  loadStylesheet('assets/css/type-scale-v1.css?v=20260810-1');
-  loadScript('assets/js/research-copy.js?v=20260811-2');
-
-  document.querySelectorAll('a[href="research.html"]').forEach((link) => {
-    link.href = 'solutions.html';
-    if (/research/i.test(link.textContent)) link.textContent = link.textContent.replace(/research/ig, 'Solutions');
-  });
-  document.querySelectorAll('.menu-nav').forEach((nav) => {
-    nav.querySelectorAll('a[href="research.html"]').forEach((link) => link.remove());
-    if (!nav.querySelector('a[href="solutions.html"]')) {
-      const link = document.createElement('a');
-      link.href = 'solutions.html';
-      link.textContent = 'Solutions';
-      nav.insertBefore(link, nav.querySelector('a[href="contact.html"]') || null);
-    }
-  });
-
-  const markCurrentNavigation = () => {
-    const current = isHome ? 'index.html' : fileName;
-    document.querySelectorAll('.menu-nav a, .site-footer__links a').forEach((link) => {
-      const href = (link.getAttribute('href') || '').split('?')[0].split('#')[0];
-      const active = href === current || (pageSlug === 'portfolio-detail' && href === 'portfolio.html') || (pageSlug === 'magazine-detail' && href === 'magazine.html');
-      link.classList.toggle('is-current', active);
-      if (active) link.setAttribute('aria-current', 'page');
-      else link.removeAttribute('aria-current');
-    });
+  const navMap = {
+    about: 'about', designer: 'about',
+    portfolio: 'work', 'portfolio-detail': 'work',
+    magazine: 'magazine', 'magazine-detail': 'magazine',
+    contact: 'contact'
   };
-  markCurrentNavigation();
-
-  document.querySelectorAll('a[href="mailto:contact@9works.kr"]').forEach((link) => {
-    link.href = 'mailto:info@9works.kr';
-    if (link.textContent.trim() === 'contact@9works.kr') link.textContent = 'info@9works.kr';
+  const activeNav = navMap[pageKey];
+  document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
+    const active = link.dataset.navKey === activeNav;
+    link.classList.toggle('is-current', active);
+    if (active) link.setAttribute('aria-current', 'page');
   });
-  const menuOffice = document.querySelector('.menu-footer > p');
-  if (menuOffice) menuOffice.innerHTML = 'NINEWORKS<br>Design Studio · Incheon, Korea';
+
+  const trigger = document.querySelector('[data-menu-trigger]');
+  const serviceToggle = document.querySelector('[data-service-toggle]');
+  const serviceMenu = document.querySelector('[data-service-menu]');
+  const serviceDropdown = document.querySelector('[data-service-dropdown]');
 
   const setMenu = (open) => {
     body.classList.toggle('is-menu-open', open);
-    menuButton?.setAttribute('aria-expanded', String(open));
-    menu?.setAttribute('aria-hidden', String(!open));
-    if (isPortfolioDetail && open) {
-      header?.classList.remove('is-hidden');
-      body.classList.remove('is-detail-header-hidden');
-    }
+    trigger?.setAttribute('aria-expanded', String(open));
+    overlay?.setAttribute('aria-hidden', String(!open));
   };
-  menuButton?.addEventListener('click', () => setMenu(!body.classList.contains('is-menu-open')));
-  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+  const setService = (open) => {
+    serviceMenu?.classList.toggle('is-open', open);
+    serviceToggle?.setAttribute('aria-expanded', String(open));
+    serviceDropdown?.setAttribute('aria-hidden', String(!open));
+  };
 
-  const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 10);
+  trigger?.addEventListener('click', () => setMenu(!body.classList.contains('is-menu-open')));
+  overlay?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  serviceToggle?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    setService(!serviceMenu?.classList.contains('is-open'));
+  });
+  serviceDropdown?.addEventListener('click', (event) => event.stopPropagation());
+  document.addEventListener('click', () => setService(false));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') { setMenu(false); setService(false); }
+  });
+
+  const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
-  const revealItems = document.querySelectorAll('.reveal');
+  const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px' });
-    revealItems.forEach((item) => observer.observe(item));
-  } else revealItems.forEach((item) => item.classList.add('is-visible'));
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }), { threshold: 0.08, rootMargin: '0px 0px -20px' });
+    reveals.forEach((item) => observer.observe(item));
+  } else reveals.forEach((item) => item.classList.add('is-visible'));
 
   document.querySelectorAll('[data-filter-group]').forEach((group) => {
     const targetSelector = group.dataset.filterTarget;
     group.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
+      const filter = button.dataset.filter || 'all';
       group.querySelectorAll('[data-filter]').forEach((item) => item.classList.toggle('is-active', item === button));
       document.querySelectorAll(targetSelector).forEach((item) => {
         const categories = (item.dataset.category || '').split(' ');
@@ -150,12 +157,10 @@
     }));
   });
 
-  const serviceTabs = document.querySelectorAll('[data-service-tab]');
-  const servicePanels = document.querySelectorAll('[data-service-panel]');
-  serviceTabs.forEach((tab) => tab.addEventListener('click', () => {
+  document.querySelectorAll('[data-service-tab]').forEach((tab) => tab.addEventListener('click', () => {
     const target = tab.dataset.serviceTab;
-    serviceTabs.forEach((item) => item.classList.toggle('is-active', item === tab));
-    servicePanels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.servicePanel === target));
+    document.querySelectorAll('[data-service-tab]').forEach((item) => item.classList.toggle('is-active', item === tab));
+    document.querySelectorAll('[data-service-panel]').forEach((panel) => panel.classList.toggle('is-active', panel.dataset.servicePanel === target));
   }));
 
   document.querySelectorAll('[data-language-scope]').forEach((scope) => {
@@ -163,16 +168,8 @@
     const copies = scope.querySelectorAll('[data-language-copy]');
     buttons.forEach((button) => button.addEventListener('click', () => {
       const language = button.dataset.languageButton;
-      buttons.forEach((item) => {
-        const active = item === button;
-        item.classList.toggle('is-active', active);
-        item.setAttribute('aria-pressed', String(active));
-      });
-      copies.forEach((copy) => {
-        const active = copy.dataset.languageCopy === language;
-        copy.classList.toggle('is-active', active);
-        copy.hidden = !active;
-      });
+      buttons.forEach((item) => item.classList.toggle('is-active', item === button));
+      copies.forEach((copy) => { copy.hidden = copy.dataset.languageCopy !== language; });
     }));
   });
 
@@ -180,50 +177,32 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="designer.html">Designer</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="portfolio.html">Work</a><a href="solutions.html">Services</a><a href="magazine.html">Magazine</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
-        <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
-        <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 916호 &nbsp;&nbsp; <strong>전화</strong> · 010-5422-5650</p>
-        <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
-        <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
+        <p>나인웍스 · 728-35-00866 · 인천광역시 서구 원당대로 1039, 태경타워 916호</p>
+        <p><a href="mailto:info@9works.kr">info@9works.kr</a> · 010-5422-5650</p>
       </div>
-      <div class="site-footer__bottom"><span>© <span data-current-year></span> NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="#">Instagram</a><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
+      <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} NINEWORKS. All rights reserved.</span><div class="site-footer__social"><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
   });
-  markCurrentNavigation();
-  document.querySelectorAll('[data-current-year]').forEach((item) => { item.textContent = new Date().getFullYear(); });
 
   const mailForm = document.querySelector('[data-mail-form]');
   mailForm?.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(mailForm);
-    const name = data.get('name') || '';
-    const company = data.get('company') || '';
-    const email = data.get('email') || '';
-    const phone = data.get('phone') || '';
-    const projectName = data.get('projectName') || '';
     const projectTypes = data.getAll('projectType');
-    const services = data.getAll('service');
-    const requirements = data.get('requirements') || '';
-    const message = data.get('message') || '';
-    const reference = data.get('reference') || '';
-    const budget = data.get('budget') || '';
-    const status = data.get('status') || '';
-    const startDate = data.get('startDate') || '';
-    const endDate = data.get('endDate') || '';
     if (mailForm.classList.contains('inquiry-form') && projectTypes.length === 0) {
       window.alert('필요한 작업 유형을 한 개 이상 선택해 주세요.');
-      mailForm.querySelector('input[name="projectType"]')?.focus();
       return;
     }
-    const subject = `[NINEWORKS 프로젝트 문의] ${projectName || company || name}`;
+    const name = data.get('name') || '';
+    const company = data.get('company') || '';
+    const projectName = data.get('projectName') || '';
     const bodyText = [
-      '[CONTACT INFORMATION]',`담당자: ${name}`,`회사/브랜드: ${company}`,`이메일: ${email}`,`연락처: ${phone}`,'',
-      '[PROJECT SCOPE]',`프로젝트명: ${projectName}`,`작업 유형: ${projectTypes.join(', ')}`,
-      services.length ? `포함 희망 항목: ${services.join(', ')}` : '',
-      `요청사항 / 필요한 결과물: ${requirements}`,`프로젝트 배경 / 현재 상황: ${message}`,`참고 링크: ${reference}`,'',
-      '[BUDGET & SCHEDULE]',`예상 예산: ${budget}`,`현재 진행 상태: ${status}`,`작업 시작 희망일: ${startDate}`,`목표 작업 완료일: ${endDate}`
-    ].filter(Boolean).join('\n');
-    window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+      '[CONTACT]', `회사/브랜드: ${company}`, `담당자: ${name}`, `이메일: ${data.get('email') || ''}`, `연락처: ${data.get('phone') || ''}`, '',
+      '[PROJECT]', `프로젝트명: ${projectName}`, `작업 유형: ${projectTypes.join(', ')}`, `요청사항: ${data.get('requirements') || ''}`, `현재 상황: ${data.get('message') || ''}`, `참고 링크: ${data.get('reference') || ''}`, '',
+      '[BUDGET & SCHEDULE]', `예상 예산: ${data.get('budget') || ''}`, `목표 완료일: ${data.get('endDate') || ''}`
+    ].join('\n');
+    window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(`[NINEWORKS 프로젝트 문의] ${projectName || company || name}`)}&body=${encodeURIComponent(bodyText)}`;
   });
 })();
