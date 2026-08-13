@@ -25,7 +25,7 @@
     document.head.appendChild(script);
   };
 
-  loadStyle('assets/css/clarity-20260814.css?v=20260814-2');
+  loadStyle('assets/css/clarity-20260814.css?v=20260814-3');
   loadScript('assets/js/seo.js?v=20260811-3');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
@@ -44,31 +44,20 @@
 
   const header = document.querySelector('.site-header');
   const overlay = document.querySelector('[data-menu-overlay]');
-  const isServicePage = /^(solutions|develop|print|print-editorial|print-partner|package-production|package-sample|membership|client-register)$/.test(pageKey);
 
   if (header) {
     header.innerHTML = `
       <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <a href="about.html" data-nav-key="about">ABOUT</a>
-        <a href="portfolio.html" data-nav-key="work">WORK</a>
+        <a href="designer.html" data-nav-key="designer">DESIGNER</a>
+        <a href="project.html" data-nav-key="project">PROJECT</a>
+        <a href="portfolio.html" data-nav-key="portfolio">PORTFOLIO</a>
         <a href="magazine.html" data-nav-key="magazine">MAGAZINE</a>
+        <a href="solutions.html" data-nav-key="solutions">SOLUTIONS</a>
         <a href="contact.html" data-nav-key="contact">CONTACT</a>
       </nav>
-      <div class="site-header__actions">
-        <div class="site-service-menu" data-service-menu>
-          <button class="site-service-button${isServicePage ? ' is-current' : ''}" type="button" aria-expanded="false" aria-controls="site-service-dropdown" data-service-toggle>
-            <span>SERVICES</span><span class="site-service-button__mark">＋</span>
-          </button>
-          <div class="site-service-dropdown" id="site-service-dropdown" aria-hidden="true" data-service-dropdown>
-            <a href="solutions.html#branding"><span>01</span><strong>BRANDING</strong><small>Strategy · Identity · Package</small></a>
-            <a href="develop.html"><span>02</span><strong>DEVELOP</strong><small>Website · Commerce · System</small></a>
-            <a href="print.html"><span>03</span><strong>PRINT</strong><small>Package · Editorial · Production</small></a>
-            <a href="membership.html"><span>04</span><strong>MEMBERSHIP</strong><small>Ongoing design support</small></a>
-          </div>
-        </div>
-        <a class="site-header__action" href="contact.html">START A PROJECT <span>↗</span></a>
-      </div>
+      <a class="site-header__action" href="contact.html">START A PROJECT <span>↗</span></a>
       <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>`;
   }
 
@@ -76,24 +65,26 @@
     overlay.innerHTML = `
       <nav class="menu-nav" aria-label="모바일 주요 메뉴">
         <a href="about.html">ABOUT</a>
-        <a href="portfolio.html">WORK</a>
-        <a href="solutions.html">SERVICES</a>
+        <a href="designer.html">DESIGNER</a>
+        <a href="project.html">PROJECT</a>
+        <a href="portfolio.html">PORTFOLIO</a>
         <a href="magazine.html">MAGAZINE</a>
+        <a href="solutions.html">SOLUTIONS</a>
         <a href="contact.html">CONTACT</a>
       </nav>
-      <div class="menu-service-links" aria-label="서비스 바로가기">
-        <a href="solutions.html#branding">BRANDING <span>↗</span></a>
-        <a href="develop.html">DEVELOP <span>↗</span></a>
-        <a href="print.html">PRINT <span>↗</span></a>
-        <a href="membership.html">MEMBERSHIP <span>↗</span></a>
-      </div>
-      <div class="menu-footer"><p>NINEWORKS<br>Design Studio · Incheon, Korea</p><a href="mailto:info@9works.kr">info@9works.kr</a></div>`;
+      <div class="menu-footer">
+        <p>NINEWORKS<br>Design Studio · Incheon, Korea</p>
+        <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
+      </div>`;
   }
 
   const navMap = {
-    about: 'about', designer: 'about',
-    portfolio: 'work', 'portfolio-detail': 'work',
+    about: 'about',
+    designer: 'designer',
+    project: 'project',
+    portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     magazine: 'magazine', 'magazine-detail': 'magazine',
+    solutions: 'solutions', develop: 'solutions', print: 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', membership: 'solutions', 'client-register': 'solutions',
     contact: 'contact'
   };
   const activeNav = navMap[pageKey];
@@ -101,35 +92,19 @@
     const active = link.dataset.navKey === activeNav;
     link.classList.toggle('is-current', active);
     if (active) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
   });
 
   const trigger = document.querySelector('[data-menu-trigger]');
-  const serviceToggle = document.querySelector('[data-service-toggle]');
-  const serviceMenu = document.querySelector('[data-service-menu]');
-  const serviceDropdown = document.querySelector('[data-service-dropdown]');
-
   const setMenu = (open) => {
     body.classList.toggle('is-menu-open', open);
     trigger?.setAttribute('aria-expanded', String(open));
     overlay?.setAttribute('aria-hidden', String(!open));
   };
-  const setService = (open) => {
-    serviceMenu?.classList.toggle('is-open', open);
-    serviceToggle?.setAttribute('aria-expanded', String(open));
-    serviceDropdown?.setAttribute('aria-hidden', String(!open));
-  };
 
   trigger?.addEventListener('click', () => setMenu(!body.classList.contains('is-menu-open')));
   overlay?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
-  serviceToggle?.addEventListener('click', (event) => {
-    event.stopPropagation();
-    setService(!serviceMenu?.classList.contains('is-open'));
-  });
-  serviceDropdown?.addEventListener('click', (event) => event.stopPropagation());
-  document.addEventListener('click', () => setService(false));
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') { setMenu(false); setService(false); }
-  });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
 
   const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
   updateHeader();
@@ -177,13 +152,15 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="portfolio.html">Work</a><a href="solutions.html">Services</a><a href="magazine.html">Magazine</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="designer.html">Designer</a><a href="project.html">Project</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
-        <p>나인웍스 · 728-35-00866 · 인천광역시 서구 원당대로 1039, 태경타워 916호</p>
-        <p><a href="mailto:info@9works.kr">info@9works.kr</a> · 010-5422-5650</p>
+        <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
+        <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 916호 &nbsp;&nbsp; <strong>전화</strong> · 010-5422-5650</p>
+        <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
+        <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
       </div>
-      <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} NINEWORKS. All rights reserved.</span><div class="site-footer__social"><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
+      <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="#">Instagram</a><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
   });
 
   const mailForm = document.querySelector('[data-mail-form]');
