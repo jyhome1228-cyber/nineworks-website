@@ -48,56 +48,26 @@
   ];
 
   const accents = ['#8b4637', '#315d48', '#31597d', '#8d6430', '#6d4c64', '#47636b'];
-  const VERSION = '3';
-  let fieldObserver = null;
-  let lockTimer = null;
+  const VERSION = '4';
 
   const typeStyle = (text, order) => {
     const chars = Math.max(4, text.length);
-    const delay = 90 + order * 30;
-    const duration = Math.max(160, Math.min(500, chars * 16));
+    const delay = 70 + order * 24;
+    const duration = Math.max(150, Math.min(420, chars * 14));
     return `--type-delay:${delay}ms;--type-duration:${duration}ms;--type-steps:${chars}`;
   };
 
-  const isCorrect = (field) => {
-    if (!field) return false;
-    const sections = field.querySelectorAll('.home-practice-group');
-    if (sections.length !== groups.length) return false;
-    return groups.every((group, index) => {
-      const section = sections[index];
-      const title = section?.querySelector('.home-practice-group__head span:first-child')?.textContent?.trim();
-      const lead = section?.querySelector('.home-practice-word--lead')?.textContent?.trim();
-      return title === group.title && lead === group.lead;
-    });
-  };
-
-  const watchField = (field) => {
-    fieldObserver?.disconnect();
-    fieldObserver = new MutationObserver(() => {
-      if (isCorrect(field)) return;
-      fieldObserver.disconnect();
-      renderPractice(true);
-    });
-    fieldObserver.observe(field, { childList: true, subtree: true, characterData: true });
-  };
-
-  const renderPractice = (force = false) => {
+  const renderPractice = () => {
     const hero = document.querySelector('main .hero');
     const field = hero?.querySelector('.home-practice-field');
     if (!hero || !field) return false;
-
-    if (!force && field.dataset.practiceVersion === VERSION && isCorrect(field)) {
-      watchField(field);
-      return true;
-    }
-
-    fieldObserver?.disconnect();
-    field.dataset.practiceVersion = VERSION;
-    field.setAttribute('aria-label', 'NINEWORKS practice index: brand, design and digital development');
-    field.classList.remove('is-practice-typing', 'is-practice-typed');
+    if (field.dataset.practiceVersion === VERSION) return true;
 
     let typeOrder = 0;
     const columns = [groups.slice(0, 3), groups.slice(3, 6), groups.slice(6, 9)];
+
+    field.classList.remove('is-practice-typing', 'is-practice-typed');
+    field.setAttribute('aria-label', 'NINEWORKS practice index: brand, design and digital development');
     field.innerHTML = columns.map((column, columnIndex) => `
       <div class="home-practice-column">
         ${column.map((group, groupIndex) => {
@@ -128,48 +98,35 @@
     const caption = hero.querySelector('.home-practice-caption');
     if (caption) caption.innerHTML = '<strong>Practice Index / 54</strong><span>Brand · Package · Editorial · Develop · Digital · Content · Space · Corporate · Growth</span>';
 
-    watchField(field);
+    field.dataset.practiceVersion = VERSION;
 
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const mobile = window.matchMedia('(max-width: 760px)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (mobile || reduced) {
       field.classList.add('is-practice-typed');
       return true;
     }
 
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => field.classList.add('is-practice-typing'));
-      const lastDelay = 90 + Math.max(0, typeOrder - 1) * 30;
+      field.classList.add('is-practice-typing');
+      const lastDelay = 70 + Math.max(0, typeOrder - 1) * 24;
       window.setTimeout(() => {
         field.classList.remove('is-practice-typing');
         field.classList.add('is-practice-typed');
-      }, lastDelay + 720);
+      }, lastDelay + 560);
     });
 
     return true;
   };
 
-  const enforce = () => {
-    const hero = document.querySelector('main .hero');
-    const field = hero?.querySelector('.home-practice-field');
-    if (!field) return false;
-    if (!isCorrect(field)) renderPractice(true);
-    else watchField(field);
-    return true;
-  };
+  if (renderPractice()) return;
 
-  if (!renderPractice()) {
-    const observer = new MutationObserver(() => {
-      if (renderPractice()) observer.disconnect();
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    window.setTimeout(() => observer.disconnect(), 8000);
-  }
-
-  // Legacy copy scripts are loaded dynamically. Re-check briefly after page load,
-  // then the field-level MutationObserver keeps the final practice data locked.
-  let checks = 0;
-  lockTimer = window.setInterval(() => {
-    enforce();
-    checks += 1;
-    if (checks >= 20) window.clearInterval(lockTimer);
-  }, 250);
+  // home-portfolio.js creates the nine-group field. Observe only until that one
+  // element exists, render once, then disconnect. No repeated re-render loop.
+  const observer = new MutationObserver(() => {
+    if (!renderPractice()) return;
+    observer.disconnect();
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  window.setTimeout(() => observer.disconnect(), 4000);
 })();
