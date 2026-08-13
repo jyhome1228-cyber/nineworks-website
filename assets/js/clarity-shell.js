@@ -1,1 +1,10 @@
-(() => {const body=document.body,header=document.querySelector('.site-header'),trigger=document.querySelector('[data-menu-trigger]'),menu=document.querySelector('[data-menu-overlay]');const setMenu=open=>{body.classList.toggle('is-menu-open',open);trigger?.setAttribute('aria-expanded',String(open));menu?.setAttribute('aria-hidden',String(!open))};trigger?.addEventListener('click',()=>setMenu(!body.classList.contains('is-menu-open')));menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});const update=()=>header?.classList.toggle('is-scrolled',scrollY>8);update();addEventListener('scroll',update,{passive:true});const items=document.querySelectorAll('.reveal');if('IntersectionObserver'in window){const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');ob.unobserve(e.target)}}),{threshold:.08});items.forEach(el=>ob.observe(el))}else items.forEach(el=>el.classList.add('is-visible'));document.querySelectorAll('.site-footer').forEach(footer=>footer.innerHTML='<div class="site-footer__head"><a class="site-footer__brand" href="/">NINEWORKS</a><nav class="site-footer__links"><a href="about.html">About</a><a href="portfolio.html">Work</a><a href="solutions.html">Services</a><a href="magazine.html">Magazine</a><a href="contact.html">Contact</a></nav></div><div class="site-footer__bottom"><span>© 2026 NINEWORKS. All rights reserved.</span><a href="mailto:info@9works.kr">info@9works.kr</a></div>')})();
+(() => {
+  if (window.__NW_MAIN_BOOTSTRAPPED__) return;
+  window.__NW_MAIN_BOOTSTRAPPED__ = true;
+  const current = Array.from(document.scripts).some((script) => /assets\/js\/main\.js(?:\?|$)/.test(script.src || ''));
+  if (current) return;
+  const script = document.createElement('script');
+  script.src = 'assets/js/main.js?v=20260814-4';
+  script.defer = false;
+  document.body.appendChild(script);
+})();
