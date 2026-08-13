@@ -1,16 +1,25 @@
-/* NINEWORKS home practice index v3 */
-.home-practice-field[data-practice-version="3"] .home-practice-type{
+/* NINEWORKS home practice index v4 */
+.home-practice-field:not([data-practice-version="4"]){
+  visibility:hidden;
+}
+
+.home-practice-field[data-practice-version="4"]{
+  visibility:visible;
+}
+
+.home-practice-field[data-practice-version="4"] .home-practice-type{
   will-change:clip-path,opacity;
 }
 
-.home-practice-field[data-practice-version="3"].is-practice-typing .home-practice-type{
+.home-practice-field[data-practice-version="4"].is-practice-typing .home-practice-type{
   clip-path:inset(0 100% 0 0);
   animation:nw-practice-type var(--type-duration,.3s) steps(var(--type-steps,12),end) forwards;
   animation-delay:var(--type-delay,0ms);
 }
 
-.home-practice-field[data-practice-version="3"].is-practice-typed .home-practice-type{
+.home-practice-field[data-practice-version="4"].is-practice-typed .home-practice-type{
   clip-path:inset(0 0 0 0);
+  opacity:1;
 }
 
 .home-practice-group--develop{
@@ -46,14 +55,20 @@
 
 @media(max-width:760px){
   .home-practice-group--develop::before{display:none}
-  .home-practice-field[data-practice-version="3"].is-practice-typing .home-practice-type{
-    animation-duration:min(var(--type-duration,.3s),320ms);
+  .home-practice-field[data-practice-version="4"] .home-practice-type,
+  .home-practice-field[data-practice-version="4"].is-practice-typing .home-practice-type{
+    clip-path:none!important;
+    animation:none!important;
+    opacity:1!important;
+    will-change:auto!important;
   }
 }
 
 @media(prefers-reduced-motion:reduce){
-  .home-practice-field[data-practice-version="3"] .home-practice-type{
+  .home-practice-field[data-practice-version="4"] .home-practice-type{
     clip-path:none!important;
     animation:none!important;
+    opacity:1!important;
+    will-change:auto!important;
   }
 }
