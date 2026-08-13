@@ -26,6 +26,7 @@
   };
 
   loadStyle('assets/css/clarity-20260814.css?v=20260814-3');
+  loadStyle('assets/css/header-compact-20260814.css?v=20260814-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
@@ -177,8 +178,8 @@
     const projectName = data.get('projectName') || '';
     const bodyText = [
       '[CONTACT]', `회사/브랜드: ${company}`, `담당자: ${name}`, `이메일: ${data.get('email') || ''}`, `연락처: ${data.get('phone') || ''}`, '',
-      '[PROJECT]', `프로젝트명: ${projectName}`, `작업 유형: ${projectTypes.join(', ')}`, `요청사항: ${data.get('requirements') || ''}`, `현재 상황: ${data.get('message') || ''}`, `참고 링크: ${data.get('reference') || ''}`, '',
-      '[BUDGET & SCHEDULE]', `예상 예산: ${data.get('budget') || ''}`, `목표 완료일: ${data.get('endDate') || ''}`
+      '[PROJECT]', `프로젝트명: ${projectName}`, `작업 유형: ${projectTypes.join(', ')}`, `요청사항: ${data.get('requirements') || ''}`, `현재 상황: ${data.get('message') || ''}`, `진행 상태: ${data.get('status') || ''}`, `참고 링크: ${data.get('reference') || ''}`, '',
+      '[BUDGET & SCHEDULE]', `예상 예산: ${data.get('budget') || ''}`, `시작 희망일: ${data.get('startDate') || ''}`, `목표 완료일: ${data.get('endDate') || ''}`, `개인정보 동의: ${data.get('privacy') || ''}`
     ].join('\n');
     window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(`[NINEWORKS 프로젝트 문의] ${projectName || company || name}`)}&body=${encodeURIComponent(bodyText)}`;
   });
