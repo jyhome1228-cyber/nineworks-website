@@ -1,15 +1,30 @@
 (() => {
+  const body = document.body;
+  const pathname = window.location.pathname;
+  const fileName = pathname.split('/').filter(Boolean).pop() || 'index.html';
+  const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
+  const pageSlug = isHome ? 'home' : fileName.replace(/\.html$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+  const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
+  const isSectorPage = body.classList.contains('sector-page');
+
+  const assetPath = (value = '') => {
+    try { return new URL(value, document.baseURI).pathname; }
+    catch { return String(value).split('?')[0]; }
+  };
+  const hasAsset = (selector, attr, value) => Array.from(document.querySelectorAll(selector))
+    .some((node) => assetPath(node.getAttribute(attr) || node[attr] || '') === assetPath(value));
   const loadStylesheet = (href) => {
-    if (document.querySelector(`link[href="${href}"]`)) return;
+    if (hasAsset('link[rel="stylesheet"]', 'href', href)) return;
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
     stylesheet.href = href;
     document.head.appendChild(stylesheet);
   };
   const loadScript = (src) => {
-    if (document.querySelector(`script[src="${src}"]`)) return;
+    if (hasAsset('script[src]', 'src', src)) return;
     const script = document.createElement('script');
     script.src = src;
+    script.async = false;
     document.body.appendChild(script);
   };
 
@@ -25,19 +40,13 @@
 
   loadStylesheet('assets/css/refine.css?v=20260808-2');
   loadStylesheet('assets/css/alignment.css?v=20260808-1');
-  loadStylesheet('assets/css/service-sectors.css?v=20260811-2');
+  if (!isSectorPage) loadStylesheet('assets/css/service-sectors.css?v=20260811-3');
   loadStylesheet('assets/css/service-type-fix.css?v=20260811-1');
-  loadScript('assets/js/service-sectors.js?v=20260811-4');
+  if (!isSectorPage) loadScript('assets/js/service-sectors.js?v=20260811-7');
 
-  const body = document.body;
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('[data-menu-trigger]');
   const menu = document.querySelector('[data-menu-overlay]');
-  const pathname = window.location.pathname;
-  const fileName = pathname.split('/').filter(Boolean).pop() || 'index.html';
-  const isHome = pathname.endsWith('/') || pathname.endsWith('/index.html') || pathname.endsWith('/nineworks-website');
-  const pageSlug = isHome ? 'home' : fileName.replace(/\.html$/i, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
-  const isPortfolioDetail = body.classList.contains('portfolio-detail-page');
   body.classList.add(`page-${pageSlug}`);
 
   // Keep the public home URL canonical. GitHub Pages may expose /index.html as the same document.
