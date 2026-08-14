@@ -1,0 +1,4 @@
+.services-card__when{margin-top:16px;padding-top:14px;border-top:1px solid var(--line,#e3e3df)}
+.services-card__when b{display:block;margin-bottom:5px;color:#999;font-size:9.5px;letter-spacing:.08em}
+.services-card__when span{display:block;color:#555;font-size:12px;line-height:1.6}
+.support-card__scope{display:block;margin-top:15px;padding-top:12px;border-top:1px solid var(--line,#e3e3df);color:#888;font-size:10.5px;line-height:1.6}
