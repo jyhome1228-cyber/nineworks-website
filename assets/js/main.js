@@ -25,17 +25,16 @@
     document.head.appendChild(script);
   };
 
-  loadStyle('assets/css/clarity-20260814.css?v=20260817-6');
+  /* Stable cascade: legacy base/navigation first, one final layer last. */
+  loadStyle('assets/css/clarity-20260814.css?v=20260817-7');
   loadStyle('assets/css/header-compact-20260814.css?v=20260814-1');
-  loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-3');
-  loadStyle('assets/css/seed-inspired-20260817.css?v=20260817-3');
-  loadStyle('assets/css/seed-priority-20260817.css?v=20260817-3');
-  loadStyle('assets/css/seed-doc-layout-20260817.css?v=20260817-3');
-  loadStyle('assets/css/seed-sitewide-20260817.css?v=20260817-1');
+  loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-4');
+  loadStyle('assets/css/site-final-20260817.css?v=20260817-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
     loadStyle('assets/css/portfolio-detail-refine.css?v=20260807-4');
+    loadStyle('assets/css/site-final-20260817.css?v=20260817-1');
     loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
   }
 
