@@ -1,0 +1,86 @@
+/* NINEWORKS — portfolio detail white-surface pass / 2026-08-17
+   All portfolio case studies use white as the default canvas.
+   Dark system/code blocks remain intentionally dark. */
+
+html body.portfolio-detail-page,
+html body.portfolio-detail-page .site-shell,
+html body.portfolio-detail-page main,
+html body.portfolio-detail-page .portfolio-split-detail,
+html body.portfolio-detail-page .portfolio-detail-sidebar,
+html body.portfolio-detail-page .portfolio-detail-sidebar__inner,
+html body.portfolio-detail-page .portfolio-detail-scroll,
+html body.portfolio-detail-page .portfolio-scroll-section,
+html body.portfolio-detail-page .portfolio-scroll-section__head,
+html body.portfolio-detail-page .portfolio-scroll-copy,
+html body.portfolio-detail-page .portfolio-scroll-credit,
+html body.portfolio-detail-page .portfolio-detail-story,
+html body.portfolio-detail-page .portfolio-detail-facts,
+html body.portfolio-detail-page .portfolio-detail-index{
+  background:#fff!important;
+}
+
+html body.portfolio-detail-page .site-header{
+  background:rgba(255,255,255,.98)!important;
+}
+
+/* Media frames: no gray mats around project images. */
+html body.portfolio-detail-page .portfolio-scroll-media,
+html body.portfolio-detail-page .portfolio-scroll-grid,
+html body.portfolio-detail-page .portfolio-scroll-grid--two,
+html body.portfolio-detail-page .portfolio-scroll-stack{
+  background:#fff!important;
+}
+html body.portfolio-detail-page .portfolio-scroll-media img,
+html body.portfolio-detail-page .portfolio-scroll-grid img,
+html body.portfolio-detail-page .portfolio-scroll-stack img{
+  background:transparent!important;
+}
+
+/* General case-study cards should read as white editorial cells. */
+html body.portfolio-detail-page .dev-case-stat,
+html body.portfolio-detail-page .dev-planning-card,
+html body.portfolio-detail-page .dev-stack-card,
+html body.portfolio-detail-page .dev-sitemap__group,
+html body.portfolio-detail-page .dev-data-flow__step,
+html body.portfolio-detail-page .dev-deployment__row,
+html body.portfolio-detail-page .portfolio-detail-facts>div,
+html body.portfolio-detail-page .portfolio-scroll-credit dl>div{
+  background:#fff!important;
+}
+
+/* Arrow/connector chips that inherited the old gray canvas. */
+html body.portfolio-detail-page .dev-data-flow__step:after{
+  background:#fff!important;
+}
+
+/* Keep intentional high-contrast technical blocks dark. */
+html body.portfolio-detail-page .dev-architecture,
+html body.portfolio-detail-page .dev-architecture__node,
+html body.portfolio-detail-page .dev-code-map,
+html body.portfolio-detail-page .dev-code-card{
+  background:#111!important;
+}
+
+/* Remove any legacy soft panel fill from project information columns. */
+html body.portfolio-detail-page .portfolio-detail-sidebar,
+html body.portfolio-detail-page .portfolio-detail-sidebar__top,
+html body.portfolio-detail-page .portfolio-detail-sidebar__inner > div,
+html body.portfolio-detail-page .portfolio-detail-sidebar dl,
+html body.portfolio-detail-page .portfolio-detail-sidebar nav{
+  background:#fff!important;
+}
+
+/* Thin rules provide structure instead of surface color. */
+html body.portfolio-detail-page{
+  --detail-line:#e6e6e3;
+}
+html body.portfolio-detail-page .portfolio-detail-facts,
+html body.portfolio-detail-page .portfolio-detail-facts>div,
+html body.portfolio-detail-page .portfolio-detail-index,
+html body.portfolio-detail-page .portfolio-detail-index a,
+html body.portfolio-detail-page .portfolio-scroll-section,
+html body.portfolio-detail-page .portfolio-scroll-credit,
+html body.portfolio-detail-page .portfolio-scroll-credit dl,
+html body.portfolio-detail-page .portfolio-scroll-credit dl>div{
+  border-color:var(--detail-line)!important;
+}
