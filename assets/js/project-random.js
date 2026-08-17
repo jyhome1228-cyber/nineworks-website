@@ -69,7 +69,6 @@
         <a class="project-card__link" href="${escapeHTML(detailHref(project))}" aria-label="${escapeHTML(project.title)} 프로젝트 상세 보기">
           <div class="project-card__visual project-visual project-random-media">
             <img src="${escapeHTML(project.thumbnail)}" alt="${escapeHTML(project.title)}" loading="lazy">
-            <span class="project-random-index">${String(index + 1).padStart(2, '0')}</span>
           </div>
           <div class="project-card__meta project-random-meta">
             <div class="project-random-copy">
