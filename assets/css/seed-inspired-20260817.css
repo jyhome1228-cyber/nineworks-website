@@ -1,0 +1,264 @@
+/* NINEWORKS — SEED-inspired foundation system (2026-08-17)
+   Reference mood only: compact centered layout, restrained type scale, soft surfaces,
+   small radii and tokenized spacing. */
+
+:root{
+  --container:1280px!important;
+  --nw-content:1040px;
+  --nw-wide:1280px;
+  --nw-gutter:24px;
+  --nw-surface:#f3f4f5;
+  --nw-surface-strong:#eceeef;
+  --nw-line:#e5e7e9;
+  --nw-ink:#202124;
+  --nw-muted:#6f7680;
+  --nw-radius-xs:4px;
+  --nw-radius-sm:6px;
+  --nw-radius-md:8px;
+  --nw-radius-lg:12px;
+  --nw-radius-xl:16px;
+  --header-h:60px!important;
+  --section-y:clamp(72px,7vw,104px)!important;
+}
+
+html{background:#fff}
+body{
+  color:var(--nw-ink)!important;
+  background:#fff!important;
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans KR",sans-serif!important;
+  font-size:14px!important;
+  line-height:1.55!important;
+  letter-spacing:-.018em!important;
+}
+
+/* SEED-like centered shell: 1280px wide for visual browsing, 1040px for reading pages. */
+body:not(.portfolio-detail-page) .container{
+  width:min(calc(100% - 48px),var(--nw-wide))!important;
+  max-width:var(--nw-wide)!important;
+  margin-inline:auto!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+body.page-about .container,
+body.page-branding .container,
+body.page-solutions .container,
+body.page-contact .container,
+body.page-designer .container{
+  width:min(calc(100% - 48px),var(--nw-content))!important;
+  max-width:var(--nw-content)!important;
+}
+
+/* Header */
+.site-header{
+  width:min(calc(100% - 48px),var(--nw-wide))!important;
+  max-width:var(--nw-wide)!important;
+  height:var(--header-h)!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  border-bottom:1px solid transparent!important;
+  background:rgba(255,255,255,.94)!important;
+  backdrop-filter:blur(14px)!important;
+}
+.site-header.is-scrolled{border-bottom-color:var(--nw-line)!important}
+.site-logo{font-size:18px!important;font-weight:700!important;letter-spacing:-.045em!important}
+.site-primary-nav{gap:4px!important}
+.site-primary-nav>a,
+.site-primary-nav>.site-nav-item>a{
+  min-height:34px!important;
+  padding:7px 10px!important;
+  border-radius:var(--nw-radius-md)!important;
+  color:#50555c!important;
+  font-size:12px!important;
+  font-weight:500!important;
+  letter-spacing:-.01em!important;
+  transition:background .16s ease,color .16s ease!important;
+}
+.site-primary-nav>a:hover,
+.site-primary-nav>.site-nav-item>a:hover{color:#17181a!important;background:var(--nw-surface)!important}
+.site-primary-nav .is-current{color:#17181a!important;background:var(--nw-surface)!important}
+.site-primary-nav .is-current::after{display:none!important}
+.site-header__action{
+  padding:8px 11px!important;
+  border-radius:var(--nw-radius-md)!important;
+  font-size:11px!important;
+  font-weight:600!important;
+}
+.site-header__action:hover{background:var(--nw-surface)!important}
+.site-nav-dropdown{
+  min-width:226px!important;
+  padding:6px!important;
+  border:1px solid var(--nw-line)!important;
+  border-radius:var(--nw-radius-lg)!important;
+  background:#fff!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.08)!important;
+}
+.site-nav-dropdown a{
+  min-height:36px!important;
+  padding:8px 10px!important;
+  border:0!important;
+  border-radius:var(--nw-radius-md)!important;
+  font-size:11px!important;
+}
+.site-nav-dropdown a:hover{background:var(--nw-surface)!important}
+
+/* Typography: keep the ceiling near SEED's 48px display token. */
+.page-title,
+.portfolio-page .page-title,
+.magazine-page .page-title{
+  font-size:clamp(36px,4vw,48px)!important;
+  font-weight:700!important;
+  line-height:1.08!important;
+  letter-spacing:-.045em!important;
+}
+.section-title,
+.cta__title{
+  font-size:clamp(28px,3vw,40px)!important;
+  line-height:1.15!important;
+  letter-spacing:-.04em!important;
+}
+.eyebrow{
+  margin-bottom:12px!important;
+  color:var(--nw-muted)!important;
+  font-size:11px!important;
+  font-weight:500!important;
+  line-height:1.35!important;
+  letter-spacing:.01em!important;
+}
+.lead{font-size:clamp(17px,1.4vw,20px)!important;line-height:1.55!important;letter-spacing:-.025em!important}
+.copy,
+.portfolio-hero__copy,
+.magazine-hero__copy{color:#555b63!important;font-size:14px!important;line-height:1.7!important}
+.text-link{font-size:12px!important;font-weight:600!important}
+
+/* Page hero rhythm */
+.page-hero,
+.portfolio-page .portfolio-hero,
+.magazine-page .magazine-hero{
+  min-height:auto!important;
+  padding-top:clamp(56px,6vw,84px)!important;
+  padding-bottom:clamp(40px,4vw,56px)!important;
+}
+
+/* Common surface/radius language */
+.nw-service-card,
+.nw-process-card,
+.solution-card,
+.service-card,
+.capability-card,
+.portfolio-card__media,
+.magazine-card__media,
+.project-random-media,
+.nw-work-card figure{
+  border-radius:var(--nw-radius-lg)!important;
+}
+.nw-service-card,
+.nw-process-card,
+.solution-card,
+.service-card,
+.capability-card{
+  border-color:var(--nw-line)!important;
+  background:var(--nw-surface)!important;
+}
+.portfolio-card__media,
+.magazine-card__media,
+.project-random-media,
+.nw-work-card figure{overflow:hidden!important;background:var(--nw-surface)!important}
+
+/* Category/filter navigation: compact controls, not full-width strips. */
+body.portfolio-page .category-nav.portfolio-filter,
+body.magazine-page .category-nav.magazine-filter{
+  position:relative!important;
+  top:auto!important;
+  z-index:2!important;
+  display:flex!important;
+  width:min(calc(100% - 48px),var(--nw-wide))!important;
+  max-width:var(--nw-wide)!important;
+  margin:0 auto!important;
+  padding:6px!important;
+  gap:4px!important;
+  overflow-x:auto!important;
+  border:1px solid var(--nw-line)!important;
+  border-radius:var(--nw-radius-lg)!important;
+  background:var(--nw-surface)!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  scrollbar-width:none!important;
+}
+body.portfolio-page .category-nav.portfolio-filter::-webkit-scrollbar,
+body.magazine-page .category-nav.magazine-filter::-webkit-scrollbar{display:none!important}
+body.portfolio-page .category-nav.portfolio-filter button,
+body.magazine-page .category-nav.magazine-filter button{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:auto!important;
+  min-height:36px!important;
+  padding:0 13px!important;
+  border:0!important;
+  border-radius:var(--nw-radius-md)!important;
+  color:#69707a!important;
+  background:transparent!important;
+  font-size:11px!important;
+  font-weight:500!important;
+  white-space:nowrap!important;
+}
+body.portfolio-page .category-nav.portfolio-filter button.is-active,
+body.magazine-page .category-nav.magazine-filter button.is-active{
+  color:#1d1f22!important;
+  background:#fff!important;
+  box-shadow:0 1px 2px rgba(0,0,0,.04)!important;
+}
+
+/* Archive/cards: tighter, system-like rhythm */
+.portfolio-page .portfolio-grid,
+.branding-project-page .project-grid{gap:36px 20px!important}
+.magazine-grid{gap:42px 20px!important}
+.portfolio-card__meta,
+.project-random-meta,
+.magazine-card__meta{padding-top:10px!important;margin-top:0!important}
+.magazine-card h3{margin-top:9px!important;font-size:18px!important;line-height:1.35!important}
+.magazine-card__summary{margin-top:6px!important;font-size:12px!important;line-height:1.6!important}
+
+/* Branding page gets a calmer documentation rhythm. */
+.branding-project-page .branding-about{padding-top:72px!important;padding-bottom:88px!important}
+.branding-project-page .branding-about__grid{gap:64px!important}
+.branding-project-page .branding-about__title h2{font-size:clamp(32px,3.4vw,44px)!important;line-height:1.12!important;letter-spacing:-.045em!important}
+.branding-project-page .branding-about__lead{font-size:18px!important;line-height:1.6!important}
+.branding-project-page .branding-about__copy{margin-top:18px!important;font-size:14px!important;line-height:1.75!important}
+.branding-project-page .branding-scope{margin-top:32px!important;gap:8px!important;border:0!important}
+.branding-project-page .branding-scope li{
+  min-height:122px!important;
+  padding:16px!important;
+  border:0!important;
+  border-radius:var(--nw-radius-lg)!important;
+  background:var(--nw-surface)!important;
+}
+.branding-project-page .branding-scope strong{margin-top:30px!important;font-size:16px!important}
+
+@media(max-width:1180px){
+  .site-primary-nav>a,.site-primary-nav>.site-nav-item>a{padding:7px 8px!important;font-size:11px!important}
+}
+@media(max-width:980px){
+  .site-header{width:min(calc(100% - 40px),var(--nw-wide))!important}
+  body:not(.portfolio-detail-page) .container,
+  body.page-about .container,
+  body.page-branding .container,
+  body.page-solutions .container,
+  body.page-contact .container,
+  body.page-designer .container{width:min(calc(100% - 40px),var(--nw-wide))!important}
+}
+@media(max-width:760px){
+  :root{--header-h:56px!important}
+  .site-header{width:calc(100% - 24px)!important}
+  body:not(.portfolio-detail-page) .container,
+  body.page-about .container,
+  body.page-branding .container,
+  body.page-solutions .container,
+  body.page-contact .container,
+  body.page-designer .container{width:calc(100% - 24px)!important}
+  body.portfolio-page .category-nav.portfolio-filter,
+  body.magazine-page .category-nav.magazine-filter{width:calc(100% - 24px)!important}
+  .page-hero,.portfolio-page .portfolio-hero,.magazine-page .magazine-hero{padding-top:42px!important;padding-bottom:32px!important}
+  .page-title,.portfolio-page .page-title,.magazine-page .page-title{font-size:36px!important}
+  .branding-project-page .branding-about__grid{gap:32px!important}
+  .branding-project-page .branding-scope{grid-template-columns:1fr!important}
+}
