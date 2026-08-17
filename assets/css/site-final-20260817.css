@@ -1,0 +1,67 @@
+/* NINEWORKS — final cascade layer / 2026-08-17
+   This file MUST load last. It intentionally reapplies the final SOST system
+   after all legacy/SEED/navigation styles, then applies page regression guards. */
+@import url('./sost-system-20260817.css?v=20260817-2');
+@import url('./portfolio-consistency-20260817.css?v=20260817-2');
+@import url('./layout-regression-fix-20260817.css?v=20260817-2');
+
+/* Hard safety for document-shell pages. */
+html body.nw-doc-page .nw-doc-layout > .nw-doc-content{
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+}
+html body.nw-doc-page .nw-doc-content .magazine-grid,
+html body.nw-doc-page .nw-doc-content .portfolio-grid,
+html body.nw-doc-page .nw-doc-content .project-grid{
+  min-width:0!important;
+  width:100%!important;
+  max-width:none!important;
+}
+html body.nw-doc-page.page-magazine .nw-doc-content .magazine-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-auto-flow:row!important;
+  grid-auto-columns:auto!important;
+  gap:64px 22px!important;
+}
+html body.nw-doc-page.page-magazine .magazine-grid > .magazine-card{
+  position:relative!important;
+  display:block!important;
+  float:none!important;
+  clear:none!important;
+  grid-column:auto!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  transform:none!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__link{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__media{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+  aspect-ratio:16/9!important;
+  margin:0!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card h3,
+html body.nw-doc-page.page-magazine .magazine-card__summary,
+html body.nw-doc-page.page-magazine .magazine-card__meta{
+  position:static!important;
+  float:none!important;
+  width:100%!important;
+  max-width:none!important;
+}
+@media(max-width:1180px){
+  html body.nw-doc-page.page-magazine .nw-doc-content .magazine-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+  html body.nw-doc-page.page-magazine .nw-doc-content .magazine-grid,
+  html body.nw-doc-page.page-portfolio .nw-doc-content .portfolio-grid,
+  html body.nw-doc-page.page-project .nw-doc-content .project-grid{grid-template-columns:1fr!important}
+}
