@@ -16,7 +16,9 @@
     relim: 'portfolio-relim.html?v=20260812-10',
     aesost: 'portfolio-aesost.html?v=20260812-10',
     kekomi: 'portfolio-kekomi.html?v=20260812-10',
-    'the-petrichor': 'portfolio-the-petrichor.html?v=20260812-10'
+    'the-petrichor': 'portfolio-the-petrichor.html?v=20260812-10',
+    thomastone: 'portfolio-thomastone.html?v=20260812-10',
+    recelleclore: 'portfolio-recelleclore.html?v=20260812-10'
   };
 
   const detailHref = (project) => project.detailUrl
@@ -42,13 +44,25 @@
 
   const defaultFilter = grid.dataset.projectDefaultFilter || 'all';
   const allowShuffle = grid.dataset.projectShuffle !== 'false';
+  const limit = Math.max(1, Number(grid.dataset.projectLimit) || 12);
+  const curatedIds = (grid.dataset.projectIds || '')
+    .split(',')
+    .map((id) => id.trim())
+    .filter(Boolean);
 
-  const render = (filter = defaultFilter) => {
-    const pool = filter === 'all'
+  const getPool = (filter) => {
+    const filtered = filter === 'all'
       ? allProjects
       : allProjects.filter((project) => (project.filters || []).includes(filter));
 
-    const selected = (allowShuffle ? shuffle(pool) : pool).slice(0, 12);
+    if (!curatedIds.length) return filtered;
+    const byId = new Map(filtered.map((project) => [project.id, project]));
+    return curatedIds.map((id) => byId.get(id)).filter(Boolean);
+  };
+
+  const render = (filter = defaultFilter) => {
+    const pool = getPool(filter);
+    const selected = (allowShuffle ? shuffle(pool) : pool).slice(0, limit);
 
     grid.innerHTML = selected.map((project, index) => `
       <article class="project-card project-filter-item is-visible" data-category="${escapeHTML((project.filters || []).join(' '))}" style="--random-index:${index}">
@@ -68,7 +82,7 @@
       </article>`).join('');
 
     const count = document.querySelector('[data-project-count]');
-    if (count) count.textContent = `${selected.length} / ${pool.length}`;
+    if (count) count.textContent = `${String(selected.length).padStart(2, '0')} PROJECTS`;
   };
 
   filterBar?.querySelectorAll('[data-project-filter-value]').forEach((button) => {
