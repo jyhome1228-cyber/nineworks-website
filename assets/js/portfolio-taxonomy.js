@@ -13,16 +13,21 @@
     'centellian-24'
   ]);
 
-  // Existing DEVELOP cases remain explicit for backward compatibility.
-  // Future cases do not need to be added here: a `develop` filter in the
-  // shared portfolio list is preserved automatically below.
-  const develop = new Set([
+  const website = new Set([
     'fineb',
     'tne-epc',
     'relim',
     'aesost',
     'kekomi',
-    'the-petrichor'
+    'the-petrichor',
+    'thomastone',
+    'recelleclore'
+  ]);
+
+  const commerce = new Set([
+    'kekomi',
+    'the-petrichor',
+    'recelleclore'
   ]);
 
   const petrichor = window.NW_PORTFOLIO.find((project) => project?.id === 'the-petrichor');
@@ -37,19 +42,30 @@
   window.NW_PORTFOLIO.forEach((project) => {
     if (!project || !project.id) return;
 
+    const incoming = Array.isArray(project.filters) ? project.filters : [];
+    const filters = new Set(incoming);
+
     if (eventOnly.has(project.id)) {
       project.filters = ['event'];
       return;
     }
 
-    const incomingFilters = Array.isArray(project.filters) ? project.filters : [];
-    if (develop.has(project.id) || incomingFilters.includes('develop')) {
-      project.filters = ['develop', 'branding'];
-      return;
+    if (incoming.includes('develop') || website.has(project.id)) {
+      filters.add('develop');
+      filters.add('website');
     }
 
-    project.filters = detailPage.has(project.id)
-      ? ['branding', 'detailpage']
-      : ['branding'];
+    if (commerce.has(project.id)) filters.add('commerce');
+
+    if (detailPage.has(project.id)) {
+      filters.add('detailpage');
+      filters.add('landing');
+    }
+
+    /* Branding remains available in the full archive, while the dedicated
+       Branding Projects page uses it as its primary filter. */
+    if (!filters.size) filters.add('branding');
+
+    project.filters = [...filters];
   });
 })();
