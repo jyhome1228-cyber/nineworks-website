@@ -3,9 +3,12 @@
 /* Keep page controls in the document flow so titles and cards are never covered. */
 .page-project main,
 .portfolio-page main{overflow:visible!important}
-.page-project .project-category-nav,
-.portfolio-page .portfolio-filter{position:relative!important;top:auto!important;z-index:2!important}
-.portfolio-page .portfolio-filter{box-shadow:0 1px 0 var(--line)!important}
+.page-project .project-category-nav{position:relative!important;top:auto!important;z-index:2!important}
+body.portfolio-page .category-nav.portfolio-filter{position:relative!important;top:auto!important;z-index:2!important;display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;width:min(calc(100% - 48px),var(--container,1440px))!important;max-width:var(--container,1440px)!important;margin:0 auto!important;padding:0!important;overflow:visible!important;background:#fff!important;backdrop-filter:none!important;box-shadow:none!important}
+body.portfolio-page .category-nav.portfolio-filter button{flex:none!important;width:100%!important;min-width:0!important;min-height:50px!important;padding:0 10px!important;border:0!important;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;background:#fff!important;white-space:nowrap!important}
+body.portfolio-page .category-nav.portfolio-filter button:first-child{border-left:1px solid var(--line)!important}
+body.portfolio-page .category-nav.portfolio-filter button.is-active{color:#111!important;background:#f2f2ef!important}
+body.portfolio-page .portfolio-index-head{position:relative!important;z-index:1!important}
 
 /* Desktop information architecture */
 .site-header{overflow:visible!important}
@@ -38,12 +41,6 @@
 .page-project .project-card--third{grid-column:span 6!important}
 .page-project .project-random-head{margin-top:0}
 
-/* Portfolio filter: no sticky overlay, compact and scrollable when needed. */
-.portfolio-page .portfolio-filter{display:flex!important;overflow-x:auto!important;justify-content:flex-start!important;padding-left:max(24px,calc((100vw - var(--container))/2))!important;padding-right:max(24px,calc((100vw - var(--container))/2))!important;background:#fff!important;scrollbar-width:none!important}
-.portfolio-page .portfolio-filter::-webkit-scrollbar{display:none!important}
-.portfolio-page .portfolio-filter button{flex:0 0 auto!important;width:auto!important;min-width:118px!important;padding:0 18px!important;border-right:1px solid var(--line)!important}
-.portfolio-page .portfolio-filter button:first-child{border-left:1px solid var(--line)!important}
-
 /* Mobile overlay gets grouped submenus instead of forcing every link to headline size. */
 .menu-nav__group{margin:0 0 18px}
 .menu-nav__main{display:block!important}
@@ -57,6 +54,12 @@
   .site-nav-dropdown a{font-size:10px!important}
 }
 
+@media(max-width:1100px){
+  body.portfolio-page .category-nav.portfolio-filter{display:flex!important;grid-template-columns:none!important;width:min(calc(100% - 40px),var(--container,1440px))!important;overflow-x:auto!important;scrollbar-width:none!important}
+  body.portfolio-page .category-nav.portfolio-filter::-webkit-scrollbar{display:none!important}
+  body.portfolio-page .category-nav.portfolio-filter button{flex:0 0 auto!important;width:auto!important;min-width:118px!important;padding:0 16px!important}
+}
+
 @media(max-width:980px){
   .portfolio-page .portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .home-clarity .nw-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
@@ -68,8 +71,8 @@
   .page-project .project-card,
   .page-project .project-card--wide,
   .page-project .project-card--third{grid-column:1/-1!important}
-  .portfolio-page .portfolio-filter{padding-left:18px!important;padding-right:18px!important}
-  .portfolio-page .portfolio-filter button{min-width:auto!important;padding:0 15px!important}
+  body.portfolio-page .category-nav.portfolio-filter{width:calc(100% - 36px)!important}
+  body.portfolio-page .category-nav.portfolio-filter button{min-width:auto!important;padding:0 15px!important}
   .menu-nav__group{margin-bottom:14px}
   .menu-nav__sub{margin-top:7px;margin-bottom:15px}
   .menu-nav__sub a{font-size:13px!important}
