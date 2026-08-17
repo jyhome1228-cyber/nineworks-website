@@ -1,1 +1,2 @@
-@import url('./sost-system-20260817.css?v=20260817-1');
+/* Compatibility entry point kept because legacy main.js loads this file last. */
+@import url('./site-final-20260817.css?v=20260817-1');
