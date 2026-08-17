@@ -294,3 +294,50 @@ html body .cta__bottom{display:flex!important;width:100%!important;justify-conte
   html body.nw-doc-page .nw-doc-content>.cta{min-height:0!important;padding:72px 16px 40px!important}
   html body .cta__bottom{align-items:flex-start!important;flex-direction:column!important;gap:28px!important}
 }
+
+/* --------------------------------------------------------------------------
+   8) ALL PORTFOLIO DETAIL PAGES — WHITE CANVAS
+   Gray surfaces are removed globally. Structure comes from spacing and rules.
+   Intentional black technical blocks remain dark.
+   -------------------------------------------------------------------------- */
+html body.portfolio-detail-page,
+html body.portfolio-detail-page .site-shell,
+html body.portfolio-detail-page main,
+html body.portfolio-detail-page .portfolio-split-detail,
+html body.portfolio-detail-page .portfolio-detail-sidebar,
+html body.portfolio-detail-page .portfolio-detail-sidebar__inner,
+html body.portfolio-detail-page .portfolio-detail-sidebar__top,
+html body.portfolio-detail-page .portfolio-detail-story,
+html body.portfolio-detail-page .portfolio-detail-facts,
+html body.portfolio-detail-page .portfolio-detail-facts>div,
+html body.portfolio-detail-page .portfolio-detail-index,
+html body.portfolio-detail-page .portfolio-detail-scroll,
+html body.portfolio-detail-page .portfolio-scroll-section,
+html body.portfolio-detail-page .portfolio-scroll-section__head,
+html body.portfolio-detail-page .portfolio-scroll-copy,
+html body.portfolio-detail-page .portfolio-scroll-credit,
+html body.portfolio-detail-page .portfolio-scroll-credit dl,
+html body.portfolio-detail-page .portfolio-scroll-credit dl>div,
+html body.portfolio-detail-page .dev-case-stat,
+html body.portfolio-detail-page .dev-planning-card,
+html body.portfolio-detail-page .dev-stack-card,
+html body.portfolio-detail-page .dev-sitemap__group,
+html body.portfolio-detail-page .dev-data-flow__step,
+html body.portfolio-detail-page .dev-deployment__row{
+  background:#fff!important;
+}
+html body.portfolio-detail-page .site-header{background:rgba(255,255,255,.98)!important}
+html body.portfolio-detail-page .portfolio-scroll-media,
+html body.portfolio-detail-page .portfolio-scroll-grid,
+html body.portfolio-detail-page .portfolio-scroll-grid--two,
+html body.portfolio-detail-page .portfolio-scroll-stack{background:#fff!important}
+html body.portfolio-detail-page .portfolio-scroll-media img,
+html body.portfolio-detail-page .portfolio-scroll-grid img,
+html body.portfolio-detail-page .portfolio-scroll-stack img{background:transparent!important}
+html body.portfolio-detail-page .dev-data-flow__step:after{background:#fff!important}
+
+/* Preserve deliberate high-contrast technical areas. */
+html body.portfolio-detail-page .dev-architecture,
+html body.portfolio-detail-page .dev-architecture__node,
+html body.portfolio-detail-page .dev-code-map,
+html body.portfolio-detail-page .dev-code-card{background:#111!important}
