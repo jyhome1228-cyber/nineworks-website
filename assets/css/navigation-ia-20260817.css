@@ -1,12 +1,16 @@
 /* NINEWORKS navigation / archive refinement — 2026-08-17 */
 
+/* Shared selector strips align with the same 1440px content rhythm instead of spanning the viewport. */
+.category-nav{width:min(calc(100% - 48px),var(--container,1440px))!important;max-width:var(--container,1440px)!important;margin-left:auto!important;margin-right:auto!important;border-left:1px solid var(--line)!important;border-right:1px solid var(--line)!important}
+.category-nav>button,.category-nav>a{min-width:0}
+
 /* Keep page controls in the document flow so titles and cards are never covered. */
 .page-project main,
 .portfolio-page main{overflow:visible!important}
 .page-project .project-category-nav{position:relative!important;top:auto!important;z-index:2!important}
 body.portfolio-page .category-nav.portfolio-filter{position:relative!important;top:auto!important;z-index:2!important;display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;width:min(calc(100% - 48px),var(--container,1440px))!important;max-width:var(--container,1440px)!important;margin:0 auto!important;padding:0!important;overflow:visible!important;background:#fff!important;backdrop-filter:none!important;box-shadow:none!important}
 body.portfolio-page .category-nav.portfolio-filter button{flex:none!important;width:100%!important;min-width:0!important;min-height:50px!important;padding:0 10px!important;border:0!important;border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;background:#fff!important;white-space:nowrap!important}
-body.portfolio-page .category-nav.portfolio-filter button:first-child{border-left:1px solid var(--line)!important}
+body.portfolio-page .category-nav.portfolio-filter button:first-child{border-left:0!important}
 body.portfolio-page .category-nav.portfolio-filter button.is-active{color:#111!important;background:#f2f2ef!important}
 body.portfolio-page .portfolio-index-head{position:relative!important;z-index:1!important}
 
@@ -61,11 +65,14 @@ body.portfolio-page .portfolio-index-head{position:relative!important;z-index:1!
 }
 
 @media(max-width:980px){
+  .category-nav{width:min(calc(100% - 40px),var(--container,1440px))!important}
   .portfolio-page .portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .home-clarity .nw-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 
 @media(max-width:680px){
+  .category-nav{width:calc(100% - 36px)!important;overflow-x:auto!important;scrollbar-width:none!important}
+  .category-nav::-webkit-scrollbar{display:none!important}
   .portfolio-page .portfolio-grid,
   .home-clarity .nw-work-grid{grid-template-columns:1fr!important;gap:38px!important}
   .page-project .project-card,
