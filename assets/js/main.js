@@ -27,7 +27,7 @@
 
   loadStyle('assets/css/clarity-20260814.css?v=20260814-3');
   loadStyle('assets/css/header-compact-20260814.css?v=20260814-1');
-  loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-1');
+  loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-3');
   loadScript('assets/js/seo.js?v=20260811-3');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
@@ -52,7 +52,8 @@
       <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <a href="about.html" data-nav-key="about">ABOUT</a>
-        <a href="project.html" data-nav-key="project">BRANDING PROJECTS</a>
+        <a href="branding.html" data-nav-key="branding">BRANDING</a>
+        <a href="project.html" data-nav-key="project">PROJECTS</a>
         <div class="site-nav-item">
           <a href="portfolio.html" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
@@ -87,7 +88,8 @@
     overlay.innerHTML = `
       <nav class="menu-nav" aria-label="모바일 주요 메뉴">
         <a class="menu-nav__main" href="about.html">ABOUT</a>
-        <a class="menu-nav__main" href="project.html">BRANDING PROJECTS</a>
+        <a class="menu-nav__main" href="branding.html">BRANDING</a>
+        <a class="menu-nav__main" href="project.html">PROJECTS</a>
         <div class="menu-nav__group">
           <a class="menu-nav__main" href="portfolio.html">PORTFOLIO</a>
           <div class="menu-nav__sub">
@@ -118,6 +120,7 @@
 
   const navMap = {
     about: 'about',
+    branding: 'branding',
     project: 'project',
     portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     magazine: 'magazine', 'magazine-detail': 'magazine',
@@ -189,7 +192,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="project.html">Branding Projects</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
