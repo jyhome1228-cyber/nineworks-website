@@ -21,13 +21,17 @@
     if (hasAsset('script[src]', 'src', src)) return;
     const script = document.createElement('script');
     script.src = src;
-    script.defer = true;
+    script.async = false;
     document.head.appendChild(script);
   };
 
-  loadStyle('assets/css/clarity-20260814.css?v=20260814-3');
+  loadStyle('assets/css/clarity-20260814.css?v=20260817-6');
   loadStyle('assets/css/header-compact-20260814.css?v=20260814-1');
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-3');
+  loadStyle('assets/css/seed-inspired-20260817.css?v=20260817-3');
+  loadStyle('assets/css/seed-priority-20260817.css?v=20260817-3');
+  loadStyle('assets/css/seed-doc-layout-20260817.css?v=20260817-3');
+  loadStyle('assets/css/seed-sitewide-20260817.css?v=20260817-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
@@ -222,4 +226,6 @@
     ].join('\n');
     window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(`[NINEWORKS 프로젝트 문의] ${projectName || company || name}`)}&body=${encodeURIComponent(bodyText)}`;
   });
+
+  loadScript('assets/js/seed-local-nav-20260817.js?v=20260817-3');
 })();
