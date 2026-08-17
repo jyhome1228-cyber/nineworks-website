@@ -1,8 +1,82 @@
 @import url('./home-clarity.css?v=20260814-1');
 @import url('./header-scale-20260814.css?v=20260814-2');
 @import url('./page-unify-20260814.css?v=20260814-2');
-.nw-home-hero{display:flex!important;min-height:560px!important;align-items:center!important;padding:96px 0!important}.nw-home-hero__inner{display:block!important}.nw-home-hero__copy{max-width:760px!important}.nw-home-visual{display:none!important}
-.nw-home-about,.nw-home-magazine{padding:86px 0;border-bottom:1px solid var(--line)}.nw-home-about__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px}.nw-home-about h2{max-width:13ch;font-size:clamp(29px,3vw,40px);font-weight:500;line-height:1.12;letter-spacing:-.045em}.nw-home-about__lead{max-width:700px;margin-bottom:16px;font-size:17px;line-height:1.72}.nw-home-about__grid>div:last-child>p:not(.nw-home-about__lead){max-width:700px;color:#666;font-size:14px;line-height:1.78}.nw-home-about .text-link{margin-top:24px}.nw-magazine-list{border-top:1px solid #111}.nw-magazine-list a{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(220px,.7fr);gap:24px;align-items:center;padding:21px 0;border-bottom:1px solid var(--line)}.nw-magazine-list span{color:#888;font-size:10px;letter-spacing:.05em}.nw-magazine-list strong{font-size:18px;font-weight:500;line-height:1.4}.nw-magazine-list small{color:#777;font-size:12px;line-height:1.6}
+
+/* Branding-first home */
+.home-clarity main{overflow:hidden;background:#fff}
+.nw-home-hero{display:block!important;min-height:640px!important;padding:112px 0 72px!important;border-bottom:1px solid var(--line)!important;background:#fff!important}
+.nw-home-hero__inner{display:flex!important;min-height:456px!important;flex-direction:column!important;justify-content:space-between!important}
+.nw-home-hero__copy{max-width:980px!important}
+.nw-home-hero__copy .eyebrow{margin-bottom:28px!important}
+.nw-home-hero h1{max-width:920px!important;margin:0!important;color:#111!important;font-size:clamp(44px,4.8vw,62px)!important;font-weight:500!important;line-height:1.12!important;letter-spacing:-.052em!important;word-break:keep-all!important;text-wrap:balance!important}
+.nw-home-hero h1 span{color:inherit!important}
+.nw-home-hero__copy>p:not(.eyebrow){max-width:720px!important;margin:28px 0 0!important;color:#555!important;font-size:17px!important;line-height:1.75!important;word-break:keep-all!important}
+.nw-home-actions{display:flex!important;gap:10px!important;margin-top:38px!important}
+.nw-button{display:inline-flex;min-height:46px;align-items:center;padding:0 18px;border:1px solid #111;font-size:12px;font-weight:600;letter-spacing:.025em}
+.nw-button--dark{color:#fff;background:#111}
+.nw-home-hero__foot{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding-top:44px;border-top:1px solid #dededb}
+.nw-home-hero__foot>span{color:#858585;font-size:12px;font-weight:600;letter-spacing:.08em}
+.nw-home-hero__foot>div{display:flex;gap:28px;flex-wrap:wrap}
+.nw-home-hero__foot b{font-size:14px;font-weight:500;letter-spacing:.01em}
+.nw-home-visual{display:none!important}
+
+.nw-brand-practice,.nw-brand-work,.nw-brand-system,.nw-home-about,.nw-home-magazine{padding:112px 0;border-bottom:1px solid var(--line);background:#fff}
+.nw-brand-practice__head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:80px;align-items:start;margin-bottom:68px}
+.nw-brand-practice__head h2{max-width:900px;margin:0;font-size:clamp(30px,2.7vw,40px);font-weight:500;line-height:1.35;letter-spacing:-.04em;word-break:keep-all;text-wrap:balance}
+.nw-brand-practice__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #111}
+.nw-brand-practice__grid article{min-height:285px;padding:26px 30px 28px 0;border-right:1px solid var(--line)}
+.nw-brand-practice__grid article+article{padding-left:30px}
+.nw-brand-practice__grid article:last-child{border-right:0}
+.nw-brand-practice__grid span{color:#858585;font-size:12px;font-weight:600;letter-spacing:.08em}
+.nw-brand-practice__grid h3{max-width:18ch;margin:72px 0 16px;font-size:24px;font-weight:520;line-height:1.4;letter-spacing:-.032em;word-break:keep-all;text-wrap:balance}
+.nw-brand-practice__grid p{max-width:36em;margin:0;color:#666;font-size:16px;line-height:1.75}
+
+.nw-section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:52px}
+.nw-section-head h2{max-width:22ch;margin:0;font-size:clamp(30px,2.8vw,40px);font-weight:500;line-height:1.3;letter-spacing:-.04em;word-break:keep-all;text-wrap:balance}
+.nw-brand-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px 22px}
+.nw-brand-work-card{display:block;min-width:0}
+.nw-brand-work-card figure{margin:0;overflow:hidden;aspect-ratio:4/3;background:#f4f4f1}
+.nw-brand-work-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.nw-brand-work-card:hover img{transform:scale(1.012)}
+.nw-brand-work-card>div{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;padding-top:16px}
+.nw-brand-work-card strong{font-size:18px;font-weight:540;line-height:1.4}
+.nw-brand-work-card span{max-width:46%;color:#777;font-size:13px;line-height:1.5;text-align:right}
+.nw-brand-work-card p{max-width:42em;margin:8px 0 0;color:#666;font-size:15px;line-height:1.65}
+
+.nw-brand-system__grid,.nw-home-about__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(60px,7vw,120px);align-items:start}
+.nw-brand-system h2,.nw-home-about h2{max-width:20ch;margin:0;font-size:clamp(30px,2.8vw,40px);font-weight:500;line-height:1.3;letter-spacing:-.04em;word-break:keep-all;text-wrap:balance}
+.nw-brand-system__lead,.nw-home-about__lead{max-width:720px;margin:0 0 20px;font-size:18px;line-height:1.75;word-break:keep-all}
+.nw-brand-system__grid>div:last-child>p:not(.nw-brand-system__lead),.nw-home-about__grid>div:last-child>p:not(.nw-home-about__lead){max-width:720px;color:#666;font-size:16px;line-height:1.78}
+.nw-brand-process{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:42px 0 30px;border-top:1px solid #111;border-bottom:1px solid var(--line)}
+.nw-brand-process span{padding:17px 0;border-right:1px solid var(--line);font-size:13px;font-weight:500}
+.nw-brand-process span+span{padding-left:18px}
+.nw-brand-process span:last-child{border-right:0}
+.nw-brand-system .text-link,.nw-home-about .text-link{margin-top:10px}
+
+.nw-magazine-list{border-top:1px solid #111}
+.nw-magazine-list a{display:grid;grid-template-columns:180px minmax(0,1fr) minmax(220px,.7fr);gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.nw-magazine-list span{color:#888;font-size:11px;font-weight:600;letter-spacing:.06em}
+.nw-magazine-list strong{font-size:19px;font-weight:500;line-height:1.45;word-break:keep-all}
+.nw-magazine-list small{color:#777;font-size:13px;line-height:1.65}
+
+.nw-home-cta{padding:96px 0;background:#111;color:#fff}
+.nw-home-cta__inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.nw-home-cta h2{max-width:16ch;margin:0;font-size:clamp(34px,3.6vw,48px);font-weight:500;line-height:1.2;letter-spacing:-.045em;word-break:keep-all;text-wrap:balance}
+.nw-home-cta p:not(.eyebrow){max-width:650px;margin-top:20px;color:#cfcfcf;font-size:16px;line-height:1.7}
+.nw-home-cta .nw-button{color:#111;background:#fff;border-color:#fff}
+
+/* update notice */
 body.is-update-modal-open{overflow:hidden}.nw-update-modal{position:fixed;z-index:5000;inset:0;display:grid;visibility:hidden;place-items:center;opacity:0;transition:opacity .2s ease,visibility 0s linear .2s}.nw-update-modal.is-open{visibility:visible;opacity:1;transition-delay:0s}.nw-update-modal__dim{position:absolute;inset:0;width:100%;height:100%;border:0;background:rgba(0,0,0,.58);cursor:pointer}.nw-update-modal__panel{position:relative;z-index:1;width:min(calc(100% - 40px),540px);padding:34px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.16)}.nw-update-modal__panel h2{margin:0;font-size:clamp(26px,2.6vw,34px);font-weight:500;line-height:1.25;letter-spacing:-.04em}.nw-update-modal__panel>p:not(.eyebrow){margin-top:22px;color:#555;font-size:14px;line-height:1.78}.nw-update-modal__panel a{border-bottom:1px solid currentColor;color:#111}.nw-update-modal__close{position:absolute;top:16px;right:17px;width:30px;height:30px;border:0;background:transparent;font-size:25px;font-weight:300;cursor:pointer}.nw-update-modal__button{width:100%;min-height:48px;margin-top:28px;border:1px solid #111;background:#111;color:#fff;font-size:12px;font-weight:600;cursor:pointer}
-@media(max-width:980px){.nw-home-hero{min-height:500px!important;padding:78px 0!important}.nw-home-about__grid{grid-template-columns:1fr;gap:28px}.nw-magazine-list a{grid-template-columns:130px 1fr}.nw-magazine-list small{grid-column:2}}
-@media(max-width:680px){.nw-home-hero{min-height:auto!important;padding:66px 0!important}.nw-home-about,.nw-home-magazine{padding:64px 0}.nw-magazine-list a{display:block;padding:18px 0}.nw-magazine-list strong,.nw-magazine-list small{display:block;margin-top:7px}.nw-update-modal__panel{padding:28px 22px}.nw-update-modal__panel h2{font-size:25px}}
+
+@media(max-width:980px){
+  .nw-home-hero{min-height:560px!important;padding:88px 0 64px!important}.nw-home-hero__inner{min-height:408px!important}
+  .nw-brand-practice,.nw-brand-work,.nw-brand-system,.nw-home-about,.nw-home-magazine{padding:88px 0}
+  .nw-brand-practice__head{grid-template-columns:1fr;gap:22px;margin-bottom:48px}.nw-brand-practice__grid{grid-template-columns:1fr}.nw-brand-practice__grid article,.nw-brand-practice__grid article+article{min-height:0;padding:26px 0;border-right:0;border-bottom:1px solid var(--line)}.nw-brand-practice__grid h3{margin-top:32px}
+  .nw-brand-system__grid,.nw-home-about__grid{grid-template-columns:1fr;gap:34px}.nw-brand-work-grid{gap:48px 18px}
+  .nw-magazine-list a{grid-template-columns:140px 1fr}.nw-magazine-list small{grid-column:2}
+}
+@media(max-width:680px){
+  .nw-home-hero{min-height:auto!important;padding:72px 0 54px!important}.nw-home-hero__inner{min-height:0!important}.nw-home-hero h1{font-size:clamp(36px,10.5vw,46px)!important}.nw-home-hero__copy>p:not(.eyebrow){font-size:16px!important}.nw-home-actions{flex-wrap:wrap;margin-top:30px!important}.nw-home-hero__foot{align-items:flex-start;flex-direction:column;margin-top:64px;padding-top:28px}.nw-home-hero__foot>div{gap:12px 20px}
+  .nw-brand-practice,.nw-brand-work,.nw-brand-system,.nw-home-about,.nw-home-magazine{padding:72px 0}.nw-brand-practice__head h2,.nw-section-head h2,.nw-brand-system h2,.nw-home-about h2{font-size:30px}.nw-section-head{align-items:flex-start;flex-direction:column;margin-bottom:36px}.nw-brand-work-grid{grid-template-columns:1fr;gap:44px}.nw-brand-work-card>div{gap:14px}.nw-brand-work-card span{max-width:48%;font-size:12px}.nw-brand-process{grid-template-columns:repeat(2,1fr)}.nw-brand-process span:nth-child(2){border-right:0}.nw-brand-process span:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .nw-magazine-list a{display:block;padding:20px 0}.nw-magazine-list strong,.nw-magazine-list small{display:block;margin-top:8px}.nw-home-cta{padding:72px 0}.nw-home-cta__inner{display:block}.nw-home-cta .nw-button{margin-top:28px}.nw-update-modal__panel{padding:28px 22px}.nw-update-modal__panel h2{font-size:25px}
+}
