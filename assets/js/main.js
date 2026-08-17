@@ -25,17 +25,29 @@
     document.head.appendChild(script);
   };
 
-  /* Stable cascade: legacy base/navigation first, one final layer last. */
-  loadStyle('assets/css/clarity-20260814.css?v=20260817-7');
-  loadStyle('assets/css/header-compact-20260814.css?v=20260814-1');
-  loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-4');
-  loadStyle('assets/css/site-final-20260817.css?v=20260817-1');
+  /* One controlled final cascade. Do not inject the old auto local-sidebar system. */
+  loadStyle('assets/css/sost-system-20260817.css?v=20260817-3');
+  loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
+  loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
     loadStyle('assets/css/portfolio-detail-refine.css?v=20260807-4');
-    loadStyle('assets/css/site-final-20260817.css?v=20260817-1');
+    loadStyle('assets/css/portfolio-consistency-20260817.css?v=20260817-2');
+    loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
     loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
+  }
+
+  /* Remove document-shell wrappers if an older cached local-nav script created them. */
+  const existingLayout = document.querySelector('main > .nw-doc-layout');
+  if (existingLayout) {
+    const content = existingLayout.querySelector(':scope > .nw-doc-content');
+    const main = existingLayout.parentElement;
+    if (content && main) {
+      Array.from(content.children).forEach((node) => main.insertBefore(node, existingLayout));
+      existingLayout.remove();
+      body.classList.remove('nw-doc-page');
+    }
   }
 
   document.querySelectorAll('link[rel~="icon"]').forEach((icon) => icon.remove());
@@ -122,13 +134,13 @@
   }
 
   const navMap = {
-    about: 'about',
-    branding: 'branding',
-    project: 'project',
+    about: 'about', branding: 'branding', project: 'project',
     portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     magazine: 'magazine', 'magazine-detail': 'magazine',
-    solutions: 'solutions', develop: 'solutions', print: 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', membership: 'solutions', 'client-register': 'solutions',
-    contact: 'contact'
+    solutions: 'solutions', develop: 'solutions', print: 'solutions',
+    'print-editorial': 'solutions', 'print-partner': 'solutions',
+    'package-production': 'solutions', 'package-sample': 'solutions',
+    membership: 'solutions', 'client-register': 'solutions', contact: 'contact'
   };
   const activeNav = navMap[pageKey];
   document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
@@ -144,7 +156,6 @@
     trigger?.setAttribute('aria-expanded', String(open));
     overlay?.setAttribute('aria-hidden', String(!open));
   };
-
   trigger?.addEventListener('click', () => setMenu(!body.classList.contains('is-menu-open')));
   overlay?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
@@ -225,6 +236,4 @@
     ].join('\n');
     window.location.href = `mailto:info@9works.kr?subject=${encodeURIComponent(`[NINEWORKS 프로젝트 문의] ${projectName || company || name}`)}&body=${encodeURIComponent(bodyText)}`;
   });
-
-  loadScript('assets/js/seed-local-nav-20260817.js?v=20260817-3');
 })();
