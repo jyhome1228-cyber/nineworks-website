@@ -40,12 +40,15 @@
     return copy;
   };
 
-  const render = (filter = 'all') => {
+  const defaultFilter = grid.dataset.projectDefaultFilter || 'all';
+  const allowShuffle = grid.dataset.projectShuffle !== 'false';
+
+  const render = (filter = defaultFilter) => {
     const pool = filter === 'all'
       ? allProjects
       : allProjects.filter((project) => (project.filters || []).includes(filter));
 
-    const selected = shuffle(pool).slice(0, 12);
+    const selected = (allowShuffle ? shuffle(pool) : pool).slice(0, 12);
 
     grid.innerHTML = selected.map((project, index) => `
       <article class="project-card project-filter-item is-visible" data-category="${escapeHTML((project.filters || []).join(' '))}" style="--random-index:${index}">
@@ -70,7 +73,7 @@
 
   filterBar?.querySelectorAll('[data-project-filter-value]').forEach((button) => {
     button.addEventListener('click', () => {
-      const filter = button.dataset.projectFilterValue || 'all';
+      const filter = button.dataset.projectFilterValue || defaultFilter;
       filterBar.querySelectorAll('[data-project-filter-value]').forEach((item) => item.classList.toggle('is-active', item === button));
       render(filter);
     });
@@ -78,8 +81,8 @@
 
   document.querySelector('[data-project-shuffle]')?.addEventListener('click', () => {
     const active = filterBar?.querySelector('[data-project-filter-value].is-active');
-    render(active?.dataset.projectFilterValue || 'all');
+    render(active?.dataset.projectFilterValue || defaultFilter);
   });
 
-  render('all');
+  render(defaultFilter);
 })();
