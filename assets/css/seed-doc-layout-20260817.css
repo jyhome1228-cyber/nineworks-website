@@ -1,0 +1,157 @@
+/* NINEWORKS — SEED-inspired documentation shell */
+
+.nw-doc-page main{
+  width:min(calc(100% - 48px),var(--nw-wide,1280px));
+  max-width:var(--nw-wide,1280px);
+  margin:0 auto;
+}
+
+.nw-doc-layout{
+  display:grid;
+  grid-template-columns:188px minmax(0,1fr);
+  gap:36px;
+  align-items:start;
+}
+
+.nw-local-sidebar{
+  position:sticky;
+  top:calc(var(--header-h,60px) + 20px);
+  z-index:20;
+  align-self:start;
+  max-height:calc(100svh - var(--header-h,60px) - 40px);
+  padding:8px 0 28px;
+  overflow:auto;
+  scrollbar-width:none;
+}
+.nw-local-sidebar::-webkit-scrollbar{display:none}
+
+.nw-local-sidebar__group{margin:0 0 24px}
+.nw-local-sidebar__label{
+  margin:14px 10px 8px;
+  color:#8b9097;
+  font-size:10px;
+  font-weight:500;
+  line-height:1.4;
+  letter-spacing:.01em;
+}
+.nw-local-sidebar__nav{display:grid;gap:2px}
+.nw-local-sidebar__item{
+  display:flex;
+  width:100%;
+  min-height:34px;
+  align-items:center;
+  padding:7px 10px;
+  border:0;
+  border-radius:8px;
+  color:#555c65;
+  background:transparent;
+  font-size:12px;
+  font-weight:400;
+  line-height:1.4;
+  letter-spacing:-.015em;
+  text-align:left;
+  cursor:pointer;
+  transition:background .15s ease,color .15s ease;
+}
+.nw-local-sidebar__item:hover{color:#1f2328;background:#f5f6f7}
+.nw-local-sidebar__item.is-active{color:#17191c;background:#f0f1f2;font-weight:500}
+.nw-local-sidebar__item--link{justify-content:space-between}
+.nw-local-sidebar__item--link::after{content:'↗';color:#9ba0a6;font-size:10px}
+
+.nw-doc-content{min-width:0;padding-bottom:40px}
+.nw-doc-content>.container,
+.nw-doc-content>.section.container,
+.nw-doc-content>.section--tight.container,
+.nw-doc-content>.category-intro.container,
+.nw-doc-content .container{
+  width:100%!important;
+  max-width:none!important;
+  margin-inline:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+.nw-doc-content>.page-hero,
+.nw-doc-content>.portfolio-hero,
+.nw-doc-content>.magazine-hero{
+  padding-top:58px!important;
+}
+
+.nw-doc-content .page-title,
+.nw-doc-content .portfolio-hero .page-title,
+.nw-doc-content .magazine-hero .page-title{
+  max-width:14ch;
+}
+
+.nw-doc-content .section-line,
+.nw-doc-content>.section,
+.nw-doc-content>.section--tight,
+.nw-doc-content>.cta,
+.nw-doc-content>.branding-projects,
+.nw-doc-content>.branding-about,
+.nw-doc-content>.magazine-archive,
+.nw-doc-content>.portfolio-index-head,
+.nw-doc-content>.portfolio-list{
+  scroll-margin-top:calc(var(--header-h,60px) + 22px);
+}
+
+/* Portfolio / Magazine: local sidebar becomes the category controller. */
+.nw-doc-page.page-portfolio .category-nav.portfolio-filter,
+.nw-doc-page.page-magazine .category-nav.magazine-filter{
+  display:none!important;
+}
+
+.nw-doc-page.page-portfolio .portfolio-index-head,
+.nw-doc-page.page-magazine .magazine-archive{
+  margin-top:0!important;
+}
+
+/* SEED-like cards and surfaces inside documentation pages */
+.nw-doc-page .portfolio-card__media,
+.nw-doc-page .magazine-card__media,
+.nw-doc-page .project-random-media,
+.nw-doc-page .nw-service-card,
+.nw-doc-page .nw-process-card,
+.nw-doc-page .solution-card,
+.nw-doc-page .service-card,
+.nw-doc-page .capability-card,
+.nw-doc-page .branding-scope li{
+  border-radius:12px!important;
+}
+
+.nw-doc-page .portfolio-grid,
+.nw-doc-page .project-grid,
+.nw-doc-page .magazine-grid{
+  column-gap:18px!important;
+  row-gap:36px!important;
+}
+
+/* Solution family: compact local nav plus readable main column */
+.nw-doc-page.page-solutions .nw-doc-content,
+.nw-doc-page.page-develop .nw-doc-content,
+.nw-doc-page.page-print-editorial .nw-doc-content,
+.nw-doc-page.page-package-production .nw-doc-content,
+.nw-doc-page.page-package-sample .nw-doc-content,
+.nw-doc-page.page-branding .nw-doc-content,
+.nw-doc-page.page-about .nw-doc-content{
+  max-width:1040px;
+}
+
+@media(max-width:1100px){
+  .nw-doc-layout{grid-template-columns:164px minmax(0,1fr);gap:28px}
+  .nw-local-sidebar__item{font-size:11.5px}
+}
+
+@media(max-width:900px){
+  .nw-doc-page main{width:min(calc(100% - 40px),var(--nw-wide,1280px))}
+  .nw-doc-layout{display:block}
+  .nw-local-sidebar{display:none}
+  .nw-doc-content{max-width:none!important}
+}
+
+@media(max-width:760px){
+  .nw-doc-page main{width:calc(100% - 24px)}
+  .nw-doc-content>.page-hero,
+  .nw-doc-content>.portfolio-hero,
+  .nw-doc-content>.magazine-hero{padding-top:40px!important}
+}
