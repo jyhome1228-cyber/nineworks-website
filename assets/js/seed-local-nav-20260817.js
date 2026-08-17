@@ -3,7 +3,8 @@
   const pageKey = (path === 'index.html' || window.location.pathname.endsWith('/')) ? 'home' : path.replace(/\.html$/i, '');
   const supported = new Set([
     'about','branding','project','portfolio','magazine','solutions','develop',
-    'print-editorial','package-production','package-sample'
+    'print-editorial','package-production','package-sample','membership','client-register',
+    'contact','designer','privacy','email-refusal'
   ]);
   if (!supported.has(pageKey) || document.body.classList.contains('portfolio-detail-page')) return;
 
@@ -102,7 +103,7 @@
       return node.matches('section,.page-hero,.portfolio-hero,.magazine-hero');
     });
     const usable = sections.filter((section, index) => index === 0 || !section.classList.contains('cta'));
-    return usable.slice(0, 8).map((target, index) => ({ target, label: labelForSection(target, index) }));
+    return usable.slice(0, 10).map((target, index) => ({ target, label: labelForSection(target, index) }));
   };
 
   const proxyFilter = (selector, attr, label) => {
@@ -143,13 +144,14 @@
       { label:'Projects', href:'project.html' },
       { label:'Portfolio', href:'portfolio.html' }
     ]);
-  } else if (['solutions','develop','print-editorial','package-production','package-sample'].includes(pageKey)) {
+  } else if (['solutions','develop','print-editorial','package-production','package-sample','membership','client-register'].includes(pageKey)) {
     makeLinkGroup('Solutions', [
       { label:'Overview', href:'solutions.html', current:pageKey === 'solutions' },
       { label:'Website / System', href:'develop.html', current:pageKey === 'develop' },
       { label:'Print Design', href:'print-editorial.html', current:pageKey === 'print-editorial' },
       { label:'Print / Package Production', href:'package-production.html', current:pageKey === 'package-production' },
-      { label:'Package Sample', href:'package-sample.html', current:pageKey === 'package-sample' }
+      { label:'Package Sample', href:'package-sample.html', current:pageKey === 'package-sample' },
+      { label:'Membership', href:'membership.html', current:pageKey === 'membership' }
     ]);
     const sections = buildAutoSections();
     if (sections.length > 1) makeAnchorNav(sections, 'On this page');
@@ -171,6 +173,26 @@
       { label:'Branding', href:'branding.html' },
       { label:'Projects', href:'project.html' },
       { label:'Solutions', href:'solutions.html' }
+    ]);
+  } else if (pageKey === 'contact') {
+    makeAnchorNav(buildAutoSections(), 'Contact');
+    makeLinkGroup('Explore', [
+      { label:'Branding', href:'branding.html' },
+      { label:'Projects', href:'project.html' },
+      { label:'Solutions', href:'solutions.html' }
+    ]);
+  } else if (pageKey === 'designer') {
+    makeAnchorNav(buildAutoSections(), 'Designer');
+    makeLinkGroup('Explore', [
+      { label:'About Nineworks', href:'about.html' },
+      { label:'Branding', href:'branding.html' },
+      { label:'Projects', href:'project.html' }
+    ]);
+  } else if (['privacy','email-refusal'].includes(pageKey)) {
+    makeAnchorNav(buildAutoSections(), pageKey === 'privacy' ? 'Privacy' : 'Policy');
+    makeLinkGroup('Explore', [
+      { label:'About', href:'about.html' },
+      { label:'Contact', href:'contact.html' }
     ]);
   }
 })();
