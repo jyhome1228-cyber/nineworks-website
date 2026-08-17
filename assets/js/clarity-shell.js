@@ -1,4 +1,9 @@
 (() => {
+  const freshStyle = document.createElement('link');
+  freshStyle.rel = 'stylesheet';
+  freshStyle.href = 'assets/css/clarity-20260814.css?v=20260817-6';
+  document.head.appendChild(freshStyle);
+
   if (window.__NW_MAIN_BOOTSTRAPPED__) return;
   window.__NW_MAIN_BOOTSTRAPPED__ = true;
   const current = Array.from(document.scripts).some((script) => /assets\/js\/main\.js(?:\?|$)/.test(script.src || ''));
