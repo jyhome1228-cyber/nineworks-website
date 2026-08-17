@@ -1,0 +1,111 @@
+/* NINEWORKS — sitewide SEED-inspired finish */
+
+:root{
+  --nw-control-h:40px;
+  --nw-control-radius:8px;
+  --nw-card-radius:12px;
+  --nw-panel-radius:16px;
+}
+
+body:not(.portfolio-detail-page){background:#fff!important}
+body:not(.portfolio-detail-page) main{background:#fff}
+
+/* Consistent content rhythm */
+body:not(.portfolio-detail-page) section{scroll-margin-top:84px}
+body:not(.portfolio-detail-page) .section-line{border-color:#e7e9eb!important}
+body:not(.portfolio-detail-page) hr{border:0;border-top:1px solid #e7e9eb}
+
+/* Form controls */
+body:not(.portfolio-detail-page) input,
+body:not(.portfolio-detail-page) select,
+body:not(.portfolio-detail-page) textarea{
+  border:1px solid #dfe3e6!important;
+  border-radius:var(--nw-control-radius)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+  font-size:14px!important;
+  outline:none!important;
+  transition:border-color .15s ease,box-shadow .15s ease,background .15s ease!important;
+}
+body:not(.portfolio-detail-page) input,
+body:not(.portfolio-detail-page) select{min-height:var(--nw-control-h)!important}
+body:not(.portfolio-detail-page) input:focus,
+body:not(.portfolio-detail-page) select:focus,
+body:not(.portfolio-detail-page) textarea:focus{
+  border-color:#aeb4bb!important;
+  box-shadow:0 0 0 3px rgba(32,33,36,.06)!important;
+}
+
+/* Generic buttons and pills */
+body:not(.portfolio-detail-page) button,
+body:not(.portfolio-detail-page) .button,
+body:not(.portfolio-detail-page) .btn,
+body:not(.portfolio-detail-page) [class*="button--"]{
+  border-radius:var(--nw-control-radius);
+}
+
+/* Common cards / panels */
+body:not(.portfolio-detail-page) .card,
+body:not(.portfolio-detail-page) [class$="-card"],
+body:not(.portfolio-detail-page) [class*="__card"]{
+  border-radius:var(--nw-card-radius);
+}
+body:not(.portfolio-detail-page) .about-card,
+body:not(.portfolio-detail-page) .services-card{
+  border:1px solid #e5e7e9!important;
+  border-radius:var(--nw-card-radius)!important;
+  background:#f5f6f7!important;
+}
+
+/* Footer follows the compact documentation shell. */
+body:not(.portfolio-detail-page) .site-footer{
+  width:min(calc(100% - 48px),var(--nw-wide,1280px))!important;
+  max-width:var(--nw-wide,1280px)!important;
+  margin-inline:auto!important;
+  padding-top:36px!important;
+  padding-bottom:28px!important;
+  border-top:1px solid #e5e7e9!important;
+}
+body:not(.portfolio-detail-page) .site-footer__links a{
+  border-radius:6px!important;
+  transition:background .15s ease,color .15s ease!important;
+}
+body:not(.portfolio-detail-page) .site-footer__links a:hover{
+  color:#1f2328!important;
+  background:#f5f6f7!important;
+}
+
+/* Home adopts the same compact type / card language without a left sidebar. */
+body.page-home .nw-home-hero{padding-top:72px!important;padding-bottom:72px!important}
+body.page-home .nw-home-hero__copy h1{font-size:clamp(40px,5vw,64px)!important;line-height:1.04!important;letter-spacing:-.055em!important}
+body.page-home .nw-block,
+body.page-home .nw-home-about,
+body.page-home .nw-work,
+body.page-home .nw-home-magazine{padding-top:80px!important;padding-bottom:80px!important}
+body.page-home .nw-service-card,
+body.page-home .nw-process-card,
+body.page-home .nw-work-card figure{border-radius:12px!important}
+
+/* Solutions / About legacy rectangular blocks become softer, SEED-like surfaces. */
+body.page-solutions .services-core{background:#fff!important}
+body.page-solutions .services-core-grid{gap:12px!important}
+body.page-solutions .services-card{min-height:360px!important;padding:22px!important}
+body.page-about .about-section--soft{background:#fff!important}
+body.page-about .about-principles{gap:12px!important}
+
+/* Compact metadata */
+body:not(.portfolio-detail-page) small,
+body:not(.portfolio-detail-page) .muted,
+body:not(.portfolio-detail-page) [class*="meta"]{letter-spacing:-.005em}
+
+@media(max-width:980px){
+  body:not(.portfolio-detail-page) .site-footer{width:min(calc(100% - 40px),var(--nw-wide,1280px))!important}
+}
+@media(max-width:760px){
+  body:not(.portfolio-detail-page) .site-footer{width:calc(100% - 24px)!important}
+  body.page-home .nw-home-hero{padding-top:48px!important;padding-bottom:52px!important}
+  body.page-home .nw-block,
+  body.page-home .nw-home-about,
+  body.page-home .nw-work,
+  body.page-home .nw-home-magazine{padding-top:64px!important;padding-bottom:64px!important}
+}
