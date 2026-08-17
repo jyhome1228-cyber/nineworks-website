@@ -1,5 +1,4 @@
-/* High-specificity SEED-inspired overrides loaded through clarity before navigation.
-   Specificity intentionally beats the legacy navigation layer even when it loads later. */
+/* High-specificity SEED-inspired overrides */
 
 html body .site-header{
   width:min(calc(100% - 48px),var(--nw-wide,1280px))!important;
@@ -45,55 +44,129 @@ html body .site-header .site-nav-dropdown a{
   font-size:11px!important;
 }
 
-html body.portfolio-page main .category-nav.portfolio-filter,
-html body.magazine-page main .category-nav.magazine-filter{
-  position:relative!important;
-  top:auto!important;
-  z-index:2!important;
-  display:flex!important;
-  grid-template-columns:none!important;
-  width:min(calc(100% - 48px),var(--nw-wide,1280px))!important;
-  max-width:var(--nw-wide,1280px)!important;
-  margin:0 auto!important;
-  padding:6px!important;
-  gap:4px!important;
-  overflow-x:auto!important;
-  border:1px solid #e5e7e9!important;
-  border-radius:12px!important;
-  background:#f3f4f5!important;
-  box-shadow:none!important;
-  backdrop-filter:none!important;
-  scrollbar-width:none!important;
-}
-html body.portfolio-page main .category-nav.portfolio-filter::-webkit-scrollbar,
-html body.magazine-page main .category-nav.magazine-filter::-webkit-scrollbar{display:none!important}
-html body.portfolio-page main .category-nav.portfolio-filter button,
-html body.magazine-page main .category-nav.magazine-filter button{
-  flex:0 0 auto!important;
-  width:auto!important;
-  min-width:auto!important;
-  min-height:36px!important;
-  padding:0 13px!important;
-  border:0!important;
-  border-radius:8px!important;
-  color:#69707a!important;
-  background:transparent!important;
-  font-size:11px!important;
-  font-weight:500!important;
-  white-space:nowrap!important;
-}
-html body.portfolio-page main .category-nav.portfolio-filter button:first-child{border-left:0!important}
-html body.portfolio-page main .category-nav.portfolio-filter button.is-active,
-html body.magazine-page main .category-nav.magazine-filter button.is-active{
-  color:#1d1f22!important;
-  background:#fff!important;
-  box-shadow:0 1px 2px rgba(0,0,0,.04)!important;
+/* Archive pages use SEED-like left local navigation on desktop. */
+@media(min-width:901px){
+  html body.portfolio-page main,
+  html body.magazine-page main{
+    display:grid!important;
+    grid-template-columns:188px minmax(0,1fr)!important;
+    column-gap:36px!important;
+    width:min(calc(100% - 48px),var(--nw-wide,1280px))!important;
+    max-width:var(--nw-wide,1280px)!important;
+    margin:0 auto!important;
+    align-items:start!important;
+  }
+  html body.portfolio-page main>.container,
+  html body.magazine-page main>.container,
+  html body.portfolio-page main>.cta,
+  html body.magazine-page main>.cta{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  html body.portfolio-page main>.portfolio-hero,
+  html body.magazine-page main>.magazine-hero{
+    grid-column:2!important;
+    grid-row:1!important;
+  }
+  html body.portfolio-page main>.portfolio-index-head,
+  html body.portfolio-page main>.portfolio-list,
+  html body.portfolio-page main>.cta,
+  html body.magazine-page main>.magazine-archive,
+  html body.magazine-page main>.cta{
+    grid-column:2!important;
+  }
+  html body.portfolio-page main>.category-nav.portfolio-filter,
+  html body.magazine-page main>.category-nav.magazine-filter{
+    position:sticky!important;
+    top:calc(var(--header-h,60px) + 20px)!important;
+    z-index:20!important;
+    grid-column:1!important;
+    grid-row:1 / span 5!important;
+    align-self:start!important;
+    display:grid!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:58px 0 0!important;
+    padding:0!important;
+    gap:2px!important;
+    overflow:visible!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+  }
+  html body.portfolio-page main>.category-nav.portfolio-filter button,
+  html body.magazine-page main>.category-nav.magazine-filter button{
+    display:flex!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:34px!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    padding:7px 10px!important;
+    border:0!important;
+    border-radius:8px!important;
+    color:#555c65!important;
+    background:transparent!important;
+    font-size:12px!important;
+    font-weight:400!important;
+    text-align:left!important;
+    white-space:normal!important;
+  }
+  html body.portfolio-page main>.category-nav.portfolio-filter button:hover,
+  html body.magazine-page main>.category-nav.magazine-filter button:hover{
+    color:#1f2328!important;
+    background:#f5f6f7!important;
+  }
+  html body.portfolio-page main>.category-nav.portfolio-filter button.is-active,
+  html body.magazine-page main>.category-nav.magazine-filter button.is-active{
+    color:#17191c!important;
+    background:#f0f1f2!important;
+    box-shadow:none!important;
+    font-weight:500!important;
+  }
 }
 
 @media(max-width:1180px){
   html body .site-header .site-primary-nav>a,
   html body .site-header .site-primary-nav>.site-nav-item>a{padding:7px 8px!important;font-size:11px!important}
 }
+
+@media(max-width:900px){
+  html body.portfolio-page main,
+  html body.magazine-page main{display:block!important;width:auto!important;max-width:none!important;margin:0!important}
+  html body.portfolio-page main .category-nav.portfolio-filter,
+  html body.magazine-page main .category-nav.magazine-filter{
+    position:relative!important;
+    top:auto!important;
+    display:flex!important;
+    width:min(calc(100% - 40px),var(--nw-wide,1280px))!important;
+    max-width:var(--nw-wide,1280px)!important;
+    margin:0 auto!important;
+    padding:6px!important;
+    gap:4px!important;
+    overflow-x:auto!important;
+    border:1px solid #e5e7e9!important;
+    border-radius:12px!important;
+    background:#f3f4f5!important;
+  }
+  html body.portfolio-page main .category-nav.portfolio-filter button,
+  html body.magazine-page main .category-nav.magazine-filter button{
+    flex:0 0 auto!important;
+    width:auto!important;
+    min-height:36px!important;
+    padding:0 13px!important;
+    border:0!important;
+    border-radius:8px!important;
+    white-space:nowrap!important;
+  }
+}
+
 @media(max-width:760px){
   html body .site-header{width:calc(100% - 24px)!important}
   html body.portfolio-page main .category-nav.portfolio-filter,
