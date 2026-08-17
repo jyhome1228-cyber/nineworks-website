@@ -1,0 +1,231 @@
+/* NINEWORKS — layout regression guard / 2026-08-17
+   Prevent legacy grids from collapsing after local-sidebar wrapping. */
+
+/* Core document shell */
+html body.nw-doc-page main,
+html body.nw-doc-page .nw-doc-layout,
+html body.nw-doc-page .nw-doc-content{
+  min-width:0!important;
+}
+html body.nw-doc-page .nw-doc-layout{
+  width:100%!important;
+  max-width:none!important;
+  grid-template-columns:220px minmax(0,1fr)!important;
+  align-items:start!important;
+}
+html body.nw-doc-page .nw-doc-content{
+  width:100%!important;
+  max-width:none!important;
+  overflow:visible!important;
+}
+html body.nw-doc-page .nw-doc-content>*{
+  min-width:0!important;
+  max-width:100%!important;
+}
+html body.nw-doc-page .nw-doc-content>.container,
+html body.nw-doc-page .nw-doc-content>section.container,
+html body.nw-doc-page .nw-doc-content section.container{
+  width:100%!important;
+  max-width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Never allow old float/absolute/intrinsic sizing to collapse archive cards. */
+html body.nw-doc-page .portfolio-grid,
+html body.nw-doc-page .project-grid,
+html body.nw-doc-page .magazine-grid{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  align-items:start!important;
+}
+html body.nw-doc-page .portfolio-card,
+html body.nw-doc-page .project-card,
+html body.nw-doc-page .magazine-card,
+html body.nw-doc-page .portfolio-card__link,
+html body.nw-doc-page .project-card__link,
+html body.nw-doc-page .magazine-card__link{
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+}
+html body.nw-doc-page .portfolio-card__link,
+html body.nw-doc-page .project-card__link,
+html body.nw-doc-page .magazine-card__link{display:block!important}
+
+/* Magazine archive — explicit editorial grid. */
+html body.nw-doc-page.page-magazine .magazine-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr)!important;
+  gap:clamp(48px,6vw,96px)!important;
+  align-items:end!important;
+  width:100%!important;
+  padding-top:clamp(100px,8vw,136px)!important;
+  padding-bottom:72px!important;
+}
+html body.nw-doc-page.page-magazine .magazine-hero>div,
+html body.nw-doc-page.page-magazine .magazine-hero__copy{
+  grid-column:auto!important;
+  width:auto!important;
+  max-width:680px!important;
+  margin:0!important;
+}
+html body.nw-doc-page.page-magazine .magazine-archive{
+  width:100%!important;
+  max-width:none!important;
+  padding-top:64px!important;
+  padding-bottom:112px!important;
+}
+html body.nw-doc-page.page-magazine .magazine-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:64px 22px!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card{
+  display:block!important;
+  position:relative!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__media{
+  display:block!important;
+  width:100%!important;
+  margin:0!important;
+  aspect-ratio:16/9!important;
+  overflow:hidden!important;
+  border-radius:4px!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__media img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__meta{
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+  width:100%!important;
+  margin:0!important;
+  padding-top:16px!important;
+  color:#888!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card h3{
+  width:100%!important;
+  max-width:26ch!important;
+  margin:12px 0 0!important;
+  font-size:clamp(22px,1.8vw,28px)!important;
+  font-weight:540!important;
+  line-height:1.35!important;
+  letter-spacing:-.03em!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__summary{
+  width:100%!important;
+  max-width:46ch!important;
+  margin:10px 0 0!important;
+  color:#666!important;
+  font-size:16px!important;
+  line-height:1.7!important;
+}
+html body.nw-doc-page.page-magazine .magazine-card__status{
+  display:inline-flex!important;
+  width:auto!important;
+  margin-top:18px!important;
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+
+/* Portfolio archive — explicit widths in case old 12-col rules leak back in. */
+html body.nw-doc-page.page-portfolio .portfolio-hero,
+html body.nw-doc-page.page-portfolio .portfolio-index-head,
+html body.nw-doc-page.page-portfolio .portfolio-list{
+  width:100%!important;
+  max-width:none!important;
+}
+html body.nw-doc-page.page-portfolio .portfolio-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:56px 22px!important;
+}
+html body.nw-doc-page.page-portfolio .portfolio-card__media{
+  width:100%!important;
+  aspect-ratio:16/9!important;
+}
+
+/* Selected branding projects */
+html body.nw-doc-page.page-project .branding-projects,
+html body.nw-doc-page.page-project .project-grid{
+  width:100%!important;
+  max-width:none!important;
+}
+html body.nw-doc-page.page-project .project-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:56px 22px!important;
+}
+html body.nw-doc-page.page-project .project-random-media{
+  width:100%!important;
+  aspect-ratio:16/9!important;
+}
+
+/* Branding/About/Solutions: readable, but never shrink-to-fit. */
+html body.nw-doc-page.page-branding .branding-about,
+html body.nw-doc-page.page-about .about-section,
+html body.nw-doc-page.page-solutions .services-hero,
+html body.nw-doc-page.page-solutions .services-core,
+html body.nw-doc-page.page-solutions .services-note,
+html body.nw-doc-page.page-develop .nw-doc-content,
+html body.nw-doc-page.page-print-editorial .nw-doc-content,
+html body.nw-doc-page.page-package-production .nw-doc-content,
+html body.nw-doc-page.page-package-sample .nw-doc-content{
+  width:100%!important;
+  max-width:none!important;
+}
+
+/* CTA: stop old grid/viewport rules from compressing copy into a thin column. */
+html body.nw-doc-page .nw-doc-content>.cta{
+  display:grid!important;
+  width:100%!important;
+  max-width:none!important;
+  min-height:420px!important;
+  margin:0!important;
+  padding:88px 48px 52px!important;
+  grid-template-columns:1fr!important;
+  align-content:space-between!important;
+}
+html body.nw-doc-page .nw-doc-content>.cta .container{
+  width:100%!important;
+  max-width:none!important;
+}
+html body.nw-doc-page .nw-doc-content>.cta .cta__bottom{
+  width:100%!important;
+  display:flex!important;
+  justify-content:space-between!important;
+  gap:40px!important;
+}
+
+/* Header safety: one logo, no legacy pseudo/graphics overlay. */
+html body .site-header .site-logo::before,
+html body .site-header .site-logo::after{display:none!important;content:none!important}
+html body .site-header .site-logo{
+  background-image:none!important;
+  text-shadow:none!important;
+}
+
+@media(max-width:1180px){
+  html body.nw-doc-page.page-magazine .magazine-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:980px){
+  html body.nw-doc-page .nw-doc-layout{grid-template-columns:1fr!important;gap:0!important}
+  html body.nw-doc-page.page-magazine .magazine-hero{grid-template-columns:1fr!important;gap:28px!important}
+}
+@media(max-width:760px){
+  html body.nw-doc-page .nw-doc-content>*{max-width:100%!important}
+  html body.nw-doc-page.page-magazine .magazine-grid,
+  html body.nw-doc-page.page-portfolio .portfolio-grid,
+  html body.nw-doc-page.page-project .project-grid{grid-template-columns:1fr!important;gap:44px!important}
+  html body.nw-doc-page .nw-doc-content>.cta{min-height:0!important;padding:72px 24px 40px!important}
+  html body.nw-doc-page .nw-doc-content>.cta .cta__bottom{align-items:flex-start!important;flex-direction:column!important;gap:28px!important}
+}
