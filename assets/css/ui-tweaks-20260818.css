@@ -10,9 +10,9 @@ html body .site-header .site-logo{
 
 /*
   Portfolio detail sticky behavior.
-  Important: the GRID ITEM itself is sticky. The previous implementation made
-  the inner element sticky while its parent only had the height of its content,
-  so the sticky element had no vertical travel range and scrolled away.
+  The sidebar stays at the same visual Y-position as its initial layout position.
+  The case-study grid starts 72px below the fixed header, so the sticky offset
+  uses the same 72px instead of jumping upward when sticky engages.
 */
 html:has(body.portfolio-detail-page),
 html body.portfolio-detail-page{
@@ -26,12 +26,13 @@ html body.portfolio-detail-page main[data-portfolio-detail-root].portfolio-split
   overflow:visible!important;
 }
 
-html body.portfolio-detail-page .portfolio-detail-sidebar{
+html body.portfolio-detail-page .portfolio-detail-sidebar,
+html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar{
   position:sticky!important;
-  top:calc(var(--header-height,104px) + 24px)!important;
+  top:calc(var(--header-height,104px) + 72px)!important;
   align-self:start!important;
   height:fit-content!important;
-  max-height:calc(100vh - var(--header-height,104px) - 48px)!important;
+  max-height:calc(100vh - var(--header-height,104px) - 96px)!important;
   min-height:0!important;
   overflow:visible!important;
   z-index:8!important;
@@ -44,7 +45,7 @@ html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sideba
   width:100%!important;
   min-height:0!important;
   height:auto!important;
-  max-height:calc(100vh - var(--header-height,104px) - 48px)!important;
+  max-height:calc(100vh - var(--header-height,104px) - 96px)!important;
   overflow-y:auto!important;
   overflow-x:hidden!important;
   overscroll-behavior:contain;
@@ -52,13 +53,10 @@ html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sideba
 }
 html body.portfolio-detail-page .portfolio-detail-sidebar__inner::-webkit-scrollbar{display:none}
 
-/* When the detail header is intentionally hidden, move the sticky panel upward. */
-html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar{
-  top:24px!important;
-  max-height:calc(100vh - 48px)!important;
-}
-html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner{
-  max-height:calc(100vh - 48px)!important;
+/* Detail pages keep the header visible, so cached header-hide state must not shift the sidebar. */
+html body.portfolio-detail-page .site-header,
+html body.portfolio-detail-page.is-detail-header-hidden .site-header{
+  transform:none!important;
 }
 
 @media(max-width:900px){
