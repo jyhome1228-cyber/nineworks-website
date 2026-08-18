@@ -2,7 +2,7 @@
 .site-shell{padding-top:var(--header-h)!important}
 .site-header{position:fixed!important;top:0!important;right:0!important;left:0!important;height:var(--header-h)!important;display:flex!important;align-items:center!important;padding-left:max(24px,calc((100vw - var(--container))/2))!important;padding-right:max(24px,calc((100vw - var(--container))/2))!important;background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--line)!important;backdrop-filter:blur(16px)!important;transform:none!important;opacity:1!important;pointer-events:auto!important}
 .site-header.is-hidden{transform:none!important;opacity:1!important;pointer-events:auto!important}
-.site-logo{display:block!important;width:210px!important;height:26px!important;min-width:210px!important;background:url('../logo-nineworks.svg') left center/contain no-repeat!important;font-size:0!important;line-height:0!important;overflow:visible!important}
+.site-logo{display:inline-flex!important;align-items:center!important;width:auto!important;height:auto!important;min-width:0!important;background:none!important;color:#111!important;font-size:32px!important;font-weight:700!important;line-height:1!important;letter-spacing:-.055em!important;text-indent:0!important;overflow:visible!important;white-space:nowrap!important;transform:none!important}
 .site-primary-nav{position:absolute!important;left:50%!important;display:flex!important;align-items:center!important;gap:clamp(17px,1.65vw,28px)!important;transform:translateX(-50%)!important;white-space:nowrap!important}
 .site-primary-nav a{font-size:12.5px!important;font-weight:600!important;letter-spacing:.045em!important}
 .site-header__action{margin-left:auto!important;font-size:11.5px!important;min-height:38px!important;padding:0!important;white-space:nowrap!important}
@@ -19,7 +19,7 @@
 .site-footer__social{display:flex!important;gap:16px!important}
 
 @media(max-width:1240px){
-  .site-logo{width:184px!important;height:23px!important;min-width:184px!important}
+  .site-logo{font-size:30px!important;width:auto!important;height:auto!important;min-width:0!important;background:none!important}
   .site-primary-nav{gap:16px!important}
   .site-primary-nav a{font-size:11.5px!important}
   .site-header__action{font-size:10.5px!important}
@@ -27,7 +27,7 @@
 @media(max-width:980px){
   :root{--header-h:72px}
   .site-header{height:var(--header-h)!important;padding-left:20px!important;padding-right:20px!important}
-  .site-logo{width:174px!important;height:22px!important;min-width:174px!important}
+  .site-logo{font-size:28px!important;width:auto!important;height:auto!important;min-width:0!important;background:none!important}
   .site-primary-nav,.site-header__action{display:none!important}
   .menu-trigger{display:grid!important;margin-left:auto!important}
   .menu-overlay{top:0!important;padding-top:calc(var(--header-h) + 28px)!important}
@@ -36,7 +36,7 @@
 @media(max-width:680px){
   :root{--header-h:68px}
   .site-header{height:var(--header-h)!important;padding-left:18px!important;padding-right:18px!important}
-  .site-logo{width:160px!important;height:20px!important;min-width:160px!important}
+  .site-logo{font-size:26px!important;width:auto!important;height:auto!important;min-width:0!important;background:none!important}
   .site-footer{padding:34px 18px 28px!important}
   .site-footer__head,.site-footer__bottom{align-items:flex-start!important;flex-direction:column!important}
   .site-footer__head{gap:24px!important;padding-bottom:30px!important}
