@@ -1,8 +1,8 @@
 /* NINEWORKS — small global polish / 2026-08-18 */
 
-/* Header brand mark: slightly stronger visual presence without changing header height. */
+/* Header brand mark: 30% larger visual presence without changing header height. */
 html body .site-header .site-logo{
-  font-size:25px!important;
+  font-size:32.5px!important;
   font-weight:700!important;
   line-height:1!important;
   letter-spacing:-.055em!important;
@@ -78,5 +78,5 @@ html body.portfolio-detail-page.is-detail-header-hidden .site-header{
 }
 
 @media(max-width:760px){
-  html body .site-header .site-logo{font-size:22px!important}
+  html body .site-header .site-logo{font-size:28.6px!important}
 }
