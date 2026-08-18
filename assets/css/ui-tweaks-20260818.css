@@ -1,11 +1,23 @@
 /* NINEWORKS — small global polish / 2026-08-18 */
 
-/* Header brand mark: 30% larger visual presence without changing header height. */
+/* Header brand mark: lock text logo size and neutralize legacy SVG-background rules. */
+html body .site-header>a.site-logo,
 html body .site-header .site-logo{
-  font-size:32.5px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  background:none!important;
+  color:#111!important;
+  font-size:32px!important;
   font-weight:700!important;
   line-height:1!important;
   letter-spacing:-.055em!important;
+  text-indent:0!important;
+  white-space:nowrap!important;
+  transform:none!important;
 }
 
 /*
@@ -59,6 +71,11 @@ html body.portfolio-detail-page.is-detail-header-hidden .site-header{
   transform:none!important;
 }
 
+@media(max-width:1180px){
+  html body .site-header>a.site-logo,
+  html body .site-header .site-logo{font-size:30px!important}
+}
+
 @media(max-width:900px){
   html body.portfolio-detail-page .portfolio-detail-sidebar,
   html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar{
@@ -78,5 +95,6 @@ html body.portfolio-detail-page.is-detail-header-hidden .site-header{
 }
 
 @media(max-width:760px){
-  html body .site-header .site-logo{font-size:28.6px!important}
+  html body .site-header>a.site-logo,
+  html body .site-header .site-logo{font-size:26px!important}
 }
