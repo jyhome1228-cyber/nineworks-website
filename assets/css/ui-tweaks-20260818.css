@@ -1,0 +1,54 @@
+/* NINEWORKS — small global polish / 2026-08-18 */
+
+/* Header brand mark: slightly stronger visual presence without changing header height. */
+html body .site-header .site-logo{
+  font-size:25px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  letter-spacing:-.055em!important;
+}
+
+/* Portfolio detail: keep project information fixed while the case-study column scrolls. */
+html body.portfolio-detail-page .portfolio-split-detail,
+html body.portfolio-detail-page main.portfolio-split-detail,
+html body.portfolio-detail-page main[data-portfolio-detail-root].portfolio-split-detail{
+  align-items:start!important;
+}
+html body.portfolio-detail-page .portfolio-detail-sidebar{
+  position:relative!important;
+  align-self:stretch!important;
+  min-height:100%!important;
+  overflow:visible!important;
+}
+html body.portfolio-detail-page .portfolio-detail-sidebar__inner,
+html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner{
+  position:sticky!important;
+  top:calc(var(--header-height,104px) + 24px)!important;
+  max-height:calc(100vh - var(--header-height,104px) - 48px)!important;
+  min-height:0!important;
+  height:auto!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  scrollbar-width:none;
+}
+html body.portfolio-detail-page .portfolio-detail-sidebar__inner::-webkit-scrollbar{display:none}
+html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner{
+  top:24px!important;
+  max-height:calc(100vh - 48px)!important;
+}
+
+@media(max-width:900px){
+  html body.portfolio-detail-page .portfolio-detail-sidebar,
+  html body.portfolio-detail-page .portfolio-detail-sidebar__inner,
+  html body.portfolio-detail-page.is-detail-header-hidden .portfolio-detail-sidebar__inner{
+    position:relative!important;
+    top:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+}
+
+@media(max-width:760px){
+  html body .site-header .site-logo{font-size:22px!important}
+}
