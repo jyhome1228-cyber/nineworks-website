@@ -1,0 +1,209 @@
+/* NINEWORKS — Projects page visual reset / 2026-08-18
+   Scoped only to project.html. Keeps content/functionality intact and removes
+   the oversized empty-space rhythm that was introduced by broad global rules. */
+
+body.projects-page .page-hero{
+  display:grid!important;
+  grid-template-columns:minmax(0,.88fr) minmax(380px,1.12fr)!important;
+  gap:clamp(56px,7vw,112px)!important;
+  align-items:start!important;
+  min-height:0!important;
+  padding-top:76px!important;
+  padding-bottom:72px!important;
+  border-bottom:1px solid #e7e7e3!important;
+}
+body.projects-page .page-hero>div:first-child{max-width:700px!important}
+body.projects-page .page-hero .eyebrow{
+  margin:0 0 22px!important;
+  font-size:13px!important;
+  font-weight:600!important;
+  line-height:1.4!important;
+  letter-spacing:.1em!important;
+  color:#8a8a8a!important;
+}
+body.projects-page .page-hero .page-title{
+  max-width:700px!important;
+  font-size:clamp(38px,3.6vw,48px)!important;
+  font-weight:470!important;
+  line-height:1.12!important;
+  letter-spacing:-.047em!important;
+}
+body.projects-page .page-hero__bottom{
+  align-self:start!important;
+  width:100%!important;
+  max-width:690px!important;
+  margin:0!important;
+  padding-top:48px!important;
+}
+body.projects-page .page-hero__copy{
+  max-width:690px!important;
+  margin:0!important;
+  color:#555!important;
+  font-size:17px!important;
+  font-weight:400!important;
+  line-height:1.72!important;
+  letter-spacing:-.022em!important;
+}
+
+body.projects-page .branding-projects{
+  padding-top:68px!important;
+  padding-bottom:104px!important;
+  border-top:0!important;
+}
+body.projects-page .project-random-head{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:24px!important;
+  margin:0 0 38px!important;
+  padding:0!important;
+}
+body.projects-page .project-random-head__meta{
+  display:flex!important;
+  align-items:center!important;
+  gap:18px!important;
+  margin:0!important;
+  color:#858585!important;
+  font-size:13px!important;
+  font-weight:600!important;
+  line-height:1.4!important;
+  letter-spacing:.09em!important;
+}
+body.projects-page .project-random-head .text-link{
+  color:#222!important;
+  font-size:12.5px!important;
+}
+body.projects-page .project-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:52px 22px!important;
+}
+body.projects-page .project-card,
+body.projects-page .project-card--wide,
+body.projects-page .project-card--third{grid-column:auto!important}
+body.projects-page .project-random-media{
+  min-height:0!important;
+  aspect-ratio:16/9!important;
+  border-radius:2px!important;
+  overflow:hidden!important;
+  background:#f1f1ef!important;
+}
+body.projects-page .project-random-media img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+body.projects-page .project-random-meta{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(180px,32%)!important;
+  gap:24px!important;
+  padding-top:16px!important;
+}
+body.projects-page .project-random-copy strong{
+  display:block!important;
+  font-size:18px!important;
+  font-weight:540!important;
+  line-height:1.42!important;
+  letter-spacing:-.025em!important;
+}
+body.projects-page .project-random-copy span,
+body.projects-page .project-random-meta .project-card__category{
+  font-size:15px!important;
+  font-weight:400!important;
+  line-height:1.65!important;
+}
+body.projects-page .project-random-copy span{margin-top:6px!important;color:#747474!important}
+body.projects-page .project-random-meta .project-card__category{color:#777!important;text-align:right!important}
+
+/* Compact, readable CTA instead of a large empty black field. */
+body.projects-page .cta{
+  display:block!important;
+  width:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:84px 0 78px!important;
+  background:#111!important;
+  color:#fff!important;
+}
+body.projects-page .cta>.container{
+  width:min(calc(100% - 48px),1440px)!important;
+  max-width:1440px!important;
+  margin-inline:auto!important;
+  padding:0!important;
+}
+body.projects-page .cta .eyebrow{
+  margin:0 0 20px!important;
+  color:#8f8f8f!important;
+  font-size:13px!important;
+  font-weight:600!important;
+  letter-spacing:.1em!important;
+}
+body.projects-page .cta__title{
+  max-width:760px!important;
+  margin:0!important;
+  color:#fff!important;
+  font-size:clamp(28px,2.4vw,36px)!important;
+  font-weight:500!important;
+  line-height:1.28!important;
+  letter-spacing:-.038em!important;
+}
+body.projects-page .cta__bottom{
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:space-between!important;
+  gap:40px!important;
+  margin-top:44px!important;
+}
+body.projects-page .cta__bottom p{
+  max-width:760px!important;
+  margin:0!important;
+  color:#c9c9c9!important;
+  font-size:16px!important;
+  line-height:1.7!important;
+}
+body.projects-page .cta .text-link{
+  flex:0 0 auto!important;
+  color:#fff!important;
+  border-bottom-color:#777!important;
+  font-size:12.5px!important;
+}
+
+body.projects-page .site-footer{
+  padding-top:56px!important;
+  padding-bottom:28px!important;
+}
+body.projects-page .site-footer__links a{font-size:13.5px!important}
+body.projects-page .site-footer__legal p,
+body.projects-page .site-footer__bottom{font-size:12.5px!important}
+
+@media(max-width:900px){
+  body.projects-page .page-hero{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+    padding-top:72px!important;
+    padding-bottom:64px!important;
+  }
+  body.projects-page .page-hero__bottom{padding-top:0!important}
+  body.projects-page .project-grid{grid-template-columns:1fr!important;gap:44px!important}
+  body.projects-page .project-random-meta{grid-template-columns:1fr!important;gap:6px!important}
+  body.projects-page .project-random-meta .project-card__category{text-align:left!important}
+}
+
+@media(max-width:680px){
+  body.projects-page .page-hero{
+    padding-top:56px!important;
+    padding-bottom:56px!important;
+  }
+  body.projects-page .page-hero .page-title{font-size:clamp(32px,9vw,38px)!important}
+  body.projects-page .page-hero__copy{font-size:16px!important}
+  body.projects-page .branding-projects{padding-top:56px!important;padding-bottom:80px!important}
+  body.projects-page .project-random-head{align-items:flex-start!important;flex-direction:column!important;gap:12px!important;margin-bottom:30px!important}
+  body.projects-page .project-random-head__meta{font-size:12px!important}
+  body.projects-page .project-random-copy strong{font-size:17px!important}
+  body.projects-page .project-random-copy span,
+  body.projects-page .project-random-meta .project-card__category{font-size:14px!important}
+  body.projects-page .cta{padding:64px 0 60px!important}
+  body.projects-page .cta>.container{width:calc(100% - 32px)!important}
+  body.projects-page .cta__bottom{align-items:flex-start!important;flex-direction:column!important;gap:28px!important;margin-top:34px!important}
+  body.projects-page .site-footer{padding-top:48px!important}
+}
