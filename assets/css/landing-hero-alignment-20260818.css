@@ -1,0 +1,131 @@
+/* NINEWORKS — landing page hero alignment / 2026-08-18
+   Keep all primary page headings and their descriptions on one shared left axis.
+   Scoped only to top-level landing heroes; home and detail layouts are untouched. */
+
+html body.branding-page main .page-hero.container,
+html body.projects-page main .page-hero.container,
+html body.portfolio-page main .portfolio-hero.container,
+html body.magazine-page main .magazine-hero.container{
+  display:block!important;
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  align-items:start!important;
+  min-height:0!important;
+  padding-top:76px!important;
+  padding-bottom:72px!important;
+  text-align:left!important;
+}
+
+html body.solutions-page main .services-hero .container.services-hero__grid,
+html body.about-page main .about-hero .container.about-hero__grid,
+html body main .contact-start .container.contact-start__grid{
+  display:block!important;
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  align-items:start!important;
+  text-align:left!important;
+}
+
+html body.branding-page main .page-hero.container .page-title,
+html body.projects-page main .page-hero.container .page-title,
+html body.portfolio-page main .portfolio-hero.container .page-title,
+html body.magazine-page main .magazine-hero.container .page-title,
+html body.solutions-page main .services-hero h1,
+html body.about-page main .about-hero h1,
+html body main .contact-start h1{
+  max-width:760px!important;
+  margin:0!important;
+  font-size:clamp(34px,3.5vw,46px)!important;
+  font-weight:470!important;
+  line-height:1.16!important;
+  letter-spacing:-.045em!important;
+  text-align:left!important;
+}
+
+html body.branding-page main .page-hero.container .eyebrow,
+html body.projects-page main .page-hero.container .eyebrow,
+html body.portfolio-page main .portfolio-hero.container .eyebrow,
+html body.magazine-page main .magazine-hero.container .eyebrow,
+html body.solutions-page main .services-hero .eyebrow,
+html body.about-page main .about-hero .eyebrow,
+html body main .contact-start .eyebrow{
+  margin:0 0 22px!important;
+  font-size:13px!important;
+  font-weight:600!important;
+  line-height:1.4!important;
+  letter-spacing:.1em!important;
+  color:#8a8a8a!important;
+  text-align:left!important;
+}
+
+html body.branding-page main .page-hero.container .page-hero__bottom,
+html body.projects-page main .page-hero.container .page-hero__bottom{
+  display:block!important;
+  width:auto!important;
+  max-width:760px!important;
+  margin:30px 0 0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+html body.branding-page main .page-hero.container .page-hero__copy,
+html body.projects-page main .page-hero.container .page-hero__copy,
+html body.portfolio-page main .portfolio-hero.container .portfolio-hero__copy,
+html body.magazine-page main .magazine-hero.container .magazine-hero__copy,
+html body.solutions-page main .services-hero .services-hero__copy,
+html body.about-page main .about-hero .about-hero__grid>p:last-child,
+html body main .contact-start .contact-start__grid>p:last-child{
+  display:block!important;
+  width:auto!important;
+  max-width:760px!important;
+  margin:30px 0 0!important;
+  padding:0!important;
+  color:#555!important;
+  font-size:17px!important;
+  font-weight:400!important;
+  line-height:1.7!important;
+  letter-spacing:-.022em!important;
+  text-align:left!important;
+}
+
+/* The outer hero blocks use one consistent vertical rhythm. */
+html body.solutions-page main .services-hero,
+html body.about-page main .about-hero,
+html body main .contact-start{
+  padding-top:76px!important;
+  padding-bottom:72px!important;
+}
+
+@media(max-width:760px){
+  html body.branding-page main .page-hero.container,
+  html body.projects-page main .page-hero.container,
+  html body.portfolio-page main .portfolio-hero.container,
+  html body.magazine-page main .magazine-hero.container,
+  html body.solutions-page main .services-hero,
+  html body.about-page main .about-hero,
+  html body main .contact-start{
+    padding-top:56px!important;
+    padding-bottom:56px!important;
+  }
+
+  html body.branding-page main .page-hero.container .page-title,
+  html body.projects-page main .page-hero.container .page-title,
+  html body.portfolio-page main .portfolio-hero.container .page-title,
+  html body.magazine-page main .magazine-hero.container .page-title,
+  html body.solutions-page main .services-hero h1,
+  html body.about-page main .about-hero h1,
+  html body main .contact-start h1{
+    font-size:clamp(30px,9vw,38px)!important;
+  }
+
+  html body.branding-page main .page-hero.container .page-hero__copy,
+  html body.projects-page main .page-hero.container .page-hero__copy,
+  html body.portfolio-page main .portfolio-hero.container .portfolio-hero__copy,
+  html body.magazine-page main .magazine-hero.container .magazine-hero__copy,
+  html body.solutions-page main .services-hero .services-hero__copy,
+  html body.about-page main .about-hero .about-hero__grid>p:last-child,
+  html body main .contact-start .contact-start__grid>p:last-child{
+    margin-top:24px!important;
+    font-size:16px!important;
+  }
+}
