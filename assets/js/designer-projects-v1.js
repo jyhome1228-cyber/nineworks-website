@@ -49,6 +49,14 @@
     else educationList.appendChild(publicationRow);
   };
 
+  const applyHeaderCopyMeasure = () => {
+    document.querySelectorAll('.designer-page .designer-section__head > p.copy').forEach((copy) => {
+      copy.style.setProperty('width', 'min(100%, 620px)', 'important');
+      copy.style.setProperty('max-width', '620px', 'important');
+      copy.style.setProperty('text-wrap', 'balance', 'important');
+    });
+  };
+
   const apply = () => {
     const section = findSection();
     const list = section?.querySelector('.designer-records');
@@ -108,6 +116,7 @@
   const applyAll = () => {
     apply();
     applyPublication();
+    applyHeaderCopyMeasure();
   };
 
   applyAll();
