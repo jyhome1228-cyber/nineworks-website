@@ -6,35 +6,33 @@
 
   const labels = {
     dashboard: 'Dashboard',
-    portfolio: 'Portfolio',
-    project: 'Project',
-    magazine: 'Magazine',
-    inquiry: 'Inquiry',
-    client: 'Client',
-    settings: 'Settings'
+    inquiry: 'Inquiries',
+    visitors: 'Visitors'
   };
 
   const openPanel = (key) => {
-    tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.adminTab === key));
-    panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.adminPanel === key));
-    if (title) title.textContent = labels[key] || 'Admin';
-    if (history.replaceState) history.replaceState(null, '', `#${key}`);
+    const next = labels[key] ? key : 'dashboard';
+    tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.adminTab === next));
+    panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.adminPanel === next));
+    if (title) title.textContent = labels[next];
+    if (history.replaceState) history.replaceState(null, '', `#${next}`);
     window.scrollTo({ top: 0, behavior: 'instant' });
+    window.dispatchEvent(new CustomEvent('nw-admin-panel', { detail: { panel: next } }));
   };
 
   tabs.forEach((tab) => tab.addEventListener('click', () => openPanel(tab.dataset.adminTab)));
+  document.querySelector('[data-jump-inquiries]')?.addEventListener('click', () => openPanel('inquiry'));
 
   const initial = location.hash.replace('#', '');
-  if (labels[initial]) openPanel(initial);
+  openPanel(labels[initial] ? initial : 'dashboard');
 
   if (date) {
-    const now = new Date();
     date.textContent = new Intl.DateTimeFormat('ko-KR', {
       year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short'
-    }).format(now);
+    }).format(new Date());
   }
 
-  import('./admin-firebase.js?v=20260819-1').catch((error) => {
+  import('./admin-firebase.js?v=20260819-2').catch((error) => {
     console.error('[NINEWORKS Admin] Firebase bootstrap load failed', error);
     const status = document.querySelector('.admin-status');
     if (status) status.innerHTML = '<i></i> FIREBASE LOAD ERROR';
