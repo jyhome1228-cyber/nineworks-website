@@ -247,3 +247,39 @@ html body.quote-page .quote-summary__list{
   }
   html body.quote-page .quote-summary__list{min-height:0!important}
 }
+
+/* --------------------------------------------------------------------------
+   2026-08-19 quote sticky hard fix
+   site-stable sets overflow-x:hidden on html/body. In Chromium that creates an
+   overflow ancestor and prevents position:sticky from tracking the viewport.
+   Quote pages use clip instead and explicitly keep every parent in the sticky
+   chain overflow-visible.
+   -------------------------------------------------------------------------- */
+html:has(body.quote-page),
+html body.quote-page{
+  overflow-x:clip!important;
+  overflow-y:visible!important;
+}
+html body.quote-page .site-shell,
+html body.quote-page main,
+html body.quote-page .quote-builder,
+html body.quote-page .quote-form{
+  overflow:visible!important;
+  contain:none!important;
+}
+
+@media(min-width:981px){
+  html body.quote-page .quote-summary{
+    position:-webkit-sticky!important;
+    position:sticky!important;
+    top:calc(var(--header-height,104px) + 18px)!important;
+    bottom:auto!important;
+    align-self:start!important;
+    height:max-content!important;
+    max-height:calc(100svh - var(--header-height,104px) - 36px)!important;
+    overflow-y:auto!important;
+    overflow-x:clip!important;
+    transform:none!important;
+    will-change:auto!important;
+  }
+}
