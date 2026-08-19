@@ -7,17 +7,9 @@ service cloud.firestore {
 
     function isAdmin() {
       return signedIn()
-        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+        && request.auth.token.email == 'info@9works.kr';
     }
 
-    // 관리자 권한 문서는 Firebase Console 또는 신뢰 가능한 서버 환경에서만 생성합니다.
-    match /admins/{uid} {
-      allow get: if signedIn() && request.auth.uid == uid;
-      allow list: if false;
-      allow create, update, delete: if false;
-    }
-
-    // 공개 콘텐츠는 published 문서만 외부에서 읽을 수 있습니다.
     match /portfolios/{documentId} {
       allow get, list: if isAdmin() || resource.data.published == true;
       allow create, update, delete: if isAdmin();
@@ -33,8 +25,8 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
-    // 홈페이지의 모든 문의 폼은 신규 문의 생성만 허용합니다.
-    // 조회·상태변경·삭제는 admins 컬렉션에 등록된 관리자만 가능합니다.
+    // 모든 공개 문의 폼은 새 문의 생성만 가능합니다.
+    // 조회·상태 변경·삭제는 info@9works.kr 관리자 계정만 가능합니다.
     match /inquiries/{documentId} {
       allow create: if
         request.resource.data.keys().hasAll([
@@ -75,8 +67,7 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // 방문자는 IP 대신 브라우저별 임의 ID로 하루 한 번 기록합니다.
-    // 방문자 데이터는 관리자만 조회할 수 있습니다.
+    // 브라우저별 하루 1회 방문 기록. IP 주소는 저장하지 않습니다.
     match /dailyVisitors/{visitId} {
       allow create: if
         request.resource.data.keys().hasAll([
