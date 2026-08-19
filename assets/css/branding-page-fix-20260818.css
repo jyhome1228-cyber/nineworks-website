@@ -42,6 +42,19 @@ body.branding-page .page-hero__copy{
   letter-spacing:-.022em!important;
 }
 
+/* Keep Korean headings from leaving short orphan words on a new line. */
+body.branding-page h1,
+body.branding-page h2,
+body.branding-page h3{
+  word-break:keep-all!important;
+  overflow-wrap:normal!important;
+  text-wrap:balance;
+}
+body.branding-page p{
+  word-break:keep-all!important;
+  text-wrap:pretty;
+}
+
 body.branding-page .branding-about{
   width:min(calc(100% - 48px),1440px)!important;
   max-width:1440px!important;
@@ -146,12 +159,17 @@ body.branding-page .cta{
   padding:84px 0 78px!important;
 }
 body.branding-page .cta__title{
-  max-width:760px!important;
+  width:min(100%,1100px)!important;
+  max-width:1100px!important;
   font-size:clamp(28px,2.4vw,36px)!important;
   font-weight:500!important;
   line-height:1.28!important;
   letter-spacing:-.038em!important;
+  word-break:keep-all!important;
+  overflow-wrap:normal!important;
+  text-wrap:balance!important;
 }
+body.branding-page .cta__title br{display:none!important}
 
 @media(max-width:900px){
   body.branding-page .page-hero,
@@ -162,6 +180,7 @@ body.branding-page .cta__title{
   body.branding-page .page-hero{padding-top:72px!important;padding-bottom:64px!important}
   body.branding-page .page-hero__bottom{padding-top:0!important}
   body.branding-page .branding-about__body{max-width:none!important}
+  body.branding-page .cta__title{max-width:16em!important}
 }
 @media(max-width:680px){
   body.branding-page .page-hero{padding-top:56px!important;padding-bottom:56px!important}
@@ -176,4 +195,5 @@ body.branding-page .cta__title{
   body.branding-page .branding-scope strong{margin-top:26px!important;font-size:17px!important}
   body.branding-page .branding-scope span{font-size:13.5px!important}
   body.branding-page .cta{padding:64px 0 60px!important}
+  body.branding-page .cta__title{width:100%!important;max-width:none!important;text-wrap:pretty!important}
 }
