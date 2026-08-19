@@ -4,10 +4,10 @@
     return eyebrow && eyebrow.textContent.includes('Selected Design Projects');
   });
 
-  const findWritingSection = () => Array.from(document.querySelectorAll('.designer-page .designer-section')).find((section) => {
+  const findEducationSection = () => Array.from(document.querySelectorAll('.designer-page .designer-section')).find((section) => {
     const eyebrow = section.querySelector('.eyebrow');
     const text = eyebrow?.textContent || '';
-    return text.includes('Writing & Essay') || text.includes('저서·논문·에세이');
+    return text.includes('Education & Research') || text.includes('학력·연구');
   });
 
   const makeRow = ({ tag, title, role, detail, key }) => {
@@ -28,27 +28,25 @@
     row.innerHTML = `
       <span class="designer-record__year">2025</span>
       <strong class="designer-record__title">LOCAL STARTUP GUIDEBOOK 02 / 로컬창업가이드북 02</strong>
-      <div class="designer-record__copy"><b>Co-author / 공저</b><small>《로컬비즈니스디자인, 지역창업의 새로운 모델》 · 박두경 · 박재영</small></div>`;
+      <div class="designer-record__copy"><b>Co-author / 공저</b><small>《로컬비즈니스디자인, 지역창업의 새로운 모델》 · 박재영</small></div>`;
     return row;
   };
 
   const applyPublication = () => {
-    const section = findWritingSection();
-    const list = section?.querySelector('.designer-records');
-    if (!section || !list) return;
+    const educationSection = findEducationSection();
+    const educationList = educationSection?.querySelector('.designer-records');
+    if (!educationSection || !educationList) return;
 
-    const eyebrow = section.querySelector('.eyebrow');
-    const description = section.querySelector('.designer-section__head > .copy');
-    if (eyebrow) eyebrow.textContent = 'Publication & Writing / 저서·논문·에세이';
-    if (description) description.textContent = '저서와 논문, 에세이를 통해 브랜드와 창업 과정의 고민과 통찰을 언어로 정리하고, 시각적 판단과 실무 경험을 지식으로 확장합니다.';
+    document.querySelectorAll('[data-designer-publication="local-startup-guidebook-02"]').forEach((row) => row.remove());
 
-    const alreadyExists = Array.from(list.querySelectorAll('.designer-record')).some((row) => {
-      const text = row.textContent.replace(/\s+/g, ' ');
-      return row.dataset.designerPublication === 'local-startup-guidebook-02'
-        || /LOCAL STARTUP GUIDEBOOK 02|로컬창업가이드북 02/i.test(text);
+    const publicationRow = makePublicationRow();
+    const fieldsRow = Array.from(educationList.querySelectorAll('.designer-record')).find((row) => {
+      const year = row.querySelector('.designer-record__year')?.textContent.trim();
+      return year === 'Fields' || /Research Focus|주요 연구분야/i.test(row.textContent);
     });
 
-    if (!alreadyExists) list.prepend(makePublicationRow());
+    if (fieldsRow) educationList.insertBefore(publicationRow, fieldsRow);
+    else educationList.appendChild(publicationRow);
   };
 
   const apply = () => {
