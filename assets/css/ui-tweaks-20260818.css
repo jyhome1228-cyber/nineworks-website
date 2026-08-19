@@ -73,6 +73,96 @@ html body.portfolio-detail-page.is-detail-header-hidden .site-header{
   transform:none!important;
 }
 
+/* --------------------------------------------------------------------------
+   2026-08-19 visual / stability hotfix
+   -------------------------------------------------------------------------- */
+
+/* Portfolio archive: remove the boxed-tab look, gray active fill and stacked rules. */
+html body.portfolio-page main .category-nav.portfolio-filter{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:clamp(22px,2.3vw,38px)!important;
+  width:min(calc(100% - 48px),var(--container,1440px))!important;
+  max-width:var(--container,1440px)!important;
+  margin:0 auto!important;
+  padding:0!important;
+  overflow-x:auto!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  scrollbar-width:none!important;
+}
+html body.portfolio-page main .category-nav.portfolio-filter::-webkit-scrollbar{display:none!important}
+html body.portfolio-page main .category-nav.portfolio-filter button{
+  position:relative!important;
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:0!important;
+  min-height:52px!important;
+  padding:0!important;
+  border:0!important;
+  border-right:0!important;
+  border-bottom:0!important;
+  color:#8a8a8a!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  font-size:14px!important;
+  font-weight:500!important;
+  letter-spacing:.015em!important;
+  white-space:nowrap!important;
+}
+html body.portfolio-page main .category-nav.portfolio-filter button:first-child{border-left:0!important}
+html body.portfolio-page main .category-nav.portfolio-filter button:hover,
+html body.portfolio-page main .category-nav.portfolio-filter button.is-active{
+  color:#111!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  font-weight:600!important;
+}
+html body.portfolio-page main .portfolio-index-head{
+  padding-top:72px!important;
+  padding-bottom:54px!important;
+  border-bottom:0!important;
+}
+
+/* Service pages already have the SOLUTIONS dropdown. Remove the duplicate shortcut row that crushes the header. */
+html body .site-header .site-service-nav,
+html body .menu-overlay .menu-sector-links{
+  display:none!important;
+}
+
+/* Keep the center navigation clear before the mobile navigation breakpoint. */
+@media(max-width:1360px) and (min-width:981px){
+  html body .site-header .site-header__action{display:none!important}
+}
+
+/* Quote summary: white canvas, less dead space, and correct sticky offset below the fixed header. */
+html body.quote-page .quote-summary{
+  top:calc(var(--header-height,104px) + 24px)!important;
+  background:#fff!important;
+}
+html body.quote-page .quote-summary__list{
+  min-height:96px!important;
+}
+
+/* Tablet quote pages should not keep squeezing the form beside a narrow sticky sidebar. */
+@media(max-width:1180px){
+  html body.quote-page .quote-form{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:36px!important;
+  }
+  html body.quote-page .quote-summary{
+    position:relative!important;
+    top:auto!important;
+    order:2!important;
+    width:100%!important;
+    max-width:none!important;
+  }
+  html body.quote-page .quote-summary__list{min-height:0!important}
+}
+
 @media(max-width:1180px){
   html body .site-header>a.site-logo,
   html body .site-header .site-logo{font-size:30px!important}
@@ -99,4 +189,16 @@ html body.portfolio-detail-page.is-detail-header-hidden .site-header{
 @media(max-width:760px){
   html body .site-header>a.site-logo,
   html body .site-header .site-logo{font-size:26px!important}
+  html body.portfolio-page main .category-nav.portfolio-filter{
+    width:calc(100% - 32px)!important;
+    gap:22px!important;
+  }
+  html body.portfolio-page main .category-nav.portfolio-filter button{
+    min-height:48px!important;
+    font-size:13px!important;
+  }
+  html body.portfolio-page main .portfolio-index-head{
+    padding-top:56px!important;
+    padding-bottom:42px!important;
+  }
 }
