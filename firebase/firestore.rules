@@ -1,32 +1,29 @@
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn() {
-      return request.auth != null;
-    }
 
     function isAdmin() {
-      return signedIn()
+      return request.auth != null
         && request.auth.token.email == 'info@9works.kr';
     }
 
     match /portfolios/{documentId} {
-      allow get, list: if isAdmin() || resource.data.published == true;
-      allow create, update, delete: if isAdmin();
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
     }
 
     match /projects/{documentId} {
-      allow get, list: if isAdmin() || resource.data.published == true;
-      allow create, update, delete: if isAdmin();
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
     }
 
     match /magazines/{documentId} {
-      allow get, list: if isAdmin() || resource.data.published == true;
-      allow create, update, delete: if isAdmin();
+      allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
     }
 
-    // 모든 공개 문의 폼은 새 문의 생성만 가능합니다.
-    // 조회·상태 변경·삭제는 info@9works.kr 관리자 계정만 가능합니다.
+    // 홈페이지 문의: 방문자는 신규 등록만, 관리자는 조회/수정/삭제 가능
     match /inquiries/{documentId} {
       allow create: if
         request.resource.data.keys().hasAll([
@@ -40,34 +37,12 @@ service cloud.firestore {
           'pageTitle', 'createdAt'
         ])
         && request.resource.data.status == 'new'
-        && request.resource.data.source is string
-        && request.resource.data.source.size() <= 500
-        && request.resource.data.get('service', '') is string
-        && request.resource.data.get('service', '').size() <= 160
-        && request.resource.data.company is string
-        && request.resource.data.company.size() <= 200
-        && request.resource.data.contactName is string
-        && request.resource.data.contactName.size() <= 120
-        && request.resource.data.email is string
-        && request.resource.data.email.size() <= 240
-        && request.resource.data.phone is string
-        && request.resource.data.phone.size() <= 80
-        && request.resource.data.projectName is string
-        && request.resource.data.projectName.size() <= 200
-        && request.resource.data.projectType is string
-        && request.resource.data.projectType.size() <= 500
-        && request.resource.data.message is string
-        && request.resource.data.message.size() <= 3000
-        && request.resource.data.details is string
-        && request.resource.data.details.size() <= 15000
-        && request.resource.data.pageTitle is string
-        && request.resource.data.pageTitle.size() <= 240
         && request.resource.data.createdAt == request.time;
 
       allow read, update, delete: if isAdmin();
     }
 
-    // 브라우저별 하루 1회 방문 기록. IP 주소는 저장하지 않습니다.
+    // 방문자 기록: 브라우저별 하루 1회 생성, 조회는 관리자만 가능
     match /dailyVisitors/{visitId} {
       allow create: if
         request.resource.data.keys().hasAll([
@@ -76,26 +51,18 @@ service cloud.firestore {
         && request.resource.data.keys().hasOnly([
           'date', 'visitorId', 'firstPath', 'referrer', 'createdAt'
         ])
-        && request.resource.data.date is string
-        && request.resource.data.date.size() == 10
-        && request.resource.data.visitorId is string
-        && request.resource.data.visitorId.size() <= 80
         && visitId == request.resource.data.date + '_' + request.resource.data.visitorId
-        && request.resource.data.firstPath is string
-        && request.resource.data.firstPath.size() <= 500
-        && request.resource.data.referrer is string
-        && request.resource.data.referrer.size() <= 180
         && request.resource.data.createdAt == request.time;
 
       allow read, update, delete: if isAdmin();
     }
 
     match /clients/{documentId} {
-      allow read, create, update, delete: if isAdmin();
+      allow read, write: if isAdmin();
     }
 
     match /tasks/{documentId} {
-      allow read, create, update, delete: if isAdmin();
+      allow read, write: if isAdmin();
     }
 
     match /{document=**} {
