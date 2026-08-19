@@ -202,3 +202,48 @@ html body.quote-page .quote-summary__list{
     padding-bottom:42px!important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   2026-08-19 quote sidebar sticky refinement
+   Keep every quote summary pinned like the portfolio detail sidebar while the
+   left-side options continue scrolling. Long summaries scroll inside the card.
+   -------------------------------------------------------------------------- */
+@media(min-width:981px){
+  html body.quote-page .quote-form{
+    grid-template-columns:minmax(0,1fr) minmax(320px,360px)!important;
+    gap:clamp(38px,5vw,78px)!important;
+    align-items:start!important;
+  }
+  html body.quote-page .quote-summary{
+    position:sticky!important;
+    top:calc(var(--header-height,104px) + 24px)!important;
+    align-self:start!important;
+    width:100%!important;
+    max-width:360px!important;
+    max-height:calc(100vh - var(--header-height,104px) - 48px)!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    overscroll-behavior:contain;
+    scrollbar-width:none;
+    z-index:8!important;
+  }
+  html body.quote-page .quote-summary::-webkit-scrollbar{display:none!important}
+}
+
+@media(max-width:980px){
+  html body.quote-page .quote-form{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:36px!important;
+  }
+  html body.quote-page .quote-summary{
+    position:relative!important;
+    top:auto!important;
+    order:2!important;
+    width:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  html body.quote-page .quote-summary__list{min-height:0!important}
+}
