@@ -5,123 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>Admin — NINEWORKS</title>
-  <link rel="stylesheet" href="assets/css/admin.css?v=20260811-1">
+  <link rel="stylesheet" href="assets/css/admin.css?v=20260819-2">
 </head>
 <body class="admin-page">
   <div class="admin-shell">
     <aside class="admin-sidebar">
       <a class="admin-brand" href="admin.html" aria-label="나인웍스 관리자 홈">
-        <span>NINEWORKS</span>
-        <small>ADMIN</small>
+        <span>NINEWORKS</span><small>ADMIN</small>
       </a>
-
       <nav class="admin-nav" aria-label="관리자 메뉴">
         <button class="admin-nav__item is-active" type="button" data-admin-tab="dashboard"><span>01</span>Dashboard</button>
-        <button class="admin-nav__item" type="button" data-admin-tab="portfolio"><span>02</span>Portfolio</button>
-        <button class="admin-nav__item" type="button" data-admin-tab="project"><span>03</span>Project</button>
-        <button class="admin-nav__item" type="button" data-admin-tab="magazine"><span>04</span>Magazine</button>
-        <button class="admin-nav__item" type="button" data-admin-tab="inquiry"><span>05</span>Inquiry</button>
-        <button class="admin-nav__item" type="button" data-admin-tab="client"><span>06</span>Client</button>
-        <button class="admin-nav__item" type="button" data-admin-tab="settings"><span>07</span>Settings</button>
+        <button class="admin-nav__item" type="button" data-admin-tab="inquiry"><span>02</span>Inquiries</button>
+        <button class="admin-nav__item" type="button" data-admin-tab="visitors"><span>03</span>Visitors</button>
       </nav>
-
       <div class="admin-sidebar__bottom">
         <a href="index.html" target="_blank" rel="noopener">VIEW WEBSITE <span>↗</span></a>
-        <p>Content Management<br>for NINEWORKS</p>
+        <p>Traffic & Inquiry<br>for NINEWORKS</p>
       </div>
     </aside>
 
     <main class="admin-main">
       <header class="admin-topbar">
-        <div>
-          <p class="admin-kicker">NINEWORKS / CONTENT MANAGEMENT</p>
-          <h1 data-admin-title>Dashboard</h1>
-        </div>
-        <div class="admin-topbar__meta">
-          <span data-admin-date></span>
-          <span class="admin-status"><i></i> ADMIN PREP</span>
-        </div>
+        <div><p class="admin-kicker">NINEWORKS / TRAFFIC & INQUIRY</p><h1 data-admin-title>Dashboard</h1></div>
+        <div class="admin-topbar__meta"><span data-admin-date></span><span class="admin-status"><i></i> AUTH CHECK</span></div>
       </header>
 
       <section class="admin-panel is-active" data-admin-panel="dashboard">
         <div class="admin-intro">
-          <div>
-            <span class="admin-label">Overview</span>
-            <h2>사이트 운영을 한곳에서 관리하는<br>관리자 화면을 준비합니다.</h2>
-          </div>
-          <p>현재 웹사이트는 GitHub 기반 정적 구조입니다. 이 관리자 화면을 기준으로 Portfolio, Project, Magazine, 문의, 클라이언트 데이터를 Firebase와 연결해 실제 CMS로 확장할 수 있도록 구조를 먼저 잡았습니다.</p>
+          <div><span class="admin-label">Overview</span><h2>방문 흐름과 문의를<br>빠르게 확인합니다.</h2></div>
+          <p>나인웍스 웹사이트의 일별 방문자와 접수된 문의만 관리합니다. 메인 컨택부터 인쇄·패키지·샘플·파트너·개발 문의까지 유형별로 구분해 확인할 수 있습니다.</p>
         </div>
-
         <div class="admin-stat-grid">
-          <article class="admin-stat"><span>Portfolio</span><strong>READY</strong><p>작업 등록 · 이미지 · 카테고리 · 순서 관리</p></article>
-          <article class="admin-stat"><span>Project</span><strong>READY</strong><p>케이스스터디 등록 · 공개 상태 관리</p></article>
-          <article class="admin-stat"><span>Magazine</span><strong>READY</strong><p>아티클 작성 · 썸네일 · 발행 관리</p></article>
-          <article class="admin-stat"><span>Inquiry / Client</span><strong>NEXT</strong><p>문의 저장 · 상태 변경 · 클라이언트 관리</p></article>
+          <article class="admin-stat"><span>Today Visitors</span><strong data-stat="today-visitors">0</strong><p>오늘 방문한 고유 브라우저</p></article>
+          <article class="admin-stat"><span>7 Days Visitors</span><strong data-stat="seven-visitors">0</strong><p>최근 7일 방문자 합계</p></article>
+          <article class="admin-stat"><span>New Inquiries</span><strong data-stat="new-inquiries">0</strong><p>아직 확인하지 않은 문의</p></article>
+          <article class="admin-stat"><span>Total Inquiries</span><strong data-stat="total-inquiries">0</strong><p>전체 누적 문의</p></article>
         </div>
 
-        <div class="admin-grid admin-grid--2">
-          <article class="admin-card">
-            <div class="admin-card__head"><div><span class="admin-label">Build Order</span><h3>추천 구축 순서</h3></div></div>
-            <ol class="admin-step-list">
-              <li><span>01</span><div><strong>Firebase 연결</strong><p>Firestore · Storage · 관리자 인증 구조 세팅</p></div></li>
-              <li><span>02</span><div><strong>Portfolio CMS</strong><p>이미지 업로드, 제목, 카테고리, 노출 순서, 공개 여부</p></div></li>
-              <li><span>03</span><div><strong>Project / Magazine CMS</strong><p>상세 콘텐츠를 관리자에서 작성·수정</p></div></li>
-              <li><span>04</span><div><strong>Inquiry / Client DB</strong><p>사이트 문의를 메일이 아닌 관리자 DB에도 저장</p></div></li>
-            </ol>
-          </article>
+        <section class="admin-block">
+          <div class="admin-block__head"><div><span class="admin-label">Inquiry Types</span><h3>문의 유형별 현황</h3></div><button type="button" data-jump-inquiries>전체 문의 보기 ↗</button></div>
+          <div class="admin-category-grid" data-dashboard-categories></div>
+        </section>
 
-          <article class="admin-card">
-            <div class="admin-card__head"><div><span class="admin-label">Quick Access</span><h3>사이트 바로가기</h3></div></div>
-            <div class="admin-link-list">
-              <a href="portfolio.html" target="_blank" rel="noopener"><span>Portfolio</span><span>↗</span></a>
-              <a href="project.html" target="_blank" rel="noopener"><span>Project</span><span>↗</span></a>
-              <a href="magazine.html" target="_blank" rel="noopener"><span>Magazine</span><span>↗</span></a>
-              <a href="contact.html" target="_blank" rel="noopener"><span>Contact</span><span>↗</span></a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="admin-panel" data-admin-panel="portfolio">
-        <div class="admin-section-head"><div><span class="admin-label">Portfolio CMS</span><h2>Portfolio</h2><p>현재 정적 JS 데이터로 운영 중인 포트폴리오를 관리자 등록 방식으로 전환할 영역입니다.</p></div><button class="admin-primary" type="button" disabled>+ ADD WORK</button></div>
-        <div class="admin-table-wrap">
-          <div class="admin-table-head"><span>WORK</span><span>CATEGORY</span><span>STATUS</span><span>UPDATED</span><span></span></div>
-          <div class="admin-empty"><strong>Firebase 연결 후 기존 포트폴리오를 불러옵니다.</strong><p>등록 · 수정 · 삭제 · 이미지 업로드 · 정렬 기능을 이 화면에서 관리하게 됩니다.</p></div>
-        </div>
-      </section>
-
-      <section class="admin-panel" data-admin-panel="project">
-        <div class="admin-section-head"><div><span class="admin-label">Case Study CMS</span><h2>Project</h2><p>브랜드 프로젝트의 제목, 카테고리, 소개, 대표 이미지, 본문 이미지와 공개 여부를 관리합니다.</p></div><button class="admin-primary" type="button" disabled>+ ADD PROJECT</button></div>
-        <div class="admin-placeholder-grid"><article><span>01</span><strong>Project Info</strong><p>프로젝트명 · 연도 · 분야 · 설명</p></article><article><span>02</span><strong>Visual Assets</strong><p>커버 · 상세 이미지 · 모바일 이미지</p></article><article><span>03</span><strong>Publish</strong><p>공개 / 비공개 · 노출 순서</p></article></div>
-      </section>
-
-      <section class="admin-panel" data-admin-panel="magazine">
-        <div class="admin-section-head"><div><span class="admin-label">Editorial CMS</span><h2>Magazine</h2><p>인사이트와 프로젝트 노트를 관리자에서 직접 작성하고 발행할 수 있도록 준비합니다.</p></div><button class="admin-primary" type="button" disabled>+ NEW ARTICLE</button></div>
-        <div class="admin-editor-preview"><div><span class="admin-label">Editor Structure</span><h3>Title / Category / Date / Cover / Body</h3></div><p>추후 본문 에디터는 제목, 소제목, 본문, 이미지, 캡션, 링크 정도로 단순하게 구성하는 것이 현재 나인웍스 사이트 구조와 가장 잘 맞습니다.</p></div>
+        <section class="admin-block">
+          <div class="admin-block__head"><div><span class="admin-label">Latest</span><h3>최근 문의</h3></div><span data-dashboard-recent-count>0 ITEMS</span></div>
+          <div class="admin-inquiry-list" data-dashboard-recent></div>
+        </section>
       </section>
 
       <section class="admin-panel" data-admin-panel="inquiry">
-        <div class="admin-section-head"><div><span class="admin-label">Lead Management</span><h2>Inquiry</h2><p>Contact, Membership, Print, Develop 문의를 한 화면에서 확인하고 상태를 관리할 영역입니다.</p></div></div>
-        <div class="admin-placeholder-grid"><article><span>NEW</span><strong>신규 문의</strong><p>확인 전 문의</p></article><article><span>OPEN</span><strong>상담 진행</strong><p>견적·미팅 진행 중</p></article><article><span>DONE</span><strong>완료 / 보관</strong><p>계약 또는 종료된 문의</p></article></div>
+        <div class="admin-section-head">
+          <div><span class="admin-label">Inquiry Management</span><h2>Inquiries</h2><p>사이트의 모든 문의를 유형과 진행 상태로 나눠 확인합니다.</p></div>
+        </div>
+        <div class="admin-status-grid">
+          <button class="admin-status-card" type="button" data-status-summary="new"><span>NEW</span><strong>0</strong><p>확인 전</p></button>
+          <button class="admin-status-card" type="button" data-status-summary="open"><span>OPEN</span><strong>0</strong><p>상담 진행</p></button>
+          <button class="admin-status-card" type="button" data-status-summary="done"><span>DONE</span><strong>0</strong><p>완료 / 보관</p></button>
+        </div>
+        <div class="admin-filter-panel">
+          <div class="admin-filter-row"><span class="admin-filter-label">TYPE</span><div class="admin-filter-buttons" data-inquiry-service-filters></div></div>
+          <div class="admin-filter-row"><span class="admin-filter-label">STATUS</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-inquiry-status-filter="all">전체</button><button type="button" data-inquiry-status-filter="new">신규</button><button type="button" data-inquiry-status-filter="open">진행</button><button type="button" data-inquiry-status-filter="done">완료</button></div></div>
+          <div class="admin-search-row"><input type="search" placeholder="회사명, 담당자, 이메일, 내용 검색" data-inquiry-search><span data-inquiry-filter-total>0 ITEMS</span></div>
+        </div>
+        <div class="admin-inquiry-list" data-inquiry-list></div>
       </section>
 
-      <section class="admin-panel" data-admin-panel="client">
-        <div class="admin-section-head"><div><span class="admin-label">Client Database</span><h2>Client</h2><p>등록 클라이언트와 진행 상태, 담당자 정보, 이용 서비스를 관리할 영역입니다.</p></div><button class="admin-primary" type="button" disabled>+ ADD CLIENT</button></div>
-        <div class="admin-table-wrap"><div class="admin-table-head"><span>CLIENT</span><span>SERVICE</span><span>STATUS</span><span>CONTACT</span><span></span></div><div class="admin-empty"><strong>클라이언트 DB 연결 준비 중</strong><p>향후 Print 전용 지원 여부와 프로젝트 이력을 함께 확인할 수 있게 구성합니다.</p></div></div>
-      </section>
-
-      <section class="admin-panel" data-admin-panel="settings">
-        <div class="admin-section-head"><div><span class="admin-label">System</span><h2>Settings</h2><p>관리자 인증과 Firebase 연결 후 실제 운영 설정을 활성화합니다.</p></div></div>
-        <div class="admin-setting-list">
-          <div><span>Authentication</span><strong>NOT CONNECTED</strong><p>관리자 로그인 및 접근 제한</p></div>
-          <div><span>Firestore</span><strong>NOT CONNECTED</strong><p>콘텐츠 · 문의 · 클라이언트 데이터베이스</p></div>
-          <div><span>Storage</span><strong>NOT CONNECTED</strong><p>포트폴리오 · 프로젝트 · 매거진 이미지 업로드</p></div>
-          <div><span>GitHub Pages</span><strong>ACTIVE</strong><p>현재 사이트 배포 환경</p></div>
+      <section class="admin-panel" data-admin-panel="visitors">
+        <div class="admin-section-head">
+          <div><span class="admin-label">Traffic</span><h2>Visitors</h2><p>브라우저 기준 일별 고유 방문자와 유입 페이지를 확인합니다.</p></div>
+        </div>
+        <div class="admin-stat-grid admin-stat-grid--3">
+          <article class="admin-stat"><span>Today</span><strong data-visitor-stat="today">0</strong><p>오늘</p></article>
+          <article class="admin-stat"><span>7 Days</span><strong data-visitor-stat="seven">0</strong><p>최근 7일</p></article>
+          <article class="admin-stat"><span>30 Days</span><strong data-visitor-stat="thirty">0</strong><p>최근 30일</p></article>
+        </div>
+        <section class="admin-block">
+          <div class="admin-block__head"><div><span class="admin-label">Daily</span><h3>최근 30일 방문자</h3></div><span>UNIQUE BROWSER / KST</span></div>
+          <div class="admin-visitor-days" data-visitor-days></div>
+        </section>
+        <div class="admin-insight-grid">
+          <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Entry Pages</span><h3>첫 방문 페이지</h3></div></div><div class="admin-ranking" data-visitor-paths></div></section>
+          <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Referrer</span><h3>유입 출처</h3></div></div><div class="admin-ranking" data-visitor-referrers></div></section>
         </div>
       </section>
     </main>
   </div>
-
-  <script src="assets/js/admin.js?v=20260811-1"></script>
+  <script src="assets/js/admin.js?v=20260819-2"></script>
 </body>
 </html>
