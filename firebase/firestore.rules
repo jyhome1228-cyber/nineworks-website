@@ -10,14 +10,14 @@ service cloud.firestore {
         && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
     }
 
-    // Admin 권한 문서는 Firebase Console 또는 신뢰 가능한 서버 환경에서만 생성합니다.
+    // 관리자 권한 문서는 Firebase Console 또는 신뢰 가능한 서버 환경에서만 생성합니다.
     match /admins/{uid} {
       allow get: if signedIn() && request.auth.uid == uid;
       allow list: if false;
       allow create, update, delete: if false;
     }
 
-    // 공개 콘텐츠: 공개 상태의 문서만 외부 읽기 허용, 쓰기는 관리자만 허용합니다.
+    // 공개 콘텐츠는 published 문서만 외부에서 읽을 수 있습니다.
     match /portfolios/{documentId} {
       allow get, list: if isAdmin() || resource.data.published == true;
       allow create, update, delete: if isAdmin();
@@ -33,12 +33,77 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
-    // 문의 저장은 다음 단계에서 공개 폼과 연결하면서 create 규칙을 별도로 검증해 엽니다.
+    // 홈페이지의 모든 문의 폼은 신규 문의 생성만 허용합니다.
+    // 조회·상태변경·삭제는 admins 컬렉션에 등록된 관리자만 가능합니다.
     match /inquiries/{documentId} {
-      allow read, create, update, delete: if isAdmin();
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'status', 'source', 'service', 'company', 'contactName', 'email',
+          'phone', 'projectName', 'projectType', 'message', 'details',
+          'pageTitle', 'createdAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'status', 'source', 'service', 'company', 'contactName', 'email',
+          'phone', 'projectName', 'projectType', 'message', 'details',
+          'pageTitle', 'createdAt'
+        ])
+        && request.resource.data.status == 'new'
+        && request.resource.data.source is string
+        && request.resource.data.source.size() <= 500
+        && request.resource.data.service is string
+        && request.resource.data.service.size() <= 160
+        && request.resource.data.company is string
+        && request.resource.data.company.size() <= 200
+        && request.resource.data.contactName is string
+        && request.resource.data.contactName.size() <= 120
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 240
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() <= 80
+        && request.resource.data.projectName is string
+        && request.resource.data.projectName.size() <= 200
+        && request.resource.data.projectType is string
+        && request.resource.data.projectType.size() <= 500
+        && request.resource.data.message is string
+        && request.resource.data.message.size() <= 3000
+        && request.resource.data.details is string
+        && request.resource.data.details.size() <= 15000
+        && request.resource.data.pageTitle is string
+        && request.resource.data.pageTitle.size() <= 240
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if isAdmin();
+    }
+
+    // 방문자는 IP 대신 브라우저별 임의 ID로 하루 한 번 기록합니다.
+    // 방문자 데이터는 관리자만 조회할 수 있습니다.
+    match /dailyVisitors/{visitId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'date', 'visitorId', 'firstPath', 'referrer', 'createdAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'date', 'visitorId', 'firstPath', 'referrer', 'createdAt'
+        ])
+        && request.resource.data.date is string
+        && request.resource.data.date.size() == 10
+        && request.resource.data.visitorId is string
+        && request.resource.data.visitorId.size() <= 80
+        && visitId == request.resource.data.date + '_' + request.resource.data.visitorId
+        && request.resource.data.firstPath is string
+        && request.resource.data.firstPath.size() <= 500
+        && request.resource.data.referrer is string
+        && request.resource.data.referrer.size() <= 180
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if isAdmin();
     }
 
     match /clients/{documentId} {
+      allow read, create, update, delete: if isAdmin();
+    }
+
+    match /tasks/{documentId} {
       allow read, create, update, delete: if isAdmin();
     }
 
