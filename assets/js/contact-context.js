@@ -1,4 +1,31 @@
 (() => {
+  const form = document.querySelector('.contact-panel');
+
+  // The contact form is submitted to Firestore by site-firebase.js.
+  // Remove the legacy mailto form target before the browser evaluates autofill/security.
+  if (form) {
+    form.removeAttribute('action');
+    form.removeAttribute('method');
+    form.removeAttribute('enctype');
+    form.setAttribute('autocomplete', 'on');
+
+    const autocompleteMap = {
+      company: 'organization',
+      name: 'name',
+      email: 'email',
+      phone: 'tel'
+    };
+    Object.entries(autocompleteMap).forEach(([id, value]) => {
+      const input = form.querySelector(`#${id}`);
+      if (input) input.setAttribute('autocomplete', value);
+    });
+
+    const oldNote = form.querySelector('.contact-note');
+    if (oldNote) {
+      oldNote.textContent = '입력한 문의는 Firebase를 통해 안전하게 접수되며, 확인 후 영업일 기준 2–3일 이내 연락드립니다.';
+    }
+  }
+
   const guide = document.querySelector('.contact-guide');
   if (guide && !guide.querySelector('.contact-directory-restored')) {
     const directory = document.createElement('dl');
@@ -21,7 +48,7 @@
     const project = document.createElement('div');
     project.className = 'contact-field contact-field--wide';
     project.dataset.restoredProjectName = 'true';
-    project.innerHTML = '<label for="projectNameRestored">프로젝트명</label><input id="projectNameRestored" name="프로젝트명" placeholder="예: 신규 브랜드 론칭 / 홈페이지 리뉴얼">';
+    project.innerHTML = '<label for="projectNameRestored">프로젝트명</label><input id="projectNameRestored" name="프로젝트명" autocomplete="off" placeholder="예: 신규 브랜드 론칭 / 홈페이지 리뉴얼">';
     const choice = fields.querySelector('.contact-choice');
     fields.insertBefore(project, choice || null);
 
@@ -39,7 +66,6 @@
     fields.appendChild(schedule);
   }
 
-  const form = document.querySelector('.contact-panel');
   if (form && !form.querySelector('.contact-consent-restored')) {
     const submit = form.querySelector('.contact-submit');
     const consent = document.createElement('label');
