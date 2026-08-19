@@ -34,7 +34,7 @@
     }).format(now);
   }
 
-  import('./admin-firebase.js?v=20260811-1').catch((error) => {
+  import('./admin-firebase.js?v=20260819-1').catch((error) => {
     console.error('[NINEWORKS Admin] Firebase bootstrap load failed', error);
     const status = document.querySelector('.admin-status');
     if (status) status.innerHTML = '<i></i> FIREBASE LOAD ERROR';
