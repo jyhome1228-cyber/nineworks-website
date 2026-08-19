@@ -42,8 +42,8 @@ service cloud.firestore {
         && request.resource.data.status == 'new'
         && request.resource.data.source is string
         && request.resource.data.source.size() <= 500
-        && request.resource.data.service is string
-        && request.resource.data.service.size() <= 160
+        && request.resource.data.get('service', '') is string
+        && request.resource.data.get('service', '').size() <= 160
         && request.resource.data.company is string
         && request.resource.data.company.size() <= 200
         && request.resource.data.contactName is string
