@@ -4,6 +4,12 @@
     return eyebrow && eyebrow.textContent.includes('Selected Design Projects');
   });
 
+  const findWritingSection = () => Array.from(document.querySelectorAll('.designer-page .designer-section')).find((section) => {
+    const eyebrow = section.querySelector('.eyebrow');
+    const text = eyebrow?.textContent || '';
+    return text.includes('Writing & Essay') || text.includes('저서·논문·에세이');
+  });
+
   const makeRow = ({ tag, title, role, detail, key }) => {
     const row = document.createElement('div');
     row.className = 'designer-record';
@@ -13,6 +19,36 @@
       <strong class="designer-record__title">${title}</strong>
       <div class="designer-record__copy"><b>${role}</b><small>${detail}</small></div>`;
     return row;
+  };
+
+  const makePublicationRow = () => {
+    const row = document.createElement('div');
+    row.className = 'designer-record';
+    row.dataset.designerPublication = 'local-startup-guidebook-02';
+    row.innerHTML = `
+      <span class="designer-record__year">2025</span>
+      <strong class="designer-record__title">LOCAL STARTUP GUIDEBOOK 02 / 로컬창업가이드북 02</strong>
+      <div class="designer-record__copy"><b>Co-author / 공저</b><small>《로컬비즈니스디자인, 지역창업의 새로운 모델》 · 박두경 · 박재영</small></div>`;
+    return row;
+  };
+
+  const applyPublication = () => {
+    const section = findWritingSection();
+    const list = section?.querySelector('.designer-records');
+    if (!section || !list) return;
+
+    const eyebrow = section.querySelector('.eyebrow');
+    const description = section.querySelector('.designer-section__head > .copy');
+    if (eyebrow) eyebrow.textContent = 'Publication & Writing / 저서·논문·에세이';
+    if (description) description.textContent = '저서와 논문, 에세이를 통해 브랜드와 창업 과정의 고민과 통찰을 언어로 정리하고, 시각적 판단과 실무 경험을 지식으로 확장합니다.';
+
+    const alreadyExists = Array.from(list.querySelectorAll('.designer-record')).some((row) => {
+      const text = row.textContent.replace(/\s+/g, ' ');
+      return row.dataset.designerPublication === 'local-startup-guidebook-02'
+        || /LOCAL STARTUP GUIDEBOOK 02|로컬창업가이드북 02/i.test(text);
+    });
+
+    if (!alreadyExists) list.prepend(makePublicationRow());
   };
 
   const apply = () => {
@@ -71,8 +107,13 @@
     });
   };
 
-  apply();
-  window.addEventListener('load', apply, { once: true });
-  setTimeout(apply, 250);
-  setTimeout(apply, 900);
+  const applyAll = () => {
+    apply();
+    applyPublication();
+  };
+
+  applyAll();
+  window.addEventListener('load', applyAll, { once: true });
+  setTimeout(applyAll, 250);
+  setTimeout(applyAll, 900);
 })();
