@@ -1,0 +1,82 @@
+/* NINEWORKS — sitewide typography guard / 2026-08-20
+   Prevent awkward orphaned words and forced desktop line breaks across public pages. */
+
+html body main h1,
+html body main h2,
+html body main h3,
+html body .display-title,
+html body .page-title,
+html body .section-title,
+html body .cta__title,
+html body .designer-summary__statement,
+html body .designer-section__head h2,
+html body .portfolio-scroll-section__title,
+html body .magazine-card h3,
+html body .portfolio-card strong,
+html body .project-random-copy strong {
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  text-wrap: balance !important;
+}
+
+html body main p,
+html body main li,
+html body .lead,
+html body .copy,
+html body .page-hero__copy,
+html body .portfolio-hero__copy,
+html body .magazine-hero__copy,
+html body .hero__descriptor,
+html body .branding-about__lead,
+html body .branding-about__copy,
+html body .designer-record__copy,
+html body .portfolio-scroll-copy,
+html body .cta__bottom p,
+html body .magazine-card__summary,
+html body .portfolio-card p,
+html body .project-card p {
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  text-wrap: pretty !important;
+}
+
+/* CTA copy is the most common place for a single short word to fall onto a new line. */
+html body .cta__title {
+  width: min(100%, 1000px) !important;
+  max-width: 1000px !important;
+}
+
+html body .cta__bottom p {
+  max-width: 680px !important;
+}
+
+/* Old desktop-only hard breaks should not override the browser's balanced wrapping. */
+@media (min-width: 761px) {
+  html body .cta__title br,
+  html body .cta__bottom p br,
+  html body .page-hero__copy br,
+  html body .portfolio-hero__copy br,
+  html body .magazine-hero__copy br,
+  html body .hero__descriptor br,
+  html body .lead br,
+  html body .copy br {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  html body main h1,
+  html body main h2,
+  html body main h3,
+  html body .display-title,
+  html body .page-title,
+  html body .section-title,
+  html body .cta__title {
+    text-wrap: balance !important;
+  }
+
+  html body .cta__title {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
