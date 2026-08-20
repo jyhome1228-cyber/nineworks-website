@@ -50,6 +50,35 @@ html body .cta__bottom p {
   max-width: 680px !important;
 }
 
+/* Portfolio taxonomy: "SHOP" is too narrow for commerce builds.
+   Keep the existing filter key, but present the category as E-COMMERCE / ECOM. */
+html body .site-nav-dropdown a[href*="filter=commerce"] > span,
+html body .site-nav-dropdown a[href*="filter=commerce"] > small,
+html body .menu-nav__sub a[href*="filter=commerce"],
+html body .portfolio-filter button[data-filter="commerce"] {
+  font-size: 0 !important;
+}
+
+html body .site-nav-dropdown a[href*="filter=commerce"] > span::after {
+  content: 'E-COMMERCE';
+  font-size: 13px;
+}
+
+html body .site-nav-dropdown a[href*="filter=commerce"] > small::after {
+  content: 'ECOM';
+  font-size: 11px;
+}
+
+html body .menu-nav__sub a[href*="filter=commerce"]::after {
+  content: 'E-Commerce';
+  font-size: 14px;
+}
+
+html body .portfolio-filter button[data-filter="commerce"]::after {
+  content: 'E-COMMERCE';
+  font-size: 14px;
+}
+
 /* Old desktop-only hard breaks should not override the browser's balanced wrapping. */
 @media (min-width: 761px) {
   html body .cta__title br,
