@@ -14,39 +14,21 @@ body.branding-page .brand-step__visual::before{display:none!important}
 
 body.branding-page .process-info-panel{
   width:100%;
-  border-top:1px solid #171717;
+  border-top:0;
   border-bottom:1px solid #dcdcd8;
   background:#fff;
 }
 
+/* The step title already appears in the left process column.
+   Remove the duplicated STEP xx / PROCESS DETAILS header from every panel. */
 body.branding-page .process-info-panel__head{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
-  gap:24px;
-  align-items:end;
-  padding:0 0 18px;
-  border-bottom:1px solid #dcdcd8;
-}
-
-body.branding-page .process-info-panel__head small{
-  color:#8d8d89;
-  font-size:11px;
-  font-weight:600;
-  line-height:1.4;
-  letter-spacing:.09em;
-}
-
-body.branding-page .process-info-panel__head strong{
-  color:#171717;
-  font-size:14px;
-  font-weight:520;
-  line-height:1.5;
-  text-align:right;
+  display:none!important;
 }
 
 body.branding-page .process-info-panel__grid{
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  border-top:1px solid #dcdcd8;
 }
 
 body.branding-page .process-info-column{
@@ -162,8 +144,6 @@ body.branding-page .brand-step__copy{
 @media(max-width:900px){
   body.branding-page .brand-step__inner{grid-template-columns:1fr!important;gap:40px!important}
   body.branding-page .brand-step__copy{position:static!important}
-  body.branding-page .process-info-panel__head{grid-template-columns:1fr;gap:6px}
-  body.branding-page .process-info-panel__head strong{text-align:left}
 }
 
 @media(max-width:680px){
