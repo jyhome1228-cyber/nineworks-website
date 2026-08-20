@@ -1,0 +1,180 @@
+/* NINEWORKS — Branding Process information panels / 2026-08-20
+   Replace decorative process graphics with clear WHAT WE DO / DELIVERABLES information. */
+
+body.branding-page .brand-step__visual{
+  display:block!important;
+  min-height:0!important;
+  overflow:visible!important;
+  padding:0!important;
+  border:0!important;
+  background:#fff!important;
+}
+
+body.branding-page .brand-step__visual::before{display:none!important}
+
+body.branding-page .process-info-panel{
+  width:100%;
+  border-top:1px solid #171717;
+  border-bottom:1px solid #dcdcd8;
+  background:#fff;
+}
+
+body.branding-page .process-info-panel__head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:24px;
+  align-items:end;
+  padding:0 0 18px;
+  border-bottom:1px solid #dcdcd8;
+}
+
+body.branding-page .process-info-panel__head small{
+  color:#8d8d89;
+  font-size:11px;
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:.09em;
+}
+
+body.branding-page .process-info-panel__head strong{
+  color:#171717;
+  font-size:14px;
+  font-weight:520;
+  line-height:1.5;
+  text-align:right;
+}
+
+body.branding-page .process-info-panel__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+}
+
+body.branding-page .process-info-column{
+  min-width:0;
+  padding:28px 30px 30px 0;
+}
+
+body.branding-page .process-info-column + .process-info-column{
+  padding-right:0;
+  padding-left:30px;
+  border-left:1px solid #e3e3df;
+}
+
+body.branding-page .process-info-column__label{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:24px;
+  margin-bottom:18px;
+}
+
+body.branding-page .process-info-column__label span:first-child{
+  color:#171717;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:.045em;
+}
+
+body.branding-page .process-info-column__label span:last-child{
+  color:#9a9a96;
+  font-size:10px;
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:.08em;
+}
+
+body.branding-page .process-info-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+  border-top:1px solid #ededeb;
+}
+
+body.branding-page .process-info-list li{
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+  min-height:56px;
+  padding:15px 0 14px;
+  border-bottom:1px solid #ededeb;
+}
+
+body.branding-page .process-info-list__index{
+  color:#aaa;
+  font-size:10px;
+  font-weight:600;
+  line-height:1.65;
+  font-variant-numeric:tabular-nums;
+}
+
+body.branding-page .process-info-list__body strong{
+  display:block;
+  color:#222;
+  font-size:14.5px;
+  font-weight:520;
+  line-height:1.5;
+  letter-spacing:-.018em;
+  word-break:keep-all;
+}
+
+body.branding-page .process-info-list__body small{
+  display:block;
+  margin-top:3px;
+  color:#7a7a76;
+  font-size:12.5px;
+  font-weight:400;
+  line-height:1.58;
+  letter-spacing:-.015em;
+  word-break:keep-all;
+}
+
+body.branding-page .process-info-output .process-info-list__body strong{
+  color:#111;
+}
+
+body.branding-page .process-info-output .process-info-list li{
+  grid-template-columns:34px minmax(0,1fr);
+}
+
+/* Keep the process section editorial rather than illustration-heavy. */
+body.branding-page .brand-step__inner{
+  grid-template-columns:minmax(280px,.78fr) minmax(520px,1.22fr)!important;
+  align-items:start!important;
+}
+
+body.branding-page .brand-step__copy{
+  position:sticky;
+  top:calc(var(--header-height,104px) + 54px);
+}
+
+@media(max-width:1180px){
+  body.branding-page .brand-step__inner{
+    grid-template-columns:minmax(260px,.82fr) minmax(430px,1.18fr)!important;
+    gap:44px!important;
+  }
+  body.branding-page .process-info-column{padding-right:22px}
+  body.branding-page .process-info-column + .process-info-column{padding-left:22px}
+}
+
+@media(max-width:900px){
+  body.branding-page .brand-step__inner{grid-template-columns:1fr!important;gap:40px!important}
+  body.branding-page .brand-step__copy{position:static!important}
+  body.branding-page .process-info-panel__head{grid-template-columns:1fr;gap:6px}
+  body.branding-page .process-info-panel__head strong{text-align:left}
+}
+
+@media(max-width:680px){
+  body.branding-page .process-info-panel__grid{grid-template-columns:1fr}
+  body.branding-page .process-info-column,
+  body.branding-page .process-info-column + .process-info-column{
+    padding:24px 0!important;
+    border-left:0!important;
+  }
+  body.branding-page .process-info-column + .process-info-column{border-top:1px solid #dcdcd8!important}
+  body.branding-page .process-info-list li{grid-template-columns:28px minmax(0,1fr);gap:8px;min-height:0}
+  body.branding-page .process-info-list__body strong{font-size:14px}
+  body.branding-page .process-info-list__body small{font-size:12.5px}
+}
