@@ -5,6 +5,17 @@
   const FIRESTORE_SDK = 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
   let firebasePromise = null;
 
+  const installTypographyGuard = () => {
+    if (document.body?.classList.contains('admin-page')) return;
+    if (document.querySelector('link[data-nw-typography-guard]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = '/assets/css/typography-guard-20260820.css?v=20260820-1';
+    link.dataset.nwTypographyGuard = 'true';
+    document.head.appendChild(link);
+  };
+  installTypographyGuard();
+
   const getFirebase = () => {
     if (!firebasePromise) {
       firebasePromise = Promise.all([
