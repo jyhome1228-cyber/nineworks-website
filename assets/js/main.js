@@ -30,7 +30,7 @@
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
   loadScript('assets/js/seo.js?v=20260811-3');
-  loadScript('assets/js/site-firebase.js?v=20260819-1');
+  loadScript('assets/js/site-firebase.js?v=20260820-2');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (body.classList.contains('portfolio-detail-page')) {
     loadStyle('assets/css/portfolio-detail-refine.css?v=20260807-4');
