@@ -3,6 +3,8 @@
   window.__NW_SITE_FIREBASE_INIT__ = true;
 
   const FIRESTORE_SDK = 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
+  const GENERAL_PHONE = { raw: '01054225650', display: '010-5422-5650' };
+  const PRINT_PHONE = { raw: '01047587049', display: '010-4758-7049' };
   let firebasePromise = null;
 
   const installTypographyGuard = () => {
@@ -173,7 +175,22 @@
     });
   };
 
-  const showInquirySuccessPopup = () => {
+  const isPrintInquiry = (form) => {
+    if (!(form instanceof HTMLFormElement)) return false;
+    const label = String(form.dataset.sectorLabel || '').toUpperCase();
+    return /PRINT|PACKAGE|SAMPLE/.test(label) &&
+      !/PARTNER|CLIENT|DIGITAL|DEVELOP/.test(label);
+  };
+
+  const showInquirySuccessPopup = (form) => {
+    const printInquiry = isPrintInquiry(form);
+    const phone = printInquiry ? PRINT_PHONE : GENERAL_PHONE;
+    const popupLabel = printInquiry ? 'PRINT INQUIRY COMPLETE' : 'INQUIRY COMPLETE';
+    const popupTitle = printInquiry ? '인쇄 견적이 접수되었습니다.' : '문의가 접수되었습니다.';
+    const popupMessage = printInquiry
+      ? '빠른 견적 확인을 원하시면 나인웍스 인쇄소 담당자에게 문자로 남겨주세요.'
+      : '담당자에게 문자로 남겨주시면 더욱 빠르게 회신받으실 수 있습니다.';
+
     const existing = document.querySelector('[data-inquiry-success-popup]');
     if (existing) existing.remove();
 
@@ -197,13 +214,13 @@
         @media(max-width:520px){[data-inquiry-success-popup] .inquiry-success-card{padding:28px 22px}[data-inquiry-success-popup] .inquiry-success-actions{grid-template-columns:1fr}}
       </style>
       <div class="inquiry-success-card">
-        <p class="inquiry-success-label">INQUIRY COMPLETE</p>
-        <h2 id="inquiry-success-title">문의가 접수되었습니다.</h2>
-        <p>담당자에게 문자로 남겨주시면 더욱 빠르게 회신받으실 수 있습니다.</p>
-        <a class="inquiry-success-phone" href="sms:01054225650">010-5422-5650</a>
+        <p class="inquiry-success-label">${popupLabel}</p>
+        <h2 id="inquiry-success-title">${popupTitle}</h2>
+        <p>${popupMessage}</p>
+        <a class="inquiry-success-phone" href="sms:${phone.raw}">${phone.display}</a>
         <div class="inquiry-success-actions">
           <button type="button" data-popup-close>확인</button>
-          <a href="sms:01054225650">문자 보내기</a>
+          <a href="sms:${phone.raw}">문자 보내기</a>
         </div>
       </div>`;
 
@@ -222,6 +239,39 @@
     document.body.appendChild(popup);
     popup.querySelector('[data-popup-close]').focus();
   };
+
+  const installPrintContactNotices = () => {
+    if (!document.body) return;
+
+    if (document.body.classList.contains('print-page') && !document.querySelector('[data-print-contact-notice]')) {
+      const host = document.querySelector('.print-hub__head');
+      if (host) {
+        const notice = document.createElement('div');
+        notice.dataset.printContactNotice = 'true';
+        notice.innerHTML = '<span>PRINT CONTACT</span><strong>나인웍스 인쇄소 담당자</strong><a href="tel:01047587049">010-4758-7049</a><small>빠른 문의는 문자로 남겨주세요.</small>';
+        host.insertAdjacentElement('afterend', notice);
+      }
+    }
+
+    document.querySelectorAll('form[data-quote-form]').forEach((form) => {
+      if (!isPrintInquiry(form) || form.querySelector('[data-print-contact-notice]')) return;
+      const host = form.querySelector('.quote-summary__contact') || form.querySelector('.quote-summary');
+      if (!host) return;
+      const notice = document.createElement('div');
+      notice.dataset.printContactNotice = 'true';
+      notice.innerHTML = '<span>PRINT CONTACT</span><strong>나인웍스 인쇄소 담당자</strong><a href="tel:01047587049">010-4758-7049</a><small>견적 작성 후 빠른 확인이 필요하면 문자로 남겨주세요.</small>';
+      host.insertAdjacentElement('afterend', notice);
+    });
+
+    if (!document.querySelector('style[data-print-contact-style]')) {
+      const style = document.createElement('style');
+      style.dataset.printContactStyle = 'true';
+      style.textContent = '[data-print-contact-notice]{display:grid;grid-template-columns:auto 1fr auto;gap:5px 14px;align-items:center;margin:22px 0;padding:18px;border:1px solid #d9d9d5;background:#fff;color:#111}[data-print-contact-notice] span{grid-column:1/-1;font-size:10px;font-weight:600;letter-spacing:.1em}[data-print-contact-notice] strong{font-size:13px;font-weight:500}[data-print-contact-notice] a{font-size:16px;font-weight:600;color:#111;text-decoration:none}[data-print-contact-notice] small{grid-column:1/-1;color:#777;font-size:11px}@media(max-width:640px){[data-print-contact-notice]{grid-template-columns:1fr}[data-print-contact-notice] span,[data-print-contact-notice] small{grid-column:1}}';
+      document.head.appendChild(style);
+    }
+  };
+
+  installPrintContactNotices();
 
   const setFormState = (form, mode, message = '') => {
     const button = form.querySelector('button[type="submit"], input[type="submit"]');
@@ -262,8 +312,11 @@
       await saveInquiry(form);
       form.reset();
       form.dispatchEvent(new Event('change', { bubbles: true }));
-      setFormState(form, 'success', '문의가 접수되었습니다. 담당자에게 문자로 남겨주시면 더욱 빠르게 회신받으실 수 있습니다.');
-      showInquirySuccessPopup();
+      const successMessage = isPrintInquiry(form)
+        ? '인쇄 견적이 접수되었습니다. 빠른 확인은 나인웍스 인쇄소 담당자 010-4758-7049로 문자 남겨주세요.'
+        : '문의가 접수되었습니다. 담당자에게 문자로 남겨주시면 더욱 빠르게 회신받으실 수 있습니다.';
+      setFormState(form, 'success', successMessage);
+      showInquirySuccessPopup(form);
       window.setTimeout(() => setFormState(form, 'idle'), 3500);
     } catch (error) {
       console.error('[NINEWORKS] inquiry submission failed', error);
