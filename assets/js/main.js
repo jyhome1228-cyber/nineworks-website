@@ -75,12 +75,12 @@
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
             <a href="portfolio.html"><span>ALL PORTFOLIO</span><small>ALL</small></a>
             <a href="portfolio.html?filter=website"><span>WEBSITE / SITE</span><small>WEB</small></a>
-            <a href="portfolio.html?filter=commerce"><span>COMMERCE</span><small>SHOP</small></a>
-            <a href="portfolio.html?filter=landing"><span>LANDING / DETAIL PAGE</span><small>PAGE</small></a>
-            <a href="portfolio.html?filter=package"><span>PACKAGE</span><small>PKG</small></a>
-            <a href="portfolio.html?filter=editorial"><span>EDITORIAL</span><small>EDIT</small></a>
+            <a href="portfolio.html?filter=system"><span>SYSTEM BUILD</span><small>SYS</small></a>
+            <a href="portfolio.html?filter=detailpage"><span>DETAIL PAGE</span><small>PAGE</small></a>
+            <a href="portfolio.html?filter=editorial"><span>EDITORIAL DESIGN</span><small>EDIT</small></a>
             <a href="portfolio.html?filter=ir"><span>IR / PPT</span><small>DECK</small></a>
-            <a href="portfolio.html?filter=event"><span>EVENT</span><small>EVENT</small></a>
+            <a href="portfolio.html?filter=package"><span>PACKAGE DESIGN</span><small>PKG</small></a>
+            <a href="portfolio.html?filter=event"><span>EVENT DESIGN</span><small>EVENT</small></a>
           </div>
         </div>
         <a href="magazine.html" data-nav-key="magazine">MAGAZINE</a>
@@ -110,10 +110,12 @@
           <a class="menu-nav__main" href="portfolio.html">PORTFOLIO</a>
           <div class="menu-nav__sub">
             <a href="portfolio.html?filter=website">Website / Site</a>
-            <a href="portfolio.html?filter=commerce">Commerce</a>
-            <a href="portfolio.html?filter=landing">Landing / Detail Page</a>
-            <a href="portfolio.html?filter=package">Package</a>
-            <a href="portfolio.html?filter=editorial">Editorial / IR</a>
+            <a href="portfolio.html?filter=system">System Build</a>
+            <a href="portfolio.html?filter=detailpage">Detail Page</a>
+            <a href="portfolio.html?filter=editorial">Editorial Design</a>
+            <a href="portfolio.html?filter=ir">IR / PPT</a>
+            <a href="portfolio.html?filter=package">Package Design</a>
+            <a href="portfolio.html?filter=event">Event Design</a>
           </div>
         </div>
         <a class="menu-nav__main" href="magazine.html">MAGAZINE</a>
