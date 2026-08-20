@@ -24,18 +24,18 @@
     'recelleclore'
   ]);
 
-  const commerce = new Set([
-    'kekomi',
-    'the-petrichor',
-    'recelleclore'
+  const systemBuild = new Set([
+    'fineb',
+    'relim',
+    'aesost'
   ]);
 
   const petrichor = window.NW_PORTFOLIO.find((project) => project?.id === 'the-petrichor');
   if (petrichor) Object.assign(petrichor, {
     title: 'THE PETRICHOR',
     client: 'THE PETRICHOR / 더 페트리셔',
-    subtitle: 'Skincare Brand Commerce Website, Membership & Content Experience',
-    scope: 'Imweb · Custom Code · Photography · Product Detail · Review · Event · Membership · Commerce',
+    subtitle: 'Skincare Brand Website, Membership & Content Experience',
+    scope: 'Imweb · Custom Code · Photography · Product Detail · Review · Event · Membership',
     thumbnail: 'https://cdn.imweb.me/upload/S20260219b829e728b3f2e/c403d1292f536.png'
   });
 
@@ -44,6 +44,9 @@
 
     const incoming = Array.isArray(project.filters) ? project.filters : [];
     const filters = new Set(incoming);
+
+    /* Commerce is not used as a portfolio category. */
+    filters.delete('commerce');
 
     if (eventOnly.has(project.id)) {
       project.filters = ['event'];
@@ -55,7 +58,7 @@
       filters.add('website');
     }
 
-    if (commerce.has(project.id)) filters.add('commerce');
+    if (systemBuild.has(project.id)) filters.add('system');
 
     if (detailPage.has(project.id)) {
       filters.add('detailpage');
