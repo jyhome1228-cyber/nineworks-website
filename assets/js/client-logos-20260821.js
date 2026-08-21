@@ -82,7 +82,7 @@
     const section = document.createElement('section');
     section.className = 'nw-client-showcase';
     section.innerHTML = `
-      <div class="container nw-client-showcase__head reveal">
+      <div class="container nw-client-showcase__head">
         <div><p class="eyebrow">COMPANIES WE WORKED WITH</p><h2>함께한 기업들</h2></div>
         <p class="nw-client-showcase__copy">브랜드 전략과 아이덴티티, 패키지, 디지털, 콘텐츠와 제작까지 다양한 프로젝트를 여러 기업·브랜드와 함께해 왔습니다.</p>
       </div>
