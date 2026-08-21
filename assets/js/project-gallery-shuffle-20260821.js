@@ -7,6 +7,25 @@
     if (title === '드림팜') card.remove();
   });
 
+  const laffCard = Array.from(grid.querySelectorAll(':scope > .project-card')).find((card) => card.querySelector('h2')?.textContent.trim() === 'LAFF');
+  if (laffCard) {
+    const detailUrl = 'portfolio-laff.html';
+    laffCard.dataset.projectLink = detailUrl;
+    laffCard.setAttribute('role', 'link');
+    laffCard.setAttribute('tabindex', '0');
+    laffCard.setAttribute('aria-label', 'LAFF 포트폴리오 상세 보기');
+    laffCard.style.cursor = 'pointer';
+
+    const openDetail = () => { window.location.href = detailUrl; };
+    laffCard.addEventListener('click', openDetail);
+    laffCard.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openDetail();
+      }
+    });
+  }
+
   const cards = Array.from(grid.querySelectorAll(':scope > .project-card'));
   const count = document.querySelector('.project-gallery__count');
   if (count) count.textContent = `${cards.length} PROJECTS`;
