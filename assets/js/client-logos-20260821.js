@@ -46,13 +46,14 @@
     'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/2e0d19dbd4113.jpg'
   ];
 
-  const logoCard = (src, index) => {
+  const logoCard = (src, index, lazy = false) => {
     const item = document.createElement('div');
     item.className = 'nw-logo-card';
     const image = document.createElement('img');
     image.src = src;
     image.alt = `나인웍스와 함께한 기업 로고 ${String(index + 1).padStart(2, '0')}`;
     image.decoding = 'async';
+    if (lazy) image.loading = 'lazy';
     item.appendChild(image);
     return item;
   };
@@ -75,50 +76,61 @@
     return row;
   };
 
-  const renderHomeClients = () => {
-    const hero = document.querySelector('.nw-home-hero');
-    if (!hero || document.querySelector('.nw-client-showcase')) return;
+  const ensureHomeSection = () => {
+    let section = document.querySelector('.nw-client-showcase');
+    if (section) return section;
 
-    const section = document.createElement('section');
+    const hero = document.querySelector('.nw-home-hero') || document.querySelector('body.home-clarity main > section:first-of-type');
+    if (!hero) return null;
+
+    section = document.createElement('section');
     section.className = 'nw-client-showcase';
     section.innerHTML = `
-      <div class="container nw-client-showcase__head">
+      <div class="container nw-client-showcase__head reveal">
         <div><p class="eyebrow">COMPANIES WE WORKED WITH</p><h2>함께한 기업들</h2></div>
         <p class="nw-client-showcase__copy">브랜드 전략과 아이덴티티, 패키지, 디지털, 콘텐츠와 제작까지 다양한 프로젝트를 여러 기업·브랜드와 함께해 왔습니다.</p>
       </div>
       <div class="nw-client-marquee" aria-label="나인웍스와 함께한 기업 로고"></div>`;
+    hero.insertAdjacentElement('afterend', section);
+    return section;
+  };
 
+  const renderHomeClients = () => {
+    if (!document.body.classList.contains('home-clarity') && !document.querySelector('.nw-home-hero')) return;
+    const section = ensureHomeSection();
+    if (!section) return;
     const marquee = section.querySelector('.nw-client-marquee');
+    if (!marquee || marquee.children.length) return;
+
     const half = Math.ceil(CLIENT_LOGOS.length / 2);
     marquee.appendChild(createMarqueeRow(CLIENT_LOGOS.slice(0, half), false, 0));
     marquee.appendChild(createMarqueeRow(CLIENT_LOGOS.slice(half), true, half));
-    hero.insertAdjacentElement('afterend', section);
   };
 
   const renderAboutClients = () => {
     const cta = document.querySelector('.about-page main > .cta');
-    if (!cta || document.querySelector('.nw-about-clients')) return;
+    if (!cta) return;
 
-    const section = document.createElement('section');
-    section.className = 'about-section nw-about-clients';
-    section.innerHTML = `
-      <div class="container about-split">
-        <div class="about-index">06 / CLIENTS</div>
-        <div class="about-content">
-          <p class="eyebrow">COMPANIES WE WORKED WITH</p>
-          <h2>함께한 기업들</h2>
-          <p>나인웍스는 다양한 기업, 브랜드, 기관과 함께 브랜드 전략, 아이덴티티, 패키지, 웹사이트와 제작 영역의 프로젝트를 수행해 왔습니다.</p>
-          <div class="nw-client-grid" aria-label="나인웍스와 함께한 기업 로고"></div>
-        </div>
-      </div>`;
+    let section = document.querySelector('.nw-about-clients');
+    if (!section) {
+      section = document.createElement('section');
+      section.className = 'about-section nw-about-clients';
+      section.innerHTML = `
+        <div class="container about-split">
+          <div class="about-index">06 / CLIENTS</div>
+          <div class="about-content">
+            <p class="eyebrow">COMPANIES WE WORKED WITH</p>
+            <h2>함께한 기업들</h2>
+            <p>나인웍스는 다양한 기업, 브랜드, 기관과 함께 브랜드 전략, 아이덴티티, 패키지, 웹사이트와 제작 영역의 프로젝트를 수행해 왔습니다.</p>
+            <div class="nw-client-grid" aria-label="나인웍스와 함께한 기업 로고"></div>
+          </div>
+        </div>`;
+      cta.insertAdjacentElement('beforebegin', section);
+    }
 
     const grid = section.querySelector('.nw-client-grid');
-    CLIENT_LOGOS.forEach((src, index) => {
-      const card = logoCard(src, index);
-      card.querySelector('img').loading = 'lazy';
-      grid.appendChild(card);
-    });
-    cta.insertAdjacentElement('beforebegin', section);
+    if (!grid || grid.children.length) return;
+    CLIENT_LOGOS.forEach((src, index) => grid.appendChild(logoCard(src, index, true)));
   };
 
   const init = () => {
@@ -126,6 +138,13 @@
     renderAboutClients();
   };
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
-  else init();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
+
+  window.addEventListener('load', init, { once: true });
+  setTimeout(init, 250);
+  setTimeout(init, 900);
 })();
