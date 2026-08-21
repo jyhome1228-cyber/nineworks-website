@@ -2,7 +2,14 @@
   const grid = document.querySelector('.projects-page .project-gallery__grid');
   if (!grid) return;
 
+  Array.from(grid.querySelectorAll(':scope > .project-card')).forEach((card) => {
+    const title = card.querySelector('h2')?.textContent.trim();
+    if (title === '드림팜') card.remove();
+  });
+
   const cards = Array.from(grid.querySelectorAll(':scope > .project-card'));
+  const count = document.querySelector('.project-gallery__count');
+  if (count) count.textContent = `${cards.length} PROJECTS`;
   if (cards.length < 2) return;
 
   const random = () => {
