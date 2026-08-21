@@ -50,6 +50,17 @@
     '한남대학교','생명보험사회공헌재단','한국벤처캐피탈협회','홍익대학교','Deloitte','한국예탁결제원','메가스터디','한양대학교','서울과학기술대학교','한국중소벤처기업유통원','대한적십자사','인천대학교','단국대학교','동원그룹','공차','할리스','한국토지주택공사 LH','공항철도 AREX','열매나눔재단','동국제약','경기도사회적경제원','인천스타트업파크','인천테크노파크','Brother','소상공인시장진흥공단'
   ];
 
+  const makeEntries = () => CLIENT_LOGOS.map((src, index) => ({ src, index }));
+
+  const shuffle = (items) => {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  };
+
   const logoCard = (src, index, lazy = false) => {
     const item = document.createElement('div');
     item.className = 'nw-logo-card';
@@ -70,20 +81,20 @@
     return item;
   };
 
-  const createGroup = (logos, offset = 0) => {
+  const createGroup = (entries) => {
     const group = document.createElement('div');
     group.className = 'nw-logo-marquee__group';
-    logos.forEach((src, index) => group.appendChild(logoCard(src, offset + index)));
+    entries.forEach(({ src, index }) => group.appendChild(logoCard(src, index)));
     return group;
   };
 
-  const createMarqueeRow = (logos, reverse = false, offset = 0) => {
+  const createMarqueeRow = (entries, reverse = false) => {
     const row = document.createElement('div');
     row.className = `nw-logo-marquee${reverse ? ' nw-logo-marquee--reverse' : ''}`;
     const track = document.createElement('div');
     track.className = 'nw-logo-marquee__track';
-    track.appendChild(createGroup(logos, offset));
-    track.appendChild(createGroup(logos, offset));
+    track.appendChild(createGroup(entries));
+    track.appendChild(createGroup(entries));
     row.appendChild(track);
     return row;
   };
@@ -111,9 +122,10 @@
     if (!section) return;
     const marquee = section.querySelector('.nw-client-marquee');
     if (!marquee || marquee.children.length) return;
-    const half = Math.ceil(CLIENT_LOGOS.length / 2);
-    marquee.appendChild(createMarqueeRow(CLIENT_LOGOS.slice(0, half), false, 0));
-    marquee.appendChild(createMarqueeRow(CLIENT_LOGOS.slice(half), true, half));
+    const entries = shuffle(makeEntries());
+    const half = Math.ceil(entries.length / 2);
+    marquee.appendChild(createMarqueeRow(entries.slice(0, half), false));
+    marquee.appendChild(createMarqueeRow(entries.slice(half), true));
   };
 
   const renderAboutClients = () => {
@@ -137,7 +149,7 @@
     }
     const grid = section.querySelector('.nw-client-grid');
     if (!grid || grid.children.length) return;
-    CLIENT_LOGOS.forEach((src, index) => grid.appendChild(logoCard(src, index, true)));
+    shuffle(makeEntries()).forEach(({ src, index }) => grid.appendChild(logoCard(src, index, true)));
   };
 
   const init = () => { renderHomeClients(); renderAboutClients(); };
