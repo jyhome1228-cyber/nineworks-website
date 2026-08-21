@@ -71,9 +71,9 @@
         <a href="branding.html" data-nav-key="branding">BRANDING</a>
         <a href="project.html" data-nav-key="project">PROJECTS</a>
         <div class="site-nav-item">
-          <a href="portfolio.html" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
+          <a href="portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-            <a href="portfolio.html"><span>ALL PORTFOLIO</span><small>ALL</small></a>
+            <a href="portfolio.html?filter=major"><span>MAJOR PORTFOLIO</span><small>MAJOR</small></a>
             <a href="portfolio.html?filter=website"><span>WEBSITE / SITE</span><small>WEB</small></a>
             <a href="portfolio.html?filter=system"><span>SYSTEM BUILD</span><small>SYS</small></a>
             <a href="portfolio.html?filter=detailpage"><span>DETAIL PAGE</span><small>PAGE</small></a>
@@ -107,8 +107,9 @@
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
         <a class="menu-nav__main" href="project.html">PROJECTS</a>
         <div class="menu-nav__group">
-          <a class="menu-nav__main" href="portfolio.html">PORTFOLIO</a>
+          <a class="menu-nav__main" href="portfolio.html?filter=major">PORTFOLIO</a>
           <div class="menu-nav__sub">
+            <a href="portfolio.html?filter=major">Major Portfolio</a>
             <a href="portfolio.html?filter=website">Website / Site</a>
             <a href="portfolio.html?filter=system">System Build</a>
             <a href="portfolio.html?filter=detailpage">Detail Page</a>
@@ -180,11 +181,11 @@
   document.querySelectorAll('[data-filter-group]').forEach((group) => {
     const targetSelector = group.dataset.filterTarget;
     group.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
-      const filter = button.dataset.filter || 'all';
+      const filter = button.dataset.filter || 'major';
       group.querySelectorAll('[data-filter]').forEach((item) => item.classList.toggle('is-active', item === button));
       document.querySelectorAll(targetSelector).forEach((item) => {
         const categories = (item.dataset.category || '').split(' ');
-        item.hidden = filter !== 'all' && !categories.includes(filter);
+        item.hidden = !categories.includes(filter);
       });
     }));
   });
@@ -209,7 +210,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
