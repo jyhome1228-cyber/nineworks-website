@@ -8,7 +8,7 @@
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
-  }).map((project) => ({ ...project, archive: false }));
+  }).map((project) => ({ ...project, filters: ['major'], archive: false }));
 
   const rawVisualArchive = Array.isArray(window.NW_PORTFOLIO_ARCHIVE)
     ? window.NW_PORTFOLIO_ARCHIVE
@@ -47,7 +47,6 @@
     })
     .map(({ __originalIndex, ...item }) => ({ ...item, archive: true }));
 
-  // 상세페이지는 원본 목록의 뒤쪽을 최근 작업으로 간주한다.
   const detailArchive = [...rawDetailArchive]
     .sort((a, b) => getSourceOrder(b) - getSourceOrder(a))
     .map((item) => ({ ...item, archive: true, popupType: 'gallery' }));
@@ -63,13 +62,17 @@
     .replaceAll("'", '&#039;');
 
   const categoryCopy = {
-    all: {
-      title: 'All Works',
-      copy: '브랜딩 케이스스터디와 패키지·에디토리얼·IR/PPT·상세페이지 제작물 아카이브를 함께 모았습니다. 케이스스터디는 상세 페이지로, 단일 제작물은 Quick View로 확인할 수 있습니다.'
+    major: {
+      title: 'Major Works',
+      copy: '나인웍스의 기존 주요 포트폴리오를 모아둔 대표 작업 아카이브입니다. 이 항목들은 다른 제작 카테고리와 분리해 Major에서만 확인할 수 있습니다.'
     },
-    branding: {
-      title: 'Branding',
-      copy: '브랜드의 방향과 아이덴티티를 중심으로 패키지, 화면, 콘텐츠와 운영 접점까지 확장한 프로젝트 케이스입니다.'
+    website: {
+      title: 'Website / Site',
+      copy: '기업과 브랜드의 목적에 맞춰 정보 구조, 화면 경험, 콘텐츠와 운영 환경까지 구축한 웹사이트 프로젝트입니다.'
+    },
+    system: {
+      title: 'System Build',
+      copy: '예약, 견적, 회원, 커뮤니티, 관리자 기능처럼 실제 운영에 필요한 기능과 데이터 흐름을 구축한 프로젝트입니다.'
     },
     package: {
       title: 'Package Design',
@@ -218,10 +221,8 @@
   const countEl = document.querySelector('[data-portfolio-index-count]');
 
   const updateArchiveHead = (filter) => {
-    const meta = categoryCopy[filter] || categoryCopy.all;
-    const count = filter === 'all'
-      ? allWorks.length
-      : allWorks.filter((item) => (item.filters || []).includes(filter)).length;
+    const meta = categoryCopy[filter] || categoryCopy.major;
+    const count = allWorks.filter((item) => (item.filters || []).includes(filter)).length;
     if (titleEl) titleEl.textContent = meta.title;
     if (copyEl) copyEl.textContent = meta.copy;
     if (countEl) countEl.textContent = `${String(count).padStart(2, '0')} WORKS`;
@@ -231,15 +232,17 @@
   if (group) {
     const buttons = group.querySelectorAll('[data-filter]');
     buttons.forEach((button) => button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
+      const filter = button.dataset.filter || 'major';
       buttons.forEach((item) => item.classList.toggle('is-active', item === button));
       grid.querySelectorAll('.portfolio-filter-item').forEach((item) => {
         const categories = (item.dataset.category || '').split(' ');
-        item.hidden = filter !== 'all' && !categories.includes(filter);
+        item.hidden = !categories.includes(filter);
       });
       updateArchiveHead(filter);
     }));
   }
 
-  updateArchiveHead('all');
+  const majorButton = document.querySelector('[data-filter="major"]');
+  if (majorButton) majorButton.click();
+  else updateArchiveHead('major');
 })();
