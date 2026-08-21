@@ -1,10 +1,25 @@
+(() => {
+  if (document.getElementById('relim-system-type-scale')) return;
+  const style = document.createElement('style');
+  style.id = 'relim-system-type-scale';
+  style.textContent = `
+    .nw-system-intro .nw-section-label { font-size: 11px; }
+    .nw-system-intro .nw-build-version { font-size: 11px; }
+    .nw-system-intro h2 { font-size: clamp(28px, 2.8vw, 42px); line-height: 1.18; }
+    .nw-stat-card .nw-card-index { font-size: 10px; }
+    .nw-stat-card > strong { font-size: clamp(17px, 1.35vw, 21px); line-height: 1.32; }
+    .nw-stat-card > p { font-size: 12.5px; line-height: 1.65; }
+  `;
+  document.head.appendChild(style);
+})();
+
 window.NW_WORK={
   id:'relim',
-  title:'RE:LIM',
+  title:'RELIM',
   subtitle:'Outdoor Leisure Website, FAQ Knowledge System & Admin Platform',
   lead:'공간을 소개하는 홈페이지를 넘어, 실제 고객 문의 데이터와 예약·리뷰·Q&A·관리자 운영까지 연결하는 디지털 서비스 구조를 구축했습니다.',
-  summary:'RE:LIM 프로젝트는 용인 프라이빗 아웃도어 공간의 브랜드 웹사이트를 GitHub 기반의 커스텀 코드로 재구축하고, 고객이 예약 전에 필요한 정보를 스스로 찾을 수 있는 FAQ 검색 시스템과 회원·리뷰·문의·관리자 운영 기능을 함께 설계한 DEVELOP 프로젝트입니다. 기존 인스타그램 DM JSON 약 2,000건을 분석해 반복 질문과 표현을 카테고리·검색 키워드·답변 구조로 정리했으며, Firebase Auth와 Firestore를 이용해 회원, 리뷰, 문의와 관리자 답변, 방문자 통계를 실제 운영 데이터로 연결했습니다. 캠핏 예약, 네이버 지도·검색 노출, Google Analytics와 기본 SEO까지 함께 정리해 브랜드 소개와 고객 응대, 예약 전환, 운영 관리가 하나의 웹 환경 안에서 이어지도록 구축했습니다.',
-  client:'RE:LIM / 리림',
+  summary:'RELIM 프로젝트는 용인 프라이빗 아웃도어 공간의 브랜드 웹사이트를 GitHub 기반의 커스텀 코드로 재구축하고, 고객이 예약 전에 필요한 정보를 스스로 찾을 수 있는 FAQ 검색 시스템과 회원·리뷰·문의·관리자 운영 기능을 함께 설계한 DEVELOP 프로젝트입니다. 기존 인스타그램 DM JSON 약 2,000건을 분석해 반복 질문과 표현을 카테고리·검색 키워드·답변 구조로 정리했으며, Firebase Auth와 Firestore를 이용해 회원, 리뷰, 문의와 관리자 답변, 방문자 통계를 실제 운영 데이터로 연결했습니다. 캠핏 예약, 네이버 지도·검색 노출, Google Analytics와 기본 SEO까지 함께 정리해 브랜드 소개와 고객 응대, 예약 전환, 운영 관리가 하나의 웹 환경 안에서 이어지도록 구축했습니다.',
+  client:'RELIM / 리림',
   scope:'Service Planning · IA · UX/UI · GitHub Pages · HTML/CSS/JavaScript · FAQ Data · Firebase Auth/Firestore · Community · Admin · SEO',
   category:'Develop · Digital System · Branding',
   role:'Planning · UX/UI · Front-end · Knowledge Architecture · Firebase Integration · Admin System · SEO / NINEWORKS',
@@ -12,7 +27,7 @@ window.NW_WORK={
   liveUrl:'https://re-lim.com/',
   thumbnail:'https://cdn.imweb.me/upload/S20260219b829e728b3f2e/fb1c70c96e690.png',
   develop:{
-    version:'RE:LIM / BUILD 2026',
+    version:'RELIM / BUILD 2026',
     title:'From customer questions to a working digital service system.',
     stats:[
       {label:'PROJECT TYPE',value:'BRAND WEBSITE + COMMUNITY',copy:'공간 안내, 예약 전환, FAQ, 리뷰와 문의 기능을 하나의 사용자 경험으로 구축'},
