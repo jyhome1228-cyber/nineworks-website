@@ -47,45 +47,19 @@
   ];
 
   const CLIENT_NAMES = [
-    '한남대학교',
-    '생명보험사회공헌재단',
-    '한국벤처캐피탈협회',
-    '홍익대학교',
-    'Deloitte',
-    '한국예탁결제원',
-    '메가스터디',
-    '한양대학교',
-    '서울과학기술대학교',
-    '한국중소벤처기업유통원',
-    '대한적십자사',
-    '인천대학교',
-    '단국대학교',
-    '동원그룹',
-    '공차',
-    '할리스',
-    '한국토지주택공사 LH',
-    '공항철도 AREX',
-    '열매나눔재단',
-    '동국제약',
-    '경기도사회적경제원',
-    '인천스타트업파크',
-    '인천테크노파크',
-    'Brother',
-    '소상공인시장진흥공단'
+    '한남대학교','생명보험사회공헌재단','한국벤처캐피탈협회','홍익대학교','Deloitte','한국예탁결제원','메가스터디','한양대학교','서울과학기술대학교','한국중소벤처기업유통원','대한적십자사','인천대학교','단국대학교','동원그룹','공차','할리스','한국토지주택공사 LH','공항철도 AREX','열매나눔재단','동국제약','경기도사회적경제원','인천스타트업파크','인천테크노파크','Brother','소상공인시장진흥공단'
   ];
 
   const logoCard = (src, index, lazy = false) => {
     const item = document.createElement('div');
     item.className = 'nw-logo-card';
     const name = CLIENT_NAMES[index] || '';
-
     const image = document.createElement('img');
     image.src = src;
     image.alt = name ? `${name} 로고` : `나인웍스와 함께한 기업 로고 ${String(index + 1).padStart(2, '0')}`;
     image.decoding = 'async';
     if (lazy) image.loading = 'lazy';
     item.appendChild(image);
-
     if (name) {
       const caption = document.createElement('span');
       caption.className = 'nw-logo-card__name';
@@ -93,7 +67,6 @@
       item.appendChild(caption);
       item.title = name;
     }
-
     return item;
   };
 
@@ -118,16 +91,14 @@
   const ensureHomeSection = () => {
     let section = document.querySelector('.nw-client-showcase');
     if (section) return section;
-
     const hero = document.querySelector('.nw-home-hero') || document.querySelector('body.home-clarity main > section:first-of-type');
     if (!hero) return null;
-
     section = document.createElement('section');
     section.className = 'nw-client-showcase';
     section.innerHTML = `
       <div class="container nw-client-showcase__head reveal">
         <div><p class="eyebrow">COMPANIES WE WORKED WITH</p><h2>함께한 기업들</h2></div>
-        <p class="nw-client-showcase__copy">브랜드 전략과 아이덴티티, 패키지, 디지털, 콘텐츠와 제작까지 다양한 프로젝트를 여러 기업·브랜드와 함께해 왔습니다.</p>
+        <p class="nw-client-showcase__copy">기업·브랜드·기관과 함께 브랜드 전략, 아이덴티티, 패키지,<br>디지털과 제작 프로젝트를 진행해 왔습니다.<br>브랜딩·디자인 관련 심사와 자문에도 참여하고 있습니다.</p>
       </div>
       <div class="nw-client-marquee" aria-label="나인웍스와 함께한 기업 로고"></div>`;
     hero.insertAdjacentElement('afterend', section);
@@ -140,7 +111,6 @@
     if (!section) return;
     const marquee = section.querySelector('.nw-client-marquee');
     if (!marquee || marquee.children.length) return;
-
     const half = Math.ceil(CLIENT_LOGOS.length / 2);
     marquee.appendChild(createMarqueeRow(CLIENT_LOGOS.slice(0, half), false, 0));
     marquee.appendChild(createMarqueeRow(CLIENT_LOGOS.slice(half), true, half));
@@ -149,7 +119,6 @@
   const renderAboutClients = () => {
     const cta = document.querySelector('.about-page main > .cta');
     if (!cta) return;
-
     let section = document.querySelector('.nw-about-clients');
     if (!section) {
       section = document.createElement('section');
@@ -160,29 +129,20 @@
           <div class="about-content">
             <p class="eyebrow">COMPANIES WE WORKED WITH</p>
             <h2>함께한 기업들</h2>
-            <p>나인웍스는 다양한 기업, 브랜드, 기관과 함께 브랜드 전략, 아이덴티티, 패키지, 웹사이트와 제작 영역의 프로젝트를 수행해 왔습니다.</p>
+            <p class="nw-about-clients__copy">나인웍스는 다양한 기업, 브랜드, 기관과 함께 브랜드 전략, 아이덴티티, 패키지,<br>웹사이트와 제작 프로젝트를 수행해 왔습니다.<br>또한 브랜딩·디자인 관련 심사와 자문에도 참여해 왔습니다.</p>
             <div class="nw-client-grid" aria-label="나인웍스와 함께한 기업 로고"></div>
           </div>
         </div>`;
       cta.insertAdjacentElement('beforebegin', section);
     }
-
     const grid = section.querySelector('.nw-client-grid');
     if (!grid || grid.children.length) return;
     CLIENT_LOGOS.forEach((src, index) => grid.appendChild(logoCard(src, index, true)));
   };
 
-  const init = () => {
-    renderHomeClients();
-    renderAboutClients();
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-
+  const init = () => { renderHomeClients(); renderAboutClients(); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
   window.addEventListener('load', init, { once: true });
   setTimeout(init, 250);
   setTimeout(init, 900);
