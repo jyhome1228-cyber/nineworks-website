@@ -87,11 +87,11 @@
         <div class="site-nav-item">
           <a href="solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-            <a href="solutions.html"><span>SERVICE OVERVIEW</span><small>ALL</small></a>
+            <a href="solutions.html"><span>SERVICE OVERVIEW</span></a>
             <a href="develop.html"><span>사이트 제작 · 시스템</span><small>WEB</small></a>
             <a href="print-editorial.html"><span>프린트 디자인</span><small>PRINT</small></a>
             <a href="package-production.html"><span>인쇄 · 패키지 제작</span><small>PRODUCTION</small></a>
-            <a href="package-sample.html"><span>패키지 샘플</span><small>SAMPLE</small></a>
+            <a href="package-sample.html"><span>패키지 샘플 제작</span><small>SAMPLE</small></a>
           </div>
         </div>
         <a href="contact.html" data-nav-key="contact">CONTACT</a>
@@ -126,7 +126,7 @@
             <a href="develop.html">사이트 제작 · 시스템</a>
             <a href="print-editorial.html">프린트 디자인</a>
             <a href="package-production.html">인쇄 · 패키지 제작</a>
-            <a href="package-sample.html">패키지 샘플</a>
+            <a href="package-sample.html">패키지 샘플 제작</a>
           </div>
         </div>
         <a class="menu-nav__main" href="contact.html">CONTACT</a>
