@@ -46,15 +46,54 @@
     'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/2e0d19dbd4113.jpg'
   ];
 
+  const CLIENT_NAMES = [
+    '한남대학교',
+    '생명보험사회공헌재단',
+    '한국벤처캐피탈협회',
+    '홍익대학교',
+    'Deloitte',
+    '한국예탁결제원',
+    '메가스터디',
+    '한양대학교',
+    '서울과학기술대학교',
+    '한국중소벤처기업유통원',
+    '대한적십자사',
+    '인천대학교',
+    '단국대학교',
+    '동원그룹',
+    '공차',
+    '할리스',
+    '한국토지주택공사 LH',
+    '공항철도 AREX',
+    '열매나눔재단',
+    '동국제약',
+    '경기도사회적경제원',
+    '인천스타트업파크',
+    '인천테크노파크',
+    'Brother',
+    '소상공인시장진흥공단'
+  ];
+
   const logoCard = (src, index, lazy = false) => {
     const item = document.createElement('div');
     item.className = 'nw-logo-card';
+    const name = CLIENT_NAMES[index] || '';
+
     const image = document.createElement('img');
     image.src = src;
-    image.alt = `나인웍스와 함께한 기업 로고 ${String(index + 1).padStart(2, '0')}`;
+    image.alt = name ? `${name} 로고` : `나인웍스와 함께한 기업 로고 ${String(index + 1).padStart(2, '0')}`;
     image.decoding = 'async';
     if (lazy) image.loading = 'lazy';
     item.appendChild(image);
+
+    if (name) {
+      const caption = document.createElement('span');
+      caption.className = 'nw-logo-card__name';
+      caption.textContent = name;
+      item.appendChild(caption);
+      item.title = name;
+    }
+
     return item;
   };
 
