@@ -1,5 +1,6 @@
 (() => {
   const aliases = {
+    all: 'major',
     landing: 'detailpage',
     detail: 'detailpage',
     site: 'website',
@@ -11,9 +12,9 @@
   const copyEl = document.querySelector('[data-portfolio-index-copy]');
   const group = document.querySelector('.portfolio-filter[data-filter-group]');
   const meta = {
-    all: {
-      title: 'All Works',
-      copy: '웹사이트, 시스템 구축, 상세페이지, 편집·IR, 패키지와 행사 디자인 등 실제 제작 결과물을 한곳에서 확인할 수 있습니다.'
+    major: {
+      title: 'Major Works',
+      copy: '나인웍스의 기존 주요 포트폴리오를 모아둔 대표 작업 아카이브입니다.'
     },
     website: {
       title: 'Website / Site',
@@ -46,24 +47,22 @@
   };
 
   const applyMeta = (filter) => {
-    const item = meta[filter] || meta.all;
+    const item = meta[filter] || meta.major;
     if (titleEl) titleEl.textContent = item.title;
     if (copyEl) copyEl.textContent = item.copy;
   };
 
   group?.querySelectorAll('[data-filter]').forEach((button) => {
-    button.addEventListener('click', () => applyMeta(button.dataset.filter || 'all'));
+    button.addEventListener('click', () => applyMeta(button.dataset.filter || 'major'));
   });
 
   const rawFilter = new URLSearchParams(window.location.search).get('filter');
-  if (!rawFilter) {
-    applyMeta('all');
-    return;
-  }
-  const filter = aliases[rawFilter] || rawFilter;
+  const filter = aliases[rawFilter] || rawFilter || 'major';
   const button = document.querySelector(`[data-filter="${CSS.escape(filter)}"]`);
   if (!button) {
-    applyMeta('all');
+    const majorButton = document.querySelector('[data-filter="major"]');
+    if (majorButton) window.requestAnimationFrame(() => majorButton.click());
+    else applyMeta('major');
     return;
   }
   window.requestAnimationFrame(() => button.click());
