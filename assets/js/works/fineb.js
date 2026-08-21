@@ -1,3 +1,18 @@
+(() => {
+  if (document.getElementById('fineb-system-type-scale')) return;
+  const style = document.createElement('style');
+  style.id = 'fineb-system-type-scale';
+  style.textContent = `
+    .nw-system-intro .nw-section-label { font-size: 11px; }
+    .nw-system-intro .nw-build-version { font-size: 11px; }
+    .nw-system-intro h2 { font-size: clamp(28px, 2.8vw, 42px); line-height: 1.18; }
+    .nw-stat-card .nw-card-index { font-size: 10px; }
+    .nw-stat-card > strong { font-size: clamp(17px, 1.35vw, 21px); line-height: 1.32; }
+    .nw-stat-card > p { font-size: 12.5px; line-height: 1.65; }
+  `;
+  document.head.appendChild(style);
+})();
+
 window.NW_WORK={
   id:'fineb',
   title:'FINE.B',
