@@ -46,5 +46,14 @@
 .cov-full-bleed{margin-top:18px}
 .cov-disclaimer{margin-top:72px;padding:26px 0;border-top:1px solid var(--ccfc-line);color:#718091;font-size:11px;line-height:1.7}
 .cov-disclaimer strong{color:var(--ccfc-navy)}
+
+/* English-first / Korean translation CTA — Coventry page only */
+.portfolio-coventry-page .cov-detail-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch;margin-top:22px}
+.portfolio-coventry-page .cov-detail-actions .portfolio-detail-live{width:auto;margin-top:0;min-width:0}
+.portfolio-coventry-page .cov-language-toggle{display:flex;align-items:center;justify-content:center;min-width:104px;padding:0 14px;border:0;border-top:1px solid #b9cce0;border-bottom:1px solid #b9cce0;background:var(--ccfc-sky);color:var(--ccfc-navy);font:inherit;font-size:10.5px;font-weight:800;letter-spacing:.04em;white-space:nowrap;cursor:pointer;transition:background .2s ease,color .2s ease,opacity .2s ease}
+.portfolio-coventry-page .cov-language-toggle:hover{background:var(--ccfc-navy);color:#fff}
+.portfolio-coventry-page[data-cov-language="ko"] .cov-language-toggle{background:var(--ccfc-navy);color:#fff}
+
 @media(max-width:980px){.cov-context-grid,.cov-symbol-grid{grid-template-columns:1fr 1fr}.cov-principles{grid-template-columns:1fr 1fr}.cov-image-grid--three{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.portfolio-coventry-page .cov-detail-actions{grid-template-columns:1fr auto;gap:10px;margin-top:18px}.portfolio-coventry-page .cov-language-toggle{min-width:92px;padding:0 12px;font-size:10px}}
 @media(max-width:680px){.portfolio-coventry-page .cov-intro-band{padding:42px 24px}.cov-context-grid,.cov-principles,.cov-symbol-grid,.cov-color-system,.cov-image-grid,.cov-image-grid--three{grid-template-columns:1fr}.cov-context-card,.cov-principle,.cov-symbol{min-height:0}.cov-image-grid{gap:14px}.cov-hero-note{flex-direction:column;gap:6px}}
