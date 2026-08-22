@@ -29,6 +29,7 @@
   loadStyle('assets/css/sost-system-20260817.css?v=20260817-3');
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
+  loadStyle('assets/css/mobile-ui-20260822.css?v=20260822-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
@@ -215,7 +216,7 @@
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
-        <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 916호 &nbsp;&nbsp; <strong>전화</strong> · 010-5422-5650</p>
+        <p><strong>주소</strong> · 인천광역시 서구 원당대로 1039, 태경타워 916호 <span class="site-footer__phone"><strong>전화</strong> · <a href="tel:01054225650">010-5422-5650</a></span></p>
         <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
         <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
       </div>
