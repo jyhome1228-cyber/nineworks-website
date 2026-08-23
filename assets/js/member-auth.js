@@ -32,6 +32,21 @@
 
   const roleLabels = { client: 'CLIENT', creator: 'CREATOR', partner: 'PARTNER' };
   const statusLabels = { active: 'ACTIVE MEMBER', pending: 'PARTNER REVIEW', approved: 'APPROVED PARTNER' };
+  const profileCacheKey = (uid) => `nw_member_profile_${uid}`;
+
+  const cacheProfile = (uid, profile) => {
+    try { localStorage.setItem(profileCacheKey(uid), JSON.stringify(profile)); }
+    catch { /* storage disabled */ }
+  };
+  const readCachedProfile = (uid) => {
+    try { return JSON.parse(localStorage.getItem(profileCacheKey(uid)) || 'null'); }
+    catch { return null; }
+  };
+  const clearCachedProfile = (uid) => {
+    try { localStorage.removeItem(profileCacheKey(uid)); }
+    catch { /* storage disabled */ }
+  };
+
   const safeReturn = () => {
     const value = new URLSearchParams(location.search).get('return') || '';
     if (!value || /^https?:/i.test(value) || value.startsWith('//')) return 'my.html';
@@ -122,6 +137,42 @@
     button.innerHTML = busy ? '<span>PROCESSING</span><span>…</span>' : button.dataset.originalHtml;
   };
 
+  const saveFallbackRegistration = async (ctx, profile) => {
+    try {
+      await ctx.addDoc(ctx.collection(ctx.db, 'inquiries'), {
+        status: 'new',
+        source: '/join.html',
+        service: 'MEMBERSHIP',
+        company: profile.organization.slice(0, 200),
+        contactName: profile.name.slice(0, 120),
+        email: profile.email.slice(0, 240),
+        phone: profile.phone.slice(0, 80),
+        projectName: '',
+        projectType: profile.role.slice(0, 500),
+        message: [profile.creatorType, profile.partnerCategory, profile.website].filter(Boolean).join(' / ').slice(0, 3000),
+        details: `Member Type: ${profile.role}\nOrganization: ${profile.organization}\nCreator Type: ${profile.creatorType}\nPartner Category: ${profile.partnerCategory}\nWebsite: ${profile.website}`.slice(0, 15000),
+        pageTitle: 'Join Nineworks — NINEWORKS',
+        createdAt: ctx.serverTimestamp()
+      });
+    } catch (error) {
+      console.warn('[NINEWORKS Members] fallback registration skipped', error);
+    }
+  };
+
+  const persistProfile = async (ctx, uid, profile) => {
+    cacheProfile(uid, profile);
+    try {
+      const now = ctx.serverTimestamp();
+      await ctx.setDoc(ctx.doc(ctx.db, 'members', uid), { ...profile, uid, createdAt: now, updatedAt: now });
+      clearCachedProfile(uid);
+      return true;
+    } catch (error) {
+      console.warn('[NINEWORKS Members] profile save deferred until rules are deployed', error);
+      await saveFallbackRegistration(ctx, profile);
+      return false;
+    }
+  };
+
   const setupJoin = (ctx, user) => {
     const panel = document.querySelector('[data-auth-panel]');
     if (!panel || panel.dataset.memberBound === 'true') return;
@@ -166,33 +217,34 @@
       const role = String(data.get('role') || 'client');
       const email = String(data.get('email') || '').trim();
       const name = String(data.get('name') || '').trim();
+      const profile = {
+        email,
+        name,
+        role,
+        creatorType: role === 'creator' ? String(data.get('creatorType') || 'other') : '',
+        organization: String(data.get('organization') || '').trim(),
+        phone: String(data.get('phone') || '').trim(),
+        website: role === 'partner' ? String(data.get('website') || '').trim() : '',
+        partnerCategory: role === 'partner' ? String(data.get('partnerCategory') || 'other') : '',
+        status: role === 'partner' ? 'pending' : 'active'
+      };
+
       setBusy(signupForm, true);
       setNote(note, '계정을 만들고 있습니다.');
+      let credential = null;
       try {
-        const credential = await ctx.createUserWithEmailAndPassword(ctx.auth, email, password);
+        credential = await ctx.createUserWithEmailAndPassword(ctx.auth, email, password);
         await ctx.updateProfile(credential.user, { displayName: name });
-        const now = ctx.serverTimestamp();
-        await ctx.setDoc(ctx.doc(ctx.db, 'members', credential.user.uid), {
-          uid: credential.user.uid,
-          email: credential.user.email || email,
-          name,
-          role,
-          creatorType: role === 'creator' ? String(data.get('creatorType') || 'other') : '',
-          organization: String(data.get('organization') || '').trim(),
-          phone: String(data.get('phone') || '').trim(),
-          website: role === 'partner' ? String(data.get('website') || '').trim() : '',
-          partnerCategory: role === 'partner' ? String(data.get('partnerCategory') || 'other') : '',
-          status: role === 'partner' ? 'pending' : 'active',
-          createdAt: now,
-          updatedAt: now
-        });
-        setNote(note, '가입이 완료되었습니다.', 'success');
-        location.href = safeReturn();
       } catch (error) {
-        console.error('[NINEWORKS Members] signup failed', error);
+        console.error('[NINEWORKS Members] account creation failed', error);
         setBusy(signupForm, false);
         setNote(note, humanError(error), 'error');
+        return;
       }
+
+      const saved = await persistProfile(ctx, credential.user.uid, { ...profile, email: credential.user.email || email });
+      setNote(note, saved ? '가입이 완료되었습니다.' : '가입이 완료되었습니다. 멤버 정보는 서버 설정 후 자동으로 다시 동기화됩니다.', 'success');
+      location.href = safeReturn();
     });
 
     const loginForm = panel.querySelector('[data-login-form]');
@@ -251,10 +303,28 @@
     let profile = null;
     try {
       const snap = await ctx.getDoc(ctx.doc(ctx.db, 'members', user.uid));
-      if (snap.exists()) profile = snap.data();
+      if (snap.exists()) {
+        profile = snap.data();
+        clearCachedProfile(user.uid);
+      }
     } catch (error) {
       console.warn('[NINEWORKS Members] profile read skipped', error);
     }
+
+    if (!profile) {
+      const cached = readCachedProfile(user.uid);
+      if (cached) {
+        profile = cached;
+        try {
+          const now = ctx.serverTimestamp();
+          await ctx.setDoc(ctx.doc(ctx.db, 'members', user.uid), { ...cached, uid: user.uid, email: user.email || cached.email, createdAt: now, updatedAt: now });
+          clearCachedProfile(user.uid);
+        } catch (error) {
+          console.warn('[NINEWORKS Members] cached profile will retry later', error);
+        }
+      }
+    }
+
     const name = profile?.name || user.displayName || 'Nineworks Member';
     const role = profile?.role || 'member';
     const status = profile?.status || 'active';
