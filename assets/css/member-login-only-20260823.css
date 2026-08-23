@@ -25,5 +25,8 @@
 .member-login-only .member-plain-button{font-size:10px;color:#777}
 .member-login-only .member-form-note{margin:0 0 12px;min-height:17px;font-size:10px}
 .member-login-only .member-button{min-height:58px;padding:0 18px;font-size:11px;letter-spacing:.08em}
+.member-login-only .member-register-entry{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:18px;padding-top:18px;border-top:1px solid #e3e3df;color:#888;font-size:10px}
+.member-login-only .member-register-entry a{display:inline-flex;align-items:center;gap:6px;color:#111;font-size:10px;font-weight:600;letter-spacing:.02em;text-decoration:none}
+.member-login-only .member-register-entry a:hover{text-decoration:underline;text-underline-offset:4px}
 .member-login-only .member-signed-in{padding:28px 0 0;border-top:1px solid #111}
 @media(max-width:680px){.member-login-only .site-header{height:76px!important}.member-login-only main{min-height:calc(100vh - 76px);padding:32px 20px 56px}.member-login-only .member-login-wrap{width:100%}}
