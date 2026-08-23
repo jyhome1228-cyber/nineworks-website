@@ -1,0 +1,19 @@
+/* NINEWORKS admin access portal — 2026-08-23 */
+.firebase-admin-gate{position:fixed!important;z-index:9999!important;inset:0!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(420px,560px)!important;gap:clamp(44px,7vw,120px)!important;align-items:center!important;place-items:initial!important;padding:clamp(34px,4vw,68px)!important;background:#0d0d0d!important;color:#fff!important;overflow:auto!important}
+.firebase-admin-gate[hidden]{display:none!important}
+.firebase-admin-gate::before{content:'NINEWORKS\A ADMIN';white-space:pre;align-self:center;color:#fff;font-size:clamp(64px,9vw,150px);font-weight:600;line-height:.78;letter-spacing:-.075em}
+.firebase-admin-gate::after{content:'SECURE ACCESS  ·  AUTHORIZED PERSONNEL ONLY';position:absolute;left:clamp(34px,4vw,68px);bottom:28px;color:#5f5f5f;font-size:9px;letter-spacing:.14em}
+.firebase-admin-gate__box{grid-column:2;width:100%!important;max-width:none!important;margin:0!important;padding:42px 44px 38px!important;border:0!important;background:#f4f4f1!important;color:#111!important;box-shadow:0 24px 80px rgba(0,0,0,.28)}
+.firebase-admin-gate__box::before{display:block;margin-bottom:34px;padding-bottom:13px;border-bottom:1px solid #111;content:'ADMIN CONSOLE / SIGN IN';color:#777;font-size:9px;letter-spacing:.12em}
+.firebase-admin-gate__eyebrow{display:flex!important;align-items:center;justify-content:space-between;margin-bottom:22px!important;color:#777!important;font-size:9px!important;letter-spacing:.1em!important}
+.firebase-admin-gate__eyebrow::after{content:'SECURE';padding:4px 7px;border:1px solid #c9c9c3;color:#777;font-size:8px;letter-spacing:.1em}
+.firebase-admin-gate h2{margin:0 0 12px!important;font-size:clamp(38px,3.4vw,52px)!important;font-weight:500!important;line-height:.95!important;letter-spacing:-.06em!important}
+.firebase-admin-gate p{margin:0 0 30px!important;color:#666!important;font-size:12px!important;line-height:1.7!important}
+.firebase-admin-gate label{display:block!important;margin-top:18px!important;color:#888!important;font-size:9px!important;letter-spacing:.07em!important}
+.firebase-admin-gate input{width:100%!important;height:54px!important;padding:0!important;border:0!important;border-bottom:1px solid #aaa!important;border-radius:0!important;background:transparent!important;color:#111!important;outline:0!important;font-size:14px!important}
+.firebase-admin-gate input:focus{border-bottom-color:#111!important}
+.firebase-admin-gate button{display:flex!important;width:100%!important;min-height:62px!important;align-items:center!important;justify-content:space-between!important;margin-top:30px!important;padding:0 18px!important;border:1px solid #111!important;background:#111!important;color:#fff!important;font-size:11px!important;font-weight:600!important;letter-spacing:.06em!important;cursor:pointer!important}
+.firebase-admin-gate button:hover{background:#262626!important}
+.firebase-admin-gate__error{min-height:18px!important;margin:13px 0 0!important;color:#9b2626!important;font-size:10px!important}
+@media(max-width:900px){.firebase-admin-gate{grid-template-columns:1fr!important;align-content:center!important;gap:34px!important;padding:28px!important}.firebase-admin-gate::before{font-size:clamp(54px,14vw,96px);line-height:.8}.firebase-admin-gate__box{grid-column:1!important;width:min(100%,560px)!important;padding:32px 28px!important}.firebase-admin-gate::after{position:static;grid-column:1;margin-top:-14px}}
+@media(max-width:520px){.firebase-admin-gate{padding:20px!important;gap:24px!important}.firebase-admin-gate::before{font-size:56px}.firebase-admin-gate__box{padding:26px 20px!important}.firebase-admin-gate__box::before{margin-bottom:24px}.firebase-admin-gate h2{font-size:38px!important}}
