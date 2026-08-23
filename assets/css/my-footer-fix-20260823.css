@@ -1,0 +1,16 @@
+/* My Nineworks footer tone fix — 2026-08-23 */
+html body.member-page.my-page,
+html body.member-page.my-page .site-shell,
+html body.member-page.my-page main{
+  background:#fff!important;
+}
+
+html body.member-page.my-page .site-footer{
+  background:#fff!important;
+  box-shadow:none!important;
+}
+
+html body.member-page.my-page .site-footer::before,
+html body.member-page.my-page .site-footer::after{
+  background:transparent!important;
+}
