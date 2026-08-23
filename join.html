@@ -3,29 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="NINEWORKS Members — 클라이언트, 크리에이터, 파트너를 위한 나인웍스 멤버십 가입 페이지입니다.">
+  <meta name="description" content="NINEWORKS Members — 클라이언트, 크리에이터, 파트너를 위한 나인웍스 멤버십 가입 및 로그인 페이지입니다.">
   <meta name="robots" content="noindex,nofollow">
-  <title>Join Nineworks — NINEWORKS</title>
+  <title>Nineworks Members — NINEWORKS</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-8">
   <link rel="stylesheet" href="assets/css/navigation-ia-20260817.css?v=20260817-5">
   <link rel="stylesheet" href="assets/css/site-stable-20260817.css?v=20260818-1">
   <link rel="stylesheet" href="assets/css/members-20260823.css?v=20260823-1">
+  <link rel="stylesheet" href="assets/css/member-auth-entry-20260823.css?v=20260823-1">
 </head>
 <body class="member-page join-page">
 <div class="site-shell">
   <header class="site-header"><a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
   <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
   <main>
-    <section class="member-hero">
+    <section class="member-hero member-auth-hero">
       <div class="container member-hero__grid">
-        <div><p class="eyebrow">NINEWORKS MEMBERS</p><h1>Join<br>Nineworks.</h1></div>
-        <div class="member-hero__copy"><p>나인웍스 멤버는 Magazine 전체 글과 멤버 전용 Resource Library를 자유롭게 이용할 수 있습니다.</p><p>프로젝트를 함께하는 Client, 배우고 만드는 Creator, 전문 영역에서 협업하는 Partner 중 현재 관계를 선택해 주세요.</p></div>
+        <div><p class="eyebrow" data-auth-hero-eyebrow>NINEWORKS MEMBERS / JOIN</p><h1 data-auth-hero-title>Join<br>Nineworks.</h1></div>
+        <div class="member-hero__copy" data-auth-hero-copy>
+          <p>처음 방문했다면 무료 멤버십에 가입하고 Magazine 전체 글과 Resource Library를 이용할 수 있습니다.</p>
+          <p>이미 가입한 멤버라면 바로 로그인해 주세요.</p>
+          <a class="member-auth-shortcut" href="join.html?mode=login">ALREADY A MEMBER? LOGIN <span>↗</span></a>
+        </div>
       </div>
     </section>
 
-    <section class="container member-layout">
+    <section class="container member-layout member-auth-layout">
       <aside class="member-benefits">
         <p class="eyebrow">MEMBERSHIP ACCESS</p>
         <div class="member-benefit"><span>01</span><div><strong>Magazine / Full Access</strong><p>브랜드, 디자인, 리테일과 문화에 관한 나인웍스 아카이브 전체를 읽습니다.</p></div></div>
@@ -34,13 +39,14 @@
       </aside>
 
       <div class="member-panel" data-auth-panel>
+        <div class="member-auth-panel-label"><span>NINEWORKS MEMBER ACCESS</span><span>LOGIN / REGISTRATION</span></div>
         <div class="member-tabs" role="tablist" aria-label="회원 가입 및 로그인">
           <button type="button" class="is-active" data-auth-tab="signup">JOIN</button>
           <button type="button" data-auth-tab="login">LOGIN</button>
         </div>
 
         <section data-auth-view="signup">
-          <div class="member-panel__head"><p class="eyebrow">CREATE ACCOUNT</p><h2>What brings you<br>to Nineworks?</h2><p>회원 유형은 향후 프로젝트·교육·파트너 기능을 구분하기 위한 기준입니다.</p></div>
+          <div class="member-panel__head"><p class="eyebrow">CREATE ACCOUNT</p><h2>Join<br>Nineworks.</h2><p>회원 유형을 선택하고 계정을 만들면 멤버 전용 Magazine과 Resources를 이용할 수 있습니다.</p></div>
           <form data-signup-form>
             <fieldset class="member-fieldset">
               <legend>Member Type</legend>
@@ -74,12 +80,12 @@
 
             <label class="member-consent"><input type="checkbox" name="privacy" required><span><a href="privacy.html" target="_blank">개인정보처리방침</a>을 확인했으며 멤버십 운영을 위한 정보 제공에 동의합니다.</span></label>
             <p class="member-form-note" data-signup-note>무료 멤버십입니다.</p>
-            <button class="member-button" type="submit"><span>JOIN NINEWORKS</span><span>↗</span></button>
+            <button class="member-button" type="submit"><span>CREATE MEMBER ACCOUNT</span><span>↗</span></button>
           </form>
         </section>
 
         <section data-auth-view="login" hidden>
-          <div class="member-panel__head"><p class="eyebrow">WELCOME BACK</p><h2>Login to<br>Nineworks.</h2><p>가입한 이메일 계정으로 Magazine과 Resource Library에 다시 접속합니다.</p></div>
+          <div class="member-panel__head"><p class="eyebrow">MEMBER LOGIN</p><h2>Welcome<br>back.</h2><p>가입한 이메일과 비밀번호로 로그인하면 My Nineworks와 멤버 전용 콘텐츠에 바로 접속합니다.</p></div>
           <form data-login-form>
             <div class="member-fields">
               <label class="member-field member-field--wide"><span>이메일</span><input name="email" type="email" autocomplete="email" required></label>
@@ -87,7 +93,7 @@
             </div>
             <div class="member-login-meta"><button type="button" class="member-plain-button" data-reset-password>비밀번호 재설정</button></div>
             <p class="member-form-note" data-login-note></p>
-            <button class="member-button" type="submit"><span>LOGIN</span><span>↗</span></button>
+            <button class="member-button" type="submit"><span>LOGIN TO NINEWORKS</span><span>↗</span></button>
           </form>
         </section>
       </div>
@@ -95,6 +101,18 @@
   </main>
   <footer class="site-footer container"></footer>
 </div>
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  if (params.get('mode') !== 'login') return;
+  const eyebrow = document.querySelector('[data-auth-hero-eyebrow]');
+  const title = document.querySelector('[data-auth-hero-title]');
+  const copy = document.querySelector('[data-auth-hero-copy]');
+  if (eyebrow) eyebrow.textContent = 'NINEWORKS MEMBERS / LOGIN';
+  if (title) title.innerHTML = 'Welcome<br>back.';
+  if (copy) copy.innerHTML = '<p>가입한 이메일과 비밀번호로 로그인해 My Nineworks와 멤버 전용 콘텐츠에 접속합니다.</p><p>아직 계정이 없다면 JOIN 탭에서 무료로 가입할 수 있습니다.</p><a class="member-auth-shortcut" href="join.html">NEW TO NINEWORKS? JOIN <span>↗</span></a>';
+})();
+</script>
 <script src="assets/js/main.js?v=20260817-7"></script>
 </body>
 </html>
