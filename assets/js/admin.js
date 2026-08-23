@@ -7,6 +7,7 @@
   const labels = {
     dashboard: 'Dashboard',
     inquiry: 'Inquiries',
+    members: 'Members',
     visitors: 'Visitors'
   };
 
