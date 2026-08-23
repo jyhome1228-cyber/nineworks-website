@@ -16,15 +16,24 @@
   };
   installTypographyGuard();
 
+  const installMemberSystem = () => {
+    if (document.body?.classList.contains('admin-page')) return;
+    if (document.querySelector('script[data-nw-member-auth]')) return;
+    const script = document.createElement('script');
+    script.src = '/assets/js/member-auth.js?v=20260823-1';
+    script.dataset.nwMemberAuth = 'true';
+    script.defer = true;
+    document.head.appendChild(script);
+  };
+  installMemberSystem();
+
   const getFirebase = () => {
     if (!firebasePromise) {
       firebasePromise = Promise.all([
         import('./firebase-client.js'),
         import(FIRESTORE_SDK)
       ]).then(([client, firestore]) => {
-        if (!client.firebaseConfigReady || !client.db) {
-          throw new Error('Firebase configuration is not ready.');
-        }
+        if (!client.firebaseConfigReady || !client.db) throw new Error('Firebase configuration is not ready.');
         return { db: client.db, ...firestore };
       });
     }
@@ -32,36 +41,20 @@
   };
 
   const koreaDateKey = (date = new Date()) => {
-    const parts = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'Asia/Seoul',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    }).formatToParts(date).reduce((acc, part) => {
-      if (part.type !== 'literal') acc[part.type] = part.value;
-      return acc;
-    }, {});
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(date).reduce((acc, part) => { if (part.type !== 'literal') acc[part.type] = part.value; return acc; }, {});
     return `${parts.year}-${parts.month}-${parts.day}`;
   };
 
   const safeStorage = {
-    get(key) {
-      try { return window.localStorage.getItem(key); }
-      catch { return null; }
-    },
-    set(key, value) {
-      try { window.localStorage.setItem(key, value); }
-      catch { /* storage disabled */ }
-    }
+    get(key) { try { return window.localStorage.getItem(key); } catch { return null; } },
+    set(key, value) { try { window.localStorage.setItem(key, value); } catch { /* storage disabled */ } }
   };
 
   const ensureVisitorId = () => {
     const key = 'nw_visitor_id';
     let value = safeStorage.get(key);
     if (value) return value;
-    value = (window.crypto && typeof window.crypto.randomUUID === 'function')
-      ? window.crypto.randomUUID()
-      : `nw-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+    value = (window.crypto && typeof window.crypto.randomUUID === 'function') ? window.crypto.randomUUID() : `nw-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
     safeStorage.set(key, value);
     return value;
   };
@@ -71,83 +64,36 @@
     const date = koreaDateKey();
     const marker = `nw_visited_${date}`;
     if (safeStorage.get(marker) === '1') return;
-
     try {
       const { db, doc, setDoc, serverTimestamp } = await getFirebase();
       const visitorId = ensureVisitorId();
       const referrer = document.referrer ? new URL(document.referrer).hostname.slice(0, 180) : '';
       const id = `${date}_${visitorId}`;
-      await setDoc(doc(db, 'dailyVisitors', id), {
-        date,
-        visitorId,
-        firstPath: `${location.pathname}${location.search}`.slice(0, 500),
-        referrer,
-        createdAt: serverTimestamp()
-      });
+      await setDoc(doc(db, 'dailyVisitors', id), { date, visitorId, firstPath: `${location.pathname}${location.search}`.slice(0, 500), referrer, createdAt: serverTimestamp() });
       safeStorage.set(marker, '1');
-    } catch (error) {
-      console.warn('[NINEWORKS] visitor tracking skipped', error);
-    }
+    } catch (error) { console.warn('[NINEWORKS] visitor tracking skipped', error); }
   };
 
   const labelMap = {
-    company: '회사 / 브랜드', name: '담당자명', email: '이메일', phone: '연락처',
-    projectName: '프로젝트명', projectType: '작업 유형', requirements: '요청사항', status: '진행 상태',
-    startDate: '시작 희망일', endDate: '목표 완료일', needs: '필요 업무', volume: '월 예상 요청량',
-    channels: '주요 운영 채널', brandStatus: '현재 브랜드 상태', startMonth: '시작 희망 시점',
-    productType: '제작 품목', printType: '인쇄 품목', packageType: '패키지 종류', sampleGoal: '샘플 제작 목적',
-    quantity: '수량', size: '규격', customSize: '직접 입력 규격', material: '소재 / 지류', color: '인쇄 / 색상',
-    sides: '인쇄 면', pages: '페이지 / 접지', binding: '제본 / 가공', finishing: '후가공',
-    designStatus: '디자인 파일 상태', dielineStatus: '칼선 / 도면 상태', proof: '교정 / 샘플',
-    deliveryDate: '희망 납기', deliveryLocation: '배송 지역', digitalType: '프로젝트 유형', buildStatus: '신규 / 리뉴얼',
-    currentUrl: '현재 사이트 / 서비스 URL', functions: '필요 기능', platform: '현재 또는 희망 플랫폼',
-    integrations: '연동 필요 항목', budget: '예상 예산', reference: '자료 / 레퍼런스 링크', message: '추가 요청사항',
-    partnerCategory: '파트너 공정', location: '공장 / 사업장 지역', equipment: '주요 설비 / 전문 공정',
-    minOrder: '주요 최소수량 / 적정수량', leadTime: '평균 제작 소요기간', website: '홈페이지 / 포트폴리오',
-    capacity: '월 생산 가능량 / 특징', clientRegistered: '나인웍스 등록 클라이언트 확인', clientStatus: '클라이언트 상태',
-    companyType: '회사 / 사업 유형', businessNumber: '사업자등록번호', address: '주소', serviceInterest: '주요 이용 서비스',
-    projectHistory: '기존 프로젝트 / 협업 이력'
+    company: '회사 / 브랜드', name: '담당자명', email: '이메일', phone: '연락처', projectName: '프로젝트명', projectType: '작업 유형', requirements: '요청사항', status: '진행 상태', startDate: '시작 희망일', endDate: '목표 완료일', needs: '필요 업무', volume: '월 예상 요청량', channels: '주요 운영 채널', brandStatus: '현재 브랜드 상태', startMonth: '시작 희망 시점', productType: '제작 품목', printType: '인쇄 품목', packageType: '패키지 종류', sampleGoal: '샘플 제작 목적', quantity: '수량', size: '규격', customSize: '직접 입력 규격', material: '소재 / 지류', color: '인쇄 / 색상', sides: '인쇄 면', pages: '페이지 / 접지', binding: '제본 / 가공', finishing: '후가공', designStatus: '디자인 파일 상태', dielineStatus: '칼선 / 도면 상태', proof: '교정 / 샘플', deliveryDate: '희망 납기', deliveryLocation: '배송 지역', digitalType: '프로젝트 유형', buildStatus: '신규 / 리뉴얼', currentUrl: '현재 사이트 / 서비스 URL', functions: '필요 기능', platform: '현재 또는 희망 플랫폼', integrations: '연동 필요 항목', budget: '예상 예산', reference: '자료 / 레퍼런스 링크', message: '추가 요청사항', partnerCategory: '파트너 공정', location: '공장 / 사업장 지역', equipment: '주요 설비 / 전문 공정', minOrder: '주요 최소수량 / 적정수량', leadTime: '평균 제작 소요기간', website: '홈페이지 / 포트폴리오', capacity: '월 생산 가능량 / 특징', clientRegistered: '나인웍스 등록 클라이언트 확인', clientStatus: '클라이언트 상태', companyType: '회사 / 사업 유형', businessNumber: '사업자등록번호', address: '주소', serviceInterest: '주요 이용 서비스', projectHistory: '기존 프로젝트 / 협업 이력'
   };
 
-  const getValues = (fd, names) => {
-    for (const name of names) {
-      const values = fd.getAll(name).map((value) => String(value || '').trim()).filter(Boolean);
-      if (values.length) return values;
-    }
-    return [];
-  };
-
+  const getValues = (fd, names) => { for (const name of names) { const values = fd.getAll(name).map((value) => String(value || '').trim()).filter(Boolean); if (values.length) return values; } return []; };
   const firstValue = (fd, names) => getValues(fd, names)[0] || '';
-
   const buildDetails = (fd) => {
     const grouped = new Map();
-    for (const [key, raw] of fd.entries()) {
-      if (['privacy', '개인정보동의'].includes(key)) continue;
-      const value = String(raw || '').trim();
-      if (!value) continue;
-      if (!grouped.has(key)) grouped.set(key, []);
-      grouped.get(key).push(value);
-    }
+    for (const [key, raw] of fd.entries()) { if (['privacy', '개인정보동의'].includes(key)) continue; const value = String(raw || '').trim(); if (!value) continue; if (!grouped.has(key)) grouped.set(key, []); grouped.get(key).push(value); }
     const lines = [];
-    grouped.forEach((values, key) => {
-      lines.push(`${labelMap[key] || key}: ${values.join(', ')}`);
-    });
+    grouped.forEach((values, key) => lines.push(`${labelMap[key] || key}: ${values.join(', ')}`));
     return lines.join('\n').slice(0, 15000);
   };
 
-  const detectService = (form) => {
-    if (form.dataset.sectorLabel) return form.dataset.sectorLabel.slice(0, 160);
-    if (form.classList.contains('contact-panel')) return 'CONTACT';
-    if (form.matches('[data-mail-form]')) return 'PROJECT';
-    return 'GENERAL';
-  };
-
+  const detectService = (form) => { if (form.dataset.sectorLabel) return form.dataset.sectorLabel.slice(0, 160); if (form.classList.contains('contact-panel')) return 'CONTACT'; if (form.matches('[data-mail-form]')) return 'PROJECT'; return 'GENERAL'; };
   const saveInquiry = async (form) => {
     const fd = new FormData(form);
     const { db, collection, addDoc, serverTimestamp } = await getFirebase();
     const service = detectService(form);
     const pagePath = `${location.pathname}${location.search}`.slice(0, 500);
-
     const company = firstValue(fd, ['company', '회사명']);
     const contactName = firstValue(fd, ['name', '담당자명']);
     const email = firstValue(fd, ['email', '이메일']);
@@ -155,58 +101,24 @@
     const projectName = firstValue(fd, ['projectName', '프로젝트명']);
     const projectTypes = getValues(fd, ['projectType', '작업유형', 'needs', 'serviceInterest']);
     const message = firstValue(fd, ['requirements', '프로젝트내용', 'message', '현재상황']);
-
-    return addDoc(collection(db, 'inquiries'), {
-      status: 'new',
-      source: pagePath,
-      service,
-      company: company.slice(0, 200),
-      contactName: contactName.slice(0, 120),
-      email: email.slice(0, 240),
-      phone: phone.slice(0, 80),
-      projectName: projectName.slice(0, 200),
-      projectType: projectTypes.join(', ').slice(0, 500),
-      message: message.slice(0, 3000),
-      details: buildDetails(fd),
-      pageTitle: String(document.title || '').slice(0, 240),
-      createdAt: serverTimestamp()
-    });
+    return addDoc(collection(db, 'inquiries'), { status: 'new', source: pagePath, service, company: company.slice(0, 200), contactName: contactName.slice(0, 120), email: email.slice(0, 240), phone: phone.slice(0, 80), projectName: projectName.slice(0, 200), projectType: projectTypes.join(', ').slice(0, 500), message: message.slice(0, 3000), details: buildDetails(fd), pageTitle: String(document.title || '').slice(0, 240), createdAt: serverTimestamp() });
   };
 
   const setFormState = (form, mode, message = '') => {
     const button = form.querySelector('button[type="submit"], input[type="submit"]');
     const note = form.querySelector('.contact-note, .intake-note, [data-form-note]');
-
-    if (button) {
-      if (!button.dataset.originalHtml) button.dataset.originalHtml = button.innerHTML;
-      button.disabled = mode === 'loading';
-      if (mode === 'loading') button.innerHTML = '<span>접수 중...</span><span>↗</span>';
-      else if (mode === 'success') button.innerHTML = '<span>접수 완료</span><span>✓</span>';
-      else button.innerHTML = button.dataset.originalHtml;
-    }
+    if (button) { if (!button.dataset.originalHtml) button.dataset.originalHtml = button.innerHTML; button.disabled = mode === 'loading'; if (mode === 'loading') button.innerHTML = '<span>접수 중...</span><span>↗</span>'; else if (mode === 'success') button.innerHTML = '<span>접수 완료</span><span>✓</span>'; else button.innerHTML = button.dataset.originalHtml; }
     if (note && message) note.textContent = message;
   };
-
-  const isInquiryForm = (form) => form instanceof HTMLFormElement && form.matches(
-    '.contact-panel, [data-sector-form], [data-quote-form], [data-mail-form]'
-  );
+  const isInquiryForm = (form) => form instanceof HTMLFormElement && form.matches('.contact-panel, [data-sector-form], [data-quote-form], [data-mail-form]');
 
   document.addEventListener('submit', async (event) => {
     const form = event.target;
     if (!isInquiryForm(form)) return;
-
     event.preventDefault();
     event.stopImmediatePropagation();
     if (!form.reportValidity()) return;
-
-    if (form.classList.contains('inquiry-form')) {
-      const fd = new FormData(form);
-      if (fd.getAll('projectType').length === 0) {
-        window.alert('필요한 작업 유형을 한 개 이상 선택해 주세요.');
-        return;
-      }
-    }
-
+    if (form.classList.contains('inquiry-form')) { const fd = new FormData(form); if (fd.getAll('projectType').length === 0) { window.alert('필요한 작업 유형을 한 개 이상 선택해 주세요.'); return; } }
     setFormState(form, 'loading', '문의 내용을 안전하게 접수하고 있습니다.');
     try {
       await saveInquiry(form);

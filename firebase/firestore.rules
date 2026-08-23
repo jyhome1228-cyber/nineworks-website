@@ -8,6 +8,10 @@ service cloud.firestore {
         && request.auth.token.email == 'info@9works.kr';
     }
 
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
     match /portfolios/{documentId} {
       allow read: if isAdmin() || resource.data.published == true;
       allow write: if isAdmin();
@@ -20,6 +24,50 @@ service cloud.firestore {
 
     match /magazines/{documentId} {
       allow read: if isAdmin() || resource.data.published == true;
+      allow write: if isAdmin();
+    }
+
+    // NINEWORKS Members profile. 계정 소유자는 자신의 프로필만 읽고 제한적으로 수정할 수 있습니다.
+    match /members/{uid} {
+      allow create: if isSignedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasAll([
+          'uid', 'email', 'name', 'role', 'creatorType', 'organization', 'phone',
+          'website', 'partnerCategory', 'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'uid', 'email', 'name', 'role', 'creatorType', 'organization', 'phone',
+          'website', 'partnerCategory', 'status', 'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.uid == uid
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.role in ['client', 'creator', 'partner']
+        && (
+          (request.resource.data.role == 'partner' && request.resource.data.status == 'pending')
+          || (request.resource.data.role != 'partner' && request.resource.data.status == 'active')
+        )
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+
+      allow read: if isAdmin() || (isSignedIn() && request.auth.uid == uid);
+
+      allow update: if isAdmin() || (
+        isSignedIn()
+        && request.auth.uid == uid
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.role == resource.data.role
+        && request.resource.data.status == resource.data.status
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+      );
+
+      allow delete: if isAdmin();
+    }
+
+    // 향후 관리자에서 등록하는 멤버 전용 자료 메타데이터
+    match /resources/{documentId} {
+      allow read: if isAdmin() || (isSignedIn() && resource.data.published == true);
       allow write: if isAdmin();
     }
 

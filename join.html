@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="NINEWORKS Members — 클라이언트, 크리에이터, 파트너를 위한 나인웍스 멤버십 가입 페이지입니다.">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Join Nineworks — NINEWORKS</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-8">
+  <link rel="stylesheet" href="assets/css/navigation-ia-20260817.css?v=20260817-5">
+  <link rel="stylesheet" href="assets/css/site-stable-20260817.css?v=20260818-1">
+  <link rel="stylesheet" href="assets/css/members-20260823.css?v=20260823-1">
+</head>
+<body class="member-page join-page">
+<div class="site-shell">
+  <header class="site-header"><a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
+  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+  <main>
+    <section class="member-hero">
+      <div class="container member-hero__grid">
+        <div><p class="eyebrow">NINEWORKS MEMBERS</p><h1>Join<br>Nineworks.</h1></div>
+        <div class="member-hero__copy"><p>나인웍스 멤버는 Magazine 전체 글과 멤버 전용 Resource Library를 자유롭게 이용할 수 있습니다.</p><p>프로젝트를 함께하는 Client, 배우고 만드는 Creator, 전문 영역에서 협업하는 Partner 중 현재 관계를 선택해 주세요.</p></div>
+      </div>
+    </section>
+
+    <section class="container member-layout">
+      <aside class="member-benefits">
+        <p class="eyebrow">MEMBERSHIP ACCESS</p>
+        <div class="member-benefit"><span>01</span><div><strong>Magazine / Full Access</strong><p>브랜드, 디자인, 리테일과 문화에 관한 나인웍스 아카이브 전체를 읽습니다.</p></div></div>
+        <div class="member-benefit"><span>02</span><div><strong>Resource / Member Library</strong><p>브리프, 체크리스트와 실무 자료를 멤버 전용 자료실에서 이용합니다.</p></div></div>
+        <div class="member-benefit"><span>03</span><div><strong>Network / Relationship</strong><p>Client, Creator, Partner로 관계를 구분해 향후 프로젝트와 협업 기능으로 연결합니다.</p></div></div>
+      </aside>
+
+      <div class="member-panel" data-auth-panel>
+        <div class="member-tabs" role="tablist" aria-label="회원 가입 및 로그인">
+          <button type="button" class="is-active" data-auth-tab="signup">JOIN</button>
+          <button type="button" data-auth-tab="login">LOGIN</button>
+        </div>
+
+        <section data-auth-view="signup">
+          <div class="member-panel__head"><p class="eyebrow">CREATE ACCOUNT</p><h2>What brings you<br>to Nineworks?</h2><p>회원 유형은 향후 프로젝트·교육·파트너 기능을 구분하기 위한 기준입니다.</p></div>
+          <form data-signup-form>
+            <fieldset class="member-fieldset">
+              <legend>Member Type</legend>
+              <div class="role-grid">
+                <label class="role-card"><input type="radio" name="role" value="client" checked><span class="role-card__body"><small>01</small><strong>CLIENT</strong><em>브랜드와 프로젝트를 의뢰하거나 함께합니다.</em></span></label>
+                <label class="role-card"><input type="radio" name="role" value="creator"><span class="role-card__body"><small>02</small><strong>CREATOR</strong><em>배우고 만들며 인사이트와 자료를 활용합니다.</em></span></label>
+                <label class="role-card"><input type="radio" name="role" value="partner"><span class="role-card__body"><small>03</small><strong>PARTNER</strong><em>제작·개발·촬영 등 전문 영역에서 협업합니다.</em></span></label>
+              </div>
+            </fieldset>
+
+            <div class="member-fields">
+              <label class="member-field"><span>이름</span><input name="name" autocomplete="name" required></label>
+              <label class="member-field"><span>연락처 <small>선택</small></span><input name="phone" type="tel" autocomplete="tel"></label>
+              <label class="member-field member-field--wide"><span>이메일</span><input name="email" type="email" autocomplete="email" required></label>
+              <label class="member-field"><span>비밀번호</span><input name="password" type="password" autocomplete="new-password" minlength="6" required><small>6자 이상</small></label>
+              <label class="member-field"><span>비밀번호 확인</span><input name="passwordConfirm" type="password" autocomplete="new-password" minlength="6" required></label>
+              <label class="member-field member-field--wide"><span>회사 / 학교 / 소속 <small>선택</small></span><input name="organization" autocomplete="organization"></label>
+            </div>
+
+            <div class="member-conditional" data-creator-fields hidden>
+              <label class="member-field"><span>Creator Type</span><select name="creatorType"><option value="student">Student</option><option value="designer">Designer</option><option value="planner">Planner</option><option value="developer">Developer</option><option value="other">Other</option></select></label>
+            </div>
+
+            <div class="member-conditional" data-partner-fields hidden>
+              <div class="member-fields">
+                <label class="member-field"><span>협업 분야</span><select name="partnerCategory"><option value="production">인쇄 / 제작</option><option value="package">패키지</option><option value="photo">촬영</option><option value="video">영상</option><option value="development">개발</option><option value="space">공간 / 시공</option><option value="other">기타</option></select></label>
+                <label class="member-field"><span>Website / Portfolio <small>선택</small></span><input name="website" type="url" placeholder="https://"></label>
+              </div>
+              <p class="member-inline-note">Partner 계정은 가입 즉시 Magazine과 Resources를 이용할 수 있으며, 공식 Partner Network 등록 상태는 나인웍스 확인 후 별도로 승인됩니다.</p>
+            </div>
+
+            <label class="member-consent"><input type="checkbox" name="privacy" required><span><a href="privacy.html" target="_blank">개인정보처리방침</a>을 확인했으며 멤버십 운영을 위한 정보 제공에 동의합니다.</span></label>
+            <p class="member-form-note" data-signup-note>무료 멤버십입니다.</p>
+            <button class="member-button" type="submit"><span>JOIN NINEWORKS</span><span>↗</span></button>
+          </form>
+        </section>
+
+        <section data-auth-view="login" hidden>
+          <div class="member-panel__head"><p class="eyebrow">WELCOME BACK</p><h2>Login to<br>Nineworks.</h2><p>가입한 이메일 계정으로 Magazine과 Resource Library에 다시 접속합니다.</p></div>
+          <form data-login-form>
+            <div class="member-fields">
+              <label class="member-field member-field--wide"><span>이메일</span><input name="email" type="email" autocomplete="email" required></label>
+              <label class="member-field member-field--wide"><span>비밀번호</span><input name="password" type="password" autocomplete="current-password" required></label>
+            </div>
+            <div class="member-login-meta"><button type="button" class="member-plain-button" data-reset-password>비밀번호 재설정</button></div>
+            <p class="member-form-note" data-login-note></p>
+            <button class="member-button" type="submit"><span>LOGIN</span><span>↗</span></button>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer container"></footer>
+</div>
+<script src="assets/js/main.js?v=20260817-7"></script>
+</body>
+</html>
