@@ -1,9 +1,8 @@
 body:not(:has(.partner-app:not([hidden]))){background:#f6f6f3}
 .partner-login-shell[data-partner-login]{min-height:100vh;display:flex!important;align-items:center;justify-content:center;padding:28px;background:#f6f6f3}
-.partner-login-shell[data-partner-login] .partner-login-brand{display:none!important}
 .partner-login-shell[data-partner-login] .partner-login-panel{width:100%;padding:0;background:transparent;display:flex;align-items:center;justify-content:center}
 .partner-login-shell[data-partner-login] .partner-login-card{width:min(100%,420px);max-width:420px;margin:0 auto;text-align:center;padding:0}
-.partner-login-shell[data-partner-login] .partner-login-card:before{content:'NINEWORKS';display:block;margin-bottom:58px;font-size:14px;font-weight:600;letter-spacing:-.03em;color:#171717}
+.partner-login-logo{display:block;width:164px;margin:0 auto 58px}.partner-login-logo img{display:block;width:100%;height:auto}
 .partner-login-shell[data-partner-login] .partner-kicker{margin:0 0 12px;color:#8a8a85;font-size:9px;letter-spacing:.12em}
 .partner-login-shell[data-partner-login] .partner-login-card h2{margin:0 0 12px;font-size:30px;font-weight:500;letter-spacing:-.055em;color:#171717}
 .partner-login-shell[data-partner-login] .partner-login-card>p{max-width:330px;margin:0 auto 38px;color:#777771;font-size:11px;line-height:1.75}
@@ -12,9 +11,10 @@ body:not(:has(.partner-app:not([hidden]))){background:#f6f6f3}
 .partner-login-shell[data-partner-login] .partner-field label{font-size:9px;color:#777771;letter-spacing:.06em}
 .partner-login-shell[data-partner-login] .partner-field input{width:100%;height:48px;padding:0 2px;border:0;border-bottom:1px solid #bdbdb7;background:transparent;border-radius:0;outline:none;font-size:14px;color:#171717}
 .partner-login-shell[data-partner-login] .partner-field input:focus{border-color:#171717}
-.partner-login-shell[data-partner-login] .partner-field:has(input[name="password"]){display:none!important}
 .partner-login-shell[data-partner-login] .partner-login-button{height:48px;margin-top:4px;padding:0 16px;border:0;background:#171717;color:#fff;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:10px;letter-spacing:.02em}
 .partner-login-shell[data-partner-login] .partner-login-button:disabled{opacity:.45}
 .partner-login-shell[data-partner-login] .partner-login-note{min-height:16px;margin:0!important;text-align:center;font-size:9px!important;color:#777771}
-.partner-login-shell[data-partner-login] .partner-login-links{display:none!important}
-@media(max-width:640px){.partner-login-shell[data-partner-login]{padding:22px}.partner-login-shell[data-partner-login] .partner-login-card:before{margin-bottom:44px}.partner-login-shell[data-partner-login] .partner-login-card h2{font-size:27px}}
+.partner-login-shell[data-partner-login] .partner-login-note.is-error{color:#a13f32!important}.partner-login-shell[data-partner-login] .partner-login-note.is-success{color:#287451!important}
+.partner-brand{gap:12px}.partner-brand>a{display:flex;align-items:center;min-width:0}.partner-brand img{display:block;width:116px;height:auto;filter:brightness(0) invert(1)}.partner-brand span{margin-left:auto}
+.partner-welcome-strip{display:grid;grid-template-columns:1fr 1fr;margin:22px 0 0;border:1px solid var(--p-line);background:#fff}.partner-welcome-strip>div{min-height:72px;padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between}.partner-welcome-strip>div+div{border-left:1px solid var(--p-line)}.partner-welcome-strip span{font-size:8px;color:var(--p-muted);letter-spacing:.08em}.partner-welcome-strip strong{font-size:11px;font-weight:500;overflow-wrap:anywhere}
+@media(max-width:640px){.partner-login-shell[data-partner-login]{padding:22px}.partner-login-logo{width:148px;margin-bottom:44px}.partner-login-shell[data-partner-login] .partner-login-card h2{font-size:27px}.partner-welcome-strip{grid-template-columns:1fr}.partner-welcome-strip>div+div{border-left:0;border-top:1px solid var(--p-line)}}
