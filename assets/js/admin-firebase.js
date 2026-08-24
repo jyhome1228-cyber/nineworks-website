@@ -56,6 +56,11 @@ const escapeHTML = (value = '') => String(value)
 
 const normalizeStatus = (status) => ['new', 'open', 'done'].includes(status) ? status : 'new';
 
+const isMemberSignupFallback = (item) => {
+  const source = String(item?.source || '').toLowerCase();
+  return source.includes('join.html') || source.includes('register.html');
+};
+
 const koreaDateKey = (date = new Date()) => {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
@@ -130,7 +135,11 @@ const ensureGate = () => {
   return gate;
 };
 
-const hideGate = () => { const gate = document.querySelector('.firebase-admin-gate'); if (gate) gate.hidden = true; };
+const hideGate = () => {
+  const gate = document.querySelector('.firebase-admin-gate');
+  if (gate) gate.hidden = true;
+};
+
 const showGateMessage = (message = '') => {
   const gate = ensureGate();
   gate.hidden = false;
@@ -186,6 +195,7 @@ const renderDashboard = () => {
     acc[key] = (acc[key] || 0) + 1;
     return acc;
   }, {});
+
   const values = {
     'today-visitors': daily[today] || 0,
     'seven-visitors': sevenKeys.reduce((sum, key) => sum + (daily[key] || 0), 0),
@@ -206,7 +216,9 @@ const renderDashboard = () => {
       const value = counts.get(key) || { total: 0, newCount: 0 };
       return `<button class="admin-category-card" type="button" data-dashboard-service="${escapeHTML(key)}"><span>${escapeHTML(label)}</span><strong>${value.total}</strong><p>${value.newCount ? `신규 ${value.newCount}건` : desc}</p></button>`;
     });
-    if (extraTotal) cards.push(`<button class="admin-category-card" type="button" data-dashboard-service="OTHER"><span>기타 문의</span><strong>${extraTotal}</strong><p>기타 / 프로젝트 문의</p></button>`);
+    if (extraTotal) {
+      cards.push(`<button class="admin-category-card" type="button" data-dashboard-service="OTHER"><span>기타 문의</span><strong>${extraTotal}</strong><p>기타 / 프로젝트 문의</p></button>`);
+    }
     categoryGrid.innerHTML = cards.join('');
   }
 
@@ -214,7 +226,11 @@ const renderDashboard = () => {
   const recentCount = document.querySelector('[data-dashboard-recent-count]');
   const items = inquiryCache.slice(0, 5);
   if (recentCount) recentCount.textContent = `${items.length} ITEMS`;
-  if (recent) recent.innerHTML = items.length ? items.map((item) => inquiryRowHTML(item, false)).join('') : '<div class="admin-empty-live">아직 접수된 문의가 없습니다.</div>';
+  if (recent) {
+    recent.innerHTML = items.length
+      ? items.map((item) => inquiryRowHTML(item, false)).join('')
+      : '<div class="admin-empty-live">아직 접수된 문의가 없습니다.</div>';
+  }
 };
 
 const renderStatusSummary = () => {
@@ -241,23 +257,34 @@ const renderServiceFilters = () => {
 };
 
 const filteredInquiries = () => inquiryCache.filter((item) => {
-  const serviceMatch = activeService === 'ALL' || serviceKeyFor(item) === activeService || (activeService === 'OTHER' && ['OTHER', 'PROJECT'].includes(serviceKeyFor(item)));
+  const serviceMatch = activeService === 'ALL'
+    || serviceKeyFor(item) === activeService
+    || (activeService === 'OTHER' && ['OTHER', 'PROJECT'].includes(serviceKeyFor(item)));
   const statusMatch = activeStatus === 'all' || normalizeStatus(item.status) === activeStatus;
   if (!serviceMatch || !statusMatch) return false;
   if (!searchTerm) return true;
-  const haystack = [item.company, item.contactName, item.email, item.phone, item.projectName, item.projectType, item.message, item.details, item.source, serviceMetaFor(item).label].join(' ').toLowerCase();
+  const haystack = [
+    item.company, item.contactName, item.email, item.phone, item.projectName,
+    item.projectType, item.message, item.details, item.source, serviceMetaFor(item).label
+  ].join(' ').toLowerCase();
   return haystack.includes(searchTerm);
 });
 
 const renderInquiryList = () => {
   renderStatusSummary();
   renderServiceFilters();
-  document.querySelectorAll('[data-inquiry-status-filter]').forEach((button) => button.classList.toggle('is-active', button.dataset.inquiryStatusFilter === activeStatus));
+  document.querySelectorAll('[data-inquiry-status-filter]').forEach((button) => {
+    button.classList.toggle('is-active', button.dataset.inquiryStatusFilter === activeStatus);
+  });
   const items = filteredInquiries();
   const total = document.querySelector('[data-inquiry-filter-total]');
   const list = document.querySelector('[data-inquiry-list]');
   if (total) total.textContent = `${items.length} ITEMS`;
-  if (list) list.innerHTML = items.length ? items.map((item) => inquiryRowHTML(item, true)).join('') : '<div class="admin-empty-live">조건에 맞는 문의가 없습니다.</div>';
+  if (list) {
+    list.innerHTML = items.length
+      ? items.map((item) => inquiryRowHTML(item, true)).join('')
+      : '<div class="admin-empty-live">조건에 맞는 문의가 없습니다.</div>';
+  }
 };
 
 const rankingHTML = (map) => {
@@ -275,6 +302,7 @@ const renderVisitors = () => {
     acc[key] = (acc[key] || 0) + 1;
     return acc;
   }, {});
+
   const stats = {
     today: daily[today] || 0,
     seven: keys7.reduce((sum, key) => sum + (daily[key] || 0), 0),
@@ -286,7 +314,9 @@ const renderVisitors = () => {
   });
 
   const days = document.querySelector('[data-visitor-days]');
-  if (days) days.innerHTML = keys30.map((key) => `<div class="admin-visitor-day"><span>${key.slice(5).replace('-', '.')}</span><strong>${daily[key] || 0}</strong></div>`).join('');
+  if (days) {
+    days.innerHTML = keys30.map((key) => `<div class="admin-visitor-day"><span>${key.slice(5).replace('-', '.')}</span><strong>${daily[key] || 0}</strong></div>`).join('');
+  }
 
   const paths = new Map();
   const refs = new Map();
@@ -316,6 +346,7 @@ const bindControls = () => {
       renderInquiryList();
       return;
     }
+
     const statusButton = event.target.closest('[data-inquiry-status-filter], [data-status-summary]');
     if (statusButton) {
       activeStatus = statusButton.dataset.inquiryStatusFilter || statusButton.dataset.statusSummary || 'all';
@@ -323,6 +354,7 @@ const bindControls = () => {
       renderInquiryList();
       return;
     }
+
     const dashboardService = event.target.closest('[data-dashboard-service]');
     if (dashboardService) {
       activeService = dashboardService.dataset.dashboardService || 'ALL';
@@ -357,9 +389,12 @@ const bindControls = () => {
 
 const startAdminData = () => {
   cleanup();
+
   const inquiriesQuery = query(collection(db, 'inquiries'), orderBy('createdAt', 'desc'));
   unsubscribers.push(onSnapshot(inquiriesQuery, (snapshot) => {
-    inquiryCache = snapshot.docs.map((item) => ({ id: item.id, ...item.data() }));
+    inquiryCache = snapshot.docs
+      .map((item) => ({ id: item.id, ...item.data() }))
+      .filter((item) => !isMemberSignupFallback(item));
     renderAll();
   }, (error) => {
     console.error('[NINEWORKS Admin] inquiry stream failed', error);
