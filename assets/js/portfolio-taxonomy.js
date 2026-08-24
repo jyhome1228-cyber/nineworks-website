@@ -24,11 +24,9 @@
     'recelleclore'
   ]);
 
-  const systemBuild = new Set([
-    'fineb',
-    'relim',
-    'aesost'
-  ]);
+  /* SYSTEM is reserved for dedicated system-only case studies
+     such as membership/admin/reservation/CRM functionality. */
+  const dedicatedSystem = new Set([]);
 
   const petrichor = window.NW_PORTFOLIO.find((project) => project?.id === 'the-petrichor');
   if (petrichor) Object.assign(petrichor, {
@@ -48,6 +46,9 @@
     /* Commerce is not used as a portfolio category. */
     filters.delete('commerce');
 
+    /* Existing website projects should not be mixed into SYSTEM. */
+    filters.delete('system');
+
     if (eventOnly.has(project.id)) {
       project.filters = ['event'];
       return;
@@ -58,7 +59,7 @@
       filters.add('website');
     }
 
-    if (systemBuild.has(project.id)) filters.add('system');
+    if (dedicatedSystem.has(project.id)) filters.add('system');
 
     if (detailPage.has(project.id)) {
       filters.add('detailpage');
