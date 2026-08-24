@@ -34,6 +34,7 @@
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
   if (pageKey === 'project') loadScript('assets/js/project-gallery-shuffle-20260821.js?v=20260821-1');
+  if (pageKey === 'project') loadScript('assets/js/project-renewal-notice-20260824.js?v=20260824-1');
   if (body.classList.contains('portfolio-detail-page')) {
     loadStyle('assets/css/portfolio-detail-refine.css?v=20260807-4');
     loadStyle('assets/css/portfolio-consistency-20260817.css?v=20260817-2');
