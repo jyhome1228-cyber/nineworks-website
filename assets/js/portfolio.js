@@ -8,7 +8,11 @@
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
-  }).map((project) => ({ ...project, filters: ['major'], archive: false }));
+  }).map((project) => ({
+    ...project,
+    filters: [...new Set(['major', ...(Array.isArray(project.filters) ? project.filters : [])])],
+    archive: false
+  }));
 
   const rawVisualArchive = Array.isArray(window.NW_PORTFOLIO_ARCHIVE)
     ? window.NW_PORTFOLIO_ARCHIVE
@@ -64,7 +68,7 @@
   const categoryCopy = {
     major: {
       title: 'Major Works',
-      copy: '나인웍스의 기존 주요 포트폴리오를 모아둔 대표 작업 아카이브입니다. 이 항목들은 다른 제작 카테고리와 분리해 Major에서만 확인할 수 있습니다.'
+      copy: '나인웍스의 기존 주요 포트폴리오를 모아둔 대표 작업 아카이브입니다. 각 프로젝트는 실제 작업 범위에 따라 웹사이트, 시스템 등 해당 카테고리에서도 함께 확인할 수 있습니다.'
     },
     website: {
       title: 'Website / Site',
