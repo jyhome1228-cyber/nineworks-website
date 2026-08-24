@@ -12,6 +12,14 @@ service cloud.firestore {
       return request.auth != null;
     }
 
+    function isKnownPartnerEmail(email) {
+      return email in [
+        'seodw100@naver.com',
+        's.nninyong@gmail.com',
+        'daytuio0329@naver.com'
+      ];
+    }
+
     match /portfolios/{documentId} {
       allow read: if isAdmin() || resource.data.published == true;
       allow write: if isAdmin();
@@ -27,9 +35,6 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // NINEWORKS Members profile.
-    // 계정 소유자는 자신의 기본 프로필만 수정할 수 있고,
-    // status / clientId / clientLinkedAt 같은 관리 필드는 관리자만 변경합니다.
     match /members/{uid} {
       allow create: if isSignedIn()
         && request.auth.uid == uid
@@ -70,13 +75,11 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // 향후 관리자에서 등록하는 멤버 전용 자료 메타데이터
     match /resources/{documentId} {
       allow read: if isAdmin() || (isSignedIn() && resource.data.published == true);
       allow write: if isAdmin();
     }
 
-    // 홈페이지 문의: 방문자는 신규 등록만, 관리자는 조회/수정/삭제 가능
     match /inquiries/{documentId} {
       allow create: if
         request.resource.data.keys().hasAll([
@@ -95,23 +98,52 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // 파트너 기본 프로필. 이메일을 알고 있는 경우 개별 문서 get만 허용하고
-    // 전체 목록 조회와 모든 쓰기는 관리자만 가능하게 제한합니다.
     match /partners/{partnerKey} {
       allow get: if true;
       allow list: if isAdmin();
       allow create, update, delete: if isAdmin();
     }
 
-    // 파트너에게 공개되는 협업 정보는 별도 정제된 문서만 사용합니다.
-    // 고객 연락처 등 원본 inquiries 데이터는 이 컬렉션에 복제하지 않습니다.
     match /partnerWorkspaces/{partnerKey} {
       allow get: if true;
       allow list: if isAdmin();
       allow create, update, delete: if isAdmin();
     }
 
-    // 방문자 기록: 브라우저별 하루 1회 생성, 조회는 관리자만 가능
+    // 파트너가 등록하는 계좌정보: 생성만 허용하고 조회는 관리자만 가능합니다.
+    match /partnerAccountSubmissions/{documentId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'partnerEmail', 'partnerName', 'accountHolder', 'bank', 'accountNumber',
+          'source', 'createdAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'partnerEmail', 'partnerName', 'accountHolder', 'bank', 'accountNumber',
+          'source', 'createdAt'
+        ])
+        && isKnownPartnerEmail(request.resource.data.partnerEmail)
+        && request.resource.data.source == 'PARTNER_WORKSPACE'
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // 제안서 의견: 파트너는 생성만, 관리자만 조회/관리할 수 있습니다.
+    match /partnerProposalFeedback/{documentId} {
+      allow create: if
+        request.resource.data.keys().hasAll([
+          'partnerEmail', 'partnerName', 'inquiryId', 'projectName', 'company',
+          'proposalUrl', 'message', 'source', 'createdAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'partnerEmail', 'partnerName', 'inquiryId', 'projectName', 'company',
+          'proposalUrl', 'message', 'source', 'createdAt'
+        ])
+        && isKnownPartnerEmail(request.resource.data.partnerEmail)
+        && request.resource.data.source == 'PARTNER_WORKSPACE'
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+
     match /dailyVisitors/{visitId} {
       allow create: if
         request.resource.data.keys().hasAll([
