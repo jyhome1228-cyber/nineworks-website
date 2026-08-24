@@ -10,7 +10,7 @@
     if (document.querySelector('link[data-nw-typography-guard]')) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/typography-guard-20260820.css?v=20260820-1';
+    link.href = '/assets/css/typography-guard-20260820.css?v=20260824-2';
     link.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(link);
   };
