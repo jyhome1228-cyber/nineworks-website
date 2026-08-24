@@ -1,5 +1,5 @@
 /* AESOST — branding case study */
-.portfolio-aesost-branding-page{--aes-purple:#6f43f4;--aes-purple-deep:#3f21a8;--aes-ink:#17151d;--aes-soft:#f2efff;--aes-line:#ded8f3;background:#fff!important}
+.portfolio-aesost-branding-page{--aes-purple:#6f43f4;--aes-purple-deep:#3f21a8;--aes-ink:#17151d;--aes-soft:#f2efff;--aes-line:#ded8f3;--aes-neutral-line:#d9d9d9;--aes-muted:#6f6b74;background:#fff!important}
 .portfolio-aesost-branding-page .portfolio-detail-kicker{color:var(--aes-purple-deep)}
 .portfolio-aesost-branding-page .portfolio-detail-sidebar h1{max-width:12ch}
 .portfolio-aesost-branding-page .portfolio-detail-live{border-color:#c7bdf0;color:var(--aes-purple-deep)}
@@ -11,28 +11,71 @@
 .portfolio-aesost-branding-page .portfolio-scroll-media img{display:block;width:100%;height:auto;object-fit:contain}
 .portfolio-aesost-branding-page .portfolio-scroll-media--hero{background:var(--aes-soft)!important}
 .portfolio-aesost-branding-page .aes-hero-note{display:flex;justify-content:space-between;gap:24px;padding:16px 0 0;color:#77717f;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+
+/* Project overview */
 .portfolio-aesost-branding-page .aes-intro-band{margin:0;padding:clamp(54px,5vw,80px);background:var(--aes-ink)!important;color:#fff}
-.portfolio-aesost-branding-page .aes-band-label{margin:0 0 30px;color:#9b7cff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.portfolio-aesost-branding-page .aes-intro-band h2,.portfolio-aesost-branding-page .aes-closing h2{max-width:18ch;margin:0;font-size:clamp(34px,3.2vw,58px);font-weight:500;line-height:1.06;letter-spacing:-.045em}
+.portfolio-aesost-branding-page .aes-band-label,.portfolio-aesost-branding-page .aes-section-label{margin:0 0 28px;color:var(--aes-purple);font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.portfolio-aesost-branding-page .aes-intro-band .aes-band-label{color:#9b7cff}
+.portfolio-aesost-branding-page .aes-intro-band h2,.portfolio-aesost-branding-page .aes-closing h2{max-width:19ch;margin:0;font-size:clamp(34px,3.2vw,58px);font-weight:500;line-height:1.06;letter-spacing:-.045em}
 .portfolio-aesost-branding-page .aes-intro-band>p:not(.aes-band-label),.portfolio-aesost-branding-page .aes-closing>p:not(.aes-band-label){max-width:760px;margin:34px 0 0;color:#ded9e9;font-size:15px;line-height:1.8}
-.aes-context-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:38px;border-top:1px solid rgba(255,255,255,.28);border-left:1px solid rgba(255,255,255,.18)}
-.aes-context-card{min-height:180px;padding:22px;border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
-.aes-context-card small{display:block;color:#9b7cff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.aes-context-card strong{display:block;margin:42px 0 10px;font-size:19px;font-weight:600;line-height:1.3}
-.aes-context-card p{margin:0!important;color:#d9d3e5!important;font-size:13px!important;line-height:1.65!important}
-.aes-principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--aes-purple-deep);border-left:1px solid var(--aes-line);margin-top:34px}
-.aes-principle{min-height:175px;padding:20px;border-right:1px solid var(--aes-line);border-bottom:1px solid var(--aes-line)}
-.aes-principle span{display:block;color:var(--aes-purple);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
-.aes-principle strong{display:block;margin:40px 0 10px;color:var(--aes-purple-deep);font-size:18px;font-weight:650}
-.aes-principle p{margin:0;color:#67616f;font-size:12.5px;line-height:1.65}
-.aes-image-stack{display:grid;gap:18px;margin-top:36px}
-.aes-image-stack--spaced{margin-top:44px}
-.aes-image-grid{display:grid;gap:18px}
+
+/* Brand foundation + strategic direction */
+.aes-system-section{padding:clamp(62px,6vw,96px) 0;border-bottom:1px solid #e4e4e4}
+.aes-system-heading{max-width:860px;margin-bottom:42px}
+.aes-system-heading h2{max-width:18ch;margin:0;color:var(--aes-ink);font-size:clamp(34px,3vw,54px);font-weight:500;line-height:1.08;letter-spacing:-.045em}
+.aes-system-heading>p:not(.aes-section-label){max-width:760px;margin:28px 0 0;color:#5f5c63;font-size:14px;line-height:1.8}
+.aes-foundation-grid,.aes-direction-grid,.aes-identity-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--aes-ink);border-left:1px solid var(--aes-neutral-line)}
+.aes-foundation-cell,.aes-direction-cell,.aes-identity-map article{min-height:210px;padding:24px 20px 22px;border-right:1px solid var(--aes-neutral-line);border-bottom:1px solid var(--aes-neutral-line)}
+.aes-foundation-cell small,.aes-direction-cell small,.aes-identity-map small{display:block;color:var(--aes-purple);font-size:9px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
+.aes-foundation-cell strong,.aes-direction-cell strong,.aes-identity-map strong{display:block;margin:48px 0 12px;color:var(--aes-ink);font-size:18px;font-weight:620;line-height:1.25;letter-spacing:-.025em}
+.aes-foundation-cell p,.aes-direction-cell p,.aes-identity-map p{margin:0;color:var(--aes-muted);font-size:12px;line-height:1.7;word-break:keep-all}
+.aes-strategy-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin:84px 0 32px;padding-top:0}
+.aes-strategy-head .aes-section-label{margin:0}
+.aes-strategy-head h3{max-width:14ch;margin:0;color:var(--aes-ink);font-size:clamp(28px,2.5vw,42px);font-weight:500;line-height:1.08;letter-spacing:-.04em;text-align:right}
+.aes-direction-grid{border-top-color:var(--aes-purple-deep)}
+.aes-direction-cell{min-height:220px}
+.aes-direction-cell strong{color:var(--aes-purple-deep)}
+
+/* Identity mapping */
+.aes-identity-map{margin-top:42px;border-top-color:var(--aes-purple-deep)}
+.aes-identity-map article{min-height:190px}
+.aes-identity-map strong{margin-top:40px;color:var(--aes-purple-deep)}
+
+/* Design principles */
+.aes-principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--aes-ink);border-left:1px solid var(--aes-neutral-line);margin-top:38px}
+.aes-principle{min-height:210px;padding:22px;border-right:1px solid var(--aes-neutral-line);border-bottom:1px solid var(--aes-neutral-line)}
+.aes-principle span{display:block;color:#858089;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.aes-principle strong{display:block;margin:46px 0 12px;color:var(--aes-ink);font-size:19px;font-weight:620;letter-spacing:-.02em}
+.aes-principle p{max-width:420px;margin:0;color:#67616f;font-size:12.5px;line-height:1.72;word-break:keep-all}
+.aes-keyword-line{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:38px;border-top:1px solid var(--aes-line);border-bottom:1px solid var(--aes-line)}
+.aes-keyword-line span{padding:19px 14px;border-right:1px solid var(--aes-line);color:var(--aes-purple-deep);font-size:11px;font-weight:700;letter-spacing:.045em;text-align:center;text-transform:uppercase}
+.aes-keyword-line span:last-child{border-right:0}
+
+/* Images intentionally remain one-column */
+.aes-image-stack{display:grid;grid-template-columns:1fr;gap:18px;margin-top:40px}
+.aes-image-stack--spaced{margin-top:46px}
+.aes-image-grid{display:grid;grid-template-columns:1fr;gap:18px}
 .aes-image-grid--two{grid-template-columns:1fr}
 .aes-image{margin:0;background:#f5f4f7;overflow:hidden}
 .aes-image img{display:block;width:100%;height:auto}
-.aes-closing{margin-top:70px;padding:clamp(48px,5vw,74px);background:var(--aes-purple);color:#fff}
+
+.aes-closing{margin-top:72px;padding:clamp(48px,5vw,74px);background:var(--aes-purple);color:#fff}
 .portfolio-aesost-branding-page .aes-closing .aes-band-label{color:#e5ddff}
 .portfolio-aesost-branding-page .aes-closing>p:not(.aes-band-label){color:#eeeaff}
-@media(max-width:980px){.aes-context-grid{grid-template-columns:1fr 1fr}.aes-principles{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.portfolio-aesost-branding-page .aes-intro-band,.portfolio-aesost-branding-page .aes-closing{padding:42px 24px}.aes-context-grid,.aes-principles,.aes-image-grid--two{grid-template-columns:1fr}.aes-context-card,.aes-principle{min-height:0}.aes-image-grid,.aes-image-stack{gap:14px}.portfolio-aesost-branding-page .aes-hero-note{flex-direction:column;gap:6px}}
+
+@media(max-width:1180px){
+  .aes-foundation-grid,.aes-direction-grid,.aes-identity-map{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aes-strategy-head{align-items:flex-start;flex-direction:column;gap:20px}
+  .aes-strategy-head h3{text-align:left}
+}
+@media(max-width:760px){
+  .portfolio-aesost-branding-page .aes-intro-band,.portfolio-aesost-branding-page .aes-closing{padding:42px 24px}
+  .aes-system-section{padding:54px 0}
+  .aes-foundation-grid,.aes-direction-grid,.aes-identity-map,.aes-principles,.aes-keyword-line{grid-template-columns:1fr}
+  .aes-foundation-cell,.aes-direction-cell,.aes-identity-map article,.aes-principle{min-height:0;padding:22px 18px 24px}
+  .aes-foundation-cell strong,.aes-direction-cell strong,.aes-identity-map strong,.aes-principle strong{margin-top:30px}
+  .aes-keyword-line span{border-right:0;border-bottom:1px solid var(--aes-line)}
+  .aes-keyword-line span:last-child{border-bottom:0}
+  .aes-image-grid,.aes-image-stack{gap:14px}
+  .portfolio-aesost-branding-page .aes-hero-note{flex-direction:column;gap:6px}
+}
