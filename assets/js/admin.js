@@ -43,7 +43,7 @@
     const status = document.querySelector('.admin-status');
     if (status) status.innerHTML = '<i></i> FIREBASE LOAD ERROR';
   });
-  import('./admin-partners-20260824.js?v=20260824-1').catch((error) => {
+  import('./admin-partners-20260824.js?v=20260824-2').catch((error) => {
     console.error('[NINEWORKS Admin] Partners bootstrap load failed', error);
   });
 })();
