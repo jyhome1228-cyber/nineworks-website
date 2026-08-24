@@ -42,11 +42,15 @@
     if (status) status.innerHTML = '<i></i> FIREBASE LOAD ERROR';
   });
 
-  import('./admin-partner-assignment-lite.js?v=20260824-5').catch((error) => {
+  import('./admin-partner-assignment-lite.js?v=20260824-6').catch((error) => {
     console.error('[NINEWORKS Admin] Partner assignment load failed', error);
   });
 
-  import('./admin-partner-submissions-20260824.js?v=20260824-2').catch((error) => {
+  import('./admin-partner-submissions-20260824.js?v=20260824-3').catch((error) => {
     console.error('[NINEWORKS Admin] Partner submissions load failed', error);
+  });
+
+  import('./admin-recruit-partner-final-20260824.js?v=20260824-1').catch((error) => {
+    console.error('[NINEWORKS Admin] Recruit / approved inquiry sync load failed', error);
   });
 })();
