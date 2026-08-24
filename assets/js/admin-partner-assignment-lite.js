@@ -51,7 +51,7 @@ const loadStyle = () => {
   if (document.querySelector('link[data-admin-partner-lite-style]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/admin-partner-assignment-lite.css?v=20260824-2';
+  link.href = 'assets/css/admin-partner-assignment-lite.css?v=20260824-3';
   link.dataset.adminPartnerLiteStyle = 'true';
   document.head.appendChild(link);
 };
@@ -177,11 +177,21 @@ const decorateInquiryRows = () => {
     }
     if (holder.dataset.signature === signature) return;
     holder.dataset.signature = signature;
+
+    const savedProposal = normalizeUrl(item.partnerProposalUrl);
     holder.innerHTML = `
       <div><label>PARTNER</label><select data-partner-lite-assign="${escapeHTML(id)}" class="${item.assignedPartnerEmail ? 'is-assigned' : ''}">${partnerOptions(item.assignedPartnerEmail)}</select></div>
       <div><label>지정 금액</label><select data-partner-fee="${escapeHTML(id)}">${amountOptions(item.partnerFeeAmount)}</select></div>
       <div><label>프로젝트 단계</label><select data-partner-stage="${escapeHTML(id)}"><option value="preliminary"${normalizeStage(item.partnerProjectStage) === 'preliminary' ? ' selected' : ''}>예비</option><option value="active"${normalizeStage(item.partnerProjectStage) === 'active' ? ' selected' : ''}>진행</option></select></div>
-      <div class="admin-partner-lite-proposal"><label>제안서 링크</label><input type="url" data-partner-proposal="${escapeHTML(id)}" placeholder="https://..." value="${escapeHTML(item.partnerProposalUrl || '')}"></div>`;
+      <div class="admin-partner-lite-proposal">
+        <label>제안서 링크</label>
+        <div class="admin-partner-lite-proposal__control">
+          <input type="url" data-partner-proposal="${escapeHTML(id)}" placeholder="https://9works.kr/rpbio/" value="${escapeHTML(item.partnerProposalUrl || '')}">
+          <button type="button" data-partner-proposal-save="${escapeHTML(id)}">SAVE</button>
+          ${savedProposal ? `<a href="${escapeHTML(savedProposal)}" target="_blank" rel="noopener">OPEN ↗</a>` : ''}
+        </div>
+        <small>나인웍스 제안서 URL이나 외부 http/https 링크를 입력할 수 있습니다.</small>
+      </div>`;
   });
 };
 
@@ -241,6 +251,35 @@ const updateInquiryField = async (inquiryId, patch, errorMessage) => {
   }
 };
 
+const saveProposal = async (inquiryId, input) => {
+  if (!db || !input) return;
+  const raw = String(input.value || '').trim();
+  const normalized = normalizeUrl(raw);
+  if (raw && !normalized) {
+    window.alert('제안서 링크는 http:// 또는 https:// 주소로 입력해 주세요.');
+    input.focus();
+    return;
+  }
+
+  const button = input.closest('.admin-partner-lite-proposal')?.querySelector('[data-partner-proposal-save]');
+  input.disabled = true;
+  if (button) {
+    button.disabled = true;
+    button.textContent = 'SAVING';
+  }
+  try {
+    await updateInquiryField(inquiryId, {
+      partnerProposalUrl: normalized || deleteField()
+    }, '제안서 링크 저장에 실패했습니다.');
+  } finally {
+    input.disabled = false;
+    if (button) {
+      button.disabled = false;
+      button.textContent = 'SAVE';
+    }
+  }
+};
+
 const bindAssignmentControls = () => {
   document.addEventListener('change', async (event) => {
     const partnerSelect = event.target.closest('[data-partner-lite-assign]');
@@ -286,29 +325,28 @@ const bindAssignmentControls = () => {
           partnerProjectStage: normalizeStage(stageSelect.value)
         }, '프로젝트 단계 저장에 실패했습니다.');
       } finally { stageSelect.disabled = false; }
+    }
+  });
+
+  document.addEventListener('click', async (event) => {
+    const saveButton = event.target.closest('[data-partner-proposal-save]');
+    if (saveButton) {
+      const inquiryId = saveButton.dataset.partnerProposalSave;
+      const input = document.querySelector(`[data-partner-proposal="${CSS.escape(inquiryId)}"]`);
+      await saveProposal(inquiryId, input);
       return;
     }
 
-    const proposalInput = event.target.closest('[data-partner-proposal]');
-    if (proposalInput && db) {
-      const raw = String(proposalInput.value || '').trim();
-      const normalized = normalizeUrl(raw);
-      if (raw && !normalized) {
-        window.alert('제안서 링크는 http:// 또는 https:// 주소로 입력해 주세요.');
-        return;
-      }
-      proposalInput.disabled = true;
-      try {
-        await updateInquiryField(proposalInput.dataset.partnerProposal, {
-          partnerProposalUrl: normalized || deleteField()
-        }, '제안서 링크 저장에 실패했습니다.');
-      } finally { proposalInput.disabled = false; }
-    }
-  });
-
-  document.addEventListener('click', (event) => {
     if (event.target.closest('[data-inquiry-service-filter], [data-inquiry-status-filter], [data-status-summary], [data-dashboard-service], [data-admin-tab="inquiry"]')) scheduleDecorate();
   });
+
+  document.addEventListener('keydown', async (event) => {
+    const input = event.target.closest('[data-partner-proposal]');
+    if (!input || event.key !== 'Enter') return;
+    event.preventDefault();
+    await saveProposal(input.dataset.partnerProposal, input);
+  });
+
   document.querySelector('[data-inquiry-search]')?.addEventListener('input', scheduleDecorate);
   window.addEventListener('nw-admin-panel', (event) => {
     if (event.detail?.panel === 'inquiry') scheduleDecorate();
