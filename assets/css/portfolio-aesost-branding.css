@@ -1,0 +1,38 @@
+/* AESOST — branding case study */
+.portfolio-aesost-branding-page{--aes-purple:#6f43f4;--aes-purple-deep:#3f21a8;--aes-ink:#17151d;--aes-soft:#f2efff;--aes-line:#ded8f3;background:#fff!important}
+.portfolio-aesost-branding-page .portfolio-detail-kicker{color:var(--aes-purple-deep)}
+.portfolio-aesost-branding-page .portfolio-detail-sidebar h1{max-width:12ch}
+.portfolio-aesost-branding-page .portfolio-detail-live{border-color:#c7bdf0;color:var(--aes-purple-deep)}
+.portfolio-aesost-branding-page .portfolio-detail-index a span{display:none}
+.portfolio-aesost-branding-page .portfolio-detail-index a{grid-template-columns:1fr}
+.portfolio-aesost-branding-page .portfolio-scroll-section__index{display:none}
+.portfolio-aesost-branding-page .portfolio-scroll-section__meta{color:var(--aes-purple-deep)}
+.portfolio-aesost-branding-page .portfolio-scroll-media{overflow:hidden}
+.portfolio-aesost-branding-page .portfolio-scroll-media img{display:block;width:100%;height:auto;object-fit:contain}
+.portfolio-aesost-branding-page .portfolio-scroll-media--hero{background:var(--aes-soft)!important}
+.portfolio-aesost-branding-page .aes-hero-note{display:flex;justify-content:space-between;gap:24px;padding:16px 0 0;color:#77717f;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.portfolio-aesost-branding-page .aes-intro-band{margin:0;padding:clamp(54px,5vw,80px);background:var(--aes-ink)!important;color:#fff}
+.portfolio-aesost-branding-page .aes-band-label{margin:0 0 30px;color:#9b7cff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.portfolio-aesost-branding-page .aes-intro-band h2,.portfolio-aesost-branding-page .aes-closing h2{max-width:18ch;margin:0;font-size:clamp(34px,3.2vw,58px);font-weight:500;line-height:1.06;letter-spacing:-.045em}
+.portfolio-aesost-branding-page .aes-intro-band>p:not(.aes-band-label),.portfolio-aesost-branding-page .aes-closing>p:not(.aes-band-label){max-width:760px;margin:34px 0 0;color:#ded9e9;font-size:15px;line-height:1.8}
+.aes-context-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:38px;border-top:1px solid rgba(255,255,255,.28);border-left:1px solid rgba(255,255,255,.18)}
+.aes-context-card{min-height:180px;padding:22px;border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)}
+.aes-context-card small{display:block;color:#9b7cff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.aes-context-card strong{display:block;margin:42px 0 10px;font-size:19px;font-weight:600;line-height:1.3}
+.aes-context-card p{margin:0!important;color:#d9d3e5!important;font-size:13px!important;line-height:1.65!important}
+.aes-principles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--aes-purple-deep);border-left:1px solid var(--aes-line);margin-top:34px}
+.aes-principle{min-height:175px;padding:20px;border-right:1px solid var(--aes-line);border-bottom:1px solid var(--aes-line)}
+.aes-principle span{display:block;color:var(--aes-purple);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.aes-principle strong{display:block;margin:40px 0 10px;color:var(--aes-purple-deep);font-size:18px;font-weight:650}
+.aes-principle p{margin:0;color:#67616f;font-size:12.5px;line-height:1.65}
+.aes-image-stack{display:grid;gap:18px;margin-top:36px}
+.aes-image-stack--spaced{margin-top:44px}
+.aes-image-grid{display:grid;gap:18px}
+.aes-image-grid--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.aes-image{margin:0;background:#f5f4f7;overflow:hidden}
+.aes-image img{display:block;width:100%;height:auto}
+.aes-closing{margin-top:70px;padding:clamp(48px,5vw,74px);background:var(--aes-purple);color:#fff}
+.portfolio-aesost-branding-page .aes-closing .aes-band-label{color:#e5ddff}
+.portfolio-aesost-branding-page .aes-closing>p:not(.aes-band-label){color:#eeeaff}
+@media(max-width:980px){.aes-context-grid{grid-template-columns:1fr 1fr}.aes-principles{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.portfolio-aesost-branding-page .aes-intro-band,.portfolio-aesost-branding-page .aes-closing{padding:42px 24px}.aes-context-grid,.aes-principles,.aes-image-grid--two{grid-template-columns:1fr}.aes-context-card,.aes-principle{min-height:0}.aes-image-grid,.aes-image-stack{gap:14px}.portfolio-aesost-branding-page .aes-hero-note{flex-direction:column;gap:6px}}
