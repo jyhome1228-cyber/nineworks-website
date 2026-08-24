@@ -179,12 +179,8 @@
     const ordered = arrange(items);
     const fragment = document.createDocumentFragment();
 
-    ordered.forEach(({ card }, index) => {
-      const number = card.querySelector('.project-card__meta span:last-child');
-      if (number) number.textContent = String(index + 1).padStart(2, '0');
-      fragment.appendChild(card);
-    });
-
+    // 카드 순서만 재배치합니다. 번호는 생성하지 않습니다.
+    ordered.forEach(({ card }) => fragment.appendChild(card));
     grid.appendChild(fragment);
   });
 })();
