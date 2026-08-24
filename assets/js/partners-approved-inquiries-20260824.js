@@ -16,6 +16,30 @@
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/\"/g, '&quot;').replace(/'/g, '&#039;');
 
+  const installRefinementStyle = () => {
+    if (document.querySelector('style[data-partner-final-refine]')) return;
+    const style = document.createElement('style');
+    style.dataset.partnerFinalRefine = 'true';
+    style.textContent = `
+      .partner-stat small strong{display:inline!important;margin:0!important;font:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;color:#777!important;font-weight:400!important}
+      .partner-profile-panel{margin-bottom:16px;border:1px solid var(--p-line);background:var(--p-panel)}
+      .partner-profile-panel__head{padding:17px 18px;border-bottom:1px solid var(--p-line)}
+      .partner-profile-panel__head span{display:block;margin-bottom:4px;color:var(--p-muted);font-size:11px;letter-spacing:.08em}
+      .partner-profile-panel__head strong{font-size:15px;font-weight:500}
+      .partner-profile-grid{display:grid;grid-template-columns:1fr 1fr}
+      .partner-profile-grid>div{padding:17px 18px;min-width:0}
+      .partner-profile-grid>div+div{border-left:1px solid var(--p-line)}
+      .partner-profile-grid span{display:block;margin-bottom:7px;color:var(--p-muted);font-size:10px}
+      .partner-profile-grid strong{display:block;font-size:13px;font-weight:500;overflow-wrap:anywhere}
+      .partner-guide-preparing{margin-bottom:18px;padding:18px;border:1px solid var(--p-line);background:#fafaf8}
+      .partner-guide-preparing span{display:block;margin-bottom:5px;color:var(--p-muted);font-size:10px;letter-spacing:.08em}
+      .partner-guide-preparing strong{display:block;font-size:16px;font-weight:500}
+      .partner-guide-preparing p{margin:7px 0 0;color:#777;font-size:12px;line-height:1.65}
+      @media(max-width:640px){.partner-profile-grid{grid-template-columns:1fr}.partner-profile-grid>div+div{border-left:0;border-top:1px solid var(--p-line)}}
+    `;
+    document.head.appendChild(style);
+  };
+
   const getFirebase = () => {
     if (!firebasePromise) {
       firebasePromise = Promise.all([
@@ -49,6 +73,39 @@
     return panel;
   };
 
+  const ensureProfilePanel = (email) => {
+    const page = document.querySelector('[data-partner-page="account"]');
+    const partner = PARTNERS[email];
+    if (!page || !partner) return;
+    let panel = page.querySelector('[data-partner-profile-panel]');
+    if (!panel) {
+      panel = document.createElement('section');
+      panel.className = 'partner-profile-panel';
+      panel.dataset.partnerProfilePanel = 'true';
+      const firstPanel = page.querySelector('.partner-panel');
+      if (firstPanel) page.insertBefore(panel, firstPanel);
+      else page.appendChild(panel);
+    }
+    panel.innerHTML = `
+      <div class="partner-profile-panel__head"><span>MY INFORMATION</span><strong>내정보</strong></div>
+      <div class="partner-profile-grid">
+        <div><span>아이디</span><strong>${escapeHTML(email)}</strong></div>
+        <div><span>이름</span><strong>${escapeHTML(partner.name)}</strong></div>
+      </div>`;
+  };
+
+  const ensureGuidePreparing = () => {
+    const page = document.querySelector('[data-partner-page="guide"]');
+    if (!page || page.querySelector('[data-guide-preparing]')) return;
+    const notice = document.createElement('div');
+    notice.className = 'partner-guide-preparing';
+    notice.dataset.guidePreparing = 'true';
+    notice.innerHTML = '<span>GUIDE STATUS</span><strong>협업 가이드는 현재 준비 중입니다.</strong><p>세부 작업 기준과 전달 방식은 정리되는 대로 이 페이지에 업데이트합니다.</p>';
+    const head = page.querySelector('.partner-page-head');
+    if (head?.nextSibling) page.insertBefore(notice, head.nextSibling);
+    else page.appendChild(notice);
+  };
+
   const render = (workspace = {}) => {
     const panel = ensurePanel();
     const box = panel?.querySelector('[data-approved-inquiry-list]');
@@ -74,7 +131,10 @@
   const subscribe = async (email) => {
     const normalized = normalizeEmail(email);
     const partner = PARTNERS[normalized];
-    if (!partner || normalized === activeEmail) return;
+    if (!partner) return;
+    ensureProfilePanel(normalized);
+    ensureGuidePreparing();
+    if (normalized === activeEmail) return;
     activeEmail = normalized;
     unsubscribe?.();
     unsubscribe = null;
@@ -107,6 +167,8 @@
     activeEmail = '';
   }));
 
+  installRefinementStyle();
   ensurePanel();
+  ensureGuidePreparing();
   startFromStorage();
 })();
