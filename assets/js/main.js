@@ -71,6 +71,7 @@
       <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <a href="about.html" data-nav-key="about">ABOUT</a>
+        <a href="recruit.html" data-nav-key="recruit">RECRUIT</a>
         <a href="branding.html" data-nav-key="branding">BRANDING</a>
         <a href="project.html" data-nav-key="project">PROJECTS</a>
         <div class="site-nav-item">
@@ -107,6 +108,7 @@
     overlay.innerHTML = `
       <nav class="menu-nav" aria-label="모바일 주요 메뉴">
         <a class="menu-nav__main" href="about.html">ABOUT</a>
+        <a class="menu-nav__main" href="recruit.html">RECRUIT</a>
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
         <a class="menu-nav__main" href="project.html">PROJECTS</a>
         <div class="menu-nav__group">
@@ -141,7 +143,7 @@
   }
 
   const navMap = {
-    about: 'about', branding: 'branding', project: 'project',
+    about: 'about', recruit: 'recruit', branding: 'branding', project: 'project',
     portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     magazine: 'magazine', 'magazine-detail': 'magazine',
     solutions: 'solutions', develop: 'solutions', print: 'solutions',
@@ -213,7 +215,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="recruit.html">Recruit</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
