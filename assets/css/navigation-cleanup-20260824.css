@@ -5,3 +5,27 @@
 a[href="resources.html"][data-nav-key="resources"],
 a[href="resources.html"][data-member-mobile-resources],
 a[href="resources.html"][data-member-footer-resources]{display:none!important}
+
+/* Solutions dropdown: remove redundant overview row. */
+.site-primary-nav .site-nav-dropdown[aria-label="솔루션 메뉴"] > a[href="solutions.html"]{display:none!important}
+
+/* Solutions / service detail heroes: remove viewport-height whitespace and bring content up. */
+body.sector-page .sector-hero{
+  min-height:0!important;
+  padding-top:clamp(54px,4vw,72px)!important;
+  padding-bottom:clamp(42px,3.4vw,56px)!important;
+}
+body.sector-page.quote-page .sector-hero{min-height:0!important}
+body.solutions-page .services-hero{
+  padding:clamp(54px,4vw,72px) 0 clamp(42px,3.4vw,56px)!important;
+}
+
+@media(max-width:760px){
+  body.sector-page .sector-hero{
+    padding-top:42px!important;
+    padding-bottom:36px!important;
+  }
+  body.solutions-page .services-hero{
+    padding:42px 0 36px!important;
+  }
+}
