@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js';
-import { collection, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
+import { collection, doc, onSnapshot, serverTimestamp, setDoc } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
 import { auth, db, firebaseConfigReady } from './firebase-client.js';
 
 const ADMIN_EMAIL = 'info@9works.kr';
@@ -8,8 +8,12 @@ let feedbackCache = [];
 let unsubAccount = null;
 let unsubFeedback = null;
 let started = false;
+const syncedPaymentType = new Map();
 
 const normalizeEmail = (value = '') => String(value || '').trim().toLowerCase();
+const normalizePaymentType = (value = '') => value === 'business' ? 'business' : 'freelancer';
+const workspaceKey = (email = '') => encodeURIComponent(normalizeEmail(email));
+const paymentTypeLabel = (value = '') => normalizePaymentType(value) === 'business' ? '사업자 · VAT 10%' : '프리랜서 · 3.3%';
 const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/\"/g, '&quot;').replace(/'/g, '&#039;');
@@ -32,7 +36,7 @@ const loadStyle = () => {
   if (document.querySelector('link[data-admin-partner-submissions-style]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/admin-partner-submissions-20260824.css?v=20260824-1';
+  link.href = 'assets/css/admin-partner-submissions-20260824.css?v=20260824-2';
   link.dataset.adminPartnerSubmissionsStyle = 'true';
   document.head.appendChild(link);
 };
@@ -46,7 +50,7 @@ const ensureSections = () => {
   grid.dataset.adminPartnerSubmissionGrid = 'true';
   grid.innerHTML = `
     <section class="admin-partner-submission-block">
-      <div class="admin-partner-submission-head"><span>PAYMENT INFORMATION</span><strong>파트너 계좌정보</strong></div>
+      <div class="admin-partner-submission-head"><span>PAYMENT INFORMATION</span><strong>파트너 지급유형 · 계좌정보</strong></div>
       <div class="admin-partner-submission-list" data-admin-partner-bank-list><div class="admin-partner-submission-empty">등록된 계좌정보가 없습니다.</div></div>
     </section>
     <section class="admin-partner-submission-block">
@@ -57,22 +61,44 @@ const ensureSections = () => {
   return true;
 };
 
-const renderAccounts = () => {
-  if (!ensureSections()) return;
-  const box = document.querySelector('[data-admin-partner-bank-list]');
-  if (!box) return;
+const latestAccounts = () => {
   const sorted = [...accountCache].sort((a, b) => timestampMs(b.createdAt) - timestampMs(a.createdAt));
   const latestByEmail = new Map();
   sorted.forEach((item) => {
     const email = normalizeEmail(item.partnerEmail);
     if (email && !latestByEmail.has(email)) latestByEmail.set(email, item);
   });
-  const items = Array.from(latestByEmail.values());
+  return latestByEmail;
+};
+
+const syncPaymentTypesToWorkspaces = async () => {
+  const latestByEmail = latestAccounts();
+  for (const [email, item] of latestByEmail.entries()) {
+    const paymentType = normalizePaymentType(item.paymentType);
+    if (syncedPaymentType.get(email) === paymentType) continue;
+    try {
+      await setDoc(doc(db, 'partnerWorkspaces', workspaceKey(email)), {
+        paymentType,
+        paymentTypeUpdatedAt: serverTimestamp()
+      }, { merge: true });
+      syncedPaymentType.set(email, paymentType);
+    } catch (error) {
+      console.warn('[NINEWORKS Admin] payment type workspace sync failed', error);
+    }
+  }
+};
+
+const renderAccounts = () => {
+  if (!ensureSections()) return;
+  const box = document.querySelector('[data-admin-partner-bank-list]');
+  if (!box) return;
+  const items = Array.from(latestAccounts().values());
   box.innerHTML = items.length ? items.map((item) => `
     <article class="admin-partner-submission-row">
       <div class="admin-partner-submission-row__head"><strong>${escapeHTML(item.partnerName || item.partnerEmail || 'Partner')}</strong><time>${escapeHTML(formatDate(item.createdAt))}</time></div>
       <p>${escapeHTML(item.partnerEmail || '')}</p>
       <div class="admin-partner-submission-meta">
+        <div><span>지급유형</span><b>${escapeHTML(paymentTypeLabel(item.paymentType))}</b></div>
         <div><span>예금주</span><b>${escapeHTML(item.accountHolder || '-')}</b></div>
         <div><span>은행</span><b>${escapeHTML(item.bank || '-')}</b></div>
         <div><span>계좌번호</span><b>${escapeHTML(item.accountNumber || '-')}</b></div>
@@ -114,6 +140,7 @@ const start = () => {
   unsubAccount = onSnapshot(collection(db, 'partnerAccountSubmissions'), (snapshot) => {
     accountCache = snapshot.docs.map((item) => ({ id: item.id, ...item.data() }));
     renderAccounts();
+    syncPaymentTypesToWorkspaces();
   }, (error) => console.warn('[NINEWORKS Admin] partner account stream failed', error));
   unsubFeedback = onSnapshot(collection(db, 'partnerProposalFeedback'), (snapshot) => {
     feedbackCache = snapshot.docs.map((item) => ({ id: item.id, ...item.data() }));
