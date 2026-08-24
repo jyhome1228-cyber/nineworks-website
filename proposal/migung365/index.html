@@ -19,72 +19,67 @@
       --proposal-bg:#f7f7f5;
       --proposal-paper:#fff;
       --proposal-text:#151515;
-      --proposal-sub:#6f6f6b;
       --proposal-line:#deded9;
       --proposal-soft:#efefec;
       --fs-display:clamp(34px,3.15vw,44px);
-      --fs-h1:clamp(32px,3vw,42px);
-      --fs-h2:clamp(25px,2vw,30px);
-      --fs-h3:clamp(20px,1.55vw,24px);
-      --fs-body-lg:17px;
+      --fs-h1:clamp(30px,2.7vw,38px);
+      --fs-h2:clamp(24px,1.9vw,29px);
+      --fs-h3:clamp(20px,1.5vw,23px);
       --fs-body:16px;
       --fs-label:13px;
-      --fs-meta:12px;
-      --section-xl:104px;
-      --section-lg:80px;
+      --section-xl:100px;
+      --section-lg:78px;
     }
     *{box-sizing:border-box}
     body.proposal-page{margin:0;background:var(--proposal-bg);color:var(--proposal-text);font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:var(--fs-body);font-weight:400;line-height:1.72;letter-spacing:-.022em;word-break:keep-all;-webkit-font-smoothing:antialiased}
     .proposal-page main{overflow:hidden}
-    .proposal-shell{width:min(calc(100% - 48px),var(--proposal-container))!important;max-width:var(--proposal-container)!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important}
+    .proposal-shell{width:min(calc(100% - 48px),var(--proposal-container))!important;max-width:var(--proposal-container)!important;margin-inline:auto!important;padding:0!important}
     .proposal-section{padding:var(--section-xl) 0;border-top:1px solid var(--proposal-line)}
-    .proposal-section:first-of-type{border-top:0}
     .proposal-section--compact{padding:var(--section-lg) 0}
     .proposal-label{margin:0;color:#858581;font-size:var(--fs-label);font-weight:600;line-height:1.4;letter-spacing:.1em;text-transform:uppercase}
     .proposal-h1{margin:22px 0 0;max-width:720px;font-size:var(--fs-display);font-weight:470;line-height:1.15;letter-spacing:-.045em}
-    .proposal-h2{margin:16px 0 0;max-width:720px;font-size:var(--fs-h2);font-weight:500;line-height:1.36;letter-spacing:-.035em}
-    .proposal-h3{margin:0;font-size:var(--fs-h3);font-weight:530;line-height:1.4;letter-spacing:-.028em}
+    .proposal-h2{margin:16px 0 0;max-width:760px;font-size:var(--fs-h2);font-weight:500;line-height:1.38;letter-spacing:-.034em}
 
-    .proposal-hero{padding:132px 0 104px;min-height:auto;display:block}
-    .proposal-hero__inner{display:grid!important;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(64px,8vw,120px);align-items:start}
-    .proposal-hero__copy{max-width:760px}
+    .proposal-hero{padding:128px 0 96px;border-bottom:1px solid var(--proposal-line)}
+    .proposal-hero .proposal-shell.proposal-hero__inner{display:grid!important;grid-template-columns:minmax(0,760px) minmax(260px,300px)!important;justify-content:space-between!important;gap:80px!important;align-items:start!important}
+    .proposal-hero__copy{min-width:0}
     .proposal-hero__desc{margin:26px 0 0;max-width:690px;color:#50504c;font-size:17px;line-height:1.75}
-    .proposal-hero__facts{margin:0;border-top:1px solid var(--proposal-line)}
+    .proposal-hero__facts{width:100%;margin:0;border-top:1px solid var(--proposal-line)}
     .proposal-fact{padding:17px 0;border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:88px 1fr;gap:16px}
     .proposal-fact dt{margin:0;color:#858581;font-size:12px;font-weight:500;letter-spacing:.03em}
     .proposal-fact dd{margin:0;font-size:14px;line-height:1.55;color:#282826}
 
-    .section-heading{margin-bottom:50px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px);align-items:start}
+    .section-heading{margin-bottom:48px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px);align-items:start}
     .section-heading__body{max-width:820px}
     .section-heading__body p{margin:18px 0 0;max-width:690px;color:#555551;font-size:16px;line-height:1.75}
 
     .intro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--proposal-line)}
     .intro-item{padding:26px 28px 30px 0;border-bottom:1px solid var(--proposal-line)}
     .intro-item+.intro-item{padding-left:28px;border-left:1px solid var(--proposal-line)}
-    .intro-item__num{display:block;margin-bottom:38px;color:#8b8b86;font-size:12px;letter-spacing:.08em}
-    .intro-item strong{display:block;font-size:21px;font-weight:520;line-height:1.4;letter-spacing:-.03em}
+    .intro-item__num{display:block;margin-bottom:36px;color:#8b8b86;font-size:12px;letter-spacing:.08em}
+    .intro-item strong{display:block;font-size:20px;font-weight:520;line-height:1.4;letter-spacing:-.03em}
     .intro-item p{margin:14px 0 0;color:#646460;font-size:16px;line-height:1.72}
 
     .issue-list{border-top:1px solid var(--proposal-line)}
     .issue-row{display:grid;grid-template-columns:54px minmax(190px,.7fr) minmax(0,1.45fr);gap:clamp(24px,3.5vw,54px);padding:27px 0;border-bottom:1px solid var(--proposal-line);align-items:start}
     .issue-row__no{font-size:12px;color:#8b8b86;padding-top:4px}
-    .issue-row h3{margin:0;font-size:21px;font-weight:520;line-height:1.42;letter-spacing:-.028em}
+    .issue-row h3{margin:0;font-size:20px;font-weight:520;line-height:1.42;letter-spacing:-.028em}
     .issue-row p{margin:0;color:#555551;font-size:16px;line-height:1.75}
 
     .approach-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line)}
-    .approach-item{min-height:250px;padding:25px 26px;display:flex;flex-direction:column;border-right:1px solid var(--proposal-line)}
+    .approach-item{min-height:240px;padding:25px 26px;display:flex;flex-direction:column;border-right:1px solid var(--proposal-line)}
     .approach-item:first-child{padding-left:0}.approach-item:last-child{border-right:0;padding-right:0}
     .approach-item__no{color:#8b8b86;font-size:12px;letter-spacing:.08em}
-    .approach-item h3{margin:auto 0 10px;font-size:22px;font-weight:520;line-height:1.38;letter-spacing:-.03em}
+    .approach-item h3{margin:auto 0 10px;font-size:21px;font-weight:520;line-height:1.38;letter-spacing:-.03em}
     .approach-item p{margin:0;color:#62625e;font-size:15px;line-height:1.72}
 
     .scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-    .scope-card{background:rgba(255,255,255,.45);border:1px solid var(--proposal-line);padding:26px 28px;min-height:300px;display:flex;flex-direction:column}
+    .scope-card{background:rgba(255,255,255,.45);border:1px solid var(--proposal-line);padding:26px 28px;min-height:290px;display:flex;flex-direction:column}
     .scope-card__top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
     .scope-card__type{font-size:12px;font-weight:600;letter-spacing:.09em;color:#7a7a76;text-transform:uppercase}
     .scope-card__no{font-size:12px;color:#999994}
-    .scope-card h3{margin:16px 0 0;font-size:22px;font-weight:530;line-height:1.4;letter-spacing:-.03em}
-    .scope-card ul{list-style:none;margin:auto 0 0;padding:34px 0 0}
+    .scope-card h3{margin:16px 0 0;font-size:21px;font-weight:530;line-height:1.4;letter-spacing:-.03em}
+    .scope-card ul{list-style:none;margin:auto 0 0;padding:32px 0 0}
     .scope-card li{padding:8px 0;border-top:1px solid var(--proposal-soft);font-size:15px;color:#555551;line-height:1.55}
 
     .timeline-list{border-top:1px solid var(--proposal-line)}
@@ -92,20 +87,23 @@
     .timeline-row time{font-size:12px;color:#777773;letter-spacing:.03em}
     .timeline-row strong{font-size:18px;font-weight:520;line-height:1.5}
     .timeline-row p{margin:0;color:#5c5c58;font-size:15px;line-height:1.75}
-    .support-note{margin-top:42px;padding:26px 0;border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px)}
+    .support-note{margin-top:40px;padding:25px 0;border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px)}
     .support-note strong{font-size:20px;font-weight:520;line-height:1.42;letter-spacing:-.03em}
     .support-note p{margin:0;max-width:760px;color:#555551;font-size:16px;line-height:1.75}
 
-    .proposal-shell.investment-grid{display:grid!important;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px);align-items:start}
+    .proposal-shell.investment-grid{display:grid!important;grid-template-columns:190px minmax(0,1fr)!important;gap:clamp(46px,6vw,96px)!important;align-items:start!important}
     .investment-main{border-top:1px solid var(--proposal-line);min-width:0}
-    .investment-main .proposal-h2{font-size:27px;max-width:none}
-    .investment-price{padding:34px 0 30px;border-bottom:1px solid var(--proposal-line);display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
-    .investment-price strong{font-size:clamp(32px,3vw,42px);font-weight:470;line-height:1.12;letter-spacing:-.045em}
+    .investment-main .proposal-h2{font-size:26px;max-width:none}
+    .investment-price{padding:32px 0 28px;border-bottom:1px solid var(--proposal-line);display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+    .investment-price strong{font-size:clamp(31px,2.8vw,40px);font-weight:470;line-height:1.12;letter-spacing:-.045em}
     .investment-price span{font-size:13px;color:#777773}
     .investment-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-top:28px}
     .investment-notes article{padding-top:16px;border-top:1px solid var(--proposal-line)}
     .investment-notes h3{margin:0;font-size:16px;font-weight:540;line-height:1.5}
     .investment-notes p{margin:9px 0 0;color:#666662;font-size:15px;line-height:1.72}
+    .payment-note{margin-top:28px;padding:22px 0;border-top:1px solid var(--proposal-line);display:grid;grid-template-columns:150px minmax(0,1fr);gap:30px;align-items:start}
+    .payment-note strong{font-size:15px;font-weight:540;line-height:1.5}
+    .payment-note p{margin:0;max-width:760px;color:#5d5d59;font-size:15px;line-height:1.72}
 
     .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
     .work-card{border-top:1px solid var(--proposal-line);padding:24px 0 8px;display:grid;grid-template-columns:58px minmax(0,1fr);gap:22px;min-height:190px}
@@ -113,13 +111,19 @@
     .work-card h3{margin:0;font-size:20px;font-weight:530;line-height:1.45;letter-spacing:-.028em}
     .work-card p{margin:12px 0 0;max-width:530px;color:#5d5d59;font-size:15px;line-height:1.75}
     .work-card strong{display:block;margin-top:24px;color:#777773;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-    .work-summary{margin-top:42px;padding:26px 0;border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px)}
+    .work-summary{margin-top:40px;padding:25px 0;border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px)}
     .work-summary strong{font-size:20px;font-weight:520;line-height:1.45;letter-spacing:-.03em}
     .work-summary p{margin:0;max-width:760px;color:#555551;font-size:16px;line-height:1.75}
 
+    .note-list{border-top:1px solid var(--proposal-line)}
+    .note-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px);padding:27px 0;border-bottom:1px solid var(--proposal-line);align-items:start}
+    .note-row h3{margin:0;font-size:19px;font-weight:520;line-height:1.5;letter-spacing:-.028em}
+    .note-row p{margin:0;max-width:760px;color:#555551;font-size:16px;line-height:1.75}
+
     .closing-copy{display:grid;grid-template-columns:190px minmax(0,1fr);gap:clamp(46px,6vw,96px);align-items:start}
-    .closing-copy h2{margin:0;max-width:720px;font-size:clamp(28px,2.5vw,36px);font-weight:470;line-height:1.26;letter-spacing:-.04em}
-    .closing-copy p{margin:24px 0 0;max-width:700px;color:#555551;font-size:16px;line-height:1.8}
+    .closing-copy h2{margin:0;max-width:760px;font-size:clamp(28px,2.35vw,35px);font-weight:470;line-height:1.28;letter-spacing:-.04em}
+    .closing-copy p{margin:22px 0 0;max-width:720px;color:#555551;font-size:16px;line-height:1.8}
+    .closing-thanks{margin-top:36px!important;padding-top:24px;border-top:1px solid var(--proposal-line);color:#252523!important;font-size:17px!important;font-weight:500!important}
 
     .download-area{padding:56px 0 76px;border-top:1px solid var(--proposal-line)}
     .download-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
@@ -129,8 +133,8 @@
     .proposal-page .site-footer{border-top:1px solid var(--proposal-line)}
 
     @media(max-width:980px){
-      .proposal-hero__inner{grid-template-columns:1fr;gap:54px}.proposal-hero__facts{max-width:620px}
-      .section-heading,.proposal-shell.investment-grid,.closing-copy,.support-note,.work-summary{grid-template-columns:160px minmax(0,1fr);gap:42px}
+      .proposal-hero .proposal-shell.proposal-hero__inner{grid-template-columns:1fr!important;gap:54px!important}.proposal-hero__facts{max-width:620px}
+      .section-heading,.proposal-shell.investment-grid,.closing-copy,.support-note,.work-summary,.note-row{grid-template-columns:160px minmax(0,1fr)!important;gap:42px!important}
       .intro-grid{grid-template-columns:1fr}.intro-item,.intro-item+.intro-item{padding:26px 0;border-left:0}.intro-item__num{margin-bottom:20px}
       .approach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.approach-item{min-height:220px;border-bottom:1px solid var(--proposal-line)}.approach-item:nth-child(2){border-right:0;padding-right:0}.approach-item:nth-child(3){padding-left:0}.approach-item:nth-child(3),.approach-item:nth-child(4){border-bottom:0}
       .timeline-row{grid-template-columns:120px 165px minmax(0,1fr)}
@@ -138,13 +142,14 @@
     @media(max-width:760px){
       :root{--fs-display:clamp(30px,8.8vw,36px);--fs-h2:clamp(23px,6.8vw,27px);--section-xl:78px;--section-lg:68px}
       body.proposal-page{font-size:16px}.proposal-shell{width:calc(100% - 32px)!important}.proposal-hero{padding:88px 0 76px}.proposal-hero__desc{font-size:16px}.proposal-fact{grid-template-columns:82px 1fr}
-      .section-heading,.proposal-shell.investment-grid,.closing-copy,.support-note,.work-summary{grid-template-columns:1fr;gap:22px;margin-bottom:42px}
+      .section-heading,.proposal-shell.investment-grid,.closing-copy,.support-note,.work-summary,.note-row{grid-template-columns:1fr!important;gap:22px!important;margin-bottom:42px}
       .issue-row{grid-template-columns:38px 1fr;gap:16px}.issue-row p{grid-column:2}.issue-row h3{font-size:20px}
       .approach-grid,.scope-grid,.investment-notes,.work-grid{grid-template-columns:1fr}
       .approach-item,.approach-item:first-child,.approach-item:last-child,.approach-item:nth-child(2),.approach-item:nth-child(3){padding:24px 0;min-height:190px;border-right:0;border-bottom:1px solid var(--proposal-line)}.approach-item:last-child{border-bottom:0}
       .scope-card{padding:24px 22px;min-height:280px}.scope-card h3{font-size:21px}
       .timeline-row{grid-template-columns:1fr;gap:7px;padding:22px 0}.timeline-row strong{font-size:18px}
       .investment-main .proposal-h2{font-size:24px}.investment-price{align-items:flex-start;flex-direction:column}.investment-price strong{font-size:34px}
+      .payment-note{grid-template-columns:1fr;gap:8px}
       .work-card{grid-template-columns:42px 1fr;min-height:auto;padding:22px 0}.download-inner{align-items:flex-start;flex-direction:column}
     }
     @media print{.site-header,.menu-overlay,.download-area,.site-footer{display:none!important}body.proposal-page{background:#fff}.proposal-section,.proposal-hero{break-inside:avoid-page}.proposal-shell{width:100%!important;max-width:none!important}}
@@ -172,11 +177,13 @@
 
     <section class="proposal-section"><div class="proposal-shell"><div class="section-heading reveal"><p class="proposal-label">05 / PROJECT TIMELINE</p><div class="section-heading__body"><h2 class="proposal-h2">10월 31일까지 핵심 리브랜딩을 구축하고, 이후 6개월간 실제 운영 환경에 안정적으로 정착하도록 지원합니다.</h2></div></div><div class="timeline-list reveal"><article class="timeline-row"><time>SEP · WEEK 01</time><strong>Discovery & Direction</strong><p>기존 브랜드 자산과 버벌 브랜딩 방향을 검토하고, 비주얼 리브랜딩의 핵심 기준과 디자인 방향을 정리합니다.</p></article><article class="timeline-row"><time>SEP · WEEK 02–04</time><strong>Identity & System</strong><p>BI 리뉴얼과 컬러, 타이포그래피, 그래픽 언어를 개발하고 대표 브랜드 접점으로 확장합니다.</p></article><article class="timeline-row"><time>OCT · WEEK 01–04</time><strong>Experience Build</strong><p>패키지, 상세페이지, 공식몰, 출력물 등 주요 접점의 디자인 시스템을 구축하고 최종 가이드로 정리합니다.</p></article><article class="timeline-row"><time>2026.10.31</time><strong>Primary Completion</strong><p>핵심 리브랜딩 결과물과 운영에 필요한 주요 시각 기준을 1차 완료합니다.</p></article><article class="timeline-row"><time>NOV 2026 – APR 2027</time><strong>Application & Stabilization</strong><p>실제 브랜드 운영 과정에서 발생하는 적용 이슈를 검토하고 구축된 시스템의 안정적인 정착을 지원합니다.</p></article></div><div class="support-note reveal"><strong>6 Months<br>Brand Support</strong><p>프로젝트 완료 후 6개월간 리브랜딩의 안정적인 적용을 위한 디자인 운영 지원 및 유지보수를 제공합니다. 기존 구축 시스템을 기반으로 한 경미한 수정·보완과 브랜드 적용 지원을 포함하며, 신규 제품 개발이나 대규모 신규 제작은 별도 협의합니다.</p></div></div></section>
 
-    <section class="proposal-section"><div class="proposal-shell investment-grid"><p class="proposal-label reveal">06 / INVESTMENT</p><div class="investment-main reveal"><h2 class="proposal-h2">MIGUNG365 Visual Rebranding Package</h2><div class="investment-price"><strong>₩15,000,000</strong><span>VAT 별도</span></div><div class="investment-notes"><article><h3>Integrated Project</h3><p>BI부터 패키지, 커머스, 공식몰까지 분리된 단건 작업이 아닌 하나의 리브랜딩 프로젝트로 진행합니다.</p></article><article><h3>Primary Build</h3><p>2026년 10월 31일까지 핵심 브랜드 시스템과 주요 접점의 디자인 구축을 완료합니다.</p></article><article><h3>6 Months Support</h3><p>완료 이후 6개월간 실제 브랜드 운영 환경에서 리뉴얼이 안정적으로 적용되도록 지원합니다.</p></article></div></div></div></section>
+    <section class="proposal-section"><div class="proposal-shell investment-grid"><p class="proposal-label reveal">06 / INVESTMENT</p><div class="investment-main reveal"><h2 class="proposal-h2">MIGUNG365 Visual Rebranding Package</h2><div class="investment-price"><strong>₩15,000,000</strong><span>VAT 별도</span></div><div class="investment-notes"><article><h3>Integrated Project</h3><p>BI부터 패키지, 커머스, 공식몰까지 분리된 단건 작업이 아닌 하나의 리브랜딩 프로젝트로 진행합니다.</p></article><article><h3>Primary Build</h3><p>2026년 10월 31일까지 핵심 브랜드 시스템과 주요 접점의 디자인 구축을 완료합니다.</p></article><article><h3>6 Months Support</h3><p>완료 이후 6개월간 실제 브랜드 운영 환경에서 리뉴얼이 안정적으로 적용되도록 지원합니다.</p></article></div><div class="payment-note"><strong>Payment</strong><p>계약 확정 후 선금 / 잔금 형태로 진행 가능하며, 세부 정산 일정과 지급 조건은 프로젝트 착수 전 상호 협의하여 안내드립니다.</p></div></div></div></section>
 
-    <section class="proposal-section"><div class="proposal-shell"><div class="section-heading reveal"><p class="proposal-label">07 / HOW WE WORK</p><div class="section-heading__body"><h2 class="proposal-h2">디자인 결과물만 전달하는 방식이 아니라, 프로젝트 전체 흐름을 함께 볼 수 있는 협업 환경을 운영합니다.</h2><p>리브랜딩은 짧은 기간에 한 번 결정하고 끝나는 작업이 아니기 때문에, 의사결정과 피드백, 자료와 진행 상황이 흩어지지 않도록 별도의 커뮤니케이션 구조를 함께 제공합니다.</p></div></div><div class="work-grid"><article class="work-card reveal"><span class="work-card__no">01</span><div><h3>전용 카카오톡 커뮤니케이션</h3><p>프로젝트 담당자와 빠르게 의견을 주고받을 수 있도록 전용 커뮤니케이션 채널을 운영합니다. 간단한 확인과 실무 피드백이 메일에 쌓이지 않도록 속도감 있게 대응합니다.</p><strong>KAKAO TALK / DIRECT COMMUNICATION</strong></div></article><article class="work-card reveal"><span class="work-card__no">02</span><div><h3>Notion 프로젝트 페이지</h3><p>일정, 주요 결정사항, 요청 자료, 진행 중인 업무와 완료된 결과물을 하나의 전용 페이지에 정리합니다. 프로젝트가 길어져도 현재 상황을 쉽게 확인할 수 있습니다.</p><strong>NOTION / PROJECT HUB</strong></div></article><article class="work-card reveal"><span class="work-card__no">03</span><div><h3>진행 상황과 파일 아카이브</h3><p>시안과 피드백의 흐름, 최종 확정 내용과 전달 파일을 단계별로 기록합니다. 담당자가 바뀌거나 이후 운영 단계로 넘어가도 프로젝트의 맥락이 유지되도록 관리합니다.</p><strong>PROGRESS / ARCHIVE</strong></div></article><article class="work-card reveal"><span class="work-card__no">04</span><div><h3>완료 이후까지 이어지는 관리</h3><p>10월 31일 1차 구축 이후에도 실제 패키지, 공식몰, 운영 디자인에 적용되는 과정을 함께 확인합니다. 브랜드 시스템이 문서에 머무르지 않고 현장에서 작동하도록 6개월간 지원합니다.</p><strong>APPLICATION / 6 MONTHS SUPPORT</strong></div></article></div><div class="work-summary reveal"><strong>One Project,<br>One Working System</strong><p>카카오톡에서는 빠른 커뮤니케이션을, Notion에서는 진행 상황과 자료를, 최종 가이드에서는 브랜드의 기준을 관리합니다. 여러 채널을 사용하는 것이 아니라 각 채널의 역할을 명확히 나눠 프로젝트가 복잡해질수록 오히려 더 쉽게 확인할 수 있도록 운영합니다.</p></div></div></section>
+    <section class="proposal-section"><div class="proposal-shell"><div class="section-heading reveal"><p class="proposal-label">07 / HOW WE WORK</p><div class="section-heading__body"><h2 class="proposal-h2">디자인 결과물만 전달하는 방식이 아니라, 프로젝트 전체 흐름을 함께 볼 수 있는 협업 환경을 운영합니다.</h2><p>리브랜딩은 짧은 기간에 한 번 결정하고 끝나는 작업이 아니기 때문에, 의사결정과 피드백, 자료와 진행 상황이 흩어지지 않도록 커뮤니케이션과 기록 체계를 함께 운영합니다.</p></div></div><div class="work-grid"><article class="work-card reveal"><span class="work-card__no">01</span><div><h3>카카오톡 · 메일 소통</h3><p>프로젝트 담당자와 빠르게 의견을 주고받을 수 있도록 카카오톡과 메일을 함께 운영합니다. 간단한 확인과 실무 피드백은 빠르게, 공유가 필요한 내용은 정리된 형태로 전달해 커뮤니케이션이 누적되지 않도록 관리합니다.</p><strong>KAKAO TALK / E-MAIL COMMUNICATION</strong></div></article><article class="work-card reveal"><span class="work-card__no">02</span><div><h3>Notion 프로젝트 페이지</h3><p>일정, 주요 결정사항, 요청 자료, 진행 중인 업무와 완료된 결과물을 하나의 Notion 프로젝트 페이지에 정리합니다. 프로젝트가 길어지더라도 현재 상황과 진행 흐름을 한눈에 확인할 수 있도록 운영합니다.</p><strong>NOTION / PROJECT HUB</strong></div></article><article class="work-card reveal"><span class="work-card__no">03</span><div><h3>진행 상황과 파일 아카이브</h3><p>시안과 피드백 흐름, 최종 확정 내용과 전달 파일을 단계별로 기록하고 정리합니다. 담당자가 바뀌거나 이후 운영 단계로 넘어가더라도 프로젝트의 맥락과 기준이 유지될 수 있도록 관리합니다.</p><strong>PROGRESS / ARCHIVE</strong></div></article><article class="work-card reveal"><span class="work-card__no">04</span><div><h3>완료 이후까지 이어지는 관리</h3><p>1차 구축 완료 이후에도 실제 패키지, 공식몰, 운영 디자인에 적용되는 과정을 함께 확인합니다. 브랜드 시스템이 문서에만 머무르지 않고 실제 운영 환경에서 안정적으로 작동할 수 있도록 지원합니다.</p><strong>APPLICATION / POST-LAUNCH SUPPORT</strong></div></article></div><div class="work-summary reveal"><strong>One Project,<br>One Working System</strong><p>카카오톡과 메일에서는 빠른 커뮤니케이션을, Notion에서는 진행 상황과 요청 자료를, 최종 가이드에서는 브랜드의 기준을 관리합니다. 여러 채널을 무분별하게 사용하는 것이 아니라 각 채널의 역할을 명확히 나누어 프로젝트가 복잡해질수록 오히려 더 쉽게 확인할 수 있도록 운영합니다.</p></div></div></section>
 
-    <section class="proposal-section proposal-section--compact"><div class="proposal-shell closing-copy reveal"><p class="proposal-label">08 / THE NEXT 10 YEARS</p><div><h2>미궁365가 지난 10년간 장 건강의 기준을 만들어왔다면, 다음 10년은 더 넓은 웰니스의 기준을 만드는 과정이라고 생각합니다.</h2><p>NINEWORKS는 이번 리브랜딩이 하나의 로고 교체에서 끝나지 않고 패키지, 콘텐츠, 공식몰과 실제 브랜드 운영까지 일관된 경험으로 이어질 수 있도록 함께하겠습니다.</p></div></div></section>
+    <section class="proposal-section"><div class="proposal-shell"><div class="section-heading reveal"><p class="proposal-label">08 / ADDITIONAL NOTES</p><div class="section-heading__body"><h2 class="proposal-h2">프로젝트 확정 이후 실제 진행 환경에 맞춰 미팅과 세부 일정을 함께 조율합니다.</h2></div></div><div class="note-list reveal"><article class="note-row"><h3>대면 미팅 및 방문 가능</h3><p>대면 미팅이 필요한 경우 사전 협의 후 준비하여 방문 가능합니다. 프로젝트 진행 중 오프라인 미팅이나 중간 공유 미팅이 필요한 경우 상황에 맞게 일정을 조율하여 대응합니다.</p></article><article class="note-row"><h3>상세 타임라인 추후 안내</h3><p>현재 제안서에는 전체적인 진행 구조와 주요 마일스톤을 기준으로 정리했습니다. 프로젝트 확정 이후 미궁365의 내부 일정과 우선순위를 반영하여 세부 타임라인 및 상세 일정을 별도로 설정해 안내드립니다.</p></article></div></div></section>
+
+    <section class="proposal-section proposal-section--compact"><div class="proposal-shell closing-copy reveal"><p class="proposal-label">09 / THE NEXT 10 YEARS</p><div><h2>미궁365가 지난 10년간 장 건강의 기준을 만들어왔다면, 다음 10년은 더 넓은 웰니스의 기준을 만드는 과정이라고 생각합니다.</h2><p>NINEWORKS는 이번 리브랜딩이 하나의 로고 교체에서 끝나지 않고 패키지, 콘텐츠, 공식몰과 실제 브랜드 운영까지 일관된 경험으로 이어질 수 있도록 함께하겠습니다.</p><p class="closing-thanks">문의 주셔서 감사합니다. 미궁365의 다음 10년을 준비하는 리브랜딩 여정에 나인웍스가 의미 있는 파트너로 함께할 수 있기를 기대합니다.</p></div></div></section>
 
     <section class="download-area"><div class="proposal-shell download-inner"><div class="download-copy"><p class="proposal-label">PROPOSAL DOCUMENT</p><p>필요 시 현재 제안서를 PDF로 저장하거나 인쇄할 수 있습니다. · Updated 2026.08.24</p></div><button class="download-button" type="button" onclick="window.print()">PDF DOWNLOAD / PRINT ↗</button></div></section>
   </main>
