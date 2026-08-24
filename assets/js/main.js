@@ -30,6 +30,7 @@
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
   loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-4');
+  loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
@@ -71,7 +72,6 @@
       <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <a href="about.html" data-nav-key="about">ABOUT</a>
-        <a href="recruit.html" data-nav-key="recruit">RECRUIT</a>
         <a href="branding.html" data-nav-key="branding">BRANDING</a>
         <a href="project.html" data-nav-key="project">PROJECTS</a>
         <div class="site-nav-item">
@@ -98,6 +98,7 @@
             <a href="package-sample.html"><span>패키지 샘플 제작</span><small>SAMPLE</small></a>
           </div>
         </div>
+        <a href="recruit.html" data-nav-key="recruit">RECRUIT</a>
         <a href="contact.html" data-nav-key="contact">CONTACT</a>
       </nav>
       <a class="site-header__action" href="contact.html">START A PROJECT <span>↗</span></a>
@@ -108,7 +109,6 @@
     overlay.innerHTML = `
       <nav class="menu-nav" aria-label="모바일 주요 메뉴">
         <a class="menu-nav__main" href="about.html">ABOUT</a>
-        <a class="menu-nav__main" href="recruit.html">RECRUIT</a>
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
         <a class="menu-nav__main" href="project.html">PROJECTS</a>
         <div class="menu-nav__group">
@@ -134,6 +134,7 @@
             <a href="package-sample.html">패키지 샘플 제작</a>
           </div>
         </div>
+        <a class="menu-nav__main" href="recruit.html">RECRUIT</a>
         <a class="menu-nav__main" href="contact.html">CONTACT</a>
       </nav>
       <div class="menu-footer">
@@ -215,7 +216,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="recruit.html">Recruit</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
