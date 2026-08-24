@@ -14,12 +14,16 @@ let partnerUnsub = null;
 let inquiryUnsub = null;
 let observer = null;
 let syncing = false;
+let started = false;
+let uiBound = false;
+let decorateQueued = false;
+let workspaceSyncTimer = null;
 
 const normalizeEmail = (value = '') => String(value || '').trim().toLowerCase();
 const partnerKey = (email = '') => encodeURIComponent(normalizeEmail(email));
 const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  .replace(/\"/g, '&quot;').replace(/'/g, '&#039;');
 
 const loadStyle = () => {
   if (document.querySelector('link[data-admin-partners-style]')) return;
@@ -69,13 +73,11 @@ const injectAdminUI = () => {
 
 const seedPartners = async () => {
   for (const item of DEFAULT_PARTNERS) {
-    const ref = doc(db, 'partners', partnerKey(item.email));
-    await setDoc(ref, {
+    await setDoc(doc(db, 'partners', partnerKey(item.email)), {
       name: item.name,
       email: normalizeEmail(item.email),
       status: item.status,
-      category: item.category,
-      updatedAt: serverTimestamp()
+      category: item.category
     }, { merge: true });
   }
 };
@@ -91,7 +93,7 @@ const renderPartners = () => {
     box.innerHTML = '<div class="admin-partner-empty">등록된 파트너가 없습니다.</div>';
     return;
   }
-  box.innerHTML = partners.map((partner) => {
+  const html = partners.map((partner) => {
     const count = assignedCount(partner.email);
     return `<div class="admin-partner-row" data-partner-row="${escapeHTML(partner.email)}">
       <strong>${escapeHTML(partner.name || '이름 미등록')}</strong>
@@ -104,6 +106,10 @@ const renderPartners = () => {
       <span class="admin-partner-workspace"><a href="parters/" target="_blank" rel="noopener">WORKSPACE ↗</a></span>
     </div>`;
   }).join('');
+  if (box.dataset.renderedHtml !== html) {
+    box.innerHTML = html;
+    box.dataset.renderedHtml = html;
+  }
 };
 
 const partnerOptions = (selected = '') => {
@@ -117,20 +123,37 @@ const partnerOptions = (selected = '') => {
 const inquiryById = (id) => inquiries.find((item) => item.id === id);
 
 const decorateInquiryRows = () => {
+  decorateQueued = false;
+  const partnerSignature = partners
+    .filter((item) => item.status !== 'inactive')
+    .map((item) => `${normalizeEmail(item.email)}:${item.name || ''}`)
+    .join('|');
+
   document.querySelectorAll('[data-inquiry-list] .admin-inquiry-row').forEach((row) => {
     const statusSelect = row.querySelector('[data-inquiry-status]');
     if (!statusSelect) return;
     const id = statusSelect.dataset.inquiryStatus;
     const item = inquiryById(id);
     if (!item) return;
+
+    const signature = `${id}|${normalizeEmail(item.assignedPartnerEmail)}|${partnerSignature}`;
     let holder = row.querySelector('.admin-partner-assignment');
+    if (holder?.dataset.signature === signature) return;
+
     if (!holder) {
       holder = document.createElement('div');
       holder.className = 'admin-partner-assignment';
       row.querySelector('.admin-inquiry-row__top')?.appendChild(holder);
     }
+    holder.dataset.signature = signature;
     holder.innerHTML = `<label>PARTNER</label><select data-partner-assign="${escapeHTML(id)}" class="${item.assignedPartnerEmail ? 'is-assigned' : ''}">${partnerOptions(item.assignedPartnerEmail)}</select>`;
   });
+};
+
+const queueDecorate = () => {
+  if (decorateQueued) return;
+  decorateQueued = true;
+  requestAnimationFrame(decorateInquiryRows);
 };
 
 const sanitizedAssignment = (item) => ({
@@ -169,10 +192,19 @@ const syncPartnerWorkspaces = async () => {
   }
 };
 
+const queueWorkspaceSync = () => {
+  window.clearTimeout(workspaceSyncTimer);
+  workspaceSyncTimer = window.setTimeout(syncPartnerWorkspaces, 180);
+};
+
 const bindUI = () => {
-  document.querySelector('[data-partner-create-form]')?.addEventListener('submit', async (event) => {
+  if (uiBound) return;
+  uiBound = true;
+
+  document.addEventListener('submit', async (event) => {
+    const form = event.target.closest('[data-partner-create-form]');
+    if (!form) return;
     event.preventDefault();
-    const form = event.currentTarget;
     if (!form.reportValidity()) return;
     const fd = new FormData(form);
     const name = String(fd.get('name') || '').trim();
@@ -231,30 +263,44 @@ const bindUI = () => {
 };
 
 const start = async () => {
+  if (started) return;
+  started = true;
   loadStyle();
   injectAdminUI();
   bindUI();
+
   try { await seedPartners(); }
   catch (error) { console.error('[NINEWORKS Admin Partners] seed failed', error); }
 
-  partnerUnsub?.(); inquiryUnsub?.(); observer?.disconnect();
+  partnerUnsub?.();
+  inquiryUnsub?.();
+  observer?.disconnect();
+
   partnerUnsub = onSnapshot(collection(db, 'partners'), (snapshot) => {
     partners = snapshot.docs.map((snap) => ({ id: snap.id, ...snap.data() }))
       .sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ko'));
     renderPartners();
-    decorateInquiryRows();
-    syncPartnerWorkspaces();
-  });
+    queueDecorate();
+    queueWorkspaceSync();
+  }, (error) => console.error('[NINEWORKS Admin Partners] partners stream failed', error));
+
   inquiryUnsub = onSnapshot(collection(db, 'inquiries'), (snapshot) => {
     inquiries = snapshot.docs.map((snap) => ({ id: snap.id, ...snap.data() }));
     renderPartners();
-    decorateInquiryRows();
-    syncPartnerWorkspaces();
-  });
+    queueDecorate();
+    queueWorkspaceSync();
+  }, (error) => console.error('[NINEWORKS Admin Partners] inquiries stream failed', error));
+
   const list = document.querySelector('[data-inquiry-list]');
   if (list) {
-    observer = new MutationObserver(() => decorateInquiryRows());
-    observer.observe(list, { childList: true, subtree: true });
+    observer = new MutationObserver((mutations) => {
+      const needsDecoration = mutations.some((mutation) => Array.from(mutation.addedNodes).some((node) => {
+        if (!(node instanceof HTMLElement)) return false;
+        return node.matches?.('.admin-inquiry-row') || node.querySelector?.('.admin-inquiry-row');
+      }));
+      if (needsDecoration) queueDecorate();
+    });
+    observer.observe(list, { childList: true });
   }
 };
 
