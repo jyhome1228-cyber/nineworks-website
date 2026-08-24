@@ -11,108 +11,48 @@
 <body class="admin-page">
   <div class="admin-shell">
     <aside class="admin-sidebar">
-      <a class="admin-brand" href="admin.html" aria-label="나인웍스 관리자 홈">
-        <span>NINEWORKS</span><small>ADMIN</small>
-      </a>
+      <a class="admin-brand" href="admin.html" aria-label="나인웍스 관리자 홈"><span>NINEWORKS</span><small>ADMIN</small></a>
       <nav class="admin-nav" aria-label="관리자 메뉴">
         <button class="admin-nav__item is-active" type="button" data-admin-tab="dashboard"><span>01</span>Dashboard</button>
         <button class="admin-nav__item" type="button" data-admin-tab="inquiry"><span>02</span>Inquiries</button>
         <button class="admin-nav__item" type="button" data-admin-tab="members"><span>03</span>Members</button>
         <button class="admin-nav__item" type="button" data-admin-tab="visitors"><span>04</span>Visitors</button>
       </nav>
-      <div class="admin-sidebar__bottom">
-        <a href="index.html" target="_blank" rel="noopener">VIEW WEBSITE <span>↗</span></a>
-        <p>Members · Traffic · Inquiry<br>for NINEWORKS</p>
-      </div>
+      <div class="admin-sidebar__bottom"><a href="index.html" target="_blank" rel="noopener">VIEW WEBSITE <span>↗</span></a><p>Members · Traffic · Inquiry<br>for NINEWORKS</p></div>
     </aside>
 
     <main class="admin-main">
-      <header class="admin-topbar">
-        <div><p class="admin-kicker">NINEWORKS / SITE OPERATIONS</p><h1 data-admin-title>Dashboard</h1></div>
-        <div class="admin-topbar__meta"><span data-admin-date></span><span class="admin-status"><i></i> AUTH CHECK</span></div>
-      </header>
+      <header class="admin-topbar"><div><p class="admin-kicker">NINEWORKS / SITE OPERATIONS</p><h1 data-admin-title>Dashboard</h1></div><div class="admin-topbar__meta"><span data-admin-date></span><span class="admin-status"><i></i> AUTH CHECK</span></div></header>
 
       <section class="admin-panel is-active" data-admin-panel="dashboard">
-        <div class="admin-stat-grid">
-          <article class="admin-stat"><span>Today Visitors</span><strong data-stat="today-visitors">0</strong><p>오늘 방문한 고유 브라우저</p></article>
-          <article class="admin-stat"><span>7 Days Visitors</span><strong data-stat="seven-visitors">0</strong><p>최근 7일 방문자 합계</p></article>
-          <article class="admin-stat"><span>New Inquiries</span><strong data-stat="new-inquiries">0</strong><p>아직 확인하지 않은 문의</p></article>
-          <article class="admin-stat"><span>Total Inquiries</span><strong data-stat="total-inquiries">0</strong><p>전체 누적 문의</p></article>
-        </div>
-
-        <section class="admin-block">
-          <div class="admin-block__head"><div><span class="admin-label">Inquiry Types</span><h3>문의 유형별 현황</h3></div><button type="button" data-jump-inquiries>전체 문의 보기 ↗</button></div>
-          <div class="admin-category-grid" data-dashboard-categories></div>
-        </section>
-
-        <section class="admin-block">
-          <div class="admin-block__head"><div><span class="admin-label">Latest</span><h3>최근 문의</h3></div><span data-dashboard-recent-count>0 ITEMS</span></div>
-          <div class="admin-inquiry-list" data-dashboard-recent></div>
-        </section>
+        <div class="admin-stat-grid"><article class="admin-stat"><span>Today Visitors</span><strong data-stat="today-visitors">0</strong><p>오늘 방문한 고유 브라우저</p></article><article class="admin-stat"><span>7 Days Visitors</span><strong data-stat="seven-visitors">0</strong><p>최근 7일 방문자 합계</p></article><article class="admin-stat"><span>New Inquiries</span><strong data-stat="new-inquiries">0</strong><p>아직 확인하지 않은 문의</p></article><article class="admin-stat"><span>Total Inquiries</span><strong data-stat="total-inquiries">0</strong><p>전체 누적 문의</p></article></div>
+        <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Inquiry Types</span><h3>문의 유형별 현황</h3></div><button type="button" data-jump-inquiries>전체 문의 보기 ↗</button></div><div class="admin-category-grid" data-dashboard-categories></div></section>
+        <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Latest</span><h3>최근 문의</h3></div><span data-dashboard-recent-count>0 ITEMS</span></div><div class="admin-inquiry-list" data-dashboard-recent></div></section>
       </section>
 
       <section class="admin-panel" data-admin-panel="inquiry">
-        <div class="admin-section-head">
-          <div><span class="admin-label">Inquiry Management</span><h2>Inquiries</h2><p>사이트의 모든 문의를 유형과 진행 상태로 나눠 확인합니다.</p></div>
-        </div>
-        <div class="admin-status-grid">
-          <button class="admin-status-card" type="button" data-status-summary="new"><span>NEW</span><strong>0</strong><p>확인 전</p></button>
-          <button class="admin-status-card" type="button" data-status-summary="open"><span>OPEN</span><strong>0</strong><p>상담 진행</p></button>
-          <button class="admin-status-card" type="button" data-status-summary="done"><span>DONE</span><strong>0</strong><p>완료 / 보관</p></button>
-        </div>
-        <div class="admin-filter-panel">
-          <div class="admin-filter-row"><span class="admin-filter-label">TYPE</span><div class="admin-filter-buttons" data-inquiry-service-filters></div></div>
-          <div class="admin-filter-row"><span class="admin-filter-label">STATUS</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-inquiry-status-filter="all">전체</button><button type="button" data-inquiry-status-filter="new">신규</button><button type="button" data-inquiry-status-filter="open">진행</button><button type="button" data-inquiry-status-filter="done">완료</button></div></div>
-          <div class="admin-search-row"><input type="search" placeholder="회사명, 담당자, 이메일, 내용 검색" data-inquiry-search><span data-inquiry-filter-total>0 ITEMS</span></div>
-        </div>
+        <div class="admin-section-head"><div><span class="admin-label">Inquiry Management</span><h2>Inquiries</h2><p>사이트의 모든 문의를 유형과 진행 상태로 나눠 확인합니다.</p></div></div>
+        <div class="admin-status-grid"><button class="admin-status-card" type="button" data-status-summary="new"><span>NEW</span><strong>0</strong><p>확인 전</p></button><button class="admin-status-card" type="button" data-status-summary="open"><span>OPEN</span><strong>0</strong><p>상담 진행</p></button><button class="admin-status-card" type="button" data-status-summary="done"><span>DONE</span><strong>0</strong><p>완료 / 보관</p></button></div>
+        <div class="admin-filter-panel"><div class="admin-filter-row"><span class="admin-filter-label">TYPE</span><div class="admin-filter-buttons" data-inquiry-service-filters></div></div><div class="admin-filter-row"><span class="admin-filter-label">STATUS</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-inquiry-status-filter="all">전체</button><button type="button" data-inquiry-status-filter="new">신규</button><button type="button" data-inquiry-status-filter="open">진행</button><button type="button" data-inquiry-status-filter="done">완료</button></div></div><div class="admin-search-row"><input type="search" placeholder="회사명, 담당자, 이메일, 내용 검색" data-inquiry-search><span data-inquiry-filter-total>0 ITEMS</span></div></div>
         <div class="admin-inquiry-list" data-inquiry-list></div>
       </section>
 
       <section class="admin-panel" data-admin-panel="members">
-        <div class="admin-section-head admin-members-head">
-          <div><span class="admin-label">Member Management</span><h2>Members</h2><p>가입한 Client, Creator, Partner를 확인하고 상태를 관리합니다. Partner 승인과 Client 계정의 내부 클라이언트 연결도 이곳에서 처리합니다.</p></div>
-          <a href="register.html" target="_blank" rel="noopener">VIEW REGISTER PAGE ↗</a>
-        </div>
-
-        <div class="admin-member-stat-grid">
-          <button class="admin-member-stat" type="button" data-member-summary="all"><span>TOTAL</span><strong data-member-stat="total">0</strong><p>전체 회원</p></button>
-          <button class="admin-member-stat" type="button" data-member-summary="client"><span>CLIENT</span><strong data-member-stat="client">0</strong><p>클라이언트</p></button>
-          <button class="admin-member-stat" type="button" data-member-summary="creator"><span>CREATOR</span><strong data-member-stat="creator">0</strong><p>학생 · 디자이너 · 크리에이터</p></button>
-          <button class="admin-member-stat" type="button" data-member-summary="partner"><span>PARTNER</span><strong data-member-stat="partner">0</strong><p>협력 파트너</p></button>
-          <button class="admin-member-stat" type="button" data-member-summary="pending"><span>PENDING</span><strong data-member-stat="pending">0</strong><p>Partner 승인 대기</p></button>
-        </div>
-
-        <div class="admin-filter-panel admin-member-filter-panel">
-          <div class="admin-filter-row"><span class="admin-filter-label">TYPE</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-member-role-filter="all">전체</button><button type="button" data-member-role-filter="client">Client</button><button type="button" data-member-role-filter="creator">Creator</button><button type="button" data-member-role-filter="partner">Partner</button></div></div>
-          <div class="admin-filter-row"><span class="admin-filter-label">STATUS</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-member-status-filter="all">전체</button><button type="button" data-member-status-filter="active">Active</button><button type="button" data-member-status-filter="pending">Pending</button><button type="button" data-member-status-filter="approved">Approved</button><button type="button" data-member-status-filter="blocked">Blocked</button></div></div>
-          <div class="admin-search-row"><input type="search" placeholder="이름, 이메일, 회사·학교, 분야 검색" data-member-search><span data-member-filter-total>0 MEMBERS</span></div>
-        </div>
-
-        <div class="admin-member-note"><span>PARTNER</span><p>Partner는 가입 시 <b>PENDING</b>으로 등록됩니다. 실제 협력사 확인 후 <b>APPROVED</b>로 변경하세요.</p><span>CLIENT</span><p>Client는 상세 영역에서 내부 <b>clients</b> 데이터와 연결할 수 있습니다.</p></div>
-        <div class="admin-member-list" data-member-list><div class="admin-empty-live">회원 데이터를 불러오는 중입니다.</div></div>
+        <div class="admin-section-head admin-members-head"><div><span class="admin-label">Member Management</span><h2>Members</h2><p>가입한 Client, Creator, Partner를 확인하고 상태를 관리합니다. Partner 승인과 Client 계정의 내부 클라이언트 연결도 이곳에서 처리합니다.</p></div><a href="register.html" target="_blank" rel="noopener">VIEW REGISTER PAGE ↗</a></div>
+        <div class="admin-member-stat-grid"><button class="admin-member-stat" type="button" data-member-summary="all"><span>TOTAL</span><strong data-member-stat="total">0</strong><p>전체 회원</p></button><button class="admin-member-stat" type="button" data-member-summary="client"><span>CLIENT</span><strong data-member-stat="client">0</strong><p>클라이언트</p></button><button class="admin-member-stat" type="button" data-member-summary="creator"><span>CREATOR</span><strong data-member-stat="creator">0</strong><p>학생 · 디자이너 · 크리에이터</p></button><button class="admin-member-stat" type="button" data-member-summary="partner"><span>PARTNER</span><strong data-member-stat="partner">0</strong><p>협력 파트너</p></button><button class="admin-member-stat" type="button" data-member-summary="pending"><span>PENDING</span><strong data-member-stat="pending">0</strong><p>Partner 승인 대기</p></button></div>
+        <div class="admin-filter-panel admin-member-filter-panel"><div class="admin-filter-row"><span class="admin-filter-label">TYPE</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-member-role-filter="all">전체</button><button type="button" data-member-role-filter="client">Client</button><button type="button" data-member-role-filter="creator">Creator</button><button type="button" data-member-role-filter="partner">Partner</button></div></div><div class="admin-filter-row"><span class="admin-filter-label">STATUS</span><div class="admin-filter-buttons"><button class="is-active" type="button" data-member-status-filter="all">전체</button><button type="button" data-member-status-filter="active">Active</button><button type="button" data-member-status-filter="pending">Pending</button><button type="button" data-member-status-filter="approved">Approved</button><button type="button" data-member-status-filter="blocked">Blocked</button></div></div><div class="admin-search-row"><input type="search" placeholder="이름, 이메일, 회사·학교, 분야 검색" data-member-search><span data-member-filter-total>0 MEMBERS</span></div></div>
+        <div class="admin-member-note"><span>PARTNER</span><p>Partner는 가입 시 <b>PENDING</b>으로 등록됩니다. 실제 협력사 확인 후 <b>APPROVED</b>로 변경하세요.</p><span>CLIENT</span><p>Client는 상세 영역에서 내부 <b>clients</b> 데이터와 연결할 수 있습니다.</p></div><div class="admin-member-list" data-member-list><div class="admin-empty-live">회원 데이터를 불러오는 중입니다.</div></div>
       </section>
 
       <section class="admin-panel" data-admin-panel="visitors">
-        <div class="admin-section-head">
-          <div><span class="admin-label">Traffic</span><h2>Visitors</h2><p>브라우저 기준 일별 고유 방문자와 유입 페이지를 확인합니다.</p></div>
-        </div>
-        <div class="admin-stat-grid admin-stat-grid--3">
-          <article class="admin-stat"><span>Today</span><strong data-visitor-stat="today">0</strong><p>오늘</p></article>
-          <article class="admin-stat"><span>7 Days</span><strong data-visitor-stat="seven">0</strong><p>최근 7일</p></article>
-          <article class="admin-stat"><span>30 Days</span><strong data-visitor-stat="thirty">0</strong><p>최근 30일</p></article>
-        </div>
-        <section class="admin-block">
-          <div class="admin-block__head"><div><span class="admin-label">Daily</span><h3>최근 30일 방문자</h3></div><span>UNIQUE BROWSER / KST</span></div>
-          <div class="admin-visitor-days" data-visitor-days></div>
-        </section>
-        <div class="admin-insight-grid">
-          <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Entry Pages</span><h3>첫 방문 페이지</h3></div></div><div class="admin-ranking" data-visitor-paths></div></section>
-          <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Referrer</span><h3>유입 출처</h3></div></div><div class="admin-ranking" data-visitor-referrers></div></section>
-        </div>
+        <div class="admin-section-head"><div><span class="admin-label">Traffic</span><h2>Visitors</h2><p>브라우저 기준 일별 고유 방문자와 유입 페이지를 확인합니다.</p></div></div>
+        <div class="admin-stat-grid admin-stat-grid--3"><article class="admin-stat"><span>Today</span><strong data-visitor-stat="today">0</strong><p>오늘</p></article><article class="admin-stat"><span>7 Days</span><strong data-visitor-stat="seven">0</strong><p>최근 7일</p></article><article class="admin-stat"><span>30 Days</span><strong data-visitor-stat="thirty">0</strong><p>최근 30일</p></article></div>
+        <section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Daily</span><h3>최근 30일 방문자</h3></div><span>UNIQUE BROWSER / KST</span></div><div class="admin-visitor-days" data-visitor-days></div></section>
+        <div class="admin-insight-grid"><section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Entry Pages</span><h3>첫 방문 페이지</h3></div></div><div class="admin-ranking" data-visitor-paths></div></section><section class="admin-block"><div class="admin-block__head"><div><span class="admin-label">Referrer</span><h3>유입 출처</h3></div></div><div class="admin-ranking" data-visitor-referrers></div></section></div>
       </section>
     </main>
   </div>
-  <script src="assets/js/admin.js?v=20260824-partners3"></script>
+  <script src="assets/js/admin.js?v=20260824-partners5"></script>
   <script type="module" src="assets/js/admin-members.js?v=20260823-1"></script>
 </body>
 </html>
