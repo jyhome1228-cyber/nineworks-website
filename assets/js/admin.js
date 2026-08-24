@@ -42,7 +42,7 @@
     if (status) status.innerHTML = '<i></i> FIREBASE LOAD ERROR';
   });
 
-  import('./admin-partner-assignment-lite.js?v=20260824-3').catch((error) => {
+  import('./admin-partner-assignment-lite.js?v=20260824-4').catch((error) => {
     console.error('[NINEWORKS Admin] Partner assignment load failed', error);
   });
 })();
