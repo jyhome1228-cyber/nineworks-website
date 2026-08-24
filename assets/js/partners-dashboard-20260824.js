@@ -20,6 +20,7 @@
   let currentEmail = '';
   let currentPartner = null;
   let currentProjects = [];
+  let currentPaymentType = 'freelancer';
 
   const normalizeEmail = (value = '') => String(value || '').trim().toLowerCase();
   const isEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -29,12 +30,8 @@
   const money = (value = 0) => `${Math.round(Number(value || 0)).toLocaleString('ko-KR')}원`;
   const normalizeStage = (value = '') => value === 'active' ? 'active' : 'preliminary';
   const normalizeAmount = (value = 0) => Math.max(0, Number(value || 0));
-  const netAfterTax = (value = 0) => Math.max(0, Math.round(normalizeAmount(value) * 0.967));
-  const splitNet = (value = 0) => {
-    const net = netAfterTax(value);
-    const advance = Math.round(net * 0.5);
-    return { net, advance, balance: net - advance };
-  };
+  const normalizePaymentType = (value = '') => value === 'business' ? 'business' : 'freelancer';
+  const paymentTypeStorageKey = (email = '') => `nw_partner_payment_type_${normalizeEmail(email)}`;
   const cleanSummary = (value = '') => String(value || '')
     .replace(/[■◼▪●]/g, '·')
     .replace(/\s+/g, ' ')
@@ -46,6 +43,40 @@
       const url = new URL(raw);
       return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
     } catch { return ''; }
+  };
+
+  const settlementFor = (value = 0, paymentType = currentPaymentType) => {
+    const base = normalizeAmount(value);
+    const type = normalizePaymentType(paymentType);
+    if (type === 'business') {
+      const vat = Math.round(base * 0.1);
+      const total = base + vat;
+      const supplyAdvance = Math.round(base * 0.5);
+      const supplyBalance = base - supplyAdvance;
+      const advanceVat = Math.round(supplyAdvance * 0.1);
+      const balanceVat = vat - advanceVat;
+      return {
+        type,
+        base,
+        total,
+        advance: supplyAdvance + advanceVat,
+        balance: supplyBalance + balanceVat,
+        vat,
+        withholding: 0
+      };
+    }
+    const withholding = Math.round(base * 0.033);
+    const total = Math.max(0, base - withholding);
+    const advance = Math.round(total * 0.5);
+    return {
+      type,
+      base,
+      total,
+      advance,
+      balance: total - advance,
+      vat: 0,
+      withholding
+    };
   };
 
   const getFirebase = () => {
@@ -125,6 +156,38 @@
   const statusLabel = (status = 'new') => status === 'done' ? 'DONE' : status === 'open' ? 'OPEN' : 'NEW';
   const stageLabel = (stage) => normalizeStage(stage) === 'active' ? '진행' : '예비';
 
+  const updatePaymentTypeUI = () => {
+    bankForm?.querySelectorAll('input[name="paymentType"]').forEach((input) => {
+      input.checked = input.value === currentPaymentType;
+    });
+    const copy = document.querySelector('[data-payment-type-copy]');
+    const guide = document.querySelector('[data-payment-guide]');
+    const policy = document.querySelector('[data-account-policy]');
+    const advanceNote = document.querySelector('[data-account-advance-note]');
+    const balanceNote = document.querySelector('[data-account-balance-note]');
+    if (currentPaymentType === 'business') {
+      if (copy) copy.textContent = '사업자는 공급가액에 부가세 10%를 더해 지급합니다.';
+      if (guide) guide.innerHTML = '<strong>사업자</strong> · 공급가액 기준 선금 50%와 잔금 50% 각각에 VAT 10%를 더해 지급합니다. 세금계산서는 전체 프로젝트 금액 기준으로 1회 발행해 주세요.';
+      if (policy) policy.innerHTML = '<strong>정산 안내</strong> · 예비 단계 금액은 아직 지급 확정 금액이 아닙니다. 진행 단계로 전환되면 공급가액에 VAT 10%를 더한 금액이 본 정산금액으로 합산되며, 선금·잔금 각각 공급가액 50% + VAT 10% 기준으로 표시합니다. 세금계산서는 전체 프로젝트 금액 기준 1회 발행합니다.';
+      if (advanceNote) advanceNote.textContent = '공급가액 50% + VAT 10%';
+      if (balanceNote) balanceNote.textContent = '공급가액 50% + VAT 10%';
+    } else {
+      if (copy) copy.textContent = '프리랜서는 지정 금액에서 3.3% 원천징수 후 지급됩니다.';
+      if (guide) guide.innerHTML = '<strong>프리랜서</strong> · 지정 금액에서 3.3%를 차감한 뒤 예상 지급액을 선금 50% / 잔금 50%로 나누어 안내합니다.';
+      if (policy) policy.innerHTML = '<strong>정산 안내</strong> · 예비 단계 금액은 아직 지급 확정 금액이 아닙니다. 진행 단계로 전환되면 지정 금액에서 원천징수 3.3%를 차감한 금액이 본 정산금액으로 합산되고, 선금 50% / 잔금 50%로 나누어 표시합니다.';
+      if (advanceNote) advanceNote.textContent = '3.3% 차감 후 50%';
+      if (balanceNote) balanceNote.textContent = '3.3% 차감 후 50%';
+    }
+  };
+
+  const setPaymentType = (value, persist = true) => {
+    currentPaymentType = normalizePaymentType(value);
+    if (persist && currentEmail) localStorage.setItem(paymentTypeStorageKey(currentEmail), currentPaymentType);
+    updatePaymentTypeUI();
+    renderStats(currentProjects);
+    renderAccount(currentProjects);
+  };
+
   const normalizeProjects = (workspace = {}) => {
     const assignments = Array.isArray(workspace.assignments) ? workspace.assignments : [];
     return assignments.map((item) => ({
@@ -141,16 +204,16 @@
   };
 
   const renderStats = (projects) => {
-    const preliminaryNet = projects
+    const preliminaryBase = projects
       .filter((item) => item.projectStage === 'preliminary')
-      .reduce((sum, item) => sum + netAfterTax(item.feeAmount), 0);
-    const activeNet = projects
+      .reduce((sum, item) => sum + item.feeAmount, 0);
+    const activeSettlement = projects
       .filter((item) => item.projectStage === 'active' && item.status !== 'done')
-      .reduce((sum, item) => sum + netAfterTax(item.feeAmount), 0);
+      .reduce((sum, item) => sum + settlementFor(item.feeAmount).total, 0);
     const values = {
       projects: projects.filter((item) => item.projectStage === 'active' && item.status !== 'done').length,
-      preliminaryFee: money(preliminaryNet),
-      activeFee: money(activeNet),
+      preliminaryFee: money(preliminaryBase),
+      activeFee: money(activeSettlement),
       proposals: projects.filter((item) => item.proposalUrl).length
     };
     Object.entries(values).forEach(([key, value]) => {
@@ -180,7 +243,7 @@
         <span class="project-open">${proposalLink}</span>
       </div>
       <div class="partner-project-brief">
-        <strong>PROJECT BRIEF · ${statusLabel(item.status)} · ${item.feeAmount ? money(item.feeAmount) : '금액 미정'}</strong>
+        <strong>PROJECT BRIEF · ${statusLabel(item.status)} · 지정금액 ${item.feeAmount ? money(item.feeAmount) : '미정'}</strong>
         <p>${escapeHTML(item.summary || '프로젝트 상세 내용은 나인웍스에서 정리 후 업데이트합니다.')}</p>
         ${item.proposalUrl ? `<div class="partner-project-actions"><a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">VIEW PROPOSAL ↗</a></div>` : ''}
       </div>`;
@@ -218,14 +281,15 @@
   };
 
   const renderAccount = (projects) => {
-    const preliminaryNet = projects
+    const preliminaryBase = projects
       .filter((item) => item.projectStage === 'preliminary')
-      .reduce((sum, item) => sum + netAfterTax(item.feeAmount), 0);
+      .reduce((sum, item) => sum + item.feeAmount, 0);
     const activeProjects = projects.filter((item) => item.projectStage === 'active' && item.status !== 'done');
-    const activeNet = activeProjects.reduce((sum, item) => sum + netAfterTax(item.feeAmount), 0);
-    const advance = Math.round(activeNet * 0.5);
-    const balance = activeNet - advance;
-    const summary = { preliminary: preliminaryNet, active: activeNet, advance, finalNet: balance };
+    const activeSettlements = activeProjects.map((item) => settlementFor(item.feeAmount));
+    const active = activeSettlements.reduce((sum, item) => sum + item.total, 0);
+    const advance = activeSettlements.reduce((sum, item) => sum + item.advance, 0);
+    const balance = activeSettlements.reduce((sum, item) => sum + item.balance, 0);
+    const summary = { preliminary: preliminaryBase, active, advance, finalNet: balance };
     Object.entries(summary).forEach(([key, value]) => {
       const node = document.querySelector(`[data-account-summary="${key}"]`);
       if (node) node.textContent = money(value);
@@ -242,17 +306,42 @@
     list.innerHTML = feeProjects.map((item) => {
       const title = item.projectName || item.company || 'NINEWORKS PROJECT';
       const isActive = item.projectStage === 'active';
-      const settlement = splitNet(item.feeAmount);
-      const withholding = Math.max(0, item.feeAmount - settlement.net);
+      if (!isActive) {
+        return `<article class="partner-account-row is-preliminary">
+          <div class="partner-account-row__head"><div><span>${escapeHTML(item.company || 'NINEWORKS')}</span><strong>${escapeHTML(title)}</strong></div><em>예비 · 지급 전</em></div>
+          <div class="partner-account-row__amount">
+            <div><span>예비 지정금액</span><strong>${money(item.feeAmount)}</strong></div>
+            <div><span>본 정산금액</span><strong>0원</strong></div>
+            <div><span>선금 50%</span><strong>진행 전</strong></div>
+            <div><span>잔금 50%</span><strong>진행 전</strong></div>
+          </div>
+          <div class="partner-account-note"><strong>예비 단계</strong> · 이 금액은 프로젝트 배정을 위한 참고용 지정금액이며 아직 실수령액이나 지급 확정 금액이 아닙니다. 프로젝트가 진행으로 전환되면 본 정산금액으로 이동해 합산됩니다.</div>
+        </article>`;
+      }
+
+      const settlement = settlementFor(item.feeAmount);
+      if (currentPaymentType === 'business') {
+        return `<article class="partner-account-row">
+          <div class="partner-account-row__head"><div><span>${escapeHTML(item.company || 'NINEWORKS')}</span><strong>${escapeHTML(title)}</strong></div><em class="is-active is-business">진행 · 사업자</em></div>
+          <div class="partner-account-row__amount">
+            <div><span>본 정산금액 · VAT 포함</span><strong>${money(settlement.total)}</strong></div>
+            <div><span>선금 50% + VAT</span><strong>${money(settlement.advance)}</strong></div>
+            <div><span>잔금 50% + VAT</span><strong>${money(settlement.balance)}</strong></div>
+            <div><span>부가세 10%</span><strong>${money(settlement.vat)}</strong></div>
+          </div>
+          <div class="partner-account-note">공급가액 ${money(settlement.base)}에 VAT 10% ${money(settlement.vat)}를 더해 지급합니다. 선금과 잔금은 각각 공급가액 50%에 해당 VAT를 더한 금액이며, <strong>세금계산서는 전체 프로젝트 금액 기준으로 1회 발행</strong>해 주세요.</div>
+        </article>`;
+      }
+
       return `<article class="partner-account-row">
-        <div class="partner-account-row__head"><div><span>${escapeHTML(item.company || 'NINEWORKS')}</span><strong>${escapeHTML(title)}</strong></div><em class="${isActive ? 'is-active' : ''}">${isActive ? '진행' : '예비'}</em></div>
+        <div class="partner-account-row__head"><div><span>${escapeHTML(item.company || 'NINEWORKS')}</span><strong>${escapeHTML(title)}</strong></div><em class="is-active is-freelancer">진행 · 프리랜서</em></div>
         <div class="partner-account-row__amount">
-          <div><span>예상 실수령 총액</span><strong>${money(settlement.net)}</strong></div>
+          <div><span>본 정산금액</span><strong>${money(settlement.total)}</strong></div>
           <div><span>선금 50%</span><strong>${money(settlement.advance)}</strong></div>
           <div><span>잔금 50%</span><strong>${money(settlement.balance)}</strong></div>
-          <div><span>원천징수 예상</span><strong>${money(withholding)}</strong></div>
+          <div><span>원천징수 3.3%</span><strong>${money(settlement.withholding)}</strong></div>
         </div>
-        <div class="partner-account-note">지정 금액 ${money(item.feeAmount)}에서 원천징수 예상액 3.3%를 차감한 뒤, 예상 실수령액을 선금 50% / 잔금 50%로 나누어 표시합니다.</div>
+        <div class="partner-account-note">지정 금액 ${money(settlement.base)}에서 원천징수 3.3% ${money(settlement.withholding)}를 차감한 ${money(settlement.total)}을 본 정산금액으로 합산하고 선금 50% / 잔금 50%로 나누어 표시합니다.</div>
       </article>`;
     }).join('');
   };
@@ -271,8 +360,11 @@
   const renderWorkspace = (email, partner, workspace = {}) => {
     currentEmail = email;
     currentPartner = partner;
+    const storedType = localStorage.getItem(paymentTypeStorageKey(email));
+    if (!storedType && workspace.paymentType) currentPaymentType = normalizePaymentType(workspace.paymentType);
     currentProjects = normalizeProjects(workspace);
     fillProfile(email, partner);
+    updatePaymentTypeUI();
     renderStats(currentProjects);
     renderProjects(currentProjects);
     renderProposals(currentProjects);
@@ -313,6 +405,8 @@
       return false;
     }
     localStorage.setItem(STORAGE_KEY, email);
+    currentEmail = email;
+    currentPaymentType = normalizePaymentType(localStorage.getItem(paymentTypeStorageKey(email)) || 'freelancer');
     setView('app');
     setNote(loginNote, '');
     renderWorkspace(email, partner, {});
@@ -331,6 +425,12 @@
     setBusy(false);
   });
 
+  bankForm?.addEventListener('change', (event) => {
+    const input = event.target.closest('input[name="paymentType"]');
+    if (!input) return;
+    setPaymentType(input.value, true);
+  });
+
   bankForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!bankForm.reportValidity() || !currentPartner || !currentEmail) return;
@@ -338,22 +438,28 @@
     const accountHolder = String(data.get('accountHolder') || '').trim().slice(0, 60);
     const bank = String(data.get('bank') || '').trim().slice(0, 60);
     const accountNumber = String(data.get('accountNumber') || '').trim().slice(0, 80);
+    const paymentType = normalizePaymentType(data.get('paymentType'));
+    currentPaymentType = paymentType;
+    localStorage.setItem(paymentTypeStorageKey(currentEmail), paymentType);
+    updatePaymentTypeUI();
+    renderStats(currentProjects);
+    renderAccount(currentProjects);
     const button = bankForm.querySelector('button[type="submit"]');
     if (button) button.disabled = true;
-    setNote(bankNote, '계좌정보를 등록하고 있습니다.');
+    setNote(bankNote, '지급유형과 계좌정보를 등록하고 있습니다.');
     try {
       const ctx = await getFirebase();
       await ctx.addDoc(ctx.collection(ctx.db, 'partnerAccountSubmissions'), {
         partnerEmail: currentEmail,
         partnerName: currentPartner.name,
+        paymentType,
         accountHolder,
         bank,
         accountNumber,
         source: 'PARTNER_WORKSPACE',
         createdAt: ctx.serverTimestamp()
       });
-      bankForm.reset();
-      setNote(bankNote, '계좌정보가 등록되었습니다. 나인웍스 관리자에서 확인할 수 있습니다.', 'success');
+      setNote(bankNote, '지급유형과 계좌정보가 등록되었습니다. 나인웍스 관리자에서 확인할 수 있습니다.', 'success');
     } catch (error) {
       console.error('[NINEWORKS PARTNERS] bank submission failed', error);
       setNote(bankNote, '등록에 실패했습니다. Firestore 규칙 적용 후 다시 시도해 주세요.', 'error');
@@ -405,6 +511,7 @@
       currentEmail = '';
       currentPartner = null;
       currentProjects = [];
+      currentPaymentType = 'freelancer';
       localStorage.removeItem(STORAGE_KEY);
       loginForm?.reset();
       setNote(loginNote, '');
