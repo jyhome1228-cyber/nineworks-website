@@ -110,18 +110,19 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
-    // 파트너가 등록하는 계좌정보: 생성만 허용하고 조회는 관리자만 가능합니다.
+    // 파트너가 등록하는 지급유형·계좌정보: 생성만 허용하고 조회는 관리자만 가능합니다.
     match /partnerAccountSubmissions/{documentId} {
       allow create: if
         request.resource.data.keys().hasAll([
-          'partnerEmail', 'partnerName', 'accountHolder', 'bank', 'accountNumber',
+          'partnerEmail', 'partnerName', 'paymentType', 'accountHolder', 'bank', 'accountNumber',
           'source', 'createdAt'
         ])
         && request.resource.data.keys().hasOnly([
-          'partnerEmail', 'partnerName', 'accountHolder', 'bank', 'accountNumber',
+          'partnerEmail', 'partnerName', 'paymentType', 'accountHolder', 'bank', 'accountNumber',
           'source', 'createdAt'
         ])
         && isKnownPartnerEmail(request.resource.data.partnerEmail)
+        && request.resource.data.paymentType in ['freelancer', 'business']
         && request.resource.data.source == 'PARTNER_WORKSPACE'
         && request.resource.data.createdAt == request.time;
       allow read, update, delete: if isAdmin();
