@@ -316,3 +316,28 @@ html body .site-footer__social a:focus-visible{
     column-gap:14px!important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   MOBILE-ONLY HAMBURGER / 2026-08-24
+   Desktop uses the full primary navigation. The menu trigger must never appear
+   beside JOIN / MY NINEWORKS on desktop.
+   -------------------------------------------------------------------------- */
+@media(min-width:761px){
+  html body .site-header .menu-trigger,
+  html body .site-header button.menu-trigger,
+  html body .menu-trigger[data-menu-trigger]{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
+
+@media(max-width:760px){
+  html body .site-header .menu-trigger,
+  html body .site-header button.menu-trigger,
+  html body .menu-trigger[data-menu-trigger]{
+    display:grid!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+}
