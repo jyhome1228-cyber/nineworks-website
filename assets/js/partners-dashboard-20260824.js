@@ -12,6 +12,7 @@
     'daytuio0329@naver.com': { name: '박상혁', role: 'DESIGN PARTNER', workspaceId: 'daytuio0329%40naver.com' }
   };
 
+  const PAGE_KEYS = new Set(['dashboard', 'projects', 'schedule', 'proposals', 'account', 'guide']);
   let firebasePromise = null;
   let unsubscribeWorkspace = null;
 
@@ -82,10 +83,32 @@
 
   const greetingCopy = (name) => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) return `안녕하세요 ${name}님,<br><span class="greeting-sub">좋은 아침 보내고 계신가요?</span>`;
-    if (hour >= 12 && hour < 18) return `안녕하세요 ${name}님,<br><span class="greeting-sub">좋은 오후 보내고 계신가요?</span>`;
-    if (hour >= 18 && hour < 24) return `안녕하세요 ${name}님,<br><span class="greeting-sub">좋은 저녁이에요. 오늘도 좋은 작업 이어가세요.</span>`;
-    return `안녕하세요 ${name}님,<br><span class="greeting-sub">늦은 시간까지 함께해 주셔서 감사합니다.</span>`;
+    let message = '좋은 밤이에요. 오늘도 좋은 작업 이어가세요.';
+    if (hour >= 5 && hour < 12) message = '좋은 아침이에요. 오늘도 좋은 작업 이어가세요.';
+    else if (hour >= 12 && hour < 18) message = '좋은 오후예요. 오늘도 좋은 작업 이어가세요.';
+    else if (hour >= 18 && hour < 24) message = '좋은 저녁이에요. 오늘도 좋은 작업 이어가세요.';
+    return `안녕하세요 ${name}님,<br><span class="greeting-sub">${message}</span>`;
+  };
+
+  const openPartnerPage = (rawKey = 'dashboard', updateHash = true) => {
+    const key = PAGE_KEYS.has(rawKey) ? rawKey : 'dashboard';
+    document.querySelectorAll('[data-partner-page]').forEach((page) => {
+      page.classList.toggle('is-active', page.dataset.partnerPage === key);
+    });
+    document.querySelectorAll('[data-partner-page-link]').forEach((button) => {
+      button.classList.toggle('is-active', button.dataset.partnerPageLink === key);
+    });
+    if (updateHash && history.replaceState) {
+      const next = key === 'dashboard' ? location.pathname : `${location.pathname}#${key}`;
+      history.replaceState(null, '', next);
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const bindPageNavigation = () => {
+    document.querySelectorAll('[data-partner-page-link]').forEach((button) => {
+      button.addEventListener('click', () => openPartnerPage(button.dataset.partnerPageLink || 'dashboard'));
+    });
   };
 
   const fillProfile = (email, partner) => {
@@ -131,7 +154,7 @@
       .filter((item) => item.projectStage === 'active' && item.status !== 'done')
       .reduce((sum, item) => sum + item.feeAmount, 0);
     const values = {
-      projects: projects.filter((item) => item.status !== 'done').length,
+      projects: projects.filter((item) => item.projectStage === 'active' && item.status !== 'done').length,
       preliminaryFee: money(preliminaryFee),
       activeFee: money(activeFee),
       proposals: projects.filter((item) => item.proposalUrl).length
@@ -167,6 +190,26 @@
         <strong>PROJECT BRIEF · ${statusLabel(item.status)} · ${item.feeAmount ? money(item.feeAmount) : '금액 미정'}</strong>
         <p>${escapeHTML(item.summary || '프로젝트 상세 내용은 나인웍스에서 정리 후 업데이트합니다.')}</p>
         ${item.proposalUrl ? `<div class="partner-project-actions"><a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">VIEW PROPOSAL ↗</a></div>` : ''}
+      </div>`;
+    }).join('');
+  };
+
+  const renderProposals = (projects) => {
+    const list = document.querySelector('[data-partner-proposal-list]');
+    if (!list) return;
+    const proposals = projects.filter((item) => item.proposalUrl);
+    if (!proposals.length) {
+      list.innerHTML = '<div class="partner-empty"><strong>연결된 제안서가 없습니다.</strong>어드민에서 제안서 링크가 등록되면 이곳에 표시됩니다.</div>';
+      return;
+    }
+    list.innerHTML = proposals.map((item, index) => {
+      const title = item.projectName || item.company || 'NINEWORKS PROJECT';
+      return `<div class="partner-proposal-row">
+        <span>${String(index + 1).padStart(2, '0')}</span>
+        <strong>${escapeHTML(title)}</strong>
+        <small>${escapeHTML(item.company || item.type || 'NINEWORKS')}</small>
+        <em>${stageLabel(item.projectStage)}</em>
+        <a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">OPEN PROPOSAL ↗</a>
       </div>`;
     }).join('');
   };
@@ -231,6 +274,7 @@
     fillProfile(email, partner);
     renderStats(projects);
     renderProjects(projects);
+    renderProposals(projects);
     renderAccount(projects);
     renderSchedule(projects);
   };
@@ -273,6 +317,7 @@
     setView('app');
     setNote('');
     renderWorkspace(email, partner, {});
+    openPartnerPage('dashboard', false);
     window.scrollTo(0, 0);
     subscribeWorkspace(email, partner);
     return true;
@@ -299,12 +344,7 @@
     });
   });
 
-  document.querySelectorAll('.partner-nav a').forEach((link) => {
-    link.addEventListener('click', () => {
-      document.querySelectorAll('.partner-nav a').forEach((item) => item.classList.toggle('is-active', item === link));
-    });
-  });
-
+  bindPageNavigation();
   setView('login');
   const savedEmail = normalizeEmail(localStorage.getItem(STORAGE_KEY) || '');
   if (savedEmail && PARTNERS[savedEmail]) enterWorkspace(savedEmail);
