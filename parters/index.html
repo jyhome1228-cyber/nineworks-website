@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/assets/css/partners-finance-20260824.css?v=20260824-1">
   <link rel="stylesheet" href="/assets/css/partners-workspace-v2-20260824.css?v=20260824-1">
   <link rel="stylesheet" href="/assets/css/partners-workspace-v3-20260824.css?v=20260824-2">
+  <link rel="stylesheet" href="/assets/css/partners-payment-v4-20260824.css?v=20260824-1">
 </head>
 <body>
   <section class="partner-login-shell" data-partner-login>
@@ -65,8 +66,8 @@
           </div>
           <section class="partner-stat-grid" aria-label="워크스페이스 현황">
             <article class="partner-stat"><span>진행 프로젝트</span><strong data-partner-stat="projects">0</strong><small>현재 진행 단계 프로젝트</small></article>
-            <article class="partner-stat"><span>예비 예상 실수령</span><strong data-partner-stat="preliminaryFee">0원</strong><small>3.3% 차감 예상 기준</small></article>
-            <article class="partner-stat"><span>진행 예상 실수령</span><strong data-partner-stat="activeFee">0원</strong><small>3.3% 차감 예상 기준</small></article>
+            <article class="partner-stat"><span>예비 지정금액</span><strong data-partner-stat="preliminaryFee">0원</strong><small><strong>아직 지급 확정 금액이 아닙니다.</strong></small></article>
+            <article class="partner-stat"><span>본 정산금액</span><strong data-partner-stat="activeFee">0원</strong><small>진행 단계 프로젝트만 합산</small></article>
             <article class="partner-stat"><span>제안서</span><strong data-partner-stat="proposals">0</strong><small>확인 가능한 제안서 링크</small></article>
           </section>
         </section>
@@ -87,21 +88,30 @@
         </section>
 
         <section class="partner-page" data-partner-page="account">
-          <div class="partner-page-head"><div><span>ACCOUNT</span><h2>프로젝트 금액 및 내정보</h2></div><p>표시 금액은 지정 금액에서 원천징수 3.3%를 차감한 예상 실수령 기준입니다.</p></div>
+          <div class="partner-page-head"><div><span>ACCOUNT</span><h2>프로젝트 금액 및 내정보</h2></div><p>예비 단계 금액은 참고용 지정금액이며, 프로젝트가 진행으로 전환된 뒤에만 본 정산금액으로 합산됩니다.</p></div>
           <section class="partner-panel">
-            <div class="partner-panel__head"><div><span>PROJECT FEE</span><strong>Expected Settlement</strong></div></div>
+            <div class="partner-panel__head"><div><span>PROJECT FEE</span><strong>Settlement Overview</strong></div></div>
             <div class="partner-account-summary">
-              <article><span>예비 예상 실수령</span><strong data-account-summary="preliminary">0원</strong><small>3.3% 차감 예상</small></article>
-              <article><span>진행 예상 실수령</span><strong data-account-summary="active">0원</strong><small>진행 프로젝트 합계</small></article>
-              <article><span>선금 50%</span><strong data-account-summary="advance">0원</strong><small>실수령 예상액의 50%</small></article>
-              <article><span>잔금 50%</span><strong data-account-summary="finalNet">0원</strong><small>실수령 예상액의 50%</small></article>
+              <article><span>예비 지정금액</span><strong data-account-summary="preliminary">0원</strong><small>아직 실수령·지급 확정 금액 아님</small></article>
+              <article><span>본 정산금액</span><strong data-account-summary="active">0원</strong><small>진행 프로젝트만 합산</small></article>
+              <article><span>선금 50%</span><strong data-account-summary="advance">0원</strong><small data-account-advance-note>진행 후 계산</small></article>
+              <article><span>잔금 50%</span><strong data-account-summary="finalNet">0원</strong><small data-account-balance-note>진행 후 계산</small></article>
             </div>
             <div class="partner-account-list" data-partner-account-list><div class="partner-empty"><strong>정산 예정 프로젝트가 없습니다.</strong>어드민에서 파트너 지정과 금액을 설정하면 이곳에 표시됩니다.</div></div>
-            <div class="partner-account-note"><strong>정산 안내</strong> · 각 프로젝트의 표시 금액은 지정 금액에서 원천징수 예상액 3.3%를 차감한 금액입니다. 프로젝트가 진행 단계로 전환되면 해당 예상 실수령액을 선금 50% / 잔금 50%로 나누어 안내합니다. 실제 지급 시점과 세무 처리는 최종 정산 내역을 기준으로 합니다.</div>
+            <div class="partner-account-note" data-account-policy><strong>정산 안내</strong> · 예비 단계는 참고용 지정금액이며 지급 확정 금액이 아닙니다. 프로젝트가 진행으로 전환된 뒤 선택한 지급유형 기준으로 본 정산금액, 선금 50%, 잔금 50%가 계산됩니다.</div>
           </section>
+
           <section class="partner-account-form-wrap">
-            <div class="partner-account-form-head"><span>PAYMENT INFORMATION</span><strong>개인 계좌정보 등록</strong><p>정산에 사용할 예금주, 은행, 계좌번호를 등록해 주세요. 등록된 정보는 나인웍스 관리자만 확인합니다.</p></div>
+            <div class="partner-account-form-head"><span>PAYMENT INFORMATION</span><strong>지급유형 및 계좌정보 등록</strong><p>지급유형과 정산에 사용할 예금주, 은행, 계좌번호를 등록해 주세요. 등록된 정보는 나인웍스 관리자만 확인합니다.</p></div>
             <form class="partner-bank-form" data-partner-bank-form>
+              <div class="partner-payment-type">
+                <div class="partner-payment-type__copy"><span>PAYMENT TYPE</span><strong>지급유형 선택</strong><p data-payment-type-copy>프리랜서는 3.3% 원천징수 후 지급됩니다.</p></div>
+                <div class="partner-payment-type__buttons">
+                  <label><input type="radio" name="paymentType" value="freelancer" checked><span>프리랜서 · 3.3%</span></label>
+                  <label><input type="radio" name="paymentType" value="business"><span>사업자 · VAT 10%</span></label>
+                </div>
+              </div>
+              <p class="partner-payment-guide" data-payment-guide><strong>프리랜서</strong> · 지정 금액에서 3.3%를 차감한 뒤 선금 50% / 잔금 50%로 나누어 안내합니다.</p>
               <div class="partner-bank-field"><label for="partner-account-holder">예금주</label><input id="partner-account-holder" type="text" name="accountHolder" maxlength="60" required></div>
               <div class="partner-bank-field"><label for="partner-bank">은행</label><input id="partner-bank" type="text" name="bank" maxlength="60" required></div>
               <div class="partner-bank-field"><label for="partner-account-number">계좌번호</label><input id="partner-account-number" type="text" name="accountNumber" inputmode="numeric" maxlength="80" required></div>
@@ -120,6 +130,6 @@
       </div>
     </main>
   </div>
-  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-10"></script>
+  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-11"></script>
 </body>
 </html>
