@@ -7,12 +7,14 @@
 
   const PARTNERS = {
     'seodw100@naver.com': {
+      id: 'seo-dongwon',
       name: '서동원',
       role: 'DESIGN PARTNER',
       projects: [],
       schedule: []
     },
     's.nninyong@gmail.com': {
+      id: 'shin-minyong',
       name: '신민용',
       role: 'DESIGN PARTNER',
       projects: [],
@@ -30,8 +32,10 @@
     .replace(/'/g, '&#039;');
 
   const setView = (name) => {
-    if (loginView) loginView.hidden = name !== 'login';
-    if (appView) appView.hidden = name !== 'app';
+    const inApp = name === 'app';
+    if (loginView) loginView.hidden = inApp;
+    if (appView) appView.hidden = !inApp;
+    document.body.classList.toggle('is-partner-workspace', inApp);
   };
 
   const setNote = (message = '', state = '') => {
@@ -46,15 +50,13 @@
     if (!button) return;
     button.disabled = busy;
     const label = button.querySelector('span:first-child');
-    if (label) label.textContent = busy ? 'CHECKING' : 'ENTER WORKSPACE';
+    if (label) label.textContent = busy ? 'ENTERING' : 'ENTER WORKSPACE';
   };
 
   const initials = (name = '') => {
     const value = String(name || '').trim();
     if (!value) return 'NW';
-    if (/^[A-Za-z\s]+$/.test(value)) {
-      return value.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
-    }
+    if (/^[A-Za-z\s]+$/.test(value)) return value.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
     return value.slice(0, 2);
   };
 
@@ -66,10 +68,14 @@
   };
 
   const fillProfile = (email, partner) => {
+    document.body.dataset.partnerId = partner.id;
     document.querySelectorAll('[data-partner-name]').forEach((node) => { node.textContent = partner.name; });
     document.querySelectorAll('[data-partner-role]').forEach((node) => { node.textContent = partner.role || 'DESIGN PARTNER'; });
     document.querySelectorAll('[data-partner-email]').forEach((node) => { node.textContent = email; });
     document.querySelectorAll('[data-partner-initials]').forEach((node) => { node.textContent = initials(partner.name); });
+    document.querySelectorAll('[data-partner-welcome]').forEach((node) => { node.textContent = `${partner.name} 파트너님, 반갑습니다.`; });
+    document.querySelectorAll('[data-partner-dashboard-title]').forEach((node) => { node.textContent = `${partner.name} · Partner Dashboard`; });
+    document.title = `${partner.name} Partner Dashboard — NINEWORKS`;
   };
 
   const renderStats = (partner) => {
@@ -150,7 +156,7 @@
     renderWorkspace(email, partner);
     setView('app');
     setNote('');
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     return true;
   };
 
@@ -159,19 +165,21 @@
     if (!loginForm.reportValidity()) return;
     setBusy(true);
     const email = String(new FormData(loginForm).get('email') || '');
-    window.setTimeout(() => {
+    requestAnimationFrame(() => {
       enterWorkspace(email);
       setBusy(false);
-    }, 120);
+    });
   });
 
   document.querySelectorAll('[data-partner-signout]').forEach((button) => {
     button.addEventListener('click', () => {
       localStorage.removeItem(STORAGE_KEY);
+      delete document.body.dataset.partnerId;
       loginForm?.reset();
       setNote('');
+      document.title = 'Partners Workspace — NINEWORKS';
       setView('login');
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     });
   });
 
