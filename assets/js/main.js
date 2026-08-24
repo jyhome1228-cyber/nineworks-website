@@ -29,7 +29,7 @@
   loadStyle('assets/css/sost-system-20260817.css?v=20260817-3');
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
-  loadStyle('assets/css/mobile-ui-20260822.css?v=20260822-1');
+  loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-2');
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
