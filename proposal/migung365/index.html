@@ -1,332 +1,389 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>MIGUNG365 Visual Rebranding Proposal — NINEWORKS</title>
-<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-<meta name="description" content="미궁365 비주얼 리브랜딩 프로젝트 제안서 — NINEWORKS">
-<link rel="icon" type="image/png" href="/favicon.png?v=20260822-1">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260824-proposal">
-<style>
-:root{
-  --proposal-max:1440px;
-  --proposal-gap:clamp(20px,2.2vw,40px);
-  --proposal-y:clamp(84px,9vw,144px);
-}
-body{background:var(--bg);color:var(--ink);word-break:keep-all}
-main{overflow:hidden}
-.proposal-container{width:min(100%,var(--proposal-max));margin:0 auto;padding-left:var(--proposal-gap);padding-right:var(--proposal-gap)}
-.proposal-header{position:sticky;z-index:40;top:0;height:76px;display:flex;align-items:center;border-bottom:1px solid transparent;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(16px)}
-.proposal-header.is-scrolled{border-bottom-color:var(--line)}
-.proposal-header__inner{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.proposal-logo{font-size:18px;font-weight:500;letter-spacing:-.055em}
-.proposal-status{display:flex;align-items:center;gap:18px;color:var(--muted);font-size:11px;line-height:1;letter-spacing:.05em;text-transform:uppercase}
-.proposal-print{padding-bottom:3px;border-bottom:1px solid currentColor;color:var(--ink);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase}
-.proposal-section{padding:var(--proposal-y) 0;border-top:1px solid var(--line)}
-.proposal-section:first-child{border-top:0}
-.proposal-eyebrow{margin-bottom:22px;color:var(--muted);font-size:12px;font-weight:500;line-height:1;letter-spacing:.04em;text-transform:uppercase}
-.proposal-section-head{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.6fr);gap:clamp(36px,6vw,100px);align-items:start;margin-bottom:clamp(52px,6vw,88px)}
-.proposal-section-head h2{max-width:900px;font-size:clamp(34px,4vw,60px);font-weight:600;line-height:1.03;letter-spacing:-.055em}
-.proposal-section-head p{max-width:720px;margin-top:24px;color:#3d3d3b;font-size:clamp(16px,1.35vw,20px);line-height:1.65;letter-spacing:-.035em}
-.proposal-no{color:var(--muted);font-size:12px;line-height:1;letter-spacing:.04em}
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>MIGUNG365 Visual Rebranding Proposal — NINEWORKS</title>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="description" content="미궁365 비주얼 리브랜딩 프로젝트 제안서 — NINEWORKS">
+  <link rel="icon" type="image/png" href="/favicon.png?v=20260822-1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/navigation-ia-20260817.css?v=20260817-5">
+  <link rel="stylesheet" href="/assets/css/site-stable-20260817.css?v=20260818-1">
+  <link rel="stylesheet" href="/assets/css/mobile-ui-20260822.css?v=20260822-2">
+  <style>
+    :root{
+      --proposal-container:1440px;
+      --proposal-bg:#f7f7f5;
+      --proposal-paper:#ffffff;
+      --proposal-text:#151515;
+      --proposal-sub:#6f6f6b;
+      --proposal-line:#deded9;
+      --proposal-soft:#efefec;
+      --proposal-point:#2f5543;
+      --fs-display:clamp(36px,3.8vw,50px);
+      --fs-h1:clamp(34px,3.5vw,46px);
+      --fs-h2:clamp(26px,2.25vw,34px);
+      --fs-h3:clamp(22px,1.8vw,28px);
+      --fs-body-lg:18px;
+      --fs-body:17px;
+      --fs-body-sm:16px;
+      --fs-label:14px;
+      --fs-meta:12px;
+      --section-xl:112px;
+      --section-lg:88px;
+      --section-md:64px;
+    }
 
-/* hero */
-.proposal-hero{min-height:calc(100svh - 76px);display:flex;align-items:stretch;padding:clamp(56px,6vw,92px) 0 32px}
-.proposal-hero__inner{display:flex;flex-direction:column;justify-content:space-between;width:100%}
-.proposal-hero__top{display:flex;align-items:flex-start;justify-content:space-between;gap:30px}
-.proposal-hero__top p{max-width:460px;color:var(--muted);font-size:12px;line-height:1.65;text-align:right}
-.proposal-hero h1{max-width:1050px;margin:clamp(68px,10vh,120px) 0 clamp(70px,10vh,120px);font-size:clamp(48px,6.2vw,94px);font-weight:600;line-height:.97;letter-spacing:-.065em}
-.proposal-hero h1 span{display:block;color:var(--muted);font-weight:400}
-.proposal-hero__bottom{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(40px,7vw,120px);align-items:end;padding-top:22px;border-top:1px solid var(--line)}
-.proposal-hero__statement{max-width:780px;font-size:clamp(20px,2vw,30px);font-weight:400;line-height:1.42;letter-spacing:-.04em}
-.proposal-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px}
-.proposal-meta div{font-size:12px;line-height:1.5;color:var(--muted)}
-.proposal-meta strong{display:block;margin-bottom:5px;color:var(--ink);font-size:12px;font-weight:500}
+    body.proposal-page{
+      margin:0;
+      background:var(--proposal-bg);
+      color:var(--proposal-text);
+      font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      font-size:var(--fs-body);
+      font-weight:400;
+      line-height:1.7;
+      letter-spacing:-.022em;
+      word-break:keep-all;
+      -webkit-font-smoothing:antialiased;
+    }
 
-/* understanding */
-.understanding-copy{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(50px,8vw,140px);align-items:start}
-.understanding-copy h3{font-size:clamp(29px,3.2vw,48px);font-weight:600;line-height:1.08;letter-spacing:-.055em}
-.understanding-copy__text{max-width:760px}
-.understanding-copy__text p{font-size:clamp(18px,1.7vw,25px);line-height:1.62;letter-spacing:-.04em}
-.understanding-copy__text p+p{margin-top:24px;color:var(--muted);font-size:15px;line-height:1.75;letter-spacing:-.025em}
-.shift-list{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(70px,8vw,110px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.shift-item{min-height:230px;padding:25px 24px 28px 0}
-.shift-item+.shift-item{padding-left:24px;border-left:1px solid var(--line)}
-.shift-item small{display:block;color:var(--muted);font-size:11px;letter-spacing:.04em}
-.shift-item strong{display:block;margin-top:70px;font-size:clamp(25px,2.8vw,42px);font-weight:500;line-height:1.08;letter-spacing:-.05em}
-.shift-item p{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.65}
+    .proposal-page main{overflow:hidden}
+    .proposal-shell{width:min(calc(100% - 48px),var(--proposal-container));margin-inline:auto}
+    .proposal-section{padding:var(--section-xl) 0;border-top:1px solid var(--proposal-line)}
+    .proposal-section:first-of-type{border-top:0}
+    .proposal-section--compact{padding:var(--section-lg) 0}
 
-/* challenge */
-.challenge-list{border-top:1px solid var(--line)}
-.challenge-row{display:grid;grid-template-columns:70px minmax(220px,.7fr) minmax(0,1.25fr);gap:clamp(24px,4vw,60px);padding:32px 0;border-bottom:1px solid var(--line);align-items:start}
-.challenge-row span{padding-top:4px;color:var(--muted);font-size:11px}
-.challenge-row h3{font-size:clamp(22px,2vw,31px);font-weight:500;line-height:1.18;letter-spacing:-.04em}
-.challenge-row p{max-width:730px;color:#4b4b48;font-size:15px;line-height:1.72}
+    .proposal-label{
+      margin:0;
+      color:#858581;
+      font-size:var(--fs-label);
+      font-weight:600;
+      line-height:1.4;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
 
-/* approach */
-.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.approach-card{min-height:330px;padding:24px 24px 28px 0;display:flex;flex-direction:column}
-.approach-card+.approach-card{padding-left:24px;border-left:1px solid var(--line)}
-.approach-card small{color:var(--muted);font-size:11px}
-.approach-card h3{margin:auto 0 16px;font-size:clamp(25px,2.5vw,38px);font-weight:500;line-height:1.05;letter-spacing:-.05em}
-.approach-card p{color:var(--muted);font-size:13px;line-height:1.65}
+    .proposal-h1{
+      margin:24px 0 0;
+      max-width:760px;
+      font-size:var(--fs-display);
+      font-weight:470;
+      line-height:1.12;
+      letter-spacing:-.047em;
+    }
+    .proposal-h2{
+      margin:18px 0 0;
+      max-width:760px;
+      font-size:var(--fs-h2);
+      font-weight:510;
+      line-height:1.3;
+      letter-spacing:-.038em;
+    }
+    .proposal-h3{
+      margin:0;
+      font-size:var(--fs-h3);
+      font-weight:540;
+      line-height:1.35;
+      letter-spacing:-.03em;
+    }
+    .proposal-lead{
+      margin:28px 0 0;
+      max-width:690px;
+      color:#3a3a38;
+      font-size:var(--fs-body-lg);
+      line-height:1.75;
+    }
+    .proposal-copy{margin:0;color:#454542;font-size:var(--fs-body);line-height:1.7}
+    .proposal-meta{font-size:var(--fs-meta);line-height:1.6;color:#858581;letter-spacing:.02em}
+    .proposal-point{color:var(--proposal-point)}
 
-/* scope */
-.scope-list{border-top:1px solid var(--line)}
-.scope-row{display:grid;grid-template-columns:70px minmax(230px,.7fr) minmax(0,1.3fr);gap:clamp(24px,4vw,60px);padding:31px 0;border-bottom:1px solid var(--line)}
-.scope-row>span{color:var(--muted);font-size:11px}
-.scope-row h3{font-size:clamp(22px,2vw,31px);font-weight:500;line-height:1.16;letter-spacing:-.04em}
-.scope-items{display:grid;grid-template-columns:1fr 1fr;gap:8px 36px}
-.scope-items span{padding-bottom:8px;border-bottom:1px solid #dfdfdc;color:#4b4b48;font-size:13px;line-height:1.5}
-.scope-note{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:clamp(40px,7vw,120px);margin-top:42px;padding-top:26px;border-top:1px solid var(--line)}
-.scope-note strong{font-size:clamp(21px,2vw,30px);font-weight:500;line-height:1.2;letter-spacing:-.04em}
-.scope-note p{max-width:760px;color:var(--muted);font-size:14px;line-height:1.75}
+    .proposal-hero{
+      padding:clamp(140px,11vw,180px) 0 var(--section-xl);
+      min-height:calc(100svh - 104px);
+      display:flex;
+      align-items:flex-start;
+    }
+    .proposal-hero__inner{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:clamp(72px,9vw,140px);align-items:start}
+    .proposal-hero__copy{max-width:760px}
+    .proposal-hero__desc{margin:28px 0 0;max-width:690px;color:#4f4f4b;font-size:18px;line-height:1.75}
+    .proposal-hero__facts{border-top:1px solid var(--proposal-line)}
+    .proposal-fact{padding:20px 0;border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:105px 1fr;gap:18px}
+    .proposal-fact dt{margin:0;color:#858581;font-size:13px;font-weight:500;letter-spacing:.03em}
+    .proposal-fact dd{margin:0;font-size:15px;line-height:1.55;color:#282826}
 
-/* timeline */
-.timeline{border-top:1px solid var(--line)}
-.timeline-row{display:grid;grid-template-columns:180px minmax(250px,.7fr) minmax(0,1.15fr);gap:clamp(24px,5vw,70px);padding:29px 0;border-bottom:1px solid var(--line);align-items:start}
-.timeline-row time{color:var(--muted);font-size:11px;letter-spacing:.03em}
-.timeline-row h3{font-size:clamp(21px,1.9vw,29px);font-weight:500;line-height:1.15;letter-spacing:-.04em}
-.timeline-row p{color:#4b4b48;font-size:14px;line-height:1.7}
-.support-box{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:clamp(40px,7vw,120px);margin-top:50px;padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.support-box strong{font-size:clamp(23px,2.5vw,36px);font-weight:500;line-height:1.16;letter-spacing:-.045em}
-.support-box p{max-width:760px;color:#4b4b48;font-size:14px;line-height:1.75}
+    .section-heading{margin-bottom:56px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(48px,7vw,120px);align-items:start}
+    .section-heading__body{max-width:840px}
+    .section-heading__body p{margin:22px 0 0;max-width:720px;color:#555551;font-size:17px;line-height:1.75}
 
-/* investment */
-.investment-wrap{padding-top:8px}
-.investment-line{display:grid;grid-template-columns:minmax(220px,.65fr) minmax(0,1.35fr);gap:clamp(40px,7vw,120px);padding:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);align-items:end}
-.investment-label{color:var(--muted);font-size:11px;line-height:1.6;letter-spacing:.04em;text-transform:uppercase}
-.investment-price{font-size:clamp(54px,7.2vw,108px);font-weight:600;line-height:.9;letter-spacing:-.07em;white-space:nowrap}
-.investment-price small{display:block;margin-top:18px;color:var(--muted);font-size:12px;font-weight:400;line-height:1.5;letter-spacing:0}
-.investment-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:38px}
-.investment-detail article{padding-top:18px;border-top:1px solid var(--line)}
-.investment-detail h4{margin:0 0 10px;font-size:14px;font-weight:500}
-.investment-detail p{color:var(--muted);font-size:12px;line-height:1.7}
+    .intro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--proposal-line)}
+    .intro-item{padding:28px 30px 32px 0;border-bottom:1px solid var(--proposal-line)}
+    .intro-item+.intro-item{padding-left:30px;border-left:1px solid var(--proposal-line)}
+    .intro-item__num{display:block;margin-bottom:54px;color:#8b8b86;font-size:13px;letter-spacing:.08em}
+    .intro-item strong{display:block;font-size:24px;font-weight:520;line-height:1.35;letter-spacing:-.03em}
+    .intro-item p{margin:16px 0 0;color:#646460;font-size:16px;line-height:1.75}
 
-/* terms */
-.term-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px)}
-.term-box{padding-top:24px;border-top:1px solid var(--line)}
-.term-box h3{margin-bottom:32px;font-size:clamp(23px,2.4vw,35px);font-weight:500;line-height:1.15;letter-spacing:-.045em}
-.term-box li{display:grid;grid-template-columns:18px 1fr;gap:10px;padding:11px 0;border-top:1px solid #dfdfdc;color:#4b4b48;font-size:13px;line-height:1.55}
-.term-box li::before{content:"—";color:var(--muted)}
-.term-note{margin-top:42px;max-width:900px;color:var(--muted);font-size:12px;line-height:1.8}
+    .issue-list{border-top:1px solid var(--proposal-line)}
+    .issue-row{display:grid;grid-template-columns:70px minmax(220px,.75fr) minmax(0,1.35fr);gap:clamp(26px,4vw,64px);padding:31px 0;border-bottom:1px solid var(--proposal-line);align-items:start}
+    .issue-row__no{font-size:13px;color:#8b8b86;letter-spacing:.05em;padding-top:4px}
+    .issue-row h3{margin:0;font-size:24px;font-weight:520;line-height:1.4;letter-spacing:-.03em}
+    .issue-row p{margin:0;color:#555551;font-size:17px;line-height:1.75}
 
-/* closing */
-.proposal-closing{padding:clamp(110px,12vw,180px) 0 34px;border-top:1px solid var(--line)}
-.proposal-closing h2{max-width:980px;font-size:clamp(48px,6vw,90px);font-weight:600;line-height:.98;letter-spacing:-.065em}
-.proposal-closing h2 span{display:block;color:var(--muted);font-weight:400}
-.proposal-closing__copy{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.75fr);gap:clamp(50px,8vw,130px);align-items:end;margin-top:clamp(90px,11vw,150px);padding-top:25px;border-top:1px solid var(--line)}
-.proposal-closing__copy p:first-child{max-width:760px;font-size:clamp(20px,2vw,29px);line-height:1.5;letter-spacing:-.04em}
-.proposal-closing__copy p:last-child{justify-self:end;max-width:480px;color:var(--muted);font-size:13px;line-height:1.75}
-.proposal-footer{display:flex;justify-content:space-between;gap:30px;margin-top:clamp(90px,10vw,140px);padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;line-height:1.5}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s var(--ease)}
-.reveal.is-visible{opacity:1;transform:none}
-@media(max-width:900px){
-  .proposal-status span{display:none}
-  .proposal-section-head,.understanding-copy,.proposal-hero__bottom,.scope-note,.support-box,.investment-line,.proposal-closing__copy{grid-template-columns:1fr}
-  .proposal-section-head{gap:18px}
-  .proposal-hero{min-height:auto;padding-top:52px}
-  .proposal-hero__top p{display:none}
-  .proposal-hero h1{margin:80px 0 90px;font-size:clamp(45px,12vw,72px)}
-  .proposal-meta{margin-top:12px}
-  .shift-list,.approach-grid{grid-template-columns:1fr}
-  .shift-item,.approach-card{min-height:auto;padding:24px 0!important;border-left:0!important;border-top:1px solid var(--line)}
-  .shift-item:first-child,.approach-card:first-child{border-top:0}
-  .shift-item strong{margin-top:38px}
-  .approach-card h3{margin:52px 0 12px}
-  .challenge-row,.scope-row,.timeline-row{grid-template-columns:44px 1fr;gap:18px 20px}
-  .challenge-row p,.scope-items,.timeline-row p{grid-column:2}
-  .scope-items{grid-template-columns:1fr}
-  .timeline-row time{grid-row:1 / span 2}
-  .investment-detail{grid-template-columns:1fr}
-  .investment-price{white-space:normal}
-  .term-grid{grid-template-columns:1fr}
-  .proposal-closing__copy p:last-child{justify-self:start}
-}
-@media(max-width:560px){
-  .proposal-header{height:68px}
-  .proposal-logo{font-size:16px}
-  .proposal-print{display:none}
-  .proposal-section{padding:76px 0}
-  .proposal-section-head{margin-bottom:42px}
-  .proposal-hero h1{margin:64px 0 74px;font-size:43px}
-  .proposal-hero__statement{font-size:20px}
-  .proposal-meta{grid-template-columns:1fr 1fr}
-  .challenge-row,.scope-row,.timeline-row{grid-template-columns:32px 1fr}
-  .proposal-footer{flex-direction:column}
-}
-@media print{
-  .proposal-header{display:none}
-  body{background:#fff}
-  .proposal-hero{min-height:auto;padding-top:50px}
-  .proposal-section,.proposal-closing{padding:56px 0;break-inside:avoid}
-  .reveal{opacity:1!important;transform:none!important}
-}
-</style>
+    .approach-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line)}
+    .approach-item{min-height:300px;padding:28px 30px;display:flex;flex-direction:column;border-right:1px solid var(--proposal-line)}
+    .approach-item:first-child{padding-left:0}
+    .approach-item:last-child{border-right:0;padding-right:0}
+    .approach-item__no{color:#8b8b86;font-size:13px;letter-spacing:.08em}
+    .approach-item h3{margin:auto 0 12px;font-size:25px;font-weight:520;line-height:1.35;letter-spacing:-.03em}
+    .approach-item p{margin:0;color:#62625e;font-size:16px;line-height:1.7}
+
+    .scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .scope-card{background:rgba(255,255,255,.5);border:1px solid var(--proposal-line);padding:28px 30px;min-height:330px;display:flex;flex-direction:column}
+    .scope-card__top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+    .scope-card__type{font-size:13px;font-weight:600;letter-spacing:.09em;color:#7a7a76;text-transform:uppercase}
+    .scope-card__no{font-size:12px;color:#999994}
+    .scope-card h3{margin:20px 0 0;font-size:26px;font-weight:530;line-height:1.35;letter-spacing:-.035em}
+    .scope-card ul{list-style:none;margin:auto 0 0;padding:44px 0 0}
+    .scope-card li{padding:9px 0;border-top:1px solid var(--proposal-soft);font-size:16px;color:#555551;line-height:1.55}
+
+    .timeline-list{border-top:1px solid var(--proposal-line)}
+    .timeline-row{display:grid;grid-template-columns:150px 220px minmax(0,1fr);gap:clamp(28px,5vw,80px);padding:28px 0;border-bottom:1px solid var(--proposal-line);align-items:start}
+    .timeline-row time{font-size:13px;color:#777773;letter-spacing:.03em}
+    .timeline-row strong{font-size:20px;font-weight:520;line-height:1.5}
+    .timeline-row p{margin:0;color:#5c5c58;font-size:16px;line-height:1.75}
+    .support-note{margin-top:48px;padding:28px 0;border-top:1px solid var(--proposal-line);border-bottom:1px solid var(--proposal-line);display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(48px,7vw,120px)}
+    .support-note strong{font-size:23px;font-weight:520;line-height:1.4;letter-spacing:-.03em}
+    .support-note p{margin:0;max-width:760px;color:#555551;font-size:17px;line-height:1.75}
+
+    .investment-grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(48px,7vw,120px);align-items:start}
+    .investment-main{border-top:1px solid var(--proposal-line)}
+    .investment-price{padding:42px 0 36px;border-bottom:1px solid var(--proposal-line);display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+    .investment-price strong{font-size:clamp(38px,4vw,50px);font-weight:470;line-height:1.1;letter-spacing:-.047em}
+    .investment-price span{font-size:14px;color:#777773}
+    .investment-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-top:30px}
+    .investment-notes article{padding-top:18px;border-top:1px solid var(--proposal-line)}
+    .investment-notes h3{margin:0;font-size:17px;font-weight:540;line-height:1.5}
+    .investment-notes p{margin:10px 0 0;color:#666662;font-size:16px;line-height:1.7}
+
+    .terms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+    .term-card{border:1px solid var(--proposal-line);padding:28px 30px;min-height:390px}
+    .term-card h3{margin:0 0 36px;font-size:25px;font-weight:520;line-height:1.4;letter-spacing:-.03em}
+    .term-card ul{list-style:none;margin:0;padding:0}
+    .term-card li{padding:12px 0;border-top:1px solid var(--proposal-soft);font-size:16px;line-height:1.65;color:#555551}
+    .term-note{margin:24px 0 0;color:#777773;font-size:14px;line-height:1.75}
+
+    .closing-copy{display:grid;grid-template-columns:220px minmax(0,1fr);gap:clamp(48px,7vw,120px);align-items:start}
+    .closing-copy h2{margin:0;max-width:760px;font-size:var(--fs-h1);font-weight:470;line-height:1.16;letter-spacing:-.045em}
+    .closing-copy p{margin:28px 0 0;max-width:720px;color:#555551;font-size:17px;line-height:1.8}
+
+    .download-area{padding:64px 0 88px;border-top:1px solid var(--proposal-line)}
+    .download-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .download-copy p{margin:8px 0 0;color:#777773;font-size:14px;line-height:1.65}
+    .download-button{appearance:none;border:1px solid #222;background:transparent;color:#151515;padding:13px 18px;font-family:inherit;font-size:13px;font-weight:510;letter-spacing:.06em;cursor:pointer;transition:background .2s ease,color .2s ease}
+    .download-button:hover{background:#151515;color:#fff}
+
+    .proposal-page .site-footer{border-top:1px solid var(--proposal-line)}
+
+    @media(max-width:980px){
+      .proposal-hero__inner{grid-template-columns:1fr;gap:64px}
+      .proposal-hero__facts{max-width:620px}
+      .section-heading,.investment-grid,.closing-copy,.support-note{grid-template-columns:180px minmax(0,1fr);gap:48px}
+      .intro-grid{grid-template-columns:1fr}
+      .intro-item,.intro-item+.intro-item{padding:28px 0;border-left:0}
+      .intro-item__num{margin-bottom:24px}
+      .approach-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .approach-item{min-height:250px;border-bottom:1px solid var(--proposal-line)}
+      .approach-item:nth-child(2){border-right:0;padding-right:0}
+      .approach-item:nth-child(3){padding-left:0}
+      .approach-item:nth-child(3),.approach-item:nth-child(4){border-bottom:0}
+      .timeline-row{grid-template-columns:130px 180px minmax(0,1fr)}
+    }
+
+    @media(max-width:760px){
+      :root{--fs-display:clamp(32px,9.5vw,40px);--fs-h1:clamp(30px,9vw,38px);--fs-h2:clamp(24px,7.5vw,30px);--fs-body:16px;--section-xl:84px;--section-lg:72px}
+      body.proposal-page{font-size:16px}
+      .proposal-shell{width:calc(100% - 32px)}
+      .proposal-hero{padding:96px 0 84px;min-height:auto}
+      .proposal-h1{max-width:none}
+      .proposal-hero__desc,.proposal-lead,.section-heading__body p,.issue-row p,.support-note p,.closing-copy p{font-size:16px}
+      .proposal-fact{grid-template-columns:90px 1fr}
+      .section-heading,.investment-grid,.closing-copy,.support-note{grid-template-columns:1fr;gap:24px;margin-bottom:44px}
+      .issue-row{grid-template-columns:42px 1fr;gap:18px}
+      .issue-row p{grid-column:2}
+      .issue-row h3{font-size:22px}
+      .approach-grid,.scope-grid,.terms-grid,.investment-notes{grid-template-columns:1fr}
+      .approach-item,.approach-item:first-child,.approach-item:last-child,.approach-item:nth-child(2),.approach-item:nth-child(3){padding:26px 0;min-height:220px;border-right:0;border-bottom:1px solid var(--proposal-line)}
+      .approach-item:last-child{border-bottom:0}
+      .scope-card{padding:26px 24px;min-height:310px}
+      .scope-card h3{font-size:24px}
+      .timeline-row{grid-template-columns:1fr;gap:8px;padding:24px 0}
+      .timeline-row strong{font-size:19px}
+      .investment-price{align-items:flex-start;flex-direction:column}
+      .investment-price strong{font-size:38px}
+      .term-card{padding:26px 24px;min-height:auto}
+      .download-inner{align-items:flex-start;flex-direction:column}
+    }
+
+    @media print{
+      .site-header,.menu-overlay,.download-area,.site-footer{display:none!important}
+      body.proposal-page{background:#fff}
+      .proposal-section,.proposal-hero{break-inside:avoid-page}
+      .proposal-shell{width:100%;max-width:none}
+    }
+  </style>
 </head>
-<body>
-<header class="proposal-header" data-header>
-  <div class="proposal-container proposal-header__inner">
-    <a class="proposal-logo" href="/">NINEWORKS</a>
-    <div class="proposal-status"><span>PRIVATE PROPOSAL · MIGUNG365</span><button class="proposal-print" type="button" onclick="window.print()">PRINT / PDF</button></div>
-  </div>
-</header>
-<main>
-<section class="proposal-hero">
-  <div class="proposal-container proposal-hero__inner">
-    <div class="proposal-hero__top">
-      <p class="proposal-eyebrow">MIGUNG365 / VISUAL REBRANDING PROPOSAL</p>
-      <p>Prepared for (주)미궁365<br>Prepared by NINEWORKS · 24 AUG 2026</p>
-    </div>
-    <h1 class="reveal">MIGUNG365<br><span>Visual Rebranding</span></h1>
-    <div class="proposal-hero__bottom reveal">
-      <p class="proposal-hero__statement">지난 10년간 축적한 ‘장 건강’의 신뢰를 유지하면서, 다음 단계의 이너케어·웰니스 브랜드로 확장할 수 있는 새로운 시각 체계를 제안합니다.</p>
-      <div class="proposal-meta">
-        <div><strong>PROJECT</strong>Visual Rebranding</div>
-        <div><strong>CLIENT</strong>(주)미궁365</div>
-        <div><strong>START</strong>2026.09.07</div>
-        <div><strong>PRIMARY GOAL</strong>2026.10.31</div>
+<body class="proposal-page">
+<div class="site-shell">
+  <header class="site-header"><a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
+  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+
+  <main>
+    <section class="proposal-hero">
+      <div class="proposal-shell proposal-hero__inner">
+        <div class="proposal-hero__copy reveal">
+          <p class="proposal-label">MIGUNG365 / VISUAL REBRANDING PROPOSAL</p>
+          <h1 class="proposal-h1">지난 10년의 신뢰를,<br>다음 웰니스의 기준으로.</h1>
+          <p class="proposal-hero__desc">장 건강 분야에서 축적해 온 미궁365의 전문성과 신뢰를 기반으로, 이너케어와 웰니스 영역까지 자연스럽게 확장할 수 있는 새로운 비주얼 아이덴티티와 브랜드 경험을 제안합니다.</p>
+        </div>
+        <dl class="proposal-hero__facts reveal">
+          <div class="proposal-fact"><dt>CLIENT</dt><dd>(주)미궁365</dd></div>
+          <div class="proposal-fact"><dt>PROJECT</dt><dd>Visual Rebranding</dd></div>
+          <div class="proposal-fact"><dt>START</dt><dd>2026.09.07</dd></div>
+          <div class="proposal-fact"><dt>PRIMARY</dt><dd>2026.10.31</dd></div>
+          <div class="proposal-fact"><dt>PREPARED BY</dt><dd>NINEWORKS</dd></div>
+        </dl>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">01</span><p class="proposal-eyebrow">PROJECT UNDERSTANDING</p></div>
-      <div><h2>바꾸기 위한 리브랜딩이 아니라,<br>확장하기 위한 리브랜딩.</h2></div>
-    </div>
-    <div class="understanding-copy reveal">
-      <h3>장 건강에서<br>Inner Care & Wellness로</h3>
-      <div class="understanding-copy__text">
-        <p>미궁365는 오랜 기간 장 건강이라는 명확한 영역에서 전문성과 신뢰를 구축해온 브랜드입니다. 이번 변화의 핵심은 그동안 쌓아온 인지와 신뢰를 지우는 것이 아니라, 새로운 카테고리까지 자연스럽게 담아낼 수 있도록 브랜드의 그릇을 넓히는 데 있다고 봅니다.</p>
-        <p>따라서 BI 하나를 교체하는 작업보다 브랜드가 앞으로 제품, 패키지, 상세페이지, 공식몰과 다양한 운영 콘텐츠에서 어떤 인상으로 반복되어야 하는지를 하나의 Visual Identity System으로 정리하는 것이 중요합니다.</p>
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading reveal">
+          <p class="proposal-label">01 / PROJECT UNDERSTANDING</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">미궁365가 쌓아온 강점을 지우는 리뉴얼이 아니라, 더 넓은 카테고리를 담을 수 있도록 브랜드의 시각 체계를 확장하는 프로젝트로 이해했습니다.</h2>
+            <p>장 건강이라는 강력한 전문성을 유지하면서도, 앞으로의 제품과 고객 경험에서는 이너케어·웰니스 브랜드로 받아들여질 수 있는 새로운 기준이 필요합니다.</p>
+          </div>
+        </div>
+        <div class="intro-grid reveal">
+          <article class="intro-item"><span class="intro-item__num">01</span><strong>10 Years of Trust</strong><p>장 건강 분야에서 장기간 축적한 제품 신뢰와 브랜드 인지도를 핵심 자산으로 유지합니다.</p></article>
+          <article class="intro-item"><span class="intro-item__num">02</span><strong>Category Expansion</strong><p>장 건강 중심의 인식을 이너케어와 웰니스 전반으로 자연스럽게 확장할 수 있는 표현 체계를 만듭니다.</p></article>
+          <article class="intro-item"><span class="intro-item__num">03</span><strong>Visual Transformation</strong><p>BI, 패키지, 상세페이지, 공식몰과 운영물까지 하나의 인상으로 연결되는 시스템을 구축합니다.</p></article>
+        </div>
       </div>
-    </div>
-    <div class="shift-list reveal">
-      <article class="shift-item"><small>01 / HERITAGE</small><strong>10 Years<br>of Trust</strong><p>기존 미궁365가 확보한 인지도와 전문성을 리뉴얼 이후에도 핵심 자산으로 유지합니다.</p></article>
-      <article class="shift-item"><small>02 / EXPANSION</small><strong>Inner Care<br>& Wellness</strong><p>장 건강을 넘어 다양한 이너케어와 웰니스 제품을 수용할 수 있는 브랜드 구조를 만듭니다.</p></article>
-      <article class="shift-item"><small>03 / EXPERIENCE</small><strong>One Visual<br>System</strong><p>BI부터 패키지, 커머스와 공식몰까지 하나의 인상으로 연결되는 시각 체계를 구축합니다.</p></article>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">02</span><p class="proposal-eyebrow">WHAT WE SEE</p></div>
-      <div><h2>지금 필요한 것은 개별 디자인의 개선보다<br>브랜드 전체를 연결하는 기준입니다.</h2></div>
-    </div>
-    <div class="challenge-list reveal">
-      <article class="challenge-row"><span>01</span><h3>Brand Perception</h3><p>장 건강 전문 브랜드라는 강점은 분명하지만, 향후 이너케어와 웰니스까지 포괄하기 위해서는 현재보다 확장된 브랜드 인상을 설계할 필요가 있습니다.</p></article>
-      <article class="challenge-row"><span>02</span><h3>Visual Identity</h3><p>BI, 패키지, 콘텐츠 등 각각의 시각 요소를 부분적으로 개선하기보다 하나의 원칙 아래 일관된 언어로 재구성해야 합니다.</p></article>
-      <article class="challenge-row"><span>03</span><h3>Commerce Experience</h3><p>상품을 나열하고 판매하는 공식몰을 넘어 브랜드의 전문성, 제품의 신뢰와 새로운 방향성이 함께 읽히는 디지털 경험이 필요합니다.</p></article>
-      <article class="challenge-row"><span>04</span><h3>Scalability</h3><p>리뉴얼 이후 새로운 카테고리와 SKU가 계속 추가되더라도 내부에서 일관되게 확장할 수 있는 디자인 시스템이 필요합니다.</p></article>
-    </div>
-  </div>
-</section>
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading reveal">
+          <p class="proposal-label">02 / WHAT WE SEE</p>
+          <div class="section-heading__body"><h2 class="proposal-h2">현재의 강점은 유지하되, 확장을 방해하는 시각적 한계를 정리해야 합니다.</h2></div>
+        </div>
+        <div class="issue-list reveal">
+          <article class="issue-row"><span class="issue-row__no">01</span><h3>Brand Perception</h3><p>장 건강 전문 브랜드라는 강점은 분명하지만, 향후 이너케어와 웰니스 영역을 함께 담기에는 현재의 브랜드 인상이 다소 제한적으로 작동할 수 있습니다.</p></article>
+          <article class="issue-row"><span class="issue-row__no">02</span><h3>Visual Identity</h3><p>BI부터 패키지, 상세페이지, 공식몰, 출력물까지 각각의 접점에서 일관되게 반복될 수 있는 새로운 시각 언어와 운영 원칙이 필요합니다.</p></article>
+          <article class="issue-row"><span class="issue-row__no">03</span><h3>Commerce Experience</h3><p>제품을 판매하는 몰의 기능을 넘어 브랜드의 전문성, 철학, 제품 신뢰를 동시에 전달하는 공식몰 경험으로 개선할 필요가 있습니다.</p></article>
+          <article class="issue-row"><span class="issue-row__no">04</span><h3>Scalability</h3><p>향후 신규 제품과 카테고리가 추가되어도 매번 새로운 디자인을 만드는 것이 아니라, 기존 시스템 안에서 일관성 있게 확장될 수 있어야 합니다.</p></article>
+        </div>
+      </div>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">03</span><p class="proposal-eyebrow">OUR APPROACH</p></div>
-      <div><h2>Identity에서 시작해<br>실제 브랜드 경험까지 연결합니다.</h2><p>하나의 로고를 만드는 프로젝트가 아니라, 미궁365가 앞으로 스스로 확장해갈 수 있는 시각적 판단 기준을 만드는 프로젝트로 접근합니다.</p></div>
-    </div>
-    <div class="approach-grid reveal">
-      <article class="approach-card"><small>01 / IDENTITY</small><h3>Brand<br>Identity</h3><p>BI Renewal · Logo System<br>Color · Typography</p></article>
-      <article class="approach-card"><small>02 / SYSTEM</small><h3>Visual<br>System</h3><p>Graphic Language · Image Direction<br>Layout · Visual Guideline</p></article>
-      <article class="approach-card"><small>03 / EXPERIENCE</small><h3>Brand<br>Experience</h3><p>Package · Detail Page<br>Official Mall · Print</p></article>
-      <article class="approach-card"><small>04 / OPERATION</small><h3>Brand<br>Operation</h3><p>Application · Review<br>6 Months Stabilization Support</p></article>
-    </div>
-  </div>
-</section>
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading reveal">
+          <p class="proposal-label">03 / OUR APPROACH</p>
+          <div class="section-heading__body"><h2 class="proposal-h2">Identity에서 끝나지 않고 실제 브랜드 운영까지 이어지는 구조로 진행합니다.</h2></div>
+        </div>
+        <div class="approach-grid reveal">
+          <article class="approach-item"><span class="approach-item__no">01</span><h3>Identity</h3><p>BI Renewal<br>Logo System<br>Color · Typography</p></article>
+          <article class="approach-item"><span class="approach-item__no">02</span><h3>System</h3><p>Graphic Language<br>Image Direction<br>Layout Principle</p></article>
+          <article class="approach-item"><span class="approach-item__no">03</span><h3>Experience</h3><p>Package<br>Detail Page<br>Official Mall · Print</p></article>
+          <article class="approach-item"><span class="approach-item__no">04</span><h3>Operation</h3><p>Guideline<br>Application<br>6 Months Support</p></article>
+        </div>
+      </div>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">04</span><p class="proposal-eyebrow">SCOPE OF WORK</p></div>
-      <div><h2>브랜드가 고객과 만나는 주요 접점을<br>하나의 시스템으로 재정비합니다.</h2></div>
-    </div>
-    <div class="scope-list reveal">
-      <article class="scope-row"><span>01</span><h3>Brand Identity</h3><div class="scope-items"><span>BI Renewal</span><span>Logo System</span><span>Color & Typography</span><span>Basic Graphic System</span><span>Visual Identity Guideline</span></div></article>
-      <article class="scope-row"><span>02</span><h3>Package System</h3><div class="scope-items"><span>Master Package Direction</span><span>대표 제품군 디자인 적용</span><span>SKU Variation System</span><span>제품 확장 기준 정리</span></div></article>
-      <article class="scope-row"><span>03</span><h3>Commerce Contents</h3><div class="scope-items"><span>Detail Page Design System</span><span>대표 제품 상세페이지</span><span>Promotion Visual Template</span><span>Commerce Graphic Direction</span></div></article>
-      <article class="scope-row"><span>04</span><h3>Official Mall</h3><div class="scope-items"><span>Main Page Visual Renewal</span><span>주요 고객 접점 UI 개선</span><span>Brand Content Structure</span><span>Responsive Visual Direction</span></div></article>
-      <article class="scope-row"><span>05</span><h3>Applications</h3><div class="scope-items"><span>Print & Editorial Materials</span><span>운영 제작물 디자인 개선</span><span>Brand Touchpoint Review</span><span>Application Guideline</span></div></article>
-      <article class="scope-row"><span>06</span><h3>Stabilization</h3><div class="scope-items"><span>리뉴얼 적용 지원</span><span>디자인 방향 검수</span><span>기존 시스템 내 수정·보완</span><span>6 Months Support</span></div></article>
-    </div>
-    <div class="scope-note reveal"><strong>System first,<br>then scale.</strong><p>대표 제품과 주요 접점을 중심으로 마스터 디자인 시스템을 먼저 구축합니다. 이를 기반으로 향후 제품과 콘텐츠가 추가될 때 동일한 브랜드 인상을 유지하면서 효율적으로 확장할 수 있도록 설계합니다.</p></div>
-  </div>
-</section>
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading reveal">
+          <p class="proposal-label">04 / SCOPE OF WORK</p>
+          <div class="section-heading__body"><h2 class="proposal-h2">브랜드 아이덴티티부터 패키지, 커머스, 공식몰과 운영 디자인까지 하나의 체계로 연결합니다.</h2><p>단순 결과물 제작보다 향후 미궁365 내부에서도 확장·운영 가능한 디자인 기준을 구축하는 데 초점을 둡니다.</p></div>
+        </div>
+        <div class="scope-grid">
+          <article class="scope-card reveal"><div class="scope-card__top"><span class="scope-card__type">Brand Identity</span><span class="scope-card__no">01</span></div><h3>BI Renewal & Visual Identity</h3><ul><li>BI / Logo System Renewal</li><li>Color & Typography System</li><li>Graphic & Image Direction</li><li>Basic Visual Guideline</li></ul></article>
+          <article class="scope-card reveal"><div class="scope-card__top"><span class="scope-card__type">Package</span><span class="scope-card__no">02</span></div><h3>Package Design System</h3><ul><li>Master Package Design</li><li>대표 제품군 패키지 적용</li><li>제품 확장형 Variation Rule</li><li>기본 제작 가이드 정리</li></ul></article>
+          <article class="scope-card reveal"><div class="scope-card__top"><span class="scope-card__type">Commerce</span><span class="scope-card__no">03</span></div><h3>Commerce Contents</h3><ul><li>Detail Page Design System</li><li>대표 제품 상세페이지</li><li>Promotion / Banner Template</li><li>운영 콘텐츠 시각 기준</li></ul></article>
+          <article class="scope-card reveal"><div class="scope-card__top"><span class="scope-card__type">Digital</span><span class="scope-card__no">04</span></div><h3>Official Mall Renewal</h3><ul><li>Main Page Visual Renewal</li><li>주요 고객 접점 UI 개선</li><li>브랜드 콘텐츠 구조 정리</li><li>Responsive Visual Direction</li></ul></article>
+          <article class="scope-card reveal"><div class="scope-card__top"><span class="scope-card__type">Application</span><span class="scope-card__no">05</span></div><h3>Brand Applications</h3><ul><li>명함 및 기본 인쇄물</li><li>브랜드 운영 출력물 개선</li><li>주요 접점 디자인 정리</li><li>실사용 적용 가이드</li></ul></article>
+          <article class="scope-card reveal"><div class="scope-card__top"><span class="scope-card__type">Stabilization</span><span class="scope-card__no">06</span></div><h3>Application & Support</h3><ul><li>리뉴얼 결과물 적용 지원</li><li>운영 디자인 방향 검수</li><li>기존 구축물 경미한 보완</li><li>6개월 브랜드 안정화 지원</li></ul></article>
+        </div>
+      </div>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">05</span><p class="proposal-eyebrow">PROJECT TIMELINE</p></div>
-      <div><h2>핵심 리브랜딩 구축 이후,<br>실제 운영 환경에 정착하는 과정까지.</h2></div>
-    </div>
-    <div class="timeline reveal">
-      <article class="timeline-row"><time>SEP 07 — SEP 18</time><h3>01. Direction</h3><p>현재 브랜드와 시각 자산을 검토하고, 진행 중인 버벌 브랜딩과 연결하여 Visual Rebranding의 핵심 방향과 디자인 원칙을 설정합니다.</p></article>
-      <article class="timeline-row"><time>SEP 21 — OCT 09</time><h3>02. Identity & System</h3><p>BI Renewal을 중심으로 컬러, 타이포그래피, 그래픽 언어와 확장 가능한 Visual Identity System을 구축합니다.</p></article>
-      <article class="timeline-row"><time>OCT 12 — OCT 31</time><h3>03. Application & Launch</h3><p>대표 패키지, 상세페이지 시스템, 공식몰 주요 영역과 운영 제작물에 새로운 아이덴티티를 적용하여 1차 리브랜딩을 완성합니다.</p></article>
-      <article class="timeline-row"><time>NOV 2026 — APR 2027</time><h3>04. Stabilization</h3><p>실제 브랜드 운영 과정에서 발생하는 적용 이슈를 검토하고, 구축된 시스템 안에서 브랜드가 안정적으로 정착할 수 있도록 지원합니다.</p></article>
-    </div>
-    <div class="support-box reveal"><strong>6 Months<br>Brand Support</strong><p>리브랜딩 결과물을 전달하는 것에서 끝내지 않고, 프로젝트 완료 후 약 6개월간 기존에 구축한 Visual Identity System을 기반으로 경미한 수정·보완, 브랜드 적용 검수와 운영 디자인 방향을 지원합니다.</p></div>
-  </div>
-</section>
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading reveal">
+          <p class="proposal-label">05 / PROJECT TIMELINE</p>
+          <div class="section-heading__body"><h2 class="proposal-h2">10월 31일까지 핵심 리브랜딩을 구축하고, 이후 6개월간 실제 운영 환경에 안정적으로 정착하도록 지원합니다.</h2></div>
+        </div>
+        <div class="timeline-list reveal">
+          <article class="timeline-row"><time>SEP · WEEK 01</time><strong>Discovery & Direction</strong><p>기존 브랜드 자산과 버벌 브랜딩 방향을 검토하고, 비주얼 리브랜딩의 핵심 기준과 디자인 방향을 정리합니다.</p></article>
+          <article class="timeline-row"><time>SEP · WEEK 02–04</time><strong>Identity & System</strong><p>BI 리뉴얼과 컬러, 타이포그래피, 그래픽 언어를 개발하고 대표 브랜드 접점으로 확장합니다.</p></article>
+          <article class="timeline-row"><time>OCT · WEEK 01–04</time><strong>Experience Build</strong><p>패키지, 상세페이지, 공식몰, 출력물 등 주요 접점의 디자인 시스템을 구축하고 최종 가이드로 정리합니다.</p></article>
+          <article class="timeline-row"><time>2026.10.31</time><strong>Primary Completion</strong><p>핵심 리브랜딩 결과물과 운영에 필요한 주요 시각 기준을 1차 완료합니다.</p></article>
+          <article class="timeline-row"><time>NOV 2026 – APR 2027</time><strong>Application & Stabilization</strong><p>실제 브랜드 운영 과정에서 발생하는 적용 이슈를 검토하고 구축된 시스템의 안정적인 정착을 지원합니다.</p></article>
+        </div>
+        <div class="support-note reveal"><strong>6 Months<br>Brand Support</strong><p>프로젝트 완료 후 6개월간 리브랜딩의 안정적인 적용을 위한 디자인 운영 지원 및 유지보수를 제공합니다. 기존 구축 시스템을 기반으로 한 경미한 수정·보완과 브랜드 적용 지원을 포함하며, 신규 제품 개발이나 대규모 신규 제작은 별도 협의합니다.</p></div>
+      </div>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container investment-wrap">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">06</span><p class="proposal-eyebrow">PROJECT INVESTMENT</p></div>
-      <div><h2>One integrated<br>rebranding project.</h2><p>개별 결과물의 단가를 더하는 방식이 아니라, 미궁365의 새로운 브랜드 시스템을 구축하고 실제 접점까지 연결하는 하나의 통합 프로젝트로 제안합니다.</p></div>
-    </div>
-    <div class="investment-line reveal">
-      <div class="investment-label">TOTAL PROJECT INVESTMENT<br>VISUAL REBRANDING PACKAGE</div>
-      <div class="investment-price">₩15,000,000<small>VAT 별도 · 프로젝트 착수 및 세부 지급 조건은 계약 시 협의</small></div>
-    </div>
-    <div class="investment-detail reveal">
-      <article><h4>Integrated Scope</h4><p>BI, Visual Identity, Package, Commerce, Official Mall과 주요 브랜드 접점을 하나의 방향 아래 진행합니다.</p></article>
-      <article><h4>Primary Completion</h4><p>2026년 10월 31일까지 핵심 리브랜딩 시스템과 주요 적용 디자인의 1차 완성을 목표로 합니다.</p></article>
-      <article><h4>Extended Support</h4><p>1차 프로젝트 이후 약 6개월간 구축한 시스템의 안정적인 브랜드 적용과 운영을 지원합니다.</p></article>
-    </div>
-  </div>
-</section>
+    <section class="proposal-section">
+      <div class="proposal-shell investment-grid">
+        <p class="proposal-label reveal">06 / INVESTMENT</p>
+        <div class="investment-main reveal">
+          <h2 class="proposal-h2">MIGUNG365 Visual Rebranding Package</h2>
+          <div class="investment-price"><strong>₩15,000,000</strong><span>VAT 별도</span></div>
+          <div class="investment-notes">
+            <article><h3>Integrated Project</h3><p>BI부터 패키지, 커머스, 공식몰까지 각각 분리된 작업이 아닌 하나의 리브랜딩 프로젝트로 진행합니다.</p></article>
+            <article><h3>Primary Build</h3><p>2026년 10월 31일까지 핵심 브랜드 시스템과 주요 접점의 디자인 구축을 완료합니다.</p></article>
+            <article><h3>6 Months Support</h3><p>완료 이후 6개월간 실제 브랜드 운영 환경에서 리뉴얼이 안정적으로 적용되도록 지원합니다.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="proposal-section">
-  <div class="proposal-container">
-    <div class="proposal-section-head reveal">
-      <div><span class="proposal-no">07</span><p class="proposal-eyebrow">PROJECT BOUNDARY</p></div>
-      <div><h2>프로젝트의 집중도를 유지하기 위한<br>기본 범위 기준입니다.</h2></div>
-    </div>
-    <div class="term-grid reveal">
-      <div class="term-box"><h3>Included</h3><ul><li>리브랜딩 Visual Identity System 구축</li><li>대표 제품군을 중심으로 한 패키지 시스템 개발</li><li>대표 제품 상세페이지 및 확장 가능한 디자인 구조</li><li>공식몰 메인 및 주요 고객 접점의 비주얼 개선</li><li>주요 인쇄물 및 브랜드 운영물 개선</li><li>프로젝트 완료 후 약 6개월 적용·안정화 지원</li></ul></div>
-      <div class="term-box"><h3>Separately Discussed</h3><ul><li>별도의 신규 브랜드 개발 또는 신규 네이밍 프로젝트</li><li>프로젝트 범위를 크게 벗어나는 신규 패키지 대량 제작</li><li>신규 상세페이지의 지속적인 대량 제작</li><li>별도 촬영, 영상 제작 및 대규모 캠페인 콘텐츠</li><li>공식몰의 신규 기능 개발 및 대규모 개발 작업</li><li>구축된 디자인 시스템과 무관한 별도 프로젝트</li></ul></div>
-    </div>
-    <p class="term-note reveal">※ 세부 제작 수량과 적용 범위는 프로젝트 착수 전 미궁365의 제품 운영 현황과 우선순위를 함께 검토하여 최종 확정합니다. 유지 지원은 기존에 구축된 브랜드 시스템의 적용과 경미한 수정·보완을 기준으로 하며, 신규 대규모 제작 업무는 별도 협의합니다.</p>
-  </div>
-</section>
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading reveal">
+          <p class="proposal-label">07 / PROJECT RANGE</p>
+          <div class="section-heading__body"><h2 class="proposal-h2">프로젝트 범위를 명확히 구분해 리브랜딩의 완성도와 운영 효율을 함께 관리합니다.</h2></div>
+        </div>
+        <div class="terms-grid">
+          <article class="term-card reveal"><h3>Included</h3><ul><li>BI 및 Visual Identity System 구축</li><li>대표 제품 패키지 디자인 및 확장 시스템</li><li>상세페이지 디자인 시스템 및 대표 제품 적용</li><li>공식몰 주요 영역 Visual / UI Renewal</li><li>기본 인쇄·운영물 개선</li><li>6개월 브랜드 적용 및 안정화 지원</li></ul></article>
+          <article class="term-card reveal"><h3>Separately Discussed</h3><ul><li>신규 브랜드 또는 독립 제품 브랜드 개발</li><li>계약 범위를 초과하는 신규 패키지 대량 제작</li><li>신규 상세페이지 대량 제작</li><li>별도 캠페인 / 프로모션 대규모 제작</li><li>제품·모델 촬영 및 영상 제작</li><li>공식몰 별도 기능 개발 및 외부 개발 비용</li></ul></article>
+        </div>
+        <p class="term-note reveal">세부 수량과 우선 적용 제품은 프로젝트 착수 시 미궁365의 운영 일정 및 리브랜딩 우선순위를 기준으로 상호 협의하여 확정합니다.</p>
+      </div>
+    </section>
 
-<section class="proposal-closing">
-  <div class="proposal-container">
-    <p class="proposal-eyebrow reveal">NINEWORKS × MIGUNG365</p>
-    <h2 class="reveal">The next 10 years.<br><span>미궁365의 다음 기준을 만듭니다.</span></h2>
-    <div class="proposal-closing__copy reveal">
-      <p>지난 10년이 장 건강에 대한 전문성과 신뢰를 만들어온 시간이었다면, 이번 리브랜딩은 그 신뢰를 더 넓은 웰니스 경험으로 확장하는 출발점이 될 수 있다고 생각합니다.</p>
-      <p>NINEWORKS는 새로운 BI를 만드는 데 그치지 않고, 미궁365가 패키지와 커머스, 공식몰과 앞으로 만들어질 새로운 제품까지 같은 인상으로 이어갈 수 있는 브랜드 시스템을 함께 구축하고자 합니다.</p>
-    </div>
-    <footer class="proposal-footer"><span>NINEWORKS / BRANDING STUDIO</span><span>Proposal updated · 2026.08.24</span></footer>
-  </div>
-</section>
-</main>
-<script>
-const header=document.querySelector('[data-header]');
-const syncHeader=()=>header&&header.classList.toggle('is-scrolled',window.scrollY>12);
-syncHeader();window.addEventListener('scroll',syncHeader,{passive:true});
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
+    <section class="proposal-section proposal-section--compact">
+      <div class="proposal-shell closing-copy reveal">
+        <p class="proposal-label">08 / THE NEXT 10 YEARS</p>
+        <div><h2>미궁365가 지난 10년간 장 건강의 기준을 만들어왔다면, 다음 10년은 더 넓은 웰니스의 기준을 만드는 과정이라고 생각합니다.</h2><p>NINEWORKS는 이번 리브랜딩이 하나의 로고 교체에서 끝나지 않고 패키지, 콘텐츠, 공식몰과 실제 브랜드 운영까지 일관된 경험으로 이어질 수 있도록 함께하겠습니다.</p></div>
+      </div>
+    </section>
+
+    <section class="download-area">
+      <div class="proposal-shell download-inner">
+        <div class="download-copy"><p class="proposal-label">PROPOSAL DOCUMENT</p><p>필요 시 현재 제안서를 PDF로 저장하거나 인쇄할 수 있습니다. · Updated 2026.08.24</p></div>
+        <button class="download-button" type="button" onclick="window.print()">PDF DOWNLOAD / PRINT ↗</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container"></footer>
+</div>
+<script src="/assets/js/main.js?v=20260817-8"></script>
 </body>
 </html>
