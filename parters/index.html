@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/assets/css/partners-dashboard-20260824.css?v=20260824-4">
   <link rel="stylesheet" href="/assets/css/partners-email-login-20260824.css?v=20260824-4">
   <link rel="stylesheet" href="/assets/css/partners-finance-20260824.css?v=20260824-1">
+  <link rel="stylesheet" href="/assets/css/partners-workspace-v2-20260824.css?v=20260824-1">
 </head>
 <body>
   <section class="partner-login-shell" data-partner-login>
@@ -32,91 +33,117 @@
   </section>
 
   <div class="partner-app" data-partner-app hidden>
-    <aside class="partner-sidebar">
-      <div class="partner-brand"><a href="/" aria-label="NINEWORKS 홈"><img src="/assets/nineworks-logo.svg" alt="NINEWORKS"></a><span>PARTNERS</span></div>
-      <nav class="partner-nav" aria-label="파트너 워크스페이스 메뉴">
-        <a class="is-active" href="#overview"><span>Overview</span><small>01</small></a>
-        <a href="#projects"><span>Projects</span><small>02</small></a>
-        <a href="#schedule"><span>Schedule</span><small>03</small></a>
-        <a href="#resources"><span>Files & Links</span><small>04</small></a>
-        <a href="#account"><span>Account</span><small>05</small></a>
-        <a href="#guide"><span>Working Guide</span><small>06</small></a>
-        <a href="#portfolio"><span>Portfolio Policy</span><small>07</small></a>
+    <header class="partner-shell-header">
+      <a class="partner-shell-brand" href="/" aria-label="NINEWORKS 홈">
+        <img src="/assets/nineworks-logo.svg" alt="NINEWORKS">
+        <span>PARTNER WORKSPACE</span>
+      </a>
+
+      <nav class="partner-page-nav" aria-label="파트너 워크스페이스 메뉴" data-partner-page-nav>
+        <button class="is-active" type="button" data-partner-page-link="dashboard">대시보드</button>
+        <button type="button" data-partner-page-link="projects">프로젝트</button>
+        <button type="button" data-partner-page-link="schedule">스케줄</button>
+        <button type="button" data-partner-page-link="proposals">제안서</button>
+        <button type="button" data-partner-page-link="account">어카운트</button>
+        <button type="button" data-partner-page-link="guide">가이드</button>
       </nav>
-      <div class="partner-sidebar__bottom">
-        <p>NINEWORKS PARTNER WORKSPACE<br>PROJECT-BASED COLLABORATION</p>
-        <a href="mailto:info@9works.kr">info@9works.kr ↗</a>
+
+      <div class="partner-shell-user">
+        <div class="partner-user__avatar" data-partner-initials>NW</div>
+        <div class="partner-shell-user__meta"><strong data-partner-name>Partner</strong><span data-partner-role>DESIGN PARTNER</span></div>
+        <button class="partner-signout" type="button" data-partner-signout>LOGOUT</button>
       </div>
-    </aside>
+    </header>
 
     <main class="partner-main">
-      <header class="partner-topbar">
-        <div class="partner-topbar__title"><span>WORKSPACE</span><strong data-partner-dashboard-title>Partner Dashboard</strong></div>
-        <div class="partner-user">
-          <div class="partner-user__avatar" data-partner-initials>NW</div>
-          <div class="partner-user__meta"><strong data-partner-name>Partner</strong><span data-partner-role>DESIGN PARTNER</span></div>
-          <button class="partner-signout" type="button" data-partner-signout>LOGOUT</button>
-        </div>
-      </header>
-
       <div class="partner-content">
-        <section class="partner-hero" id="overview">
-          <div>
-            <p class="partner-kicker">NINEWORKS / COLLABORATION DESK</p>
-            <h1 class="partner-greeting" data-partner-greeting>안녕하세요.</h1>
+        <section class="partner-page is-active" data-partner-page="dashboard">
+          <div class="partner-dashboard-hero">
+            <div>
+              <p class="partner-kicker">NINEWORKS / COLLABORATION DESK</p>
+              <h1 class="partner-greeting" data-partner-greeting>안녕하세요.</h1>
+            </div>
+            <div class="partner-dashboard-account"><span>ACCOUNT</span><strong data-partner-email>—</strong></div>
           </div>
-          <div class="partner-hero__copy">
-            <p>나인웍스와 함께 진행하는 프로젝트의 핵심 정보, 일정, 제안서와 정산 정보를 확인하는 파트너 전용 공간입니다. 프로젝트별 최신 정보는 이 워크스페이스를 기준으로 정리합니다.</p>
-            <strong><span data-partner-name>Partner</span> · <span data-partner-email>—</span></strong>
+
+          <section class="partner-welcome-strip">
+            <div><span>PARTNER</span><strong data-partner-welcome>Welcome.</strong></div>
+            <div><span>WORKSPACE</span><strong>프로젝트 최신 정보는 이 공간을 기준으로 확인합니다.</strong></div>
+          </section>
+
+          <section class="partner-stat-grid" aria-label="워크스페이스 현황">
+            <article class="partner-stat"><span>ACTIVE PROJECTS</span><strong data-partner-stat="projects">0</strong><small>현재 협업 중인 프로젝트</small></article>
+            <article class="partner-stat"><span>PRELIMINARY FEE</span><strong data-partner-stat="preliminaryFee">0원</strong><small>예비 단계 지정 금액</small></article>
+            <article class="partner-stat"><span>ACTIVE DEPOSIT</span><strong data-partner-stat="activeFee">0원</strong><small>진행 단계 예치금액</small></article>
+            <article class="partner-stat"><span>PROPOSALS</span><strong data-partner-stat="proposals">0</strong><small>연결된 제안서</small></article>
+          </section>
+
+          <div class="partner-dashboard-note">
+            <div><span>WORKSPACE GUIDE</span><strong>필요한 정보는 상단 메뉴에서 바로 확인하세요.</strong></div>
+            <p>프로젝트, 제안서, 정산 정보를 한 화면에 길게 나열하지 않고 각 메뉴별로 분리했습니다.</p>
           </div>
         </section>
 
-        <section class="partner-welcome-strip">
-          <div><span>PARTNER</span><strong data-partner-welcome>Welcome.</strong></div>
-          <div><span>ACCOUNT</span><strong data-partner-email>—</strong></div>
+        <section class="partner-page" data-partner-page="projects">
+          <div class="partner-page-head">
+            <div><span>PROJECTS</span><h2>진행 중인 프로젝트</h2></div>
+            <p>나인웍스에서 배정한 프로젝트와 현재 단계, 업무 개요를 확인합니다.</p>
+          </div>
+          <section class="partner-panel" id="projects">
+            <div class="partner-panel__head"><div><span>MY PROJECTS</span><strong>Assigned Projects</strong></div><a href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20Project%20Question">PROJECT QUESTION ↗</a></div>
+            <div class="project-list" data-partner-project-list>
+              <div class="project-row"><span class="project-row__num">—</span><strong>현재 연결된 프로젝트가 없습니다.</strong><span>어드민에서 프로젝트가 지정되면 이곳에서 확인할 수 있습니다.</span><span class="project-status">STANDBY</span><span class="project-open">—</span></div>
+            </div>
+          </section>
         </section>
 
-        <section class="partner-stat-grid" aria-label="워크스페이스 현황">
-          <article class="partner-stat"><span>ACTIVE PROJECTS</span><strong data-partner-stat="projects">0</strong><small>현재 협업 중인 프로젝트</small></article>
-          <article class="partner-stat"><span>PRELIMINARY FEE</span><strong data-partner-stat="preliminaryFee">0원</strong><small>예비 단계 지정 금액</small></article>
-          <article class="partner-stat"><span>ACTIVE DEPOSIT</span><strong data-partner-stat="activeFee">0원</strong><small>진행 단계 예치금액</small></article>
-          <article class="partner-stat"><span>PROPOSALS</span><strong data-partner-stat="proposals">0</strong><small>연결된 제안서</small></article>
+        <section class="partner-page" data-partner-page="schedule">
+          <div class="partner-page-head">
+            <div><span>SCHEDULE</span><h2>프로젝트 스케줄</h2></div>
+            <p>진행 단계로 전환된 프로젝트의 일정과 전달 항목을 확인합니다.</p>
+          </div>
+          <section class="partner-panel" id="schedule">
+            <div class="partner-panel__head"><div><span>SCHEDULE</span><strong>Upcoming Milestones</strong></div></div>
+            <div class="partner-empty" data-partner-schedule><strong>등록된 일정이 없습니다.</strong>프로젝트가 진행 단계로 전환되면 주요 일정과 전달 항목을 이곳에서 확인할 수 있습니다.</div>
+          </section>
         </section>
 
-        <div class="partner-grid">
-          <div class="partner-stack">
-            <section class="partner-panel" id="projects">
-              <div class="partner-panel__head">
-                <div><span>PROJECTS</span><strong>My Projects</strong></div>
-                <a href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20Project%20Question">PROJECT QUESTION ↗</a>
-              </div>
-              <div class="project-list" data-partner-project-list>
-                <div class="project-row"><span class="project-row__num">—</span><strong>현재 연결된 프로젝트가 없습니다.</strong><span>어드민에서 프로젝트가 지정되면 이곳에서 확인할 수 있습니다.</span><span class="project-status">STANDBY</span><span class="project-open">—</span></div>
-              </div>
-            </section>
+        <section class="partner-page" data-partner-page="proposals">
+          <div class="partner-page-head">
+            <div><span>PROPOSAL LINKS</span><h2>제안서 링크</h2></div>
+            <p>배정된 프로젝트에 연결된 나인웍스 제안서를 바로 확인할 수 있습니다.</p>
+          </div>
+          <div class="partner-proposal-list" data-partner-proposal-list>
+            <div class="partner-empty"><strong>연결된 제안서가 없습니다.</strong>어드민에서 제안서 링크가 등록되면 이곳에 표시됩니다.</div>
+          </div>
+        </section>
 
-            <section class="partner-panel" id="schedule">
-              <div class="partner-panel__head"><div><span>SCHEDULE</span><strong>Upcoming Milestones</strong></div></div>
-              <div class="partner-empty" data-partner-schedule>
-                <strong>등록된 일정이 없습니다.</strong>
-                킥오프, 시안 전달, 피드백, 최종 전달 일정은 프로젝트가 시작되면 이곳에 정리됩니다.
-              </div>
-            </section>
+        <section class="partner-page" data-partner-page="account">
+          <div class="partner-page-head">
+            <div><span>ACCOUNT</span><h2>프로젝트 금액 및 정산</h2></div>
+            <p>예비금액, 진행 예치금액과 선금·잔금 기준을 프로젝트별로 확인합니다.</p>
+          </div>
+          <section class="partner-panel" id="account">
+            <div class="partner-panel__head"><div><span>ACCOUNT</span><strong>Project Fee & Deposit</strong></div></div>
+            <div class="partner-account-summary">
+              <article><span>예비금액</span><strong data-account-summary="preliminary">0원</strong><small>시작 전 예상 금액</small></article>
+              <article><span>예치금액</span><strong data-account-summary="active">0원</strong><small>진행 전환된 프로젝트</small></article>
+              <article><span>선금 50%</span><strong data-account-summary="advance">0원</strong><small>진행 프로젝트 기준</small></article>
+              <article><span>잔금 예상 실수령</span><strong data-account-summary="finalNet">0원</strong><small>3.3% 차감 후</small></article>
+            </div>
+            <div class="partner-account-list" data-partner-account-list>
+              <div class="partner-empty"><strong>정산 예정 프로젝트가 없습니다.</strong>어드민에서 파트너 지정과 금액을 설정하면 이곳에 표시됩니다.</div>
+            </div>
+            <div class="partner-account-note"><strong>정산 기준</strong> · 프로젝트가 예비 단계일 때는 ‘예비금액’으로 표시됩니다. 진행 단계로 전환되면 해당 금액을 ‘예치금액’으로 표시하고 선금 50% / 잔금 50% 구조로 안내합니다. <strong>원천징수 3.3%는 총 지정 금액을 기준으로 계산해 잔금 지급 시 차감</strong>하는 기준으로 표시합니다.</div>
+          </section>
+        </section>
 
-            <section class="partner-panel" id="account">
-              <div class="partner-panel__head"><div><span>ACCOUNT</span><strong>Project Fee & Deposit</strong></div></div>
-              <div class="partner-account-summary">
-                <article><span>예비금액</span><strong data-account-summary="preliminary">0원</strong><small>시작 전 예상 금액</small></article>
-                <article><span>예치금액</span><strong data-account-summary="active">0원</strong><small>진행 전환된 프로젝트</small></article>
-                <article><span>선금 50%</span><strong data-account-summary="advance">0원</strong><small>진행 프로젝트 기준</small></article>
-                <article><span>잔금 예상 실수령</span><strong data-account-summary="finalNet">0원</strong><small>3.3% 차감 후</small></article>
-              </div>
-              <div class="partner-account-list" data-partner-account-list>
-                <div class="partner-empty"><strong>정산 예정 프로젝트가 없습니다.</strong>어드민에서 파트너 지정과 금액을 설정하면 이곳에 표시됩니다.</div>
-              </div>
-              <div class="partner-account-note"><strong>정산 기준</strong> · 프로젝트가 예비 단계일 때는 ‘예비금액’으로 표시됩니다. 진행 단계로 전환되면 해당 금액을 ‘예치금액’으로 표시하고 선금 50% / 잔금 50% 구조로 안내합니다. <strong>원천징수 3.3%는 총 지정 금액을 기준으로 계산해 잔금 지급 시 차감</strong>하는 기준으로 표시합니다.</div>
-            </section>
-
+        <section class="partner-page" data-partner-page="guide">
+          <div class="partner-page-head">
+            <div><span>GUIDE</span><h2>협업 가이드</h2></div>
+            <p>나인웍스 프로젝트의 기본 협업 방식과 포트폴리오 공개 기준입니다.</p>
+          </div>
+          <div class="partner-guide-grid">
             <section class="partner-panel" id="guide">
               <div class="partner-panel__head"><div><span>WORKING GUIDE</span><strong>How We Work</strong></div></div>
               <div class="project-list">
@@ -127,42 +154,19 @@
               </div>
             </section>
 
-            <section class="partner-panel" id="portfolio">
-              <div class="partner-panel__head"><div><span>PORTFOLIO POLICY</span><strong>Project Credit & Use</strong></div></div>
-              <div class="partner-empty"><strong>참여 프로젝트는 협의된 범위에서 개인 포트폴리오로 활용할 수 있습니다.</strong>클라이언트 공개 일정과 보안 정책, 나인웍스의 공식 공개 시점을 기준으로 하며 프로젝트별 공개 가능 범위는 별도로 안내합니다. 공개 전 시안, 원본 데이터와 내부 문서는 외부에 게시하거나 전달하지 않습니다.</div>
-            </section>
+            <div>
+              <section class="partner-panel" id="portfolio">
+                <div class="partner-panel__head"><div><span>PORTFOLIO POLICY</span><strong>Project Credit & Use</strong></div></div>
+                <div class="partner-empty"><strong>참여 프로젝트는 협의된 범위에서 개인 포트폴리오로 활용할 수 있습니다.</strong>클라이언트 공개 일정과 보안 정책, 나인웍스의 공식 공개 시점을 기준으로 하며 프로젝트별 공개 가능 범위는 별도로 안내합니다. 공개 전 시안, 원본 데이터와 내부 문서는 외부에 게시하거나 전달하지 않습니다.</div>
+              </section>
+              <div class="partner-guide-contact"><span>CONTACT</span><strong>진행 중 필요한 내용이 있다면 바로 알려주세요.</strong><a href="mailto:info@9works.kr">info@9works.kr ↗</a></div>
+            </div>
           </div>
-
-          <aside class="partner-stack">
-            <section class="partner-panel" id="resources">
-              <div class="partner-panel__head"><div><span>QUICK ACCESS</span><strong>Files & Links</strong></div></div>
-              <div class="quick-links">
-                <a class="quick-link" href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20File%20Request"><div><strong>FILE REQUEST</strong><span>누락 파일 · 원본 · 권한 요청</span></div><em>↗</em></a>
-                <a class="quick-link" href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20Project%20Question"><div><strong>PROJECT QUESTION</strong><span>진행 프로젝트 관련 문의</span></div><em>↗</em></a>
-                <a class="quick-link" href="/magazine.html"><div><strong>NINEWORKS MAGAZINE</strong><span>브랜드와 디자인 아카이브</span></div><em>↗</em></a>
-                <a class="quick-link" href="/"><div><strong>NINEWORKS WEBSITE</strong><span>공식 홈페이지</span></div><em>↗</em></a>
-              </div>
-            </section>
-
-            <section class="partner-panel">
-              <div class="partner-panel__head"><div><span>NOTICE</span><strong>Partner Notes</strong></div></div>
-              <div class="notice-list">
-                <article class="notice-item"><time>WORKSPACE</time><strong>프로젝트 정보는 이 페이지의 최신 내용을 기준으로 합니다.</strong><p>메신저에 남아 있는 과거 파일보다 프로젝트별 최신 링크와 안내를 우선 확인합니다.</p></article>
-                <article class="notice-item"><time>COMMUNICATION</time><strong>진행 이슈와 일정 변화는 빠르게 공유해 주세요.</strong><p>완성도뿐 아니라 일정과 커뮤니케이션도 중요한 협업 기준으로 생각합니다.</p></article>
-                <article class="notice-item"><time>SECURITY</time><strong>클라이언트 자료는 프로젝트 외 목적으로 공유하지 않습니다.</strong><p>미공개 디자인과 원본 데이터는 승인 없이 외부에 전달하지 않습니다.</p></article>
-              </div>
-            </section>
-
-            <section class="partner-panel">
-              <div class="partner-panel__head"><div><span>CONTACT</span><strong>Nineworks Desk</strong></div></div>
-              <div class="partner-empty"><strong>프로젝트 진행 중 필요한 내용이 있다면 바로 남겨주세요.</strong><a href="mailto:info@9works.kr">info@9works.kr ↗</a></div>
-            </section>
-          </aside>
-        </div>
+        </section>
       </div>
     </main>
   </div>
 
-  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-8"></script>
+  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-9"></script>
 </body>
 </html>
