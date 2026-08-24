@@ -1,7 +1,8 @@
 .contact-directory-restored{margin-top:28px;border-top:1px solid #111}
 .contact-directory-restored div{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line,#e3e3df);font-size:12px;line-height:1.6}
-.contact-directory-restored dt{color:#888}.contact-directory-restored dd{margin:0;color:#444}.contact-directory-restored a{border-bottom:1px solid #bbb}
-.contact-extra-note{margin-top:22px;padding:16px;border:1px solid #d9d9d5;background:#fff;color:#666;font-size:12px;line-height:1.65}
+.contact-directory-restored dt{color:#888}.contact-directory-restored dd{margin:0;color:#444;word-break:keep-all;overflow-wrap:normal;text-wrap:pretty}.contact-directory-restored a{border-bottom:1px solid #bbb}
+.contact-extra-note{margin-top:22px;padding:16px;border:1px solid #d9d9d5;background:#fff;color:#666;font-size:12px;line-height:1.65;word-break:keep-all;overflow-wrap:normal;text-wrap:pretty}
+.contact-response p{word-break:keep-all;overflow-wrap:normal;text-wrap:pretty}
 .contact-field-restored{grid-column:1/-1}
 .contact-field-restored label{display:block;margin-bottom:8px;font-size:11px;font-weight:600}
 .contact-field-restored input,.contact-field-restored select,.contact-field-restored textarea{width:100%;min-height:48px;padding:11px 0;border:0;border-bottom:1px solid #ccc;outline:0;background:transparent;font-size:14px}
