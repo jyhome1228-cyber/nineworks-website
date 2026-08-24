@@ -28,16 +28,30 @@ const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;')
+  .replace(/\"/g, '&quot;')
   .replace(/'/g, '&#039;');
-
+const normalizeStage = (value = '') => value === 'active' ? 'active' : 'preliminary';
+const normalizeAmount = (value) => {
+  const number = Number(value || 0);
+  if (!Number.isFinite(number)) return 0;
+  return Math.min(10000000, Math.max(0, Math.round(number / 500000) * 500000));
+};
+const normalizeUrl = (value = '') => {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  try {
+    const url = new URL(raw);
+    return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
+  } catch { return ''; }
+};
+const money = (value = 0) => `${Number(value || 0).toLocaleString('ko-KR')}원`;
 const partnerForEmail = (email = '') => PARTNERS.find((item) => item.email === normalizeEmail(email));
 
 const loadStyle = () => {
   if (document.querySelector('link[data-admin-partner-lite-style]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/admin-partner-assignment-lite.css?v=20260824-1';
+  link.href = 'assets/css/admin-partner-assignment-lite.css?v=20260824-2';
   link.dataset.adminPartnerLiteStyle = 'true';
   document.head.appendChild(link);
 };
@@ -62,7 +76,7 @@ const injectPartnerPanel = () => {
     panel.dataset.adminPanel = 'partners';
     panel.innerHTML = `
       <div class="admin-section-head">
-        <div><span class="admin-label">Partner Management</span><h2>Partners</h2><p>나인웍스 파트너 디자이너와 현재 배정된 문의·프로젝트를 확인합니다.</p></div>
+        <div><span class="admin-label">Partner Management</span><h2>Partners</h2><p>파트너별 배정 프로젝트와 예비·진행 금액을 확인합니다. 실제 지정은 Inquiries에서 처리합니다.</p></div>
       </div>
       <div class="admin-partner-lite-list" data-admin-partner-lite-list></div>`;
     const visitorsPanel = document.querySelector('[data-admin-panel="visitors"]');
@@ -89,23 +103,32 @@ const bindNavigation = () => {
     }
     const otherTab = event.target.closest('[data-admin-tab]');
     if (otherTab && otherTab.dataset.adminTab !== 'partners') {
+      document.querySelector('[data-admin-tab="partners"]')?.classList.remove('is-active');
       document.querySelector('[data-admin-panel="partners"]')?.classList.remove('is-active');
     }
   });
   if (location.hash === '#partners') window.setTimeout(openPartners, 0);
 };
 
-const assignedCount = (email) => inquiryCache.filter((item) => normalizeEmail(item.assignedPartnerEmail) === email).length;
+const assignmentsFor = (email) => inquiryCache.filter((item) => normalizeEmail(item.assignedPartnerEmail) === email);
 
 const renderPartnerPanel = () => {
   const box = document.querySelector('[data-admin-partner-lite-list]');
   if (!box) return;
   box.innerHTML = PARTNERS.map((partner) => {
-    const count = assignedCount(partner.email);
-    const active = inquiryCache.filter((item) => normalizeEmail(item.assignedPartnerEmail) === partner.email && item.status !== 'done').length;
+    const items = assignmentsFor(partner.email);
+    const activeItems = items.filter((item) => normalizeStage(item.partnerProjectStage) === 'active' && item.status !== 'done');
+    const preliminaryAmount = items
+      .filter((item) => normalizeStage(item.partnerProjectStage) === 'preliminary')
+      .reduce((sum, item) => sum + normalizeAmount(item.partnerFeeAmount), 0);
+    const activeAmount = activeItems.reduce((sum, item) => sum + normalizeAmount(item.partnerFeeAmount), 0);
     return `<article class="admin-partner-lite-card">
       <div><span>DESIGN PARTNER</span><strong>${escapeHTML(partner.name)}</strong><p>${escapeHTML(partner.email)}</p></div>
-      <div class="admin-partner-lite-card__stats"><div><small>ASSIGNED</small><b>${count}</b></div><div><small>ACTIVE</small><b>${active}</b></div></div>
+      <div class="admin-partner-lite-card__stats">
+        <div><small>ASSIGNED</small><b>${items.length}</b></div>
+        <div><small>ACTIVE</small><b>${activeItems.length}</b></div>
+      </div>
+      <div class="admin-partner-lite-card__money"><span>예비금액 <b>${money(preliminaryAmount)}</b></span><span>진행금액 <b>${money(activeAmount)}</b></span></div>
       <a href="parters/" target="_blank" rel="noopener">WORKSPACE ↗</a>
     </article>`;
   }).join('');
@@ -119,6 +142,15 @@ const partnerOptions = (selected = '') => {
   ].join('');
 };
 
+const amountOptions = (selected = 0) => {
+  const current = normalizeAmount(selected);
+  const options = ['<option value="0">금액 미정</option>'];
+  for (let amount = 500000; amount <= 10000000; amount += 500000) {
+    options.push(`<option value="${amount}"${amount === current ? ' selected' : ''}>${money(amount)}</option>`);
+  }
+  return options.join('');
+};
+
 const inquiryById = (id) => inquiryCache.find((item) => item.id === id);
 
 const decorateInquiryRows = () => {
@@ -128,16 +160,28 @@ const decorateInquiryRows = () => {
     const id = statusSelect.dataset.inquiryStatus;
     const item = inquiryById(id);
     if (!item) return;
-    const signature = `${id}|${normalizeEmail(item.assignedPartnerEmail)}`;
+
+    const signature = [
+      id,
+      normalizeEmail(item.assignedPartnerEmail),
+      normalizeAmount(item.partnerFeeAmount),
+      normalizeStage(item.partnerProjectStage),
+      String(item.partnerProposalUrl || '')
+    ].join('|');
+
     let holder = row.querySelector('.admin-partner-lite-assign');
     if (!holder) {
       holder = document.createElement('div');
       holder.className = 'admin-partner-lite-assign';
-      row.querySelector('.admin-inquiry-row__top')?.appendChild(holder);
+      row.appendChild(holder);
     }
     if (holder.dataset.signature === signature) return;
     holder.dataset.signature = signature;
-    holder.innerHTML = `<label>PARTNER</label><select data-partner-lite-assign="${escapeHTML(id)}" class="${item.assignedPartnerEmail ? 'is-assigned' : ''}">${partnerOptions(item.assignedPartnerEmail)}</select>`;
+    holder.innerHTML = `
+      <div><label>PARTNER</label><select data-partner-lite-assign="${escapeHTML(id)}" class="${item.assignedPartnerEmail ? 'is-assigned' : ''}">${partnerOptions(item.assignedPartnerEmail)}</select></div>
+      <div><label>지정 금액</label><select data-partner-fee="${escapeHTML(id)}">${amountOptions(item.partnerFeeAmount)}</select></div>
+      <div><label>프로젝트 단계</label><select data-partner-stage="${escapeHTML(id)}"><option value="preliminary"${normalizeStage(item.partnerProjectStage) === 'preliminary' ? ' selected' : ''}>예비</option><option value="active"${normalizeStage(item.partnerProjectStage) === 'active' ? ' selected' : ''}>진행</option></select></div>
+      <div class="admin-partner-lite-proposal"><label>제안서 링크</label><input type="url" data-partner-proposal="${escapeHTML(id)}" placeholder="https://..." value="${escapeHTML(item.partnerProposalUrl || '')}"></div>`;
   });
 };
 
@@ -155,13 +199,17 @@ const sanitizedAssignments = (partnerEmail) => inquiryCache
     service: String(item.service || '').slice(0, 160),
     projectType: String(item.projectType || '').slice(0, 500),
     status: ['new', 'open', 'done'].includes(item.status) ? item.status : 'new',
-    summary: String(item.message || '').slice(0, 1800)
+    summary: String(item.message || item.details || '').slice(0, 1800),
+    feeAmount: normalizeAmount(item.partnerFeeAmount),
+    projectStage: normalizeStage(item.partnerProjectStage),
+    proposalUrl: normalizeUrl(item.partnerProposalUrl),
+    assignedAt: item.partnerAssignedAt || null
   }));
 
 const syncPartnerWorkspaces = async () => {
   for (const partner of PARTNERS) {
     const assignments = sanitizedAssignments(partner.email);
-    const signature = JSON.stringify(assignments);
+    const signature = JSON.stringify(assignments.map((item) => ({ ...item, assignedAt: null })));
     if (lastWorkspacePayload.get(partner.email) === signature) continue;
     try {
       await setDoc(doc(db, 'partnerWorkspaces', workspaceKey(partner.email)), {
@@ -183,34 +231,78 @@ const queueWorkspaceSync = () => {
   syncTimer = window.setTimeout(syncPartnerWorkspaces, 180);
 };
 
+const updateInquiryField = async (inquiryId, patch, errorMessage) => {
+  try {
+    await updateDoc(doc(db, 'inquiries', inquiryId), { ...patch, updatedAt: serverTimestamp() });
+  } catch (error) {
+    console.error('[NINEWORKS Admin] partner field update failed', error);
+    window.alert(errorMessage);
+    throw error;
+  }
+};
+
 const bindAssignmentControls = () => {
   document.addEventListener('change', async (event) => {
-    const select = event.target.closest('[data-partner-lite-assign]');
-    if (!select || !db) return;
-    const inquiryId = select.dataset.partnerLiteAssign;
-    const partner = partnerForEmail(select.value);
-    select.disabled = true;
-    try {
-      if (!partner) {
-        await updateDoc(doc(db, 'inquiries', inquiryId), {
-          assignedPartnerEmail: deleteField(),
-          assignedPartnerName: deleteField(),
-          partnerAssignedAt: deleteField(),
-          updatedAt: serverTimestamp()
-        });
-      } else {
-        await updateDoc(doc(db, 'inquiries', inquiryId), {
-          assignedPartnerEmail: partner.email,
-          assignedPartnerName: partner.name,
-          partnerAssignedAt: serverTimestamp(),
-          updatedAt: serverTimestamp()
-        });
+    const partnerSelect = event.target.closest('[data-partner-lite-assign]');
+    if (partnerSelect && db) {
+      const inquiryId = partnerSelect.dataset.partnerLiteAssign;
+      const partner = partnerForEmail(partnerSelect.value);
+      partnerSelect.disabled = true;
+      try {
+        if (!partner) {
+          await updateInquiryField(inquiryId, {
+            assignedPartnerEmail: deleteField(),
+            assignedPartnerName: deleteField(),
+            partnerAssignedAt: deleteField()
+          }, '파트너 지정 해제에 실패했습니다.');
+        } else {
+          await updateInquiryField(inquiryId, {
+            assignedPartnerEmail: partner.email,
+            assignedPartnerName: partner.name,
+            partnerAssignedAt: serverTimestamp(),
+            partnerProjectStage: normalizeStage(inquiryById(inquiryId)?.partnerProjectStage)
+          }, '파트너 지정에 실패했습니다.');
+        }
+      } finally { partnerSelect.disabled = false; }
+      return;
+    }
+
+    const feeSelect = event.target.closest('[data-partner-fee]');
+    if (feeSelect && db) {
+      feeSelect.disabled = true;
+      try {
+        await updateInquiryField(feeSelect.dataset.partnerFee, {
+          partnerFeeAmount: normalizeAmount(feeSelect.value)
+        }, '지정 금액 저장에 실패했습니다.');
+      } finally { feeSelect.disabled = false; }
+      return;
+    }
+
+    const stageSelect = event.target.closest('[data-partner-stage]');
+    if (stageSelect && db) {
+      stageSelect.disabled = true;
+      try {
+        await updateInquiryField(stageSelect.dataset.partnerStage, {
+          partnerProjectStage: normalizeStage(stageSelect.value)
+        }, '프로젝트 단계 저장에 실패했습니다.');
+      } finally { stageSelect.disabled = false; }
+      return;
+    }
+
+    const proposalInput = event.target.closest('[data-partner-proposal]');
+    if (proposalInput && db) {
+      const raw = String(proposalInput.value || '').trim();
+      const normalized = normalizeUrl(raw);
+      if (raw && !normalized) {
+        window.alert('제안서 링크는 http:// 또는 https:// 주소로 입력해 주세요.');
+        return;
       }
-    } catch (error) {
-      console.error('[NINEWORKS Admin] partner assignment failed', error);
-      window.alert('파트너 지정에 실패했습니다.');
-    } finally {
-      select.disabled = false;
+      proposalInput.disabled = true;
+      try {
+        await updateInquiryField(proposalInput.dataset.partnerProposal, {
+          partnerProposalUrl: normalized || deleteField()
+        }, '제안서 링크 저장에 실패했습니다.');
+      } finally { proposalInput.disabled = false; }
     }
   });
 
