@@ -95,6 +95,22 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
+    // 파트너 기본 프로필. 이메일을 알고 있는 경우 개별 문서 get만 허용하고
+    // 전체 목록 조회와 모든 쓰기는 관리자만 가능하게 제한합니다.
+    match /partners/{partnerKey} {
+      allow get: if true;
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 파트너에게 공개되는 협업 정보는 별도 정제된 문서만 사용합니다.
+    // 고객 연락처 등 원본 inquiries 데이터는 이 컬렉션에 복제하지 않습니다.
+    match /partnerWorkspaces/{partnerKey} {
+      allow get: if true;
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+
     // 방문자 기록: 브라우저별 하루 1회 생성, 조회는 관리자만 가능
     match /dailyVisitors/{visitId} {
       allow create: if
