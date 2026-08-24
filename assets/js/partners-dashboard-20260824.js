@@ -8,7 +8,8 @@
 
   const PARTNERS = {
     'seodw100@naver.com': { name: '서동원', role: 'DESIGN PARTNER', workspaceId: 'seodw100%40naver.com' },
-    's.nninyong@gmail.com': { name: '신민용', role: 'DESIGN PARTNER', workspaceId: 's.nninyong%40gmail.com' }
+    's.nninyong@gmail.com': { name: '신민용', role: 'DESIGN PARTNER', workspaceId: 's.nninyong%40gmail.com' },
+    'daytuio0329@naver.com': { name: '박상혁', role: 'DESIGN PARTNER', workspaceId: 'daytuio0329%40naver.com' }
   };
 
   let firebasePromise = null;
@@ -17,8 +18,11 @@
   const normalizeEmail = (value = '') => String(value || '').trim().toLowerCase();
   const isEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
   const escapeHTML = (value = '') => String(value)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/\"/g, '&quot;').replace(/'/g, '&#039;');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\"/g, '&quot;')
+    .replace(/'/g, '&#039;');
   const money = (value = 0) => `${Math.round(Number(value || 0)).toLocaleString('ko-KR')}원`;
   const normalizeStage = (value = '') => value === 'active' ? 'active' : 'preliminary';
   const normalizeAmount = (value = 0) => Math.max(0, Number(value || 0));
@@ -45,8 +49,13 @@
   };
 
   const setView = (name) => {
-    if (loginView) loginView.hidden = name !== 'login';
-    if (appView) appView.hidden = name !== 'app';
+    const showLogin = name === 'login';
+    if (loginView) {
+      loginView.hidden = !showLogin;
+      if (showLogin) loginView.style.removeProperty('display');
+      else loginView.style.setProperty('display', 'none', 'important');
+    }
+    if (appView) appView.hidden = showLogin;
   };
 
   const setNote = (message = '', state = '') => {
@@ -97,7 +106,6 @@
     if (status === 'open') return 'OPEN';
     return 'NEW';
   };
-
   const stageLabel = (stage) => normalizeStage(stage) === 'active' ? '진행' : '예비';
 
   const normalizeProjects = (workspace = {}) => {
@@ -116,8 +124,12 @@
   };
 
   const renderStats = (projects) => {
-    const preliminaryFee = projects.filter((item) => item.projectStage === 'preliminary').reduce((sum, item) => sum + item.feeAmount, 0);
-    const activeFee = projects.filter((item) => item.projectStage === 'active' && item.status !== 'done').reduce((sum, item) => sum + item.feeAmount, 0);
+    const preliminaryFee = projects
+      .filter((item) => item.projectStage === 'preliminary')
+      .reduce((sum, item) => sum + item.feeAmount, 0);
+    const activeFee = projects
+      .filter((item) => item.projectStage === 'active' && item.status !== 'done')
+      .reduce((sum, item) => sum + item.feeAmount, 0);
     const values = {
       projects: projects.filter((item) => item.status !== 'done').length,
       preliminaryFee: money(preliminaryFee),
@@ -141,26 +153,28 @@
     list.innerHTML = projects.map((item, index) => {
       const title = item.projectName || item.company || 'NINEWORKS PROJECT';
       const meta = [item.company, item.type].filter(Boolean).join(' · ') || 'NINEWORKS COLLABORATION';
-      const proposal = item.proposalUrl
-        ? `<a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">VIEW PROPOSAL ↗</a>`
-        : '<span>제안서 링크 준비 중</span>';
+      const proposalLink = item.proposalUrl
+        ? `<a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">PROPOSAL ↗</a>`
+        : '—';
       return `<div class="project-row">
         <span class="project-row__num">${String(index + 1).padStart(2, '0')}</span>
         <strong>${escapeHTML(title)}</strong>
         <span>${escapeHTML(meta)}</span>
         <span class="project-status${item.projectStage === 'active' ? ' is-active' : ''}">${stageLabel(item.projectStage)}</span>
-        <span class="project-open">${item.proposalUrl ? `<a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">PROPOSAL ↗</a>` : '—'}</span>
+        <span class="project-open">${proposalLink}</span>
       </div>
       <div class="partner-project-brief">
         <strong>PROJECT BRIEF · ${statusLabel(item.status)} · ${item.feeAmount ? money(item.feeAmount) : '금액 미정'}</strong>
         <p>${escapeHTML(item.summary || '프로젝트 상세 내용은 나인웍스에서 정리 후 업데이트합니다.')}</p>
-        <div class="partner-project-actions">${proposal}</div>
+        ${item.proposalUrl ? `<div class="partner-project-actions"><a href="${escapeHTML(item.proposalUrl)}" target="_blank" rel="noopener">VIEW PROPOSAL ↗</a></div>` : ''}
       </div>`;
     }).join('');
   };
 
   const renderAccount = (projects) => {
-    const preliminary = projects.filter((item) => item.projectStage === 'preliminary').reduce((sum, item) => sum + item.feeAmount, 0);
+    const preliminary = projects
+      .filter((item) => item.projectStage === 'preliminary')
+      .reduce((sum, item) => sum + item.feeAmount, 0);
     const activeProjects = projects.filter((item) => item.projectStage === 'active' && item.status !== 'done');
     const active = activeProjects.reduce((sum, item) => sum + item.feeAmount, 0);
     const advance = active * 0.5;
@@ -175,13 +189,13 @@
 
     const list = document.querySelector('[data-partner-account-list]');
     if (!list) return;
-    const paidProjects = projects.filter((item) => item.feeAmount > 0);
-    if (!paidProjects.length) {
+    const feeProjects = projects.filter((item) => item.feeAmount > 0);
+    if (!feeProjects.length) {
       list.innerHTML = '<div class="partner-empty"><strong>정산 예정 프로젝트가 없습니다.</strong>어드민에서 파트너 지정과 금액을 설정하면 이곳에 표시됩니다.</div>';
       return;
     }
 
-    list.innerHTML = paidProjects.map((item) => {
+    list.innerHTML = feeProjects.map((item) => {
       const title = item.projectName || item.company || 'NINEWORKS PROJECT';
       const isActive = item.projectStage === 'active';
       const advanceAmount = isActive ? item.feeAmount * 0.5 : 0;
@@ -247,6 +261,7 @@
       loginForm?.querySelector('input[name="email"]')?.focus();
       return false;
     }
+
     const partner = PARTNERS[email];
     if (!partner) {
       localStorage.removeItem(STORAGE_KEY);
@@ -268,9 +283,8 @@
     if (!loginForm.reportValidity()) return;
     setBusy(true);
     const email = String(new FormData(loginForm).get('email') || '');
-    const success = enterWorkspace(email);
+    enterWorkspace(email);
     setBusy(false);
-    if (!success) return;
   });
 
   document.querySelectorAll('[data-partner-signout]').forEach((button) => {
@@ -290,17 +304,6 @@
       document.querySelectorAll('.partner-nav a').forEach((item) => item.classList.toggle('is-active', item === link));
     });
   });
-
-  const extraStyle = document.createElement('style');
-  extraStyle.textContent = `
-    .partner-project-brief{padding:14px 18px 18px 76px;border-bottom:1px solid var(--p-line);background:#fafaf8}
-    .partner-project-brief strong{display:block;margin-bottom:6px;font-size:8px;letter-spacing:.08em;color:#888}
-    .partner-project-brief p{margin:0;max-width:760px;color:#666;font-size:10px;line-height:1.65;white-space:pre-wrap}
-    .partner-schedule-row{display:grid;grid-template-columns:110px minmax(160px,1fr) minmax(120px,.8fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--p-line);align-items:center}
-    .partner-schedule-row:last-child{border-bottom:0}.partner-schedule-row time{font-size:9px;color:#888}.partner-schedule-row strong{font-size:11px;font-weight:500}.partner-schedule-row span{font-size:9px;color:#777}
-    @media(max-width:760px){.partner-project-brief{padding:12px 13px 16px 43px}.partner-schedule-row{grid-template-columns:1fr;gap:5px}}
-  `;
-  document.head.appendChild(extraStyle);
 
   setView('login');
   const savedEmail = normalizeEmail(localStorage.getItem(STORAGE_KEY) || '');
