@@ -1,0 +1,44 @@
+/* NINEWORKS member layout / footer fixes — 2026-08-24 */
+html body.member-page,
+html body.member-page .site-shell,
+html body.member-page main{
+  background:#fff!important;
+  background-image:none!important;
+}
+
+html body.member-page .site-footer{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+html body.member-page .site-footer::before,
+html body.member-page .site-footer::after,
+html body.member-page .site-footer__head,
+html body.member-page .site-footer__legal,
+html body.member-page .site-footer__bottom{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* Keep two-column form rows aligned even when one field has helper copy. */
+html body.member-page [data-signup-form] .member-fields{
+  align-items:start!important;
+}
+html body.member-page [data-signup-form] .member-field{
+  align-self:start!important;
+  align-content:start!important;
+}
+html body.member-page [data-signup-form] .member-field>span{
+  display:flex;
+  min-height:18px;
+  align-items:baseline;
+  gap:6px;
+}
+html body.member-page [data-signup-form] .member-field input,
+html body.member-page [data-signup-form] .member-field select{
+  margin:0!important;
+}
