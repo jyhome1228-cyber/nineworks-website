@@ -46,7 +46,7 @@
     console.error('[NINEWORKS Admin] Partner assignment load failed', error);
   });
 
-  import('./admin-partner-submissions-20260824.js?v=20260824-1').catch((error) => {
+  import('./admin-partner-submissions-20260824.js?v=20260824-2').catch((error) => {
     console.error('[NINEWORKS Admin] Partner submissions load failed', error);
   });
 })();
