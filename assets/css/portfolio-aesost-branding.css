@@ -28,7 +28,7 @@
 .aes-image-stack{display:grid;gap:18px;margin-top:36px}
 .aes-image-stack--spaced{margin-top:44px}
 .aes-image-grid{display:grid;gap:18px}
-.aes-image-grid--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.aes-image-grid--two{grid-template-columns:1fr}
 .aes-image{margin:0;background:#f5f4f7;overflow:hidden}
 .aes-image img{display:block;width:100%;height:auto}
 .aes-closing{margin-top:70px;padding:clamp(48px,5vw,74px);background:var(--aes-purple);color:#fff}
