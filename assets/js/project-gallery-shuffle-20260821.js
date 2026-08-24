@@ -12,13 +12,20 @@
   const cards = () => Array.from(grid.querySelectorAll(':scope > .project-card'));
   const titleOf = (card) => card.querySelector('h2')?.textContent.trim() || '';
 
-  // Removed project + one intentional duplicate cleanup.
+  // Remove archived project and previously confirmed duplicate cards.
   cards().forEach((card) => {
     if (titleOf(card) === '드림팜') card.remove();
   });
 
   const onePlanCards = cards().filter((card) => normalize(titleOf(card)) === '1plan');
   onePlanCards.slice(1).forEach((card) => card.remove());
+
+  // Keep the white-background Denovo Pharm. application card and remove the red duplicate.
+  cards().forEach((card) => {
+    if (normalize(titleOf(card)) !== 'denovopharm') return;
+    const src = card.querySelector('img')?.getAttribute('src') || '';
+    if (src.includes('1cfd2970b5c01.jpg')) card.remove();
+  });
 
   // Keep the completed AESOST branding case in the selected project archive.
   if (!cards().some((card) => normalize(titleOf(card)) === 'aesost')) {
@@ -29,7 +36,31 @@
   }
 
   const dedicatedLinks = {
-    laff: 'portfolio-laff.html'
+    laff: 'portfolio-laff.html',
+    taepyung: 'portfolio-taepyung.html'
+  };
+
+  const completedVisuals = {
+    taepyung: {
+      image: 'https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/d462dbeb406c4.jpg',
+      alt: 'Taepyung Paper corporate identity project',
+      meta: 'CORPORATE IDENTITY',
+      description: '1977년부터 이어온 제조 기업의 역사와 현장성을 로고, 공장, 패키지와 에디토리얼까지 하나의 시스템으로 정리한 프로젝트.'
+    }
+  };
+
+  const applyCompletedVisual = (card) => {
+    const data = completedVisuals[normalize(titleOf(card))];
+    if (!data) return;
+    const image = card.querySelector('img');
+    if (image) {
+      image.src = data.image;
+      image.alt = data.alt;
+    }
+    const meta = card.querySelector('.project-card__meta span');
+    if (meta) meta.textContent = data.meta;
+    const description = card.querySelector('p');
+    if (description) description.textContent = data.description;
   };
 
   const setCardLink = (card, href, label) => {
@@ -65,6 +96,8 @@
   };
 
   cards().forEach((card) => {
+    applyCompletedVisual(card);
+
     const existingAnchor = card.querySelector(':scope > a[href]');
     if (existingAnchor && /portfolio/i.test(existingAnchor.getAttribute('href') || '')) {
       card.dataset.completed = 'true';
