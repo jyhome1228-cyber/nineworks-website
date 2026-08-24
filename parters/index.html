@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="NINEWORKS partner workspace for approved designers and collaborators.">
+  <title>Partners Workspace — NINEWORKS</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/partners-dashboard-20260824.css?v=20260824-1">
+</head>
+<body>
+  <section class="partner-login-shell" data-partner-login>
+    <div class="partner-login-brand">
+      <a href="/">NINEWORKS</a>
+      <div>
+        <p class="partner-kicker">PARTNER WORKSPACE / PRIVATE ACCESS</p>
+        <h1>Work<br>together.</h1>
+      </div>
+      <p>나인웍스와 프로젝트를 함께하는 디자이너와 협업자를 위한 전용 워크스페이스입니다. 프로젝트 진행 정보, 파일, 일정과 협업 기준을 한 곳에서 확인합니다.</p>
+    </div>
+    <div class="partner-login-panel">
+      <div class="partner-login-card">
+        <p class="partner-kicker">NINEWORKS / PARTNERS</p>
+        <h2>Partner Login</h2>
+        <p>승인된 파트너 계정으로 로그인해 주세요. 권한이 없는 계정은 워크스페이스에 접근할 수 없습니다.</p>
+        <form class="partner-login-form" data-partner-login-form>
+          <div class="partner-field"><label for="partner-email">EMAIL</label><input id="partner-email" type="email" name="email" autocomplete="email" required></div>
+          <div class="partner-field"><label for="partner-password">PASSWORD</label><input id="partner-password" type="password" name="password" autocomplete="current-password" required></div>
+          <button class="partner-login-button" type="submit"><span>ENTER WORKSPACE</span><span>↗</span></button>
+          <p class="partner-login-note" data-partner-login-note></p>
+        </form>
+        <div class="partner-login-links"><button type="button" class="partner-signout" data-reset-password>RESET PASSWORD</button><a href="mailto:info@9works.kr">ACCESS REQUEST ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="partner-login-shell" data-partner-denied hidden>
+    <div class="partner-login-brand">
+      <a href="/">NINEWORKS</a>
+      <div><p class="partner-kicker">PARTNER WORKSPACE / ACCESS</p><h1>Private<br>workspace.</h1></div>
+      <p>프로젝트 정보와 협업 자료 보호를 위해 승인된 파트너 계정만 접근할 수 있습니다.</p>
+    </div>
+    <div class="partner-login-panel">
+      <div class="partner-login-card partner-denied">
+        <p class="partner-kicker">ACCESS STATUS</p>
+        <h2 data-denied-title>Partner access required.</h2>
+        <p data-denied-copy>이 페이지는 나인웍스 파트너 전용 공간입니다.</p>
+        <a href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20Workspace%20Access">REQUEST ACCESS ↗</a>
+        <button class="partner-signout" type="button" data-partner-signout>LOGOUT</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="partner-app" data-partner-app hidden>
+    <aside class="partner-sidebar">
+      <div class="partner-brand"><strong>NINEWORKS</strong><span>PARTNERS</span></div>
+      <nav class="partner-nav" aria-label="파트너 워크스페이스 메뉴">
+        <a class="is-active" href="#overview"><span>Overview</span><small>01</small></a>
+        <a href="#projects"><span>Projects</span><small>02</small></a>
+        <a href="#schedule"><span>Schedule</span><small>03</small></a>
+        <a href="#resources"><span>Files & Links</span><small>04</small></a>
+        <a href="#guide"><span>Working Guide</span><small>05</small></a>
+        <a href="#portfolio"><span>Portfolio Policy</span><small>06</small></a>
+      </nav>
+      <div class="partner-sidebar__bottom"><p>PARTNER WORKSPACE<br>PROJECT BASED COLLABORATION</p><a href="mailto:info@9works.kr">info@9works.kr ↗</a></div>
+    </aside>
+
+    <main class="partner-main">
+      <header class="partner-topbar">
+        <div class="partner-topbar__title"><span>WORKSPACE</span><strong>Partner Dashboard</strong></div>
+        <div class="partner-user"><div class="partner-user__avatar" data-partner-initials>NW</div><div class="partner-user__meta"><strong data-partner-name>Partner</strong><span data-partner-role>PARTNER</span></div><button class="partner-signout" type="button" data-partner-signout>LOGOUT</button></div>
+      </header>
+
+      <div class="partner-content">
+        <section class="partner-hero" id="overview">
+          <div><p class="partner-kicker">NINEWORKS / COLLABORATION DESK</p><h1>Good to have you<br>on the project.</h1></div>
+          <div class="partner-hero__copy"><p>이 공간은 나인웍스와 함께 진행하는 프로젝트의 핵심 정보와 협업 자료를 정리하는 곳입니다. 필요한 내용을 흩어두지 않고 프로젝트 단위로 확인할 수 있도록 운영합니다.</p><strong><span data-partner-name>Partner</span> · <span data-partner-email>—</span></strong></div>
+        </section>
+
+        <section class="partner-stat-grid" aria-label="워크스페이스 현황">
+          <article class="partner-stat"><span>ACTIVE PROJECTS</span><strong>0</strong><small>현재 배정된 프로젝트</small></article>
+          <article class="partner-stat"><span>UPCOMING TASKS</span><strong>0</strong><small>예정된 마감 및 전달</small></article>
+          <article class="partner-stat"><span>OPEN FEEDBACK</span><strong>0</strong><small>확인이 필요한 피드백</small></article>
+          <article class="partner-stat"><span>NEW FILES</span><strong>0</strong><small>최근 공유된 자료</small></article>
+        </section>
+
+        <div class="partner-grid">
+          <div class="partner-stack">
+            <section class="partner-panel" id="projects">
+              <div class="partner-panel__head"><div><span>PROJECTS</span><strong>Assigned Projects</strong></div><a href="mailto:info@9works.kr">PROJECT ISSUE ↗</a></div>
+              <div class="project-list">
+                <div class="project-row"><span class="project-row__num">—</span><strong>아직 배정된 프로젝트가 없습니다.</strong><span>프로젝트가 연결되면 이곳에 표시됩니다.</span><span class="project-status">STANDBY</span><span class="project-open">—</span></div>
+              </div>
+            </section>
+
+            <section class="partner-panel" id="schedule">
+              <div class="partner-panel__head"><div><span>SCHEDULE</span><strong>Upcoming Milestones</strong></div><a href="#projects">VIEW PROJECTS ↗</a></div>
+              <div class="partner-empty"><strong>일정 연동 준비 중</strong>프로젝트별 킥오프, 1차 시안, 피드백, 최종 전달 일정이 이곳에 표시될 예정입니다.</div>
+            </section>
+
+            <section class="partner-panel" id="guide">
+              <div class="partner-panel__head"><div><span>WORKING GUIDE</span><strong>How We Work</strong></div></div>
+              <div class="project-list">
+                <div class="project-row"><span class="project-row__num">01</span><strong>Understand first</strong><span>작업 전에 브랜드 배경과 프로젝트 목적을 먼저 이해합니다.</span><span class="project-status is-active">BASIC</span><span class="project-open">READ</span></div>
+                <div class="project-row"><span class="project-row__num">02</span><strong>Structure before polish</strong><span>시안의 완성도뿐 아니라 시스템과 사용 구조를 함께 정리합니다.</span><span class="project-status is-active">BASIC</span><span class="project-open">READ</span></div>
+                <div class="project-row"><span class="project-row__num">03</span><strong>Document the work</strong><span>Figma와 문서 안에서 의도, 기준, 변경사항을 추적 가능하게 남깁니다.</span><span class="project-status is-active">BASIC</span><span class="project-open">READ</span></div>
+              </div>
+            </section>
+
+            <section class="partner-panel" id="portfolio">
+              <div class="partner-panel__head"><div><span>PORTFOLIO POLICY</span><strong>Project Credit & Use</strong></div></div>
+              <div class="partner-empty"><strong>참여 프로젝트는 협의된 범위에서 포트폴리오로 활용할 수 있습니다.</strong>클라이언트 공개 일정, 보안 사항, 나인웍스의 최종 공개 시점을 기준으로 하며 프로젝트별 공개 가능 범위는 별도 안내합니다. 공개 전 작업물을 임의로 게시하거나 원본 데이터를 외부에 공유하지 않습니다.</div>
+            </section>
+          </div>
+
+          <aside class="partner-stack">
+            <section class="partner-panel" id="resources">
+              <div class="partner-panel__head"><div><span>QUICK ACCESS</span><strong>Files & Links</strong></div></div>
+              <div class="quick-links">
+                <a class="quick-link" href="/my.html"><div><strong>MY NINEWORKS</strong><span>계정 및 멤버 정보</span></div><em>↗</em></a>
+                <a class="quick-link" href="/resources.html"><div><strong>RESOURCE LIBRARY</strong><span>공통 실무 자료 및 문서</span></div><em>↗</em></a>
+                <a class="quick-link" href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20File%20Request"><div><strong>FILE REQUEST</strong><span>누락 파일 및 권한 요청</span></div><em>↗</em></a>
+                <a class="quick-link" href="mailto:info@9works.kr?subject=NINEWORKS%20Partner%20Project%20Question"><div><strong>PROJECT QUESTION</strong><span>프로젝트 관련 문의</span></div><em>↗</em></a>
+              </div>
+            </section>
+
+            <section class="partner-panel">
+              <div class="partner-panel__head"><div><span>NOTICE</span><strong>Partner Notes</strong></div></div>
+              <div class="notice-list">
+                <article class="notice-item"><time>WORKSPACE GUIDE</time><strong>프로젝트별 자료는 해당 프로젝트 링크를 기준으로 확인합니다.</strong><p>카카오톡이나 메신저에 흩어진 최신 파일보다 워크스페이스에 연결된 파일을 우선 기준으로 합니다.</p></article>
+                <article class="notice-item"><time>COLLABORATION</time><strong>일정 변화나 진행 이슈는 빠르게 공유해 주세요.</strong><p>완성도만큼 일정과 커뮤니케이션을 중요한 협업 기준으로 생각합니다.</p></article>
+                <article class="notice-item"><time>SECURITY</time><strong>클라이언트 자료는 프로젝트 외 목적으로 공유하지 않습니다.</strong><p>원본 파일, 미공개 시안과 내부 문서는 승인 없이 외부에 전달하지 않습니다.</p></article>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-1"></script>
+</body>
+</html>
