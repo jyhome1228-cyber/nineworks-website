@@ -1,0 +1,7 @@
+/* NINEWORKS navigation cleanup — 2026-08-24 */
+.site-primary-nav [data-nav-key="resources"],
+.menu-nav [data-member-mobile-resources],
+.site-footer__links [data-member-footer-resources],
+a[href="resources.html"][data-nav-key="resources"],
+a[href="resources.html"][data-member-mobile-resources],
+a[href="resources.html"][data-member-footer-resources]{display:none!important}
