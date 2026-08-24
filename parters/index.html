@@ -7,13 +7,14 @@
   <meta name="description" content="NINEWORKS partner workspace for project collaborators.">
   <title>Partners Workspace — NINEWORKS</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/partners-dashboard-20260824.css?v=20260824-3">
-  <link rel="stylesheet" href="/assets/css/partners-email-login-20260824.css?v=20260824-3">
+  <link rel="stylesheet" href="/assets/css/partners-dashboard-20260824.css?v=20260824-4">
+  <link rel="stylesheet" href="/assets/css/partners-email-login-20260824.css?v=20260824-4">
 </head>
 <body>
   <section class="partner-login-shell" data-partner-login>
     <div class="partner-login-panel">
       <div class="partner-login-card">
+        <a class="partner-login-logo" href="/" aria-label="NINEWORKS 홈"><img src="/assets/nineworks-logo.svg" alt="NINEWORKS"></a>
         <p class="partner-kicker">NINEWORKS / PARTNERS</p>
         <h2>Partner Login</h2>
         <p>나인웍스와 협업 중인 이메일을 입력해 주세요.</p>
@@ -31,7 +32,7 @@
 
   <div class="partner-app" data-partner-app hidden>
     <aside class="partner-sidebar">
-      <div class="partner-brand"><strong>NINEWORKS</strong><span>PARTNERS</span></div>
+      <div class="partner-brand"><a href="/" aria-label="NINEWORKS 홈"><img src="/assets/nineworks-logo.svg" alt="NINEWORKS"></a><span>PARTNERS</span></div>
       <nav class="partner-nav" aria-label="파트너 워크스페이스 메뉴">
         <a class="is-active" href="#overview"><span>Overview</span><small>01</small></a>
         <a href="#projects"><span>Projects</span><small>02</small></a>
@@ -48,7 +49,7 @@
 
     <main class="partner-main">
       <header class="partner-topbar">
-        <div class="partner-topbar__title"><span>WORKSPACE</span><strong>Partner Dashboard</strong></div>
+        <div class="partner-topbar__title"><span>WORKSPACE</span><strong data-partner-dashboard-title>Partner Dashboard</strong></div>
         <div class="partner-user">
           <div class="partner-user__avatar" data-partner-initials>NW</div>
           <div class="partner-user__meta"><strong data-partner-name>Partner</strong><span data-partner-role>DESIGN PARTNER</span></div>
@@ -66,6 +67,11 @@
             <p>나인웍스와 함께 진행하는 프로젝트의 핵심 정보, 일정, 파일과 협업 기준을 확인하는 파트너 전용 공간입니다. 프로젝트별 최신 정보는 이 워크스페이스를 기준으로 정리합니다.</p>
             <strong><span data-partner-name>Partner</span> · <span data-partner-email>—</span></strong>
           </div>
+        </section>
+
+        <section class="partner-welcome-strip">
+          <div><span>PARTNER</span><strong data-partner-welcome>Welcome.</strong></div>
+          <div><span>ACCOUNT</span><strong data-partner-email>—</strong></div>
         </section>
 
         <section class="partner-stat-grid" aria-label="워크스페이스 현황">
@@ -144,6 +150,6 @@
     </main>
   </div>
 
-  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-4"></script>
+  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-5"></script>
 </body>
 </html>
