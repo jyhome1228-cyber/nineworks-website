@@ -1,4 +1,5 @@
 (() => {
+  const FIRESTORE_SDK = 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
   const loginView = document.querySelector('[data-partner-login]');
   const appView = document.querySelector('[data-partner-app]');
   const loginForm = document.querySelector('[data-partner-login-form]');
@@ -7,19 +8,35 @@
 
   const PARTNERS = {
     'seodw100@naver.com': {
-      id: 'seo-dongwon',
       name: '서동원',
       role: 'DESIGN PARTNER',
+      workspaceId: 'seodw100%40naver.com',
       projects: [],
       schedule: []
     },
     's.nninyong@gmail.com': {
-      id: 'shin-minyong',
       name: '신민용',
       role: 'DESIGN PARTNER',
+      workspaceId: 's.nninyong%40gmail.com',
       projects: [],
       schedule: []
     }
+  };
+
+  let firebasePromise = null;
+  let unsubscribeWorkspace = null;
+
+  const getFirebase = () => {
+    if (!firebasePromise) {
+      firebasePromise = Promise.all([
+        import('./firebase-client.js'),
+        import(FIRESTORE_SDK)
+      ]).then(([client, firestore]) => {
+        if (!client.db) throw new Error('Firebase unavailable');
+        return { db: client.db, ...firestore };
+      });
+    }
+    return firebasePromise;
   };
 
   const normalizeEmail = (value = '') => String(value || '').trim().toLowerCase();
@@ -32,10 +49,8 @@
     .replace(/'/g, '&#039;');
 
   const setView = (name) => {
-    const inApp = name === 'app';
-    if (loginView) loginView.hidden = inApp;
-    if (appView) appView.hidden = !inApp;
-    document.body.classList.toggle('is-partner-workspace', inApp);
+    if (loginView) loginView.hidden = name !== 'login';
+    if (appView) appView.hidden = name !== 'app';
   };
 
   const setNote = (message = '', state = '') => {
@@ -50,7 +65,7 @@
     if (!button) return;
     button.disabled = busy;
     const label = button.querySelector('span:first-child');
-    if (label) label.textContent = busy ? 'ENTERING' : 'ENTER WORKSPACE';
+    if (label) label.textContent = busy ? 'CHECKING' : 'ENTER WORKSPACE';
   };
 
   const initials = (name = '') => {
@@ -68,14 +83,10 @@
   };
 
   const fillProfile = (email, partner) => {
-    document.body.dataset.partnerId = partner.id;
     document.querySelectorAll('[data-partner-name]').forEach((node) => { node.textContent = partner.name; });
     document.querySelectorAll('[data-partner-role]').forEach((node) => { node.textContent = partner.role || 'DESIGN PARTNER'; });
     document.querySelectorAll('[data-partner-email]').forEach((node) => { node.textContent = email; });
     document.querySelectorAll('[data-partner-initials]').forEach((node) => { node.textContent = initials(partner.name); });
-    document.querySelectorAll('[data-partner-welcome]').forEach((node) => { node.textContent = `${partner.name} 파트너님, 반갑습니다.`; });
-    document.querySelectorAll('[data-partner-dashboard-title]').forEach((node) => { node.textContent = `${partner.name} · Partner Dashboard`; });
-    document.title = `${partner.name} Partner Dashboard — NINEWORKS`;
   };
 
   const renderStats = (partner) => {
@@ -99,7 +110,7 @@
     const projects = Array.isArray(partner.projects) ? partner.projects : [];
 
     if (!projects.length) {
-      list.innerHTML = '<div class="project-row"><span class="project-row__num">—</span><strong>현재 연결된 프로젝트가 없습니다.</strong><span>프로젝트가 지정되면 이곳에서 확인할 수 있습니다.</span><span class="project-status">STANDBY</span><span class="project-open">—</span></div>';
+      list.innerHTML = '<div class="project-row"><span class="project-row__num">—</span><strong>현재 연결된 프로젝트가 없습니다.</strong><span>어드민에서 파트너로 지정하면 이곳에 자동으로 표시됩니다.</span><span class="project-status">STANDBY</span><span class="project-open">—</span></div>';
       return;
     }
 
@@ -120,12 +131,10 @@
     const box = document.querySelector('[data-partner-schedule]');
     if (!box) return;
     const schedule = Array.isArray(partner.schedule) ? partner.schedule : [];
-
     if (!schedule.length) {
       box.innerHTML = '<strong>등록된 일정이 없습니다.</strong>킥오프, 시안 전달, 피드백, 최종 전달 일정은 프로젝트가 시작되면 이곳에 정리됩니다.';
       return;
     }
-
     box.innerHTML = schedule.map((item) => `<div class="partner-schedule-row"><time>${escapeHTML(item.date || '')}</time><strong>${escapeHTML(item.title || '')}</strong><span>${escapeHTML(item.project || '')}</span></div>`).join('');
   };
 
@@ -136,9 +145,44 @@
     renderSchedule(partner);
   };
 
+  const applyWorkspaceData = (email, partner, data = {}) => {
+    const assignments = Array.isArray(data.assignments) ? data.assignments : [];
+    partner.projects = assignments.map((item) => ({
+      id: item.id || '',
+      company: item.company || '',
+      projectName: item.projectName || '',
+      type: item.projectType || item.service || '',
+      status: item.status || 'new',
+      summary: item.summary || '',
+      files: 0
+    }));
+    renderWorkspace(email, partner);
+  };
+
+  const subscribeWorkspace = async (email, partner) => {
+    unsubscribeWorkspace?.();
+    unsubscribeWorkspace = null;
+    try {
+      const ctx = await getFirebase();
+      unsubscribeWorkspace = ctx.onSnapshot(
+        ctx.doc(ctx.db, 'partnerWorkspaces', partner.workspaceId),
+        (snapshot) => {
+          if (snapshot.exists()) applyWorkspaceData(email, partner, snapshot.data() || {});
+          else applyWorkspaceData(email, partner, { assignments: [] });
+        },
+        (error) => {
+          console.warn('[NINEWORKS PARTNERS] workspace listener skipped', error);
+          renderWorkspace(email, partner);
+        }
+      );
+    } catch (error) {
+      console.warn('[NINEWORKS PARTNERS] Firebase connection skipped', error);
+      renderWorkspace(email, partner);
+    }
+  };
+
   const enterWorkspace = (rawEmail) => {
     const email = normalizeEmail(rawEmail);
-
     if (!isEmail(email)) {
       setNote('이메일 형식을 확인해 주세요.', 'error');
       loginForm?.querySelector('input[name="email"]')?.focus();
@@ -156,7 +200,8 @@
     renderWorkspace(email, partner);
     setView('app');
     setNote('');
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    window.scrollTo(0, 0);
+    subscribeWorkspace(email, partner);
     return true;
   };
 
@@ -165,21 +210,21 @@
     if (!loginForm.reportValidity()) return;
     setBusy(true);
     const email = String(new FormData(loginForm).get('email') || '');
-    requestAnimationFrame(() => {
+    window.setTimeout(() => {
       enterWorkspace(email);
       setBusy(false);
-    });
+    }, 120);
   });
 
   document.querySelectorAll('[data-partner-signout]').forEach((button) => {
     button.addEventListener('click', () => {
+      unsubscribeWorkspace?.();
+      unsubscribeWorkspace = null;
       localStorage.removeItem(STORAGE_KEY);
-      delete document.body.dataset.partnerId;
       loginForm?.reset();
       setNote('');
-      document.title = 'Partners Workspace — NINEWORKS';
       setView('login');
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      window.scrollTo(0, 0);
     });
   });
 
