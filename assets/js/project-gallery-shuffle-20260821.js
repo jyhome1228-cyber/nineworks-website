@@ -24,7 +24,7 @@
   if (!cards().some((card) => normalize(titleOf(card)) === 'aesost')) {
     const aesostCard = document.createElement('article');
     aesostCard.className = 'project-card';
-    aesostCard.innerHTML = '<a href="portfolio-aesost-branding.html" aria-label="AESOST brand identity case study" style="display:block;color:inherit;text-decoration:none"><figure class="project-card__media"><img src="https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/a6278ebc2225c.png" alt="AESOST brand identity project" loading="eager"></figure><div class="project-card__meta"><span>EDUCATION BRAND IDENTITY</span></div><h2>AESOST</h2><p>새로운 관점과 가능성을 퍼플 컬러와 유연한 심볼 시스템으로 구축한 브랜드 아이덴티티.</p></a>';
+    aesostCard.innerHTML = '<a href="portfolio-aesost-branding.html" aria-label="AESOST brand identity case study" style="display:block;color:inherit;text-decoration:none"><figure class="project-card__media"><img src="https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/4bbcadd1371fd.jpg" alt="AESOST brand identity project" loading="eager"></figure><div class="project-card__meta"><span>EDUCATION BRAND IDENTITY</span></div><h2>AESOST</h2><p>새로운 관점과 가능성을 퍼플 컬러와 유연한 심볼 시스템으로 구축한 브랜드 아이덴티티.</p></a>';
     grid.prepend(aesostCard);
   }
 
