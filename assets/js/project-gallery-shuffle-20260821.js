@@ -2,193 +2,158 @@
   const grid = document.querySelector('.projects-page .project-gallery__grid');
   if (!grid) return;
 
-  Array.from(grid.querySelectorAll(':scope > .project-card')).forEach((card) => {
-    const title = card.querySelector('h2')?.textContent.trim();
-    if (title === '드림팜') card.remove();
+  const normalize = (value = '') => String(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9가-힣]/g, '');
+
+  const cards = () => Array.from(grid.querySelectorAll(':scope > .project-card'));
+  const titleOf = (card) => card.querySelector('h2')?.textContent.trim() || '';
+
+  // Removed project + one intentional duplicate cleanup.
+  cards().forEach((card) => {
+    if (titleOf(card) === '드림팜') card.remove();
   });
 
-  const hasAesostBranding = Array.from(grid.querySelectorAll(':scope > .project-card')).some((card) => card.querySelector('h2')?.textContent.trim() === 'AESOST');
-  if (!hasAesostBranding) {
+  const onePlanCards = cards().filter((card) => normalize(titleOf(card)) === '1plan');
+  onePlanCards.slice(1).forEach((card) => card.remove());
+
+  // Keep the completed AESOST branding case in the selected project archive.
+  if (!cards().some((card) => normalize(titleOf(card)) === 'aesost')) {
     const aesostCard = document.createElement('article');
     aesostCard.className = 'project-card';
-    aesostCard.innerHTML = '<a href="portfolio-aesost-branding.html" aria-label="AESOST brand identity case study" style="display:block;color:inherit;text-decoration:none"><figure class="project-card__media"><img src="https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/a6278ebc2225c.png" alt="AESOST brand identity project" loading="lazy"></figure><div class="project-card__meta"><span>EDUCATION BRAND IDENTITY</span></div><h2>AESOST</h2><p>새로운 관점과 가능성을 퍼플 컬러와 유연한 심볼 시스템으로 구축한 브랜드 아이덴티티.</p></a>';
+    aesostCard.innerHTML = '<a href="portfolio-aesost-branding.html" aria-label="AESOST brand identity case study" style="display:block;color:inherit;text-decoration:none"><figure class="project-card__media"><img src="https://cdn.imweb.me/upload/S20251008dcc1c9d70e3ac/a6278ebc2225c.png" alt="AESOST brand identity project" loading="eager"></figure><div class="project-card__meta"><span>EDUCATION BRAND IDENTITY</span></div><h2>AESOST</h2><p>새로운 관점과 가능성을 퍼플 컬러와 유연한 심볼 시스템으로 구축한 브랜드 아이덴티티.</p></a>';
     grid.prepend(aesostCard);
   }
 
-  const laffCard = Array.from(grid.querySelectorAll(':scope > .project-card')).find((card) => card.querySelector('h2')?.textContent.trim() === 'LAFF');
-  if (laffCard) {
-    const detailUrl = 'portfolio-laff.html';
-    laffCard.dataset.projectLink = detailUrl;
-    laffCard.setAttribute('role', 'link');
-    laffCard.setAttribute('tabindex', '0');
-    laffCard.setAttribute('aria-label', 'LAFF 포트폴리오 상세 보기');
-    laffCard.style.cursor = 'pointer';
-
-    const openDetail = () => { window.location.href = detailUrl; };
-    laffCard.addEventListener('click', openDetail);
-    laffCard.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openDetail();
-      }
-    });
-  }
-
-  const cards = Array.from(grid.querySelectorAll(':scope > .project-card'));
-  const count = document.querySelector('.project-gallery__count');
-  if (count) count.textContent = `${cards.length} PROJECTS`;
-  if (cards.length < 2) return;
-
-  const random = () => {
-    if (window.crypto?.getRandomValues) {
-      const a = new Uint32Array(1);
-      window.crypto.getRandomValues(a);
-      return a[0] / 4294967296;
-    }
-    return Math.random();
+  const dedicatedLinks = {
+    laff: 'portfolio-laff.html'
   };
 
-  const shuffle = (items) => {
-    const arr = [...items];
-    for (let i = arr.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  };
+  const setCardLink = (card, href, label) => {
+    if (!card || !href) return;
 
-  const rgbToGroup = (r, g, b) => {
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    const delta = max - min;
-    const saturation = max === 0 ? 0 : delta / max;
-    const brightness = max / 255;
-
-    if (saturation < 0.16) return brightness < 0.42 ? 'dark' : 'neutral';
-
-    let hue = 0;
-    if (delta !== 0) {
-      if (max === r) hue = ((g - b) / delta) % 6;
-      else if (max === g) hue = (b - r) / delta + 2;
-      else hue = (r - g) / delta + 4;
-      hue *= 60;
-      if (hue < 0) hue += 360;
-    }
-
-    if (hue < 18 || hue >= 342) return 'red';
-    if (hue < 68) return 'warm';
-    if (hue < 165) return 'green';
-    if (hue < 255) return 'blue';
-    if (hue < 315) return 'purple';
-    return 'pink';
-  };
-
-  const fallbackGroup = (src, index) => {
-    const groups = ['neutral', 'warm', 'blue', 'green', 'purple', 'red', 'dark'];
-    let hash = index + 17;
-    for (let i = 0; i < src.length; i += 1) hash = ((hash << 5) - hash + src.charCodeAt(i)) | 0;
-    return groups[Math.abs(hash) % groups.length];
-  };
-
-  const detectColorGroup = (card, index) => new Promise((resolve) => {
-    const source = card.querySelector('img')?.src || '';
-    if (!source) {
-      resolve(fallbackGroup('', index));
+    const existingAnchor = card.querySelector(':scope > a[href]');
+    if (existingAnchor) {
+      card.dataset.completed = 'true';
+      card.dataset.projectLink = existingAnchor.getAttribute('href') || href;
+      card.classList.add('project-card--linked');
       return;
     }
 
-    const image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.decoding = 'async';
+    card.dataset.completed = 'true';
+    card.dataset.projectLink = href;
+    card.classList.add('project-card--linked');
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', label || `${titleOf(card)} 포트폴리오 상세 보기`);
+    card.style.cursor = 'pointer';
 
-    const fallback = () => resolve(fallbackGroup(source, index));
-
-    image.onload = () => {
-      try {
-        const canvas = document.createElement('canvas');
-        canvas.width = 24;
-        canvas.height = 16;
-        const ctx = canvas.getContext('2d', { willReadFrequently: true });
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-
-        let r = 0;
-        let g = 0;
-        let b = 0;
-        let count = 0;
-
-        for (let i = 0; i < pixels.length; i += 4) {
-          const pr = pixels[i];
-          const pg = pixels[i + 1];
-          const pb = pixels[i + 2];
-          const alpha = pixels[i + 3];
-          if (alpha < 100) continue;
-          if (pr > 246 && pg > 246 && pb > 246) continue;
-          r += pr;
-          g += pg;
-          b += pb;
-          count += 1;
-        }
-
-        if (!count) {
-          fallback();
-          return;
-        }
-
-        resolve(rgbToGroup(r / count, g / count, b / count));
-      } catch {
-        fallback();
+    const open = () => { window.location.href = href; };
+    card.addEventListener('click', (event) => {
+      if (event.target.closest('a, button, input, select, textarea')) return;
+      open();
+    });
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
       }
-    };
-
-    image.onerror = fallback;
-    image.src = source;
-  });
-
-  const arrange = (items) => {
-    const pool = shuffle(items);
-    const result = [];
-
-    while (pool.length) {
-      let bestIndex = 0;
-      let bestScore = -Infinity;
-
-      pool.forEach((item, index) => {
-        let score = random();
-        const prev = result[result.length - 1];
-        const prev2 = result[result.length - 2];
-        const above = result[result.length - 3];
-
-        if (!prev || item.group !== prev.group) score += 5;
-        else score -= 8;
-
-        if (!prev2 || item.group !== prev2.group) score += 2;
-        else score -= 3;
-
-        if (!above || item.group !== above.group) score += 1.5;
-        else score -= 2;
-
-        if (score > bestScore) {
-          bestScore = score;
-          bestIndex = index;
-        }
-      });
-
-      result.push(pool.splice(bestIndex, 1)[0]);
-    }
-
-    return result;
+    });
   };
 
-  Promise.all(cards.map(async (card, index) => ({
-    card,
-    group: await detectColorGroup(card, index)
-  }))).then((items) => {
-    const ordered = arrange(items);
+  cards().forEach((card) => {
+    const existingAnchor = card.querySelector(':scope > a[href]');
+    if (existingAnchor && /portfolio/i.test(existingAnchor.getAttribute('href') || '')) {
+      card.dataset.completed = 'true';
+      card.dataset.projectLink = existingAnchor.getAttribute('href') || '';
+      card.classList.add('project-card--linked');
+    }
+
+    const manual = dedicatedLinks[normalize(titleOf(card))];
+    if (manual) setCardLink(card, manual);
+  });
+
+  const portfolioScripts = [
+    'assets/js/portfolio-list-1.js?v=20260810-2',
+    'assets/js/portfolio-list-2.js?v=20260810-2',
+    'assets/js/portfolio-list-3.js?v=20260810-2',
+    'assets/js/portfolio-list-4.js?v=20260812-10',
+    'assets/js/portfolio-list-5.js?v=20260812-2'
+  ];
+
+  const loadScript = (src) => new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = false;
+    script.onload = resolve;
+    script.onerror = resolve;
+    document.head.appendChild(script);
+  });
+
+  const scoreMatch = (projectKey, candidate) => {
+    const id = normalize(candidate?.id || '');
+    const title = normalize(candidate?.title || '');
+    const client = normalize(candidate?.client || '');
+    const values = [id, title, client].filter(Boolean);
+
+    if (values.includes(projectKey)) return 100;
+    if (projectKey.length < 5) return 0;
+
+    let score = 0;
+    values.forEach((value) => {
+      if (value.startsWith(projectKey) || value.endsWith(projectKey)) score = Math.max(score, 85);
+      else if (projectKey.startsWith(value) || projectKey.endsWith(value)) score = Math.max(score, 82);
+      else if (value.includes(projectKey) || projectKey.includes(value)) score = Math.max(score, 72);
+    });
+    return score;
+  };
+
+  const findPortfolioMatch = (card) => {
+    if (!Array.isArray(window.NW_PORTFOLIO)) return null;
+    const key = normalize(titleOf(card));
+    if (!key) return null;
+
+    return window.NW_PORTFOLIO
+      .map((project) => ({ project, score: scoreMatch(key, project) }))
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || normalize(a.project.title).length - normalize(b.project.title).length)[0]?.project || null;
+  };
+
+  const arrangeCompletedFirst = () => {
+    const current = cards();
+    const completed = current.filter((card) => card.dataset.completed === 'true');
+    const remaining = current.filter((card) => card.dataset.completed !== 'true');
     const fragment = document.createDocumentFragment();
 
-    // 카드 순서만 재배치합니다. 번호는 생성하지 않습니다.
-    ordered.forEach(({ card }) => fragment.appendChild(card));
+    // Completed / portfolio-connected cases are always shown first.
+    [...completed, ...remaining].forEach((card, index) => {
+      const image = card.querySelector('img');
+      if (image) image.loading = index < 6 ? 'eager' : 'lazy';
+      fragment.appendChild(card);
+    });
     grid.appendChild(fragment);
-  });
+
+    const count = document.querySelector('.project-gallery__count');
+    if (count) count.textContent = `${current.length} PROJECTS`;
+  };
+
+  const connectPortfolio = () => {
+    cards().forEach((card) => {
+      if (card.dataset.completed === 'true') return;
+      const project = findPortfolioMatch(card);
+      if (!project) return;
+      const href = project.detailUrl || `portfolio-detail.html?work=${encodeURIComponent(project.id)}`;
+      setCardLink(card, href, `${titleOf(card)} 포트폴리오 상세 보기`);
+    });
+    arrangeCompletedFirst();
+  };
+
+  if (Array.isArray(window.NW_PORTFOLIO) && window.NW_PORTFOLIO.length) {
+    connectPortfolio();
+  } else {
+    Promise.all(portfolioScripts.map(loadScript)).then(connectPortfolio);
+  }
 })();
