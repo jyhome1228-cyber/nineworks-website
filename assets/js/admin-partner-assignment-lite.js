@@ -13,7 +13,8 @@ import { auth, db, firebaseConfigReady } from './firebase-client.js';
 const ADMIN_EMAIL = 'info@9works.kr';
 const PARTNERS = [
   { name: '서동원', email: 'seodw100@naver.com' },
-  { name: '신민용', email: 's.nninyong@gmail.com' }
+  { name: '신민용', email: 's.nninyong@gmail.com' },
+  { name: '박상혁', email: 'daytuio0329@naver.com' }
 ];
 
 let inquiryCache = [];
@@ -197,7 +198,7 @@ const decorateInquiryRows = () => {
 
 const scheduleDecorate = () => {
   window.setTimeout(decorateInquiryRows, 20);
-  window.setTimeout(decorateInquiryRows, 140);
+  window.setTimeout(decorateInquiryRows, 160);
 };
 
 const sanitizedAssignments = (partnerEmail) => inquiryCache
@@ -337,7 +338,9 @@ const bindAssignmentControls = () => {
       return;
     }
 
-    if (event.target.closest('[data-inquiry-service-filter], [data-inquiry-status-filter], [data-status-summary], [data-dashboard-service], [data-admin-tab="inquiry"]')) scheduleDecorate();
+    if (event.target.closest('[data-inquiry-service-filter], [data-inquiry-status-filter], [data-status-summary], [data-dashboard-service], [data-admin-tab="inquiry"]')) {
+      scheduleDecorate();
+    }
   });
 
   document.addEventListener('keydown', async (event) => {
