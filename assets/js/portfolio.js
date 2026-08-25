@@ -136,6 +136,19 @@
 
   grid.innerHTML = allWorks.map(cardMarkup).join('');
 
+  const PAGE_SIZE = 8;
+  let activeFilter = 'major';
+  let visibleLimit = PAGE_SIZE;
+
+  const loadMore = document.createElement('div');
+  loadMore.className = 'portfolio-load-more';
+  loadMore.innerHTML = `
+    <button class="portfolio-load-more__button" type="button" data-portfolio-load-more>
+      <span>MORE PROJECTS</span>
+      <span data-portfolio-load-more-count>8개 더보기</span>
+    </button>`;
+  grid.insertAdjacentElement('afterend', loadMore);
+
   const modal = document.createElement('div');
   modal.className = 'portfolio-quickview';
   modal.setAttribute('aria-hidden', 'true');
@@ -223,6 +236,8 @@
   const titleEl = document.querySelector('[data-portfolio-index-title]');
   const copyEl = document.querySelector('[data-portfolio-index-copy]');
   const countEl = document.querySelector('[data-portfolio-index-count]');
+  const loadMoreButton = loadMore.querySelector('[data-portfolio-load-more]');
+  const loadMoreCount = loadMore.querySelector('[data-portfolio-load-more-count]');
 
   const updateArchiveHead = (filter) => {
     const meta = categoryCopy[filter] || categoryCopy.major;
@@ -232,21 +247,46 @@
     if (countEl) countEl.textContent = `${String(count).padStart(2, '0')} WORKS`;
   };
 
+  const applyFilter = (filter, resetLimit = true) => {
+    activeFilter = filter || 'major';
+    if (resetLimit) visibleLimit = activeFilter === 'major' ? PAGE_SIZE : Number.POSITIVE_INFINITY;
+
+    const cards = Array.from(grid.querySelectorAll('.portfolio-filter-item'));
+    const matching = cards.filter((item) => (item.dataset.category || '').split(' ').includes(activeFilter));
+    let shown = 0;
+
+    cards.forEach((item) => {
+      const matches = (item.dataset.category || '').split(' ').includes(activeFilter);
+      if (!matches) {
+        item.hidden = true;
+        return;
+      }
+      shown += 1;
+      item.hidden = activeFilter === 'major' && shown > visibleLimit;
+    });
+
+    const remaining = Math.max(0, matching.length - visibleLimit);
+    loadMore.hidden = activeFilter !== 'major' || remaining <= 0;
+    if (loadMoreCount && remaining > 0) loadMoreCount.textContent = `${Math.min(PAGE_SIZE, remaining)}개 더보기`;
+    updateArchiveHead(activeFilter);
+  };
+
+  loadMoreButton?.addEventListener('click', () => {
+    visibleLimit += PAGE_SIZE;
+    applyFilter(activeFilter, false);
+  });
+
   const group = document.querySelector('.portfolio-filter[data-filter-group]');
   if (group) {
     const buttons = group.querySelectorAll('[data-filter]');
     buttons.forEach((button) => button.addEventListener('click', () => {
       const filter = button.dataset.filter || 'major';
       buttons.forEach((item) => item.classList.toggle('is-active', item === button));
-      grid.querySelectorAll('.portfolio-filter-item').forEach((item) => {
-        const categories = (item.dataset.category || '').split(' ');
-        item.hidden = !categories.includes(filter);
-      });
-      updateArchiveHead(filter);
+      applyFilter(filter, true);
     }));
   }
 
   const majorButton = document.querySelector('[data-filter="major"]');
   if (majorButton) majorButton.click();
-  else updateArchiveHead('major');
+  else applyFilter('major', true);
 })();
