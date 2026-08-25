@@ -50,7 +50,7 @@
     console.error('[NINEWORKS Admin] Partner submissions load failed', error);
   });
 
-  import('./admin-recruit-partner-final-20260824.js?v=20260824-1').catch((error) => {
+  import('./admin-recruit-partner-final-20260824.js?v=20260825-trash-sync1').catch((error) => {
     console.error('[NINEWORKS Admin] Recruit / approved inquiry sync load failed', error);
   });
 
