@@ -110,6 +110,67 @@
     if (button) { if (!button.dataset.originalHtml) button.dataset.originalHtml = button.innerHTML; button.disabled = mode === 'loading'; if (mode === 'loading') button.innerHTML = '<span>접수 중...</span><span>↗</span>'; else if (mode === 'success') button.innerHTML = '<span>접수 완료</span><span>✓</span>'; else button.innerHTML = button.dataset.originalHtml; }
     if (note && message) note.textContent = message;
   };
+
+  const isPartnerDesignerForm = (form) => {
+    if (!(form instanceof HTMLFormElement)) return false;
+    return form.classList.contains('recruit-form') || /PARTNER DESIGNER/i.test(form.dataset.sectorLabel || '') || /recruit\.html$|\/recruit\/?$/i.test(location.pathname);
+  };
+
+  const ensureRegistrationModal = () => {
+    let modal = document.querySelector('[data-registration-success-modal]');
+    if (modal) return modal;
+
+    if (!document.querySelector('style[data-registration-success-style]')) {
+      const style = document.createElement('style');
+      style.dataset.registrationSuccessStyle = 'true';
+      style.textContent = `
+        .nw-registration-modal{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(20,20,20,.42);backdrop-filter:blur(4px)}
+        .nw-registration-modal.is-open{display:flex}
+        .nw-registration-modal__panel{width:min(560px,100%);background:#fff;border:1px solid #d7d7d1;padding:34px;box-shadow:0 24px 80px rgba(0,0,0,.16)}
+        .nw-registration-modal__eyebrow{margin:0 0 42px;font-size:10px;font-weight:600;letter-spacing:.08em;color:#777}
+        .nw-registration-modal__panel h2{margin:0;font-size:clamp(26px,3vw,38px);font-weight:500;line-height:1.18;letter-spacing:-.045em}
+        .nw-registration-modal__copy{margin:18px 0 0;color:#555;font-size:14px;line-height:1.8}
+        .nw-registration-modal__sub{margin:24px 0 0;padding-top:18px;border-top:1px solid #e2e2dd;color:#7a7a76;font-size:11.5px;line-height:1.7}
+        .nw-registration-modal__button{width:100%;margin-top:30px;padding:15px 18px;border:1px solid #111;background:#111;color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+        .nw-registration-modal__button:hover{opacity:.86}
+        @media(max-width:680px){.nw-registration-modal{padding:16px}.nw-registration-modal__panel{padding:26px 22px}.nw-registration-modal__eyebrow{margin-bottom:30px}}
+      `;
+      document.head.appendChild(style);
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'nw-registration-modal';
+    modal.setAttribute('data-registration-success-modal', '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'nw-registration-success-title');
+    modal.innerHTML = `
+      <div class="nw-registration-modal__panel">
+        <p class="nw-registration-modal__eyebrow">NINEWORKS / REGISTRATION COMPLETE</p>
+        <h2 id="nw-registration-success-title">접수가 완료되었습니다.</h2>
+        <p class="nw-registration-modal__copy">작성해주신 내용을 확인 후 빠른 시일 내에 연락드리겠습니다.</p>
+        <p class="nw-registration-modal__sub">나인웍스 파트너 디자이너 등록 여부 및 프로젝트 관련 안내는 입력해주신 연락처 또는 이메일을 통해 전달드립니다.</p>
+        <button class="nw-registration-modal__button" type="button" data-registration-success-close>확인</button>
+      </div>`;
+    document.body.appendChild(modal);
+
+    const close = () => {
+      modal.classList.remove('is-open');
+      document.body.style.removeProperty('overflow');
+    };
+    modal.querySelector('[data-registration-success-close]')?.addEventListener('click', close);
+    modal.addEventListener('click', (event) => { if (event.target === modal) close(); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+    return modal;
+  };
+
+  const showRegistrationModal = () => {
+    const modal = ensureRegistrationModal();
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(() => modal.querySelector('[data-registration-success-close]')?.focus(), 0);
+  };
+
   const isInquiryForm = (form) => form instanceof HTMLFormElement && form.matches('.contact-panel, [data-sector-form], [data-quote-form], [data-mail-form]');
 
   document.addEventListener('submit', async (event) => {
@@ -119,12 +180,18 @@
     event.stopImmediatePropagation();
     if (!form.reportValidity()) return;
     if (form.classList.contains('inquiry-form')) { const fd = new FormData(form); if (fd.getAll('projectType').length === 0) { window.alert('필요한 작업 유형을 한 개 이상 선택해 주세요.'); return; } }
-    setFormState(form, 'loading', '문의 내용을 안전하게 접수하고 있습니다.');
+    const partnerDesignerForm = isPartnerDesignerForm(form);
+    setFormState(form, 'loading', partnerDesignerForm ? '등록 신청을 안전하게 접수하고 있습니다.' : '문의 내용을 안전하게 접수하고 있습니다.');
     try {
       await saveInquiry(form);
       form.reset();
       form.dispatchEvent(new Event('change', { bubbles: true }));
-      setFormState(form, 'success', '문의가 접수되었습니다. 확인 후 영업일 기준 2–3일 이내 연락드리겠습니다.');
+      if (partnerDesignerForm) {
+        setFormState(form, 'success', '등록 신청이 정상적으로 접수되었습니다. 확인 후 빠른 시일 내에 연락드리겠습니다.');
+        showRegistrationModal();
+      } else {
+        setFormState(form, 'success', '문의가 접수되었습니다. 확인 후 영업일 기준 2–3일 이내 연락드리겠습니다.');
+      }
       window.setTimeout(() => setFormState(form, 'idle'), 3500);
     } catch (error) {
       console.error('[NINEWORKS] inquiry submission failed', error);
