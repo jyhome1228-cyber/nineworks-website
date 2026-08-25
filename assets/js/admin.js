@@ -57,4 +57,8 @@
   import('./admin-inquiry-crm-20260825.js?v=20260825-1').catch((error) => {
     console.error('[NINEWORKS Admin] Inquiry CRM load failed', error);
   });
+
+  import('./admin-trash-ui-fix-20260825.js?v=20260825-1').catch((error) => {
+    console.error('[NINEWORKS Admin] Trash UI polish load failed', error);
+  });
 })();
