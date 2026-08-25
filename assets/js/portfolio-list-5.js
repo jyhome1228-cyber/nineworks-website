@@ -27,7 +27,7 @@ window.NW_PORTFOLIO=(window.NW_PORTFOLIO||[]).concat([
     "client":"NINEWORKS / Internal Project",
     "subtitle":"Internal Work Management & Client Operations System",
     "scope":"Service Planning · UX/UI · CRM · Calendar · Client · Request · Sales · Firebase",
-    "filters":["develop"],
+    "filters":["system"],
     "thumbnail":"assets/nineworks-crm-cover.svg",
     "detailUrl":"portfolio-nineworks-crm.html"
   }
