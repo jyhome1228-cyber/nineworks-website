@@ -110,3 +110,7 @@ html body .site-header .site-logo{
   .menu-nav__sub{margin-top:7px;margin-bottom:15px}
   .menu-nav__sub a{font-size:13px!important}
 }
+
+/* Proposal pages are standalone client documents: hide the generic site footer/navigation block. */
+body.proposal-page .site-footer,
+body.proposal-page footer.site-footer{display:none!important}
