@@ -26,6 +26,7 @@ const isRecruit = (item) => {
   const source = String(item?.source || '').toLowerCase();
   return service.includes('RECRUIT') || source.includes('/recruit');
 };
+const isTrashed = (item) => Boolean(item?.trashedAt);
 const timestampMs = (value) => {
   if (!value) return 0;
   if (typeof value.toMillis === 'function') return value.toMillis();
@@ -164,7 +165,9 @@ const renderRecruitStats = (items) => {
 };
 
 const renderRecruits = () => {
-  const items = inquiryCache.filter(isRecruit).sort((a, b) => timestampMs(b.createdAt) - timestampMs(a.createdAt));
+  const items = inquiryCache
+    .filter((item) => isRecruit(item) && !isTrashed(item))
+    .sort((a, b) => timestampMs(b.createdAt) - timestampMs(a.createdAt));
   renderRecruitStats(items);
   const box = document.querySelector('[data-admin-recruit-list]');
   if (!box) return;
@@ -200,7 +203,7 @@ const renderRecruits = () => {
 };
 
 const partnerInquiryDetails = (partnerEmail) => inquiryCache
-  .filter((item) => !isRecruit(item) && normalizeEmail(item.assignedPartnerEmail) === partnerEmail)
+  .filter((item) => !isTrashed(item) && !isRecruit(item) && normalizeEmail(item.assignedPartnerEmail) === partnerEmail)
   .map((item) => ({
     id: item.id,
     company: String(item.company || '').slice(0, 200),
