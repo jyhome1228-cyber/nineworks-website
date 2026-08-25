@@ -53,4 +53,8 @@
   import('./admin-recruit-partner-final-20260824.js?v=20260824-1').catch((error) => {
     console.error('[NINEWORKS Admin] Recruit / approved inquiry sync load failed', error);
   });
+
+  import('./admin-inquiry-crm-20260825.js?v=20260825-1').catch((error) => {
+    console.error('[NINEWORKS Admin] Inquiry CRM load failed', error);
+  });
 })();
