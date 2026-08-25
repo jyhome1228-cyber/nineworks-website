@@ -20,5 +20,15 @@ window.NW_PORTFOLIO=(window.NW_PORTFOLIO||[]).concat([
     "thumbnail":"https://cdn.imweb.me/upload/S20260219b829e728b3f2e/7df64ceed4164.png",
     "detailUrl":"portfolio-recelleclore.html",
     "liveUrl":"https://recelleclore.co.kr/"
+  },
+  {
+    "id":"nineworks-crm",
+    "title":"NINEWORKS CRM",
+    "client":"NINEWORKS / Internal Project",
+    "subtitle":"Internal Work Management & Client Operations System",
+    "scope":"Service Planning · UX/UI · CRM · Calendar · Client · Request · Sales · Firebase",
+    "filters":["develop"],
+    "thumbnail":"assets/nineworks-crm-cover.svg",
+    "detailUrl":"portfolio-nineworks-crm.html"
   }
 ]);
