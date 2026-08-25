@@ -76,20 +76,6 @@
     });
   };
 
-  const hasDetailPage = (card) => {
-    return [...card.querySelectorAll('a[href]')].some((anchor) => {
-      const href = (anchor.getAttribute('href') || '').trim();
-      if (!href || href === '#' || /^javascript:/i.test(href)) return false;
-      return /(?:portfolio|project)[^?#]*\.html(?:[?#].*)?$/i.test(href);
-    });
-  };
-
-  const isCoventryCard = (card) => {
-    const href = card.querySelector('a[href]')?.getAttribute('href') || '';
-    const text = card.textContent || '';
-    return /coventry/i.test(href) || /coventry city/i.test(text);
-  };
-
   const loadMainProjects = async () => {
     const grid = document.querySelector('[data-major-project-grid]');
     const note = document.querySelector('[data-major-project-note]');
@@ -101,13 +87,9 @@
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
 
-      const detailed = [...doc.querySelectorAll('.project-gallery__grid > .project-card')].filter(hasDetailPage);
-      if (!detailed.length) throw new Error('No detailed project cards found');
-
-      const coventry = detailed.find(isCoventryCard);
-      let ordered = detailed.filter((card) => card !== coventry);
-      if (coventry) ordered.splice(Math.min(5, ordered.length), 0, coventry);
-      ordered = ordered.slice(0, 8);
+      // Keep the exact visible order from project.html. No filtering or manual reordering.
+      const ordered = [...doc.querySelectorAll('.project-gallery__grid > .project-card')].slice(0, 8);
+      if (!ordered.length) throw new Error('No project cards found');
 
       const fragment = document.createDocumentFragment();
       ordered.forEach((source, index) => {
