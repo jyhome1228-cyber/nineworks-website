@@ -193,11 +193,11 @@ html body .site-footer__social a:focus-visible{
 
   html body .menu-overlay{
     overflow-y:auto!important;
-    padding-top:calc(var(--header-height,68px) + 24px)!important;
-    padding-right:18px!important;
-    padding-bottom:24px!important;
-    padding-left:18px!important;
-    gap:30px!important;
+    padding-top:calc(var(--header-height,68px) + 18px)!important;
+    padding-right:20px!important;
+    padding-bottom:26px!important;
+    padding-left:20px!important;
+    gap:22px!important;
     grid-template-rows:auto auto!important;
     align-content:start!important;
   }
@@ -212,42 +212,45 @@ html body .site-footer__social a:focus-visible{
     width:fit-content!important;
     margin:0!important;
     padding:0!important;
-    font-size:30px!important;
+    font-size:24px!important;
     font-weight:600!important;
-    line-height:1.08!important;
-    letter-spacing:-.045em!important;
+    line-height:1.16!important;
+    letter-spacing:-.04em!important;
   }
 
   html body .menu-nav>.menu-nav__main + .menu-nav__main{
-    margin-top:10px!important;
+    margin-top:8px!important;
   }
 
   html body .menu-nav__group{
-    margin:10px 0 12px!important;
+    margin:8px 0 12px!important;
   }
 
   html body .menu-nav__sub{
-    display:grid!important;
-    grid-template-columns:repeat(2,minmax(0,1fr))!important;
-    gap:0 18px!important;
-    margin:7px 0 0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:0!important;
+    margin:5px 0 0!important;
     padding:0!important;
   }
 
   html body .menu-nav__sub a{
+    display:block!important;
+    width:auto!important;
     margin:0!important;
-    padding:3px 0!important;
-    font-size:12px!important;
+    padding:2px 0!important;
+    font-size:13px!important;
     font-weight:400!important;
-    line-height:1.4!important;
+    line-height:1.45!important;
     letter-spacing:-.015em!important;
   }
 
   html body .menu-footer{
-    margin-top:2px!important;
-    padding-top:18px!important;
+    margin-top:10px!important;
+    padding-top:16px!important;
     border-top:1px solid rgba(255,255,255,.16)!important;
-    gap:12px!important;
+    gap:10px!important;
     font-size:11px!important;
     line-height:1.5!important;
   }
@@ -305,11 +308,11 @@ html body .site-footer__social a:focus-visible{
 @media(max-width:390px){
   html body .menu-nav .menu-nav__main,
   html body .menu-nav>a.menu-nav__main{
-    font-size:28px!important;
+    font-size:23px!important;
   }
 
   html body .menu-nav__sub a{
-    font-size:11.5px!important;
+    font-size:12.5px!important;
   }
 
   html body .site-footer__links{
