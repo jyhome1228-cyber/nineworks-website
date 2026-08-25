@@ -29,6 +29,6 @@ window.NW_PORTFOLIO=(window.NW_PORTFOLIO||[]).concat([
     "scope":"Service Planning · UX/UI · CRM · Calendar · Client · Request · Sales · Firebase",
     "filters":["system"],
     "thumbnail":"assets/nineworks-crm-cover.svg",
-    "detailUrl":"portfolio-nineworks-crm.html"
+    "detailUrl":"portfolio-detail.html?work=nineworks-crm"
   }
 ]);
