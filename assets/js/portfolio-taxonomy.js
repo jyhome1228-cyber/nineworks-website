@@ -26,7 +26,9 @@
 
   /* SYSTEM is reserved for dedicated system-only case studies
      such as membership/admin/reservation/CRM functionality. */
-  const dedicatedSystem = new Set([]);
+  const dedicatedSystem = new Set([
+    'nineworks-crm'
+  ]);
 
   const petrichor = window.NW_PORTFOLIO.find((project) => project?.id === 'the-petrichor');
   if (petrichor) Object.assign(petrichor, {
