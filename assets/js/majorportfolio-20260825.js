@@ -23,12 +23,64 @@
     enterButton?.addEventListener('click', () => hideOnboarding(false));
   }
 
+  const escapeHTML = (value = '') => String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+
+  const renderMajorWorks = () => {
+    const grid = document.querySelector('[data-major-works-grid]');
+    if (!grid || !Array.isArray(window.NW_PORTFOLIO)) return;
+
+    const seen = new Set();
+    const works = window.NW_PORTFOLIO.filter((project) => {
+      const key = `${project.client || ''}|${project.title || ''}`.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0, 8);
+
+    grid.innerHTML = works.map((project, index) => {
+      const title = escapeHTML(project.title || 'Project');
+      const subtitle = escapeHTML(project.subtitle || '');
+      const scope = escapeHTML(project.scope || '');
+      const thumbnail = escapeHTML(project.thumbnail || project.image || '');
+      const href = `/portfolio-detail.html?work=${encodeURIComponent(project.id || '')}`;
+      return `
+        <article class="major-work-card">
+          <a href="${href}" aria-label="${title} 포트폴리오 상세 보기">
+            <figure class="major-work-card__media"><img src="${thumbnail}" alt="${title}" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"></figure>
+            <div class="major-work-card__info">
+              <div><strong>${title}</strong><span>${subtitle}</span></div>
+              <em>${scope}</em>
+            </div>
+          </a>
+        </article>`;
+    }).join('');
+  };
+
   const normalizeCardLinks = (card) => {
     card.querySelectorAll('a[href]').forEach((anchor) => {
       const href = anchor.getAttribute('href') || '';
       if (!href || /^(?:https?:|mailto:|tel:|#|\/)/i.test(href)) return;
       anchor.setAttribute('href', `/${href.replace(/^\.?\//, '')}`);
     });
+  };
+
+  const hasDetailPage = (card) => {
+    return [...card.querySelectorAll('a[href]')].some((anchor) => {
+      const href = (anchor.getAttribute('href') || '').trim();
+      if (!href || href === '#' || /^javascript:/i.test(href)) return false;
+      return /(?:portfolio|project)[^?#]*\.html(?:[?#].*)?$/i.test(href);
+    });
+  };
+
+  const isCoventryCard = (card) => {
+    const href = card.querySelector('a[href]')?.getAttribute('href') || '';
+    const text = card.textContent || '';
+    return /coventry/i.test(href) || /coventry city/i.test(text);
   };
 
   const loadMainProjects = async () => {
@@ -41,11 +93,17 @@
       if (!response.ok) throw new Error(`project.html ${response.status}`);
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const cards = [...doc.querySelectorAll('.project-gallery__grid > .project-card')].slice(0, 6);
-      if (!cards.length) throw new Error('No project cards found');
+
+      const detailed = [...doc.querySelectorAll('.project-gallery__grid > .project-card')].filter(hasDetailPage);
+      if (!detailed.length) throw new Error('No detailed project cards found');
+
+      const coventry = detailed.find(isCoventryCard);
+      let ordered = detailed.filter((card) => card !== coventry);
+      if (coventry) ordered.splice(Math.min(5, ordered.length), 0, coventry);
+      ordered = ordered.slice(0, 8);
 
       const fragment = document.createDocumentFragment();
-      cards.forEach((source, index) => {
+      ordered.forEach((source, index) => {
         const card = source.cloneNode(true);
         normalizeCardLinks(card);
         card.querySelectorAll('img').forEach((image) => {
@@ -57,9 +115,9 @@
       grid.replaceChildren(fragment);
       if (note) note.hidden = true;
     } catch (error) {
-      console.warn('[NINEWORKS majorportfolio] main portfolio load failed', error);
+      console.warn('[NINEWORKS majorportfolio] branding portfolio load failed', error);
       if (note) {
-        note.textContent = '메인 포트폴리오를 불러오지 못했습니다. 전체 포트폴리오에서 확인해 주세요.';
+        note.textContent = '브랜딩 프로젝트를 불러오지 못했습니다. 전체 포트폴리오에서 확인해 주세요.';
         note.classList.add('is-error');
       }
     }
@@ -121,6 +179,7 @@
   };
 
   const init = () => {
+    renderMajorWorks();
     loadMainProjects();
     loadClientLogos();
   };
