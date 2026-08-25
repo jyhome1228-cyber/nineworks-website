@@ -51,7 +51,7 @@ const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;')
   .replace(/</g, '&lt;')
   .replace(/>/g, '&gt;')
-  .replace(/"/g, '&quot;')
+  .replace(/\"/g, '&quot;')
   .replace(/'/g, '&#039;');
 
 const normalizeStatus = (status) => ['new', 'open', 'done'].includes(status) ? status : 'new';
@@ -59,6 +59,14 @@ const normalizeStatus = (status) => ['new', 'open', 'done'].includes(status) ? s
 const isMemberSignupFallback = (item) => {
   const source = String(item?.source || '').toLowerCase();
   return source.includes('join.html') || source.includes('register.html');
+};
+
+const isTrashed = (item) => Boolean(item?.trashedAt);
+
+const isRecruit = (item) => {
+  const service = String(item?.service || '').toUpperCase();
+  const source = String(item?.source || '').toLowerCase();
+  return service.includes('RECRUIT') || source.includes('/recruit');
 };
 
 const koreaDateKey = (date = new Date()) => {
@@ -394,7 +402,7 @@ const startAdminData = () => {
   unsubscribers.push(onSnapshot(inquiriesQuery, (snapshot) => {
     inquiryCache = snapshot.docs
       .map((item) => ({ id: item.id, ...item.data() }))
-      .filter((item) => !isMemberSignupFallback(item));
+      .filter((item) => !isMemberSignupFallback(item) && !isTrashed(item) && !isRecruit(item));
     renderAll();
   }, (error) => {
     console.error('[NINEWORKS Admin] inquiry stream failed', error);
