@@ -1,4 +1,11 @@
 (() => {
+  if (!document.querySelector('link[href*="majorportfolio-majorworks-20260825.css"]')) {
+    const styleLink = document.createElement('link');
+    styleLink.rel = 'stylesheet';
+    styleLink.href = '/assets/css/majorportfolio-majorworks-20260825.css?v=20260825-1';
+    document.head.appendChild(styleLink);
+  }
+
   const onboarding = document.querySelector('[data-major-onboarding]');
   const enterButton = document.querySelector('[data-major-enter]');
   const sessionKey = 'nineworks-majorportfolio-entered';
