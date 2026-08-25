@@ -23,18 +23,19 @@ Firebase Trigger Email Extension에는 의존하지 않습니다. SMTP 계정 �
 
 Cloud Functions 배포가 가능한 Blaze 요금제인지 확인합니다.
 
-## 2. SMTP 정보 확인
+## 2. NINEWORKS Daum SMTP 정보
 
-`info@9works.kr` 메일을 실제로 제공하는 서비스의 아래 정보를 확인합니다.
+현재 `info@9works.kr` 메일은 Daum SMTP를 사용합니다.
 
-- SMTP host
-- SMTP port
-- SSL/TLS 여부
-- SMTP username
-- SMTP password 또는 앱 비밀번호
-- 발신 주소
+- SMTP host: `smtp.daum.net`
+- SMTP port: `465`
+- SSL/TLS: SSL 사용
+- `secure`: `true`
+- SMTP username: `nineworkscorp`
+- 발신 주소: `NINEWORKS <info@9works.kr>`
+- SMTP password: Daum에서 생성한 앱 비밀번호
 
-비밀번호는 GitHub 파일이나 채팅에 적지 않습니다.
+앱 비밀번호는 GitHub 파일이나 채팅에 적지 않습니다.
 
 ## 3. Firebase Secret 등록
 
@@ -44,19 +45,11 @@ Firebase CLI 로그인 후 아래 명령을 실행합니다.
 firebase functions:secrets:set NINEWORKS_SMTP --project nineworks-f414f
 ```
 
-값 입력을 요구하면 아래 형태의 JSON을 한 줄로 입력합니다.
+값 입력을 요구하면 아래 JSON에서 `DAUM_APP_PASSWORD` 부분만 실제 Daum 앱 비밀번호로 바꿔 한 줄로 입력합니다.
 
 ```json
-{"host":"smtp.example.com","port":465,"secure":true,"user":"info@9works.kr","pass":"APP_PASSWORD_OR_SMTP_PASSWORD","from":"NINEWORKS <info@9works.kr>"}
+{"host":"smtp.daum.net","port":465,"secure":true,"user":"nineworkscorp","pass":"DAUM_APP_PASSWORD","from":"NINEWORKS <info@9works.kr>"}
 ```
-
-587 STARTTLS를 사용하는 메일 서비스라면 일반적으로 아래처럼 설정합니다.
-
-```json
-{"host":"smtp.example.com","port":587,"secure":false,"user":"info@9works.kr","pass":"APP_PASSWORD_OR_SMTP_PASSWORD","from":"NINEWORKS <info@9works.kr>"}
-```
-
-실제 host / port / secure 값은 사용 중인 메일 제공업체의 SMTP 안내를 따릅니다.
 
 ## 4. Functions 배포
 
