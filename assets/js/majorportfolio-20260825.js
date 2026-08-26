@@ -1,11 +1,4 @@
 (() => {
-  if (!document.querySelector('script[data-major-entry-loader]')) {
-    const entryScript = document.createElement('script');
-    entryScript.src = '/assets/js/majorportfolio-entry-20260826.js?v=20260826-1';
-    entryScript.dataset.majorEntryLoader = 'true';
-    document.head.appendChild(entryScript);
-  }
-
   if (!document.querySelector('link[href*="majorportfolio-majorworks-20260825.css"]')) {
     const styleLink = document.createElement('link');
     styleLink.rel = 'stylesheet';
