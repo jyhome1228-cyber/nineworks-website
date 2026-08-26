@@ -10,7 +10,15 @@ import { getDownloadURL, ref as storageRef } from 'https://www.gstatic.com/fireb
 import { db, storage, firebaseConfigReady, firebaseInitError } from './firebase-client.js';
 
 const CATEGORY_LABELS = {
-  contract: '계약서', proposal: '제안서', report: '보고서', deliverable: '산출물', reference: '참고자료', other: '기타'
+  quotation: '견적서',
+  contract: '계약서',
+  proposal: '제안서',
+  'business-registration': '사업자등록증',
+  'bank-account': '통장사본',
+  report: '보고서',
+  deliverable: '산출물',
+  reference: '참고자료',
+  other: '기타'
 };
 const CONTRACT_STATUS = {
   draft: '계약 준비', sent: '계약서 전달', signed: '계약 완료', active: '진행중', ended: '종료'
