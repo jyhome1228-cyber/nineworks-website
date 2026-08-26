@@ -36,6 +36,19 @@ const ensureTypeOptions = () => {
   else select.value = 'quotation';
 };
 
+const polishDocumentCopy = () => {
+  const help = document.querySelector('.admin-client-help');
+  if (help) help.innerHTML = '견적서, 계약서, 제안서, 사업자등록증, 통장사본, 보고서 등 프로젝트 관련 문서를 <b>Documents</b>에서 한곳에 관리합니다. 공개가 필요한 파일만 Client Portal에 연결할 수 있습니다.';
+
+  const portalNote = document.querySelector('.admin-client-portal-note p');
+  if (portalNote) portalNote.textContent = '회사명, 프로젝트명, 계약 정보, 프로젝트 범위, Dashboard Message와 Documents에서 PORTAL ON으로 공개한 파일만 표시됩니다. 담당자 연락처와 내부 메모는 공개되지 않습니다.';
+
+  const titleInput = document.querySelector('[data-client-upload-title]');
+  if (titleInput && titleInput.placeholder !== '예: 2026.08 견적서 / 사업자등록증 사본') {
+    titleInput.placeholder = '예: 2026.08 견적서 / 사업자등록증 사본';
+  }
+};
+
 const decorateRows = () => {
   document.querySelectorAll('[data-client-file-id]').forEach((row) => {
     const id = row.dataset.clientFileId;
@@ -61,6 +74,7 @@ const subscribeClientFiles = (clientId) => {
 
 const syncCurrentClient = () => {
   ensureTypeOptions();
+  polishDocumentCopy();
   const id = String(document.querySelector('[data-client-form] input[name="clientId"]')?.value || '').trim();
   if (id) subscribeClientFiles(id);
   decorateRows();
