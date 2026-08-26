@@ -9,9 +9,10 @@
   -webkit-backdrop-filter:blur(12px);
 }
 .major-portfolio-nav__inner{
-  width:min(100%,1720px);
-  margin:0 auto;
-  padding:0 var(--gutter);
+  width:100%!important;
+  max-width:1720px!important;
+  margin:0 auto!important;
+  padding:0 var(--gutter)!important;
 }
 .major-portfolio-nav__primary,
 .major-portfolio-nav__types{
@@ -28,10 +29,12 @@
   border-bottom:1px solid #ecece8;
 }
 .major-portfolio-nav__types{min-height:40px}
+.majorportfolio-page .major-portfolio-nav a,
+.major-subarchive-page .major-portfolio-nav a,
 .major-portfolio-nav a{
   flex:0 0 auto;
-  color:#6f6f6a;
-  text-decoration:none;
+  color:#6f6f6a!important;
+  text-decoration:none!important;
   white-space:nowrap;
   transition:color .18s ease,background .18s ease,border-color .18s ease;
 }
@@ -47,7 +50,7 @@
 }
 .major-portfolio-nav__primary>a:first-child{padding-left:0;border-left:0;padding-right:22px}
 .major-portfolio-nav__primary>a:not(.major-portfolio-nav__behance):hover,
-.major-portfolio-nav__primary>a:not(.major-portfolio-nav__behance):focus-visible{color:#111}
+.major-portfolio-nav__primary>a:not(.major-portfolio-nav__behance):focus-visible{color:#111!important}
 .major-portfolio-nav__primary a strong{
   margin-right:8px;
   color:#aaa9a4;
@@ -87,14 +90,42 @@
   align-items:center;
   min-height:40px;
   padding:0 15px;
+  background:transparent!important;
   font-size:9px;
   font-weight:600;
   letter-spacing:.015em;
 }
 .major-portfolio-nav__types a:first-of-type{padding-left:0}
 .major-portfolio-nav__types a:hover,
-.major-portfolio-nav__types a:focus-visible{color:#111;background:#f7f7f5}
-.major-portfolio-nav__types a span{margin-left:7px;color:#aaa9a4;font-size:9px}
+.major-portfolio-nav__types a:focus-visible{color:#111!important;background:#f7f7f5!important}
+.major-portfolio-nav__types a>span{display:none!important}
+.major-portfolio-nav__types a:not(:first-of-type)::after{
+  content:'↗';
+  margin-left:7px;
+  color:#aaa9a4;
+  font-size:9px;
+  font-weight:500;
+}
+.major-portfolio-nav__types a.is-active{
+  color:#111!important;
+  background:transparent!important;
+  font-weight:700!important;
+  box-shadow:inset 0 -1px #111;
+}
+.major-portfolio-nav__types a.is-active::after{color:#777772}
+
+/* Keep the header geometry identical on the main viewer and all sub archives. */
+.majorportfolio-page .major-header,
+.major-subarchive-page .major-header{
+  width:100%!important;
+  max-width:1720px!important;
+  min-height:72px!important;
+  margin:0 auto!important;
+  padding-left:var(--gutter)!important;
+  padding-right:var(--gutter)!important;
+}
+.majorportfolio-page .major-header__brand img,
+.major-subarchive-page .major-header__brand img{width:128px!important;height:auto!important}
 
 #major-works,#selected-works,#type-portfolio,#major-clients,#major-contact{scroll-margin-top:108px}
 
@@ -103,7 +134,7 @@
 }
 
 @media(max-width:760px){
-  .major-portfolio-nav__inner{padding-right:0}
+  .major-portfolio-nav__inner{padding-right:0!important}
   .major-portfolio-nav__primary{min-height:44px}
   .major-portfolio-nav__primary>a:not(.major-portfolio-nav__behance){min-height:44px;padding:0 13px;font-size:9.5px}
   .major-portfolio-nav__primary>a:first-child{padding-left:0;padding-right:16px}
@@ -111,6 +142,11 @@
   .major-portfolio-nav__types{min-height:38px}
   .major-portfolio-nav__types::before{width:54px;font-size:7.5px}
   .major-portfolio-nav__types a{min-height:38px;padding:0 12px;font-size:8.5px}
+  .major-portfolio-nav__types a:not(:first-of-type)::after{font-size:8.5px;margin-left:6px}
+  .majorportfolio-page .major-header,
+  .major-subarchive-page .major-header{min-height:62px!important}
+  .majorportfolio-page .major-header__brand img,
+  .major-subarchive-page .major-header__brand img{width:108px!important}
   #major-works,#selected-works,#type-portfolio,#major-clients,#major-contact{scroll-margin-top:96px}
 }
 
