@@ -1,33 +1,63 @@
 import { addDoc, collection, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
 import { db, firebaseConfigReady, firebaseInitError } from './firebase-client.js';
 
-const SESSION_KEY = 'nineworks-majorportfolio-view-access-v1';
+const SESSION_KEY = 'nineworks-majorportfolio-view-access-v2';
+const PROFILE_KEY = 'nineworks-majorportfolio-view-profile-v2';
+const WELCOME_KEY = 'nineworks-majorportfolio-welcome-seen-v2';
 const VIEW_SERVICE = 'PORTFOLIO VIEW';
 const VIEW_SOURCE = 'majorportfolio/register.html';
 
 const gate = document.querySelector('[data-major-view-gate]');
 const form = gate?.querySelector('[data-major-view-form]');
 const errorBox = gate?.querySelector('[data-major-view-error]');
+const welcome = document.querySelector('[data-major-welcome]');
+const welcomeName = welcome?.querySelector('[data-major-welcome-name]');
+const welcomeOrg = welcome?.querySelector('[data-major-welcome-org]');
+const welcomeEnter = welcome?.querySelector('[data-major-welcome-enter]');
+const welcomeContact = welcome?.querySelector('.major-welcome__contact');
 
 const setError = (message = '') => {
   if (errorBox) errorBox.textContent = message;
 };
 
-const sessionGranted = () => {
-  try { return sessionStorage.getItem(SESSION_KEY) === '1'; }
-  catch (_) { return false; }
+const safeSessionGet = (key) => {
+  try { return sessionStorage.getItem(key); }
+  catch (_) { return null; }
 };
 
-const grantSession = () => {
-  try { sessionStorage.setItem(SESSION_KEY, '1'); }
+const safeSessionSet = (key, value) => {
+  try { sessionStorage.setItem(key, value); }
   catch (_) {}
 };
 
+const sessionGranted = () => safeSessionGet(SESSION_KEY) === '1';
+const welcomeSeen = () => safeSessionGet(WELCOME_KEY) === '1';
+
+const readProfile = () => {
+  try {
+    const raw = safeSessionGet(PROFILE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    const name = String(parsed?.name || '').trim();
+    const organization = String(parsed?.organization || '').trim();
+    return name && organization ? { name, organization } : null;
+  } catch (_) {
+    return null;
+  }
+};
+
+const grantSession = (profile) => {
+  safeSessionSet(SESSION_KEY, '1');
+  safeSessionSet(PROFILE_KEY, JSON.stringify(profile));
+};
+
+const markWelcomeSeen = () => safeSessionSet(WELCOME_KEY, '1');
+
 const hideGate = (instant = false) => {
   if (!gate) return;
-  document.body.classList.remove('is-onboarding');
   if (instant) {
     gate.hidden = true;
+    gate.classList.remove('is-hidden');
     return;
   }
   gate.classList.add('is-hidden');
@@ -36,18 +66,61 @@ const hideGate = (instant = false) => {
 
 const showGate = () => {
   if (!gate) return;
+  if (welcome) welcome.hidden = true;
   gate.hidden = false;
   gate.classList.remove('is-hidden');
   document.body.classList.add('is-onboarding');
 };
 
+const showWelcome = (profile) => {
+  if (!welcome || !profile) {
+    document.body.classList.remove('is-onboarding');
+    return;
+  }
+  if (welcomeName) welcomeName.textContent = profile.name;
+  if (welcomeOrg) welcomeOrg.textContent = `${profile.organization} / PORTFOLIO VIEWER`;
+  welcome.hidden = false;
+  welcome.classList.remove('is-hidden');
+  document.body.classList.add('is-onboarding');
+  window.setTimeout(() => welcomeEnter?.focus(), 120);
+};
+
+const hideWelcome = (instant = false) => {
+  if (!welcome) {
+    document.body.classList.remove('is-onboarding');
+    return;
+  }
+  markWelcomeSeen();
+  if (instant) {
+    welcome.hidden = true;
+    welcome.classList.remove('is-hidden');
+    document.body.classList.remove('is-onboarding');
+    return;
+  }
+  welcome.classList.add('is-hidden');
+  document.body.classList.remove('is-onboarding');
+  window.setTimeout(() => {
+    welcome.hidden = true;
+    welcome.classList.remove('is-hidden');
+  }, 460);
+};
+
 const normalize = (value = '') => String(value || '').trim().replace(/\s+/g, ' ');
 
+const bindWelcome = () => {
+  welcomeEnter?.addEventListener('click', () => hideWelcome(false));
+  welcomeContact?.addEventListener('click', () => markWelcomeSeen());
+};
+
 const init = () => {
+  bindWelcome();
   if (!gate || !form) return;
 
-  if (sessionGranted()) {
+  const savedProfile = readProfile();
+  if (sessionGranted() && savedProfile) {
     hideGate(true);
+    if (!welcomeSeen()) showWelcome(savedProfile);
+    else hideWelcome(true);
     return;
   }
 
@@ -105,8 +178,10 @@ const init = () => {
         createdAt: serverTimestamp()
       });
 
-      grantSession();
-      hideGate(false);
+      const profile = { name: name.slice(0, 60), organization: organization.slice(0, 120) };
+      grantSession(profile);
+      hideGate(true);
+      showWelcome(profile);
     } catch (error) {
       console.error('[NINEWORKS majorportfolio] access log save failed', error);
       setError('접속 기록 저장에 실패했습니다. 네트워크 상태를 확인한 뒤 다시 시도해 주세요.');
