@@ -37,6 +37,25 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const WBA_CASE = {
+    id: 'west-bromwich-albion',
+    title: 'West Bromwich Albion',
+    client: 'West Bromwich Albion FC / Independent Concept',
+    subtitle: 'Heritage Rebranding Concept Proposal · Independent Design Study',
+    scope: 'Research · Strategy · Crest Renewal · Secondary Mark · Club Applications',
+    filters: ['branding'],
+    thumbnail: 'https://cdn.imweb.me/upload/S202410251a294b3f442b0/6cfe41ee066de.jpg',
+    detailUrl: 'portfolio-west-bromwich-albion.html'
+  };
+
+  const injectWbaCase = () => {
+    if (!Array.isArray(window.NW_PORTFOLIO)) window.NW_PORTFOLIO = [];
+    const exists = window.NW_PORTFOLIO.some((project) => project?.id === WBA_CASE.id);
+    if (!exists) window.NW_PORTFOLIO.unshift(WBA_CASE);
+  };
+
+  injectWbaCase();
+
   const renderMajorWorks = () => {
     const grid = document.querySelector('[data-major-works-grid]');
     if (!grid || !Array.isArray(window.NW_PORTFOLIO)) return;
@@ -54,10 +73,13 @@
       const subtitle = escapeHTML(project.subtitle || '');
       const scope = escapeHTML(project.scope || '');
       const thumbnail = escapeHTML(project.thumbnail || project.image || '');
-      const href = `/portfolio-detail.html?work=${encodeURIComponent(project.id || '')}`;
+      const explicit = String(project.detailUrl || '').trim();
+      const href = explicit
+        ? (/^(?:https?:|\/)/i.test(explicit) ? explicit : `/${explicit.replace(/^\.?\//, '')}`)
+        : `/portfolio-detail.html?work=${encodeURIComponent(project.id || '')}`;
       return `
         <article class="major-work-card">
-          <a href="${href}" target="_blank" rel="noopener" aria-label="${title} 포트폴리오 상세 보기">
+          <a href="${escapeHTML(href)}" target="_blank" rel="noopener" aria-label="${title} 포트폴리오 상세 보기">
             <figure class="major-work-card__media"><img src="${thumbnail}" alt="${title}" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"></figure>
             <div class="major-work-card__info">
               <div><strong>${title}</strong><span>${subtitle}</span></div>
@@ -82,6 +104,13 @@
     });
   };
 
+  const createWbaProjectCard = () => {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.innerHTML = `<a href="/portfolio-west-bromwich-albion.html" target="_blank" rel="noopener" aria-label="West Bromwich Albion independent rebranding concept case study" style="display:block;color:inherit;text-decoration:none"><figure class="project-card__media"><img src="${WBA_CASE.thumbnail}" alt="West Bromwich Albion rebranding concept proposal" loading="eager" decoding="async"></figure><div class="project-card__meta"><span>SPORTS BRAND IDENTITY · CONCEPT</span></div><h2>West Bromwich Albion</h2><p>Throstle, Hawthorn과 Navy &amp; White 헤리티지를 현대적인 클럽 아이덴티티 시스템으로 정제한 독립 리브랜딩 제안.</p></a>`;
+    return card;
+  };
+
   const loadMainProjects = async () => {
     const grid = document.querySelector('[data-major-project-grid]');
     const note = document.querySelector('[data-major-project-note]');
@@ -93,16 +122,22 @@
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
 
-      const ordered = [...doc.querySelectorAll('.project-gallery__grid > .project-card')].slice(0, 8);
-      if (!ordered.length) throw new Error('No project cards found');
+      const sourceCards = [...doc.querySelectorAll('.project-gallery__grid > .project-card')]
+        .filter((card) => (card.querySelector('h2')?.textContent.trim() || '') !== WBA_CASE.title)
+        .slice(0, 7);
+      if (!sourceCards.length) throw new Error('No project cards found');
 
       const fragment = document.createDocumentFragment();
-      ordered.forEach((source, index) => {
+      const wbaCard = createWbaProjectCard();
+      normalizeCardLinks(wbaCard);
+      fragment.appendChild(wbaCard);
+
+      sourceCards.forEach((source, index) => {
         const card = source.cloneNode(true);
         normalizeCardLinks(card);
         card.querySelectorAll('img').forEach((image) => {
           image.decoding = 'async';
-          image.loading = index < 2 ? 'eager' : 'lazy';
+          image.loading = index < 1 ? 'eager' : 'lazy';
         });
         fragment.appendChild(card);
       });
