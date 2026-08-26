@@ -107,38 +107,72 @@
   color:#bdbdb8;
 }
 
+/* 로그인 후 별도 화면 대신 포트폴리오 본문 상단에 짧게 노출 */
 .major-welcome{
-  position:fixed;
-  inset:0;
-  z-index:10000;
-  display:grid;
-  grid-template-rows:auto 1fr auto;
-  min-height:100dvh;
-  padding:24px max(var(--gutter),calc((100vw - 1720px)/2));
-  overflow-y:auto;
-  overscroll-behavior:contain;
-  background:#111;
-  color:#fff;
+  position:relative;
+  z-index:1;
+  display:block;
+  min-height:0;
+  padding:54px var(--gutter) 48px;
+  background:#fff;
+  color:#141414;
+  border-bottom:1px solid #e6e6e2;
   opacity:1;
   visibility:visible;
-  transition:opacity .42s ease,visibility .42s ease;
 }
 .major-welcome[hidden]{display:none!important}
-.major-welcome.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.major-welcome__top{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid #30302d}
-.major-welcome__top img{display:block;width:116px;height:auto;filter:invert(1)}
-.major-welcome__top span{color:#7f7f79;font-size:8px;font-weight:650;letter-spacing:.08em}
-.major-welcome__content{align-self:center;justify-self:center;width:min(680px,100%);padding:58px 0 72px;text-align:left}
-.major-welcome__content .eyebrow{margin:0 0 16px;color:#888882;font-size:9px;font-weight:650;letter-spacing:.1em}
-.major-welcome__content h1{margin:0;color:#fff;font-size:clamp(42px,5vw,72px);font-weight:450;line-height:1.05;letter-spacing:-.055em;word-break:keep-all}
-.major-welcome__lead{margin:30px 0 0;color:#fff;font-size:16px;font-weight:500;line-height:1.6;letter-spacing:-.02em}
-.major-welcome__copy{max-width:590px;margin:12px 0 0;color:#aaa9a3;font-size:12.5px;line-height:1.78;word-break:keep-all}
-.major-welcome__content button{display:flex;align-items:center;justify-content:space-between;width:min(310px,100%);min-height:54px;margin-top:32px;padding:0 18px;border:1px solid #fff;background:#fff;color:#111;font:inherit;font-size:11.5px;font-weight:650;cursor:pointer;transition:background .18s ease,color .18s ease,transform .18s ease}
-.major-welcome__content button:hover{background:#111;color:#fff;transform:translateY(-1px)}
-.major-welcome__content button b{font-size:17px;font-weight:400}
-.major-welcome__contact{display:inline-block;margin-top:16px;color:#8f8f89!important;border-bottom:1px solid #4b4b47;font-size:9.5px;font-weight:600;line-height:1.45}
-.major-welcome__contact:hover{color:#fff!important;border-color:#fff}
-.major-welcome__bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:16px;border-top:1px solid #30302d;color:#74746f;font-size:8px;font-weight:600;letter-spacing:.07em}
+.major-welcome.is-hidden{display:none!important}
+.major-welcome__top,.major-welcome__bottom{display:none!important}
+.major-welcome__content{
+  width:min(760px,100%);
+  margin:0 auto;
+  padding:0;
+  text-align:center;
+}
+.major-welcome__content .eyebrow{
+  margin:0 0 12px;
+  color:#969691;
+  font-size:8px;
+  font-weight:650;
+  letter-spacing:.1em;
+}
+.major-welcome__content h1{
+  margin:0;
+  color:#151515;
+  font-size:clamp(28px,3.1vw,42px);
+  font-weight:500;
+  line-height:1.12;
+  letter-spacing:-.045em;
+  word-break:keep-all;
+}
+.major-welcome__lead{
+  margin:17px 0 0;
+  color:#343431;
+  font-size:13.5px;
+  font-weight:500;
+  line-height:1.65;
+  letter-spacing:-.02em;
+}
+.major-welcome__copy{
+  max-width:620px;
+  margin:8px auto 0;
+  color:#7a7a75;
+  font-size:11.5px;
+  line-height:1.7;
+  word-break:keep-all;
+}
+.major-welcome__content button{display:none!important}
+.major-welcome__contact{
+  display:inline-block;
+  margin-top:17px;
+  padding-bottom:3px;
+  color:#5f5f5a!important;
+  border-bottom:1px solid #b5b5af;
+  font-size:9.5px;
+  font-weight:650;
+  line-height:1.4;
+}
+.major-welcome__contact:hover{color:#111!important;border-color:#111}
 
 @media(max-width:680px){
   .major-view-gate{align-content:start}
@@ -149,17 +183,14 @@
   .major-view-form__field input{height:48px;font-size:12px}
   .major-view-privacy{margin-top:16px;padding-top:13px;font-size:9px}
   .major-view-form .major-view-submit{min-height:49px;margin-top:15px}
-  .major-welcome{padding:18px var(--gutter)}
-  .major-welcome__top img{width:108px}
-  .major-welcome__top span{font-size:7px}
-  .major-welcome__content{padding:42px 0 54px}
-  .major-welcome__content h1{font-size:clamp(38px,12vw,54px)}
-  .major-welcome__lead{margin-top:24px;font-size:14px}
-  .major-welcome__copy{font-size:12px;line-height:1.7}
-  .major-welcome__content button{min-height:50px;margin-top:26px}
-  .major-welcome__bottom{align-items:flex-start;flex-direction:column;gap:6px}
+
+  .major-welcome{padding:38px var(--gutter) 34px}
+  .major-welcome__content h1{font-size:clamp(25px,8vw,32px)}
+  .major-welcome__lead{margin-top:14px;font-size:12.5px}
+  .major-welcome__copy{font-size:11px;line-height:1.65}
+  .major-welcome__contact{margin-top:14px;font-size:9px}
 }
 
 @media(prefers-reduced-motion:reduce){
-  .major-view-form__field input,.major-welcome,.major-welcome__content button{transition:none!important}
+  .major-view-form__field input{transition:none!important}
 }
