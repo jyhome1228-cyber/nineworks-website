@@ -20,6 +20,24 @@ const CATEGORY_LABELS = {
   reference: '참고자료',
   other: '기타'
 };
+const COMMON_FILES = [
+  {
+    id: '__nineworks_business_registration__',
+    title: 'NINEWORKS 사업자등록 정보',
+    originalName: '나인웍스 공통 문서',
+    category: 'business-registration',
+    directUrl: '/client/common/business-registration.html',
+    common: true
+  },
+  {
+    id: '__nineworks_bank_account__',
+    title: 'NINEWORKS 통장사본',
+    originalName: '나인웍스 공통 문서',
+    category: 'bank-account',
+    directUrl: '/client/common/bank-account.html',
+    common: true
+  }
+];
 const CONTRACT_STATUS = {
   draft: '계약 준비', sent: '계약서 전달', signed: '계약 완료', active: '진행중', ended: '종료'
 };
@@ -37,6 +55,8 @@ const escapeHTML = (value = '') => String(value)
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&#039;');
 
+const allFiles = () => [...COMMON_FILES, ...files];
+
 const asDate = (value) => {
   if (!value) return null;
   if (typeof value.toDate === 'function') return value.toDate();
@@ -50,6 +70,7 @@ const formatDate = (value) => {
 };
 const formatBytes = (bytes = 0) => {
   const value = Number(bytes || 0);
+  if (!value) return '-';
   if (value < 1024 * 1024) return `${Math.max(1, Math.round(value / 1024))} KB`;
   return `${(value / 1024 / 1024).toFixed(value >= 100 * 1024 * 1024 ? 0 : 1)} MB`;
 };
@@ -90,30 +111,41 @@ const renderPortal = (data) => {
 const renderFilters = () => {
   const node = document.querySelector('[data-portal-file-filter]');
   if (!node) return;
-  const available = Array.from(new Set(files.map((file) => file.category || 'other')));
-  if (!files.length) { node.innerHTML = ''; return; }
+  const source = allFiles();
+  const available = Array.from(new Set(source.map((file) => file.category || 'other')));
   node.innerHTML = [
-    `<button type="button" class="${activeCategory === 'all' ? 'is-active' : ''}" data-file-category="all">전체 ${files.length}</button>`,
+    `<button type="button" class="${activeCategory === 'all' ? 'is-active' : ''}" data-file-category="all">전체 ${source.length}</button>`,
     ...available.map((category) => {
-      const count = files.filter((file) => (file.category || 'other') === category).length;
+      const count = source.filter((file) => (file.category || 'other') === category).length;
       return `<button type="button" class="${activeCategory === category ? 'is-active' : ''}" data-file-category="${escapeHTML(category)}">${escapeHTML(CATEGORY_LABELS[category] || '기타')} ${count}</button>`;
     })
   ].join('');
 };
 
-const fileRow = (file) => `<article class="client-portal__file-row"><div class="client-portal__file-row__type"><span>${escapeHTML(CATEGORY_LABELS[file.category] || '기타')}</span></div><div class="client-portal__file-row__name"><strong>${escapeHTML(file.title || file.originalName || 'Document')}</strong><p>${escapeHTML(file.originalName || '-')} · ${formatBytes(file.size || 0)} · ${escapeHTML(formatDate(file.createdAt))}</p></div><button type="button" data-file-open="${escapeHTML(file.id)}">OPEN ↗</button></article>`;
+const fileRow = (file) => {
+  const meta = file.common
+    ? 'NINEWORKS COMMON DOCUMENT · 항상 최신 공통 문서'
+    : `${escapeHTML(file.originalName || '-')} · ${formatBytes(file.size || 0)} · ${escapeHTML(formatDate(file.createdAt))}`;
+  return `<article class="client-portal__file-row"><div class="client-portal__file-row__type"><span>${escapeHTML(CATEGORY_LABELS[file.category] || '기타')}</span></div><div class="client-portal__file-row__name"><strong>${escapeHTML(file.title || file.originalName || 'Document')}</strong><p>${meta}</p></div><button type="button" data-file-open="${escapeHTML(file.id)}">OPEN ↗</button></article>`;
+};
 
 const renderFiles = () => {
   renderFilters();
   const node = document.querySelector('[data-portal-files]');
   if (!node) return;
-  const filtered = activeCategory === 'all' ? files : files.filter((file) => (file.category || 'other') === activeCategory);
+  const source = allFiles();
+  const filtered = activeCategory === 'all' ? source : source.filter((file) => (file.category || 'other') === activeCategory);
   node.innerHTML = filtered.length ? filtered.map(fileRow).join('') : '<div class="client-portal__empty">등록된 공개 자료가 없습니다.</div>';
 };
 
 const openFile = async (id, button) => {
-  const file = files.find((item) => item.id === id);
-  if (!file?.storagePath || !storage) return;
+  const file = allFiles().find((item) => item.id === id);
+  if (!file) return;
+  if (file.directUrl) {
+    window.open(file.directUrl, '_blank', 'noopener');
+    return;
+  }
+  if (!file.storagePath || !storage) return;
   try {
     if (button) { button.disabled = true; button.textContent = 'OPENING...'; }
     const url = await getDownloadURL(storageRef(storage, file.storagePath));
@@ -146,6 +178,7 @@ const boot = async () => {
     const snapshot = await getDoc(doc(db, 'clientPortals', portalKey));
     if (!snapshot.exists() || snapshot.data().enabled !== true) { showError(); return; }
     renderPortal({ id: snapshot.id, ...snapshot.data() });
+    renderFiles();
     startFileStream();
   } catch (error) {
     console.error('[NINEWORKS Client Portal] boot failed', error);
