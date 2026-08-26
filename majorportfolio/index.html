@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../assets/css/client-logos-20260821.css?v=20260821-1">
   <link rel="stylesheet" href="../assets/css/majorportfolio-20260825.css?v=20260825-5">
   <link rel="stylesheet" href="../assets/css/majorportfolio-view-gate-20260826.css?v=20260826-1">
+  <link rel="stylesheet" href="../assets/css/majorportfolio-nav-20260826.css?v=20260826-1">
 
   <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
   <meta property="og:image:secure_url" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
@@ -63,6 +64,28 @@
       <div class="major-header__meta"><span>SELECTED PORTFOLIO</span><a href="https://9works.kr/">9WORKS.KR ↗</a></div>
     </header>
 
+    <nav class="major-portfolio-nav" aria-label="포트폴리오 메뉴">
+      <div class="major-portfolio-nav__inner">
+        <div class="major-portfolio-nav__primary">
+          <a href="#major-works"><strong>01</strong>주요 포트폴리오</a>
+          <a href="#selected-works"><strong>02</strong>브랜딩 프로젝트</a>
+          <a href="#type-portfolio"><strong>03</strong>유형별 포트폴리오</a>
+          <a href="#major-clients"><strong>04</strong>함께한 기업</a>
+          <a href="#major-contact"><strong>05</strong>프로젝트 문의</a>
+        </div>
+        <div class="major-portfolio-nav__types" aria-label="유형별 포트폴리오 바로가기">
+          <a href="../portfolio.html">All <span>↗</span></a>
+          <a href="../portfolio.html?filter=website">Website <span>↗</span></a>
+          <a href="../portfolio.html?filter=system">System <span>↗</span></a>
+          <a href="../portfolio.html?filter=detailpage">Detail Page <span>↗</span></a>
+          <a href="../portfolio.html?filter=editorial">Editorial <span>↗</span></a>
+          <a href="../portfolio.html?filter=ir">IR / PPT <span>↗</span></a>
+          <a href="../portfolio.html?filter=package">Package <span>↗</span></a>
+          <a href="../portfolio.html?filter=event">Event <span>↗</span></a>
+        </div>
+      </div>
+    </nav>
+
     <main>
       <section class="major-hero">
         <div class="container major-hero__grid">
@@ -77,7 +100,7 @@
         </div>
       </section>
 
-      <section class="major-works-preview">
+      <section class="major-works-preview" id="major-works">
         <div class="container">
           <div class="major-section-head">
             <div><p class="eyebrow">01 / MAJOR WORKS</p><h2>Major Works</h2></div>
@@ -100,7 +123,7 @@
         </div>
       </section>
 
-      <section class="major-archives">
+      <section class="major-archives" id="type-portfolio">
         <div class="container">
           <div class="major-section-head">
             <div><p class="eyebrow">03 / OTHER WORK ARCHIVES</p><h2>유형별 포트폴리오</h2></div>
@@ -118,7 +141,7 @@
         </div>
       </section>
 
-      <section class="major-clients">
+      <section class="major-clients" id="major-clients">
         <div class="container">
           <div class="major-section-head">
             <div><p class="eyebrow">04 / CLIENTS &amp; ORGANIZATIONS</p><h2>함께한 기업들</h2></div>
@@ -128,7 +151,7 @@
         </div>
       </section>
 
-      <section class="major-contact">
+      <section class="major-contact" id="major-contact">
         <div class="container major-contact__grid">
           <div><p class="eyebrow">PROJECT INQUIRY</p><h2>프로젝트에 대해<br>이야기해 주세요.</h2></div>
           <div><p>브랜드 구축, 리브랜딩 또는 디자인 파트너십이 필요하다면 프로젝트의 현재 상황과 필요한 범위를 알려주세요.</p><a href="../contact.html">DISCUSS A PROJECT <span>↗</span></a></div>
