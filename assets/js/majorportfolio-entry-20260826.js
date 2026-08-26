@@ -34,7 +34,7 @@
     const reference = search || hero;
     if (main && reference && welcome.parentElement !== main) main.insertBefore(welcome, reference);
     else if (main && reference && welcome.nextElementSibling !== reference) main.insertBefore(welcome, reference);
-    if (welcomeName) welcomeName.textContent = `${profile.name} 담당자`;
+    if (welcomeName) welcomeName.textContent = `${profile.organization} ${profile.name} 담당자`;
     if (welcomeOrg) welcomeOrg.textContent = profile.organization;
     if (welcomeCopy) welcomeCopy.textContent = '필요한 프로젝트의 상세 자료나 별도 포트폴리오가 있다면 언제든 편하게 문의해 주세요.';
     welcome.hidden = false;
