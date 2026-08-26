@@ -77,7 +77,7 @@ const showWelcome = (profile) => {
     document.body.classList.remove('is-onboarding');
     return;
   }
-  if (welcomeName) welcomeName.textContent = profile.name;
+  if (welcomeName) welcomeName.textContent = `${profile.name} 담당자`;
   if (welcomeOrg) welcomeOrg.textContent = `${profile.organization} / PORTFOLIO VIEWER`;
   welcome.hidden = false;
   welcome.classList.remove('is-hidden');
