@@ -1,4 +1,11 @@
 (() => {
+  if (!document.querySelector('script[data-major-entry-loader]')) {
+    const entryScript = document.createElement('script');
+    entryScript.src = '/assets/js/majorportfolio-entry-20260826.js?v=20260826-1';
+    entryScript.dataset.majorEntryLoader = 'true';
+    document.head.appendChild(entryScript);
+  }
+
   if (!document.querySelector('link[href*="majorportfolio-majorworks-20260825.css"]')) {
     const styleLink = document.createElement('link');
     styleLink.rel = 'stylesheet';
@@ -87,7 +94,6 @@
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
 
-      // Keep the exact visible order from project.html. No filtering or manual reordering.
       const ordered = [...doc.querySelectorAll('.project-gallery__grid > .project-card')].slice(0, 8);
       if (!ordered.length) throw new Error('No project cards found');
 
@@ -167,7 +173,14 @@
     }
   };
 
+  const refineEntryCopy = () => {
+    const copy = document.querySelector('.major-view-gate .major-onboarding__content > p:not(.eyebrow)');
+    if (!copy) return;
+    copy.innerHTML = '기업 프로젝트 검토용 포트폴리오입니다.<br>성함과 소속을 입력하시면 나인웍스의 주요 프로젝트와<br>작업 아카이브를 바로 확인하실 수 있습니다.';
+  };
+
   const init = () => {
+    refineEntryCopy();
     renderMajorWorks();
     loadMainProjects();
     loadClientLogos();
