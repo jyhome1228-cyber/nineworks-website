@@ -38,8 +38,8 @@
   const detailArchives=(Array.isArray(window.NW_DETAILPAGE_ARCHIVE)?window.NW_DETAILPAGE_ARCHIVE:[]).slice().sort((a,b)=>sourceOrder(b)-sourceOrder(a)).map((item)=>({...item,archive:true,filters:[...new Set(['detailpage',...(item.filters||[])])]}));
   const allArchives=[...visualArchives,...detailArchives]; const allWorks=[...uniqueCases,...allArchives];
 
-  const detailMap={fineb:'/portfolio-fineb.html','tne-epc':'/portfolio-tne-epc.html',relim:'/portfolio-relim.html',aesost:'/portfolio-aesost.html',kekomi:'/portfolio-kekomi.html','the-petrichor':'/portfolio-the-petrichor.html',thomastone:'/portfolio-thomastone.html',recelleclore:'/portfolio-recelleclore.html','nineworks-crm':'/portfolio-detail.html?work=nineworks-crm'};
-  const caseHref=(project)=>{if(detailMap[project.id])return detailMap[project.id];const explicit=String(project.detailUrl||'').trim();if(explicit)return /^https?:\/\//i.test(explicit)||explicit.startsWith('/')?explicit:`/${explicit}`;return `/portfolio-detail.html?work=${encodeURIComponent(project.id||'')}`;};
+  const detailMap={fineb:'/portfolio-fineb.html','tne-epc':'/portfolio-tne-epc.html',relim:'/portfolio-relim.html',aesost:'/portfolio-aesost.html',kekomi:'/portfolio-kekomi.html','the-petrichor':'/portfolio-the-petrichor.html',thomastone:'/portfolio-thomastone.html',recelleclore:'/portfolio-recelleclore.html'};
+  const caseHref=(project)=>{if((project.filters||[]).includes('system'))return './system.html';if(detailMap[project.id])return detailMap[project.id];const explicit=String(project.detailUrl||'').trim();if(explicit)return /^https?:\/\//i.test(explicit)||explicit.startsWith('/')?explicit:`/${explicit}`;return `/portfolio-detail.html?work=${encodeURIComponent(project.id||'')}`;};
   const thumb=(item)=>item.thumbnail||item.image||(Array.isArray(item.images)?item.images[0]:'')||'';
   const categoryLabel=(item)=>{const filters=Array.isArray(item.filters)?item.filters:[];return labels[filters.find((key)=>['website','system','detailpage','editorial','ir','package','event','branding'].includes(key))]||'PROJECT';};
 
@@ -51,7 +51,8 @@
       if(filters.includes('detailpage')) return `<article class="major-browser-card major-browser-card--archive"><a class="major-browser-card__link" href="./detailpage.html?work=${encodeURIComponent(item.id||'')}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
       return `<article class="major-browser-card major-browser-card--archive"><a class="major-browser-card__link" href="#quick-view" data-major-archive-id="${escapeHTML(item.id)}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
     }
-    return `<article class="major-browser-card"><a class="major-browser-card__link" href="${escapeHTML(caseHref(item))}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
+    const systemCase=(item.filters||[]).includes('system');
+    return `<article class="major-browser-card"><a class="major-browser-card__link" href="${escapeHTML(caseHref(item))}"${systemCase?'':' target="_blank" rel="noopener"'}><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
   };
   const matchingWorks=()=>activeFilter==='all'?allWorks:allWorks.filter((item)=>(item.filters||[]).includes(activeFilter));
   const render=(reset=true)=>{
