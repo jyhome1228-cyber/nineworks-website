@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Admin — NINEWORKS</title>
+  <script>
+    (() => {
+      const target = `/admin.html${location.search || ''}${location.hash || '#dashboard'}`;
+      location.replace(target);
+    })();
+  </script>
+  <noscript><meta http-equiv="refresh" content="0;url=/admin.html#dashboard"></noscript>
+</head>
+<body></body>
+</html>
