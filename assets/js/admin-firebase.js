@@ -69,6 +69,8 @@ const isRecruit = (item) => {
   return service.includes('RECRUIT') || source.includes('/recruit');
 };
 
+const isPortfolioView = (item) => String(item?.service || '').trim().toUpperCase() === 'PORTFOLIO VIEW';
+
 const koreaDateKey = (date = new Date()) => {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
@@ -402,7 +404,7 @@ const startAdminData = () => {
   unsubscribers.push(onSnapshot(inquiriesQuery, (snapshot) => {
     inquiryCache = snapshot.docs
       .map((item) => ({ id: item.id, ...item.data() }))
-      .filter((item) => !isMemberSignupFallback(item) && !isTrashed(item) && !isRecruit(item));
+      .filter((item) => !isMemberSignupFallback(item) && !isTrashed(item) && !isRecruit(item) && !isPortfolioView(item));
     renderAll();
   }, (error) => {
     console.error('[NINEWORKS Admin] inquiry stream failed', error);
