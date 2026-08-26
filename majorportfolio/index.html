@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/clarity-20260814.css?v=20260817-8">
   <link rel="stylesheet" href="../assets/css/project-gallery-20260821.css?v=20260824-3">
-  <link rel="stylesheet" href="../assets/css/client-logos-20260821.css?v=20260821-1">
+  <link rel="stylesheet" href="../assets/css/client-logos-20260821.js?v=20260821-1">
   <link rel="stylesheet" href="../assets/css/majorportfolio-20260825.css?v=20260825-5">
   <link rel="stylesheet" href="../assets/css/majorportfolio-view-gate-20260826.css?v=20260826-4">
   <link rel="stylesheet" href="../assets/css/majorportfolio-nav-20260826.css?v=20260826-2">
+  <link rel="stylesheet" href="../assets/css/majorportfolio-browser-20260826.css?v=20260826-1">
 
   <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
   <meta property="og:image:secure_url" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
@@ -69,7 +70,7 @@
       <p class="major-welcome__lead">나인웍스 포트폴리오를 열람해 주셔서 감사합니다.</p>
       <p class="major-welcome__copy">필요한 프로젝트의 상세 자료나 별도 포트폴리오가 있다면 언제든 편하게 문의해 주세요.</p>
       <button type="button" data-major-welcome-enter><span>포트폴리오 살펴보기</span><b>→</b></button>
-      <a href="../contact.html" class="major-welcome__contact">필요한 자료 문의하기 ↗</a>
+      <a href="#project-inquiry" class="major-welcome__contact" data-major-inquiry-open>필요한 자료 문의하기 ↗</a>
     </div>
     <div class="major-welcome__bottom">
       <span data-major-welcome-org>NINEWORKS PORTFOLIO VIEWER</span>
@@ -90,18 +91,18 @@
           <a href="#selected-works"><strong>02</strong>브랜딩 프로젝트</a>
           <a href="#type-portfolio"><strong>03</strong>유형별 포트폴리오</a>
           <a href="#major-clients"><strong>04</strong>함께한 기업</a>
-          <a href="#major-contact"><strong>05</strong>프로젝트 문의</a>
-          <a class="major-portfolio-nav__behance" href="https://www.behance.net/the9works" target="_blank" rel="noopener"><span>공식 포트폴리오 구경하기</span><b>↗</b></a>
+          <a href="#project-inquiry" data-major-inquiry-open><strong>05</strong>프로젝트 문의</a>
+          <a class="major-portfolio-nav__behance" href="https://www.behance.net/the9works" target="_blank" rel="noopener"><span>국제 공식 포트폴리오</span><b>↗</b></a>
         </div>
         <div class="major-portfolio-nav__types" aria-label="유형별 포트폴리오 바로가기">
-          <a href="../portfolio.html">All <span>↗</span></a>
-          <a href="../portfolio.html?filter=website">Website <span>↗</span></a>
-          <a href="../portfolio.html?filter=system">System <span>↗</span></a>
-          <a href="../portfolio.html?filter=detailpage">Detail Page <span>↗</span></a>
-          <a href="../portfolio.html?filter=editorial">Editorial <span>↗</span></a>
-          <a href="../portfolio.html?filter=ir">IR / PPT <span>↗</span></a>
-          <a href="../portfolio.html?filter=package">Package <span>↗</span></a>
-          <a href="../portfolio.html?filter=event">Event <span>↗</span></a>
+          <a href="#portfolio-browser" data-major-browser-filter="all">All</a>
+          <a href="#portfolio-browser" data-major-browser-filter="website">Website</a>
+          <a href="#portfolio-browser" data-major-browser-filter="system">System</a>
+          <a href="#portfolio-browser" data-major-browser-filter="detailpage">Detail Page</a>
+          <a href="#portfolio-browser" data-major-browser-filter="editorial">Editorial</a>
+          <a href="#portfolio-browser" data-major-browser-filter="ir">IR / PPT</a>
+          <a href="#portfolio-browser" data-major-browser-filter="package">Package</a>
+          <a href="#portfolio-browser" data-major-browser-filter="event">Event</a>
         </div>
       </div>
     </nav>
@@ -127,7 +128,7 @@
             <p class="major-section-head__copy">나인웍스의 기존 주요 포트폴리오 가운데 대표 작업 8개를 먼저 확인할 수 있습니다.</p>
           </div>
           <div class="major-works-grid" data-major-works-grid></div>
-          <div class="major-more-row"><a href="../portfolio.html?filter=major">MORE MAJOR WORKS <span>↗</span></a></div>
+          <div class="major-more-row"><a href="#portfolio-browser" data-major-browser-filter="major">MORE MAJOR WORKS <span>↓</span></a></div>
         </div>
       </section>
 
@@ -139,7 +140,7 @@
           </div>
           <div class="project-gallery__grid" data-major-project-grid aria-live="polite"></div>
           <div class="major-load-note" data-major-project-note>브랜딩 프로젝트를 불러오는 중입니다.</div>
-          <div class="major-more-row"><a href="../project.html">MORE BRANDING PROJECTS <span>↗</span></a></div>
+          <div class="major-more-row"><a href="#portfolio-browser" data-major-browser-filter="branding">MORE BRANDING PROJECTS <span>↓</span></a></div>
         </div>
       </section>
 
@@ -147,17 +148,30 @@
         <div class="container">
           <div class="major-section-head">
             <div><p class="eyebrow">03 / OTHER WORK ARCHIVES</p><h2>유형별 포트폴리오</h2></div>
-            <p class="major-section-head__copy">필요한 작업 유형을 선택해 관련 포트폴리오를 빠르게 확인할 수 있습니다.</p>
+            <p class="major-section-head__copy">필요한 작업 유형을 선택하면 이 페이지 안에서 해당 포트폴리오를 바로 확인할 수 있습니다.</p>
           </div>
           <div class="major-archive-list">
-            <a href="../portfolio.html?filter=website"><span>01</span><strong>Website</strong><p>기업·브랜드 웹사이트와 디지털 경험</p><em>VIEW ↗</em></a>
-            <a href="../portfolio.html?filter=system"><span>02</span><strong>System</strong><p>예약·회원·관리자·업무 시스템 구축</p><em>VIEW ↗</em></a>
-            <a href="../portfolio.html?filter=detailpage"><span>03</span><strong>Detail Page</strong><p>제품·서비스 상세페이지와 커머스 콘텐츠</p><em>VIEW ↗</em></a>
-            <a href="../portfolio.html?filter=editorial"><span>04</span><strong>Editorial</strong><p>브로슈어·카탈로그·소개서 편집디자인</p><em>VIEW ↗</em></a>
-            <a href="../portfolio.html?filter=ir"><span>05</span><strong>IR / PPT</strong><p>IR·제안서·프레젠테이션 디자인</p><em>VIEW ↗</em></a>
-            <a href="../portfolio.html?filter=package"><span>06</span><strong>Package</strong><p>제품 패키지와 확장 시스템</p><em>VIEW ↗</em></a>
-            <a href="../portfolio.html?filter=event"><span>07</span><strong>Event</strong><p>행사·전시·팝업과 오프라인 그래픽</p><em>VIEW ↗</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="website"><span>01</span><strong>Website</strong><p>기업·브랜드 웹사이트와 디지털 경험</p><em>VIEW ↓</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="system"><span>02</span><strong>System</strong><p>예약·회원·관리자·업무 시스템 구축</p><em>VIEW ↓</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="detailpage"><span>03</span><strong>Detail Page</strong><p>제품·서비스 상세페이지와 커머스 콘텐츠</p><em>VIEW ↓</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="editorial"><span>04</span><strong>Editorial</strong><p>브로슈어·카탈로그·소개서 편집디자인</p><em>VIEW ↓</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="ir"><span>05</span><strong>IR / PPT</strong><p>IR·제안서·프레젠테이션 디자인</p><em>VIEW ↓</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="package"><span>06</span><strong>Package</strong><p>제품 패키지와 확장 시스템</p><em>VIEW ↓</em></a>
+            <a href="#portfolio-browser" data-major-browser-filter="event"><span>07</span><strong>Event</strong><p>행사·전시·팝업과 오프라인 그래픽</p><em>VIEW ↓</em></a>
           </div>
+        </div>
+      </section>
+
+      <section class="major-browser" id="portfolio-browser" data-major-browser>
+        <div class="container">
+          <div class="major-browser__head">
+            <div><p class="eyebrow">PORTFOLIO BROWSER</p><h2 data-major-browser-title>All Works</h2></div>
+            <p data-major-browser-copy>나인웍스의 주요 프로젝트와 유형별 제작 아카이브를 한 곳에서 확인할 수 있습니다.</p>
+          </div>
+          <div class="major-browser__filters" data-major-browser-filters aria-label="포트폴리오 내부 필터"></div>
+          <div class="major-browser__meta"><h3>Selected Archive</h3><span data-major-browser-count>00 WORKS</span></div>
+          <div class="major-browser__grid" data-major-browser-grid></div>
+          <div class="major-browser__more" data-major-browser-more><button type="button">MORE WORKS</button></div>
         </div>
       </section>
 
@@ -174,7 +188,7 @@
       <section class="major-contact" id="major-contact">
         <div class="container major-contact__grid">
           <div><p class="eyebrow">PROJECT INQUIRY</p><h2>프로젝트에 대해<br>이야기해 주세요.</h2></div>
-          <div><p>브랜드 구축, 리브랜딩 또는 디자인 파트너십이 필요하다면 프로젝트의 현재 상황과 필요한 범위를 알려주세요.</p><a href="../contact.html">DISCUSS A PROJECT <span>↗</span></a></div>
+          <div><p>브랜드 구축, 리브랜딩 또는 디자인 파트너십이 필요하다면 프로젝트의 현재 상황과 필요한 범위를 알려주세요.</p><a href="#project-inquiry" data-major-inquiry-open>DISCUSS A PROJECT <span>↗</span></a></div>
         </div>
       </section>
     </main>
@@ -186,10 +200,14 @@
   <script src="../assets/js/portfolio-list-2.js?v=20260825-1"></script>
   <script src="../assets/js/portfolio-list-3.js?v=20260825-1"></script>
   <script src="../assets/js/portfolio-list-4.js?v=20260825-1"></script>
-  <script src="../assets/js/portfolio-list-5.js?v=20260825-1"></script>
+  <script src="../assets/js/portfolio-list-5.js?v=20260825-4"></script>
+  <script src="../assets/js/portfolio-taxonomy.js?v=20260825-3"></script>
+  <script src="../assets/js/portfolio-archive-data.js?v=20260811-1"></script>
+  <script src="../assets/js/detailpage-archive-data.js?v=20260811-1"></script>
   <script src="../assets/js/client-logos-20260821.js?v=20260825-2"></script>
   <script src="../assets/js/majorportfolio-entry-20260826.js?v=20260826-6"></script>
   <script src="../assets/js/majorportfolio-20260825.js?v=20260826-entry6"></script>
+  <script src="../assets/js/majorportfolio-browser-20260826.js?v=20260826-1"></script>
   <script type="module" src="../assets/js/majorportfolio-view-gate-20260826.js?v=20260826-log6"></script>
 </body>
 </html>
