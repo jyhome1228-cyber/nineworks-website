@@ -71,13 +71,7 @@
     image.decoding = 'async';
     if (lazy) image.loading = 'lazy';
     item.appendChild(image);
-    if (name) {
-      const caption = document.createElement('span');
-      caption.className = 'nw-logo-card__name';
-      caption.textContent = name;
-      item.appendChild(caption);
-      item.title = name;
-    }
+    if (name) item.title = name;
     return item;
   };
 
