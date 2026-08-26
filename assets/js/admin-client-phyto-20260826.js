@@ -13,6 +13,19 @@ function injectPolishCSS() {
   link.href = 'assets/css/admin-clients-polish-20260826.css?v=20260826-2';
   link.dataset.adminClientsPolish = 'true';
   document.head.appendChild(link);
+
+  if (!document.querySelector('style[data-phyto-admin-fix]')) {
+    const style = document.createElement('style');
+    style.dataset.phytoAdminFix = 'true';
+    style.textContent = `
+      .admin-client-row__portal{align-items:flex-end!important;justify-content:center!important;gap:7px!important}
+      .admin-client-row__portal .nw-phyto-linked{display:inline-flex;align-items:center;justify-content:center;min-width:78px;height:28px;padding:0 9px;border:1px solid #111;background:#111;color:#fff!important;font-size:8px!important;font-weight:500;line-height:1;letter-spacing:.035em;white-space:nowrap;text-decoration:none;transition:background .2s ease,color .2s ease}
+      .admin-client-row__portal .nw-phyto-linked:hover{background:#fff;color:#111!important}
+      .admin-client-row__portal span.is-on{display:inline-flex!important;align-items:center;height:22px;padding:0 6px!important;border:1px solid #111!important;background:transparent!important;color:#111!important;font-size:7px!important;white-space:nowrap}
+      @media(max-width:760px){.admin-client-row__portal{align-items:flex-end!important}.admin-client-row__portal .nw-phyto-linked{min-width:72px}}
+    `;
+    document.head.appendChild(style);
+  }
 }
 
 async function ensurePhytoClient(user) {
@@ -44,20 +57,29 @@ async function ensurePhytoClient(user) {
 }
 
 function attachDirectPortalLinks() {
-  const rows = document.querySelectorAll('.admin-client-row');
-  rows.forEach((row) => {
+  document.querySelectorAll('.admin-client-row').forEach((row) => {
     const text = row.textContent || '';
     if (!/파이토레볼루션|PhytoRevolution|고스란/i.test(text)) return;
     const portal = row.querySelector('.admin-client-row__portal');
-    if (!portal || portal.querySelector('.nw-phyto-linked')) return;
-    const link = document.createElement('a');
-    link.className = 'nw-phyto-linked';
-    link.href = PHYTO_URL;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = 'DASHBOARD ↗';
-    link.addEventListener('click', (event) => event.stopPropagation());
-    portal.appendChild(link);
+    if (!portal) return;
+
+    const status = portal.querySelector('span');
+    if (status) {
+      status.textContent = 'PORTAL ON';
+      status.classList.add('is-on');
+    }
+
+    let link = portal.querySelector('.nw-phyto-linked');
+    if (!link) {
+      link = document.createElement('a');
+      link.className = 'nw-phyto-linked';
+      link.href = PHYTO_URL;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = '대시보드 ↗';
+      link.addEventListener('click', (event) => event.stopPropagation());
+      portal.appendChild(link);
+    }
   });
 }
 
