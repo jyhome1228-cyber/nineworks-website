@@ -35,7 +35,7 @@
 .wba-image-grid--three{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .wba-image{margin:0;background:var(--wba-soft);overflow:hidden}
 .wba-image img{display:block;width:100%;height:auto}
-.wba-image figcaption{padding:10px 2px 0;color:#7c8795;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase}
+.wba-image figcaption{padding:10px 0 0;background:transparent!important;color:#7c8795;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase}
 .wba-image--early{margin:32px 0 0}
 .wba-image--early + .wba-quote{margin-top:28px}
 
@@ -43,16 +43,19 @@
 #beginning .wba-image--early{display:none}
 #throstle > .wba-image--early{display:none}
 
-/* Old / new crest stages should read as intentional logo plates, not oversized raw images. */
-#throstle .wba-image-stack > .wba-image:first-child,
-#crest .wba-image-grid > .wba-image{background:#fff;border:1px solid var(--wba-line)}
-#throstle .wba-image-stack > .wba-image:first-child img,
-#crest .wba-image-grid > .wba-image img{width:100%;height:clamp(340px,46vw,540px);padding:34px;object-fit:contain;object-position:center;background:#fff}
-#throstle .wba-image-stack > .wba-image:first-child figcaption,
-#crest .wba-image-grid > .wba-image figcaption{padding:10px 12px;background:var(--wba-soft)}
+/* Existing crest stays as a contained heritage reference plate. */
+#throstle .wba-image-stack > .wba-image:first-child{background:#fff;border:1px solid var(--wba-line)}
+#throstle .wba-image-stack > .wba-image:first-child img{width:100%;height:clamp(340px,46vw,540px);padding:34px;object-fit:contain;object-position:center;background:#fff}
+#throstle .wba-image-stack > .wba-image:first-child figcaption{padding:10px 0 0;background:transparent!important}
+
+/* New crest/application image fills the available width without an inset white frame. */
+#crest .wba-image-grid > .wba-image{background:#fff;border:0}
+#crest .wba-image-grid > .wba-image img{display:block;width:100%;height:auto;padding:0;object-fit:cover;object-position:center;background:transparent}
+#crest .wba-image-grid > .wba-image figcaption{padding:10px 0 0;background:transparent!important}
+
 .wba-image-grid--three .wba-image{background:#fff;border:1px solid var(--wba-line)}
 .wba-image-grid--three .wba-image img{width:100%;height:auto;object-fit:contain;background:#fff}
-.wba-image-grid--three .wba-image figcaption{padding:9px 10px;background:var(--wba-soft)}
+.wba-image-grid--three .wba-image figcaption{padding:9px 0 0;background:transparent!important}
 
 .wba-meaning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:32px;border-top:1px solid var(--wba-navy);border-left:1px solid var(--wba-line)}
 .wba-meaning-card{min-height:182px;padding:22px;border-right:1px solid var(--wba-line);border-bottom:1px solid var(--wba-line)}
@@ -115,4 +118,4 @@
 .wba-disclaimer strong{color:#dce5f2}
 
 @media(max-width:980px){.wba-context-grid,.wba-meaning-grid{grid-template-columns:1fr 1fr}.wba-principles,.wba-system-grid{grid-template-columns:1fr 1fr}.wba-system-card:nth-child(2){border-right:0}.wba-system-card:nth-child(-n+2){border-bottom:1px solid var(--wba-line)}}
-@media(max-width:680px){.wba-hero-note,.wba-concept-line,.wba-application-head{flex-direction:column;align-items:flex-start;gap:7px}.wba-intro-band{padding:44px 24px}.wba-context-grid,.wba-meaning-grid,.wba-color-system,.wba-before-after,.wba-principles,.wba-role-grid,.wba-system-grid,.wba-image-grid--three{grid-template-columns:1fr}.wba-context-card,.wba-meaning-card,.wba-principle,.wba-role,.wba-system-card{min-height:0}.wba-color--white,.wba-ba-column + .wba-ba-column{border-left:0;border-top:1px solid var(--wba-line)}.wba-system-card{border-right:0!important}#throstle .wba-image-stack > .wba-image:first-child img,#crest .wba-image-grid > .wba-image img{height:clamp(280px,78vw,430px);padding:22px}.wba-final{padding:54px 24px}}
+@media(max-width:680px){.wba-hero-note,.wba-concept-line,.wba-application-head{flex-direction:column;align-items:flex-start;gap:7px}.wba-intro-band{padding:44px 24px}.wba-context-grid,.wba-meaning-grid,.wba-color-system,.wba-before-after,.wba-principles,.wba-role-grid,.wba-system-grid,.wba-image-grid--three{grid-template-columns:1fr}.wba-context-card,.wba-meaning-card,.wba-principle,.wba-role,.wba-system-card{min-height:0}.wba-color--white,.wba-ba-column + .wba-ba-column{border-left:0;border-top:1px solid var(--wba-line)}.wba-system-card{border-right:0!important}#throstle .wba-image-stack > .wba-image:first-child img{height:clamp(280px,78vw,430px);padding:22px}#crest .wba-image-grid > .wba-image img{height:auto;padding:0}.wba-final{padding:54px 24px}}
