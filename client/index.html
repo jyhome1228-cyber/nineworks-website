@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Client Portal — NINEWORKS</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=20260825-2">
+  <link rel="stylesheet" href="../assets/css/client-portal-20260826.css?v=20260826-1">
+</head>
+<body>
+  <div class="client-portal" data-portal-root>
+    <header class="client-portal__header">
+      <a class="client-portal__brand" href="../index.html" aria-label="NINEWORKS"><span>NINEWORKS</span><small>CLIENT PORTAL</small></a>
+      <span class="client-portal__secure">PRIVATE PROJECT SPACE</span>
+    </header>
+
+    <main class="client-portal__main">
+      <section class="client-portal__loading" data-portal-loading>
+        <span>NINEWORKS / CLIENT PORTAL</span>
+        <h1>프로젝트 정보를 불러오는 중입니다.</h1>
+      </section>
+
+      <section class="client-portal__error" data-portal-error hidden>
+        <span>NINEWORKS / CLIENT PORTAL</span>
+        <h1>이 대시보드를 열 수 없습니다.</h1>
+        <p>링크가 만료되었거나 공개가 중지되었습니다. 전달받은 링크를 다시 확인해 주세요.</p>
+        <a href="mailto:info@9works.kr">info@9works.kr</a>
+      </section>
+
+      <div data-portal-content hidden>
+        <section class="client-portal__hero">
+          <div class="client-portal__hero-copy"><span>NINEWORKS / PROJECT DASHBOARD</span><h1 data-portal-company>Client</h1><p data-portal-project>Project</p></div>
+          <div class="client-portal__status"><span>PROJECT STATUS</span><strong data-portal-status>진행중</strong><p data-portal-updated>UPDATED -</p></div>
+        </section>
+
+        <section class="client-portal__notice" data-portal-notice-wrap hidden><span>UPDATE</span><p data-portal-message></p></section>
+
+        <section class="client-portal__section">
+          <div class="client-portal__section-head"><div><span>01 / PROJECT</span><h2>Project Overview</h2></div><p>현재 프로젝트와 계약의 기본 정보를 확인합니다.</p></div>
+          <div class="client-portal__overview-grid">
+            <article><span>CLIENT</span><strong data-overview-company>-</strong></article>
+            <article><span>PROJECT</span><strong data-overview-project>-</strong></article>
+            <article><span>CONTRACT TYPE</span><strong data-overview-contract-type>-</strong></article>
+            <article><span>CONTRACT PERIOD</span><strong data-overview-period>-</strong></article>
+          </div>
+          <div class="client-portal__scope" data-scope-wrap hidden><span>PROJECT SCOPE</span><p data-portal-scope></p></div>
+        </section>
+
+        <section class="client-portal__section">
+          <div class="client-portal__section-head"><div><span>02 / CONTRACT</span><h2>Contract</h2></div><p>나인웍스와 합의된 계약 정보를 확인합니다.</p></div>
+          <div class="client-portal__contract-grid">
+            <article><span>STATUS</span><strong data-contract-status>-</strong></article>
+            <article><span>START</span><strong data-contract-start>-</strong></article>
+            <article><span>END</span><strong data-contract-end>-</strong></article>
+            <article><span>AMOUNT</span><strong data-contract-amount>-</strong></article>
+            <article class="client-portal__wide"><span>PAYMENT</span><strong data-contract-payment>-</strong></article>
+          </div>
+        </section>
+
+        <section class="client-portal__section client-portal__documents">
+          <div class="client-portal__section-head"><div><span>03 / DOCUMENTS</span><h2>Documents</h2></div><p>계약서, 제안서, 보고서와 전달 자료를 한곳에서 확인합니다.</p></div>
+          <div class="client-portal__file-filter" data-portal-file-filter></div>
+          <div class="client-portal__file-list" data-portal-files><div class="client-portal__empty">등록된 공개 자료가 없습니다.</div></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="client-portal__footer"><span>NINEWORKS</span><p>Project documents &amp; information are managed by NINEWORKS.</p><a href="mailto:info@9works.kr">CONTACT ↗</a></footer>
+  </div>
+  <script type="module" src="../assets/js/client-portal-20260826.js?v=20260826-1"></script>
+</body>
+</html>
