@@ -47,6 +47,8 @@
 
   import('./admin-clients-20260826.js?v=20260826-1').catch((error) => {
     console.error('[NINEWORKS Admin] Clients workspace load failed', error);
+  }).then(() => import('./admin-client-phyto-20260826.js?v=20260826-2')).catch((error) => {
+    console.error('[NINEWORKS Admin] Phyto client integration load failed', error);
   }).finally(setupNavigation);
 
   import('./admin-firebase.js?v=20260825-trash-sync1').catch((error) => {
