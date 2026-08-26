@@ -57,7 +57,7 @@
       const href = `/portfolio-detail.html?work=${encodeURIComponent(project.id || '')}`;
       return `
         <article class="major-work-card">
-          <a href="${href}" aria-label="${title} 포트폴리오 상세 보기">
+          <a href="${href}" target="_blank" rel="noopener" aria-label="${title} 포트폴리오 상세 보기">
             <figure class="major-work-card__media"><img src="${thumbnail}" alt="${title}" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"></figure>
             <div class="major-work-card__info">
               <div><strong>${title}</strong><span>${subtitle}</span></div>
@@ -71,8 +71,14 @@
   const normalizeCardLinks = (card) => {
     card.querySelectorAll('a[href]').forEach((anchor) => {
       const href = anchor.getAttribute('href') || '';
-      if (!href || /^(?:https?:|mailto:|tel:|#|\/)/i.test(href)) return;
-      anchor.setAttribute('href', `/${href.replace(/^\.?\//, '')}`);
+      if (href && !/^(?:https?:|mailto:|tel:|#|\/)/i.test(href)) {
+        anchor.setAttribute('href', `/${href.replace(/^\.?\//, '')}`);
+      }
+      const normalizedHref = anchor.getAttribute('href') || '';
+      if (/portfolio(?:-|_)detail|portfolio-[^/]+\.html/i.test(normalizedHref)) {
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('rel', 'noopener');
+      }
     });
   };
 
