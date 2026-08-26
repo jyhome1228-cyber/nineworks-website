@@ -110,7 +110,6 @@ service cloud.firestore {
       allow create, update, delete: if isAdmin();
     }
 
-    // 파트너가 등록하는 지급유형·계좌정보: 생성만 허용하고 조회는 관리자만 가능합니다.
     match /partnerAccountSubmissions/{documentId} {
       allow create: if
         request.resource.data.keys().hasAll([
@@ -128,7 +127,6 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // 제안서 의견: 파트너는 생성만, 관리자만 조회/관리할 수 있습니다.
     match /partnerProposalFeedback/{documentId} {
       allow create: if
         request.resource.data.keys().hasAll([
@@ -159,8 +157,26 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    match /clients/{documentId} {
+    // 내부 CRM 원본: 관리자 전용. 파일 메타데이터 하위 컬렉션도 포함합니다.
+    match /clients/{clientId} {
       allow read, write: if isAdmin();
+
+      match /files/{fileId} {
+        allow read, write: if isAdmin();
+      }
+    }
+
+    // 비밀 링크에 노출할 최소 데이터만 별도 저장합니다.
+    match /clientPortals/{portalKey} {
+      allow get: if isAdmin() || resource.data.enabled == true;
+      allow list: if isAdmin();
+      allow create, update, delete: if isAdmin();
+
+      match /files/{fileId} {
+        allow get, list: if isAdmin()
+          || get(/databases/$(database)/documents/clientPortals/$(portalKey)).data.enabled == true;
+        allow create, update, delete: if isAdmin();
+      }
     }
 
     match /tasks/{documentId} {
