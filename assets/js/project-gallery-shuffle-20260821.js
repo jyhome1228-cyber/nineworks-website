@@ -35,6 +35,14 @@
     grid.prepend(aesostCard);
   }
 
+  // West Bromwich Albion — independent concept proposal. Keep it first among completed case studies.
+  if (!cards().some((card) => normalize(titleOf(card)) === 'westbromwichalbion')) {
+    const wbaCard = document.createElement('article');
+    wbaCard.className = 'project-card';
+    wbaCard.innerHTML = '<a href="portfolio-west-bromwich-albion.html" aria-label="West Bromwich Albion independent rebranding concept case study" style="display:block;color:inherit;text-decoration:none"><figure class="project-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/6cfe41ee066de.jpg" alt="West Bromwich Albion rebranding concept proposal" loading="eager"></figure><div class="project-card__meta"><span>SPORTS BRAND IDENTITY · CONCEPT</span></div><h2>West Bromwich Albion</h2><p>Throstle, Hawthorn과 Navy &amp; White 헤리티지를 현대적인 클럽 아이덴티티 시스템으로 정제한 독립 리브랜딩 제안.</p></a>';
+    grid.prepend(wbaCard);
+  }
+
   const dedicatedLinks = {
     laff: 'portfolio-laff.html',
     taepyung: 'portfolio-taepyung.html'
