@@ -1,5 +1,5 @@
 (() => {
-  const fallbackLabels = {
+  const panelLabels = {
     dashboard: 'Dashboard',
     inquiry: 'Inquiries',
     clients: 'Clients',
@@ -11,112 +11,189 @@
     trash: 'Trash'
   };
 
-  let openPanel = () => {};
+  const DEFAULT_PANEL = 'dashboard';
+  const knownPanels = new Set(Object.keys(panelLabels));
   let navigationBooted = false;
+  let pendingPanel = '';
+  let panelObserver = null;
+
+  const normalizeKey = (value) => String(value || '').replace(/^#/, '').trim();
+  const safeKey = (value) => {
+    const key = normalizeKey(value);
+    return knownPanels.has(key) ? key : DEFAULT_PANEL;
+  };
+  const escapeSelector = (value) => window.CSS?.escape
+    ? CSS.escape(value)
+    : String(value).replace(/["\\]/g, '\\$&');
+  const panelNode = (key) => document.querySelector(`[data-admin-panel="${escapeSelector(key)}"]`);
+  const hasPanel = (key) => Boolean(panelNode(key));
 
   const getPanelTitle = (key) => {
-    if (fallbackLabels[key]) return fallbackLabels[key];
-    const tab = document.querySelector(`[data-admin-tab="${CSS.escape(key)}"]`);
-    if (!tab) return key || 'Dashboard';
+    if (panelLabels[key]) return panelLabels[key];
+    const tab = document.querySelector(`[data-admin-tab="${escapeSelector(key)}"]`);
+    if (!tab) return key || panelLabels[DEFAULT_PANEL];
     return (tab.textContent || key).replace(/^\s*\d+\s*/, '').trim() || key;
   };
 
-  const hasPanel = (key) => Boolean(document.querySelector(`[data-admin-panel="${CSS.escape(key)}"]`));
-
-  const setupNavigation = () => {
-    const title = document.querySelector('[data-admin-title]');
+  const syncDate = () => {
     const date = document.querySelector('[data-admin-date]');
+    if (!date) return;
+    date.textContent = new Intl.DateTimeFormat('ko-KR', {
+      year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short'
+    }).format(new Date());
+  };
+
+  const renderPanel = (key, options = {}) => {
+    const requested = safeKey(key);
+    if (!hasPanel(requested)) {
+      if (options.deferIfMissing !== false) pendingPanel = requested;
+      return false;
+    }
+
+    document.querySelectorAll('[data-admin-tab]').forEach((tab) => {
+      tab.classList.toggle('is-active', tab.dataset.adminTab === requested);
+    });
+    document.querySelectorAll('[data-admin-panel]').forEach((panel) => {
+      panel.classList.toggle('is-active', panel.dataset.adminPanel === requested);
+    });
+
+    const title = document.querySelector('[data-admin-title]');
+    if (title) title.textContent = getPanelTitle(requested);
+
+    if (options.updateHash !== false && location.hash !== `#${requested}` && history.replaceState) {
+      history.replaceState(null, '', `#${requested}`);
+    }
+    if (options.scroll !== false) window.scrollTo({ top: 0, behavior: 'auto' });
+
+    if (pendingPanel === requested) pendingPanel = '';
+    window.dispatchEvent(new CustomEvent('nw-admin-panel', { detail: { panel: requested } }));
+    return true;
+  };
+
+  const showDashboardWithoutChangingURL = () => {
+    if (hasPanel(DEFAULT_PANEL)) {
+      renderPanel(DEFAULT_PANEL, { updateHash: false, scroll: false, deferIfMissing: false });
+    }
+  };
+
+  const requestPanel = (key, options = {}) => {
+    const requested = safeKey(key);
+    if (renderPanel(requested, options)) return true;
+
+    pendingPanel = requested;
+    if (options.updateHash !== false && location.hash !== `#${requested}` && history.replaceState) {
+      history.replaceState(null, '', `#${requested}`);
+    }
+
+    // Async modules inject some panels after first paint. Keep the requested hash intact
+    // and show Dashboard only as a temporary visual fallback until that panel exists.
+    showDashboardWithoutChangingURL();
+    return false;
+  };
+
+  const resolvePendingPanel = () => {
+    const requested = pendingPanel || safeKey(location.hash);
+    if (!requested || !hasPanel(requested)) return false;
+    pendingPanel = '';
+    return renderPanel(requested, { updateHash: false, scroll: false, deferIfMissing: false });
+  };
+
+  const bindNavigation = () => {
     const nav = document.querySelector('.admin-nav');
-
-    openPanel = (key, options = {}) => {
-      const requested = String(key || '').trim();
-      const next = hasPanel(requested) ? requested : 'dashboard';
-      const tabs = Array.from(document.querySelectorAll('[data-admin-tab]'));
-      const panels = Array.from(document.querySelectorAll('[data-admin-panel]'));
-
-      tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.adminTab === next));
-      panels.forEach((panel) => panel.classList.toggle('is-active', panel.dataset.adminPanel === next));
-
-      if (title) title.textContent = getPanelTitle(next);
-      if (options.updateHash !== false && history.replaceState) {
-        history.replaceState(null, '', `#${next}`);
-      }
-      if (options.scroll !== false) window.scrollTo({ top: 0, behavior: 'auto' });
-      window.dispatchEvent(new CustomEvent('nw-admin-panel', { detail: { panel: next } }));
-    };
-
     if (nav && nav.dataset.delegatedNavBound !== 'true') {
       nav.dataset.delegatedNavBound = 'true';
       nav.addEventListener('click', (event) => {
         const tab = event.target.closest('[data-admin-tab]');
         if (!tab || !nav.contains(tab)) return;
         event.preventDefault();
-        openPanel(tab.dataset.adminTab);
+        requestPanel(tab.dataset.adminTab);
       });
     }
 
     const inquiryJump = document.querySelector('[data-jump-inquiries]');
     if (inquiryJump && inquiryJump.dataset.adminJumpBound !== 'true') {
       inquiryJump.dataset.adminJumpBound = 'true';
-      inquiryJump.addEventListener('click', () => openPanel('inquiry'));
+      inquiryJump.addEventListener('click', () => requestPanel('inquiry'));
+    }
+
+    window.NINEWORKS_ADMIN_OPEN_PANEL = requestPanel;
+    window.NINEWORKS_ADMIN_ROUTE = (key, updateHash = true) => requestPanel(key, { updateHash });
+  };
+
+  const bootNavigation = () => {
+    bindNavigation();
+    syncDate();
+
+    const initialRaw = normalizeKey(location.hash);
+    const initial = safeKey(initialRaw || DEFAULT_PANEL);
+    if (initialRaw && !knownPanels.has(initialRaw) && history.replaceState) {
+      history.replaceState(null, '', `#${DEFAULT_PANEL}`);
+    }
+
+    if (!renderPanel(initial, { updateHash: false, scroll: false })) {
+      pendingPanel = initial;
+      showDashboardWithoutChangingURL();
     }
 
     if (!navigationBooted) {
       navigationBooted = true;
-      const initial = location.hash.replace('#', '');
-      openPanel(hasPanel(initial) ? initial : 'dashboard', { updateHash: true, scroll: false });
-
       window.addEventListener('hashchange', () => {
-        const key = location.hash.replace('#', '');
-        if (hasPanel(key)) openPanel(key, { updateHash: false });
+        const requested = safeKey(location.hash || DEFAULT_PANEL);
+        if (!renderPanel(requested, { updateHash: false })) {
+          pendingPanel = requested;
+          showDashboardWithoutChangingURL();
+        }
       });
-    } else {
-      const current = location.hash.replace('#', '');
-      if (hasPanel(current)) openPanel(current, { updateHash: false, scroll: false });
     }
-
-    if (date) {
-      date.textContent = new Intl.DateTimeFormat('ko-KR', {
-        year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short'
-      }).format(new Date());
-    }
-
-    window.NINEWORKS_ADMIN_OPEN_PANEL = openPanel;
   };
 
-  // Core navigation starts immediately and uses event delegation, so modules injected later remain clickable.
-  setupNavigation();
+  const refreshNavigation = () => {
+    bindNavigation();
+    syncDate();
+    resolvePendingPanel();
+  };
 
-  import('./admin-clients-20260826.js?v=20260826-2').then(() => {
-    setupNavigation();
-    return import('./admin-client-phyto-20260826.js?v=20260826-3');
-  }).then(setupNavigation).catch((error) => {
+  const observeDynamicPanels = () => {
+    const main = document.querySelector('.admin-main');
+    if (!main || panelObserver) return;
+    panelObserver = new MutationObserver(() => refreshNavigation());
+    panelObserver.observe(main, { childList: true });
+  };
+
+  // Navigation must never wait for Firebase or feature modules.
+  bootNavigation();
+  observeDynamicPanels();
+
+  import('./admin-clients-20260826.js?v=20260826-routerfix1').then(() => {
+    refreshNavigation();
+    return import('./admin-client-phyto-20260826.js?v=20260826-routerfix1');
+  }).then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Clients workspace load failed', error);
   });
 
-  import('./admin-firebase.js?v=20260825-trash-sync1').catch((error) => {
+  import('./admin-firebase.js?v=20260826-routerfix1').catch((error) => {
     console.error('[NINEWORKS Admin] Firebase bootstrap load failed', error);
     const status = document.querySelector('.admin-status');
     if (status) status.innerHTML = '<i></i> FIREBASE LOAD ERROR';
   });
 
-  import('./admin-partner-assignment-lite.js?v=20260824-6').then(setupNavigation).catch((error) => {
+  import('./admin-partner-assignment-lite.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Partner assignment load failed', error);
   });
 
-  import('./admin-partner-submissions-20260824.js?v=20260824-3').then(setupNavigation).catch((error) => {
+  import('./admin-partner-submissions-20260824.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Partner submissions load failed', error);
   });
 
-  import('./admin-recruit-partner-final-20260824.js?v=20260825-trash-sync1').then(setupNavigation).catch((error) => {
+  import('./admin-recruit-partner-final-20260824.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Recruit / approved inquiry sync load failed', error);
   });
 
-  import('./admin-inquiry-crm-20260825.js?v=20260825-1').catch((error) => {
+  import('./admin-inquiry-crm-20260825.js?v=20260826-routerfix1').catch((error) => {
     console.error('[NINEWORKS Admin] Inquiry CRM load failed', error);
   });
 
-  import('./admin-trash-ui-fix-20260825.js?v=20260825-1').then(setupNavigation).catch((error) => {
+  import('./admin-trash-ui-fix-20260825.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Trash UI polish load failed', error);
   });
 })();
