@@ -5,21 +5,23 @@ import { auth, db } from './firebase-client.js';
 const ADMIN_EMAIL = 'info@9works.kr';
 const PHYTO_ID = 'phyto';
 const PHYTO_URL = '/client/phyto/';
+let listObserver = null;
 
 function injectPolishCSS() {
-  if (document.querySelector('link[data-admin-clients-polish]')) return;
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'assets/css/admin-clients-polish-20260826.css?v=20260826-2';
-  link.dataset.adminClientsPolish = 'true';
-  document.head.appendChild(link);
+  if (!document.querySelector('link[data-admin-clients-polish]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'assets/css/admin-clients-polish-20260826.css?v=20260826-2';
+    link.dataset.adminClientsPolish = 'true';
+    document.head.appendChild(link);
+  }
 
   if (!document.querySelector('style[data-phyto-admin-fix]')) {
     const style = document.createElement('style');
     style.dataset.phytoAdminFix = 'true';
     style.textContent = `
       .admin-client-row__portal{align-items:flex-end!important;justify-content:center!important;gap:7px!important}
-      .admin-client-row__portal .nw-phyto-linked{display:inline-flex;align-items:center;justify-content:center;min-width:78px;height:28px;padding:0 9px;border:1px solid #111;background:#111;color:#fff!important;font-size:8px!important;font-weight:500;line-height:1;letter-spacing:.035em;white-space:nowrap;text-decoration:none;transition:background .2s ease,color .2s ease}
+      .admin-client-row__portal .nw-phyto-linked{display:inline-flex;align-items:center;justify-content:center;min-width:78px;height:28px;padding:0 9px;border:1px solid #111;background:#111;color:#fff!important;font-size:8px!important;font-weight:500;line-height:1;letter-spacing:.035em;white-space:nowrap;text-decoration:none}
       .admin-client-row__portal .nw-phyto-linked:hover{background:#fff;color:#111!important}
       .admin-client-row__portal span.is-on{display:inline-flex!important;align-items:center;height:22px;padding:0 6px!important;border:1px solid #111!important;background:transparent!important;color:#111!important;font-size:7px!important;white-space:nowrap}
       @media(max-width:760px){.admin-client-row__portal{align-items:flex-end!important}.admin-client-row__portal .nw-phyto-linked{min-width:72px}}
@@ -29,7 +31,7 @@ function injectPolishCSS() {
 }
 
 async function ensurePhytoClient(user) {
-  if (!user || String(user.email || '').toLowerCase() !== ADMIN_EMAIL) return;
+  if (!user || String(user.email || '').toLowerCase() !== ADMIN_EMAIL || !db) return;
   const ref = doc(db, 'clients', PHYTO_ID);
   const snap = await getDoc(ref);
   const base = {
@@ -57,7 +59,9 @@ async function ensurePhytoClient(user) {
 }
 
 function attachDirectPortalLinks() {
-  document.querySelectorAll('.admin-client-row').forEach((row) => {
+  const list = document.querySelector('[data-client-list]');
+  if (!list) return;
+  list.querySelectorAll('.admin-client-row').forEach((row) => {
     const text = row.textContent || '';
     if (!/파이토레볼루션|PhytoRevolution|고스란/i.test(text)) return;
     const portal = row.querySelector('.admin-client-row__portal');
@@ -77,18 +81,36 @@ function attachDirectPortalLinks() {
       link.target = '_blank';
       link.rel = 'noopener';
       link.textContent = '대시보드 ↗';
-      link.addEventListener('click', (event) => event.stopPropagation());
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        window.open(PHYTO_URL, '_blank', 'noopener');
+      });
       portal.appendChild(link);
     }
   });
 }
 
+function observeClientList() {
+  const list = document.querySelector('[data-client-list]');
+  if (!list) return;
+  if (listObserver) listObserver.disconnect();
+  listObserver = new MutationObserver(() => attachDirectPortalLinks());
+  listObserver.observe(list, { childList: true });
+  attachDirectPortalLinks();
+}
+
 injectPolishCSS();
 onAuthStateChanged(auth, (user) => {
-  ensurePhytoClient(user).catch((error) => console.error('[NINEWORKS Admin] Phyto client seed failed', error));
+  ensurePhytoClient(user)
+    .then(() => window.setTimeout(attachDirectPortalLinks, 100))
+    .catch((error) => console.error('[NINEWORKS Admin] Phyto client seed failed', error));
 });
 
-const observer = new MutationObserver(attachDirectPortalLinks);
-observer.observe(document.documentElement, { childList: true, subtree: true });
-attachDirectPortalLinks();
-window.addEventListener('nw-admin-panel', attachDirectPortalLinks);
+window.setTimeout(observeClientList, 0);
+window.setTimeout(observeClientList, 500);
+window.addEventListener('nw-admin-panel', (event) => {
+  if (event.detail?.panel === 'clients') {
+    observeClientList();
+  }
+});
