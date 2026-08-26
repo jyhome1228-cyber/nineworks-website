@@ -41,46 +41,38 @@
     return match ? Number(match[1]) : 0;
   };
 
-  const packagePriority = (item) => {
-    const text = `${item?.title || ''} ${item?.subtitle || ''}`.toLowerCase();
-    if (/hollys|할리스/.test(text)) return 300;
-    if (/yonsei|연세|kids\s?ten|키즈텐|healthd|헬씨드/.test(text)) return 200;
-    if (/gong\s?cha|공차/.test(text)) return 100;
-    return 0;
-  };
-
   const cases = [];
   const seen = new Set();
-  (Array.isArray(window.NW_PORTFOLIO) ? window.NW_PORTFOLIO : []).forEach((project) => {
-    if (!project || !(project.filters || []).includes(type)) return;
-    const key = `${project.client || ''}|${project.title || ''}`.toLowerCase();
-    if (seen.has(key)) return;
-    seen.add(key);
-    cases.push({ ...project, archive: false });
-  });
+  if (type !== 'package') {
+    (Array.isArray(window.NW_PORTFOLIO) ? window.NW_PORTFOLIO : []).forEach((project) => {
+      if (!project || !(project.filters || []).includes(type)) return;
+      const key = `${project.client || ''}|${project.title || ''}`.toLowerCase();
+      if (seen.has(key)) return;
+      seen.add(key);
+      cases.push({ ...project, archive: false });
+    });
+  }
 
   let archives = [];
   if (type === 'detailpage') {
     archives = (Array.isArray(window.NW_DETAILPAGE_ARCHIVE) ? window.NW_DETAILPAGE_ARCHIVE : [])
       .slice().sort((a, b) => sourceOrder(b) - sourceOrder(a))
       .map((item) => ({ ...item, archive: true, filters: [...new Set(['detailpage', ...(item.filters || [])])] }));
+  } else if (type === 'package') {
+    archives = (Array.isArray(window.NW_PORTFOLIO_ARCHIVE) ? window.NW_PORTFOLIO_ARCHIVE : [])
+      .filter((item) => (item.filters || []).includes('package') && sourceOrder(item) >= 14)
+      .slice()
+      .sort((a, b) => sourceOrder(a) - sourceOrder(b))
+      .map((item) => ({ ...item, archive: true }));
   } else {
     archives = (Array.isArray(window.NW_PORTFOLIO_ARCHIVE) ? window.NW_PORTFOLIO_ARCHIVE : [])
       .filter((item) => (item.filters || []).includes(type))
       .map((item, index) => ({ ...item, archive: true, __index: index }))
-      .sort((a, b) => {
-        if (type === 'package') {
-          const priority = packagePriority(b) - packagePriority(a);
-          if (priority) return priority;
-          const order = sourceOrder(b) - sourceOrder(a);
-          if (order) return order;
-        }
-        return a.__index - b.__index;
-      })
+      .sort((a, b) => a.__index - b.__index)
       .map(({ __index, ...item }) => item);
   }
 
-  const works = [...cases, ...archives];
+  const works = type === 'package' ? archives : [...cases, ...archives];
 
   const detailMap = {
     fineb: '/portfolio-fineb.html','tne-epc':'/portfolio-tne-epc.html',relim:'/portfolio-relim.html',aesost:'/portfolio-aesost.html',kekomi:'/portfolio-kekomi.html',
@@ -104,7 +96,7 @@
         <div class="major-subarchive-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div>
       </a></article>`;
     }
-    return `<article class="major-subarchive-card" data-major-subarchive-card="${escapeHTML(item.id || '')}"><a href="${escapeHTML(caseHref(item))}">
+    return `<article class="major-subarchive-card" data-major-subarchive-card="${escapeHTML(item.id || '')}"><a href="${escapeHTML(caseHref(item))}" target="_blank" rel="noopener">
       <figure class="major-subarchive-card__media"><img src="${image}" alt="${title}" loading="lazy"></figure>
       <div class="major-subarchive-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div>
     </a></article>`;
