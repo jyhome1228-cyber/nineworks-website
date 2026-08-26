@@ -1,7 +1,7 @@
 (() => {
   const SESSION_KEY = 'nineworks-majorportfolio-view-access-v6';
   const type = document.body?.dataset.majorSubarchive || '';
-  const SUPPORTED = ['package','detailpage','website','editorial','ir','event'];
+  const SUPPORTED = ['package','detailpage','website','editorial','ir','event','localbranding'];
   if (!SUPPORTED.includes(type)) return;
 
   try {
@@ -18,7 +18,7 @@
   const countEl = document.querySelector('[data-major-subarchive-count]');
   const moreBox = document.querySelector('[data-major-subarchive-more]');
   const PAGE_SIZE = 18;
-  let visibleLimit = PAGE_SIZE;
+  let visibleLimit = type === 'localbranding' ? Number.POSITIVE_INFINITY : PAGE_SIZE;
 
   const LABELS = {
     package: 'PACKAGE',
@@ -26,9 +26,23 @@
     website: 'WEBSITE',
     editorial: 'EDITORIAL',
     ir: 'IR / PPT',
-    event: 'EVENT'
+    event: 'EVENT',
+    localbranding: 'LOCAL BRANDING'
   };
   const label = LABELS[type] || 'PORTFOLIO';
+
+  const typesNav = document.querySelector('.major-portfolio-nav__types');
+  if (typesNav && !typesNav.querySelector('a[href="./localbranding.html"]')) {
+    const link = document.createElement('a');
+    link.href = './localbranding.html';
+    link.textContent = 'Local Branding';
+    const eventLink = typesNav.querySelector('a[href="./event.html"]');
+    if (eventLink) eventLink.insertAdjacentElement('afterend', link);
+    else typesNav.appendChild(link);
+  }
+  if (type === 'localbranding') {
+    typesNav?.querySelectorAll('a').forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === './localbranding.html'));
+  }
 
   const escapeHTML = (value = '') => String(value)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -43,7 +57,7 @@
 
   const cases = [];
   const seen = new Set();
-  if (type !== 'package') {
+  if (type !== 'package' && type !== 'localbranding') {
     (Array.isArray(window.NW_PORTFOLIO) ? window.NW_PORTFOLIO : []).forEach((project) => {
       if (!project || !(project.filters || []).includes(type)) return;
       const key = `${project.client || ''}|${project.title || ''}`.toLowerCase();
@@ -54,7 +68,12 @@
   }
 
   let archives = [];
-  if (type === 'detailpage') {
+  if (type === 'localbranding') {
+    archives = (Array.isArray(window.NW_LOCAL_BRANDING_ARCHIVE) ? window.NW_LOCAL_BRANDING_ARCHIVE : [])
+      .slice()
+      .sort((a, b) => sourceOrder(a) - sourceOrder(b))
+      .map((item) => ({ ...item, archive: true, filters: [...new Set(['localbranding', ...(item.filters || [])])] }));
+  } else if (type === 'detailpage') {
     archives = (Array.isArray(window.NW_DETAILPAGE_ARCHIVE) ? window.NW_DETAILPAGE_ARCHIVE : [])
       .slice().sort((a, b) => sourceOrder(b) - sourceOrder(a))
       .map((item) => ({ ...item, archive: true, filters: [...new Set(['detailpage', ...(item.filters || [])])] }));
@@ -72,7 +91,7 @@
       .map(({ __index, ...item }) => item);
   }
 
-  const works = type === 'package' ? archives : [...cases, ...archives];
+  const works = type === 'package' || type === 'localbranding' ? archives : [...cases, ...archives];
 
   const detailMap = {
     fineb: '/portfolio-fineb.html','tne-epc':'/portfolio-tne-epc.html',relim:'/portfolio-relim.html',aesost:'/portfolio-aesost.html',kekomi:'/portfolio-kekomi.html',
@@ -103,14 +122,18 @@
   };
 
   const render = () => {
-    const visible = works.slice(0, visibleLimit);
+    const visible = Number.isFinite(visibleLimit) ? works.slice(0, visibleLimit) : works;
     if (countEl) countEl.textContent = `${String(works.length).padStart(2, '0')} WORKS`;
     if (grid) grid.innerHTML = visible.length ? visible.map(cardMarkup).join('') : '<div class="major-subarchive-empty">등록된 작업이 없습니다.</div>';
     if (moreBox) {
-      const remaining = Math.max(0, works.length - visibleLimit);
-      moreBox.hidden = remaining === 0;
-      const button = moreBox.querySelector('button');
-      if (button) button.textContent = remaining ? `MORE WORKS · ${Math.min(PAGE_SIZE, remaining)}개 더보기` : 'MORE WORKS';
+      if (!Number.isFinite(visibleLimit)) {
+        moreBox.hidden = true;
+      } else {
+        const remaining = Math.max(0, works.length - visibleLimit);
+        moreBox.hidden = remaining === 0;
+        const button = moreBox.querySelector('button');
+        if (button) button.textContent = remaining ? `MORE WORKS · ${Math.min(PAGE_SIZE, remaining)}개 더보기` : 'MORE WORKS';
+      }
     }
   };
 
@@ -152,7 +175,7 @@
   });
   modal.querySelector('[data-major-subarchive-close]')?.addEventListener('click', closeItem);
   modal.addEventListener('click', (event) => { if (event.target === modal) closeItem(); });
-  moreBox?.querySelector('button')?.addEventListener('click', () => { visibleLimit += PAGE_SIZE; render(); });
+  moreBox?.querySelector('button')?.addEventListener('click', () => { if (Number.isFinite(visibleLimit)) { visibleLimit += PAGE_SIZE; render(); } });
   inquiry.querySelector('[data-major-inquiry-close]')?.addEventListener('click', () => inquiry.classList.remove('is-open'));
   inquiry.addEventListener('click', (event) => { if (event.target === inquiry) inquiry.classList.remove('is-open'); });
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { closeItem(); inquiry.classList.remove('is-open'); } });
