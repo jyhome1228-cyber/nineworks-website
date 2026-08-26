@@ -67,7 +67,8 @@ const renumberNav = () => {
   const buttons = Array.from(document.querySelectorAll('.admin-nav > .admin-nav__item'));
   buttons.forEach((button, index) => {
     const number = button.querySelector('span');
-    if (number) number.textContent = String(index + 1).padStart(2, '0');
+    const next = String(index + 1).padStart(2, '0');
+    if (number && number.textContent !== next) number.textContent = next;
   });
 };
 
@@ -146,7 +147,7 @@ const bindNavigation = () => {
   const nav = document.querySelector('.admin-nav');
   if (nav) {
     const observer = new MutationObserver(() => renumberNav());
-    observer.observe(nav, { childList: true });
+    observer.observe(nav, { childList: true, subtree: true, characterData: true });
   }
 };
 
@@ -240,7 +241,11 @@ const init = () => {
     renderList();
   });
 
-  if (location.hash === '#portfolioViews') window.setTimeout(openPortfolioViews, 80);
+  if (location.hash === '#portfolioViews') {
+    window.setTimeout(() => {
+      if (location.hash === '#portfolioViews' || location.hash === '#dashboard') openPortfolioViews();
+    }, 1200);
+  }
 
   if (!firebaseConfigReady || firebaseInitError || !auth || !db) {
     const list = document.querySelector('[data-portfolio-view-list]');
