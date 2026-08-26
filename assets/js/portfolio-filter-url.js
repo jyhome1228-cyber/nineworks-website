@@ -5,12 +5,16 @@
     detail: 'detailpage',
     site: 'website',
     web: 'website',
-    platform: 'system'
+    platform: 'system',
+    pkg: 'package',
+    packaging: 'package'
   };
 
   const titleEl = document.querySelector('[data-portfolio-index-title]');
   const copyEl = document.querySelector('[data-portfolio-index-copy]');
   const group = document.querySelector('.portfolio-filter[data-filter-group]');
+  if (!group) return;
+
   const meta = {
     major: {
       title: 'Major Works',
@@ -46,24 +50,52 @@
     }
   };
 
+  const normalizeFilter = (value) => {
+    const raw = String(value || '').trim().toLowerCase();
+    return aliases[raw] || raw || 'major';
+  };
+
+  const getButton = (filter) => Array.from(group.querySelectorAll('[data-filter]'))
+    .find((button) => button.dataset.filter === filter);
+
   const applyMeta = (filter) => {
     const item = meta[filter] || meta.major;
     if (titleEl) titleEl.textContent = item.title;
     if (copyEl) copyEl.textContent = item.copy;
   };
 
-  group?.querySelectorAll('[data-filter]').forEach((button) => {
-    button.addEventListener('click', () => applyMeta(button.dataset.filter || 'major'));
+  const syncUrl = (filter) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('filter', filter);
+    window.history.replaceState({ portfolioFilter: filter }, '', `${url.pathname}${url.search}${url.hash}`);
+  };
+
+  const activate = (requested, updateUrl = false) => {
+    const filter = normalizeFilter(requested);
+    const button = getButton(filter) || getButton('major');
+    const resolved = button?.dataset.filter || 'major';
+    if (!button) {
+      applyMeta('major');
+      return;
+    }
+    button.click();
+    applyMeta(resolved);
+    if (updateUrl) syncUrl(resolved);
+  };
+
+  group.querySelectorAll('[data-filter]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = normalizeFilter(button.dataset.filter);
+      applyMeta(filter);
+      syncUrl(filter);
+    });
   });
 
-  const rawFilter = new URLSearchParams(window.location.search).get('filter');
-  const filter = aliases[rawFilter] || rawFilter || 'major';
-  const button = document.querySelector(`[data-filter="${CSS.escape(filter)}"]`);
-  if (!button) {
-    const majorButton = document.querySelector('[data-filter="major"]');
-    if (majorButton) window.requestAnimationFrame(() => majorButton.click());
-    else applyMeta('major');
-    return;
-  }
-  window.requestAnimationFrame(() => button.click());
+  const initialFilter = normalizeFilter(new URLSearchParams(window.location.search).get('filter'));
+  activate(initialFilter, false);
+
+  window.addEventListener('popstate', () => {
+    const filter = normalizeFilter(new URLSearchParams(window.location.search).get('filter'));
+    activate(filter, false);
+  });
 })();
