@@ -6,6 +6,15 @@ const ADMIN_EMAIL = 'info@9works.kr';
 const PHYTO_ID = 'phyto';
 const PHYTO_URL = '/client/phyto/';
 
+function injectPolishCSS() {
+  if (document.querySelector('link[data-admin-clients-polish]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'assets/css/admin-clients-polish-20260826.css?v=20260826-2';
+  link.dataset.adminClientsPolish = 'true';
+  document.head.appendChild(link);
+}
+
 async function ensurePhytoClient(user) {
   if (!user || String(user.email || '').toLowerCase() !== ADMIN_EMAIL) return;
   const ref = doc(db, 'clients', PHYTO_ID);
@@ -52,6 +61,7 @@ function attachDirectPortalLinks() {
   });
 }
 
+injectPolishCSS();
 onAuthStateChanged(auth, (user) => {
   ensurePhytoClient(user).catch((error) => console.error('[NINEWORKS Admin] Phyto client seed failed', error));
 });
