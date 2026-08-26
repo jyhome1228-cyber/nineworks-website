@@ -1,4 +1,5 @@
 /* NINEWORKS Major Portfolio viewer gate — 2026-08-26 */
+.major-view-gate{overflow-y:auto;overscroll-behavior:contain}
 .major-view-gate .major-onboarding__content{
   width:min(560px,100%);
   padding:24px 0 34px;
@@ -107,6 +108,7 @@
 }
 
 @media(max-width:680px){
+  .major-view-gate{align-content:start}
   .major-view-gate .major-onboarding__content{padding:14px 0 20px}
   .major-view-gate .major-onboarding__content h1{font-size:clamp(26px,8vw,33px)}
   .major-view-gate .major-onboarding__content>p:not(.eyebrow){margin-bottom:20px}
