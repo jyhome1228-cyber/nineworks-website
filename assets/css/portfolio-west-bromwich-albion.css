@@ -8,13 +8,14 @@
 .portfolio-wba-page .portfolio-scroll-section__meta{color:var(--wba-navy)}
 .portfolio-wba-page .portfolio-scroll-media{overflow:hidden;background:var(--wba-soft)}
 .portfolio-wba-page .portfolio-scroll-media img{display:block;width:100%;height:auto;object-fit:contain}
-.portfolio-wba-page .portfolio-scroll-media--hero{background:var(--wba-navy)!important}
+.portfolio-wba-page .portfolio-scroll-media--hero{background:#091453!important;isolation:isolate}
+.portfolio-wba-page .portfolio-scroll-media--hero img{background:#091453;filter:grayscale(1) contrast(450%) brightness(1.05);mix-blend-mode:screen}
 
 .wba-proposal-badge{display:inline-flex;align-items:center;gap:8px;margin:18px 0 0;padding:7px 10px;border:1px solid #cbd3de;color:var(--wba-navy);font-size:9.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}
 .wba-proposal-badge:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wba-navy)}
 .wba-hero-note{display:flex;justify-content:space-between;gap:24px;padding:16px 0 0;color:#748090;font-size:10.5px;letter-spacing:.055em;text-transform:uppercase}
 
-.wba-intro-band{margin:0;padding:clamp(56px,5.2vw,86px);background:var(--wba-navy)!important;color:#fff}
+.wba-intro-band{margin:0;padding:clamp(56px,5.2vw,86px);background:#091453!important;color:#fff}
 .wba-intro-band .wba-band-label{margin:0 0 28px;color:#c8d4e8;font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase}
 .wba-intro-band h2{max-width:18ch;margin:0;font-size:clamp(36px,3.6vw,64px);font-weight:500;line-height:1.01;letter-spacing:-.048em}
 .wba-intro-band .wba-intro-lead{max-width:760px;margin:34px 0 0;color:#ecf1f8;font-size:16px;line-height:1.78}
@@ -48,10 +49,10 @@
 #throstle .wba-image-stack > .wba-image:first-child img{width:100%;height:clamp(340px,46vw,540px);padding:34px;object-fit:contain;object-position:center;background:#fff}
 #throstle .wba-image-stack > .wba-image:first-child figcaption{padding:10px 0 0;background:transparent!important}
 
-/* New crest/application image fills the available width without an inset white frame. */
-#crest .wba-image-grid > .wba-image{background:#fff;border:0}
-#crest .wba-image-grid > .wba-image img{display:block;width:100%;height:auto;padding:0;object-fit:cover;object-position:center;background:transparent}
-#crest .wba-image-grid > .wba-image figcaption{padding:10px 0 0;background:transparent!important}
+/* New crest/application image fills the available width and uses the same Albion navy. */
+#crest .wba-image-grid > .wba-image,#mark .wba-image-grid > .wba-image{background:#091453;border:0;isolation:isolate}
+#crest .wba-image-grid > .wba-image img,#mark .wba-image-grid > .wba-image img{display:block;width:100%;height:auto;padding:0;object-fit:cover;object-position:center;background:#091453;filter:grayscale(1) contrast(450%) brightness(1.05);mix-blend-mode:screen}
+#crest .wba-image-grid > .wba-image figcaption,#mark .wba-image-grid > .wba-image figcaption{padding:10px 0 0;background:#fff!important}
 
 .wba-image-grid--three .wba-image{background:#fff;border:1px solid var(--wba-line)}
 .wba-image-grid--three .wba-image img{width:100%;height:auto;object-fit:contain;background:#fff}
@@ -65,7 +66,7 @@
 
 .wba-color-system{display:grid;grid-template-columns:1.45fr .55fr;margin-top:36px;border:1px solid var(--wba-line)}
 .wba-color{min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
-.wba-color--navy{background:var(--wba-navy);color:#fff}
+.wba-color--navy{background:#091453;color:#fff}
 .wba-color--white{background:#fff;color:var(--wba-navy);border-left:1px solid var(--wba-line)}
 .wba-color small{font-size:9.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
 .wba-color strong{font-size:clamp(30px,3vw,48px);font-weight:500;letter-spacing:-.04em}
@@ -109,7 +110,7 @@
 .wba-application-grid img{display:block;width:100%;height:auto}
 .wba-application-grid .wba-wide{grid-column:auto}
 
-.wba-final{margin-top:0;padding:clamp(58px,6vw,98px);background:var(--wba-navy-deep);color:#fff}
+.wba-final{margin-top:0;padding:clamp(58px,6vw,98px);background:#091453;color:#fff}
 .wba-final small{display:block;color:#9fb0ca;font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}
 .wba-final h2{max-width:12ch;margin:28px 0 0;font-size:clamp(46px,6vw,96px);font-weight:500;line-height:.94;letter-spacing:-.055em}
 .wba-final p{max-width:740px;margin:40px 0 0;color:#c7d2e2;font-size:14px;line-height:1.82}
@@ -118,4 +119,4 @@
 .wba-disclaimer strong{color:#dce5f2}
 
 @media(max-width:980px){.wba-context-grid,.wba-meaning-grid{grid-template-columns:1fr 1fr}.wba-principles,.wba-system-grid{grid-template-columns:1fr 1fr}.wba-system-card:nth-child(2){border-right:0}.wba-system-card:nth-child(-n+2){border-bottom:1px solid var(--wba-line)}}
-@media(max-width:680px){.wba-hero-note,.wba-concept-line,.wba-application-head{flex-direction:column;align-items:flex-start;gap:7px}.wba-intro-band{padding:44px 24px}.wba-context-grid,.wba-meaning-grid,.wba-color-system,.wba-before-after,.wba-principles,.wba-role-grid,.wba-system-grid,.wba-image-grid--three{grid-template-columns:1fr}.wba-context-card,.wba-meaning-card,.wba-principle,.wba-role,.wba-system-card{min-height:0}.wba-color--white,.wba-ba-column + .wba-ba-column{border-left:0;border-top:1px solid var(--wba-line)}.wba-system-card{border-right:0!important}#throstle .wba-image-stack > .wba-image:first-child img{height:clamp(280px,78vw,430px);padding:22px}#crest .wba-image-grid > .wba-image img{height:auto;padding:0}.wba-final{padding:54px 24px}}
+@media(max-width:680px){.wba-hero-note,.wba-concept-line,.wba-application-head{flex-direction:column;align-items:flex-start;gap:7px}.wba-intro-band{padding:44px 24px}.wba-context-grid,.wba-meaning-grid,.wba-color-system,.wba-before-after,.wba-principles,.wba-role-grid,.wba-system-grid,.wba-image-grid--three{grid-template-columns:1fr}.wba-context-card,.wba-meaning-card,.wba-principle,.wba-role,.wba-system-card{min-height:0}.wba-color--white,.wba-ba-column + .wba-ba-column{border-left:0;border-top:1px solid var(--wba-line)}.wba-system-card{border-right:0!important}#throstle .wba-image-stack > .wba-image:first-child img{height:clamp(280px,78vw,430px);padding:22px}#crest .wba-image-grid > .wba-image img,#mark .wba-image-grid > .wba-image img{height:auto;padding:0}.wba-final{padding:54px 24px}}
