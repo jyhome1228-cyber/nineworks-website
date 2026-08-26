@@ -1,8 +1,8 @@
 import { addDoc, collection, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
 import { db, firebaseConfigReady, firebaseInitError } from './firebase-client.js';
 
-const SESSION_KEY = 'nineworks-majorportfolio-view-access-v3';
-const PROFILE_KEY = 'nineworks-majorportfolio-view-profile-v3';
+const SESSION_KEY = 'nineworks-majorportfolio-view-access-v4';
+const PROFILE_KEY = 'nineworks-majorportfolio-view-profile-v4';
 const VIEW_SERVICE = 'PORTFOLIO VIEW';
 const VIEW_SOURCE = 'majorportfolio/register.html';
 
@@ -57,7 +57,7 @@ const hideGate = (instant = false) => {
     return;
   }
   gate.classList.add('is-hidden');
-  window.setTimeout(() => { gate.hidden = true; }, 460);
+  window.setTimeout(() => { gate.hidden = true; }, 360);
 };
 
 const showGate = () => {
@@ -88,6 +88,38 @@ const showWelcome = (profile) => {
 
 const normalize = (value = '') => String(value || '').trim().replace(/\s+/g, ' ');
 
+const saveAccessLog = (profile) => {
+  if (!firebaseConfigReady || firebaseInitError || !db) {
+    console.warn('[NINEWORKS majorportfolio] Firebase unavailable; viewer access is not blocked.');
+    return;
+  }
+
+  addDoc(collection(db, 'inquiries'), {
+    status: 'new',
+    source: VIEW_SOURCE,
+    service: VIEW_SERVICE,
+    company: profile.organization.slice(0, 120),
+    contactName: profile.name.slice(0, 60),
+    email: '',
+    phone: '',
+    projectName: 'Major Portfolio',
+    projectType: 'Portfolio Viewer Access',
+    message: '메이저 포트폴리오 열람',
+    details: '개인정보 수집·이용 동의: 동의\n수집 항목: 성함, 소속\n이용 목적: 메이저 포트폴리오 열람자 확인 및 접근 이력 관리',
+    pageTitle: document.title,
+    createdAt: serverTimestamp()
+  }).catch((error) => {
+    console.warn('[NINEWORKS majorportfolio] access log save failed', error);
+  });
+};
+
+const enterPortfolio = (profile) => {
+  grantSession(profile);
+  hideGate(true);
+  showWelcome(profile);
+  window.scrollTo({ top: 0, behavior: 'auto' });
+};
+
 const init = () => {
   if (!gate || !form) return;
 
@@ -102,7 +134,7 @@ const init = () => {
   const nameInput = form.elements.namedItem('name');
   if (nameInput instanceof HTMLElement) window.setTimeout(() => nameInput.focus(), 120);
 
-  form.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
     setError('');
 
@@ -126,44 +158,17 @@ const init = () => {
       form.elements.namedItem('privacyConsent')?.focus();
       return;
     }
-    if (!firebaseConfigReady || firebaseInitError || !db) {
-      setError('접속 기록 저장 연결을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.');
-      return;
-    }
 
-    const button = form.querySelector('button[type="submit"]');
-    if (button) button.disabled = true;
-    gate.dataset.saving = 'true';
+    const profile = {
+      name: name.slice(0, 60),
+      organization: organization.slice(0, 120)
+    };
 
-    try {
-      await addDoc(collection(db, 'inquiries'), {
-        status: 'new',
-        source: VIEW_SOURCE,
-        service: VIEW_SERVICE,
-        company: organization.slice(0, 120),
-        contactName: name.slice(0, 60),
-        email: '',
-        phone: '',
-        projectName: 'Major Portfolio',
-        projectType: 'Portfolio Viewer Access',
-        message: '메이저 포트폴리오 열람',
-        details: '개인정보 수집·이용 동의: 동의\n수집 항목: 성함, 소속\n이용 목적: 메이저 포트폴리오 열람자 확인 및 접근 이력 관리',
-        pageTitle: document.title,
-        createdAt: serverTimestamp()
-      });
+    // 열람 자체는 Firebase 응답을 기다리지 않고 즉시 허용합니다.
+    enterPortfolio(profile);
 
-      const profile = { name: name.slice(0, 60), organization: organization.slice(0, 120) };
-      grantSession(profile);
-      hideGate(true);
-      showWelcome(profile);
-      window.scrollTo({ top: 0, behavior: 'auto' });
-    } catch (error) {
-      console.error('[NINEWORKS majorportfolio] access log save failed', error);
-      setError('접속 기록 저장에 실패했습니다. 네트워크 상태를 확인한 뒤 다시 시도해 주세요.');
-    } finally {
-      delete gate.dataset.saving;
-      if (button) button.disabled = false;
-    }
+    // 접속 기록은 사용자 경험을 막지 않도록 비동기로 저장합니다.
+    window.setTimeout(() => saveAccessLog(profile), 0);
   });
 };
 
