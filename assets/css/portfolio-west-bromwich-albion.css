@@ -8,8 +8,8 @@
 .portfolio-wba-page .portfolio-scroll-section__meta{color:var(--wba-navy)}
 .portfolio-wba-page .portfolio-scroll-media{overflow:hidden;background:var(--wba-soft)}
 .portfolio-wba-page .portfolio-scroll-media img{display:block;width:100%;height:auto;object-fit:contain}
-.portfolio-wba-page .portfolio-scroll-media--hero{background:#091453!important;isolation:isolate}
-.portfolio-wba-page .portfolio-scroll-media--hero img{background:#091453;filter:grayscale(1) contrast(450%) brightness(1.05);mix-blend-mode:screen}
+.portfolio-wba-page .portfolio-scroll-media--hero{background:#091453!important}
+.portfolio-wba-page .portfolio-scroll-media--hero img{background:transparent;filter:none!important;mix-blend-mode:normal!important}
 
 .wba-proposal-badge{display:inline-flex;align-items:center;gap:8px;margin:18px 0 0;padding:7px 10px;border:1px solid #cbd3de;color:var(--wba-navy);font-size:9.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase}
 .wba-proposal-badge:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wba-navy)}
@@ -40,18 +40,16 @@
 .wba-image--early{margin:32px 0 0}
 .wba-image--early + .wba-quote{margin-top:28px}
 
-/* Keep the narrative in the correct order: old crest → 3-step transition → new crest. */
 #beginning .wba-image--early{display:none}
 #throstle > .wba-image--early{display:none}
 
-/* Existing crest stays as a contained heritage reference plate. */
 #throstle .wba-image-stack > .wba-image:first-child{background:#fff;border:1px solid var(--wba-line)}
 #throstle .wba-image-stack > .wba-image:first-child img{width:100%;height:clamp(340px,46vw,540px);padding:34px;object-fit:contain;object-position:center;background:#fff}
 #throstle .wba-image-stack > .wba-image:first-child figcaption{padding:10px 0 0;background:transparent!important}
 
-/* New crest/application image fills the available width and uses the same Albion navy. */
-#crest .wba-image-grid > .wba-image,#mark .wba-image-grid > .wba-image{background:#091453;border:0;isolation:isolate}
-#crest .wba-image-grid > .wba-image img,#mark .wba-image-grid > .wba-image img{display:block;width:100%;height:auto;padding:0;object-fit:cover;object-position:center;background:#091453;filter:grayscale(1) contrast(450%) brightness(1.05);mix-blend-mode:screen}
+/* New crest/application images: preserve original uploaded colors. */
+#crest .wba-image-grid > .wba-image,#mark .wba-image-grid > .wba-image{background:transparent;border:0}
+#crest .wba-image-grid > .wba-image img,#mark .wba-image-grid > .wba-image img{display:block;width:100%;height:auto;padding:0;object-fit:cover;object-position:center;background:transparent!important;filter:none!important;mix-blend-mode:normal!important}
 #crest .wba-image-grid > .wba-image figcaption,#mark .wba-image-grid > .wba-image figcaption{padding:10px 0 0;background:#fff!important}
 
 .wba-image-grid--three .wba-image{background:#fff;border:1px solid var(--wba-line)}
