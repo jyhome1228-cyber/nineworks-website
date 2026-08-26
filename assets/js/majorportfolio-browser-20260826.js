@@ -22,9 +22,10 @@
     editorial:['Editorial Design','브로셔, 카탈로그, 리플렛, 회사소개서, 전시 인쇄물과 교육 자료 등 편집 디자인 작업입니다.'],
     ir:['IR / PPT','사업계획, 투자제안, 서비스 소개와 발표를 위한 IR·PPT·프레젠테이션 디자인 아카이브입니다.'],
     package:['Package Design','패키지 전용 부속 페이지에서 전체 작업을 확인할 수 있습니다.'],
-    event:['Event Design','행사, 전시, 팝업과 데모데이 등 오프라인 브랜드 경험을 위한 이벤트 비주얼 프로젝트입니다.']
+    event:['Event Design','행사, 전시, 팝업과 데모데이 등 오프라인 브랜드 경험을 위한 이벤트 비주얼 프로젝트입니다.'],
+    localbranding:['Local Branding','지역 농산물과 로컬 식품의 특성, 산지의 이야기와 판매 환경을 브랜드·패키지 언어로 정리한 아카이브입니다.']
   };
-  const labels = {all:'ALL',major:'MAJOR',branding:'BRANDING',website:'WEBSITE',system:'SYSTEM',detailpage:'DETAIL PAGE',editorial:'EDITORIAL',ir:'IR / PPT',package:'PACKAGE',event:'EVENT'};
+  const labels = {all:'ALL',major:'MAJOR',branding:'BRANDING',website:'WEBSITE',system:'SYSTEM',detailpage:'DETAIL PAGE',editorial:'EDITORIAL',ir:'IR / PPT',package:'PACKAGE',event:'EVENT',localbranding:'LOCAL BRANDING'};
   const escapeHTML = (value='') => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 
   const uniqueCases=[]; const seen=new Set();
@@ -36,17 +37,19 @@
   const packagePriority=(item)=>{const text=`${item?.title||''} ${item?.subtitle||''}`.toLowerCase();if(/hollys|할리스/.test(text))return 300;if(/yonsei|연세|kids\s?ten|키즈텐|healthd|헬씨드/.test(text))return 200;if(/gong\s?cha|공차/.test(text))return 100;return 0;};
   const visualArchives=(Array.isArray(window.NW_PORTFOLIO_ARCHIVE)?window.NW_PORTFOLIO_ARCHIVE:[]).map((item,index)=>({...item,__index:index})).sort((a,b)=>{const ap=(a.filters||[]).includes('package'),bp=(b.filters||[]).includes('package');if(ap&&bp){const p=packagePriority(b)-packagePriority(a);if(p)return p;const o=sourceOrder(b)-sourceOrder(a);if(o)return o;}return a.__index-b.__index;}).map(({__index,...item})=>({...item,archive:true}));
   const detailArchives=(Array.isArray(window.NW_DETAILPAGE_ARCHIVE)?window.NW_DETAILPAGE_ARCHIVE:[]).slice().sort((a,b)=>sourceOrder(b)-sourceOrder(a)).map((item)=>({...item,archive:true,filters:[...new Set(['detailpage',...(item.filters||[])])]}));
-  const allArchives=[...visualArchives,...detailArchives]; const allWorks=[...uniqueCases,...allArchives];
+  const localBrandingArchives=(Array.isArray(window.NW_LOCAL_BRANDING_ARCHIVE)?window.NW_LOCAL_BRANDING_ARCHIVE:[]).slice().sort((a,b)=>sourceOrder(a)-sourceOrder(b)).map((item)=>({...item,archive:true,filters:[...new Set(['localbranding',...(item.filters||[])])]}));
+  const allArchives=[...visualArchives,...detailArchives,...localBrandingArchives]; const allWorks=[...uniqueCases,...allArchives];
 
   const detailMap={fineb:'/portfolio-fineb.html','tne-epc':'/portfolio-tne-epc.html',relim:'/portfolio-relim.html',aesost:'/portfolio-aesost.html',kekomi:'/portfolio-kekomi.html','the-petrichor':'/portfolio-the-petrichor.html',thomastone:'/portfolio-thomastone.html',recelleclore:'/portfolio-recelleclore.html'};
   const caseHref=(project)=>{if((project.filters||[]).includes('system'))return './system.html';if(detailMap[project.id])return detailMap[project.id];const explicit=String(project.detailUrl||'').trim();if(explicit)return /^https?:\/\//i.test(explicit)||explicit.startsWith('/')?explicit:`/${explicit}`;return `/portfolio-detail.html?work=${encodeURIComponent(project.id||'')}`;};
   const thumb=(item)=>item.thumbnail||item.image||(Array.isArray(item.images)?item.images[0]:'')||'';
-  const categoryLabel=(item)=>{const filters=Array.isArray(item.filters)?item.filters:[];return labels[filters.find((key)=>['website','system','detailpage','editorial','ir','package','event','branding'].includes(key))]||'PROJECT';};
+  const categoryLabel=(item)=>{const filters=Array.isArray(item.filters)?item.filters:[];return labels[filters.find((key)=>['website','system','detailpage','editorial','ir','package','event','branding','localbranding'].includes(key))]||'PROJECT';};
 
   const cardMarkup=(item)=>{
     const title=escapeHTML(item.title||'Project'),subtitle=escapeHTML(item.subtitle||item.scope||''),image=escapeHTML(thumb(item)),label=escapeHTML(categoryLabel(item));
     if(item.archive){
       const filters=item.filters||[];
+      if(filters.includes('localbranding')) return `<article class="major-browser-card major-browser-card--archive"><a class="major-browser-card__link" href="./localbranding.html?work=${encodeURIComponent(item.id||'')}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
       if(filters.includes('package')) return `<article class="major-browser-card major-browser-card--archive"><a class="major-browser-card__link" href="./package.html?work=${encodeURIComponent(item.id||'')}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
       if(filters.includes('detailpage')) return `<article class="major-browser-card major-browser-card--archive"><a class="major-browser-card__link" href="./detailpage.html?work=${encodeURIComponent(item.id||'')}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
       return `<article class="major-browser-card major-browser-card--archive"><a class="major-browser-card__link" href="#quick-view" data-major-archive-id="${escapeHTML(item.id)}"><div class="major-browser-card__media"><img src="${image}" alt="${title}" loading="lazy"></div><div class="major-browser-card__info"><div><strong>${title}</strong><p>${subtitle}</p></div><span>${label}</span></div></a></article>`;
@@ -64,8 +67,8 @@
     if(moreBox){const remaining=Math.max(0,items.length-visibleLimit);moreBox.hidden=remaining===0;const button=moreBox.querySelector('button');if(button)button.textContent=remaining>0?`MORE WORKS · ${Math.min(PAGE_SIZE,remaining)}개 더보기`:'MORE WORKS';}
   };
 
-  if(filtersBox){filtersBox.innerHTML=Object.keys(labels).map((key)=>key==='package'?`<a href="./package.html">${labels[key]} ↗</a>`:key==='detailpage'?`<a href="./detailpage.html">${labels[key]} ↗</a>`:`<button type="button" data-major-browser-filter="${key}">${labels[key]}</button>`).join('');}
-  const openFilter=(filter)=>{if(filter==='package'){location.href='./package.html';return;}if(filter==='detailpage'){location.href='./detailpage.html';return;}activeFilter=categoryMeta[filter]?filter:'all';render(true);browser.scrollIntoView({behavior:'smooth',block:'start'});};
+  if(filtersBox){filtersBox.innerHTML=Object.keys(labels).map((key)=>key==='package'?`<a href="./package.html">${labels[key]} ↗</a>`:key==='detailpage'?`<a href="./detailpage.html">${labels[key]} ↗</a>`:key==='localbranding'?`<a href="./localbranding.html">${labels[key]} ↗</a>`:`<button type="button" data-major-browser-filter="${key}">${labels[key]}</button>`).join('');}
+  const openFilter=(filter)=>{if(filter==='package'){location.href='./package.html';return;}if(filter==='detailpage'){location.href='./detailpage.html';return;}if(filter==='localbranding'){location.href='./localbranding.html';return;}activeFilter=categoryMeta[filter]?filter:'all';render(true);browser.scrollIntoView({behavior:'smooth',block:'start'});};
 
   const quickView=document.createElement('div');quickView.className='major-browser-modal';quickView.setAttribute('aria-hidden','true');quickView.innerHTML=`<div class="major-browser-modal__head"><div><span>NINEWORKS / PORTFOLIO ARCHIVE</span><h2 data-major-quick-title></h2></div><button class="major-browser-modal__close" type="button" data-major-quick-close>×</button></div><div class="major-browser-modal__stage" data-major-quick-stage></div><div class="major-browser-modal__foot"><span data-major-quick-category>VISUAL ARCHIVE</span><span data-major-quick-count>01 IMAGE</span></div>`;document.body.appendChild(quickView);
   const closeQuickView=()=>{quickView.classList.remove('is-open');quickView.setAttribute('aria-hidden','true');document.body.classList.remove('is-major-browser-modal-open');};
@@ -81,7 +84,7 @@
   document.addEventListener('keydown',(event)=>{if(event.key!=='Escape')return;if(inquiry.classList.contains('is-open'))closeInquiry();if(quickView.classList.contains('is-open'))closeQuickView();});
 
   const urlFilter=new URLSearchParams(location.search).get('filter');
-  if(urlFilter&&categoryMeta[urlFilter]&&!['package','detailpage'].includes(urlFilter)) activeFilter=urlFilter;
+  if(urlFilter&&categoryMeta[urlFilter]&&!['package','detailpage','localbranding'].includes(urlFilter)) activeFilter=urlFilter;
   render(true);
   if(urlFilter&&location.hash==='#portfolio-browser') window.setTimeout(()=>browser.scrollIntoView({behavior:'auto',block:'start'}),60);
 })();
