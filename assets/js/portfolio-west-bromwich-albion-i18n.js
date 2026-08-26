@@ -99,10 +99,10 @@
   const sections = {
     beginning: {
       label:['1878 — The Beginning','1878 — 시작'],
-      title:['Built in West Bromwich. Carried forward by generations of Albion.','West Bromwich에서 시작되어, 세대와 함께 이어진 Albion.'],
+      title:['Born in West Bromwich. Carried forward as Albion.','West Bromwich에서 시작된 클럽, 세대를 거쳐 이어진 Albion.'],
       copy:[
-        '<p>Founded in 1878, West Bromwich Albion grew alongside the community of West Bromwich and developed a football identity inseparable from its place, supporters and matchday culture. The club’s history is therefore not treated as decoration in this proposal; it is the design brief itself.</p><p>The central question is simple: how can the history and symbols of Albion, born in West Bromwich, be carried more clearly into the next generation? This is not change that erases the past, but change that helps memory continue to work.</p>',
-        '<p>1878년 창단한 West Bromwich Albion은 West Bromwich 지역 공동체와 함께 성장하며 장소, 서포터, 매치데이 문화와 분리할 수 없는 축구 정체성을 만들어 왔습니다. 따라서 이 제안에서 클럽의 역사는 장식적인 참고 자료가 아니라 디자인 브리프 그 자체입니다.</p><p>핵심 질문은 단순합니다. <strong>“West Bromwich에서 시작된 Albion의 역사와 상징을 어떻게 다음 세대에 더 선명하게 전달할 것인가.”</strong> 과거를 지우는 변화가 아니라, 기억이 더 오래 작동하도록 만드는 방식의 변화입니다.</p>'
+        '<p>The club that became West Bromwich Albion was formed in West Bromwich in 1878. Its earliest pioneers were known as West Bromwich Strollers before the club took on the Albion name. From that local beginning, the club grew with its community and built a football identity inseparable from place, supporters and matchday culture.</p><p>The central question is therefore not how to reinvent Albion, but how a club born in West Bromwich can carry its history and symbols into the next generation while keeping <strong>Albion</strong> as its clearest shared identity.</p>',
+        '<p>오늘의 West Bromwich Albion으로 이어진 클럽은 1878년 West Bromwich에서 시작했습니다. 초기에는 <strong>West Bromwich Strollers</strong>로 불렸고, 이후 <strong>Albion</strong>이라는 이름을 받아들이며 지역 공동체와 함께 성장했습니다. 장소와 서포터, 매치데이 문화가 축적되면서 지금의 클럽 정체성이 만들어졌습니다.</p><p>따라서 이 제안의 핵심 질문은 <strong>“West Bromwich에서 시작된 클럽의 역사와 상징을, ‘Albion’이라는 정체성을 중심으로 다음 세대에 어떻게 더 선명하게 전달할 것인가.”</strong>입니다. West Bromwich는 클럽의 출발점이자 장소이고, Albion은 세대를 거쳐 이어져 온 클럽의 이름과 정체성입니다.</p>'
       ]
     },
     throstle: {
