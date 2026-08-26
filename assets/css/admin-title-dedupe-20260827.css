@@ -1,0 +1,27 @@
+/* NINEWORKS Admin — keep the global topbar as the single page title.
+   Panel-level label/title/description blocks duplicate the topbar title,
+   so hide them across static and dynamically injected admin panels. */
+.admin-panel > .admin-section-head {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.admin-panel > .admin-section-head > *:has(> h2) {
+  display: none !important;
+}
+
+/* Preserve real actions that used to sit beside the duplicated intro. */
+.admin-panel > .admin-section-head:has(> a, > button) {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  margin-bottom: 18px !important;
+}
+
+/* A title-only section head should take up no visual space at all. */
+.admin-panel > .admin-section-head:not(:has(> a, > button)) {
+  display: none !important;
+}
