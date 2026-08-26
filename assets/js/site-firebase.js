@@ -27,6 +27,60 @@
   };
   installMemberSystem();
 
+  const installPartnerDashboardIntro = () => {
+    if (!document.body?.classList.contains('recruit-page')) return;
+    if (document.querySelector('[data-partner-dashboard-intro]')) return;
+    const form = document.querySelector('.recruit-form');
+    if (!form) return;
+
+    if (!document.querySelector('style[data-partner-dashboard-style]')) {
+      const style = document.createElement('style');
+      style.dataset.partnerDashboardStyle = 'true';
+      style.textContent = `
+        .recruit-dashboard{margin:0 0 42px;padding:34px;border:1px solid #d7d7d1;background:#fff}
+        .recruit-dashboard__head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:36px;padding-bottom:30px;border-bottom:1px solid #111}
+        .recruit-dashboard__eyebrow{font-size:10px;font-weight:600;letter-spacing:.08em;color:#777}
+        .recruit-dashboard__head h3{max-width:760px;margin:0;font-size:clamp(25px,2.4vw,36px);font-weight:500;line-height:1.22;letter-spacing:-.04em}
+        .recruit-dashboard__head p{grid-column:2;max-width:860px;margin:12px 0 0;color:#666;font-size:13.5px;line-height:1.8}
+        .recruit-dashboard__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:24px}
+        .recruit-dashboard__card{min-height:170px;padding:20px;border:1px solid #deded9;background:#fafaf8}
+        .recruit-dashboard__card span{font-size:10px;color:#888;letter-spacing:.06em}
+        .recruit-dashboard__card h4{margin:38px 0 8px;font-size:17px;font-weight:500;letter-spacing:-.02em}
+        .recruit-dashboard__card p{margin:0;color:#666;font-size:12.5px;line-height:1.7}
+        .recruit-dashboard__summary{display:grid;grid-template-columns:220px minmax(0,1fr);gap:36px;margin-top:10px;padding:20px 22px;border:1px solid #d9d9d4;background:#efefec}
+        .recruit-dashboard__summary strong{font-size:12px;font-weight:600}
+        .recruit-dashboard__summary p{max-width:900px;margin:0;color:#5d5d5d;font-size:12.5px;line-height:1.75}
+        @media(max-width:960px){.recruit-dashboard__head,.recruit-dashboard__summary{grid-template-columns:1fr;gap:8px}.recruit-dashboard__head p{grid-column:1}.recruit-dashboard__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+        @media(max-width:680px){.recruit-dashboard{padding:22px 16px}.recruit-dashboard__grid{grid-template-columns:1fr}.recruit-dashboard__card{min-height:auto}.recruit-dashboard__card h4{margin-top:28px}.recruit-dashboard__summary{padding:18px}}
+      `;
+      document.head.appendChild(style);
+    }
+
+    const section = document.createElement('section');
+    section.className = 'recruit-dashboard reveal is-visible';
+    section.setAttribute('data-partner-dashboard-intro', '');
+    section.innerHTML = `
+      <div class="recruit-dashboard__head">
+        <div class="recruit-dashboard__eyebrow">PARTNER PROJECT DASHBOARD</div>
+        <div>
+          <h3>작업은 디자인에 집중하고,<br>프로젝트 관리는 한 곳에서.</h3>
+          <p>나인웍스 파트너 디자이너에게는 프로젝트별 개별 관리 대시보드를 제공합니다. 카카오톡과 메일에 흩어진 내용을 다시 찾지 않아도 업무 범위, 일정, 자료, 전달사항과 정산 상태까지 한 화면에서 확인할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="recruit-dashboard__grid">
+        <article class="recruit-dashboard__card"><span>01 / PROJECT STATUS</span><h4>진행 현황을 한눈에</h4><p>현재 단계와 다음 업무를 바로 확인해 프로젝트가 어디까지 왔는지 놓치지 않습니다.</p></article>
+        <article class="recruit-dashboard__card"><span>02 / SCHEDULE</span><h4>일정과 마감 관리</h4><p>시작일, 목표 일정과 주요 마감 시점을 한 곳에서 확인해 일정 관리가 단순해집니다.</p></article>
+        <article class="recruit-dashboard__card"><span>03 / BRIEF & FILES</span><h4>업무 범위와 자료 정리</h4><p>브리프, 요청사항, 전달 자료와 수정 내용을 프로젝트별로 모아 같은 기준을 보고 작업합니다.</p></article>
+        <article class="recruit-dashboard__card"><span>04 / PAYMENT</span><h4>정산까지 투명하게</h4><p>프로젝트별 비용과 정산 상태, 지급 내역을 확인할 수 있어 작업 이후의 과정도 명확합니다.</p></article>
+      </div>
+      <div class="recruit-dashboard__summary">
+        <strong>프로젝트를 감으로 진행하지 않습니다.</strong>
+        <p>시작 전 역할과 범위를 정리하고, 진행 중 변경사항을 기록하며, 완료 후 정산까지 같은 흐름 안에서 관리합니다. 파트너와 나인웍스 모두 동일한 정보를 보고 움직일 수 있도록 체계를 갖춰 프로젝트를 진행합니다.</p>
+      </div>`;
+    form.parentNode.insertBefore(section, form);
+  };
+  installPartnerDashboardIntro();
+
   const getFirebase = () => {
     if (!firebasePromise) {
       firebasePromise = Promise.all([
