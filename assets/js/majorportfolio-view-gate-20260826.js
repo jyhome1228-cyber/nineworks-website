@@ -1,9 +1,8 @@
 import { addDoc, collection, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
 import { db, firebaseConfigReady, firebaseInitError } from './firebase-client.js';
 
-const SESSION_KEY = 'nineworks-majorportfolio-view-access-v2';
-const PROFILE_KEY = 'nineworks-majorportfolio-view-profile-v2';
-const WELCOME_KEY = 'nineworks-majorportfolio-welcome-seen-v2';
+const SESSION_KEY = 'nineworks-majorportfolio-view-access-v3';
+const PROFILE_KEY = 'nineworks-majorportfolio-view-profile-v3';
 const VIEW_SERVICE = 'PORTFOLIO VIEW';
 const VIEW_SOURCE = 'majorportfolio/register.html';
 
@@ -13,8 +12,7 @@ const errorBox = gate?.querySelector('[data-major-view-error]');
 const welcome = document.querySelector('[data-major-welcome]');
 const welcomeName = welcome?.querySelector('[data-major-welcome-name]');
 const welcomeOrg = welcome?.querySelector('[data-major-welcome-org]');
-const welcomeEnter = welcome?.querySelector('[data-major-welcome-enter]');
-const welcomeContact = welcome?.querySelector('.major-welcome__contact');
+const welcomeCopy = welcome?.querySelector('.major-welcome__copy');
 
 const setError = (message = '') => {
   if (errorBox) errorBox.textContent = message;
@@ -31,7 +29,6 @@ const safeSessionSet = (key, value) => {
 };
 
 const sessionGranted = () => safeSessionGet(SESSION_KEY) === '1';
-const welcomeSeen = () => safeSessionGet(WELCOME_KEY) === '1';
 
 const readProfile = () => {
   try {
@@ -51,10 +48,9 @@ const grantSession = (profile) => {
   safeSessionSet(PROFILE_KEY, JSON.stringify(profile));
 };
 
-const markWelcomeSeen = () => safeSessionSet(WELCOME_KEY, '1');
-
 const hideGate = (instant = false) => {
   if (!gate) return;
+  document.body.classList.remove('is-onboarding');
   if (instant) {
     gate.hidden = true;
     gate.classList.remove('is-hidden');
@@ -72,55 +68,33 @@ const showGate = () => {
   document.body.classList.add('is-onboarding');
 };
 
-const showWelcome = (profile) => {
-  if (!welcome || !profile) {
-    document.body.classList.remove('is-onboarding');
-    return;
-  }
-  if (welcomeName) welcomeName.textContent = `${profile.name} 담당자`;
-  if (welcomeOrg) welcomeOrg.textContent = `${profile.organization} / PORTFOLIO VIEWER`;
-  welcome.hidden = false;
-  welcome.classList.remove('is-hidden');
-  document.body.classList.add('is-onboarding');
-  window.setTimeout(() => welcomeEnter?.focus(), 120);
+const placeWelcomeInMain = () => {
+  if (!welcome) return;
+  const main = document.querySelector('.major-shell main');
+  const hero = main?.querySelector('.major-hero');
+  if (main && hero && welcome.parentElement !== main) main.insertBefore(welcome, hero);
 };
 
-const hideWelcome = (instant = false) => {
-  if (!welcome) {
-    document.body.classList.remove('is-onboarding');
-    return;
-  }
-  markWelcomeSeen();
-  if (instant) {
-    welcome.hidden = true;
-    welcome.classList.remove('is-hidden');
-    document.body.classList.remove('is-onboarding');
-    return;
-  }
-  welcome.classList.add('is-hidden');
+const showWelcome = (profile) => {
+  if (!welcome || !profile) return;
+  placeWelcomeInMain();
+  if (welcomeName) welcomeName.textContent = `${profile.name} 담당자`;
+  if (welcomeOrg) welcomeOrg.textContent = profile.organization;
+  if (welcomeCopy) welcomeCopy.textContent = '필요한 프로젝트의 상세 자료나 별도 포트폴리오가 있다면 언제든 편하게 문의해 주세요.';
+  welcome.hidden = false;
+  welcome.classList.remove('is-hidden');
   document.body.classList.remove('is-onboarding');
-  window.setTimeout(() => {
-    welcome.hidden = true;
-    welcome.classList.remove('is-hidden');
-  }, 460);
 };
 
 const normalize = (value = '') => String(value || '').trim().replace(/\s+/g, ' ');
 
-const bindWelcome = () => {
-  welcomeEnter?.addEventListener('click', () => hideWelcome(false));
-  welcomeContact?.addEventListener('click', () => markWelcomeSeen());
-};
-
 const init = () => {
-  bindWelcome();
   if (!gate || !form) return;
 
   const savedProfile = readProfile();
   if (sessionGranted() && savedProfile) {
     hideGate(true);
-    if (!welcomeSeen()) showWelcome(savedProfile);
-    else hideWelcome(true);
+    showWelcome(savedProfile);
     return;
   }
 
@@ -182,6 +156,7 @@ const init = () => {
       grantSession(profile);
       hideGate(true);
       showWelcome(profile);
+      window.scrollTo({ top: 0, behavior: 'auto' });
     } catch (error) {
       console.error('[NINEWORKS majorportfolio] access log save failed', error);
       setError('접속 기록 저장에 실패했습니다. 네트워크 상태를 확인한 뒤 다시 시도해 주세요.');
