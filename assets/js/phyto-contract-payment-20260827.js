@@ -97,10 +97,17 @@ const setupConsent = () => {
   });
 };
 
-const renderPaymentPanel = (status = 'deposit_waiting') => {
+const removePaymentPanel = () => {
+  document.querySelector('[data-phyto-payment-panel]')?.remove();
+};
+
+const renderPaymentPanel = (status) => {
   const side = document.querySelector('.side-stack');
-  if (!side) return;
-  const normalized = PAYMENT_LABELS[status] ? status : 'deposit_waiting';
+  if (!side || !PAYMENT_LABELS[status]) {
+    removePaymentPanel();
+    return;
+  }
+
   let panel = side.querySelector('[data-phyto-payment-panel]');
   if (!panel) {
     panel = document.createElement('section');
@@ -116,29 +123,32 @@ const renderPaymentPanel = (status = 'deposit_waiting') => {
     <div class="panel-head"><h2>PAYMENT STATUS</h2><span>07</span></div>
     <div class="nw-phyto-payment-status">
       <span class="nw-phyto-payment-kicker">CURRENT PAYMENT</span>
-      <strong>${PAYMENT_LABELS[normalized]}</strong>
-      <p>${PAYMENT_COPY[normalized]}</p>
+      <strong>${PAYMENT_LABELS[status]}</strong>
+      <p>${PAYMENT_COPY[status]}</p>
       <div class="nw-phyto-payment-steps">
-        ${keys.map((key, index) => `<span class="${key === normalized ? 'is-active' : ''} ${keys.indexOf(normalized) > index ? 'is-done' : ''}"><i>${String(index + 1).padStart(2, '0')}</i>${PAYMENT_LABELS[key]}</span>`).join('')}
+        ${keys.map((key, index) => `<span class="${key === status ? 'is-active' : ''} ${keys.indexOf(status) > index ? 'is-done' : ''}"><i>${String(index + 1).padStart(2, '0')}</i>${PAYMENT_LABELS[key]}</span>`).join('')}
       </div>
     </div>`;
 };
 
 const subscribePaymentStatus = () => {
-  if (!document.querySelector('.side-stack')) return;
-  renderPaymentPanel('deposit_waiting');
-  if (!db) return;
+  if (!document.querySelector('.side-stack') || !db) return;
+  removePaymentPanel();
   unsubscribePayment?.();
   unsubscribePayment = onSnapshot(doc(db, 'clientPortals', 'phyto'), (snapshot) => {
     if (!snapshot.exists()) {
-      renderPaymentPanel('deposit_waiting');
+      removePaymentPanel();
       return;
     }
     const data = snapshot.data() || {};
-    if (data.enabled !== true) return;
-    renderPaymentPanel(data.paymentStatus || 'deposit_waiting');
+    if (data.enabled !== true || data.paymentStatusVisible !== true || !PAYMENT_LABELS[data.paymentStatus]) {
+      removePaymentPanel();
+      return;
+    }
+    renderPaymentPanel(data.paymentStatus);
   }, (error) => {
     console.warn('[NINEWORKS Client] payment status stream failed', error);
+    removePaymentPanel();
   });
 };
 
