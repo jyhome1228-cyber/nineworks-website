@@ -15,7 +15,6 @@ let consents = new Map();
 let unsubscribeClients = null;
 let unsubscribeInquiries = null;
 let observer = null;
-let phytoDefaultEnsured = false;
 let syncQueued = false;
 let quickMenu = null;
 
@@ -55,10 +54,11 @@ const consentClientId = (data = {}) => {
   return '';
 };
 
-const savedPaymentStatus = (client = {}, id = '') => {
-  if (PAYMENT_LABELS[client.paymentStatus]) return client.paymentStatus;
-  return id === 'phyto' ? 'deposit_waiting' : '';
-};
+const savedPaymentStatus = (client = {}) => (
+  client.paymentStatusVisible === true && PAYMENT_LABELS[client.paymentStatus]
+    ? client.paymentStatus
+    : ''
+);
 
 const ensureTableHead = () => {
   const filter = document.querySelector('.admin-client-filter-panel');
@@ -74,12 +74,13 @@ const decorateRows = () => {
     const id = row.dataset.clientId || '';
     const client = clients.get(id) || {};
     const agreed = consents.get(id);
-    const payment = savedPaymentStatus(client, id);
+    const payment = savedPaymentStatus(client);
     const name = row.querySelector('.admin-client-row__name');
     if (!name) return;
 
     let statusLine = name.querySelector('.admin-client-row__statusline');
-    if (id !== 'phyto' && !agreed && !payment) {
+    const hasPaymentControl = id === 'phyto' || payment;
+    if (!agreed && !hasPaymentControl) {
       statusLine?.remove();
       return;
     }
@@ -90,9 +91,10 @@ const decorateRows = () => {
       name.appendChild(statusLine);
     }
 
+    const paymentLabel = payment ? PAYMENT_LABELS[payment] : '결제상태 설정';
     statusLine.innerHTML = `
-      <span class="admin-client-state-chip ${agreed ? 'is-complete' : 'is-waiting'}">${agreed ? '계약 동의완료' : '계약 동의대기'}</span>
-      ${payment ? `<span class="admin-client-state-chip is-payment" role="button" tabindex="0" data-payment-quick="${id}" title="클릭하여 결제 상태 변경" aria-label="${PAYMENT_LABELS[payment]} · 클릭하여 결제 상태 변경">${PAYMENT_LABELS[payment]} <b>▾</b></span>` : ''}`;
+      ${id === 'phyto' || agreed ? `<span class="admin-client-state-chip ${agreed ? 'is-complete' : 'is-waiting'}">${agreed ? '계약 동의완료' : '계약 동의대기'}</span>` : ''}
+      ${hasPaymentControl ? `<span class="admin-client-state-chip is-payment ${payment ? '' : 'is-unset'}" role="button" tabindex="0" data-payment-quick="${id}" title="클릭하여 거래처 결제 상태 공개 설정" aria-label="${paymentLabel} · 클릭하여 결제 상태 설정">${paymentLabel} <b>▾</b></span>` : ''}`;
   });
 };
 
@@ -111,12 +113,12 @@ const ensureContractPanel = () => {
     <label class="admin-client-contract-live__item admin-client-payment-control">
       <span>PAYMENT STATUS</span>
       <select data-client-payment-status>
-        <option value="">결제 상태 선택</option>
+        <option value="">거래처 미공개</option>
         <option value="deposit_waiting">선금 입금대기중</option>
         <option value="deposit_confirmed">선금입금확인</option>
         <option value="balance_confirmed">잔금입금확인</option>
       </select>
-      <p>변경하면 고객 전용 대시보드에도 즉시 동일하게 표시됩니다.</p>
+      <p>관리자가 상태를 선택한 경우에만 고객 전용 대시보드에 공개됩니다.</p>
     </label>`;
   pane.prepend(block);
 };
@@ -137,7 +139,7 @@ const syncContractPanel = () => {
     : (id === 'phyto' ? '아직 클라이언트의 계약 확인 기록이 없습니다.' : '웹 계약 동의가 연결되지 않은 클라이언트입니다.'));
 
   const client = clients.get(id) || {};
-  const value = savedPaymentStatus(client, id);
+  const value = savedPaymentStatus(client);
   if (select.value !== value) select.value = value;
   select.dataset.clientId = id;
 };
@@ -158,34 +160,32 @@ const queueSync = () => {
   });
 };
 
-const ensurePhytoPaymentDefault = async () => {
-  if (phytoDefaultEnsured || !db) return;
-  const phyto = clients.get('phyto');
-  if (!phyto) return;
-  phytoDefaultEnsured = true;
-  try {
-    const value = PAYMENT_LABELS[phyto.paymentStatus] ? phyto.paymentStatus : 'deposit_waiting';
-    if (!PAYMENT_LABELS[phyto.paymentStatus]) {
-      await updateDoc(doc(db, 'clients', 'phyto'), { paymentStatus: value, updatedAt: serverTimestamp() });
-    }
-    await setDoc(doc(db, 'clientPortals', 'phyto'), {
-      clientId: 'phyto', enabled: true, paymentStatus: value, updatedAt: serverTimestamp()
-    }, { merge: true });
-  } catch (error) {
-    console.warn('[NINEWORKS Admin] phyto payment default sync failed', error);
-  }
+const portalRefFor = (id, client = {}) => {
+  if (id === 'phyto') return doc(db, 'clientPortals', 'phyto');
+  if (client.portalKey && client.portalEnabled) return doc(db, 'clientPortals', client.portalKey);
+  return null;
 };
 
 const savePaymentValue = async (id, value, control = null) => {
-  if (!id || !PAYMENT_LABELS[value] || !db) return;
+  if (!id || !db) return;
+  const isVisible = Boolean(PAYMENT_LABELS[value]);
+  if (value && !isVisible) return;
   if (control) control.disabled = true;
+
   try {
-    await updateDoc(doc(db, 'clients', id), { paymentStatus: value, updatedAt: serverTimestamp() });
     const client = clients.get(id) || {};
-    if (id === 'phyto') {
-      await setDoc(doc(db, 'clientPortals', 'phyto'), { clientId: 'phyto', enabled: true, paymentStatus: value, updatedAt: serverTimestamp() }, { merge: true });
-    } else if (client.portalKey && client.portalEnabled) {
-      await setDoc(doc(db, 'clientPortals', client.portalKey), { enabled: true, paymentStatus: value, updatedAt: serverTimestamp() }, { merge: true });
+    const clientUpdate = isVisible
+      ? { paymentStatus: value, paymentStatusVisible: true, updatedAt: serverTimestamp() }
+      : { paymentStatusVisible: false, updatedAt: serverTimestamp() };
+    await updateDoc(doc(db, 'clients', id), clientUpdate);
+
+    const portalRef = portalRefFor(id, client);
+    if (portalRef) {
+      const portalUpdate = isVisible
+        ? { paymentStatus: value, paymentStatusVisible: true, updatedAt: serverTimestamp() }
+        : { paymentStatusVisible: false, updatedAt: serverTimestamp() };
+      if (id === 'phyto') portalUpdate.clientId = 'phyto';
+      await setDoc(portalRef, portalUpdate, { merge: true });
     }
   } catch (error) {
     console.error('[NINEWORKS Admin] payment status update failed', error);
@@ -208,19 +208,21 @@ const closeQuickMenu = () => {
 const openQuickMenu = (trigger, id) => {
   closeQuickMenu();
   const client = clients.get(id) || {};
-  const current = savedPaymentStatus(client, id);
+  const current = savedPaymentStatus(client);
   const menu = document.createElement('div');
   menu.className = 'admin-client-payment-menu';
   menu.dataset.paymentMenuFor = id;
   menu.innerHTML = `
-    <span>PAYMENT STATUS</span>
+    <span>PAYMENT STATUS · CLIENT VIEW</span>
+    <button type="button" data-payment-choice="" class="${current ? '' : 'is-active'}"><i></i>거래처 미공개</button>
     ${Object.entries(PAYMENT_LABELS).map(([value, label]) => `<button type="button" data-payment-choice="${value}" class="${value === current ? 'is-active' : ''}"><i></i>${label}</button>`).join('')}`;
   document.body.appendChild(menu);
+
   const rect = trigger.getBoundingClientRect();
   const width = 190;
   const left = Math.min(window.innerWidth - width - 16, Math.max(16, rect.left));
   menu.style.left = `${left}px`;
-  menu.style.top = `${Math.min(window.innerHeight - 160, rect.bottom + 8)}px`;
+  menu.style.top = `${Math.min(window.innerHeight - 205, rect.bottom + 8)}px`;
   quickMenu = menu;
 
   menu.addEventListener('click', async (event) => {
@@ -249,7 +251,6 @@ const startStreams = () => {
 
   unsubscribeClients = onSnapshot(collection(db, 'clients'), (snapshot) => {
     clients = new Map(snapshot.docs.map((item) => [item.id, { id: item.id, ...item.data() }]));
-    ensurePhytoPaymentDefault();
     queueSync();
   }, (error) => console.warn('[NINEWORKS Admin] client status stream failed', error));
 
