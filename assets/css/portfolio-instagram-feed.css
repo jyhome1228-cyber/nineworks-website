@@ -10,7 +10,7 @@ body.portfolio-page .portfolio-grid.is-instagram-feed .portfolio-card{
   max-width:none!important;
 }
 body.portfolio-page .portfolio-grid.is-instagram-feed .portfolio-card__media{
-  aspect-ratio:1/1!important;
+  aspect-ratio:4/5!important;
   height:auto!important;
   min-height:0!important;
   background:#ececea;
@@ -19,6 +19,7 @@ body.portfolio-page .portfolio-grid.is-instagram-feed .portfolio-card__media img
   width:100%!important;
   height:100%!important;
   object-fit:cover!important;
+  object-position:center center!important;
 }
 body.portfolio-page .portfolio-grid.is-instagram-feed .portfolio-card__info{
   display:grid!important;
