@@ -1,0 +1,53 @@
+/* Clients workspace — status + density refinement */
+.admin-clients-panel{max-width:1360px!important}
+.admin-clients-head{padding-bottom:20px!important}
+.admin-clients-head h2{font-size:30px!important;line-height:1.08!important}
+.admin-clients-head p{max-width:560px!important;font-size:10.5px!important;line-height:1.62!important}
+.admin-client-primary{min-width:110px!important;height:34px!important;padding:0 13px!important;font-size:8.5px!important}
+.admin-client-stat-grid{gap:7px!important;margin-top:14px!important}
+.admin-client-stat{min-height:82px!important;padding:12px 13px!important}
+.admin-client-stat span{font-size:7.5px!important}
+.admin-client-stat strong{margin-top:9px!important;font-size:18px!important;line-height:1!important}
+.admin-client-stat p{font-size:8.5px!important}
+.admin-client-filter-panel{gap:16px!important;margin-top:16px!important;padding:9px 12px!important}
+.admin-client-filter-panel .admin-filter-buttons button{min-height:27px!important;padding:0 9px!important;font-size:8.5px!important}
+.admin-client-filter-panel .admin-search-row input{height:32px!important;padding-left:10px!important}
+.admin-client-table-head{grid-template-columns:minmax(250px,1.55fr) minmax(190px,1.08fr) minmax(150px,.88fr) 112px 104px!important;gap:16px!important;margin-top:15px!important;padding:0 12px 8px!important;font-size:7.5px!important}
+.admin-client-row__main{grid-template-columns:minmax(250px,1.55fr) minmax(190px,1.08fr) minmax(150px,.88fr) 112px 104px!important;gap:16px!important;min-height:92px!important;padding:14px 12px!important}
+.admin-client-row__name{grid-template-columns:auto minmax(0,1fr)!important;column-gap:9px!important;align-content:center!important}
+.admin-client-row__name strong{font-size:13.5px!important;line-height:1.28!important}
+.admin-client-row__name p{font-size:8.7px!important;line-height:1.45!important}
+.admin-client-row__contract strong,.admin-client-row__contact strong,.admin-client-row__storage strong{font-size:10.8px!important;line-height:1.35!important}
+.admin-client-row__portal{gap:6px!important}
+.admin-client-row__portal span{padding:4px 6px!important}
+.admin-client-row__portal .nw-phyto-linked{min-width:76px!important;height:27px!important;font-size:7.5px!important}
+.admin-client-row__statusline{grid-column:2;display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.admin-client-state-chip{display:inline-flex!important;align-items:center;width:max-content;padding:4px 6px!important;border:1px solid #cfcfca!important;background:transparent!important;color:#74746f!important;font-size:7px!important;line-height:1!important;letter-spacing:.025em!important;white-space:nowrap}
+.admin-client-state-chip.is-complete{border-color:#111!important;background:#111!important;color:#fff!important}
+.admin-client-state-chip.is-waiting{border-style:dashed!important}
+.admin-client-state-chip.is-payment{background:#fff!important;color:#333!important;border-style:solid!important}
+.admin-client-contract-live{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 18px}
+.admin-client-contract-live__item{min-height:94px;padding:14px 15px;border:1px solid #d1d1cc;background:rgba(255,255,255,.58)}
+.admin-client-contract-live__item>span{display:block;color:#8a8a86;font-size:7.5px;letter-spacing:.08em}
+.admin-client-contract-live__item>strong{display:block;margin-top:10px;font-size:16px;font-weight:500;letter-spacing:-.035em}
+.admin-client-contract-live__item>strong.is-complete::before{content:"";display:inline-block;width:6px;height:6px;margin-right:7px;border-radius:50%;background:#111;vertical-align:2px}
+.admin-client-contract-live__item>p{margin:7px 0 0;color:#777;font-size:8.8px;line-height:1.55}
+.admin-client-payment-control select{width:100%;margin-top:8px;padding:8px 0;border:0;border-bottom:1px solid #bdbdb8;background:transparent;color:#111;font-size:10px;outline:0;border-radius:0}
+.admin-client-payment-control select:focus{border-color:#111}
+.admin-client-payment-control select:disabled{opacity:.55}
+.admin-client-modal__dialog{width:min(820px,calc(100vw - 24px))!important}
+.admin-client-modal__head{min-height:84px!important}
+.admin-client-modal__head h3{font-size:23px!important}
+.admin-client-tabs button{min-height:42px!important}
+.admin-client-modal__body{padding-top:21px!important}
+.admin-client-form-grid label{min-height:78px!important}
+.admin-client-modal__footer{margin-top:28px!important}
+.admin-client-modal__footer button{height:37px!important;min-width:126px!important}
+@media(max-width:1180px){
+  .admin-client-row__main{grid-template-columns:1.4fr 1fr 1fr 94px!important}
+}
+@media(max-width:760px){
+  .admin-client-contract-live{grid-template-columns:1fr}
+  .admin-client-row__statusline{grid-column:auto}
+  .admin-client-row__main{min-height:0!important;padding:15px 10px!important}
+}
