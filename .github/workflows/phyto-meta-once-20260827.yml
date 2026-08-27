@@ -18,8 +18,8 @@ jobs:
           fetch-depth: 0
 
       - name: Apply NINEWORKS favicon and social preview metadata
-        shell: python
         run: |
+          python - <<'PY'
           from pathlib import Path
 
           pages = {
@@ -82,6 +82,7 @@ jobs:
               else:
                   text = text.replace('</title>', '</title>' + block, 1)
               path.write_text(text, encoding='utf-8')
+          PY
 
       - name: Commit metadata update
         run: |
@@ -95,4 +96,4 @@ jobs:
           git commit -m "Apply Nineworks favicon and social preview to Phyto portal"
           git push
 
-# trigger: 2026-08-27
+# trigger: fixed-20260827
