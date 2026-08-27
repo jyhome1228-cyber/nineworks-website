@@ -145,6 +145,8 @@
 
     let score = 0;
     values.forEach((value) => {
+      // Short names such as "%EAT" must not hijack longer titles like "Have a seat".
+      if (value.length < 5) return;
       if (value.startsWith(projectKey) || value.endsWith(projectKey)) score = Math.max(score, 85);
       else if (projectKey.startsWith(value) || projectKey.endsWith(value)) score = Math.max(score, 82);
       else if (value.includes(projectKey) || projectKey.includes(value)) score = Math.max(score, 72);
