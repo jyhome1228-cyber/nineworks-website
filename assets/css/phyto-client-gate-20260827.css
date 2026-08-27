@@ -21,5 +21,65 @@ body:not(.nw-phyto-locked)>.nw-phyto-gate{display:none}
 .nw-phyto-gate__meta{display:flex;justify-content:space-between;gap:20px;margin-top:11px;color:#9a9a96;font-size:9px;line-height:1.5}
 .nw-phyto-gate__error{min-height:15px;margin-top:8px;color:#9b2f2f;font-size:9.5px}
 .nw-phyto-gate__checking{padding:42px 0 18px;color:#777;font-size:11px;line-height:1.65}
+
+/* Phyto contract document — spacing / typography polish */
+body .doc-main{padding-top:50px}
+body .doc-wrap{max-width:1030px}
+body .doc-top{padding-bottom:15px}
+body .doc-head{gap:66px;padding:40px 0 34px;align-items:end}
+body .doc-kicker{margin-bottom:12px;letter-spacing:.115em}
+body .doc-head h1{line-height:1.04;letter-spacing:-.052em}
+body .doc-head h1 span{margin-top:11px;line-height:1.45;color:#8a8a86}
+body .doc-intro{max-width:390px;padding-bottom:3px;line-height:1.82}
+body .draft-note{grid-template-columns:145px 1fr;gap:26px;padding:18px 0;align-items:start}
+body .draft-note b{padding-top:1px}
+body .overview{margin-top:34px}
+body .overview-row{min-height:60px;padding-top:16px;padding-bottom:16px;align-items:center}
+body .overview-row:nth-child(odd){padding-right:30px}
+body .overview-row:nth-child(even){padding-left:30px}
+body .overview-label{line-height:1.45}
+body .overview-value{line-height:1.6}
+body .amount-box{margin-top:32px;padding:27px 26px 26px;align-items:center}
+body .amount-box small{margin-bottom:8px}
+body .amount-box strong{line-height:1.45}
+body .amount-total{font-size:29px;line-height:1.12}
+body .amount-total span{margin-top:7px}
+body .clause-list{margin-top:46px}
+body .clause{grid-template-columns:160px minmax(0,1fr);gap:38px;padding:29px 0}
+body .clause-no{padding-top:2px}
+body .clause h2{margin-bottom:13px;font-size:13.5px}
+body .clause p{max-width:760px;line-height:1.86}
+body .clause p+p{margin-top:10px}
+body .clause ul{margin-top:13px}
+body .clause li{margin-top:7px;line-height:1.78}
+body .scope-table{margin-top:16px}
+body .scope-row{padding:12px 0;line-height:1.66}
+body .payment-grid{gap:10px;margin-top:18px}
+body .payment-card{padding:17px 16px}
+body .party-grid{gap:16px;margin-top:18px}
+body .party{padding:18px}
+body .confirm-panel{margin-top:50px;padding:34px}
+body .confirm-panel>p{margin-top:14px;line-height:1.82}
+body .confirm-summary{margin-top:25px}
+body .confirm-summary div{padding:14px 16px}
+body .confirm-actions{margin-top:25px}
+body .doc-foot{margin-top:40px;padding-top:24px}
+
+@media(max-width:760px){
+  body .doc-main{padding-top:32px}
+  body .doc-wrap{max-width:none}
+  body .doc-head{gap:20px;padding:30px 0 26px}
+  body .doc-intro{max-width:none;padding-bottom:0}
+  body .draft-note{grid-template-columns:1fr;gap:7px;padding:15px 0}
+  body .overview{margin-top:26px}
+  body .overview-row{min-height:0;padding-top:14px;padding-bottom:14px}
+  body .overview-row:nth-child(odd),body .overview-row:nth-child(even){padding-left:0;padding-right:0}
+  body .amount-box{margin-top:24px;padding:22px 20px}
+  body .amount-total{font-size:26px}
+  body .clause-list{margin-top:34px}
+  body .clause{grid-template-columns:1fr;gap:9px;padding:24px 0}
+  body .confirm-panel{margin-top:38px;padding:24px 20px}
+}
+
 @media(max-width:620px){.nw-phyto-gate{padding:20px}.nw-phyto-gate__card{padding-top:22px}.nw-phyto-gate__brand img{width:112px}.nw-phyto-gate__form{grid-template-columns:1fr}.nw-phyto-gate__button{width:100%}.nw-phyto-gate__meta{display:block}.nw-phyto-gate__meta span{display:block;margin-top:4px}}
 @media print{.nw-phyto-gate{display:none!important}body.nw-phyto-locked> :not(.nw-phyto-gate){visibility:visible!important}}
