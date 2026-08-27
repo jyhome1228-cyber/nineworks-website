@@ -86,6 +86,7 @@
             <a href="portfolio.html?filter=website"><span>WEBSITE / SITE</span><small>WEB</small></a>
             <a href="portfolio.html?filter=system"><span>SYSTEM BUILD</span><small>SYS</small></a>
             <a href="portfolio.html?filter=detailpage"><span>DETAIL PAGE</span><small>PAGE</small></a>
+            <a href="portfolio.html?filter=instagram"><span>INSTAGRAM FEED</span><small>SOCIAL</small></a>
             <a href="portfolio.html?filter=editorial"><span>EDITORIAL DESIGN</span><small>EDIT</small></a>
             <a href="portfolio.html?filter=ir"><span>IR / PPT</span><small>DECK</small></a>
             <a href="portfolio.html?filter=package"><span>PACKAGE DESIGN</span><small>PKG</small></a>
@@ -124,6 +125,7 @@
             <a href="portfolio.html?filter=website">Website / Site</a>
             <a href="portfolio.html?filter=system">System Build</a>
             <a href="portfolio.html?filter=detailpage">Detail Page</a>
+            <a href="portfolio.html?filter=instagram">Instagram Feed</a>
             <a href="portfolio.html?filter=editorial">Editorial Design</a>
             <a href="portfolio.html?filter=ir">IR / PPT</a>
             <a href="portfolio.html?filter=package">Package Design</a>
