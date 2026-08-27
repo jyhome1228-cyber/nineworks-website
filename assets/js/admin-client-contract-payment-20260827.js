@@ -17,12 +17,13 @@ let unsubscribeInquiries = null;
 let observer = null;
 let phytoDefaultEnsured = false;
 let syncQueued = false;
+let quickMenu = null;
 
 const loadStyle = () => {
   if (document.querySelector('link[data-admin-client-contract-payment]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/admin-clients-refine-20260827.css?v=20260827-2';
+  link.href = 'assets/css/admin-clients-refine-20260827.css?v=20260827-3';
   link.dataset.adminClientContractPayment = 'true';
   document.head.appendChild(link);
 };
@@ -89,10 +90,9 @@ const decorateRows = () => {
       name.appendChild(statusLine);
     }
 
-    const html = `
+    statusLine.innerHTML = `
       <span class="admin-client-state-chip ${agreed ? 'is-complete' : 'is-waiting'}">${agreed ? '계약 동의완료' : '계약 동의대기'}</span>
-      ${payment ? `<span class="admin-client-state-chip is-payment">${PAYMENT_LABELS[payment]}</span>` : ''}`;
-    if (statusLine.innerHTML !== html) statusLine.innerHTML = html;
+      ${payment ? `<span class="admin-client-state-chip is-payment" role="button" tabindex="0" data-payment-quick="${id}" title="클릭하여 결제 상태 변경" aria-label="${PAYMENT_LABELS[payment]} · 클릭하여 결제 상태 변경">${PAYMENT_LABELS[payment]} <b>▾</b></span>` : ''}`;
   });
 };
 
@@ -116,7 +116,7 @@ const ensureContractPanel = () => {
         <option value="deposit_confirmed">선금입금확인</option>
         <option value="balance_confirmed">잔금입금확인</option>
       </select>
-      <p>상태가 연결된 고객은 전용 대시보드에도 동일하게 표시됩니다.</p>
+      <p>변경하면 고객 전용 대시보드에도 즉시 동일하게 표시됩니다.</p>
     </label>`;
   pane.prepend(block);
 };
@@ -176,11 +176,9 @@ const ensurePhytoPaymentDefault = async () => {
   }
 };
 
-const savePaymentStatus = async (select) => {
-  const id = select.dataset.clientId || String(document.querySelector('[data-client-form] input[name="clientId"]')?.value || '').trim();
-  const value = select.value;
+const savePaymentValue = async (id, value, control = null) => {
   if (!id || !PAYMENT_LABELS[value] || !db) return;
-  select.disabled = true;
+  if (control) control.disabled = true;
   try {
     await updateDoc(doc(db, 'clients', id), { paymentStatus: value, updatedAt: serverTimestamp() });
     const client = clients.get(id) || {};
@@ -193,8 +191,55 @@ const savePaymentStatus = async (select) => {
     console.error('[NINEWORKS Admin] payment status update failed', error);
     alert('결제 상태를 저장하지 못했습니다.');
   } finally {
-    select.disabled = false;
+    if (control) control.disabled = false;
   }
+};
+
+const savePaymentStatus = async (select) => {
+  const id = select.dataset.clientId || String(document.querySelector('[data-client-form] input[name="clientId"]')?.value || '').trim();
+  await savePaymentValue(id, select.value, select);
+};
+
+const closeQuickMenu = () => {
+  quickMenu?.remove();
+  quickMenu = null;
+};
+
+const openQuickMenu = (trigger, id) => {
+  closeQuickMenu();
+  const client = clients.get(id) || {};
+  const current = savedPaymentStatus(client, id);
+  const menu = document.createElement('div');
+  menu.className = 'admin-client-payment-menu';
+  menu.dataset.paymentMenuFor = id;
+  menu.innerHTML = `
+    <span>PAYMENT STATUS</span>
+    ${Object.entries(PAYMENT_LABELS).map(([value, label]) => `<button type="button" data-payment-choice="${value}" class="${value === current ? 'is-active' : ''}"><i></i>${label}</button>`).join('')}`;
+  document.body.appendChild(menu);
+  const rect = trigger.getBoundingClientRect();
+  const width = 190;
+  const left = Math.min(window.innerWidth - width - 16, Math.max(16, rect.left));
+  menu.style.left = `${left}px`;
+  menu.style.top = `${Math.min(window.innerHeight - 160, rect.bottom + 8)}px`;
+  quickMenu = menu;
+
+  menu.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-payment-choice]');
+    if (!button) return;
+    event.preventDefault();
+    event.stopPropagation();
+    button.disabled = true;
+    await savePaymentValue(id, button.dataset.paymentChoice, button);
+    closeQuickMenu();
+  });
+};
+
+const handleQuickTrigger = (event, trigger) => {
+  const id = trigger.dataset.paymentQuick;
+  if (!id) return;
+  event.preventDefault();
+  event.stopPropagation();
+  openQuickMenu(trigger, id);
 };
 
 const startStreams = () => {
@@ -229,11 +274,32 @@ const start = () => {
   loadStyle();
   observer = new MutationObserver(queueSync);
   observer.observe(document.body, { childList: true, subtree: true });
-  document.addEventListener('click', () => setTimeout(queueSync, 0), true);
+
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest?.('[data-payment-quick]');
+    if (trigger) {
+      handleQuickTrigger(event, trigger);
+      return;
+    }
+    if (!event.target.closest?.('.admin-client-payment-menu')) closeQuickMenu();
+    setTimeout(queueSync, 0);
+  }, true);
+
+  document.addEventListener('keydown', (event) => {
+    const trigger = event.target.closest?.('[data-payment-quick]');
+    if (trigger && (event.key === 'Enter' || event.key === ' ')) {
+      handleQuickTrigger(event, trigger);
+      return;
+    }
+    if (event.key === 'Escape') closeQuickMenu();
+  }, true);
+
   document.addEventListener('change', (event) => {
     const select = event.target.closest?.('[data-client-payment-status]');
     if (select) savePaymentStatus(select);
   }, true);
+  window.addEventListener('resize', closeQuickMenu);
+  window.addEventListener('scroll', closeQuickMenu, true);
   window.addEventListener('nw-admin-panel', queueSync);
 
   onAuthStateChanged(auth, (user) => {
