@@ -4,24 +4,83 @@
   const group = document.querySelector('.portfolio-filter[data-filter-group]');
   if (!items.length || !grid || !group) return;
 
+  const displayTitles = {
+    'instagram-feed-01': '더ㅇㅇ 헬스케어 피드',
+    'instagram-feed-02': '더ㅇㅇ 라이프스타일 피드',
+    'instagram-feed-03': '데ㅇㅇ 푸드 콘텐츠 피드',
+    'instagram-feed-04': '라ㅇㅇ 코스메틱 피드',
+    'instagram-feed-05': '리ㅇㅇ 뷰티케어 피드',
+    'instagram-feed-06': '명ㅇㅇ 라이프케어 피드',
+    'instagram-feed-07': '블ㅇㅇ 푸드 피드',
+    'instagram-feed-08': '스ㅇㅇ 헬스케어 피드',
+    'instagram-feed-09': '아ㅇㅇ 뷰티 피드',
+    'instagram-feed-10': '윗ㅇㅇ 라이프스타일 피드',
+    'instagram-feed-11': '찐ㅇㅇ 푸드 피드',
+    'instagram-feed-12': '청ㅇㅇ 프리미엄 헬스케어 피드',
+    'instagram-feed-13': '톡ㅇㅇ 커머스 프로모션 피드',
+    'instagram-feed-14': '효ㅇㅇ 헬스케어 프로모션 피드',
+    'instagram-feed-15': 'Dㅇㅇ 헬스케어 피드'
+  };
+
+  /* Keep every uploaded file as its own project. Only the public display title is anonymized. */
+  items.forEach((item) => {
+    if (displayTitles[item.id]) item.title = displayTitles[item.id];
+  });
+
+  const syncCardLabels = () => {
+    items.forEach((item) => {
+      const trigger = grid.querySelector(`[data-archive-id="${item.id}"]`);
+      if (!trigger) return;
+      const card = trigger.closest('.portfolio-card');
+      const title = card?.querySelector('.portfolio-card__info strong');
+      const subtitle = card?.querySelector('.portfolio-card__info div > span');
+      const thumb = card?.querySelector('.portfolio-card__media img');
+      if (title) title.textContent = item.title;
+      if (subtitle) subtitle.textContent = 'Instagram Feed';
+      if (thumb) thumb.alt = item.title;
+      trigger.setAttribute('aria-label', `${item.title} 이미지 피드 보기`);
+    });
+  };
+  syncCardLabels();
+
   const titleEl = document.querySelector('[data-portfolio-index-title]');
   const copyEl = document.querySelector('[data-portfolio-index-copy]');
   const countEl = document.querySelector('[data-portfolio-index-count]');
   const instagramButton = group.querySelector('[data-filter="instagram"]');
 
+  const requestedFilter = () => String(new URLSearchParams(window.location.search).get('filter') || '').toLowerCase();
+  const isInstagramActive = () => instagramButton?.classList.contains('is-active') || requestedFilter() === 'instagram';
+
   const setInstagramState = () => {
-    const active = instagramButton?.classList.contains('is-active');
+    const active = isInstagramActive();
     grid.classList.toggle('is-instagram-feed', !!active);
     if (!active) return;
+
+    /* Re-assert the 15 independent feed cards in case another filter listener ran first. */
+    const instagramIds = new Set(items.map((item) => item.id));
+    grid.querySelectorAll('.portfolio-filter-item').forEach((card) => {
+      const trigger = card.querySelector('[data-archive-id]');
+      if (!trigger) return;
+      if (instagramIds.has(trigger.dataset.archiveId)) card.hidden = false;
+      else if (!(card.dataset.category || '').split(/\s+/).includes('instagram')) card.hidden = true;
+    });
+
+    syncCardLabels();
     if (titleEl) titleEl.textContent = 'Instagram Feed';
-    if (copyEl) copyEl.textContent = '브랜드별 인스타그램 피드 디자인을 프로젝트 단위로 정리한 아카이브입니다. 카드를 누르면 해당 프로젝트의 피드만 순서대로 넘겨볼 수 있습니다.';
+    if (copyEl) copyEl.textContent = 'SNS 운영 과정에서 제작한 인스타그램 피드 디자인을 작업 단위로 정리했습니다. 각 카드는 서로 다른 프로젝트이며, 클릭하면 해당 작업의 이미지만 좌우로 넘겨볼 수 있습니다.';
     if (countEl) countEl.textContent = `${String(items.length).padStart(2, '0')} WORKS`;
   };
 
   group.querySelectorAll('[data-filter]').forEach((button) => {
-    button.addEventListener('click', () => setTimeout(setInstagramState, 0));
+    button.addEventListener('click', () => {
+      window.requestAnimationFrame(setInstagramState);
+      setTimeout(setInstagramState, 30);
+    });
   });
+
   setInstagramState();
+  window.requestAnimationFrame(setInstagramState);
+  setTimeout(setInstagramState, 80);
   window.addEventListener('popstate', () => setTimeout(setInstagramState, 0));
 
   const viewer = document.createElement('div');
@@ -35,7 +94,7 @@
       </div>
       <button class="instagram-feed-viewer__close" type="button" data-instagram-close>CLOSE</button>
     </div>
-    <div class="instagram-feed-viewer__stage">
+    <div class="instagram-feed-viewer__stage" data-instagram-stage>
       <button class="instagram-feed-viewer__nav instagram-feed-viewer__nav--prev" type="button" data-instagram-prev aria-label="이전 이미지">←</button>
       <img class="instagram-feed-viewer__image" data-instagram-image alt="">
       <button class="instagram-feed-viewer__nav instagram-feed-viewer__nav--next" type="button" data-instagram-next aria-label="다음 이미지">→</button>
@@ -46,6 +105,7 @@
     </div>`;
   document.body.appendChild(viewer);
 
+  const stage = viewer.querySelector('[data-instagram-stage]');
   const imageEl = viewer.querySelector('[data-instagram-image]');
   const viewerTitle = viewer.querySelector('[data-instagram-title]');
   const counterEl = viewer.querySelector('[data-instagram-counter]');
@@ -64,11 +124,12 @@
     counterEl.textContent = `${String(index + 1).padStart(2, '0')} / ${String(images.length).padStart(2, '0')}`;
     totalEl.textContent = `${images.length} FEEDS`;
 
-    const nextSrc = images[(index + 1) % images.length];
-    if (nextSrc) {
+    [1, -1].forEach((offset) => {
+      const preloadSrc = images[(index + offset + images.length) % images.length];
+      if (!preloadSrc) return;
       const preload = new Image();
-      preload.src = nextSrc;
-    }
+      preload.src = preloadSrc;
+    });
   };
 
   const openViewer = (project) => {
@@ -105,9 +166,19 @@
     if (project) openViewer(project);
   }, true);
 
-  viewer.querySelector('[data-instagram-prev]')?.addEventListener('click', () => move(-1));
-  viewer.querySelector('[data-instagram-next]')?.addEventListener('click', () => move(1));
+  viewer.querySelector('[data-instagram-prev]')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    move(-1);
+  });
+  viewer.querySelector('[data-instagram-next]')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    move(1);
+  });
   viewer.querySelector('[data-instagram-close]')?.addEventListener('click', closeViewer);
+  imageEl?.addEventListener('click', (event) => event.stopPropagation());
+  stage?.addEventListener('click', (event) => {
+    if (event.target === stage) closeViewer();
+  });
 
   document.addEventListener('keydown', (event) => {
     if (!viewer.classList.contains('is-open')) return;
