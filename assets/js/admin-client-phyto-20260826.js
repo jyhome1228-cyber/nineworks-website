@@ -38,9 +38,9 @@ async function ensurePhytoClient(user) {
     company: '파이토레볼루션 (PhytoRevolution)',
     companyName: '파이토레볼루션 (PhytoRevolution)',
     brand: '고스란',
-    projectName: '고스란 기능성 식물유래 바디케어 제품',
-    project: '고스란 기능성 식물유래 바디케어 제품',
-    scope: '기능성 식물유래 바디케어 브랜드 개발 및 디자인 프로젝트',
+    projectName: '고스란 브랜드 아이덴티티 · 기본형 가이드라인 · 패키지 디자인 프로젝트',
+    project: '고스란 브랜드 아이덴티티 · 기본형 가이드라인 · 패키지 디자인 프로젝트',
+    scope: '브랜드 아이덴티티 정립, 기본형 브랜드 가이드라인 구축 및 주요 제품 패키지 디자인',
     clientStage: 'client',
     contractType: '정부지원사업',
     contractStatus: 'active',
@@ -51,7 +51,7 @@ async function ensurePhytoClient(user) {
     projectType: '정부지원사업',
     portalEnabled: true,
     portalUrl: PHYTO_URL,
-    portalMessage: '계약, 견적, 진행 현황과 주요 프로젝트 정보를 전용 대시보드에서 확인할 수 있습니다.',
+    portalMessage: '브랜드 아이덴티티, 기본형 가이드라인, 패키지 디자인과 계약·견적·진행 현황을 전용 대시보드에서 확인할 수 있습니다.',
     updatedAt: serverTimestamp()
   };
   if (!snap.exists()) base.createdAt = serverTimestamp();
