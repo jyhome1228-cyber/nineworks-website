@@ -25,12 +25,16 @@
     document.head.appendChild(script);
   };
 
+  /* Public member login/navigation is retired. Keep the legacy bundle inert if cached pages request it. */
+  window.__NW_MEMBER_AUTH__ = true;
+
   /* One controlled final cascade. Do not inject the old auto local-sidebar system. */
   loadStyle('assets/css/sost-system-20260817.css?v=20260817-3');
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
   loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-4');
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
+  loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260827-1');
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
@@ -77,7 +81,8 @@
         <div class="site-nav-item">
           <a href="portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-            <a href="portfolio.html?filter=major"><span>MAJOR PORTFOLIO</span><small>MAJOR</small></a>
+            <a href="/majorportfolio/"><span>BUSINESS PORTFOLIO</span><small>BUSINESS</small></a>
+            <a href="portfolio.html?filter=major"><span>MAJOR WORKS</span><small>MAJOR</small></a>
             <a href="portfolio.html?filter=website"><span>WEBSITE / SITE</span><small>WEB</small></a>
             <a href="portfolio.html?filter=system"><span>SYSTEM BUILD</span><small>SYS</small></a>
             <a href="portfolio.html?filter=detailpage"><span>DETAIL PAGE</span><small>PAGE</small></a>
@@ -101,7 +106,7 @@
         <a href="recruit.html" data-nav-key="recruit">RECRUIT</a>
         <a href="contact.html" data-nav-key="contact">CONTACT</a>
       </nav>
-      <a class="site-header__action" href="contact.html">START A PROJECT <span>↗</span></a>
+      <a class="site-header__action" href="/majorportfolio/">BUSINESS PORTFOLIO <span>↗</span></a>
       <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>`;
   }
 
@@ -114,7 +119,8 @@
         <div class="menu-nav__group">
           <a class="menu-nav__main" href="portfolio.html?filter=major">PORTFOLIO</a>
           <div class="menu-nav__sub">
-            <a href="portfolio.html?filter=major">Major Portfolio</a>
+            <a href="/majorportfolio/">Business Portfolio</a>
+            <a href="portfolio.html?filter=major">Major Works</a>
             <a href="portfolio.html?filter=website">Website / Site</a>
             <a href="portfolio.html?filter=system">System Build</a>
             <a href="portfolio.html?filter=detailpage">Detail Page</a>
@@ -137,6 +143,9 @@
         <a class="menu-nav__main" href="recruit.html">RECRUIT</a>
         <a class="menu-nav__main" href="contact.html">CONTACT</a>
       </nav>
+      <div class="menu-business-cta">
+        <a class="menu-business-cta__link" href="/majorportfolio/"><span>BUSINESS PORTFOLIO</span><span>↗</span></a>
+      </div>
       <div class="menu-footer">
         <p>NINEWORKS<br>Design Studio · Incheon, Korea</p>
         <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
