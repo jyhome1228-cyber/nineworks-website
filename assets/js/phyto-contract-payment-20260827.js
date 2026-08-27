@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
+import { addDoc, collection, doc, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js';
 import { db } from './firebase-client.js';
 
 const CONSENT_KEY = 'nw:phyto:contract-consent:v1';
@@ -14,6 +14,8 @@ const PAYMENT_COPY = {
   deposit_confirmed: '선금 입금이 확인되었습니다. 프로젝트 진행 단계에 맞춰 업무를 이어갑니다.',
   balance_confirmed: '잔금 입금까지 확인되어 프로젝트 정산이 완료되었습니다.'
 };
+
+let unsubscribePayment = null;
 
 const loadStyle = () => {
   if (document.querySelector('link[data-phyto-contract-payment]')) return;
@@ -122,25 +124,29 @@ const renderPaymentPanel = (status = 'deposit_waiting') => {
     </div>`;
 };
 
-const loadPaymentStatus = async () => {
+const subscribePaymentStatus = () => {
   if (!document.querySelector('.side-stack')) return;
   renderPaymentPanel('deposit_waiting');
-  try {
-    if (!db) return;
-    const snapshot = await getDoc(doc(db, 'clientPortals', 'phyto'));
-    if (!snapshot.exists()) return;
+  if (!db) return;
+  unsubscribePayment?.();
+  unsubscribePayment = onSnapshot(doc(db, 'clientPortals', 'phyto'), (snapshot) => {
+    if (!snapshot.exists()) {
+      renderPaymentPanel('deposit_waiting');
+      return;
+    }
     const data = snapshot.data() || {};
     if (data.enabled !== true) return;
     renderPaymentPanel(data.paymentStatus || 'deposit_waiting');
-  } catch (error) {
-    console.warn('[NINEWORKS Client] payment status load failed', error);
-  }
+  }, (error) => {
+    console.warn('[NINEWORKS Client] payment status stream failed', error);
+  });
 };
 
 const start = () => {
   loadStyle();
   setupConsent();
-  loadPaymentStatus();
+  subscribePaymentStatus();
+  window.addEventListener('pagehide', () => unsubscribePayment?.(), { once: true });
 };
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
