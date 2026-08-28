@@ -7,7 +7,6 @@
   const displayTitles = {
     'instagram-feed-01': '더ㅇㅇ 헬스케어 피드',
     'instagram-feed-02': '더ㅇㅇ 라이프스타일 피드',
-    'instagram-feed-03': '데ㅇㅇ 푸드 콘텐츠 피드',
     'instagram-feed-04': '라ㅇㅇ 코스메틱 피드',
     'instagram-feed-05': '리ㅇㅇ 뷰티케어 피드',
     'instagram-feed-06': '명ㅇㅇ 라이프케어 피드',
@@ -19,10 +18,13 @@
     'instagram-feed-12': '청ㅇㅇ 프리미엄 헬스케어 피드',
     'instagram-feed-13': '톡ㅇㅇ 커머스 프로모션 피드',
     'instagram-feed-14': '효ㅇㅇ 헬스케어 프로모션 피드',
-    'instagram-feed-15': 'Dㅇㅇ 헬스케어 피드'
+    'instagram-feed-15': 'Dㅇㅇ 헬스케어 피드',
+    'instagram-feed-16': '귀ㅇㅇ 두유 피드',
+    'instagram-feed-17': '뉴ㅇㅇ 브랜드 피드',
+    'instagram-feed-18': '먹ㅇㅇ 스낵 피드',
+    'instagram-feed-19': '옥ㅇㅇ 푸드 피드'
   };
 
-  /* Keep every uploaded file as its own project. Only the public display title is anonymized. */
   items.forEach((item) => {
     if (displayTitles[item.id]) item.title = displayTitles[item.id];
   });
@@ -43,6 +45,20 @@
   };
   syncCardLabels();
 
+  let shuffled = false;
+  const shuffleInstagramCards = () => {
+    if (shuffled) return;
+    const cards = items
+      .map((item) => grid.querySelector(`[data-archive-id="${item.id}"]`)?.closest('.portfolio-card'))
+      .filter(Boolean);
+    for (let i = cards.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    cards.forEach((card) => grid.appendChild(card));
+    shuffled = true;
+  };
+
   const titleEl = document.querySelector('[data-portfolio-index-title]');
   const copyEl = document.querySelector('[data-portfolio-index-copy]');
   const countEl = document.querySelector('[data-portfolio-index-count]');
@@ -56,7 +72,8 @@
     grid.classList.toggle('is-instagram-feed', !!active);
     if (!active) return;
 
-    /* Re-assert the 15 independent feed cards in case another filter listener ran first. */
+    shuffleInstagramCards();
+
     const instagramIds = new Set(items.map((item) => item.id));
     grid.querySelectorAll('.portfolio-filter-item').forEach((card) => {
       const trigger = card.querySelector('[data-archive-id]');
@@ -67,7 +84,7 @@
 
     syncCardLabels();
     if (titleEl) titleEl.textContent = 'Instagram Feed';
-    if (copyEl) copyEl.textContent = 'SNS 운영 과정에서 제작한 인스타그램 피드 디자인을 작업 단위로 정리했습니다. 각 카드는 서로 다른 프로젝트이며, 클릭하면 해당 작업의 이미지만 좌우로 넘겨볼 수 있습니다.';
+    if (copyEl) copyEl.textContent = 'SNS 운영 과정에서 제작한 인스타그램 피드 디자인을 작업 단위로 정리했습니다. 각 카드는 서로 다른 프로젝트이며, 새로고침할 때마다 작업 순서가 무작위로 노출됩니다.';
     if (countEl) countEl.textContent = `${String(items.length).padStart(2, '0')} WORKS`;
   };
 
