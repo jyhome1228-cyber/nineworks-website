@@ -97,6 +97,30 @@ const setupConsent = () => {
   });
 };
 
+const setupNdaLink = () => {
+  const list = document.querySelector('.doc-list');
+  if (!list || list.querySelector('[data-phyto-nda-link]')) return;
+
+  const business = Array.from(list.querySelectorAll('.doc-link')).find((link) => link.querySelector('strong')?.textContent.trim() === '사업자등록증');
+  const bank = Array.from(list.querySelectorAll('.doc-link')).find((link) => link.querySelector('strong')?.textContent.trim() === '통장사본');
+  if (!business) return;
+
+  const nda = document.createElement('a');
+  nda.className = 'doc-link';
+  nda.href = './nda.html';
+  nda.target = '_blank';
+  nda.rel = 'noopener';
+  nda.dataset.phytoNdaLink = 'true';
+  nda.innerHTML = '<span class="doc-no">04</span><span><strong>비밀유지확약서</strong><small>특허·연구기술 비밀유지 · 시각 결과물 공개범위 확인</small></span><span class="doc-arrow">↗</span>';
+
+  if (bank) {
+    bank.querySelector('.doc-no').textContent = '05';
+    list.insertBefore(nda, bank);
+  } else {
+    list.appendChild(nda);
+  }
+};
+
 const removePaymentPanel = () => {
   document.querySelector('[data-phyto-payment-panel]')?.remove();
 };
@@ -155,6 +179,7 @@ const subscribePaymentStatus = () => {
 const start = () => {
   loadStyle();
   setupConsent();
+  setupNdaLink();
   subscribePaymentStatus();
   window.addEventListener('pagehide', () => unsubscribePayment?.(), { once: true });
 };
