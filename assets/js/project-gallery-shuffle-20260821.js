@@ -52,7 +52,7 @@
       image: 'https://cdn.imweb.me/upload/S2025061194bb8d274d3cd/1f033be0b5418.jpg',
       alt: 'TYTHONIC INDUSTRIES corporate identity detail development',
       meta: 'CORPORATE IDENTITY · WORLD-BUILDING',
-      description: '배틀그라운드 세계관 속 파편적 기업 설정을 역사, 버벌 아이덴티티, Blue Chip 시스템과 실제 기업 수준의 CI로 확장한 독립 프로젝트.'
+      description: '배틀그라운드 세계관 속 기업의 역사와 기술, Blue Chip, 버벌 아이덴티티를 실제 기업 수준의 CI 시스템으로 확장한 독립 프로젝트.'
     }
   };
 
@@ -144,8 +144,17 @@
     const current = cards();
     const completed = current.filter((card) => card.dataset.completed === 'true');
     const remaining = current.filter((card) => card.dataset.completed !== 'true');
+
+    // Keep the requested featured sequence stable: Coventry first, TYTHONIC immediately after.
+    const featuredOrder = ['coventrycityfc', 'tythonicindustries'];
+    const featured = [];
+    featuredOrder.forEach((key) => {
+      const index = completed.findIndex((card) => normalize(titleOf(card)) === key);
+      if (index >= 0) featured.push(completed.splice(index, 1)[0]);
+    });
+
     const fragment = document.createDocumentFragment();
-    [...completed, ...remaining].forEach((card, index) => {
+    [...featured, ...completed, ...remaining].forEach((card, index) => {
       const image = card.querySelector('img');
       if (image) image.loading = index < 6 ? 'eager' : 'lazy';
       fragment.appendChild(card);
