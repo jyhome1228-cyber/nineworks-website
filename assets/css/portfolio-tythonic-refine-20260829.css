@@ -248,6 +248,66 @@
   word-break:keep-all;
 }
 
+/* Corporate Identity & Access: remove redundant fourth visual */
+#applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:nth-child(4){display:none!important}
+
+/* Narrative after the first corporate application visual */
+#applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child{
+  display:flex!important;
+  flex-direction:column!important;
+}
+#applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child img{order:1}
+body:not(.ty-lang-en) #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::before{
+  content:"BEHIND THE BATTLEGROUNDS";
+  order:2;
+  display:block;
+  margin-top:34px;
+  padding-top:28px;
+  border-top:1px solid var(--ty-line);
+  color:var(--ty-blue);
+  font-size:11px;
+  font-weight:760;
+  letter-spacing:.09em;
+}
+body:not(.ty-lang-en) #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::after{
+  content:"이 프로젝트의 해석에서 TYTHONIC은 배틀그라운드 세계관의 주변 기업이라기보다, 경기의 조건을 설계하고 유지하는 운영기관에 가까운 위치를 가집니다. 구조적으로 보면 『헝거게임』에서 참가자보다 한 단계 위에 존재하며 경기 자체를 성립시키는 운영 체계를 떠올릴 수 있습니다. TYTHONIC은 전투에 직접 참여하기보다 참가자를 식별하고, Blue Chip과 장비를 공급하고, 통신과 시설을 유지하며, 사람들이 다시 전장으로 편입될 수 있는 기술적 조건을 관리합니다.\A\A 그래서 이 기업의 CI는 스폰서의 흔적보다 더 깊은 역할을 가집니다. ID 카드와 문서, 연구시설, 송신기, 컨테이너에 반복되는 같은 로고는 누가 이 세계를 조직하고 있는지를 보여주는 작은 단서가 됩니다. 플레이어는 전장을 지나가지만 TYTHONIC은 전장이 작동하는 방식 자체에 남아 있습니다. 마지막까지 눈에 잘 띄지 않으면서도, 세계관의 배후 구조를 가장 오래 설명하는 존재. 이 프로젝트가 TYTHONIC을 하나의 기업 시스템으로 확장한 이유도 그 지점에 있습니다.";
+  order:3;
+  display:block;
+  white-space:pre-line;
+  max-width:960px;
+  margin-top:13px;
+  padding-bottom:8px;
+  color:var(--ty-muted);
+  font-size:16px;
+  line-height:1.86;
+  letter-spacing:-.018em;
+  word-break:keep-all;
+}
+.ty-lang-en #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::before{
+  content:"BEHIND THE BATTLEGROUNDS";
+  order:2;
+  display:block;
+  margin-top:34px;
+  padding-top:28px;
+  border-top:1px solid var(--ty-line);
+  color:var(--ty-blue);
+  font-size:11px;
+  font-weight:760;
+  letter-spacing:.09em;
+}
+.ty-lang-en #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::after{
+  content:"Within this independent interpretation, TYTHONIC sits less like a peripheral sponsor and more like an institution that makes the Battlegrounds operational. Much like the larger authority behind the arena in The Hunger Games, its power is expressed through systems rather than direct participation: identifying participants, supplying Blue Chip technology, maintaining communications and facilities, and preserving the conditions that allow people to be returned to the field.\A\A This is why the identity is repeated across documents, access cards, laboratories, transmitters and containers. The mark becomes evidence of the organization behind the arena — quiet, administrative and almost invisible, yet embedded in the infrastructure that makes the world function.";
+  order:3;
+  display:block;
+  white-space:pre-line;
+  max-width:960px;
+  margin-top:13px;
+  padding-bottom:8px;
+  color:var(--ty-muted);
+  font-size:16px;
+  line-height:1.82;
+}
+
 /* =========================================================
    SIDEBAR
 ========================================================= */
@@ -301,6 +361,10 @@
   .ty-application-head{grid-template-columns:1fr!important;gap:8px!important;padding:15px 0 18px!important}
   .ty-application-head h3{font-size:23px!important}.ty-application-head p::after{font-size:13px!important;line-height:1.72!important}
   .ty-application-grid--editorial,.ty-application-grid--single{gap:18px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
+  body:not(.ty-lang-en) #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::before,
+  .ty-lang-en #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::before{margin:28px 22px 0;padding-top:22px;font-size:9.5px}
+  body:not(.ty-lang-en) #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::after,
+  .ty-lang-en #applications .ty-application-section:nth-of-type(1) .ty-application-grid--editorial figure:first-child::after{margin:11px 22px 0;padding-bottom:4px;font-size:14px;line-height:1.8}
 
   .ty-lang-switch{font-size:9.5px;margin-right:10px}
 }
