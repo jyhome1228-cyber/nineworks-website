@@ -7,6 +7,12 @@
 .portfolio-tythonic-page .wba-proposal-badge:before{background:#204fab}
 .portfolio-tythonic-page .portfolio-scroll-copy p{background:transparent!important}
 
+/* KR / EN separation */
+.ty-lang-switch{display:flex;align-items:center;gap:7px;margin-left:auto;margin-right:18px;font-size:10px;font-weight:760;letter-spacing:.08em;color:#9aa2ac}
+.ty-lang-switch a{color:#9aa2ac;text-decoration:none;transition:color .2s ease}
+.ty-lang-switch a.is-active,.ty-lang-switch a:hover{color:#204fab}
+.ty-lang-switch span{color:#c3c9d0}
+
 .ty-logo-hero{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;outline:0!important;box-shadow:none!important;background:#fff!important;overflow:hidden!important}
 .ty-logo-hero img{display:block!important;width:100%!important;max-width:none!important;height:auto!important;margin:0!important;padding:0!important;border:0!important;object-fit:cover!important;object-position:center!important;background:#fff!important;filter:none!important;mix-blend-mode:normal!important}
 .ty-hero-note{display:flex;justify-content:space-between;gap:24px;padding:15px 0 0;color:#7a8490;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
@@ -110,6 +116,7 @@
   .portfolio-tythonic-page .portfolio-split-detail{display:block!important}
   .portfolio-tythonic-page .portfolio-detail-scroll{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
   .portfolio-tythonic-page .portfolio-scroll-section{padding:52px 24px!important}
+  .ty-lang-switch{margin-left:auto;margin-right:12px;font-size:9px;gap:6px}
   .portfolio-tythonic-page .portfolio-scroll-media.ty-logo-hero{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#fff!important}
   .portfolio-tythonic-page .portfolio-scroll-media.ty-logo-hero img{display:block!important;width:100%!important;max-width:none!important;height:auto!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;object-fit:cover!important;background:#fff!important}
   .ty-hero-note{padding:12px 24px 0;flex-direction:column;gap:3px;font-size:8.5px}
@@ -121,22 +128,19 @@
   .ty-mobile-intro dl div{display:grid;grid-template-columns:72px 1fr;gap:12px;padding-top:12px;border-top:1px solid #edf0f3}
   .ty-mobile-intro dt{color:#9aa2ab;font-size:9.5px}.ty-mobile-intro dd{margin:0;color:#353a40;font-size:11.5px;line-height:1.55}
 
-  /* Editorial mobile copy: justified columns with controlled Korean spacing. */
-  .ty-origin-lead,.ty-origin-copy,
-  .portfolio-tythonic-page .portfolio-scroll-copy p,
-  .ty-reading-intro p,.ty-visual-doctrine>p,
-  .portfolio-tythonic-page .wba-intro-band .wba-intro-ko,
-  .ty-dual-card p,.ty-principle p,.ty-doctrine-grid p,
-  .ty-master-note p,.ty-voice-card p,.ty-final p{
-    text-align:justify!important;
-    text-justify:inter-character!important;
-    word-break:normal!important;
-    overflow-wrap:break-word!important;
-    word-spacing:-.045em;
-    letter-spacing:-.018em;
+  /* Korean editorial body uses balanced justification. */
+  body:not(.ty-lang-en) .ty-origin-lead,body:not(.ty-lang-en) .ty-origin-copy,
+  body:not(.ty-lang-en) .portfolio-scroll-copy p,body:not(.ty-lang-en) .ty-reading-intro p,body:not(.ty-lang-en) .ty-visual-doctrine>p,
+  body:not(.ty-lang-en) .wba-intro-band .wba-intro-ko,body:not(.ty-lang-en) .ty-dual-card p,body:not(.ty-lang-en) .ty-principle p,
+  body:not(.ty-lang-en) .ty-doctrine-grid p,body:not(.ty-lang-en) .ty-master-note p,body:not(.ty-lang-en) .ty-voice-card p,body:not(.ty-lang-en) .ty-final p{
+    text-align:justify!important;text-justify:inter-character!important;word-break:normal!important;overflow-wrap:break-word!important;word-spacing:-.045em;letter-spacing:-.018em;
   }
-  .ty-origin-lead{font-size:15px;line-height:1.82}.ty-origin-copy{font-size:12.8px;line-height:1.86}.ty-origin-grid{grid-template-columns:1fr;gap:22px}.ty-origin-grid img{aspect-ratio:4/3}.ty-origin-question{font-size:27px}
+  /* English stays left-aligned for natural reading rhythm. */
+  .ty-lang-en .ty-origin-lead,.ty-lang-en .ty-origin-copy,.ty-lang-en .portfolio-scroll-copy p,.ty-lang-en .ty-reading-intro p,
+  .ty-lang-en .ty-visual-doctrine>p,.ty-lang-en .wba-intro-band p,.ty-lang-en .ty-dual-card p,.ty-lang-en .ty-principle p,
+  .ty-lang-en .ty-doctrine-grid p,.ty-lang-en .ty-master-note p,.ty-lang-en .ty-voice-card p,.ty-lang-en .ty-final p{ text-align:left!important;word-spacing:normal!important;letter-spacing:normal!important; }
 
+  .ty-origin-lead{font-size:15px;line-height:1.82}.ty-origin-copy{font-size:12.8px;line-height:1.86}.ty-origin-grid{grid-template-columns:1fr;gap:22px}.ty-origin-grid img{aspect-ratio:4/3}.ty-origin-question{font-size:27px}
   .portfolio-tythonic-page .wba-intro-band{margin:0!important;padding:48px 24px!important;background:#204fab!important}
   .portfolio-tythonic-page .wba-intro-band h2{font-size:39px!important;line-height:1.01!important}
   .portfolio-tythonic-page .wba-intro-band .wba-intro-lead{font-size:14px!important;line-height:1.78!important}
@@ -144,7 +148,6 @@
   .portfolio-tythonic-page .wba-context-grid{grid-template-columns:1fr!important}
   .portfolio-tythonic-page .wba-context-card{min-height:0!important;padding:20px!important}
   .portfolio-tythonic-page .wba-context-card strong{margin:24px 0 8px!important;font-size:18px!important}
-
   .ty-reading-intro,.ty-visual-doctrine,.ty-reality,.ty-chapter--dark,.ty-final{padding:50px 24px!important}
   .ty-reading-intro h2,.ty-visual-doctrine h2{max-width:none;font-size:36px;line-height:1.06}
   .ty-reading-intro p,.ty-visual-doctrine>p{font-size:13px;line-height:1.86}
