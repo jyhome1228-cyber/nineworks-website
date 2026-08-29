@@ -12,22 +12,16 @@
   const cards = () => Array.from(grid.querySelectorAll(':scope > .project-card'));
   const titleOf = (card) => card.querySelector('h2')?.textContent.trim() || '';
 
-  // Remove archived project and previously confirmed duplicate cards.
-  cards().forEach((card) => {
-    if (titleOf(card) === '드림팜') card.remove();
-  });
-
+  cards().forEach((card) => { if (titleOf(card) === '드림팜') card.remove(); });
   const onePlanCards = cards().filter((card) => normalize(titleOf(card)) === '1plan');
   onePlanCards.slice(1).forEach((card) => card.remove());
 
-  // Keep the white-background Denovo Pharm. application card and remove the red duplicate.
   cards().forEach((card) => {
     if (normalize(titleOf(card)) !== 'denovopharm') return;
     const src = card.querySelector('img')?.getAttribute('src') || '';
     if (src.includes('1cfd2970b5c01.jpg')) card.remove();
   });
 
-  // Keep the completed AESOST branding case in the selected project archive.
   if (!cards().some((card) => normalize(titleOf(card)) === 'aesost')) {
     const aesostCard = document.createElement('article');
     aesostCard.className = 'project-card';
@@ -35,7 +29,6 @@
     grid.prepend(aesostCard);
   }
 
-  // West Bromwich Albion — independent concept proposal. Keep it first among completed case studies.
   if (!cards().some((card) => normalize(titleOf(card)) === 'westbromwichalbion')) {
     const wbaCard = document.createElement('article');
     wbaCard.className = 'project-card';
@@ -54,6 +47,12 @@
       alt: 'Taepyung Paper corporate identity project',
       meta: 'CORPORATE IDENTITY',
       description: '1977년부터 이어온 제조 기업의 역사와 현장성을 로고, 공장, 패키지와 에디토리얼까지 하나의 시스템으로 정리한 프로젝트.'
+    },
+    tythonicindustries: {
+      image: 'https://cdn.imweb.me/upload/S2025061194bb8d274d3cd/1f033be0b5418.jpg',
+      alt: 'TYTHONIC INDUSTRIES corporate identity detail development',
+      meta: 'CORPORATE IDENTITY · WORLD-BUILDING',
+      description: '배틀그라운드 세계관 속 파편적 기업 설정을 역사, 버벌 아이덴티티, Blue Chip 시스템과 실제 기업 수준의 CI로 확장한 독립 프로젝트.'
     }
   };
 
@@ -61,10 +60,7 @@
     const data = completedVisuals[normalize(titleOf(card))];
     if (!data) return;
     const image = card.querySelector('img');
-    if (image) {
-      image.src = data.image;
-      image.alt = data.alt;
-    }
+    if (image) { image.src = data.image; image.alt = data.alt; }
     const meta = card.querySelector('.project-card__meta span');
     if (meta) meta.textContent = data.meta;
     const description = card.querySelector('p');
@@ -73,7 +69,6 @@
 
   const setCardLink = (card, href, label) => {
     if (!card || !href) return;
-
     const existingAnchor = card.querySelector(':scope > a[href]');
     if (existingAnchor) {
       card.dataset.completed = 'true';
@@ -81,7 +76,6 @@
       card.classList.add('project-card--linked');
       return;
     }
-
     card.dataset.completed = 'true';
     card.dataset.projectLink = href;
     card.classList.add('project-card--linked');
@@ -89,30 +83,19 @@
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', label || `${titleOf(card)} 포트폴리오 상세 보기`);
     card.style.cursor = 'pointer';
-
     const open = () => { window.location.href = href; };
-    card.addEventListener('click', (event) => {
-      if (event.target.closest('a, button, input, select, textarea')) return;
-      open();
-    });
-    card.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        open();
-      }
-    });
+    card.addEventListener('click', (event) => { if (!event.target.closest('a, button, input, select, textarea')) open(); });
+    card.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(); } });
   };
 
   cards().forEach((card) => {
     applyCompletedVisual(card);
-
     const existingAnchor = card.querySelector(':scope > a[href]');
     if (existingAnchor && /portfolio/i.test(existingAnchor.getAttribute('href') || '')) {
       card.dataset.completed = 'true';
       card.dataset.projectLink = existingAnchor.getAttribute('href') || '';
       card.classList.add('project-card--linked');
     }
-
     const manual = dedicatedLinks[normalize(titleOf(card))];
     if (manual) setCardLink(card, manual);
   });
@@ -127,11 +110,7 @@
 
   const loadScript = (src) => new Promise((resolve) => {
     const script = document.createElement('script');
-    script.src = src;
-    script.async = false;
-    script.onload = resolve;
-    script.onerror = resolve;
-    document.head.appendChild(script);
+    script.src = src; script.async = false; script.onload = resolve; script.onerror = resolve; document.head.appendChild(script);
   });
 
   const scoreMatch = (projectKey, candidate) => {
@@ -139,13 +118,10 @@
     const title = normalize(candidate?.title || '');
     const client = normalize(candidate?.client || '');
     const values = [id, title, client].filter(Boolean);
-
     if (values.includes(projectKey)) return 100;
     if (projectKey.length < 5) return 0;
-
     let score = 0;
     values.forEach((value) => {
-      // Short names such as "%EAT" must not hijack longer titles like "Have a seat".
       if (value.length < 5) return;
       if (value.startsWith(projectKey) || value.endsWith(projectKey)) score = Math.max(score, 85);
       else if (projectKey.startsWith(value) || projectKey.endsWith(value)) score = Math.max(score, 82);
@@ -158,7 +134,6 @@
     if (!Array.isArray(window.NW_PORTFOLIO)) return null;
     const key = normalize(titleOf(card));
     if (!key) return null;
-
     return window.NW_PORTFOLIO
       .map((project) => ({ project, score: scoreMatch(key, project) }))
       .filter((item) => item.score > 0)
@@ -170,15 +145,12 @@
     const completed = current.filter((card) => card.dataset.completed === 'true');
     const remaining = current.filter((card) => card.dataset.completed !== 'true');
     const fragment = document.createDocumentFragment();
-
-    // Completed / portfolio-connected cases are always shown first.
     [...completed, ...remaining].forEach((card, index) => {
       const image = card.querySelector('img');
       if (image) image.loading = index < 6 ? 'eager' : 'lazy';
       fragment.appendChild(card);
     });
     grid.appendChild(fragment);
-
     const count = document.querySelector('.project-gallery__count');
     if (count) count.textContent = `${current.length} PROJECTS`;
   };
@@ -194,9 +166,6 @@
     arrangeCompletedFirst();
   };
 
-  if (Array.isArray(window.NW_PORTFOLIO) && window.NW_PORTFOLIO.length) {
-    connectPortfolio();
-  } else {
-    Promise.all(portfolioScripts.map(loadScript)).then(connectPortfolio);
-  }
+  if (Array.isArray(window.NW_PORTFOLIO) && window.NW_PORTFOLIO.length) connectPortfolio();
+  else Promise.all(portfolioScripts.map(loadScript)).then(connectPortfolio);
 })();
