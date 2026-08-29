@@ -1,21 +1,23 @@
-/* TYTHONIC INDUSTRIES — editorial polish / 2026-08-29 */
+/* TYTHONIC INDUSTRIES — editorial refinement / 2026-08-29 */
 .portfolio-tythonic-page{
   --ty-blue:#204fab;
   --ty-ink:#171a1f;
-  --ty-muted:#5c6671;
-  --ty-soft:#f6f8fb;
+  --ty-muted:#56616d;
+  --ty-sub:#7d8997;
   --ty-line:#dce3eb;
+  --ty-soft:#f6f8fb;
 }
 
-/* ---------------------------------------------------------
-   GLOBAL RHYTHM — tighter, left aligned, book-like
----------------------------------------------------------- */
-.portfolio-tythonic-page .portfolio-scroll-copy{max-width:940px!important}
+/* =========================================================
+   GLOBAL EDITORIAL RHYTHM
+========================================================= */
+.portfolio-tythonic-page .portfolio-detail-scroll{overflow:visible!important}
+.portfolio-tythonic-page .portfolio-scroll-copy{max-width:960px!important}
 .portfolio-tythonic-page .portfolio-scroll-copy p,
 .portfolio-tythonic-page .ty-origin-copy,
 .portfolio-tythonic-page .ty-reading-intro p,
-.portfolio-tythonic-page .ty-visual-doctrine>p,
-.portfolio-tythonic-page .ty-company-after-story p{
+.portfolio-tythonic-page .ty-company-after-story p,
+.portfolio-tythonic-page .ty-visual-doctrine>p{
   color:var(--ty-muted)!important;
   font-size:16px!important;
   line-height:1.82!important;
@@ -23,20 +25,20 @@
   word-break:keep-all!important;
   text-align:left!important;
 }
-.portfolio-tythonic-page .ty-origin-lead{font-size:18px!important;line-height:1.8!important;word-break:keep-all!important}
 .portfolio-tythonic-page .portfolio-scroll-copy p+p{margin-top:14px!important}
-.portfolio-tythonic-page figcaption{font-size:11px!important;line-height:1.5!important;letter-spacing:.05em!important}
-.portfolio-develop-mode .portfolio-scroll-section{padding-top:48px!important}
-.portfolio-develop-mode .portfolio-scroll-section+.portfolio-scroll-section{margin-top:44px!important}
+.portfolio-tythonic-page .ty-origin-lead{font-size:18px!important;line-height:1.8!important;word-break:keep-all!important}
+.portfolio-tythonic-page figcaption{font-size:11px!important;line-height:1.5!important;letter-spacing:.05em!important;color:var(--ty-sub)!important}
+.portfolio-develop-mode .portfolio-scroll-section{padding-top:44px!important}
+.portfolio-develop-mode .portfolio-scroll-section+.portfolio-scroll-section{margin-top:38px!important}
 
-/* custom blocks behave like normal sections — no grey/blue slabs */
+/* keep every narrative block on the standard white case-study canvas */
 .portfolio-tythonic-page .wba-intro-band,
 .portfolio-tythonic-page .ty-reading-intro,
 .portfolio-tythonic-page .ty-chapter--dark,
 .portfolio-tythonic-page .ty-reality,
 .portfolio-tythonic-page .ty-visual-doctrine{
-  margin:48px 0 0!important;
-  padding:48px 0 0!important;
+  margin:42px 0 0!important;
+  padding:44px 0 0!important;
   color:var(--ty-ink)!important;
   background:#fff!important;
   border:0!important;
@@ -47,212 +49,258 @@
 .portfolio-tythonic-page .ty-chapter--dark *,
 .portfolio-tythonic-page .ty-reality *,
 .portfolio-tythonic-page .ty-visual-doctrine *{background:transparent!important;box-shadow:none!important}
-.portfolio-tythonic-page .wba-intro-band h2,
-.portfolio-tythonic-page .ty-reading-intro h2,
-.portfolio-tythonic-page .ty-chapter--dark h2,
-.portfolio-tythonic-page .ty-visual-doctrine h2{color:var(--ty-ink)!important}
 
-/* ---------------------------------------------------------
+/* =========================================================
    HERO / LANGUAGE
----------------------------------------------------------- */
+========================================================= */
 .portfolio-tythonic-page .ty-logo-hero{margin:0!important;padding:0!important;border:0!important;background:#fff!important}
 .portfolio-tythonic-page .ty-logo-hero img{display:block;width:100%!important;height:auto!important;object-fit:cover!important}
 .ty-lang-switch{display:flex;align-items:center;gap:7px;margin-left:auto;margin-right:18px;font-size:11px;font-weight:760;letter-spacing:.08em;color:#9aa2ac}
 .ty-lang-switch a{color:#9aa2ac;text-decoration:none}.ty-lang-switch a.is-active{color:var(--ty-blue)}.ty-lang-switch span{color:#c7ccd2}
 
-/* ---------------------------------------------------------
-   PROJECT ORIGIN / STORY INTRO
----------------------------------------------------------- */
-.ty-origin-question{margin:28px 0 0!important;padding:22px 0!important;font-size:clamp(30px,3vw,46px)!important;line-height:1.12!important;border-top:1px solid var(--ty-line)!important;border-bottom:1px solid var(--ty-line)!important}
-.ty-origin-question>span{margin-top:8px!important;font-size:10px!important}
-.ty-origin-question::after{content:"이 프로젝트를 시작하게 만든 질문";display:block;margin-top:10px;color:#65717e;font-size:13px;font-weight:500;letter-spacing:-.01em;text-transform:none}
+/* =========================================================
+   ORIGIN / STORY INTRO — shorter headline and tighter spacing
+========================================================= */
+.ty-origin-question{margin:26px 0 0!important;padding:20px 0!important;font-size:clamp(30px,3vw,44px)!important;line-height:1.12!important;border-top:1px solid var(--ty-line)!important;border-bottom:1px solid var(--ty-line)!important}
+.ty-origin-question>span{margin-top:7px!important;font-size:10px!important;color:#8a95a1!important}
+.ty-origin-question::after{content:"이 프로젝트를 시작하게 만든 질문";display:block;margin-top:8px;color:#66717d;font-size:13px;font-weight:500;letter-spacing:-.01em;text-transform:none}
 
-.ty-reading-intro h2{max-width:1120px!important;font-size:clamp(38px,3.25vw,50px)!important;line-height:1.13!important;letter-spacing:-.045em!important;word-break:keep-all!important}
-.ty-reading-intro p{max-width:940px!important;margin:22px 0 0!important}
-.ty-story-spine,.ty-process-line,.ty-symbol-flow{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:28px!important;padding-top:15px!important;border-top:1px solid var(--ty-line);color:var(--ty-blue);font-size:10.5px;font-weight:760;letter-spacing:.065em;text-transform:uppercase}
+.ty-reading-intro h2{
+  max-width:1180px!important;
+  margin-top:20px!important;
+  font-size:clamp(36px,3.05vw,48px)!important;
+  line-height:1.12!important;
+  letter-spacing:-.045em!important;
+  word-break:keep-all!important;
+}
+.ty-reading-intro p{max-width:960px!important;margin:18px 0 0!important}
+.ty-story-spine,.ty-process-line,.ty-symbol-flow{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:24px!important;padding-top:14px!important;border-top:1px solid var(--ty-line);color:var(--ty-blue);font-size:10.5px;font-weight:760;letter-spacing:.065em;text-transform:uppercase}
 .ty-story-spine i,.ty-process-line i,.ty-symbol-flow i{color:#a3acb7;font-style:normal}
 
-/* ---------------------------------------------------------
-   CHAPTERS — less empty space, Korean guidance under English
----------------------------------------------------------- */
-.ty-chapter{padding-top:46px!important}
-.ty-chapter-label{display:flex;align-items:center;gap:10px;margin:0 0 14px!important;color:var(--ty-blue)!important;font-size:11.5px!important;font-weight:760;letter-spacing:.065em;text-transform:uppercase}
+/* =========================================================
+   CHAPTERS — use Chapter 03 as the common visual reference
+========================================================= */
+.ty-chapter{padding-top:42px!important;margin-top:28px!important}
+.ty-chapter-label{display:flex;align-items:center;gap:10px;margin:0 0 14px!important;color:var(--ty-blue)!important;font-size:11.5px!important;font-weight:760;letter-spacing:.065em;text-transform:uppercase;opacity:1!important}
 .ty-chapter-label::after{content:"";height:1px;flex:1;background:var(--ty-line)!important}
 .ty-chapter-label .no{color:#7e8996!important;font-variant-numeric:tabular-nums}
 .ty-chapter-number{display:none!important}
 .ty-chapter .portfolio-scroll-section__head{margin-bottom:10px!important}
-.ty-chapter .portfolio-scroll-section__head h2{max-width:900px!important;margin-bottom:0!important;font-size:clamp(34px,2.7vw,44px)!important;line-height:1.12!important}
-.ty-chapter .portfolio-scroll-section__head h2::after{display:block;margin-top:8px;color:#7a8591;font-size:13px;font-weight:500;line-height:1.55;letter-spacing:-.01em}
+.ty-chapter .portfolio-scroll-section__head h2{max-width:980px!important;margin:0!important;color:var(--ty-ink)!important;font-size:clamp(34px,2.7vw,44px)!important;line-height:1.12!important;letter-spacing:-.04em!important}
+.ty-chapter .portfolio-scroll-section__head h2::after{display:block;margin-top:8px;color:#74808d;font-size:13px;font-weight:500;line-height:1.55;letter-spacing:-.01em}
 #chapter-01 .portfolio-scroll-section__head h2::after{content:"인간의 수명을 연구 가능한 문제로 바라보기 시작한 출발점."}
 #chapter-02 .portfolio-scroll-section__head h2::after{content:"손상된 기능을 복원하며 인간의 몸을 하나의 구조로 읽기 시작한 단계."}
 #chapter-03 .portfolio-scroll-section__head h2::after{content:"신체를 데이터로 해석하고 개인을 식별 가능한 정보로 전환한 단계."}
 #chapter-04 .portfolio-scroll-section__head h2::after{content:"생체정보를 Blue Chip이라는 물리적 장치와 시스템으로 보존한 단계."}
 #chapter-05 .portfolio-scroll-section__head h2::after{content:"앞선 모든 기술이 Battlegrounds라는 하나의 운영 인프라로 연결되는 단계."}
-.ty-chapter-deck{max-width:900px!important;margin:0 0 20px!important;color:var(--ty-blue)!important;font-size:19px!important;line-height:1.55!important}
-.ty-chapter .portfolio-scroll-copy p{margin:0 0 15px!important;padding:0!important;min-height:0!important;text-align:left!important}
-#chapter-05 .portfolio-scroll-copy,#chapter-05 .portfolio-scroll-copy p,#chapter-05 .portfolio-scroll-copy strong{display:block!important;min-height:0!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;background:transparent!important}
-.ty-chapter-quote{margin:22px 0 0!important;padding:18px 0 0!important;font-size:23px!important;line-height:1.35!important;border-top:1px solid var(--ty-line)!important}
+
+.portfolio-tythonic-page .ty-chapter-deck,
+.portfolio-tythonic-page .ty-chapter--dark .ty-chapter-deck{
+  max-width:940px!important;
+  margin:0 0 20px!important;
+  color:var(--ty-blue)!important;
+  opacity:1!important;
+  font-size:19px!important;
+  font-weight:500!important;
+  line-height:1.55!important;
+}
+.ty-chapter .portfolio-scroll-copy{margin-bottom:0!important}
+.ty-chapter .portfolio-scroll-copy p{margin:0 0 14px!important;padding:0!important;min-height:0!important;color:#40484f!important;opacity:1!important;text-align:left!important}
+.ty-chapter--dark .portfolio-scroll-copy,.ty-chapter--dark .portfolio-scroll-copy p,.ty-chapter--dark .portfolio-scroll-copy strong{background:transparent!important;color:#40484f!important;opacity:1!important}
+
+.ty-chapter-quote{margin:21px 0 0!important;padding:17px 0 0!important;color:var(--ty-ink)!important;font-size:23px!important;line-height:1.35!important;border-top:1px solid var(--ty-line)!important}
 .ty-chapter-quote span{margin-top:7px!important;color:#8a95a2!important;font-size:10px!important}
-.ty-chapter-quote::after{display:block;margin-top:9px;color:#65717e;font-size:13px;font-weight:500;line-height:1.55;letter-spacing:-.01em}
+.ty-chapter-quote::after{display:block;margin-top:8px;color:#66717d;font-size:13px;font-weight:500;line-height:1.55;letter-spacing:-.01em}
 #chapter-01 .ty-chapter-quote::after{content:"생명의 한계를 측정하고 연구할 수 있다는 초기 기업 철학."}
 #chapter-02 .ty-chapter-quote::after{content:"잃어버린 신체 기능을 기술로 다시 이어 붙인다는 연구 방향."}
 #chapter-03 .ty-chapter-quote::after{content:"모든 개인에게는 고유한 생체적 서명이 있다는 데이터 관점."}
 #chapter-04 .ty-chapter-quote::after{content:"식별된 생체정보를 장치 안에 보존하고 시스템과 연결한다는 의미."}
 #chapter-05 .ty-chapter-quote::after{content:"모든 생존 상태가 시스템 안에서 기록되고 관리된다는 운영 언어."}
-.ty-chapter-question{margin:20px 0 0!important;padding:16px 0!important;color:var(--ty-blue)!important;font-size:20px!important;line-height:1.35!important;border-top:1px solid var(--ty-line)!important;border-bottom:1px solid var(--ty-line)!important}
-.ty-chapter-question::after{display:block;margin-top:7px;color:#697581;font-size:13px;font-weight:500;letter-spacing:-.01em}
+.ty-chapter-question{margin:18px 0 0!important;padding:15px 0!important;color:var(--ty-blue)!important;font-size:20px!important;line-height:1.35!important;border-top:1px solid var(--ty-line)!important;border-bottom:1px solid var(--ty-line)!important}
+.ty-chapter-question::after{display:block;margin-top:6px;color:#697581;font-size:13px;font-weight:500;letter-spacing:-.01em}
 #chapter-01 .ty-chapter-question::after{content:"생명은 더 오래 지속될 수 있는가?"}
 #chapter-02 .ty-chapter-question::after{content:"손상된 신체는 다시 복원될 수 있는가?"}
 #chapter-03 .ty-chapter-question::after{content:"생명은 고유한 정보로 식별될 수 있는가?"}
 #chapter-04 .ty-chapter-question::after{content:"정체성은 신체 밖에서도 보존될 수 있는가?"}
 #chapter-05 .ty-chapter-question::after{content:"생존은 하나의 시스템으로 관리될 수 있는가?"}
-.ty-story-image{margin-top:26px!important;background:#fff!important}
+.ty-story-image{margin-top:24px!important;margin-bottom:0!important;background:#fff!important}
 .ty-story-image figcaption{padding-top:8px!important;background:#fff!important;color:#7d8793!important}
 
-/* ---------------------------------------------------------
-   AFTER STORY — 5 compact fields instead of repeated tall rows
----------------------------------------------------------- */
-.ty-company-after-story{margin-top:52px!important}
-.ty-company-after-story .portfolio-scroll-copy{margin-bottom:26px!important}
-.ty-company-after-story .ty-definition-stack{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;margin-top:24px!important;border:0!important}
-.ty-company-after-story .ty-definition-stack article{display:block!important;min-height:0!important;padding:20px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
-.ty-company-after-story .ty-definition-stack small{display:block;padding:0!important;margin-bottom:18px;color:#7f8b99;font-size:9.5px;font-weight:760;letter-spacing:.07em}
-.ty-company-after-story .ty-definition-stack strong{display:block;margin:0 0 10px!important;color:var(--ty-blue);font-size:18px!important;line-height:1.25!important}
-.ty-company-after-story .ty-definition-stack p{margin:0!important;color:#626d78!important;font-size:12.5px!important;line-height:1.65!important}
+/* =========================================================
+   COMPANY DEFINITION — compact cards, less white space
+========================================================= */
+.ty-company-after-story{margin-top:46px!important}
+.ty-company-after-story .portfolio-scroll-copy{margin-bottom:22px!important}
+.ty-company-after-story .ty-definition-stack{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin-top:22px!important;border:0!important}
+.ty-company-after-story .ty-definition-stack article{display:block!important;min-height:0!important;padding:19px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
+.ty-company-after-story .ty-definition-stack small{display:block;padding:0!important;margin-bottom:14px;color:#7f8b99;font-size:9.5px;font-weight:760;letter-spacing:.07em}
+.ty-company-after-story .ty-definition-stack strong{display:block;margin:0 0 9px!important;color:var(--ty-blue);font-size:18px!important;line-height:1.25!important}
+.ty-company-after-story .ty-definition-stack p{margin:0!important;color:#626d78!important;font-size:12.5px!important;line-height:1.62!important}
 
-/* ---------------------------------------------------------
-   LOGO / SYMBOL — no inline SVG; use source logo files
----------------------------------------------------------- */
-.ty-symbol-section{margin-top:52px!important}
-.ty-symbol-section .portfolio-scroll-section__head h2{max-width:900px!important;font-size:clamp(34px,3vw,46px)!important;line-height:1.14!important;word-break:keep-all!important}
+/* =========================================================
+   LOGO & SYMBOL — source image files only, 2-column grid
+========================================================= */
+.ty-symbol-section{margin-top:46px!important}
+.ty-symbol-section .portfolio-scroll-section__head h2{
+  max-width:1180px!important;
+  font-size:clamp(32px,2.7vw,42px)!important;
+  line-height:1.14!important;
+  letter-spacing:-.045em!important;
+  word-break:keep-all!important;
+}
 .ty-symbol-master{display:none!important}
-.ty-symbol-section .portfolio-scroll-copy{margin-bottom:18px!important}
-.ty-symbol-flow{margin-top:22px!important}
-.ty-logo-grid,.ty-logo-grid--single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;margin-top:28px!important}
-.ty-logo-grid figure{margin:0!important;padding:0!important;border:0!important;background:#fff!important;overflow:hidden}
+.ty-symbol-section .portfolio-scroll-copy{margin-bottom:16px!important}
+.ty-symbol-flow{margin-top:20px!important}
+.ty-logo-grid,.ty-logo-grid--single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;margin-top:26px!important}
+.ty-logo-grid figure,
 .ty-logo-grid figure:has(img[src*="8cab704c88176"]),
-.ty-logo-grid figure:has(img[src*="cda9851af0982"]){grid-column:1/-1!important}
+.ty-logo-grid figure:has(img[src*="cda9851af0982"]){grid-column:auto!important;margin:0!important;padding:0!important;border:0!important;background:#fff!important;overflow:hidden}
 .ty-logo-grid img{display:block;width:100%!important;height:auto!important;object-fit:contain!important;background:#fff!important}
-.ty-method-note{margin:26px 0 0!important;padding:20px 0!important;border-top:1px solid var(--ty-line)!important;border-bottom:1px solid var(--ty-line)!important}
-.ty-method-note strong{display:block;margin-bottom:8px;color:var(--ty-blue);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
-.ty-method-note p{max-width:860px!important;margin:0!important;color:#5f6975!important;font-size:13.5px!important;line-height:1.72!important}
+.ty-method-note{margin:24px 0 0!important;padding:18px 0!important;border-top:1px solid var(--ty-line)!important;border-bottom:1px solid var(--ty-line)!important}
+.ty-method-note strong{display:block;margin-bottom:7px;color:var(--ty-blue);font-size:11px;letter-spacing:.07em;text-transform:uppercase}
+.ty-method-note p{max-width:900px!important;margin:0!important;color:#5f6975!important;font-size:13.5px!important;line-height:1.7!important}
 
-/* ---------------------------------------------------------
-   BRAND CORE — 2x2 cards
----------------------------------------------------------- */
-.ty-definition-stack--brand{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:26px!important;border:0!important}
-.ty-definition-stack--brand article{display:block!important;min-height:0!important;padding:24px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
-.ty-definition-stack--brand small{display:block;padding:0!important;margin-bottom:18px!important;color:#7f8b99!important;font-size:10px!important}
-.ty-definition-stack--brand strong{display:block;margin:0 0 10px!important;color:var(--ty-blue)!important;font-size:24px!important;line-height:1.2!important}
-.ty-definition-stack--brand p{margin:0!important;color:#626d78!important;font-size:13.5px!important;line-height:1.7!important}
+/* =========================================================
+   BRAND / DESIGN / VISUAL DOCTRINE
+========================================================= */
+.ty-definition-stack--brand,.ty-design-principles-single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:24px!important;border:0!important}
+.ty-definition-stack--brand article,.ty-design-principles-single article{display:block!important;min-height:0!important;padding:22px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
+.ty-definition-stack--brand small,.ty-design-principles-single small{display:block;padding:0!important;margin-bottom:14px!important;color:#7f8b99!important;font-size:10px!important}
+.ty-definition-stack--brand strong{display:block;margin:0 0 9px!important;color:var(--ty-blue)!important;font-size:23px!important;line-height:1.2!important}
+.ty-design-principles-single strong{display:block;margin:0 0 9px!important;color:var(--ty-blue)!important;font-size:21px!important}
+.ty-definition-stack--brand p,.ty-design-principles-single p{margin:0!important;color:#626d78!important;font-size:13.5px!important;line-height:1.68!important}
 
-/* ---------------------------------------------------------
-   DESIGN PRINCIPLES — compact 2x2, not repeated rows
----------------------------------------------------------- */
-.ty-design-principles-single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:26px!important;border:0!important}
-.ty-design-principles-single article{display:block!important;min-height:0!important;padding:24px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
-.ty-design-principles-single small{display:block;padding:0!important;margin-bottom:18px;color:#7f8b99!important;font-size:10px!important}
-.ty-design-principles-single strong{display:block;margin:0 0 10px!important;color:var(--ty-blue)!important;font-size:22px!important}
-.ty-design-principles-single p{margin:0!important;color:#626d78!important;font-size:13.5px!important;line-height:1.7!important}
-
-/* ---------------------------------------------------------
-   VISUAL DOCTRINE — 3x2 cards, shorter lines
----------------------------------------------------------- */
-.ty-visual-doctrine h2{max-width:1000px!important;font-size:clamp(36px,3.25vw,50px)!important;line-height:1.12!important;word-break:keep-all!important}
+.ty-visual-doctrine h2{max-width:1100px!important;font-size:clamp(34px,3vw,46px)!important;line-height:1.12!important;word-break:keep-all!important}
 .ty-visual-doctrine h2 .accent{color:var(--ty-blue)!important}
-.ty-visual-doctrine>p{max-width:940px!important;margin:18px 0 0!important}
-.ty-doctrine-single{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important;margin-top:28px!important;border:0!important}
-.ty-doctrine-single article{display:block!important;min-height:0!important;padding:22px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
-.ty-doctrine-single small{display:block;padding:0!important;margin-bottom:18px;color:#7f8b99!important;font-size:9.5px!important;line-height:1.45!important}
-.ty-doctrine-single strong{display:block;margin:0 0 10px!important;color:var(--ty-blue)!important;font-size:20px!important;line-height:1.25!important}
-.ty-doctrine-single p{margin:0!important;color:#626d78!important;font-size:13px!important;line-height:1.68!important}
+.ty-visual-doctrine>p{max-width:960px!important;margin:16px 0 0!important}
+.ty-doctrine-single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:24px!important;border:0!important}
+.ty-doctrine-single article{display:block!important;min-height:0!important;padding:21px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
+.ty-doctrine-single small{display:block;padding:0!important;margin-bottom:12px;color:#7f8b99!important;font-size:9.5px!important;line-height:1.4!important}
+.ty-doctrine-single strong{display:block;margin:0 0 8px!important;color:var(--ty-blue)!important;font-size:20px!important;line-height:1.25!important}
+.ty-doctrine-single p{margin:0!important;color:#626d78!important;font-size:13px!important;line-height:1.66!important}
 
-/* ---------------------------------------------------------
-   VERBAL — two distinct panels, Korean explanation already present
----------------------------------------------------------- */
-.ty-verbal-single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:26px!important;border:0!important}
-.ty-verbal-single article{display:block!important;min-height:0!important;padding:24px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
-.ty-verbal-single small{display:block;padding:0!important;margin-bottom:18px;color:#7f8b99!important;font-size:10px!important}
-.ty-verbal-single strong{display:block;margin:0 0 12px!important;color:var(--ty-blue)!important;font-size:23px!important;line-height:1.25!important}
+/* =========================================================
+   VERBAL — two clear panels
+========================================================= */
+.ty-verbal-single{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:24px!important;border:0!important}
+.ty-verbal-single article{display:block!important;min-height:0!important;padding:23px!important;border:1px solid var(--ty-line)!important;background:#fff!important}
+.ty-verbal-single small{display:block;padding:0!important;margin-bottom:14px;color:#7f8b99!important;font-size:10px!important}
+.ty-verbal-single strong{display:block;margin:0 0 10px!important;color:var(--ty-blue)!important;font-size:23px!important;line-height:1.25!important}
 .ty-verbal-single p{margin:0!important;color:#626d78!important;font-size:13.5px!important;line-height:1.7!important}
 
-/* ---------------------------------------------------------
-   BLUE CHIP + APPLICATIONS — images stay single-column
----------------------------------------------------------- */
-.ty-tech-grid,.ty-tech-grid--single{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;margin-top:30px!important}
+/* =========================================================
+   BLUE CHIP — large single-image flow, remove black hero image
+========================================================= */
+.ty-tech-grid,.ty-tech-grid--single{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;margin-top:34px!important}
 .ty-tech-grid figure{margin:0!important;background:#fff!important;overflow:hidden}
 .ty-tech-grid img{display:block;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important}
-.ty-tech-grid figcaption{padding-top:8px!important;background:#fff!important;color:#7e8995!important;font-size:11px!important}
-.ty-application-section{margin-top:58px!important}
-.ty-application-section:first-of-type{margin-top:38px!important}
-.ty-application-head{display:grid!important;grid-template-columns:170px minmax(0,1fr)!important;gap:26px!important;align-items:start;padding:16px 0!important;border-top:1px solid var(--ty-blue)!important}
-.ty-application-head small{color:#8190a3!important;font-size:10.5px!important;font-weight:760;letter-spacing:.07em;text-transform:uppercase}
-.ty-application-head h3{margin:0 0 7px!important;color:var(--ty-ink)!important;font-size:25px!important;font-weight:560;letter-spacing:-.03em}
-.ty-application-head p{max-width:800px!important;margin:0!important;color:#68727e!important;font-size:13.5px!important;line-height:1.7!important}
-.ty-application-grid--editorial,.ty-application-grid--single{display:grid!important;grid-template-columns:1fr!important;gap:22px!important;margin-top:18px!important}
+.ty-tech-grid figcaption{padding-top:9px!important;background:#fff!important;color:#7e8995!important;font-size:11px!important}
+#bluechip .ty-tech-grid figure:has(img[src*="f58a23ccc86d0"]){display:none!important}
+
+/* =========================================================
+   APPLICATIONS — professional language + stronger spacing
+========================================================= */
+#applications>.portfolio-scroll-copy{max-width:980px!important;margin-bottom:44px!important}
+#applications>.portfolio-scroll-copy p{display:none!important}
+#applications>.portfolio-scroll-copy::after{
+  content:"CI 시스템의 완성도는 문서, 제품, 시설, 현장 장비처럼 성격이 다른 접점에서도 동일한 조직으로 인식되는가에 의해 검증됩니다. TYTHONIC의 응용 체계는 기업 문서와 접근권한, 연구·생산, 산업 장비, 공간 사인까지 하나의 정보 질서와 시각 규율로 연결합니다. 매체마다 표현을 바꾸기보다 동일한 심볼, 컬러, 타이포그래피, 코드 체계를 반복해 조직의 규모와 운영 방식이 일관되게 드러나도록 설계했습니다.";
+  display:block;
+  max-width:960px;
+  color:var(--ty-muted);
+  font-size:16px;
+  line-height:1.82;
+  letter-spacing:-.018em;
+  word-break:keep-all;
+}
+.ty-application-section{margin-top:82px!important}
+.ty-application-section:first-of-type{margin-top:54px!important}
+.ty-application-head{display:grid!important;grid-template-columns:190px minmax(0,1fr)!important;gap:34px!important;align-items:start!important;padding:19px 0 21px!important;border-top:1px solid var(--ty-blue)!important}
+.ty-application-head small{color:#8190a3!important;font-size:11px!important;font-weight:760!important;letter-spacing:.075em!important;text-transform:uppercase}
+.ty-application-head h3{margin:0 0 10px!important;color:var(--ty-ink)!important;font-size:27px!important;font-weight:560!important;letter-spacing:-.035em!important}
+.ty-application-head p{max-width:820px!important;margin:0!important;color:#68727e!important;font-size:14px!important;line-height:1.75!important}
+.ty-application-grid--editorial,.ty-application-grid--single{display:grid!important;grid-template-columns:1fr!important;gap:24px!important;margin-top:30px!important}
 .ty-application-grid--editorial figure{grid-column:auto!important;margin:0!important;background:#fff!important;overflow:hidden}
 .ty-application-grid--editorial img{display:block;width:100%!important;height:auto!important}
 
-/* Sidebar microcopy */
+/* replace category descriptions with deeper CI language */
+#applications .ty-application-section:nth-of-type(1) .ty-application-head p,
+#applications .ty-application-section:nth-of-type(2) .ty-application-head p,
+#applications .ty-application-section:nth-of-type(3) .ty-application-head p,
+#applications .ty-application-section:nth-of-type(4) .ty-application-head p{font-size:0!important;line-height:0!important}
+#applications .ty-application-section:nth-of-type(1) .ty-application-head p::after{
+  content:"조직의 첫 접점에서는 신뢰와 권한이 명확하게 읽혀야 합니다. 명함과 공식 문서, ID, Access Card, 유니폼에는 이름·Division·직급·Access Level을 일정한 위계로 배치해 구성원의 소속과 역할을 즉시 이해할 수 있도록 했습니다. 기업 아이덴티티를 시각 장식이 아니라 조직 구조를 전달하는 정보 체계로 운용했습니다.";
+}
+#applications .ty-application-section:nth-of-type(2) .ty-application-head p::after{
+  content:"연구 단계의 기술문서에서 생산 트레이, 패키지, QC 라벨에 이르기까지 제품이 이동하는 전 과정을 동일한 코드 체계와 시각 규율로 연결했습니다. Blue Chip은 독립된 오브젝트보다 연구·제조·검수·보관·유지보수가 연속되는 기술 플랫폼으로 인식되어야 하며, 이 과정에서 CI는 품질과 출처를 보증하는 표준 언어로 기능합니다.";
+}
+#applications .ty-application-section:nth-of-type(3) .ty-application-head p::after{
+  content:"산업 및 현장 환경에서는 장식성보다 원거리 식별성, 내구성, 유지보수 정보의 명료성이 우선됩니다. 송신기와 설비, 운송 장비에는 TYTHONIC BLUE와 마스터 심볼을 높은 대비로 적용하고, 장비명·시리얼·Field Unit 정보를 일정한 규칙으로 배치해 다양한 환경에서도 동일한 기업 자산임을 빠르게 인지하도록 설계했습니다.";
+}
+#applications .ty-application-section:nth-of-type(4) .ty-application-head p::after{
+  content:"공간 아이덴티티는 TYTHONIC의 규모와 기관성을 가장 직접적으로 체감시키는 접점입니다. 연구시설 외벽, 내부 사인, 안내 패널과 기업 커뮤니케이션에 동일한 여백과 타이포그래피 원칙을 적용해 제품 중심의 브랜드가 아니라 여러 부서와 시설, 운영체계를 가진 글로벌 기관으로 보이도록 확장했습니다.";
+}
+#applications .ty-application-section .ty-application-head p::after{
+  display:block;
+  color:#68727e;
+  font-size:14px;
+  line-height:1.76;
+  letter-spacing:-.016em;
+  word-break:keep-all;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
 .portfolio-tythonic-page .portfolio-detail-facts dt{font-size:11px!important}
 .portfolio-tythonic-page .portfolio-detail-facts dd{font-size:12.5px!important}
 .portfolio-tythonic-page .portfolio-detail-index a{font-size:11.5px!important}
 
-@media(max-width:1180px){
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media(max-width:1050px){
   .ty-company-after-story .ty-definition-stack{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .ty-doctrine-single{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 
 @media(max-width:760px){
-  .portfolio-tythonic-page .portfolio-scroll-section{padding:42px 22px!important}
-  .portfolio-develop-mode .portfolio-scroll-section+.portfolio-scroll-section{margin-top:34px!important}
+  .portfolio-tythonic-page .portfolio-scroll-section{padding:46px 22px!important}
   .portfolio-tythonic-page .wba-intro-band,
   .portfolio-tythonic-page .ty-reading-intro,
   .portfolio-tythonic-page .ty-chapter--dark,
   .portfolio-tythonic-page .ty-reality,
-  .portfolio-tythonic-page .ty-visual-doctrine{margin:34px 0 0!important;padding:42px 22px 0!important}
+  .portfolio-tythonic-page .ty-visual-doctrine{margin:46px 0 0!important;padding:46px 22px 0!important}
 
-  .portfolio-tythonic-page .ty-origin-lead{font-size:15.5px!important;line-height:1.78!important}
+  .portfolio-tythonic-page .ty-origin-lead{font-size:15.5px!important;line-height:1.8!important}
   .portfolio-tythonic-page .ty-origin-copy,
   .portfolio-tythonic-page .portfolio-scroll-copy p,
   .portfolio-tythonic-page .ty-reading-intro p,
   .portfolio-tythonic-page .ty-visual-doctrine>p,
-  .portfolio-tythonic-page .ty-company-after-story p{font-size:14px!important;line-height:1.78!important;text-align:left!important;word-break:keep-all!important;letter-spacing:-.015em!important;word-spacing:normal!important}
+  .portfolio-tythonic-page .ty-company-after-story p{font-size:14px!important;line-height:1.8!important;text-align:left!important;word-break:keep-all!important;letter-spacing:-.015em!important;word-spacing:normal!important}
 
-  .ty-origin-question{font-size:29px!important}
-  .ty-reading-intro h2{font-size:32px!important;line-height:1.16!important;max-width:none!important}
-  .ty-chapter{padding-top:40px!important}
-  .ty-chapter-label{font-size:9.5px!important;gap:8px!important;margin-bottom:12px!important}
-  .ty-chapter .portfolio-scroll-section__head h2{font-size:31px!important}
-  .ty-chapter .portfolio-scroll-section__head h2::after{font-size:12px!important}
-  .ty-chapter-deck{font-size:16px!important;line-height:1.55!important}
-  .ty-chapter-quote{font-size:19px!important}.ty-chapter-question{font-size:17px!important}
-  .ty-chapter-quote::after,.ty-chapter-question::after{font-size:12px!important}
-  .ty-story-spine,.ty-process-line,.ty-symbol-flow{gap:7px!important;font-size:8.5px!important}
+  .ty-reading-intro h2{font-size:32px!important;line-height:1.13!important}
+  .ty-chapter-label{font-size:10px!important;gap:8px!important}
+  .ty-chapter .portfolio-scroll-section__head h2{font-size:32px!important}
+  .ty-chapter-deck{font-size:17px!important;line-height:1.58!important}
+  .ty-chapter-quote{font-size:20px!important}.ty-chapter-question{font-size:17px!important}
 
   .ty-company-after-story .ty-definition-stack,
   .ty-definition-stack--brand,
   .ty-design-principles-single,
   .ty-doctrine-single,
-  .ty-verbal-single{grid-template-columns:1fr!important;gap:10px!important}
-  .ty-company-after-story .ty-definition-stack article,
-  .ty-definition-stack--brand article,
-  .ty-design-principles-single article,
-  .ty-doctrine-single article,
-  .ty-verbal-single article{padding:20px!important}
+  .ty-verbal-single{grid-template-columns:1fr!important}
 
-  .ty-symbol-section .portfolio-scroll-section__head h2{font-size:31px!important;max-width:none!important}
-  .ty-logo-grid,.ty-logo-grid--single{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
-  .ty-logo-grid figure:has(img[src*="8cab704c88176"]),
-  .ty-logo-grid figure:has(img[src*="cda9851af0982"]){grid-column:1/-1!important}
+  .ty-symbol-section .portfolio-scroll-section__head h2{font-size:31px!important;line-height:1.15!important}
+  .ty-logo-grid,.ty-logo-grid--single{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
 
-  .ty-visual-doctrine h2{font-size:31px!important;line-height:1.14!important;max-width:none!important}
-  .ty-tech-grid,.ty-tech-grid--single{gap:16px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
+  .ty-tech-grid,.ty-tech-grid--single{gap:18px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
   .ty-tech-grid figcaption{padding-left:22px!important;padding-right:22px!important}
 
-  .ty-application-section{margin-top:46px!important}
-  .ty-application-head{grid-template-columns:1fr!important;gap:7px!important;padding:14px 0!important}
-  .ty-application-head h3{font-size:22px!important}.ty-application-head p{font-size:13px!important;line-height:1.66!important}
-  .ty-application-grid--editorial,.ty-application-grid--single{gap:15px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
+  #applications>.portfolio-scroll-copy::after{font-size:14px;line-height:1.8}
+  .ty-application-section{margin-top:62px!important}
+  .ty-application-head{grid-template-columns:1fr!important;gap:8px!important;padding:15px 0 18px!important}
+  .ty-application-head h3{font-size:23px!important}.ty-application-head p::after{font-size:13px!important;line-height:1.72!important}
+  .ty-application-grid--editorial,.ty-application-grid--single{gap:18px!important;margin-left:-22px!important;margin-right:-22px!important;width:calc(100% + 44px)!important}
+
   .ty-lang-switch{font-size:9.5px;margin-right:10px}
 }
