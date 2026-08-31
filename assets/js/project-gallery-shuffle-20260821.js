@@ -12,6 +12,57 @@
   const cards = () => Array.from(grid.querySelectorAll(':scope > .project-card'));
   const titleOf = (card) => card.querySelector('h2')?.textContent.trim() || '';
 
+  const projectMetaKeywords = {
+    coventrycityfc: 'FOOTBALL · CLUB IDENTITY · REBRANDING',
+    tythonicindustries: 'GAME · GAME BRANDING · WORLD-BUILDING',
+    westbromwichalbion: 'FOOTBALL · HERITAGE · CLUB REBRANDING',
+    aesost: 'EDUCATION · BRAND IDENTITY · VISUAL SYSTEM',
+    privion: 'TECH · BRAND IDENTITY · VISUAL SYSTEM',
+    denovopharm: 'HEALTHCARE · CORPORATE · BRAND SYSTEM',
+    '1plan': 'SERVICE · BRAND IDENTITY · VISUAL SYSTEM',
+    muscovyduvet: 'BEDDING · LIFESTYLE · BRAND IDENTITY',
+    pentagon: 'CORPORATE · CI · VISUAL SYSTEM',
+    damo: 'LIFESTYLE · BRAND IDENTITY · GRAPHIC',
+    thecarbonstudio: 'CREATIVE STUDIO · IDENTITY · EDITORIAL',
+    thepetrichor: 'FRAGRANCE · BEAUTY · SENSORY BRANDING',
+    laff: 'LIFESTYLE · IDENTITY · TYPOGRAPHY',
+    mohb: 'BRAND IDENTITY · GRAPHIC · VISUAL SYSTEM',
+    blondy: 'LIFESTYLE · PRODUCT · PACKAGE',
+    worldcross: 'CORPORATE · GLOBAL · IDENTITY',
+    chapter: 'F&B · SPACE · BRAND EXPERIENCE',
+    tigre: 'BRAND IDENTITY · GRAPHIC · ART DIRECTION',
+    taepyung: 'MANUFACTURING · CORPORATE · HERITAGE',
+    terracle: 'CLEANTECH · TECHNOLOGY · CORPORATE',
+    toylub: 'PRODUCT · BRAND IDENTITY · PACKAGE',
+    haveaseat: 'FURNITURE · LIFESTYLE · E-COMMERCE',
+    jewood: 'MATERIAL · PRODUCT · BRAND IDENTITY',
+    eyesafer: 'EYECARE · PRODUCT · BRANDING',
+    ouga: 'F&B · SPACE · PACKAGE',
+    wigglyyum: 'F&B · CHARACTER · PACKAGE',
+    denti: 'DENTAL · HEALTHCARE · SERVICE BRANDING',
+    연꽃감: 'LOCAL FOOD · F&B · PACKAGE',
+    pausenality: 'LIFESTYLE · WELLNESS · IDENTITY',
+    breezecoffee: 'CAFE · F&B · SPACE',
+    mailday: 'LIFESTYLE · BRAND IDENTITY · GRAPHIC',
+    viliv: 'LIFESTYLE · IDENTITY · VISUAL SYSTEM',
+    yoriko: 'BRAND IDENTITY · TYPOGRAPHY · GRAPHIC',
+    myv: 'LIFESTYLE · IDENTITY · DIGITAL',
+    somsomlike: 'LIFESTYLE · CHARACTER · IDENTITY',
+    greedyscent: 'FRAGRANCE · BEAUTY · ART DIRECTION',
+    mayer: 'BRAND IDENTITY · MINIMAL · VISUAL SYSTEM',
+    thespa: 'WELLNESS · SPA · SERVICE BRANDING',
+    byso: 'BRAND IDENTITY · TYPOGRAPHY · VISUAL SYSTEM',
+    aromachemi: 'FRAGRANCE · BEAUTY · PRODUCT',
+    sostlabs: 'TECHNOLOGY · LABS · CORPORATE IDENTITY'
+  };
+
+  const applyProjectMetaKeywords = (card) => {
+    const meta = card.querySelector('.project-card__meta span');
+    if (!meta) return;
+    const keyword = projectMetaKeywords[normalize(titleOf(card))];
+    if (keyword) meta.textContent = keyword;
+  };
+
   cards().forEach((card) => { if (titleOf(card) === '드림팜') card.remove(); });
   const onePlanCards = cards().filter((card) => normalize(titleOf(card)) === '1plan');
   onePlanCards.slice(1).forEach((card) => card.remove());
@@ -90,6 +141,7 @@
 
   cards().forEach((card) => {
     applyCompletedVisual(card);
+    applyProjectMetaKeywords(card);
     const existingAnchor = card.querySelector(':scope > a[href]');
     if (existingAnchor && /portfolio/i.test(existingAnchor.getAttribute('href') || '')) {
       card.dataset.completed = 'true';
@@ -166,6 +218,7 @@
 
   const connectPortfolio = () => {
     cards().forEach((card) => {
+      applyProjectMetaKeywords(card);
       if (card.dataset.completed === 'true') return;
       const project = findPortfolioMatch(card);
       if (!project) return;
