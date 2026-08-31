@@ -52,13 +52,22 @@ body.page-branding .site-primary-nav [data-nav-key="process"]::after,body.page-p
  }
  html body .menu-overlay nav.menu-nav>.menu-nav__group>button.menu-nav__toggle span{font-family:inherit!important;font-size:14px!important;font-weight:400!important;line-height:1!important;color:#777!important}
 
- html body .menu-nav__sub{display:block!important;margin:0!important;padding:6px 0 10px!important;border-bottom:1px solid #ececea!important}
+ /* Desktop and mobile share the same submenu IA and ordering. */
+ html body .menu-nav__sub{display:flex!important;flex-direction:column!important;margin:0!important;padding:6px 0 10px!important;border-bottom:1px solid #ececea!important}
  html body .menu-nav__sub[hidden]{display:none!important}
  html body .menu-nav__group:has(.menu-nav__toggle:first-child:nth-last-child(n+1)) .menu-nav__sub{position:relative}
  html body .menu-nav__sub a{display:block!important;width:100%!important;margin:0!important;padding:7px 0!important;color:#777!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important;text-decoration:none!important;transform:none!important}
- html body .menu-nav__sub a[href="process.html#branding-process"],html body .menu-nav__sub a[href="process.html#packaging-process"]{font-size:0!important}
+
+ /* PROCESS: Branding → Project Operation → Package Design, same as desktop. */
+ html body .menu-nav__sub a[href="process.html#branding-process"]{order:1;font-size:0!important}
+ html body .menu-nav__sub a[href="process.html#project-operation"]{order:2}
+ html body .menu-nav__sub a[href="process.html#packaging-process"]{order:3;font-size:0!important}
  html body .menu-nav__sub a[href="process.html#branding-process"]::after{content:"Branding";font-size:13.5px!important}
  html body .menu-nav__sub a[href="process.html#packaging-process"]::after{content:"Package Design";font-size:13.5px!important}
+
+ /* SOLUTIONS: parent link is the overview, so remove duplicate overview row on mobile too. */
+ html body .menu-nav__sub a[href="solutions.html"]{display:none!important}
+
  html body .menu-nav__sub a:hover,html body .menu-nav__sub a:focus-visible{color:#111!important}
 
  html body .menu-business-cta{display:block!important;width:100%!important;margin:18px 0 0!important;padding:0!important}
