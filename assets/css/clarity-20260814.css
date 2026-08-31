@@ -1,12 +1,20 @@
-@import url('./clarity-base-20260814.css?v=20260814-1');
+@import url('./clarity-base-20260814.css?v=20260901-1');
 @import url('./clarity-patch-20260814.css?v=20260814-1');
 @import url('./header-scale-20260814.css?v=20260814-2');
-@import url('./page-unify-20260814.css?v=20260814-2');
+@import url('./page-unify-20260814.css?v=20260901-1');
 @import url('./site-polish-20260814.css?v=20260817-1');
 @import url('./sost-system-20260817.css?v=20260817-2');
 @import url('./portfolio-consistency-20260817.css?v=20260817-2');
 @import url('./site-stable-20260817.css?v=20260817-1');
 @import url('./landing-hero-alignment-20260818.css?v=20260818-1');
+
+/* NINEWORKS neutral surface palette / 2026-09-01
+   Keep soft UI surfaces on a pure K-axis gray with no warm/yellow cast. */
+:root{
+  --bg:#fff;
+  --paper:#f6f6f6;
+  --line:#e3e3e3;
+}
 
 /* Branding process intro removed from view while keeping the anchor target. */
 .branding-page .branding-process-intro{
