@@ -1,53 +1,25 @@
-/* NINEWORKS mobile navigation refinement */
+/* NINEWORKS navigation refinement */
 .site-primary-nav a[href$="resources.html"],
 .menu-nav a[href$="resources.html"],
 .site-footer__links a[href$="resources.html"],
 .menu-overlay a[href$="my.html"],
 .menu-overlay a[href$="join.html"],
 .menu-overlay a[href$="membership.html"]{display:none!important}
+
+/* Business portfolio stays as the separate header/mobile CTA. */
 .site-primary-nav .site-nav-dropdown[aria-label="포트폴리오 카테고리"]>a[href="/majorportfolio/"]{display:none!important}
 
-/* PROCESS IA */
-.site-primary-nav>a[data-nav-key="branding"],
-.menu-nav>a.menu-nav__main[href="branding.html"]{display:none!important}
+/* Solutions overview is reached by the SOLUTIONS parent link. */
+.site-primary-nav .site-nav-dropdown[aria-label="솔루션 메뉴"]>a[href="solutions.html"]{display:none!important}
 
-.site-nav-dropdown[aria-label="프로세스 메뉴"]{display:flex!important;flex-direction:column!important}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#project-operation"]{order:1}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]{order:2}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]{order:3}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child,
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child{font-size:0!important}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after{content:"BRANDING";font-family:inherit!important;font-size:12.5px!important;font-weight:500!important;line-height:1.35!important;letter-spacing:.025em!important}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{content:"PACKAGE DESIGN";font-family:inherit!important;font-size:12.5px!important;font-weight:500!important;line-height:1.35!important;letter-spacing:.025em!important}
-
-body.page-branding .site-primary-nav [data-nav-key="process"],
-body.page-project-operation .site-primary-nav [data-nav-key="process"],
-body.page-package-design .site-primary-nav [data-nav-key="process"]{color:#111!important;position:relative!important}
-body.page-branding .site-primary-nav [data-nav-key="process"]::after,
-body.page-project-operation .site-primary-nav [data-nav-key="process"]::after,
-body.page-package-design .site-primary-nav [data-nav-key="process"]::after{content:"";position:absolute;right:0;bottom:-7px;left:0;height:1px;background:#111}
-
-/* Desktop IA: ABOUT → PROCESS → PORTFOLIO → MAGAZINE → SOLUTIONS → RECRUIT → CONTACT */
+/* Desktop: dropdowns align to the left edge of their parent menu. */
 @media(min-width:681px){
   .site-primary-nav{display:flex!important}
-  .site-primary-nav>.site-nav-item:has(>a[data-nav-key="about"]){order:1!important}
-  .site-primary-nav>.site-nav-item:has(>a[data-nav-key="process"]){order:2!important}
-  .site-primary-nav>.site-nav-item:has(>a[data-nav-key="portfolio"]){order:3!important}
-  .site-primary-nav>a[data-nav-key="magazine"]{order:4!important}
-  .site-primary-nav>.site-nav-item:has(>a[data-nav-key="solutions"]){order:5!important}
-  .site-primary-nav>a[data-nav-key="recruit"]{order:6!important}
-  .site-primary-nav>a[data-nav-key="contact"]{order:7!important}
-
   .site-primary-nav>.site-nav-item{position:relative!important}
   .site-primary-nav>.site-nav-item::after{content:"";position:absolute;z-index:418;top:calc(100% - 18px);right:-24px;left:-24px;height:34px;background:transparent;pointer-events:auto}
   .site-primary-nav>.site-nav-item>.site-nav-dropdown{z-index:420!important;left:0!important;right:auto!important;transform:translateY(8px)!important}
   .site-primary-nav>.site-nav-item:hover>.site-nav-dropdown,
   .site-primary-nav>.site-nav-item:focus-within>.site-nav-dropdown{transform:translateY(0)!important}
-}
-
-@media(max-width:1240px) and (min-width:981px){
-  .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after,
-  .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{font-size:11.5px!important}
 }
 
 .menu-business-cta{display:none}
@@ -57,31 +29,37 @@ body.page-package-design .site-primary-nav [data-nav-key="process"]::after{conte
   html body .menu-nav{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;width:100%!important}
   html body .menu-nav__group{width:100%!important;margin:0!important}
 
-  /* Mobile IA matches desktop. Current HTML group order: ABOUT, PORTFOLIO, PROCESS, SOLUTIONS. */
-  html body .menu-nav>.menu-nav__group:nth-of-type(1){order:1!important}
-  html body .menu-nav>.menu-nav__group:nth-of-type(3){order:2!important}
-  html body .menu-nav>.menu-nav__group:nth-of-type(2){order:3!important}
-  html body .menu-nav>a[href="magazine.html"]{order:4!important}
-  html body .menu-nav>.menu-nav__group:nth-of-type(4){order:5!important}
-  html body .menu-nav>a[href="recruit.html"]{order:6!important}
-  html body .menu-nav>a[href="contact.html"]{order:7!important}
-
+  /* Every first-level item uses the same size and rhythm. */
   html body .menu-overlay nav.menu-nav>a.menu-nav__main,
   html body .menu-overlay nav.menu-nav>.menu-nav__group>button.menu-nav__toggle{
-    display:flex!important;align-items:center!important;justify-content:space-between!important;box-sizing:border-box!important;width:100%!important;min-height:40px!important;margin:0!important;padding:10px 0!important;border:0!important;border-bottom:1px solid #ececea!important;background:transparent!important;color:#111!important;font-family:inherit!important;font-size:16px!important;font-style:normal!important;font-weight:400!important;line-height:1.15!important;letter-spacing:-.02em!important;text-align:left!important;text-decoration:none!important;text-transform:none!important;transform:none!important
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-height:40px!important;
+    margin:0!important;
+    padding:10px 0!important;
+    border:0!important;
+    border-bottom:1px solid #ececea!important;
+    background:transparent!important;
+    color:#111!important;
+    font-family:inherit!important;
+    font-size:16px!important;
+    font-style:normal!important;
+    font-weight:400!important;
+    line-height:1.15!important;
+    letter-spacing:-.02em!important;
+    text-align:left!important;
+    text-decoration:none!important;
+    text-transform:none!important;
+    transform:none!important
   }
   html body .menu-overlay nav.menu-nav>.menu-nav__group>button.menu-nav__toggle span{font-family:inherit!important;font-size:14px!important;font-weight:400!important;line-height:1!important;color:#777!important}
 
   html body .menu-nav__sub{display:flex!important;flex-direction:column!important;margin:0!important;padding:6px 0 10px!important;border-bottom:1px solid #ececea!important}
   html body .menu-nav__sub[hidden]{display:none!important}
   html body .menu-nav__sub a{display:block!important;width:100%!important;margin:0!important;padding:7px 0!important;color:#777!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important;text-decoration:none!important;transform:none!important}
-
-  html body .menu-nav__sub a[href="process.html#project-operation"]{order:1}
-  html body .menu-nav__sub a[href="process.html#branding-process"]{order:2;font-size:0!important}
-  html body .menu-nav__sub a[href="process.html#packaging-process"]{order:3;font-size:0!important}
-  html body .menu-nav__sub a[href="process.html#branding-process"]::after{content:"Branding";font-size:13.5px!important}
-  html body .menu-nav__sub a[href="process.html#packaging-process"]::after{content:"Package Design";font-size:13.5px!important}
-
   html body .menu-nav__sub a[href="solutions.html"]{display:none!important}
   html body .menu-nav__sub a:hover,
   html body .menu-nav__sub a:focus-visible{color:#111!important}
@@ -100,6 +78,4 @@ body.page-package-design .site-primary-nav [data-nav-key="process"]::after{conte
   html body .menu-overlay nav.menu-nav>a.menu-nav__main,
   html body .menu-overlay nav.menu-nav>.menu-nav__group>button.menu-nav__toggle{font-size:16px!important}
   html body .menu-nav__sub a{font-size:13px!important}
-  html body .menu-nav__sub a[href="process.html#branding-process"]::after,
-  html body .menu-nav__sub a[href="process.html#packaging-process"]::after{font-size:13px!important}
 }
