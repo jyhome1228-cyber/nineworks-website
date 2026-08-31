@@ -1,4 +1,4 @@
-/* NINEWORKS branding process spacing — 2026-08-24 */
+/* NINEWORKS branding process spacing — 2026-09-01 */
 body.branding-page .branding-process-intro{
   display:none!important;
   width:0!important;
@@ -11,8 +11,26 @@ body.branding-page .branding-process-intro{
   overflow:hidden!important;
 }
 
+/* Keep the process index visible while the right-side steps scroll. */
+body.branding-page .brand-process,
+body.branding-page .brand-process__layout{
+  overflow:visible!important;
+}
+
+body.branding-page .brand-process__layout{
+  align-items:start!important;
+}
+
 body.branding-page .brand-process__side{
+  position:-webkit-sticky!important;
+  position:sticky!important;
+  top:calc(var(--header-h,104px) + 24px)!important;
+  align-self:start!important;
+  height:max-content!important;
+  min-height:0!important;
   padding-top:34px!important;
+  padding-bottom:34px!important;
+  z-index:6!important;
 }
 
 body.branding-page .brand-step:first-of-type{
@@ -21,6 +39,12 @@ body.branding-page .brand-step:first-of-type{
 
 body.branding-page .brand-step:first-of-type .brand-step__node{
   top:46px!important;
+}
+
+@media(max-width:1040px){
+  body.branding-page .brand-process__side{
+    position:static!important;
+  }
 }
 
 @media(max-width:900px){
