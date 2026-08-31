@@ -75,7 +75,14 @@
     header.innerHTML = `
       <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
-        <a href="about.html" data-nav-key="about">ABOUT</a>
+        <div class="site-nav-item">
+          <a href="about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
+          <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
+            <a href="about.html"><span>NINEWORKS</span><small>ABOUT</small></a>
+            <a href="designer.html"><span>CEO</span><small>PARK JAEYOUNG</small></a>
+            <a href="performance.html"><span>PERFORMANCE</span><small>BUSINESS DATA</small></a>
+          </div>
+        </div>
         <a href="branding.html" data-nav-key="branding">BRANDING</a>
         <a href="project.html" data-nav-key="project">PROJECTS</a>
         <div class="site-nav-item">
@@ -114,7 +121,14 @@
   if (overlay) {
     overlay.innerHTML = `
       <nav class="menu-nav" aria-label="모바일 주요 메뉴">
-        <a class="menu-nav__main" href="about.html">ABOUT</a>
+        <div class="menu-nav__group">
+          <a class="menu-nav__main" href="about.html">ABOUT</a>
+          <div class="menu-nav__sub">
+            <a href="about.html">Nineworks</a>
+            <a href="designer.html">CEO · Park Jaeyoung</a>
+            <a href="performance.html">Performance</a>
+          </div>
+        </div>
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
         <a class="menu-nav__main" href="project.html">PROJECTS</a>
         <div class="menu-nav__group">
@@ -155,7 +169,7 @@
   }
 
   const navMap = {
-    about: 'about', recruit: 'recruit', branding: 'branding', project: 'project',
+    about: 'about', designer: 'about', performance: 'about', recruit: 'recruit', branding: 'branding', project: 'project',
     portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     magazine: 'magazine', 'magazine-detail': 'magazine',
     solutions: 'solutions', develop: 'solutions', print: 'solutions',
