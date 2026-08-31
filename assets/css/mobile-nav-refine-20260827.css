@@ -6,22 +6,14 @@
 .site-nav-dropdown[aria-label="프로세스 메뉴"]{display:flex!important;flex-direction:column!important}
 .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]{order:1}.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#project-operation"]{order:2}.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]{order:3}
 .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child,.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child{font-size:0!important}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after,
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{
-  font-family:Arial,'Noto Sans KR',sans-serif!important;
-  font-size:10.5px!important;
-  font-weight:500!important;
-  line-height:1.35!important;
-  letter-spacing:.025em!important;
-}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after{content:"BRANDING"}
-.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{content:"PACKAGE DESIGN"}
+.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after{content:"BRANDING";font-family:inherit!important;font-size:12.5px!important;font-weight:500!important;line-height:1.35!important;letter-spacing:.025em!important}
+.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{content:"PACKAGE DESIGN";font-family:inherit!important;font-size:12.5px!important;font-weight:500!important;line-height:1.35!important;letter-spacing:.025em!important}
 body.page-branding .site-primary-nav [data-nav-key="process"],body.page-project-operation .site-primary-nav [data-nav-key="process"],body.page-package-design .site-primary-nav [data-nav-key="process"]{color:#111!important;position:relative!important}
 body.page-branding .site-primary-nav [data-nav-key="process"]::after,body.page-project-operation .site-primary-nav [data-nav-key="process"]::after,body.page-package-design .site-primary-nav [data-nav-key="process"]::after{content:"";position:absolute;right:0;bottom:-7px;left:0;height:1px;background:#111}
 
-@media(max-width:1180px) and (min-width:681px){
+@media(max-width:1240px) and (min-width:981px){
  .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after,
- .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{font-size:10px!important}
+ .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{font-size:11.5px!important}
 }
 
 @media(min-width:681px){.site-primary-nav>.site-nav-item{position:relative!important}.site-primary-nav>.site-nav-item::after{content:"";position:absolute;z-index:418;top:calc(100% - 18px);right:-24px;left:-24px;height:34px;background:transparent;pointer-events:auto}.site-primary-nav>.site-nav-item>.site-nav-dropdown{z-index:420!important;left:0!important;right:auto!important;transform:translateY(8px)!important}.site-primary-nav>.site-nav-item:hover>.site-nav-dropdown,.site-primary-nav>.site-nav-item:focus-within>.site-nav-dropdown{transform:translateY(0)!important}}
@@ -37,8 +29,8 @@ body.page-branding .site-primary-nav [data-nav-key="process"]::after,body.page-p
  html body .menu-nav__group:has(.menu-nav__toggle:first-child:nth-last-child(n+1)) .menu-nav__sub{position:relative}
  html body .menu-nav__sub a{display:block!important;width:100%!important;margin:0!important;padding:7px 0!important;color:#777!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important;text-decoration:none!important;transform:none!important}
  html body .menu-nav__sub a[href="process.html#branding-process"],html body .menu-nav__sub a[href="process.html#packaging-process"]{font-size:0!important}
- html body .menu-nav__sub a[href="process.html#branding-process"]::after{content:"Branding";font-family:inherit!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important}
- html body .menu-nav__sub a[href="process.html#packaging-process"]::after{content:"Package Design";font-family:inherit!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important}
+ html body .menu-nav__sub a[href="process.html#branding-process"]::after{content:"Branding";font-size:13.5px!important}
+ html body .menu-nav__sub a[href="process.html#packaging-process"]::after{content:"Package Design";font-size:13.5px!important}
  html body .menu-nav__sub a:hover,html body .menu-nav__sub a:focus-visible{color:#111!important}
  html body .menu-business-cta{display:block!important;width:100%!important;margin:18px 0 0!important;padding:0!important}
  html body .menu-business-cta__link{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;min-height:48px!important;padding:0 14px!important;border:1px solid #111!important;background:#111!important;color:#fff!important;font-size:12px!important;font-weight:600!important;line-height:1!important;letter-spacing:.01em!important;text-decoration:none!important}
