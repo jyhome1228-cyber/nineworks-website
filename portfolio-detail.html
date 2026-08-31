@@ -14,7 +14,6 @@
         relim: 'portfolio-relim.html?v=20260812-10',
         aesost: 'portfolio-aesost.html?v=20260812-10',
         kekomi: 'portfolio-kekomi.html?v=20260812-10',
-        'the-petrichor': 'portfolio-the-petrichor.html?v=20260812-10',
         thomastone: 'portfolio-thomastone.html?v=20260812-1',
         recelleclore: 'portfolio-recelleclore.html?v=20260812-1'
       };
@@ -48,7 +47,7 @@
   <footer class="site-footer container"></footer>
 </div>
 <script src="assets/js/portfolio-list-1.js?v=20260810-2"></script>
-<script src="assets/js/portfolio-list-2.js?v=20260810-2"></script>
+<script src="assets/js/portfolio-list-2.js?v=20260901-1"></script>
 <script src="assets/js/portfolio-list-3.js?v=20260810-2"></script>
 <script src="assets/js/portfolio-list-4.js?v=20260812-10"></script>
 <script src="assets/js/portfolio-list-5.js?v=20260831-1"></script>
@@ -62,7 +61,13 @@
 <script src="assets/js/works/image-archive-2.js"></script>
 <script src="assets/js/works/image-archive-3.js"></script>
 <script src="assets/js/works/summary-archive.js"></script>
+<script>
+(() => {
+  const greedy = window.NW_WORKS?.['greedy-scent'];
+  if (greedy) greedy.thumbnail = 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/5da11e3399d1d.png';
+})();
+</script>
 <script src="assets/js/main.js?v=20260817-4"></script>
-<script src="assets/js/portfolio-dynamic.js?v=20260817-1"></script>
+<script src="assets/js/portfolio-dynamic.js?v=20260901-1"></script>
 </body>
 </html>
