@@ -14,6 +14,30 @@
   --bg:#fff;
   --paper:#f6f6f6;
   --line:#e3e3e3;
+  --stable-line:#e7e7e7;
+  --stable-soft:#f6f6f6;
+}
+
+/* Final neutral overrides for legacy warm-gray surfaces loaded above. */
+.portfolio-page .portfolio-filter button.is-active,
+.magazine-page .magazine-filter button.is-active,
+html body .portfolio-card__media,
+html body .magazine-card__media,
+.portfolio-card figure,
+.magazine-card__media,
+.solution-card,
+.quote-summary,
+.about-page .cta,
+.portfolio-page .cta,
+.magazine-page .cta,
+.solutions-page .cta,
+.contact-page .cta,
+.sector-page .cta{
+  background:#f6f6f6!important;
+}
+
+html body .site-footer__links a{
+  border-bottom-color:#ececec!important;
 }
 
 /* Branding process intro removed from view while keeping the anchor target. */
