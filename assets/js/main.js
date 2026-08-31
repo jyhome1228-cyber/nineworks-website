@@ -97,11 +97,20 @@
             <a href="portfolio.html?filter=event"><span>EVENT DESIGN</span><small>EVENT</small></a>
           </div>
         </div>
+        <div class="site-nav-item">
+          <a href="process.html" data-nav-key="process">PROCESS <span class="site-nav-caret">▾</span></a>
+          <div class="site-nav-dropdown" aria-label="프로세스 메뉴">
+            <a href="process.html#project-operation"><span>PROJECT OPERATION</span><small>AFTER CONTRACT</small></a>
+            <a href="process.html#branding-process"><span>BRANDING PROCESS</span><small>BRAND</small></a>
+            <a href="process.html#packaging-process"><span>PACKAGING PROCESS</span><small>PACKAGE</small></a>
+          </div>
+        </div>
         <a href="magazine.html" data-nav-key="magazine">MAGAZINE</a>
         <div class="site-nav-item">
           <a href="solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
             <a href="solutions.html"><span>SERVICE OVERVIEW</span></a>
+            <a href="signature-project.html"><span>SIGNATURE PROJECT</span><small>COMMON SCOPE</small></a>
             <a href="develop.html"><span>사이트 제작 · 시스템</span><small>WEB</small></a>
             <a href="print-editorial.html"><span>프린트 디자인</span><small>PRINT</small></a>
             <a href="package-production.html"><span>인쇄 · 패키지 제작</span><small>PRODUCTION</small></a>
@@ -142,11 +151,20 @@
             <a href="portfolio.html?filter=event">Event Design</a>
           </div>
         </div>
+        <div class="menu-nav__group" data-menu-group>
+          <button class="menu-nav__toggle" type="button" aria-expanded="false">PROCESS <span>+</span></button>
+          <div class="menu-nav__sub" hidden>
+            <a href="process.html#project-operation">Project Operation</a>
+            <a href="process.html#branding-process">Branding Process</a>
+            <a href="process.html#packaging-process">Packaging Process</a>
+          </div>
+        </div>
         <a class="menu-nav__main" href="magazine.html">MAGAZINE</a>
         <div class="menu-nav__group" data-menu-group>
           <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
           <div class="menu-nav__sub" hidden>
             <a href="solutions.html">Service Overview</a>
+            <a href="signature-project.html">Signature Project</a>
             <a href="develop.html">사이트 제작 · 시스템</a>
             <a href="print-editorial.html">프린트 디자인</a>
             <a href="package-production.html">인쇄 · 패키지 제작</a>
@@ -168,8 +186,9 @@
   const navMap = {
     about: 'about', designer: 'about', performance: 'about', recruit: 'recruit', branding: 'branding', project: 'project',
     portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
+    process: 'process',
     magazine: 'magazine', 'magazine-detail': 'magazine',
-    solutions: 'solutions', develop: 'solutions', print: 'solutions',
+    solutions: 'solutions', 'signature-project': 'solutions', develop: 'solutions', print: 'solutions',
     'print-editorial': 'solutions', 'print-partner': 'solutions',
     'package-production': 'solutions', 'package-sample': 'solutions',
     membership: 'solutions', 'client-register': 'solutions', contact: 'contact'
@@ -265,7 +284,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="process.html">Process</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
