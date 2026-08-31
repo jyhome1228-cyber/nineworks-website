@@ -153,3 +153,102 @@
   setTimeout(init, 250);
   setTimeout(init, 900);
 })();
+
+(() => {
+  const FEATURED_WORKS = [
+    {
+      id: 'breeze-coffee', title: 'BREEZE COFFEE', meta: 'F&B · COFFEE · BRAND IDENTITY',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/5c12e36ae2396.png',
+      description: 'Urban Coffee Salon Brand Design'
+    },
+    {
+      id: 'roasting-visor', title: 'ROASTING VISOR', meta: 'F&B · COFFEE ROASTERY · PACKAGE',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/44d5a9269f304.png',
+      description: 'Premium Coffee Roastery Brand Design'
+    },
+    {
+      id: 'pour-and-bake', title: 'POUR AND BAKE', meta: 'F&B · CAFE · PACKAGE',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/5430ed49b4326.png',
+      description: 'Coffee & Bakery Visual Identity Design'
+    },
+    {
+      id: 'greedy-scent', title: 'GREEDY SCENT', meta: 'FRAGRANCE · BEAUTY · ART DIRECTION',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/5da11e3399d1d.png',
+      description: 'Niche Fragrance Brand Design'
+    },
+    {
+      id: 'wooje-stay', title: 'WOOJE STAY', meta: 'HOSPITALITY · BRAND IDENTITY',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/12f3c9f6011ab.png',
+      description: 'Premium Hot Spring Hotel Brand Design'
+    },
+    {
+      id: 'ouga', title: 'OUGA', meta: 'F&B · BRAND & PACKAGE',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/7b326d236b1ba.png',
+      description: 'Premium Hanok Bakery Cafe Brand Design'
+    },
+    {
+      id: 'hollys', title: 'HOLLYS STICK COFFEE', meta: 'F&B · PACKAGE DESIGN',
+      image: 'https://cdn.imweb.me/upload/S2023030963558ef55ba8e/793a62ff30cd6.png',
+      description: 'Instant Stick Coffee Package & Product Visual Design'
+    },
+    {
+      id: 'cocos-matcha', title: 'COCO’S MATCHA', meta: 'F&B · BRAND SYSTEM',
+      image: 'https://cdn-bastani.stunning.kr/prod/portfolios/92856d14-cbba-46cb-97d4-9277c858b3e2/contents/ZftZjx3mbGhKTq7o.635fe987-75e2-45db-af68-1123111b2dcd.png',
+      description: 'Matcha Café Brand & Package System Design'
+    }
+  ];
+
+  const renderHomeFeaturedWorks = () => {
+    if (!document.body.classList.contains('home-clarity')) return;
+
+    const oldSlider = document.querySelector('[data-brand-slider]');
+    if (oldSlider && oldSlider.dataset.featuredSet !== 'true') {
+      const slider = document.createElement('div');
+      slider.className = oldSlider.className;
+      slider.dataset.brandSlider = '';
+      slider.dataset.featuredSet = 'true';
+      slider.innerHTML = `
+        <div class="nw-brand-slider__stage">
+          ${FEATURED_WORKS.map((work, index) => `<a class="nw-brand-slide${index === 0 ? ' is-active' : ''}" href="portfolio-detail.html?work=${work.id}" data-title="${work.title}" data-meta="${work.meta}"><img src="${work.image}" alt="${work.title} branding project"></a>`).join('')}
+        </div>
+        <div class="nw-brand-slider__meta"><div><strong data-slider-title>${FEATURED_WORKS[0].title}</strong><span data-slider-meta>${FEATURED_WORKS[0].meta}</span></div><div class="nw-brand-slider__control"><span data-slider-count>01 / 08</span><button type="button" data-slider-next aria-label="다음 프로젝트">NEXT ↗</button></div></div>`;
+      oldSlider.replaceWith(slider);
+
+      const slides = [...slider.querySelectorAll('.nw-brand-slide')];
+      const title = slider.querySelector('[data-slider-title]');
+      const meta = slider.querySelector('[data-slider-meta]');
+      const count = slider.querySelector('[data-slider-count]');
+      const next = slider.querySelector('[data-slider-next]');
+      let index = 0;
+      let timer;
+      const show = (nextIndex) => {
+        index = (nextIndex + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === index));
+        title.textContent = slides[index].dataset.title || '';
+        meta.textContent = slides[index].dataset.meta || '';
+        count.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+      };
+      const start = () => { clearInterval(timer); timer = setInterval(() => show(index + 1), 4200); };
+      next?.addEventListener('click', () => { show(index + 1); start(); });
+      slider.addEventListener('mouseenter', () => clearInterval(timer));
+      slider.addEventListener('mouseleave', start);
+      show(0);
+      start();
+    }
+
+    const selectedGrid = document.querySelector('.nw-brand-work-grid');
+    if (selectedGrid && selectedGrid.dataset.featuredSet !== 'true') {
+      selectedGrid.dataset.featuredSet = 'true';
+      selectedGrid.innerHTML = FEATURED_WORKS.slice(0, 4).map((work) => `
+        <a class="nw-brand-work-card reveal is-visible" href="portfolio-detail.html?work=${work.id}">
+          <figure><img src="${work.image}" alt="${work.title}"></figure>
+          <div><strong>${work.title}</strong><span>${work.meta.replaceAll(' · ', ' · ')}</span></div>
+          <p>${work.description}</p>
+        </a>`).join('');
+    }
+  };
+
+  window.addEventListener('load', renderHomeFeaturedWorks, { once: true });
+  setTimeout(renderHomeFeaturedWorks, 0);
+  setTimeout(renderHomeFeaturedWorks, 400);
+})();
