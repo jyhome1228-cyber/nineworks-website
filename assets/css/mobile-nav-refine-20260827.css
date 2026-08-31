@@ -10,6 +10,38 @@
   display:none!important;
 }
 
+/* BUSINESS PORTFOLIO is a separate header CTA, so do not repeat it inside
+   the PORTFOLIO dropdown / mobile submenu. */
+.site-primary-nav .site-nav-dropdown[aria-label="포트폴리오 카테고리"] > a[href="/majorportfolio/"],
+.menu-nav .menu-nav__sub > a[href="/majorportfolio/"]{
+  display:none!important;
+}
+
+/* Desktop dropdown hover corridor.
+   Keep a transparent pointer bridge between the trigger and the menu so the
+   dropdown does not collapse while the cursor moves downward to an item. */
+@media(min-width:681px){
+  .site-primary-nav > .site-nav-item{
+    position:relative!important;
+  }
+
+  .site-primary-nav > .site-nav-item::after{
+    content:"";
+    position:absolute;
+    z-index:418;
+    top:calc(100% - 18px);
+    right:-24px;
+    left:-24px;
+    height:34px;
+    background:transparent;
+    pointer-events:auto;
+  }
+
+  .site-primary-nav > .site-nav-item > .site-nav-dropdown{
+    z-index:420!important;
+  }
+}
+
 .menu-business-cta{
   display:none;
 }
@@ -77,6 +109,10 @@
     line-height:1.42!important;
     letter-spacing:-.02em!important;
     transform:none!important;
+  }
+
+  html body .menu-nav__sub > a[href="/majorportfolio/"]{
+    display:none!important;
   }
 
   html body .menu-nav__sub a:hover,
