@@ -9,7 +9,7 @@
   const current = Array.from(document.scripts).some((script) => /assets\/js\/main\.js(?:\?|$)/.test(script.src || ''));
   if (!current) {
     const script = document.createElement('script');
-    script.src = 'assets/js/main.js?v=20260831-3';
+    script.src = 'assets/js/main.js?v=20260901-4';
     script.defer = false;
     document.body.appendChild(script);
   }
