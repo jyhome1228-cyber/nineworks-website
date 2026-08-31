@@ -1,183 +1,21 @@
-/* NINEWORKS mobile navigation refinement — 2026-08-27 */
-
-/* Retired public member/resources navigation must never reappear from stale scripts. */
-.site-primary-nav a[href$="resources.html"],
-.menu-nav a[href$="resources.html"],
-.site-footer__links a[href$="resources.html"],
-.menu-overlay a[href$="my.html"],
-.menu-overlay a[href$="join.html"],
-.menu-overlay a[href$="membership.html"]{
-  display:none!important;
-}
-
-/* BUSINESS PORTFOLIO is a separate header CTA, so do not repeat it inside
-   the PORTFOLIO dropdown / mobile submenu. */
-.site-primary-nav .site-nav-dropdown[aria-label="포트폴리오 카테고리"] > a[href="/majorportfolio/"],
-.menu-nav .menu-nav__sub > a[href="/majorportfolio/"]{
-  display:none!important;
-}
-
-/* Desktop dropdown hover corridor.
-   Keep a transparent pointer bridge between the trigger and the menu so the
-   dropdown does not collapse while the cursor moves downward to an item. */
-@media(min-width:681px){
-  .site-primary-nav > .site-nav-item{
-    position:relative!important;
-  }
-
-  .site-primary-nav > .site-nav-item::after{
-    content:"";
-    position:absolute;
-    z-index:418;
-    top:calc(100% - 18px);
-    right:-24px;
-    left:-24px;
-    height:34px;
-    background:transparent;
-    pointer-events:auto;
-  }
-
-  .site-primary-nav > .site-nav-item > .site-nav-dropdown{
-    z-index:420!important;
-  }
-}
-
-.menu-business-cta{
-  display:none;
-}
-
+/* NINEWORKS mobile navigation refinement */
+.site-primary-nav a[href$="resources.html"],.menu-nav a[href$="resources.html"],.site-footer__links a[href$="resources.html"],.menu-overlay a[href$="my.html"],.menu-overlay a[href$="join.html"],.menu-overlay a[href$="membership.html"]{display:none!important}.site-primary-nav .site-nav-dropdown[aria-label="포트폴리오 카테고리"]>a[href="/majorportfolio/"]{display:none!important}
+@media(min-width:681px){.site-primary-nav>.site-nav-item{position:relative!important}.site-primary-nav>.site-nav-item::after{content:"";position:absolute;z-index:418;top:calc(100% - 18px);right:-24px;left:-24px;height:34px;background:transparent;pointer-events:auto}.site-primary-nav>.site-nav-item>.site-nav-dropdown{z-index:420!important}}
+.menu-business-cta{display:none}
 @media(max-width:680px){
-  html body .menu-overlay{
-    padding-top:calc(var(--header-height,68px) + 22px)!important;
-    padding-right:20px!important;
-    padding-bottom:28px!important;
-    padding-left:20px!important;
-    gap:0!important;
-    grid-template-rows:auto auto auto!important;
-    align-content:start!important;
-    background:#fff!important;
-    color:#111!important;
-  }
-
-  html body .menu-nav{
-    display:flex!important;
-    flex-direction:column!important;
-    align-items:flex-start!important;
-    gap:0!important;
-    width:100%!important;
-  }
-
-  html body .menu-nav .menu-nav__main,
-  html body .menu-nav>a.menu-nav__main{
-    display:block!important;
-    width:fit-content!important;
-    margin:0!important;
-    padding:3px 0!important;
-    color:#111!important;
-    font-size:22px!important;
-    font-weight:600!important;
-    line-height:1.18!important;
-    letter-spacing:-.035em!important;
-  }
-
-  html body .menu-nav>.menu-nav__main + .menu-nav__main{
-    margin-top:3px!important;
-  }
-
-  html body .menu-nav__group{
-    width:100%!important;
-    margin:3px 0 10px!important;
-  }
-
-  html body .menu-nav__sub{
-    display:flex!important;
-    flex-direction:column!important;
-    align-items:flex-start!important;
-    gap:0!important;
-    margin:6px 0 0!important;
-    padding:0!important;
-  }
-
-  html body .menu-nav__sub a{
-    display:block!important;
-    width:auto!important;
-    margin:0!important;
-    padding:2.5px 0!important;
-    color:#8b8b8b!important;
-    font-size:15px!important;
-    font-weight:400!important;
-    line-height:1.42!important;
-    letter-spacing:-.02em!important;
-    transform:none!important;
-  }
-
-  html body .menu-nav__sub > a[href="/majorportfolio/"]{
-    display:none!important;
-  }
-
-  html body .menu-nav__sub a:hover,
-  html body .menu-nav__sub a:focus-visible{
-    color:#111!important;
-    transform:none!important;
-  }
-
-  html body .menu-business-cta{
-    display:block!important;
-    width:100%!important;
-    margin:18px 0 0!important;
-    padding:0!important;
-  }
-
-  html body .menu-business-cta__link{
-    display:flex!important;
-    align-items:center!important;
-    justify-content:space-between!important;
-    width:100%!important;
-    min-height:52px!important;
-    padding:0 16px!important;
-    border:1px solid #111!important;
-    background:#111!important;
-    color:#fff!important;
-    font-size:13px!important;
-    font-weight:600!important;
-    line-height:1!important;
-    letter-spacing:.015em!important;
-    text-decoration:none!important;
-  }
-
-  html body .menu-business-cta__link span:last-child{
-    font-size:16px!important;
-    font-weight:400!important;
-  }
-
-  html body .menu-footer{
-    margin-top:18px!important;
-    padding-top:16px!important;
-    border-top:1px solid #e4e4e1!important;
-    color:#888!important;
-    gap:8px!important;
-    font-size:11px!important;
-    line-height:1.5!important;
-  }
-
-  html body .menu-footer p,
-  html body .menu-social,
-  html body .menu-social a{
-    color:#888!important;
-  }
-
-  html body .menu-social{
-    gap:16px!important;
-    font-size:11px!important;
-  }
+ html body .menu-overlay{padding:calc(var(--header-height,68px) + 18px) 20px 26px!important;gap:0!important;grid-template-rows:auto auto auto!important;align-content:start!important;background:#fff!important;color:#111!important;overflow-y:auto!important}
+ html body .menu-nav{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;width:100%!important}
+ html body .menu-nav .menu-nav__main,html body .menu-nav>a.menu-nav__main,html body .menu-nav__toggle{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;margin:0!important;padding:10px 0!important;border:0!important;border-bottom:1px solid #ececea!important;background:transparent!important;color:#111!important;font:600 18px/1.15 inherit!important;letter-spacing:-.025em!important;text-align:left!important;text-decoration:none!important}
+ html body .menu-nav__toggle span{font-size:18px!important;font-weight:400!important;line-height:1!important;color:#777!important}
+ html body .menu-nav__group{width:100%!important;margin:0!important}
+ html body .menu-nav__sub{display:block!important;margin:0!important;padding:6px 0 10px!important;border-bottom:1px solid #ececea!important}
+ html body .menu-nav__sub[hidden]{display:none!important}
+ html body .menu-nav__sub a{display:block!important;width:100%!important;margin:0!important;padding:7px 0!important;color:#777!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important;text-decoration:none!important;transform:none!important}
+ html body .menu-nav__sub a:hover,html body .menu-nav__sub a:focus-visible{color:#111!important}
+ html body .menu-business-cta{display:block!important;width:100%!important;margin:18px 0 0!important;padding:0!important}
+ html body .menu-business-cta__link{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;min-height:48px!important;padding:0 14px!important;border:1px solid #111!important;background:#111!important;color:#fff!important;font-size:12px!important;font-weight:600!important;line-height:1!important;letter-spacing:.01em!important;text-decoration:none!important}
+ html body .menu-business-cta__link span:last-child{font-size:15px!important;font-weight:400!important}
+ html body .menu-footer{margin-top:16px!important;padding-top:14px!important;border-top:1px solid #e4e4e1!important;color:#8a8a8a!important;gap:7px!important;font-size:10.5px!important;line-height:1.45!important}
+ html body .menu-footer p,html body .menu-social,html body .menu-social a{color:#8a8a8a!important}.menu-social{gap:14px!important;font-size:10.5px!important}
 }
-
-@media(max-width:390px){
-  html body .menu-nav .menu-nav__main,
-  html body .menu-nav>a.menu-nav__main{
-    font-size:21px!important;
-  }
-  html body .menu-nav__sub a{
-    font-size:14.5px!important;
-  }
-}
+@media(max-width:390px){html body .menu-nav .menu-nav__main,html body .menu-nav>a.menu-nav__main,html body .menu-nav__toggle{font-size:17px!important}html body .menu-nav__sub a{font-size:13px!important}}
