@@ -32,7 +32,7 @@
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
   loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-4');
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
-  loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260831-2');
+  loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
@@ -75,49 +75,54 @@
         <div class="site-nav-item">
           <a href="about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
-            <a href="about.html"><span>NINEWORKS</span><small>ABOUT</small></a>
-            <a href="designer.html"><span>CEO</span><small>PARK JAEYOUNG</small></a>
-            <a href="performance.html"><span>FINANCIAL</span><small>BUSINESS DATA</small></a>
-          </div>
-        </div>
-        <a href="branding.html" data-nav-key="branding">BRANDING</a>
-        <div class="site-nav-item">
-          <a href="portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-            <a href="/majorportfolio/"><span>BUSINESS PORTFOLIO</span><small>BUSINESS</small></a>
-            <a href="portfolio.html?filter=major"><span>MAJOR WORKS</span><small>MAJOR</small></a>
-            <a href="project.html"><span>BRANDING</span><small>BRAND PROJECTS</small></a>
-            <a href="portfolio.html?filter=website"><span>WEBSITE / SITE</span><small>WEB</small></a>
-            <a href="portfolio.html?filter=system"><span>SYSTEM BUILD</span><small>SYS</small></a>
-            <a href="portfolio.html?filter=detailpage"><span>DETAIL PAGE</span><small>PAGE</small></a>
-            <a href="portfolio.html?filter=instagram"><span>INSTAGRAM FEED</span><small>SOCIAL</small></a>
-            <a href="portfolio.html?filter=editorial"><span>EDITORIAL DESIGN</span><small>EDIT</small></a>
-            <a href="portfolio.html?filter=ir"><span>IR / PPT</span><small>DECK</small></a>
-            <a href="portfolio.html?filter=package"><span>PACKAGE DESIGN</span><small>PKG</small></a>
-            <a href="portfolio.html?filter=event"><span>EVENT DESIGN</span><small>EVENT</small></a>
+            <a href="about.html"><span>나인웍스</span><small>회사소개</small></a>
+            <a href="designer.html"><span>대표 디자이너</span><small>박재영</small></a>
+            <a href="performance.html"><span>재무정보</span><small>사업정보</small></a>
           </div>
         </div>
         <div class="site-nav-item">
           <a href="process.html" data-nav-key="process">PROCESS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="프로세스 메뉴">
-            <a href="process.html#project-operation"><span>PROJECT OPERATION</span><small>AFTER CONTRACT</small></a>
-            <a href="process.html#branding-process"><span>BRANDING PROCESS</span><small>BRAND</small></a>
-            <a href="process.html#packaging-process"><span>PACKAGING PROCESS</span><small>PACKAGE</small></a>
+            <a href="project-operation.html"><span>프로젝트 운영</span><small>계약 이후</small></a>
+            <a href="branding.html"><span>브랜딩</span><small>브랜드</small></a>
+            <a href="package-design.html"><span>패키지 디자인</span><small>패키지</small></a>
+          </div>
+        </div>
+        <div class="site-nav-item">
+          <a href="portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
+          <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
+            <a href="/majorportfolio/"><span>비즈니스 포트폴리오</span><small>기업용</small></a>
+            <a href="portfolio.html?filter=major"><span>메이저 프로젝트</span><small>주요 작업</small></a>
+            <a href="project.html"><span>브랜딩 프로젝트</span><small>브랜드</small></a>
+            <a href="portfolio.html?filter=website"><span>웹사이트</span><small>웹</small></a>
+            <a href="portfolio.html?filter=system"><span>시스템 구축</span><small>시스템</small></a>
+            <a href="portfolio.html?filter=detailpage"><span>상세페이지</span><small>상세</small></a>
+            <a href="portfolio.html?filter=instagram"><span>인스타그램 피드</span><small>소셜</small></a>
+            <a href="portfolio.html?filter=editorial"><span>편집 디자인</span><small>편집</small></a>
+            <a href="portfolio.html?filter=ir"><span>IR · PPT</span><small>문서</small></a>
+            <a href="portfolio.html?filter=package"><span>패키지 디자인</span><small>패키지</small></a>
+            <a href="portfolio.html?filter=event"><span>이벤트 디자인</span><small>이벤트</small></a>
           </div>
         </div>
         <a href="magazine.html" data-nav-key="magazine">MAGAZINE</a>
         <div class="site-nav-item">
           <a href="solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-            <a href="solutions.html"><span>SERVICE OVERVIEW</span></a>
-            <a href="signature-project.html"><span>SIGNATURE PROJECT</span><small>COMMON SCOPE</small></a>
-            <a href="develop.html"><span>사이트 제작 · 시스템</span><small>WEB</small></a>
-            <a href="print-editorial.html"><span>프린트 디자인</span><small>PRINT</small></a>
-            <a href="package-production.html"><span>인쇄 · 패키지 제작</span><small>PRODUCTION</small></a>
-            <a href="package-sample.html"><span>패키지 샘플 제작</span><small>SAMPLE</small></a>
+            <a href="solutions.html"><span>서비스 전체보기</span><small>안내</small></a>
+            <a href="signature-project.html"><span>시그니처 프로젝트</span><small>주요 구성</small></a>
+            <a href="develop.html"><span>사이트 제작 · 시스템</span><small>웹</small></a>
+            <a href="print-editorial.html"><span>프린트 디자인</span><small>인쇄</small></a>
+            <a href="package-production.html"><span>인쇄 · 패키지 제작</span><small>제작</small></a>
+            <a href="package-sample.html"><span>패키지 샘플 제작</span><small>샘플</small></a>
           </div>
         </div>
-        <a href="recruit.html" data-nav-key="recruit">RECRUIT</a>
+        <div class="site-nav-item">
+          <a href="recruit.html" data-nav-key="designer-network">DESIGNER <span class="site-nav-caret">▾</span></a>
+          <div class="site-nav-dropdown" aria-label="디자이너 메뉴">
+            <a href="recruit.html"><span>파트너 디자이너</span><small>프로젝트 협업 등록</small></a>
+            <a href="design-academy.html"><span>디자인 아카데미 등록</span><small>교육 프로그램 등록</small></a>
+          </div>
+        </div>
         <a href="contact.html" data-nav-key="contact">CONTACT</a>
       </nav>
       <a class="site-header__action" href="/majorportfolio/">BUSINESS PORTFOLIO <span>↗</span></a>
@@ -130,48 +135,53 @@
         <div class="menu-nav__group" data-menu-group>
           <button class="menu-nav__toggle" type="button" aria-expanded="false">ABOUT <span>+</span></button>
           <div class="menu-nav__sub" hidden>
-            <a href="about.html">Nineworks</a>
-            <a href="designer.html">CEO · Park Jaeyoung</a>
-            <a href="performance.html">Financial</a>
-          </div>
-        </div>
-        <a class="menu-nav__main" href="branding.html">BRANDING</a>
-        <div class="menu-nav__group" data-menu-group>
-          <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
-          <div class="menu-nav__sub" hidden>
-            <a href="portfolio.html?filter=major">Major Works</a>
-            <a href="project.html">Branding</a>
-            <a href="portfolio.html?filter=website">Website / Site</a>
-            <a href="portfolio.html?filter=system">System Build</a>
-            <a href="portfolio.html?filter=detailpage">Detail Page</a>
-            <a href="portfolio.html?filter=instagram">Instagram Feed</a>
-            <a href="portfolio.html?filter=editorial">Editorial Design</a>
-            <a href="portfolio.html?filter=ir">IR / PPT</a>
-            <a href="portfolio.html?filter=package">Package Design</a>
-            <a href="portfolio.html?filter=event">Event Design</a>
+            <a href="about.html">나인웍스</a>
+            <a href="designer.html">대표 디자이너 · 박재영</a>
+            <a href="performance.html">재무정보</a>
           </div>
         </div>
         <div class="menu-nav__group" data-menu-group>
           <button class="menu-nav__toggle" type="button" aria-expanded="false">PROCESS <span>+</span></button>
           <div class="menu-nav__sub" hidden>
-            <a href="process.html#project-operation">Project Operation</a>
-            <a href="process.html#branding-process">Branding Process</a>
-            <a href="process.html#packaging-process">Packaging Process</a>
+            <a href="project-operation.html">프로젝트 운영</a>
+            <a href="branding.html">브랜딩</a>
+            <a href="package-design.html">패키지 디자인</a>
+          </div>
+        </div>
+        <div class="menu-nav__group" data-menu-group>
+          <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
+          <div class="menu-nav__sub" hidden>
+            <a href="portfolio.html?filter=major">메이저 프로젝트</a>
+            <a href="project.html">브랜딩 프로젝트</a>
+            <a href="portfolio.html?filter=website">웹사이트</a>
+            <a href="portfolio.html?filter=system">시스템 구축</a>
+            <a href="portfolio.html?filter=detailpage">상세페이지</a>
+            <a href="portfolio.html?filter=instagram">인스타그램 피드</a>
+            <a href="portfolio.html?filter=editorial">편집 디자인</a>
+            <a href="portfolio.html?filter=ir">IR · PPT</a>
+            <a href="portfolio.html?filter=package">패키지 디자인</a>
+            <a href="portfolio.html?filter=event">이벤트 디자인</a>
           </div>
         </div>
         <a class="menu-nav__main" href="magazine.html">MAGAZINE</a>
         <div class="menu-nav__group" data-menu-group>
           <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
           <div class="menu-nav__sub" hidden>
-            <a href="solutions.html">Service Overview</a>
-            <a href="signature-project.html">Signature Project</a>
+            <a href="solutions.html">서비스 전체보기</a>
+            <a href="signature-project.html">시그니처 프로젝트</a>
             <a href="develop.html">사이트 제작 · 시스템</a>
             <a href="print-editorial.html">프린트 디자인</a>
             <a href="package-production.html">인쇄 · 패키지 제작</a>
             <a href="package-sample.html">패키지 샘플 제작</a>
           </div>
         </div>
-        <a class="menu-nav__main" href="recruit.html">RECRUIT</a>
+        <div class="menu-nav__group" data-menu-group>
+          <button class="menu-nav__toggle" type="button" aria-expanded="false">DESIGNER <span>+</span></button>
+          <div class="menu-nav__sub" hidden>
+            <a href="recruit.html">파트너 디자이너</a>
+            <a href="design-academy.html">디자인 아카데미 등록</a>
+          </div>
+        </div>
         <a class="menu-nav__main" href="contact.html">CONTACT</a>
       </nav>
       <div class="menu-business-cta">
@@ -184,13 +194,13 @@
   }
 
   const navMap = {
-    about: 'about', designer: 'about', performance: 'about', recruit: 'recruit', branding: 'branding', project: 'portfolio',
-    portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
-    process: 'process',
+    about: 'about', designer: 'about', performance: 'about',
+    branding: 'process', 'project-operation': 'process', 'package-design': 'process', process: 'process',
+    project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     magazine: 'magazine', 'magazine-detail': 'magazine',
     solutions: 'solutions', 'signature-project': 'solutions', develop: 'solutions', print: 'solutions',
-    'print-editorial': 'solutions', 'print-partner': 'solutions',
-    'package-production': 'solutions', 'package-sample': 'solutions',
+    'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions',
+    recruit: 'designer-network', 'design-academy': 'designer-network',
     membership: 'solutions', 'client-register': 'solutions', contact: 'contact'
   };
   const activeNav = navMap[pageKey];
@@ -284,7 +294,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Branding Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="process.html">Process</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="process.html">Process</a><a href="project.html">Branding Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Designer</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
