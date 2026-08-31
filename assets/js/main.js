@@ -25,16 +25,14 @@
     document.head.appendChild(script);
   };
 
-  /* Public member login/navigation is retired. Keep the legacy bundle inert if cached pages request it. */
   window.__NW_MEMBER_AUTH__ = true;
 
-  /* One controlled final cascade. Do not inject the old auto local-sidebar system. */
   loadStyle('assets/css/sost-system-20260817.css?v=20260817-3');
   loadStyle('assets/css/navigation-ia-20260817.css?v=20260817-5');
   loadStyle('assets/css/site-stable-20260817.css?v=20260817-1');
   loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-4');
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
-  loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260827-1');
+  loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260831-2');
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
@@ -47,7 +45,6 @@
     loadScript('assets/js/portfolio-scroll.js?v=20260807-2');
   }
 
-  /* Remove document-shell wrappers if an older cached local-nav script created them. */
   const existingLayout = document.querySelector('main > .nw-doc-layout');
   if (existingLayout) {
     const content = existingLayout.querySelector(':scope > .nw-doc-content');
@@ -121,9 +118,9 @@
   if (overlay) {
     overlay.innerHTML = `
       <nav class="menu-nav" aria-label="모바일 주요 메뉴">
-        <div class="menu-nav__group">
-          <a class="menu-nav__main" href="about.html">ABOUT</a>
-          <div class="menu-nav__sub">
+        <div class="menu-nav__group" data-menu-group>
+          <button class="menu-nav__toggle" type="button" aria-expanded="false">ABOUT <span>+</span></button>
+          <div class="menu-nav__sub" hidden>
             <a href="about.html">Nineworks</a>
             <a href="designer.html">CEO · Park Jaeyoung</a>
             <a href="performance.html">Performance</a>
@@ -131,10 +128,9 @@
         </div>
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
         <a class="menu-nav__main" href="project.html">PROJECTS</a>
-        <div class="menu-nav__group">
-          <a class="menu-nav__main" href="portfolio.html?filter=major">PORTFOLIO</a>
-          <div class="menu-nav__sub">
-            <a href="/majorportfolio/">Business Portfolio</a>
+        <div class="menu-nav__group" data-menu-group>
+          <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
+          <div class="menu-nav__sub" hidden>
             <a href="portfolio.html?filter=major">Major Works</a>
             <a href="portfolio.html?filter=website">Website / Site</a>
             <a href="portfolio.html?filter=system">System Build</a>
@@ -147,9 +143,10 @@
           </div>
         </div>
         <a class="menu-nav__main" href="magazine.html">MAGAZINE</a>
-        <div class="menu-nav__group">
-          <a class="menu-nav__main" href="solutions.html">SOLUTIONS</a>
-          <div class="menu-nav__sub">
+        <div class="menu-nav__group" data-menu-group>
+          <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
+          <div class="menu-nav__sub" hidden>
+            <a href="solutions.html">Service Overview</a>
             <a href="develop.html">사이트 제작 · 시스템</a>
             <a href="print-editorial.html">프린트 디자인</a>
             <a href="package-production.html">인쇄 · 패키지 제작</a>
@@ -190,9 +187,36 @@
     body.classList.toggle('is-menu-open', open);
     trigger?.setAttribute('aria-expanded', String(open));
     overlay?.setAttribute('aria-hidden', String(!open));
+    if (!open) {
+      overlay?.querySelectorAll('[data-menu-group]').forEach((group) => {
+        const button = group.querySelector('.menu-nav__toggle');
+        const sub = group.querySelector('.menu-nav__sub');
+        button?.setAttribute('aria-expanded', 'false');
+        if (button) button.querySelector('span').textContent = '+';
+        if (sub) sub.hidden = true;
+      });
+    }
   };
   trigger?.addEventListener('click', () => setMenu(!body.classList.contains('is-menu-open')));
   overlay?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  overlay?.querySelectorAll('.menu-nav__toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const group = button.closest('[data-menu-group]');
+      const sub = group?.querySelector('.menu-nav__sub');
+      const open = button.getAttribute('aria-expanded') === 'true';
+      overlay.querySelectorAll('[data-menu-group]').forEach((other) => {
+        if (other === group) return;
+        const otherButton = other.querySelector('.menu-nav__toggle');
+        const otherSub = other.querySelector('.menu-nav__sub');
+        otherButton?.setAttribute('aria-expanded', 'false');
+        if (otherButton) otherButton.querySelector('span').textContent = '+';
+        if (otherSub) otherSub.hidden = true;
+      });
+      button.setAttribute('aria-expanded', String(!open));
+      button.querySelector('span').textContent = open ? '+' : '−';
+      if (sub) sub.hidden = open;
+    });
+  });
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
 
   const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
