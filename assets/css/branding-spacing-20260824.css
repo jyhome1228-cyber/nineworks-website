@@ -11,12 +11,25 @@ body.branding-page .branding-process-intro{
   overflow:hidden!important;
 }
 
-/* Keep the process index visible while the right-side steps scroll. */
+/*
+  Sticky guard: the global stability layer uses overflow-x:hidden on html/body.
+  That can turn an ancestor into a scrolling container and prevent sticky from
+  following the viewport. `clip` keeps horizontal overflow suppressed without
+  creating that scroll container.
+*/
+html:has(body.branding-page),
+body.branding-page{
+  overflow-x:clip!important;
+}
+
+body.branding-page .site-shell,
+body.branding-page main,
 body.branding-page .brand-process,
 body.branding-page .brand-process__layout{
   overflow:visible!important;
 }
 
+/* Keep the process index visible while the right-side steps scroll. */
 body.branding-page .brand-process__layout{
   align-items:start!important;
 }
