@@ -81,12 +81,12 @@
           </div>
         </div>
         <a href="branding.html" data-nav-key="branding">BRANDING</a>
-        <a href="project.html" data-nav-key="project">PROJECTS</a>
         <div class="site-nav-item">
           <a href="portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
             <a href="/majorportfolio/"><span>BUSINESS PORTFOLIO</span><small>BUSINESS</small></a>
             <a href="portfolio.html?filter=major"><span>MAJOR WORKS</span><small>MAJOR</small></a>
+            <a href="project.html"><span>BRANDING</span><small>BRAND PROJECTS</small></a>
             <a href="portfolio.html?filter=website"><span>WEBSITE / SITE</span><small>WEB</small></a>
             <a href="portfolio.html?filter=system"><span>SYSTEM BUILD</span><small>SYS</small></a>
             <a href="portfolio.html?filter=detailpage"><span>DETAIL PAGE</span><small>PAGE</small></a>
@@ -136,11 +136,11 @@
           </div>
         </div>
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
-        <a class="menu-nav__main" href="project.html">PROJECTS</a>
         <div class="menu-nav__group" data-menu-group>
           <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
           <div class="menu-nav__sub" hidden>
             <a href="portfolio.html?filter=major">Major Works</a>
+            <a href="project.html">Branding</a>
             <a href="portfolio.html?filter=website">Website / Site</a>
             <a href="portfolio.html?filter=system">System Build</a>
             <a href="portfolio.html?filter=detailpage">Detail Page</a>
@@ -184,7 +184,7 @@
   }
 
   const navMap = {
-    about: 'about', designer: 'about', performance: 'about', recruit: 'recruit', branding: 'branding', project: 'project',
+    about: 'about', designer: 'about', performance: 'about', recruit: 'recruit', branding: 'branding', project: 'portfolio',
     portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
     process: 'process',
     magazine: 'magazine', 'magazine-detail': 'magazine',
@@ -284,7 +284,7 @@
     footer.innerHTML = `
       <div class="site-footer__head">
         <a class="site-footer__brand" href="/">NINEWORKS</a>
-        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="process.html">Process</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
+        <nav class="site-footer__links" aria-label="푸터 메뉴"><a href="about.html">About</a><a href="branding.html">Branding</a><a href="project.html">Branding Projects</a><a href="portfolio.html?filter=major">Portfolio</a><a href="process.html">Process</a><a href="magazine.html">Magazine</a><a href="solutions.html">Solutions</a><a href="recruit.html">Recruit</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></nav>
       </div>
       <div class="site-footer__legal">
         <p><strong>상호/대표자명</strong> · 나인웍스 / 박재영 &nbsp;&nbsp; <strong>사업자등록번호</strong> · 728-35-00866</p>
