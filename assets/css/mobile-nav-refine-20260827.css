@@ -3,6 +3,8 @@
 
 /* PROCESS IA — Branding / Project Operation / Package Design are separate process pages. */
 .site-primary-nav>a[data-nav-key="branding"],.menu-nav>a.menu-nav__main[href="branding.html"]{display:none!important}
+.site-nav-dropdown[aria-label="프로세스 메뉴"]{display:flex!important;flex-direction:column!important}
+.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]{order:1}.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#project-operation"]{order:2}.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]{order:3}
 .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child,.site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child{font-size:0!important}
 .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#branding-process"]>span:first-child::after{content:"BRANDING";font-size:10.5px!important}
 .site-nav-dropdown[aria-label="프로세스 메뉴"] a[href="process.html#packaging-process"]>span:first-child::after{content:"PACKAGE DESIGN";font-size:10.5px!important}
@@ -19,6 +21,7 @@ body.page-branding .site-primary-nav [data-nav-key="process"]::after,body.page-p
  html body .menu-nav__group{width:100%!important;margin:0!important}
  html body .menu-nav__sub{display:block!important;margin:0!important;padding:6px 0 10px!important;border-bottom:1px solid #ececea!important}
  html body .menu-nav__sub[hidden]{display:none!important}
+ html body .menu-nav__group:has(.menu-nav__toggle:first-child:nth-last-child(n+1)) .menu-nav__sub{position:relative}
  html body .menu-nav__sub a{display:block!important;width:100%!important;margin:0!important;padding:7px 0!important;color:#777!important;font-size:13.5px!important;font-weight:400!important;line-height:1.35!important;letter-spacing:-.015em!important;text-decoration:none!important;transform:none!important}
  html body .menu-nav__sub a[href="process.html#branding-process"],html body .menu-nav__sub a[href="process.html#packaging-process"]{font-size:0!important}
  html body .menu-nav__sub a[href="process.html#branding-process"]::after{content:"Branding";font-size:13.5px!important}
