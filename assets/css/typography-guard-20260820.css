@@ -1,6 +1,15 @@
 /* NINEWORKS — sitewide typography guard / 2026-08-20
    Prevent awkward orphaned words and forced desktop line breaks across public pages. */
 
+/* Final public UI palette: pure neutral K-axis grays only. */
+:root {
+  --bg: #fff;
+  --paper: #f6f6f6;
+  --line: #e3e3e3;
+  --stable-line: #e7e7e7;
+  --stable-soft: #f6f6f6;
+}
+
 html body main h1,
 html body main h2,
 html body main h3,
@@ -119,7 +128,7 @@ html body footer.site-footer.container {
   display: grid !important;
   grid-template-columns: 1fr !important;
   gap: 34px !important;
-  border-top: 1px solid #deded9 !important;
+  border-top: 1px solid #dedede !important;
   background: #fff !important;
   box-shadow: none !important;
 }
@@ -166,7 +175,7 @@ html body .site-footer__links a {
   display: block !important;
   min-width: 0 !important;
   padding: 10px 0 !important;
-  border-bottom: 1px solid #e4e4e0 !important;
+  border-bottom: 1px solid #e4e4e4 !important;
   line-height: 1.35 !important;
 }
 
@@ -204,7 +213,7 @@ html body .site-footer__bottom {
   width: 100% !important;
   margin: 0 !important;
   padding-top: 18px !important;
-  border-top: 1px solid #e2e2de !important;
+  border-top: 1px solid #e2e2e2 !important;
   color: #969696 !important;
   font-size: 10px !important;
   line-height: 1.4 !important;
@@ -214,6 +223,24 @@ html body .site-footer__social {
   display: flex !important;
   gap: 20px !important;
   align-items: center !important;
+}
+
+/* Neutralize legacy warm soft-surfaces after all page CSS has loaded. */
+html body .portfolio-page .portfolio-filter button.is-active,
+html body .magazine-page .magazine-filter button.is-active,
+html body .portfolio-card__media,
+html body .magazine-card__media,
+html body .portfolio-card figure,
+html body .solution-card,
+html body .quote-summary,
+html body .recruit-apply,
+html body .about-page .cta,
+html body .portfolio-page .cta,
+html body .magazine-page .cta,
+html body .solutions-page .cta,
+html body .contact-page .cta,
+html body .sector-page .cta {
+  background: #f6f6f6 !important;
 }
 
 @media (max-width: 900px) {
