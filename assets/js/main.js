@@ -77,7 +77,7 @@
           <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
             <a href="about.html"><span>NINEWORKS</span><small>ABOUT</small></a>
             <a href="designer.html"><span>CEO</span><small>PARK JAEYOUNG</small></a>
-            <a href="performance.html"><span>PERFORMANCE</span><small>BUSINESS DATA</small></a>
+            <a href="performance.html"><span>FINANCIAL</span><small>BUSINESS DATA</small></a>
           </div>
         </div>
         <a href="branding.html" data-nav-key="branding">BRANDING</a>
@@ -132,7 +132,7 @@
           <div class="menu-nav__sub" hidden>
             <a href="about.html">Nineworks</a>
             <a href="designer.html">CEO · Park Jaeyoung</a>
-            <a href="performance.html">Performance</a>
+            <a href="performance.html">Financial</a>
           </div>
         </div>
         <a class="menu-nav__main" href="branding.html">BRANDING</a>
