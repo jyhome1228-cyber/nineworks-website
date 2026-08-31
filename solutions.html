@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="나인웍스의 개발, 출판·인쇄물 제작, 패키지 양산 부가서비스를 소개합니다.">
+  <meta name="description" content="나인웍스의 시그니처 프로젝트, 개발, 출판·인쇄물 제작, 패키지 양산 부가서비스를 소개합니다.">
   <title>Solutions — NINEWORKS</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-5">
@@ -12,6 +12,9 @@
     .services-hero__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:84px;align-items:end}
     .services-hero h1{max-width:14ch;font-size:clamp(36px,3.8vw,52px);font-weight:500;line-height:1.1;letter-spacing:-.05em}
     .services-hero__copy{max-width:630px;color:#555;font-size:15px;line-height:1.82}
+    .services-signature{padding:64px 0;border-bottom:1px solid var(--line);background:#111;color:#fff}
+    .services-signature__grid{display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:50px;align-items:end}
+    .services-signature .eyebrow{color:#999}.services-signature h2{max-width:20ch;margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:500;line-height:1.14;letter-spacing:-.04em}.services-signature p{max-width:670px;margin:14px 0 0;color:#aaa;font-size:13px;line-height:1.75}.services-signature a{display:inline-flex;align-items:center;white-space:nowrap;color:#fff;font-size:11px;font-weight:650;letter-spacing:.04em}
     .services-core{padding:84px 0 92px;background:#f5f5f3}
     .services-core-head{display:grid;grid-template-columns:220px 1fr;gap:70px;margin-bottom:34px}
     .services-core-head h2{max-width:18ch;font-size:clamp(27px,2.6vw,36px);font-weight:500;line-height:1.16;letter-spacing:-.04em}
@@ -30,8 +33,8 @@
     .services-note__grid{display:grid;grid-template-columns:220px 1fr;gap:70px}
     .services-note h2{max-width:18ch;font-size:clamp(27px,2.6vw,36px);font-weight:500;line-height:1.16;letter-spacing:-.04em}
     .services-note__body{max-width:760px}.services-note__body p{color:#555;font-size:14px;line-height:1.8}.services-note__body p+p{margin-top:12px}
-    @media(max-width:900px){.services-hero__grid,.services-core-head,.services-note__grid{grid-template-columns:1fr;gap:28px}.services-core-grid{grid-template-columns:1fr}.services-card{min-height:0}}
-    @media(max-width:680px){.services-hero{padding:62px 0 56px}.services-core{padding:64px 0}.services-note{padding:60px 0}.services-card{padding:22px}.services-card h2{margin-top:38px}}
+    @media(max-width:900px){.services-hero__grid,.services-signature__grid,.services-core-head,.services-note__grid{grid-template-columns:1fr;gap:28px}.services-core-grid{grid-template-columns:1fr}.services-card{min-height:0}}
+    @media(max-width:680px){.services-hero{padding:62px 0 56px}.services-signature{padding:52px 0}.services-core{padding:64px 0}.services-note{padding:60px 0}.services-card{padding:22px}.services-card h2{margin-top:38px}}
   </style>
 
   <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
@@ -45,9 +48,11 @@
   <header class="site-header"><a class="site-logo" href="/">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
   <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
   <main>
-    <section class="services-hero"><div class="container services-hero__grid"><div><p class="eyebrow">ADDITIONAL SERVICES</p><h1>디자인 이후 필요한 구축과 제작을 연결합니다.</h1></div><p class="services-hero__copy">브랜딩은 나인웍스의 중심 업무입니다. 이 페이지에서는 완성된 브랜드를 실제 웹사이트와 운영 시스템, 출판·인쇄물, 패키지 양산으로 확장할 때 함께 이용할 수 있는 부가서비스를 안내합니다. 단독 프로젝트로도 진행할 수 있습니다.</p></div></section>
+    <section class="services-hero"><div class="container services-hero__grid"><div><p class="eyebrow">SOLUTIONS</p><h1>브랜드 이후 필요한 실행 영역까지 연결합니다.</h1></div><p class="services-hero__copy">브랜딩은 나인웍스의 중심 업무입니다. 프로젝트 목적에 따라 브랜드 구축과 패키지, 웹사이트, 콘텐츠와 실제 제작을 하나의 흐름으로 연결하거나 필요한 영역만 별도로 진행합니다.</p></div></section>
 
-    <section class="services-core"><div class="container"><div class="services-core-head"><span class="eyebrow">SERVICE PATH / 03</span><h2>필요한 실행 방식에 따라 세 영역으로 나눴습니다.</h2></div><div class="services-core-grid">
+    <section class="services-signature"><div class="container services-signature__grid"><p class="eyebrow">SIGNATURE PROJECT</p><div><h2>나인웍스에서 반복적으로 많이 진행하는 대표 프로젝트 구성을 먼저 확인해보세요.</h2><p>신규 브랜드 구축, 브랜드와 패키지 통합 개발, 브랜드와 웹사이트 구축, 기존 브랜드 리파인 등 실제 의뢰에서 자주 연결되는 업무 조합을 정리했습니다.</p></div><a href="signature-project.html">VIEW SIGNATURE PROJECT ↗</a></div></section>
+
+    <section class="services-core"><div class="container"><div class="services-core-head"><span class="eyebrow">ADDITIONAL SERVICE / 03</span><h2>추가로 필요한 실행 방식은 세 영역으로 나눴습니다.</h2></div><div class="services-core-grid">
       <article class="services-card" id="develop"><small>01 / DEVELOP</small><h2>Develop<span>웹·시스템 개발</span></h2><p>기업·브랜드 홈페이지부터 커머스, 커뮤니티, 관리자와 데이터 기능까지 실제 운영 가능한 디지털 환경을 기획하고 구축합니다.</p><div class="services-card__when"><b>WHEN IT HELPS</b><span>홈페이지 구축·리뉴얼 · 커머스·플랫폼 · 관리자·회원·데이터 기능이 필요한 경우</span></div><ul><li>Planning · IA · UX/UI</li><li>HTML · CSS · JavaScript</li><li>Commerce · Platform · Admin</li><li>Firebase · Data · Deployment</li></ul><a href="develop.html">DEVELOP SERVICE ↗</a></article>
       <article class="services-card" id="print"><small>02 / PRINT</small><h2>Print<span>출판물·명함·부속 인쇄물</span></h2><p>회사와 브랜드 운영에 반복적으로 필요한 명함, 소개서, 브로셔, 리플렛, 카탈로그, 카드와 각종 인쇄물을 디자인 결과에서 실제 출력물까지 연결합니다.</p><div class="services-card__when"><b>WHEN IT HELPS</b><span>명함 · 회사소개서 · 브로셔 · 리플렛 · 카탈로그 · 카드·스티커 등 부속 제작물이 필요한 경우</span></div><ul><li>Business Card · Stationery</li><li>Company Profile · Brochure</li><li>Catalog · Leaflet · Card</li><li>Paper · Printing · Finishing</li></ul><a href="print-editorial.html">PRINT SERVICE ↗</a></article>
       <article class="services-card" id="production"><small>03 / PRINT PRODUCTION</small><h2>Print Production<span>단상자·쇼핑백·패키지 양산</span></h2><p>단상자와 쇼핑백을 중심으로 구조, 지류, 인쇄, 후가공, 샘플 확인과 양산까지 실제 패키지 제작 과정에 필요한 조건을 함께 정리합니다.</p><div class="services-card__when"><b>WHEN IT HELPS</b><span>단상자 · 쇼핑백 · 슬리브 · 골판지 박스 · 샘플과 실제 양산이 필요한 경우</span></div><ul><li>Box Structure · Shopping Bag</li><li>Paper · Printing · Finishing</li><li>Sample Review · Specification</li><li>Production · Delivery</li></ul><a href="package-production.html">PRINT PRODUCTION ↗</a></article>
@@ -57,7 +62,7 @@
   </main>
   <footer class="site-footer container"></footer>
 </div>
-<script src="assets/js/main.js?v=20260817-4"></script>
+<script src="assets/js/main.js?v=20260901-1"></script>
 <script src="assets/js/seed-local-nav-20260817.js?v=20260817-1"></script>
 </body>
 </html>
