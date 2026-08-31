@@ -5,8 +5,8 @@
 @media(max-width:680px){
  html body .menu-overlay{padding:calc(var(--header-height,68px) + 18px) 20px 26px!important;gap:0!important;grid-template-rows:auto auto auto!important;align-content:start!important;background:#fff!important;color:#111!important;overflow-y:auto!important}
  html body .menu-nav{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;width:100%!important}
- html body .menu-nav .menu-nav__main,html body .menu-nav>a.menu-nav__main,html body .menu-nav__toggle{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;margin:0!important;padding:10px 0!important;border:0!important;border-bottom:1px solid #ececea!important;background:transparent!important;color:#111!important;font:600 18px/1.15 inherit!important;letter-spacing:-.025em!important;text-align:left!important;text-decoration:none!important}
- html body .menu-nav__toggle span{font-size:18px!important;font-weight:400!important;line-height:1!important;color:#777!important}
+ html body .menu-nav .menu-nav__main,html body .menu-nav>a.menu-nav__main,html body .menu-nav__toggle{display:flex!important;align-items:center!important;justify-content:space-between!important;width:100%!important;margin:0!important;padding:10px 0!important;border:0!important;border-bottom:1px solid #ececea!important;background:transparent!important;color:#111!important;font-family:inherit!important;font-size:16px!important;font-weight:400!important;line-height:1.15!important;letter-spacing:-.02em!important;text-align:left!important;text-decoration:none!important}
+ html body .menu-nav__toggle span{font-family:inherit!important;font-size:16px!important;font-weight:400!important;line-height:1!important;color:#777!important}
  html body .menu-nav__group{width:100%!important;margin:0!important}
  html body .menu-nav__sub{display:block!important;margin:0!important;padding:6px 0 10px!important;border-bottom:1px solid #ececea!important}
  html body .menu-nav__sub[hidden]{display:none!important}
@@ -18,4 +18,4 @@
  html body .menu-footer{margin-top:16px!important;padding-top:14px!important;border-top:1px solid #e4e4e1!important;color:#8a8a8a!important;gap:7px!important;font-size:10.5px!important;line-height:1.45!important}
  html body .menu-footer p,html body .menu-social,html body .menu-social a{color:#8a8a8a!important}.menu-social{gap:14px!important;font-size:10.5px!important}
 }
-@media(max-width:390px){html body .menu-nav .menu-nav__main,html body .menu-nav>a.menu-nav__main,html body .menu-nav__toggle{font-size:17px!important}html body .menu-nav__sub a{font-size:13px!important}}
+@media(max-width:390px){html body .menu-nav .menu-nav__main,html body .menu-nav>a.menu-nav__main,html body .menu-nav__toggle{font-size:16px!important}html body .menu-nav__sub a{font-size:13px!important}}
