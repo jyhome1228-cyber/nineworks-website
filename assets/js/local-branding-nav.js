@@ -23,8 +23,16 @@
       else mobileMenu.appendChild(link);
     }
 
+    const gfPrefix = 'https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/';
+    document.querySelectorAll('.local-branding-page .portfolio-card__link').forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      if (!href.startsWith(gfPrefix)) return;
+      const id = href.slice(gfPrefix.length).split('/').filter(Boolean)[0];
+      if (id) link.href = `local-branding-detail.html?project=${encodeURIComponent(id)}`;
+    });
+
     const path = window.location.pathname.split('/').filter(Boolean).pop() || '';
-    if (path === 'local-branding.html') {
+    if (path === 'local-branding.html' || path === 'local-branding-detail.html') {
       const portfolioNav = document.querySelector('.site-primary-nav [data-nav-key="portfolio"]');
       document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
         link.classList.toggle('is-current', link === portfolioNav);
