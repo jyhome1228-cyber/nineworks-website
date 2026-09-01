@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://9works.kr/membership.html</loc></url>
-  <url><loc>https://9works.kr/print.html</loc></url>
-  <url><loc>https://9works.kr/print-editorial.html</loc></url>
-  <url><loc>https://9works.kr/package-production.html</loc></url>
-  <url><loc>https://9works.kr/package-sample.html</loc></url>
-  <url><loc>https://9works.kr/print-partner.html</loc></url>
-  <url><loc>https://9works.kr/develop.html</loc></url>
-  <url><loc>https://9works.kr/client-register.html</loc></url>
+  <url><loc>https://9works.kr/process.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/branding.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/package-design.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/solutions.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/signature-project.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/develop.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/local-branding.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/membership.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/print.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/print-editorial.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/package-production.html</loc><lastmod>2026-09-01</lastmod></url>
+  <url><loc>https://9works.kr/package-sample.html</loc><lastmod>2026-09-01</lastmod></url>
 </urlset>
