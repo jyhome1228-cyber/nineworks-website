@@ -7,108 +7,102 @@
   <title>Local Branding — NINEWORKS</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/portfolio.css?v=20260825-1">
+  <link rel="stylesheet" href="assets/css/portfolio-archive-v1.css?v=20260817-2">
+  <link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-8">
   <link rel="stylesheet" href="assets/css/navigation-ia-20260817.css?v=20260817-5">
   <link rel="stylesheet" href="assets/css/site-stable-20260817.css?v=20260817-1">
   <style>
-    .local-branding-page main{padding-top:0}
-    .local-hero{padding-top:128px;padding-bottom:70px;border-bottom:1px solid #e5e5e1}
-    .local-hero__grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
-    .local-hero h1{font-size:clamp(48px,6.2vw,96px);line-height:.94;letter-spacing:-.055em;margin:14px 0 0}
-    .local-hero__copy{max-width:660px;margin:0 0 6px auto;color:#686864;font-size:16px;line-height:1.75;letter-spacing:-.02em}
-    .local-hero__copy strong{display:block;color:#151515;font-size:18px;font-weight:600;margin-bottom:12px}
-    .local-hero__meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;color:#8d8d88;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-    .local-index{padding-top:34px;padding-bottom:28px;display:flex;justify-content:space-between;gap:32px;align-items:flex-end}
-    .local-index h2{margin:6px 0 0;font-size:26px;letter-spacing:-.035em}
-    .local-index p{max-width:640px;margin:0;color:#767671;font-size:13px;line-height:1.65;text-align:right}
-    .local-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 18px;padding-bottom:110px}
-    .local-card{min-width:0}
-    .local-card__media{aspect-ratio:4/3;background:#f2f2ef;overflow:hidden}
-    .local-card__media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-    .local-card:hover .local-card__media img{transform:scale(1.018)}
-    .local-card__info{padding-top:13px;border-top:0}
-    .local-card__info h3{font-size:15px;line-height:1.45;letter-spacing:-.025em;margin:0;color:#171717;font-weight:600}
-    .local-card__tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px;color:#999994;font-size:10px;letter-spacing:.035em;text-transform:uppercase}
-    .local-about{border-top:1px solid #deded9;padding:72px 0 86px}
-    .local-about__grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
-    .local-about h2{font-size:36px;line-height:1.12;letter-spacing:-.045em;margin:10px 0 0;max-width:560px}
-    .local-about__body{max-width:640px;margin-left:auto}
-    .local-about__body p{font-size:15px;line-height:1.85;color:#666661;margin:0 0 24px}
-    .local-about__link{display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid #171717;padding-bottom:5px;font-size:12px;font-weight:600;letter-spacing:.05em}
-    @media(max-width:900px){
-      .local-hero{padding-top:92px;padding-bottom:48px}
-      .local-hero__grid,.local-about__grid{grid-template-columns:1fr;gap:28px}
-      .local-hero__copy,.local-about__body{margin-left:0}
-      .local-index{align-items:flex-start;flex-direction:column}
-      .local-index p{text-align:left}
-      .local-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 12px}
-    }
-    @media(max-width:560px){
-      .local-hero h1{font-size:50px}
-      .local-grid{grid-template-columns:1fr;gap:34px}
-      .local-card__media{aspect-ratio:5/4}
-      .local-about h2{font-size:30px}
-    }
+    .local-branding-page .portfolio-card__link{cursor:pointer}
+    .local-branding-page .portfolio-card__scope{text-transform:uppercase;letter-spacing:.035em}
+    .local-branding-page .portfolio-local-archive{margin-top:clamp(44px,4vw,70px)}
+    .local-branding-page .portfolio-local-archive a{display:flex;align-items:center;justify-content:space-between;width:100%;padding:18px 0;border-top:1px solid #171717;border-bottom:1px solid #171717;font-size:11px;font-weight:600;letter-spacing:.035em;transition:opacity .18s ease}
+    .local-branding-page .portfolio-local-archive a:hover{opacity:.55}
+    .local-branding-page .portfolio-local-archive span:last-child{color:#777;font-weight:500;letter-spacing:0}
   </style>
   <meta property="og:image" content="https://cdn.imweb.me/upload/S202410251a294b3f442b0/a8eced1f568c9.png">
 </head>
-<body class="local-branding-page">
+<body class="portfolio-page local-branding-page">
   <div class="site-shell">
     <header class="site-header"><a class="site-logo" href="/">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
     <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+
     <main>
-      <section class="local-hero container">
-        <div class="local-hero__grid">
-          <div>
-            <p class="eyebrow">LOCAL BRANDING</p>
-            <h1>Local Brands<br>& Regional Products</h1>
-          </div>
-          <div class="local-hero__copy">
-            <strong>지역의 자원과 생산자가 가진 이야기를 브랜드로 연결합니다.</strong>
-            농산물·식품·건강식품·지역 특산품을 중심으로 브랜드 아이덴티티, 패키지, 상품화, 콘텐츠까지 구축한 프로젝트입니다.
-            <div class="local-hero__meta"><span>NINEWORKS × GROW FARMERS</span><span>BRANDING · PACKAGE · LOCAL CONTENTS</span></div>
-          </div>
+      <section class="portfolio-hero container">
+        <div>
+          <p class="eyebrow reveal">WORK ARCHIVE</p>
+          <h1 class="page-title reveal">Portfolio</h1>
+        </div>
+        <p class="portfolio-hero__copy reveal">주요 프로젝트와 함께 로컬 브랜딩, 웹사이트, 시스템 구축, 상세페이지, 인스타그램 피드, 편집디자인, IR, 패키지디자인, 행사디자인 등 실제 제작 결과물을 유형별로 확인할 수 있습니다.</p>
+      </section>
+
+      <div class="category-nav portfolio-filter" aria-label="포트폴리오 카테고리">
+        <button type="button" onclick="location.href='portfolio.html?filter=major'">MAJOR</button>
+        <button class="is-active" type="button">LOCAL BRANDING</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=website'">WEBSITE</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=system'">SYSTEM</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=detailpage'">DETAIL PAGE</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=instagram'">INSTAGRAM FEED</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=editorial'">EDITORIAL</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=ir'">IR / PPT</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=package'">PACKAGE</button>
+        <button type="button" onclick="location.href='portfolio.html?filter=event'">EVENT</button>
+      </div>
+
+      <section class="portfolio-index-head container">
+        <div class="portfolio-index-head__title">
+          <p class="eyebrow">CATEGORY</p>
+          <h2>Local Branding</h2>
+        </div>
+        <div class="portfolio-index-head__meta">
+          <p>지역의 자원과 생산자가 가진 이야기를 브랜드로 연결합니다. 농산물·로컬 식품·건강식품·지역 특산품을 중심으로 브랜드 아이덴티티, 패키지, 상품화와 지역 콘텐츠까지 구축한 대표 프로젝트입니다.</p>
+          <span class="portfolio-index-head__count">16 WORKS</span>
         </div>
       </section>
 
-      <section class="local-index container">
-        <div><p class="eyebrow">SELECTED ARCHIVE</p><h2>Selected Local Branding Works</h2></div>
-        <p>그로우파머스에서 진행한 로컬 브랜드 프로젝트 가운데 브랜드 구조, 패키지, 상품성과 지역성이 잘 드러나는 대표 작업을 선별했습니다.</p>
-      </section>
+      <section class="portfolio-list container">
+        <div class="portfolio-grid">
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80998702f40961c583c5/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/a8eced1f568c9.png" alt="지리산 프리미엄 허니 선물세트 디자인" loading="eager"></div><div class="portfolio-card__info"><div><strong>지리산 프리미엄 허니</strong><span>Jirisan Premium Honey Gift Set</span></div><span class="portfolio-card__scope">LOCAL · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d807a92cbd6c0e4298062/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/649b0f2ca6f60.png" alt="지리산 스틱꿀 선물세트 디자인" loading="eager"></div><div class="portfolio-card__info"><div><strong>지리산 스틱꿀 선물세트</strong><span>Jirisan Stick Honey Gift Package</span></div><span class="portfolio-card__scope">LOCAL · GIFT</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3729f7193b9d80e1b43ef4d02cdd5f79/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/3cbf371e0c31e.png" alt="전통 풍경 프리미엄 선물 브랜드 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>프리미엄 로컬 선물 브랜드</strong><span>Traditional Landscape Gift Branding</span></div><span class="portfolio-card__scope">BRAND · GIFT</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3729f7193b9d806a8371d2c219e21781/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/20af802ac7ade.png" alt="쌀 품종별 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>품종별 쌀 패키지</strong><span>Local Rice Product Package System</span></div><span class="portfolio-card__scope">AGRI · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80338d56c5e85b858137/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/5cf1490aff2ce.png" alt="김치 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>로컬 김치 패키지</strong><span>Fresh Kimchi Product Branding</span></div><span class="portfolio-card__scope">FOOD · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d8070b4a7ff4b5872b70a/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/982bbe47f8f0a.png" alt="냉동 굴 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>냉동 굴 패키지</strong><span>Premium Oyster Product Package</span></div><span class="portfolio-card__scope">SEAFOOD · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d8015b478e0380552302e/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/6ad3c2ff75132.png" alt="건멸치 선물세트 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>건멸치 선물세트</strong><span>Dried Anchovy Premium Gift Set</span></div><span class="portfolio-card__scope">SEAFOOD · GIFT</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80e88e5ff5185a1f6962/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/a55196bf4d54e.png" alt="보리굴비 선물 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>보리굴비 선물 패키지</strong><span>Premium Barley Yellow Croaker Gift</span></div><span class="portfolio-card__scope">SEAFOOD · GIFT</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80ec90aecb658ac023fe/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/10d1cdebf0766.png" alt="새우젓 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>새우젓 패키지</strong><span>Fermented Seafood Product Branding</span></div><span class="portfolio-card__scope">FOOD · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80b19605ed87160d3183/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/bf31aae044b1f.png" alt="유정란 브랜드 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>로컬 유정란 브랜드</strong><span>Free-range Egg Brand Identity</span></div><span class="portfolio-card__scope">AGRI · BRAND</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3729f7193b9d804ca3e7c2c5ea0c1a71/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/9c171fcd5ef7f.png" alt="대추 노루궁뎅이버섯 건강즙 브랜드 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>대추 · 노루궁뎅이버섯 건강즙</strong><span>Local Wellness Product Branding</span></div><span class="portfolio-card__scope">WELLNESS · BRAND</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3729f7193b9d8016a02deb704dc79978/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/e6b7c5533bc1f.png" alt="홍삼과 배 선물 브랜드 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>홍삼 · 배 선물 브랜드</strong><span>Red Ginseng & Pear Gift Branding</span></div><span class="portfolio-card__scope">WELLNESS · GIFT</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80c082b5fb4886388067/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/5abe5be555d79.png" alt="흑삼 프리미엄 선물 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>흑삼 프리미엄 선물세트</strong><span>Black Ginseng Premium Package</span></div><span class="portfolio-card__scope">WELLNESS · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d804f9ccac7aeeadc42fc/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/45e1161c81234.png" alt="호박 팥 티백차 패키지 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>호박 · 팥 티백차</strong><span>Local Tea Product Package Design</span></div><span class="portfolio-card__scope">TEA · PACKAGE</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/3739f7193b9d80d2a4b9fd6276080db7/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/96a243780bb95.png" alt="지역 식재료 브랜드 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>지역 식재료 브랜드</strong><span>Local Ingredients Table Branding</span></div><span class="portfolio-card__scope">LOCAL FOOD · BRAND</span></div></a></article>
+          <article class="portfolio-card reveal"><a class="portfolio-card__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/projects/cheongun-sanghoe-2025/"><div class="portfolio-card__media"><img src="https://cdn.imweb.me/upload/S20260219b829e728b3f2e/4394f6661aca0.png" alt="홍성 청운상회 로컬 팝업 키비주얼 디자인" loading="lazy"></div><div class="portfolio-card__info"><div><strong>홍성 청운상회 2025</strong><span>Hongseong Local Popup Festa Key Visual</span></div><span class="portfolio-card__scope">LOCAL · EVENT</span></div></a></article>
+        </div>
 
-      <section class="container">
-        <div class="local-grid">
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/a8eced1f568c9.png" alt="지리산 프리미엄 허니 선물세트 디자인" loading="eager"></div><div class="local-card__info"><h3>지리산의 계절을 담은 프리미엄 허니 선물세트</h3><div class="local-card__tags"><span>Honey</span><span>Gift Package</span><span>Local Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/649b0f2ca6f60.png" alt="지리산 스틱꿀 선물세트 디자인" loading="eager"></div><div class="local-card__info"><h3>지리산의 자연 이미지를 밝게 담은 스틱꿀 선물세트</h3><div class="local-card__tags"><span>Honey</span><span>Product</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/3cbf371e0c31e.png" alt="전통 풍경 프리미엄 선물 브랜드 디자인" loading="lazy"></div><div class="local-card__info"><h3>전통 풍경을 현대적으로 풀어낸 프리미엄 선물 브랜드</h3><div class="local-card__tags"><span>Traditional</span><span>Gift</span><span>Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/20af802ac7ade.png" alt="쌀 품종별 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>쌀의 담백함을 자연스럽게 담은 품종별 패키지</h3><div class="local-card__tags"><span>Rice</span><span>Agriculture</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/5cf1490aff2ce.png" alt="김치 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>신선한 김치의 색감과 시원한 맛을 살린 패키지</h3><div class="local-card__tags"><span>Kimchi</span><span>Local Food</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/982bbe47f8f0a.png" alt="냉동 굴 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>블루 컬러와 실버 파우치로 신선함을 전달한 냉동 굴</h3><div class="local-card__tags"><span>Seafood</span><span>Product</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/6ad3c2ff75132.png" alt="건멸치 선물세트 디자인" loading="lazy"></div><div class="local-card__info"><h3>깨끗한 바다의 맛을 정갈하게 담은 건멸치 선물세트</h3><div class="local-card__tags"><span>Seafood</span><span>Gift Set</span><span>Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/a55196bf4d54e.png" alt="보리굴비 선물 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>보리굴비의 정갈한 품격을 흰 여백에 담은 선물 패키지</h3><div class="local-card__tags"><span>Seafood</span><span>Premium Gift</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/10d1cdebf0766.png" alt="새우젓 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>크림 톤과 투명 용기로 정갈한 신선함을 담은 새우젓</h3><div class="local-card__tags"><span>Fermented Food</span><span>Product</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/bf31aae044b1f.png" alt="유정란 브랜드 디자인" loading="lazy"></div><div class="local-card__info"><h3>숲의 편안함으로 유정란의 건강한 이미지를 전한 브랜드</h3><div class="local-card__tags"><span>Egg</span><span>Agriculture</span><span>Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/9c171fcd5ef7f.png" alt="대추 노루궁뎅이버섯 건강즙 브랜드 디자인" loading="lazy"></div><div class="local-card__info"><h3>대추와 노루궁뎅이버섯을 친근하게 풀어낸 건강즙 브랜드</h3><div class="local-card__tags"><span>Wellness</span><span>Health Food</span><span>Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/e6b7c5533bc1f.png" alt="홍삼과 배 선물 브랜드 디자인" loading="lazy"></div><div class="local-card__info"><h3>홍삼과 배의 깊이를 정갈하게 담은 선물 브랜드</h3><div class="local-card__tags"><span>Red Ginseng</span><span>Gift</span><span>Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/5abe5be555d79.png" alt="흑삼 프리미엄 선물 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>흑삼의 깊이를 블랙 무드로 표현한 프리미엄 선물 패키지</h3><div class="local-card__tags"><span>Black Ginseng</span><span>Premium</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/45e1161c81234.png" alt="호박 팥 티백차 패키지 디자인" loading="lazy"></div><div class="local-card__info"><h3>호박과 팥의 따뜻함을 담은 티백차 패키지</h3><div class="local-card__tags"><span>Tea</span><span>Wellness</span><span>Package</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S202410251a294b3f442b0/96a243780bb95.png" alt="지역 식재료 브랜드 디자인" loading="lazy"></div><div class="local-card__info"><h3>지역 식재료의 건강한 식탁 이미지를 담은 브랜드</h3><div class="local-card__tags"><span>Local Food</span><span>Table</span><span>Branding</span></div></div></article>
-          <article class="local-card"><div class="local-card__media"><img src="https://cdn.imweb.me/upload/S20260219b829e728b3f2e/4394f6661aca0.png" alt="홍성 청운상회 로컬 팝업 키비주얼 디자인" loading="lazy"></div><div class="local-card__info"><h3>홍성 청운상회, 로컬 팝업의 에너지를 담은 키비주얼</h3><div class="local-card__tags"><span>Hongseong</span><span>Local Contents</span><span>Event</span></div></div></article>
+        <div class="portfolio-local-archive">
+          <a href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/" target="_blank" rel="noopener"><span>GROW FARMERS FULL ARCHIVE</span><span>37 PROJECTS ↗</span></a>
         </div>
       </section>
 
-      <section class="local-about">
-        <div class="container local-about__grid">
-          <div><p class="eyebrow">GROW FARMERS</p><h2>생산자의 상품을<br>시장에 닿는 브랜드로.</h2></div>
-          <div class="local-about__body">
-            <p>그로우파머스는 나인웍스의 로컬·농식품 분야 프로젝트를 확장한 브랜드입니다. 상품 하나의 패키지를 넘어 생산자와 지역의 이야기, 제품 구조, 브랜드 아이덴티티와 실제 판매 콘텐츠까지 연결합니다.</p>
-            <a class="local-about__link" href="https://jyhome1228-cyber.github.io/growfarmers/portfolio/" target="_blank" rel="noopener">VIEW FULL GROW FARMERS ARCHIVE <span>↗</span></a>
-          </div>
-        </div>
+      <section class="cta">
+        <div class="container"><p class="eyebrow">START A PROJECT</p><h2 class="cta__title">지역의 이야기를 브랜드로 연결합니다.</h2></div>
+        <div class="container cta__bottom"><p>로컬 브랜드, 지역 상품과 패키지, 콘텐츠 구축이 필요한 범위부터 이야기해 주세요.</p><a class="text-link" href="contact.html">PROJECT INQUIRY <span>↗</span></a></div>
       </section>
     </main>
+
     <footer class="site-footer container"></footer>
   </div>
-  <script src="assets/js/main.js?v=20260901-4"></script>
-  <script src="assets/js/local-branding-nav.js?v=20260901-1"></script>
+
+  <script src="assets/js/main.js?v=20260827-2"></script>
+  <script src="assets/js/local-branding-nav.js?v=20260901-2"></script>
+  <script>
+    (()=>{
+      const items=document.querySelectorAll('.local-branding-page .reveal');
+      if('IntersectionObserver' in window){
+        const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -20px'});
+        items.forEach(item=>observer.observe(item));
+      }else items.forEach(item=>item.classList.add('is-visible'));
+    })();
+  </script>
 </body>
 </html>
