@@ -1,5 +1,22 @@
 User-agent: *
 Allow: /
 
+# Internal / operational areas
+Disallow: /admin
+Disallow: /client/
+Disallow: /proposal/
+Disallow: /majorportfolio/
+Disallow: /rpbio/
+Disallow: /welcare/
+Disallow: /parters/
+Disallow: /partners/
+Disallow: /my.html
+Disallow: /join.html
+Disallow: /register.html
+Disallow: /client-register.html
+Disallow: /company-profile.html
+Disallow: /resources.html
+Disallow: /email-refusal.html
+
 Sitemap: https://9works.kr/sitemap.xml
 Sitemap: https://9works.kr/sitemap-services.xml
