@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Internal / operational areas
+# Internal / operational directories
 Disallow: /admin
 Disallow: /client/
 Disallow: /proposal/
@@ -10,13 +10,7 @@ Disallow: /rpbio/
 Disallow: /welcare/
 Disallow: /parters/
 Disallow: /partners/
-Disallow: /my.html
-Disallow: /join.html
-Disallow: /register.html
-Disallow: /client-register.html
-Disallow: /company-profile.html
-Disallow: /resources.html
-Disallow: /email-refusal.html
 
+# Standalone operational pages remain crawlable so their noindex directives can be read.
 Sitemap: https://9works.kr/sitemap.xml
 Sitemap: https://9works.kr/sitemap-services.xml
