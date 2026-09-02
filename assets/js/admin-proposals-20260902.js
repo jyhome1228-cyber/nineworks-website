@@ -78,7 +78,10 @@ const injectStylesheet = () => {
 const renumberNav = () => {
   document.querySelectorAll('.admin-nav .admin-nav__item').forEach((button, index) => {
     const number = button.querySelector('span');
-    if (number) number.textContent = String(index + 1).padStart(2, '0');
+    if (number) {
+      const next = String(index + 1).padStart(2, '0');
+      if (number.textContent !== next) number.textContent = next;
+    }
   });
 };
 
@@ -158,7 +161,7 @@ const ensureUI = () => {
   renumberNav();
   if (nav.dataset.proposalRenumberBound !== 'true') {
     nav.dataset.proposalRenumberBound = 'true';
-    new MutationObserver(renumberNav).observe(nav, { childList: true, subtree: true });
+    new MutationObserver(renumberNav).observe(nav, { childList: true });
   }
 };
 
