@@ -15,23 +15,23 @@ html body .site-nav-dropdown{
 }
 
 /* CTA sections use one shared dark treatment. This also prevents black-on-black text. */
-html body .cta{
+html body .site-shell main .cta{
   background:#111!important;
   color:#fff!important;
   border-top-color:#111!important;
 }
-html body .cta .eyebrow,
-html body .cta .cta__title,
-html body .cta .cta__bottom,
-html body .cta .cta__bottom p,
-html body .cta p,
-html body .cta a,
-html body .cta .text-link,
-html body .cta span{
+html body .site-shell main .cta .eyebrow,
+html body .site-shell main .cta .cta__title,
+html body .site-shell main .cta .cta__bottom,
+html body .site-shell main .cta .cta__bottom p,
+html body .site-shell main .cta p,
+html body .site-shell main .cta a,
+html body .site-shell main .cta .text-link,
+html body .site-shell main .cta span{
   color:#fff!important;
 }
-html body .cta .eyebrow{color:#9a9a9a!important}
-html body .cta .text-link{border-bottom-color:rgba(255,255,255,.72)!important}
+html body .site-shell main .cta .eyebrow{color:#9a9a9a!important}
+html body .site-shell main .cta .text-link{border-bottom-color:rgba(255,255,255,.72)!important}
 
 /* Footer follows the same shell treatment on every public page. */
 html body .site-footer{
