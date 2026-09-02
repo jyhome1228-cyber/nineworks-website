@@ -114,7 +114,7 @@
           <a href="/project-operation.html" style="margin-bottom:8px!important;padding-bottom:13px!important;border-bottom:1px solid #aaa9a3!important"><span>프로젝트 프로세스</span><small>진행 절차</small></a>
           <a href="/branding.html"><span>브랜딩</span><small>브랜드</small></a>
           <a href="/package-design.html"><span>패키지 디자인</span><small>패키지</small></a>
-          <a href="/solutions.html"><span>브랜드 운영</span><small>파트너십</small></a>
+          <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>파트너십</small></a>
           <a href="/develop.html"><span>웹 &amp; 커머스</span><small>디지털</small></a>
           <a href="/solutions.html"><span>콘텐츠 디자인</span><small>콘텐츠</small></a>
         </div>
@@ -176,7 +176,7 @@
           <a href="/project-operation.html" style="margin-bottom:8px!important;padding-bottom:12px!important;border-bottom:1px solid rgba(255,255,255,.28)!important">프로젝트 프로세스</a>
           <a href="/branding.html">브랜딩</a>
           <a href="/package-design.html">패키지 디자인</a>
-          <a href="/solutions.html">브랜드 운영</a>
+          <a href="/solutions.html#brand-operation">브랜드 운영</a>
           <a href="/develop.html">웹 &amp; 커머스</a>
           <a href="/solutions.html">콘텐츠 디자인</a>
         </div>
