@@ -1,13 +1,12 @@
 (() => {
   const freshStyle = document.createElement('link');
   freshStyle.rel = 'stylesheet';
-  freshStyle.href = 'assets/css/clarity-20260814.css?v=20260817-6';
+  freshStyle.href = 'assets/css/clarity-20260814.css?v=20260902-1';
   document.head.appendChild(freshStyle);
 
   const hasScript = (pattern) => Array.from(document.scripts).some((script) => pattern.test(script.src || ''));
 
-  // Load the current SEO layer explicitly so About and other clarity-shell pages
-  // receive the same keyword architecture, canonical, OG and JSON-LD as the main site.
+  // Keep clarity-shell pages on the same SEO and global site shell as the main site.
   if (!hasScript(/assets\/js\/seo\.js(?:\?|$)/)) {
     const seo = document.createElement('script');
     seo.src = 'assets/js/seo.js?v=20260901-2';
@@ -19,7 +18,7 @@
   window.__NW_MAIN_BOOTSTRAPPED__ = true;
   if (!hasScript(/assets\/js\/main\.js(?:\?|$)/)) {
     const script = document.createElement('script');
-    script.src = 'assets/js/main.js?v=20260901-4';
+    script.src = 'assets/js/main.js?v=20260902-1';
     script.defer = false;
     document.body.appendChild(script);
   }
