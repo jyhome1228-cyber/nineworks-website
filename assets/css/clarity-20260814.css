@@ -26,13 +26,7 @@ html body .magazine-card__media,
 .portfolio-card figure,
 .magazine-card__media,
 .solution-card,
-.quote-summary,
-.about-page .cta,
-.portfolio-page .cta,
-.magazine-page .cta,
-.solutions-page .cta,
-.contact-page .cta,
-.sector-page .cta{
+.quote-summary{
   background:#f6f6f6!important;
 }
 
@@ -51,3 +45,24 @@ html body .site-footer__links a{
   visibility:hidden!important;
 }
 .branding-page .branding-process-intro>*{display:none!important;}
+
+/* 2026-09-02 — shared dark CTA contrast.
+   All public CTA blocks use white copy on black so links and small text never disappear. */
+html body .site-shell main .cta{
+  background:#111!important;
+  color:#fff!important;
+  border-top-color:#111!important;
+}
+html body .site-shell main .cta .eyebrow{color:#9a9a9a!important;}
+html body .site-shell main .cta .cta__title,
+html body .site-shell main .cta .cta__bottom,
+html body .site-shell main .cta .cta__bottom p,
+html body .site-shell main .cta p,
+html body .site-shell main .cta a,
+html body .site-shell main .cta .text-link,
+html body .site-shell main .cta span{
+  color:#fff!important;
+}
+html body .site-shell main .cta .text-link{
+  border-bottom-color:rgba(255,255,255,.72)!important;
+}
