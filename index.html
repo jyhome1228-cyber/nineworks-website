@@ -74,10 +74,10 @@
   let index=0;
   const show=(n)=>{index=(n+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('is-active',i===index));const active=slides[index];title.textContent=active.dataset.title||'';meta.textContent=active.dataset.meta||'';count.textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`};
   show(0);
-  let timer=setInterval(()=>show(index+1),4200);
-  const advance=()=>{clearInterval(timer);show(index+1);timer=setInterval(()=>show(index+1),4200)};
+  let timer=setInterval(()=>show(index+1),5800);
+  const advance=()=>{clearInterval(timer);show(index+1);timer=setInterval(()=>show(index+1),5800)};
   next?.addEventListener('click',advance);
   slider.addEventListener('mouseenter',()=>clearInterval(timer));
-  slider.addEventListener('mouseleave',()=>{clearInterval(timer);timer=setInterval(()=>show(index+1),4200)});
+  slider.addEventListener('mouseleave',()=>{clearInterval(timer);timer=setInterval(()=>show(index+1),5800)});
 })();
 </script></body></html>
