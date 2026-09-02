@@ -6,6 +6,7 @@
     recruits: 'Recruits',
     members: 'Members',
     partners: 'Partners',
+    proposals: 'Proposals',
     visitors: 'Visitors',
     'portfolio-views': 'Portfolio Views',
     trash: 'Trash'
@@ -169,6 +170,10 @@
     return import('./admin-client-phyto-20260826.js?v=20260826-routerfix1');
   }).then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Clients workspace load failed', error);
+  });
+
+  import('./admin-proposals-20260902.js?v=20260902-1').then(refreshNavigation).catch((error) => {
+    console.error('[NINEWORKS Admin] Proposals workspace load failed', error);
   });
 
   import('./admin-firebase.js?v=20260826-routerfix1').catch((error) => {
