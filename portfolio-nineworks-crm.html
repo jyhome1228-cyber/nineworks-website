@@ -3,10 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://9works.kr/portfolio-detail.html?work=nineworks-crm">
-  <title>NINEWORKS CRM — NINEWORKS</title>
-  <script>location.replace('portfolio-detail.html?work=nineworks-crm');</script>
+  <meta name="robots" content="noindex,nofollow">
+  <title>Portfolio Preparing — NINEWORKS</title>
+  <script>
+    (() => {
+      const fallback = '/portfolio.html?filter=system';
+      window.alert('포트폴리오 준비중입니다.');
+      try {
+        const referrer = document.referrer ? new URL(document.referrer, location.href) : null;
+        if (referrer && referrer.origin === location.origin) {
+          history.back();
+          return;
+        }
+      } catch (_) {}
+      location.replace(fallback);
+    })();
+  </script>
 </head>
 <body></body>
 </html>
