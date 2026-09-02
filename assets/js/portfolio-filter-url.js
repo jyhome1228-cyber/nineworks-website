@@ -26,7 +26,7 @@
     },
     system: {
       title: 'System Build',
-      copy: '예약, 견적, 회원, 커뮤니티, 관리자 기능처럼 실제 운영에 필요한 기능과 데이터 흐름을 구축한 프로젝트입니다.'
+      copy: '내부 운영 시스템 포트폴리오는 현재 정리 중입니다. 준비가 완료되는 대로 순차적으로 공개합니다.'
     },
     detailpage: {
       title: 'Detail Page',
@@ -90,6 +90,22 @@
       syncUrl(filter);
     });
   });
+
+  // SYSTEM은 관리자/운영 화면 포트폴리오 정리가 끝날 때까지 상세 진입을 막습니다.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('.portfolio-card__link, .portfolio-card a');
+    if (!link) return;
+
+    const card = link.closest('.portfolio-card, [data-category]');
+    const categories = String(card?.dataset.category || '').split(/\s+/).filter(Boolean);
+    const systemFilterActive = Boolean(group.querySelector('[data-filter="system"].is-active'));
+    if (!systemFilterActive && !categories.includes('system')) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    syncUrl('system');
+    window.alert('포트폴리오 준비중입니다.');
+  }, true);
 
   const initialFilter = normalizeFilter(new URLSearchParams(window.location.search).get('filter'));
   activate(initialFilter, false);
