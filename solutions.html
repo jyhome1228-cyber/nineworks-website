@@ -3,348 +3,254 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="브랜드 전략과 아이덴티티, 월간 브랜드 운영, 패키지, 웹사이트·시스템, 콘텐츠, 인쇄·제작까지 나인웍스의 디자인 솔루션을 확인하세요.">
+  <meta name="description" content="브랜드 전략과 아이덴티티, 월간 브랜드 운영, 패키지, 웹사이트·시스템, 콘텐츠, 인쇄·제작까지 나인웍스의 디자인 솔루션을 소개합니다.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://9works.kr/solutions.html">
-  <title>브랜딩·브랜드 운영·패키지·웹디자인 솔루션 | NINEWORKS 나인웍스</title>
-
+  <title>브랜딩·브랜드 운영·패키지·웹디자인 솔루션 | NINEWORKS</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260808-3">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-5">
+  <link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-8">
   <link rel="stylesheet" href="assets/css/site-stable-20260817.css?v=20260817-1">
-
+  <link rel="stylesheet" href="assets/css/branding-page-fix-20260818.css?v=20260820-2">
+  <link rel="stylesheet" href="assets/css/branding-process-20260820.css?v=20260820-1">
+  <link rel="stylesheet" href="assets/css/branding-spacing-20260824.css?v=20260824-1">
   <style>
-    .solutions-hero{padding:88px 0 84px;border-bottom:1px solid var(--line);background:#fff}
-    .solutions-hero__grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;align-items:end}
-    .solutions-hero__body{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:end}
-    .solutions-hero h1{max-width:14ch;margin:0;font-size:clamp(38px,4vw,56px);font-weight:500;line-height:1.08;letter-spacing:-.055em}
-    .solutions-hero__copy{max-width:640px;color:#555;font-size:14.5px;line-height:1.85}
-    .solutions-hero__copy p{margin:0}.solutions-hero__copy p+p{margin-top:12px}
+    .solutions-page main{background:#fff;color:#111}
+    .solutions-page .page-hero{border-bottom:1px solid var(--line,#deded9)}
+    .solutions-page .branding-process-hero__lead{max-width:760px}
 
-    .section-intro{padding:88px 0 26px;background:#fff}
-    .section-intro__grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px}
-    .section-intro__body{max-width:840px}
-    .section-intro h2{max-width:18ch;margin:0 0 14px;font-size:clamp(28px,2.8vw,40px);font-weight:500;line-height:1.14;letter-spacing:-.045em}
-    .section-intro p{margin:0;color:#555;font-size:14px;line-height:1.84}.section-intro p+p{margin-top:12px}
+    .solution-section{padding:84px 0;border-bottom:1px solid var(--line,#deded9);background:#fff}
+    .solution-section__head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;margin-bottom:42px}
+    .solution-section__body{max-width:920px}
+    .solution-section__body h2{max-width:22ch;margin:0 0 18px;font-size:clamp(28px,2.6vw,38px);font-weight:500;line-height:1.16;letter-spacing:-.045em}
+    .solution-section__body p{max-width:820px;margin:0;color:#666;font-size:13.5px;line-height:1.82}
+    .solution-section__body p+p{margin-top:10px}
 
-    .brand-operation{padding:0 0 92px;background:#fff;border-bottom:1px solid var(--line)}
-    .brand-operation__scope{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .brand-operation__scope article{min-height:132px;padding:24px 22px;border-left:1px solid var(--line)}
-    .brand-operation__scope article:last-child{border-right:1px solid var(--line)}
-    .brand-operation__scope b{display:block;margin-bottom:10px;font-size:10px;font-weight:650;letter-spacing:.06em;color:#111}
-    .brand-operation__scope p{margin:0;color:#777;font-size:11.5px;line-height:1.68}
+    .operation-scope{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line,#deded9);border-bottom:1px solid var(--line,#deded9)}
+    .operation-scope article{min-height:170px;padding:26px 24px;border-left:1px solid var(--line,#deded9)}
+    .operation-scope article:last-child{border-right:1px solid var(--line,#deded9)}
+    .operation-scope small{display:block;margin-bottom:34px;color:#999;font-size:9.5px;letter-spacing:.08em}
+    .operation-scope h3{margin:0 0 11px;font-size:20px;font-weight:500;line-height:1.2;letter-spacing:-.03em}
+    .operation-scope p{margin:0;color:#777;font-size:11.5px;line-height:1.72}
 
-    .plan-section{padding:84px 0 96px;background:#f6f6f3;border-bottom:1px solid var(--line)}
-    .plan-section__head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;margin-bottom:34px}
-    .plan-section__body{max-width:860px}
-    .plan-section__body h2{margin:0 0 12px;font-size:clamp(28px,2.8vw,38px);font-weight:500;line-height:1.14;letter-spacing:-.045em}
-    .plan-section__body p{margin:0;color:#555;font-size:14px;line-height:1.82}
-    .plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .plan-card{display:flex;flex-direction:column;min-height:500px;padding:28px;border:1px solid #deded9;border-radius:12px;background:#fff}
-    .plan-card--featured{background:#111;color:#fff;border-color:#111}
-    .plan-card__top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-    .plan-card__top small{color:#888;font-size:9.5px;font-weight:650;letter-spacing:.08em}.plan-card--featured .plan-card__top small{color:#aaa}
-    .plan-card__badge{display:inline-flex;align-items:center;padding:5px 8px;border:1px solid #d8d8d2;border-radius:999px;color:#777;font-size:8.5px;font-weight:600;letter-spacing:.06em}.plan-card--featured .plan-card__badge{border-color:#555;color:#bbb}
-    .plan-card h3{margin:48px 0 4px;font-size:30px;font-weight:500;line-height:1.12;letter-spacing:-.04em}
-    .plan-card h3 span{display:block;margin-top:6px;color:#888;font-size:13px;font-weight:400;letter-spacing:-.02em}.plan-card--featured h3 span{color:#b9b9b9}
-    .plan-card__price{margin:0;font-size:33px;font-weight:520;line-height:1.08;letter-spacing:-.045em}.plan-card__price span{margin-left:6px;color:#888;font-size:11px;font-weight:400;letter-spacing:-.01em}.plan-card--featured .plan-card__price span{color:#aaa}
-    .plan-card__lead{min-height:72px;margin:18px 0 0;color:#666;font-size:12.5px;line-height:1.72}.plan-card--featured .plan-card__lead{color:#bbb}
-    .plan-card ul{margin:20px 0 0;padding:16px 0 0;list-style:none;border-top:1px solid #dddcd6;color:#666;font-size:11.5px;line-height:1.82}.plan-card--featured ul{border-color:#353535;color:#bbb}
-    .plan-card li+li{margin-top:6px}
-    .plan-card__note{margin-top:18px;padding-top:14px;border-top:1px solid #dddcd6;color:#888;font-size:10.5px;line-height:1.68}.plan-card--featured .plan-card__note{border-color:#353535;color:#aaa}
-    .plan-card a{display:inline-flex;margin-top:auto;padding-top:26px;font-size:10.5px;font-weight:650;letter-spacing:.04em}.plan-card--featured a{color:#fff}
+    .pricing-table{border-top:1px solid #111;border-bottom:1px solid #111}
+    .pricing-row{display:grid;grid-template-columns:170px 190px minmax(0,1fr) 190px;gap:0;align-items:stretch;border-bottom:1px solid var(--line,#deded9)}
+    .pricing-row:last-child{border-bottom:0}
+    .pricing-row>div{padding:25px 22px;border-left:1px solid var(--line,#deded9)}
+    .pricing-row>div:first-child{border-left:0}
+    .pricing-code{color:#999;font-size:9.5px;letter-spacing:.08em}
+    .pricing-name strong{display:block;font-size:21px;font-weight:500;line-height:1.2;letter-spacing:-.03em}
+    .pricing-name span{display:block;margin-top:6px;color:#888;font-size:11px;line-height:1.5}
+    .pricing-desc p{max-width:650px;margin:0;color:#666;font-size:12px;line-height:1.75}
+    .pricing-desc ul{display:flex;flex-wrap:wrap;gap:7px 14px;margin:15px 0 0;padding:0;list-style:none;color:#888;font-size:10.5px;line-height:1.5}
+    .pricing-price{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start}
+    .pricing-price strong{font-size:27px;font-weight:500;letter-spacing:-.045em}
+    .pricing-price small{margin-top:6px;color:#999;font-size:9.5px}
+    .pricing-price a{margin-top:22px;font-size:10px;font-weight:650;letter-spacing:.04em}
 
-    .flow-section{padding:88px 0;border-bottom:1px solid var(--line);background:#fff}
-    .flow-section__head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;margin-bottom:34px}
-    .flow-section__body{max-width:860px}
-    .flow-section__body h2{margin:0 0 12px;font-size:clamp(28px,2.8vw,38px);font-weight:500;line-height:1.14;letter-spacing:-.045em}
-    .flow-section__body p{margin:0;color:#555;font-size:14px;line-height:1.82}
-    .flow-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .flow-grid article{min-height:220px;padding:24px 22px;border-left:1px solid var(--line)}
-    .flow-grid article:last-child{border-right:1px solid var(--line)}
-    .flow-grid small{display:block;margin-bottom:32px;color:#999;font-size:10px;letter-spacing:.08em}
-    .flow-grid h3{margin:0 0 12px;font-size:22px;font-weight:500;line-height:1.15;letter-spacing:-.03em}
-    .flow-grid p{margin:0;color:#666;font-size:12.5px;line-height:1.74}
+    .operation-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line,#deded9);border-bottom:1px solid var(--line,#deded9)}
+    .operation-flow article{min-height:220px;padding:26px 24px;border-left:1px solid var(--line,#deded9)}
+    .operation-flow article:last-child{border-right:1px solid var(--line,#deded9)}
+    .operation-flow small{display:block;margin-bottom:40px;color:#999;font-size:9.5px;letter-spacing:.08em}
+    .operation-flow h3{margin:0 0 11px;font-size:20px;font-weight:500;line-height:1.2;letter-spacing:-.03em}
+    .operation-flow p{margin:0;color:#777;font-size:11.5px;line-height:1.72}
 
-    .target-section{padding:88px 0;background:#f6f6f3;border-bottom:1px solid var(--line)}
-    .target-section__head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;margin-bottom:32px}
-    .target-section__body{max-width:860px}
-    .target-section__body h2{margin:0 0 12px;font-size:clamp(28px,2.8vw,38px);font-weight:500;line-height:1.14;letter-spacing:-.045em}
-    .target-section__body p{margin:0;color:#555;font-size:14px;line-height:1.82}
-    .target-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .target-card{min-height:220px;padding:26px;border:1px solid #e3e3df;border-radius:12px;background:#fff}
-    .target-card small{display:block;margin-bottom:32px;color:#999;font-size:10px;letter-spacing:.08em}
-    .target-card h3{margin:0 0 12px;font-size:24px;font-weight:500;line-height:1.16;letter-spacing:-.03em}
-    .target-card p{margin:0;color:#666;font-size:12.5px;line-height:1.76}
+    .fit-list{border-top:1px solid #111}
+    .fit-item{display:grid;grid-template-columns:170px 300px minmax(0,1fr);border-bottom:1px solid var(--line,#deded9)}
+    .fit-item>div{padding:24px 22px;border-left:1px solid var(--line,#deded9)}
+    .fit-item>div:first-child{border-left:0}
+    .fit-item small{color:#999;font-size:9.5px;letter-spacing:.08em}
+    .fit-item h3{margin:0;font-size:19px;font-weight:500;line-height:1.3;letter-spacing:-.03em}
+    .fit-item p{margin:0;color:#777;font-size:11.5px;line-height:1.72}
 
-    .services-core{padding:88px 0 96px;background:#fff;border-bottom:1px solid var(--line)}
-    .services-core-head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px;margin-bottom:34px}
-    .services-core-head__body{max-width:860px}
-    .services-core-head__body h2{margin:0 0 12px;font-size:clamp(28px,2.8vw,38px);font-weight:500;line-height:1.14;letter-spacing:-.045em}
-    .services-core-head__body p{margin:0;color:#555;font-size:14px;line-height:1.82}
-    .services-core-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .services-card{display:flex;min-height:390px;flex-direction:column;padding:26px;background:#f8f8f6;border:1px solid #e3e3df;border-radius:12px}
-    .services-card small{color:#8a8a8a;font-size:10px;letter-spacing:.08em}
-    .services-card h3{margin:52px 0 14px;font-size:29px;font-weight:500;line-height:1.14;letter-spacing:-.035em}
-    .services-card h3 span{display:block;margin-top:5px;color:#777;font-size:13px;font-weight:400;letter-spacing:-.02em}
-    .services-card>p{color:#5f5f5f;font-size:13.5px;line-height:1.76}
-    .services-card__when{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
-    .services-card__when b{display:block;margin-bottom:6px;color:#999;font-size:9px;letter-spacing:.08em}
-    .services-card__when span{color:#555;font-size:11.5px;line-height:1.6}
-    .services-card ul{margin:18px 0 0;padding:14px 0 0;list-style:none;border-top:1px solid var(--line);color:#777;font-size:11px;line-height:1.78}.services-card li+li{margin-top:5px}
-    .services-card a{display:inline-flex;margin-top:auto;padding-top:24px;font-size:10.5px;font-weight:600;letter-spacing:.035em}
+    .execution-list{border-top:1px solid #111;border-bottom:1px solid #111}
+    .execution-item{display:grid;grid-template-columns:170px 300px minmax(0,1fr) 160px;border-bottom:1px solid var(--line,#deded9)}
+    .execution-item:last-child{border-bottom:0}
+    .execution-item>div{padding:24px 22px;border-left:1px solid var(--line,#deded9)}
+    .execution-item>div:first-child{border-left:0}
+    .execution-item small{color:#999;font-size:9.5px;letter-spacing:.08em}
+    .execution-item h3{margin:0;font-size:19px;font-weight:500;line-height:1.3;letter-spacing:-.03em}
+    .execution-item p{margin:0;color:#777;font-size:11.5px;line-height:1.72}
+    .execution-item a{font-size:10px;font-weight:650;letter-spacing:.04em}
 
-    .notes-section{padding:86px 0;border-bottom:1px solid var(--line);background:#fff}
-    .notes-section__grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px}
-    .notes-section__body{max-width:860px}
-    .notes-section__body h2{margin:0 0 12px;font-size:clamp(28px,2.8vw,38px);font-weight:500;line-height:1.14;letter-spacing:-.045em}
-    .notes-section__body p{margin:0;color:#555;font-size:14px;line-height:1.84}.notes-section__body p+p{margin-top:12px}
-    .notes-list{margin:28px 0 0;padding:22px 0 0;list-style:none;border-top:1px solid var(--line)}
-    .notes-list li{display:grid;grid-template-columns:160px 1fr;gap:22px;padding:12px 0;border-bottom:1px solid #efefeb}.notes-list li:last-child{border-bottom:0}
-    .notes-list b{font-size:10px;letter-spacing:.06em;color:#111}.notes-list span{color:#666;font-size:12.5px;line-height:1.72}
+    .terms-list{border-top:1px solid var(--line,#deded9)}
+    .terms-row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:0;border-bottom:1px solid var(--line,#deded9)}
+    .terms-row strong{padding:17px 0;font-size:10px;font-weight:650;letter-spacing:.06em}
+    .terms-row p{margin:0;padding:17px 0;color:#777;font-size:11.5px;line-height:1.7}
 
-    .cta-section{padding:88px 0 96px;background:#f6f6f3}
-    .cta-section__grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px}
-    .cta-box{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;padding:30px 0;border-top:1px solid #111}
-    .cta-box h2{max-width:18ch;margin:0;font-size:clamp(28px,2.8vw,40px);font-weight:500;line-height:1.12;letter-spacing:-.045em}
-    .cta-box p{max-width:700px;margin:12px 0 0;color:#555;font-size:14px;line-height:1.82}
-    .cta-box a{display:inline-flex;align-items:center;white-space:nowrap;font-size:11px;font-weight:650;letter-spacing:.04em}
+    .solution-cta{padding:84px 0 96px;background:#fff}
+    .solution-cta__grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:70px}
+    .solution-cta__body{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:50px;align-items:end;border-top:1px solid #111;padding-top:28px}
+    .solution-cta h2{max-width:18ch;margin:0;font-size:clamp(28px,2.6vw,38px);font-weight:500;line-height:1.16;letter-spacing:-.045em}
+    .solution-cta p{max-width:720px;margin:14px 0 0;color:#666;font-size:13px;line-height:1.8}
+    .solution-cta a{white-space:nowrap;font-size:10.5px;font-weight:650;letter-spacing:.04em}
 
     @media(max-width:980px){
-      .solutions-hero__grid,.solutions-hero__body,.section-intro__grid,.plan-section__head,.flow-section__head,.target-section__head,.services-core-head,.notes-section__grid,.cta-section__grid,.cta-box{grid-template-columns:1fr;gap:28px}
-      .brand-operation__scope{grid-template-columns:repeat(2,minmax(0,1fr))}.brand-operation__scope article:nth-child(2){border-right:1px solid var(--line)}.brand-operation__scope article:nth-child(n+3){border-top:1px solid var(--line)}
-      .plan-grid,.target-grid,.services-core-grid{grid-template-columns:1fr}
-      .flow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-grid article:nth-child(2){border-right:1px solid var(--line)}.flow-grid article:nth-child(n+3){border-top:1px solid var(--line)}
-      .plan-card,.services-card{min-height:0}.plan-card__lead{min-height:0}.notes-list li{grid-template-columns:1fr}
+      .solution-section__head,.solution-cta__grid,.solution-cta__body{grid-template-columns:1fr;gap:28px}
+      .operation-scope,.operation-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .operation-scope article:nth-child(2),.operation-flow article:nth-child(2){border-right:1px solid var(--line,#deded9)}
+      .operation-scope article:nth-child(n+3),.operation-flow article:nth-child(n+3){border-top:1px solid var(--line,#deded9)}
+      .pricing-row{grid-template-columns:130px 170px minmax(0,1fr)}
+      .pricing-price{grid-column:2/-1;border-top:1px solid var(--line,#deded9)!important}
+      .fit-item{grid-template-columns:130px 240px minmax(0,1fr)}
+      .execution-item{grid-template-columns:130px 220px minmax(0,1fr)}
+      .execution-item>div:last-child{grid-column:2/-1;border-top:1px solid var(--line,#deded9)}
     }
-
     @media(max-width:680px){
-      .solutions-hero{padding:64px 0 58px}
-      .section-intro,.plan-section,.flow-section,.target-section,.services-core,.notes-section,.cta-section{padding-top:64px;padding-bottom:64px}
-      .brand-operation{padding-bottom:64px}
-      .brand-operation__scope{grid-template-columns:1fr}.brand-operation__scope article{border-right:1px solid var(--line);border-top:1px solid var(--line)}.brand-operation__scope article:first-child{border-top:0}
-      .flow-grid{grid-template-columns:1fr}.flow-grid article{border-right:1px solid var(--line);border-top:1px solid var(--line)}.flow-grid article:first-child{border-top:0}
-      .plan-card,.services-card,.target-card{padding:22px}.plan-card h3,.services-card h3{margin-top:38px}
+      .solution-section{padding:64px 0}
+      .operation-scope,.operation-flow{grid-template-columns:1fr}
+      .operation-scope article,.operation-flow article{min-height:0;border-right:1px solid var(--line,#deded9);border-top:1px solid var(--line,#deded9)}
+      .operation-scope article:first-child,.operation-flow article:first-child{border-top:0}
+      .pricing-row,.fit-item,.execution-item{grid-template-columns:1fr}
+      .pricing-row>div,.fit-item>div,.execution-item>div{border-left:0;border-top:1px solid var(--line,#deded9)}
+      .pricing-row>div:first-child,.fit-item>div:first-child,.execution-item>div:first-child{border-top:0}
+      .pricing-price,.execution-item>div:last-child{grid-column:auto}
+      .terms-row{grid-template-columns:1fr}
+      .terms-row strong{padding-bottom:0}
+      .solution-cta{padding:64px 0 72px}
     }
   </style>
-
   <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
-  <meta property="og:image:secure_url" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
-  <meta property="og:image:type" content="image/png">
-  <meta name="twitter:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
   <meta name="twitter:card" content="summary_large_image">
 </head>
-<body class="solutions-page">
-<div class="site-shell">
-  <header class="site-header"><a class="site-logo" href="/">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
-  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+<body class="branding-project-page branding-page solutions-page">
+  <div class="site-shell">
+    <header class="site-header"><a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
+    <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
 
-  <main>
-    <section class="solutions-hero">
-      <div class="container solutions-hero__grid">
-        <p class="eyebrow reveal">SOLUTIONS</p>
-        <div class="solutions-hero__body reveal">
-          <h1>브랜드 이후 필요한 실행 영역까지 연결합니다.</h1>
-          <div class="solutions-hero__copy">
-            <p>브랜딩은 나인웍스의 중심 업무입니다. 프로젝트 목적에 따라 브랜드 구축과 패키지, 웹사이트, 콘텐츠와 실제 제작을 하나의 흐름으로 연결하거나, 운영 단계에서 필요한 영역만 별도로 진행할 수 있습니다.</p>
-            <p>특히 런칭 이후에는 게시물, 피드, 홈페이지 관리, 상세페이지, 패키지 보완, 신규 제품 대응처럼 지속적으로 발생하는 업무가 많습니다. 나인웍스는 이를 월간 브랜드 운영 형태로 함께 정리하고 실행합니다.</p>
+    <main>
+      <section class="page-hero branding-process-hero container">
+        <div class="branding-process-hero__label"><p class="eyebrow reveal">NINEWORKS SOLUTIONS</p></div>
+        <div class="branding-process-hero__body reveal">
+          <h1 class="page-title">브랜드 이후 필요한 실행 영역까지 연결합니다.</h1>
+          <p class="branding-process-hero__lead">브랜딩은 나인웍스의 중심 업무입니다. 브랜드를 구축한 뒤에도 콘텐츠, 홈페이지, 패키지, 신규 제품과 운영 디자인은 계속 필요합니다. 프로젝트 단위로 필요한 영역만 진행하거나, 월간 브랜드 운영을 통해 하나의 브랜드를 지속적으로 관리하고 확장합니다.</p>
+          <a class="branding-process-hero__scroll" href="#brand-operation">VIEW BRAND OPERATION <span>↓</span></a>
+        </div>
+      </section>
+
+      <section class="solution-section" id="brand-operation">
+        <div class="container">
+          <div class="solution-section__head">
+            <div class="reveal"><p class="eyebrow">MONTHLY BRAND OPERATION</p></div>
+            <div class="solution-section__body reveal">
+              <h2>브랜드를 만들고 끝내지 않고, 매달 필요한 다음 장면을 함께 만듭니다.</h2>
+              <p>브랜드 운영은 월간 계약 형태로 진행하는 디자인 파트너십입니다. 정해진 산출물을 단순 반복하기보다 매월 브랜드의 일정과 우선순위를 함께 정하고, 실제 운영 과정에서 필요한 작업을 순차적으로 진행합니다.</p>
+              <p>SNS 게시물과 피드, 프로모션, 상세페이지, 홈페이지 관리, 패키지 디자인, 라벨 수정, 신규 제품, 브랜드 리파인까지 브랜드가 계속 움직이는 동안 필요한 디자인 업무를 하나의 흐름으로 관리합니다.</p>
+            </div>
+          </div>
+          <div class="operation-scope reveal">
+            <article><small>01 / CONTENT</small><h3>콘텐츠 운영</h3><p>SNS 게시물 · 피드 · 프로모션 · 상세페이지 · 캠페인 비주얼 등 매일 고객과 만나는 콘텐츠를 관리합니다.</p></article>
+            <article><small>02 / WEB</small><h3>웹사이트 운영</h3><p>홈페이지 배너 · 페이지 수정 · 콘텐츠 업데이트 · 커머스 운영 디자인 등 디지털 접점을 지속적으로 보완합니다.</p></article>
+            <article><small>03 / PACKAGE</small><h3>패키지 확장</h3><p>신규 제품 패키지 · 라벨 · 기존 제품 리뉴얼 · 제품군 확장 · 인쇄 데이터 보완까지 제품 변화에 대응합니다.</p></article>
+            <article><small>04 / BRAND</small><h3>브랜드 발전</h3><p>아이덴티티 보완 · 가이드 확장 · 신규 서비스 · 브랜드 리파인 등 브랜드 자체의 완성도를 계속 높입니다.</p></article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section-intro">
-      <div class="container section-intro__grid">
-        <p class="eyebrow reveal">MONTHLY BRAND OPERATION</p>
-        <div class="section-intro__body reveal">
-          <h2>브랜드를 만들고 끝내지 않고, 매달 필요한 다음 장면을 함께 만듭니다.</h2>
-          <p>브랜드 운영은 월간 계약 형태로 진행하는 디자인 파트너십입니다. 정해진 산출물 몇 개를 반복하는 방식이 아니라, 브랜드 상황과 일정에 맞춰 매월 우선순위를 함께 정하고 필요한 작업을 순차적으로 진행합니다.</p>
-          <p>브랜드 유지·관리부터 신규 제품 디자인, 콘텐츠 운영, 홈페이지 관리, 패키지 리뉴얼, 상세페이지, 프로모션 비주얼까지 실제 운영 과정에서 계속 발생하는 업무를 하나의 흐름으로 묶어 관리합니다.</p>
-        </div>
-      </div>
-    </section>
+      <section class="solution-section" id="pricing">
+        <div class="container">
+          <div class="solution-section__head">
+            <div class="reveal"><p class="eyebrow">PRICING / MONTHLY</p></div>
+            <div class="solution-section__body reveal">
+              <h2>운영 범위에 따라 세 가지 월간 플랜으로 진행합니다.</h2>
+              <p>현재 브랜드가 어느 단계에 있는지, 한 달 동안 어떤 종류의 업무가 반복되는지에 따라 적합한 범위가 달라집니다. 가격을 먼저 공개하고 상담에서 실제 업무량과 우선순위를 기준으로 세부 범위를 조정합니다.</p>
+            </div>
+          </div>
 
-    <section class="brand-operation">
-      <div class="container">
-        <div class="brand-operation__scope reveal">
-          <article><b>CONTENT</b><p>SNS 게시물 · 피드 디자인 · 프로모션 비주얼 · 상세페이지 · 캠페인 콘텐츠</p></article>
-          <article><b>WEB</b><p>홈페이지 배너 · 페이지 수정 · 텍스트/이미지 업데이트 · 커머스 운영 디자인</p></article>
-          <article><b>PACKAGE</b><p>패키지 신규 개발 · 라벨 · 기존 제품 리뉴얼 · 제품 라인업 확장 · 인쇄 데이터 보완</p></article>
-          <article><b>BRAND</b><p>브랜드 가이드 보완 · 아이덴티티 확장 · 신규 제품/서비스 디자인 · 브랜드 리파인</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="plan-section" id="brand-operation">
-      <div class="container">
-        <div class="plan-section__head">
-          <p class="eyebrow reveal">PRICING PLAN / MONTHLY</p>
-          <div class="plan-section__body reveal">
-            <h2>월간 브랜드 운영은 세 가지 범위로 나누어 제안합니다.</h2>
-            <p>실제 운영의 폭과 브랜드의 단계에 따라 적합한 범위가 다릅니다. 이미 구축된 브랜드를 안정적으로 유지하는 경우, 하나의 브랜드를 지속적으로 발전시키는 경우, 또는 브랜드 확장과 새로운 시도까지 함께 가져가는 경우로 구분해 운영합니다.</p>
+          <div class="pricing-table reveal">
+            <div class="pricing-row">
+              <div class="pricing-code">01 / BRAND CARE</div>
+              <div class="pricing-name"><strong>Brand Care</strong><span>기존 브랜드 유지·관리</span></div>
+              <div class="pricing-desc"><p>이미 구축된 한 개 브랜드를 안정적으로 유지하면서 매달 필요한 운영 디자인을 이어가는 형태입니다.</p><ul><li>브랜드 1종 관리</li><li>SNS·프로모션</li><li>홈페이지 운영</li><li>기존 패키지 보완</li><li>상세페이지</li></ul></div>
+              <div class="pricing-price"><div><strong>160만원</strong><small>월 / VAT 별도</small></div><a href="contact.html">INQUIRY ↗</a></div>
+            </div>
+            <div class="pricing-row">
+              <div class="pricing-code">02 / BRAND PARTNER</div>
+              <div class="pricing-name"><strong>Brand Partner</strong><span>브랜드 1종 지속 개발 + 운영</span></div>
+              <div class="pricing-desc"><p>한 개 브랜드를 지속적으로 개발하고 관리하며, 운영 디자인뿐 아니라 브랜딩 자체의 보완과 확장까지 함께 진행하는 대표 파트너십입니다.</p><ul><li>브랜드 리파인</li><li>아이덴티티 보완</li><li>신제품 패키지</li><li>웹·콘텐츠 운영</li><li>브랜드 시스템 확장</li></ul></div>
+              <div class="pricing-price"><div><strong>200만원</strong><small>월 / VAT 별도</small></div><a href="contact.html">INQUIRY ↗</a></div>
+            </div>
+            <div class="pricing-row">
+              <div class="pricing-code">03 / STUDIO PARTNER</div>
+              <div class="pricing-name"><strong>Studio Partner</strong><span>복수 브랜드 · 확장형 운영</span></div>
+              <div class="pricing-desc"><p>기존 브랜드를 운영하면서 새로운 브랜드나 제품, 신규 시도와 확장 작업까지 보다 넓게 다루는 파트너십입니다.</p><ul><li>복수 브랜드 대응</li><li>신규 브랜드·서브브랜드</li><li>패키지·웹·캠페인</li><li>신규 실험과 테스트</li><li>월간 우선순위 운영</li></ul></div>
+              <div class="pricing-price"><div><strong>280만원</strong><small>월 / VAT 별도</small></div><a href="contact.html">INQUIRY ↗</a></div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="plan-grid">
-          <article class="plan-card reveal">
-            <div class="plan-card__top"><small>01 / BRAND CARE</small><span class="plan-card__badge">MONTHLY</span></div>
-            <h3>Brand Care<span>기존 브랜드 유지·관리 중심</span></h3>
-            <p class="plan-card__price">160만원 <span>/ 월 · VAT 별도</span></p>
-            <p class="plan-card__lead">이미 구축된 한 개 브랜드를 안정적으로 유지하면서, 매달 필요한 디자인 업무를 이어가는 운영형 플랜입니다.</p>
-            <ul>
-              <li>기존 브랜드 1종 유지·관리</li>
-              <li>SNS 게시물 · 피드 · 프로모션 디자인</li>
-              <li>홈페이지 배너/이미지 수정 및 관리</li>
-              <li>기존 패키지·라벨 보완 및 수정</li>
-              <li>상세페이지·운영물 등 반복 작업 대응</li>
-            </ul>
-            <p class="plan-card__note">브랜드의 큰 방향을 새로 설계하기보다, 이미 있는 브랜드를 꾸준히 운영하고 관리하는 데 적합합니다.</p>
-            <a href="contact.html">REQUEST THIS PLAN ↗</a>
-          </article>
-
-          <article class="plan-card plan-card--featured reveal">
-            <div class="plan-card__top"><small>02 / BRAND PARTNER</small><span class="plan-card__badge">RECOMMENDED</span></div>
-            <h3>Brand Partner<span>브랜드 1종 지속 개발 + 운영</span></h3>
-            <p class="plan-card__price">200만원 <span>/ 월 · VAT 별도</span></p>
-            <p class="plan-card__lead">한 개 브랜드를 지속적으로 개발·관리하며, 브랜딩을 포함한 운영 전반을 함께 가져가는 가장 대표적인 월간 파트너십입니다.</p>
-            <ul>
-              <li>브랜드 1종 지속 운영 및 발전</li>
-              <li>브랜드 리파인 · 아이덴티티 보완</li>
-              <li>신규 제품/서비스에 맞춘 패키지·비주얼 대응</li>
-              <li>SNS · 상세페이지 · 프로모션 · 웹 운영 디자인</li>
-              <li>운영과 브랜딩을 동시에 다루는 구조</li>
-            </ul>
-            <p class="plan-card__note">아밍제이, 건강미처럼 브랜드를 계속 다듬고 확장하면서 운영까지 함께 관리하는 형태에 가장 잘 맞는 방식입니다.</p>
-            <a href="contact.html">REQUEST THIS PLAN ↗</a>
-          </article>
-
-          <article class="plan-card reveal">
-            <div class="plan-card__top"><small>03 / STUDIO PARTNER</small><span class="plan-card__badge">EXPANSION</span></div>
-            <h3>Studio Partner<span>복수 브랜드 · 확장형 운영</span></h3>
-            <p class="plan-card__price">280만원 <span>/ 월 · VAT 별도</span></p>
-            <p class="plan-card__lead">기존 브랜드를 운영하면서 새로운 브랜드나 제품, 새로운 시도와 확장 작업까지 보다 넓게 다루는 파트너십입니다.</p>
-            <ul>
-              <li>복수 브랜드 또는 다중 제품군 대응</li>
-              <li>신규 브랜드/서브 브랜드 기획 및 전개</li>
-              <li>패키지 · 웹 · 콘텐츠 · 캠페인 전반 확장</li>
-              <li>신규 시도와 테스트를 빠르게 반영</li>
-              <li>월별 우선순위 협의를 통한 광범위한 운영</li>
-            </ul>
-            <p class="plan-card__note">단순 유지보수보다 브랜드 확장, 신규 런칭, 다양한 실험과 전개가 함께 필요한 기업에 적합합니다.</p>
-            <a href="contact.html">REQUEST THIS PLAN ↗</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="flow-section">
-      <div class="container">
-        <div class="flow-section__head">
-          <p class="eyebrow reveal">HOW WE WORK</p>
-          <div class="flow-section__body reveal">
-            <h2>월간 브랜드 운영은 이렇게 진행됩니다.</h2>
-            <p>월간 계약이라고 해서 산출물이 고정되어 있는 방식은 아닙니다. 매달 브랜드의 상황과 일정, 판매/운영 이슈를 함께 확인하고 우선순위를 정한 뒤 필요한 작업을 순차적으로 진행합니다.</p>
+      <section class="solution-section">
+        <div class="container">
+          <div class="solution-section__head">
+            <div class="reveal"><p class="eyebrow">HOW WE WORK / 01 — 04</p></div>
+            <div class="solution-section__body reveal"><h2>월간 운영은 고정된 산출물보다 우선순위를 중심으로 움직입니다.</h2><p>브랜드 운영 중 필요한 업무는 매달 달라집니다. 제품 출시가 있는 달과 홈페이지 개편이 필요한 달, 프로모션이 집중되는 달의 우선순위가 다르기 때문에 실제 브랜드 일정에 맞춰 작업 순서를 설계합니다.</p></div>
+          </div>
+          <div class="operation-flow reveal">
+            <article><small>01 / REVIEW</small><h3>현재 상황 확인</h3><p>브랜드 일정, 판매 계획, 출시 제품, 운영 이슈와 필요한 자료를 확인합니다.</p></article>
+            <article><small>02 / PRIORITY</small><h3>월간 우선순위 설정</h3><p>이번 달에 반드시 필요한 업무와 후속 업무를 구분하고 작업 순서를 정합니다.</p></article>
+            <article><small>03 / DESIGN</small><h3>순차 제작과 피드백</h3><p>콘텐츠, 웹, 패키지, 브랜드 보완 작업을 순차적으로 제작하고 공유합니다.</p></article>
+            <article><small>04 / CONTINUE</small><h3>다음 단계 연결</h3><p>완료된 작업을 기준으로 다음 달 과제를 정리해 브랜드의 완성도를 누적합니다.</p></article>
           </div>
         </div>
+      </section>
 
-        <div class="flow-grid reveal">
-          <article><small>STEP 01</small><h3>월간 목표 설정</h3><p>브랜드의 현재 상황과 이번 달 필요한 작업을 정리합니다. 운영 이슈, 출시 일정, 프로모션, 신규 제품 계획 등을 기준으로 우선순위를 함께 설정합니다.</p></article>
-          <article><small>STEP 02</small><h3>범위 정리 및 제작</h3><p>콘텐츠, 웹, 패키지, 브랜드 보완 중 어떤 범위를 먼저 다룰지 정한 뒤 실제 디자인 작업에 들어갑니다. 필요한 경우 제작/개발 영역과도 연결합니다.</p></article>
-          <article><small>STEP 03</small><h3>공유와 피드백</h3><p>작업물은 순차적으로 공유하며, 운영 과정에 맞게 빠르게 보완합니다. 단발성 결과물보다 브랜드의 일관성과 활용성을 기준으로 조정합니다.</p></article>
-          <article><small>STEP 04</small><h3>다음 단계 확장</h3><p>완료된 작업을 정리하고, 다음 달 이어질 과제를 다시 설정합니다. 브랜드 운영은 누적되는 구조이기 때문에 점진적으로 더 좋은 상태를 만들 수 있습니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="target-section">
-      <div class="container">
-        <div class="target-section__head">
-          <p class="eyebrow reveal">WHO IT FITS</p>
-          <div class="target-section__body reveal">
-            <h2>이런 브랜드라면 월간 운영이 더 효율적입니다.</h2>
-            <p>한 번의 큰 프로젝트만으로는 브랜드가 충분히 완성되지 않는 경우가 많습니다. 운영과 변화가 지속되는 브랜드일수록 월간 파트너십 구조가 더 현실적이고 효율적입니다.</p>
+      <section class="solution-section">
+        <div class="container">
+          <div class="solution-section__head">
+            <div class="reveal"><p class="eyebrow">WHO IT FITS</p></div>
+            <div class="solution-section__body reveal"><h2>단발성 디자인보다 지속적인 판단과 실행이 필요한 브랜드에 적합합니다.</h2><p>브랜드가 실제로 운영되기 시작하면 결과물보다 더 중요한 것은 매번 같은 기준으로 선택하고 빠르게 실행하는 일입니다.</p></div>
+          </div>
+          <div class="fit-list reveal">
+            <div class="fit-item"><div><small>01 / GROW</small></div><div><h3>계속 성장하고 있는 브랜드</h3></div><div><p>제품과 채널이 늘어나면서 기존 아이덴티티와 디자인 시스템을 계속 보완해야 하는 경우.</p></div></div>
+            <div class="fit-item"><div><small>02 / OPERATE</small></div><div><h3>운영 디자인이 반복되는 브랜드</h3></div><div><p>SNS, 상세페이지, 배너, 프로모션, 홈페이지 등 매달 새로운 디자인 업무가 발생하는 경우.</p></div></div>
+            <div class="fit-item"><div><small>03 / EXPAND</small></div><div><h3>신제품과 새로운 시도가 많은 브랜드</h3></div><div><p>패키지 확장, 신규 서비스, 브랜드 리뉴얼과 캠페인처럼 새로운 과제를 지속적으로 실행해야 하는 경우.</p></div></div>
           </div>
         </div>
+      </section>
 
-        <div class="target-grid">
-          <article class="target-card reveal"><small>01 / GROWING BRAND</small><h3>지속적으로 다듬어야 하는 브랜드</h3><p>브랜드는 이미 있지만 완전히 정리되지 않았거나, 제품과 채널이 계속 늘어나면서 디자인 시스템을 보완해야 하는 경우에 적합합니다.</p></article>
-          <article class="target-card reveal"><small>02 / COMMERCE & CONTENT</small><h3>콘텐츠와 운영 디자인이 많은 브랜드</h3><p>SNS, 상세페이지, 배너, 프로모션, 이벤트 등 운영성 디자인이 반복적으로 필요한 브랜드라면 월간 운영이 훨씬 효율적입니다.</p></article>
-          <article class="target-card reveal"><small>03 / NEW EXPANSION</small><h3>신제품과 새로운 시도가 많은 브랜드</h3><p>신규 제품 런칭, 패키지 확장, 서비스 추가, 브랜드 리뉴얼 등 매달 새로운 과제가 생기는 단계에서는 파트너십 방식이 유리합니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="services-core">
-      <div class="container">
-        <div class="services-core-head">
-          <p class="eyebrow reveal">OTHER EXECUTION AREAS / 03</p>
-          <div class="services-core-head__body reveal">
-            <h2>필요한 경우 다른 실행 영역만 별도로 진행할 수도 있습니다.</h2>
-            <p>모든 브랜드가 월간 운영이 필요한 것은 아닙니다. 이미 브랜드 방향과 디자인이 정리된 경우에는 개발, 인쇄, 패키지 제작처럼 필요한 단계만 별도로 요청할 수 있습니다.</p>
+      <section class="solution-section">
+        <div class="container">
+          <div class="solution-section__head">
+            <div class="reveal"><p class="eyebrow">OTHER EXECUTION</p></div>
+            <div class="solution-section__body reveal"><h2>월간 운영이 아니더라도 필요한 실행 영역만 별도로 진행할 수 있습니다.</h2><p>브랜드 방향과 디자인이 이미 정리되어 있다면 웹 개발, 인쇄, 패키지 제작처럼 필요한 단계만 독립적으로 의뢰할 수 있습니다.</p></div>
+          </div>
+          <div class="execution-list reveal">
+            <div class="execution-item"><div><small>01 / DEVELOP</small></div><div><h3>웹사이트 · 시스템</h3></div><div><p>기업·브랜드 홈페이지, 커머스, 관리자, 회원·데이터 기능을 포함한 실제 운영 가능한 디지털 환경을 구축합니다.</p></div><div><a href="develop.html">VIEW SERVICE ↗</a></div></div>
+            <div class="execution-item"><div><small>02 / PRINT</small></div><div><h3>편집 · 인쇄 디자인</h3></div><div><p>회사소개서, 브로셔, 리플렛, 카탈로그, 명함과 각종 운영 인쇄물을 디자인하고 제작까지 연결합니다.</p></div><div><a href="print-editorial.html">VIEW SERVICE ↗</a></div></div>
+            <div class="execution-item"><div><small>03 / PRODUCTION</small></div><div><h3>패키지 · 인쇄 제작</h3></div><div><p>단상자, 쇼핑백, 라벨, 슬리브 등의 구조와 지류, 인쇄, 후가공, 샘플과 양산 과정을 연결합니다.</p></div><div><a href="package-production.html">VIEW SERVICE ↗</a></div></div>
           </div>
         </div>
+      </section>
 
-        <div class="services-core-grid">
-          <article class="services-card reveal" id="develop">
-            <small>01 / DEVELOP</small><h3>Develop<span>웹·시스템 개발</span></h3>
-            <p>기업·브랜드 홈페이지부터 커머스, 커뮤니티, 관리자와 데이터 기능까지 실제 운영 가능한 디지털 환경을 기획하고 구축합니다.</p>
-            <div class="services-card__when"><b>WHEN IT HELPS</b><span>홈페이지 구축·리뉴얼 · 커머스·플랫폼 · 관리자·회원·데이터 기능이 필요한 경우</span></div>
-            <ul><li>Planning · IA · UX/UI</li><li>HTML · CSS · JavaScript</li><li>Commerce · Platform · Admin</li><li>Firebase · Data · Deployment</li></ul>
-            <a href="develop.html">DEVELOP SERVICE ↗</a>
-          </article>
-
-          <article class="services-card reveal" id="print">
-            <small>02 / PRINT</small><h3>Print<span>출판물·명함·부속 인쇄물</span></h3>
-            <p>회사와 브랜드 운영에 반복적으로 필요한 명함, 소개서, 브로셔, 리플렛, 카탈로그, 카드와 각종 인쇄물을 디자인 결과에서 실제 출력물까지 연결합니다.</p>
-            <div class="services-card__when"><b>WHEN IT HELPS</b><span>명함 · 회사소개서 · 브로셔 · 리플렛 · 카탈로그 · 카드·스티커 등 부속 제작물이 필요한 경우</span></div>
-            <ul><li>Business Card · Stationery</li><li>Company Profile · Brochure</li><li>Catalog · Leaflet · Card</li><li>Paper · Printing · Finishing</li></ul>
-            <a href="print-editorial.html">PRINT SERVICE ↗</a>
-          </article>
-
-          <article class="services-card reveal" id="production">
-            <small>03 / PRINT PRODUCTION</small><h3>Print Production<span>단상자·쇼핑백·패키지 양산</span></h3>
-            <p>단상자와 쇼핑백을 중심으로 구조, 지류, 인쇄, 후가공, 샘플 확인과 양산까지 실제 패키지 제작 과정에 필요한 조건을 함께 정리합니다.</p>
-            <div class="services-card__when"><b>WHEN IT HELPS</b><span>단상자 · 쇼핑백 · 슬리브 · 골판지 박스 · 샘플과 실제 양산이 필요한 경우</span></div>
-            <ul><li>Box Structure · Shopping Bag</li><li>Paper · Printing · Finishing</li><li>Sample Review · Specification</li><li>Production · Delivery</li></ul>
-            <a href="package-production.html">PRINT PRODUCTION ↗</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="notes-section">
-      <div class="container notes-section__grid">
-        <p class="eyebrow reveal">GUIDE & NOTE</p>
-        <div class="notes-section__body reveal">
-          <h2>운영 범위는 브랜드 상황에 맞춰 조정합니다.</h2>
-          <p>월간 운영은 한 달 동안 무제한으로 디자인을 제공하는 구조가 아닙니다. 브랜드의 규모와 우선순위, 일정에 따라 필요한 작업 범위를 함께 설정하고, 가장 중요한 과제부터 순차적으로 진행합니다.</p>
-          <p>초기 상담에서는 현재 보유한 브랜드 자료와 운영 채널, 제품 수, 홈페이지 상태, 앞으로 필요한 작업 범위를 기준으로 가장 적합한 플랜을 제안합니다.</p>
-          <ul class="notes-list">
-            <li><b>CONTRACT</b><span>모든 브랜드 운영은 월간 계약 형태로 진행합니다. 실제 운영 목적과 범위에 따라 최소 진행 기간은 별도 협의합니다.</span></li>
-            <li><b>SCOPE</b><span>매월 필요한 작업 범위와 우선순위를 정리한 뒤 순차적으로 진행합니다. 갑작스럽게 발생하는 업무도 일정 범위 안에서 함께 조정합니다.</span></li>
-            <li><b>FEE</b><span>표기된 금액은 부가세 별도 기준입니다. 브랜드 수, 제품군, 운영 채널, 난이도에 따라 적정 플랜을 제안합니다.</span></li>
-            <li><b>OUTPUT</b><span>콘텐츠 디자인, 웹 운영물, 패키지, 브랜드 보완, 상세페이지, 인쇄 데이터 등 실제 운영에 필요한 산출물로 이어집니다.</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container cta-section__grid">
-        <p class="eyebrow reveal">PROJECT INQUIRY</p>
-        <div class="cta-box reveal">
-          <div>
-            <h2>우리 브랜드에 어떤 운영 방식이 맞는지 먼저 함께 정리해보세요.</h2>
-            <p>브랜드를 새로 만들어야 하는지, 기존 브랜드를 운영 중심으로 관리해야 하는지, 또는 웹과 패키지까지 함께 연결해야 하는지 아직 명확하지 않아도 괜찮습니다. 현재 상황을 기준으로 필요한 범위를 먼저 정리해드립니다.</p>
+      <section class="solution-section">
+        <div class="container">
+          <div class="solution-section__head">
+            <div class="reveal"><p class="eyebrow">CONTRACT GUIDE</p></div>
+            <div class="solution-section__body reveal"><h2>월간 브랜드 운영은 범위와 우선순위를 합의한 뒤 시작합니다.</h2><p>무제한 디자인 개념이 아니라 브랜드에 필요한 업무를 우선순위에 맞춰 지속적으로 처리하는 구조입니다. 상담 시 브랜드 수, 제품군, 운영 채널과 예상 업무량을 확인해 적합한 플랜을 제안합니다.</p></div>
           </div>
-          <a href="contact.html">START PROJECT INQUIRY ↗</a>
+          <div class="terms-list reveal">
+            <div class="terms-row"><strong>CONTRACT</strong><p>월간 계약 형태로 진행하며, 브랜드 상황과 업무 범위에 따라 최소 진행 기간은 별도 협의합니다.</p></div>
+            <div class="terms-row"><strong>PRIORITY</strong><p>매월 필요한 작업을 함께 정리하고 중요도와 일정에 따라 순차적으로 진행합니다.</p></div>
+            <div class="terms-row"><strong>PRICE</strong><p>모든 안내 금액은 부가세 별도 기준이며 브랜드 수와 업무 난이도에 따라 세부 범위를 조정할 수 있습니다.</p></div>
+            <div class="terms-row"><strong>PRODUCTION</strong><p>대량 인쇄비, 외부 촬영비, 개발 서버·유료 솔루션 등 별도 원가가 발생하는 항목은 사전 협의 후 진행합니다.</p></div>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer class="site-footer container"></footer>
-</div>
-<script src="assets/js/main.js?v=20260903-1"></script>
-<script src="assets/js/seed-local-nav-20260817.js?v=20260817-1"></script>
+      <section class="solution-cta">
+        <div class="container solution-cta__grid">
+          <div class="reveal"><p class="eyebrow">PROJECT INQUIRY</p></div>
+          <div class="solution-cta__body reveal">
+            <div><h2>지금 브랜드에 필요한 다음 단계부터 함께 정리합니다.</h2><p>월간 운영이 필요한지, 단일 프로젝트가 적합한지 아직 명확하지 않아도 괜찮습니다. 현재 브랜드의 상황과 필요한 작업을 기준으로 먼저 범위를 정리합니다.</p></div>
+            <a href="contact.html">START PROJECT INQUIRY ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container"></footer>
+  </div>
+  <script src="assets/js/main.js?v=20260903-1"></script>
 </body>
 </html>
