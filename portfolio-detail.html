@@ -18,6 +18,24 @@
         recelleclore: 'portfolio-recelleclore.html?v=20260812-1'
       };
       const work = new URLSearchParams(location.search).get('work') || '';
+
+      // SYSTEM 포트폴리오는 정리 완료 전까지 외부 상세 진입을 막습니다.
+      const privateSystemWorks = new Set(['nineworks-crm']);
+      if (privateSystemWorks.has(work)) {
+        document.documentElement.style.visibility = 'hidden';
+        window.alert('포트폴리오 준비중입니다.');
+        const fallback = '/portfolio.html?filter=system';
+        try {
+          const referrer = document.referrer ? new URL(document.referrer, location.href) : null;
+          if (referrer && referrer.origin === location.origin) {
+            history.back();
+            return;
+          }
+        } catch (_) {}
+        location.replace(fallback);
+        return;
+      }
+
       if (developPages[work]) location.replace(developPages[work]);
     })();
   </script>
