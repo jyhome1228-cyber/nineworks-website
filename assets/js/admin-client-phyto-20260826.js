@@ -114,3 +114,7 @@ window.addEventListener('nw-admin-panel', (event) => {
     observeClientList();
   }
 });
+
+import('./admin-client-rpbio-20260902.js?v=20260902-1').catch((error) => {
+  console.error('[NINEWORKS Admin] RPBIO client integration load failed', error);
+});
