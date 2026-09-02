@@ -1,0 +1,47 @@
+/* NINEWORKS shared shell lock — 2026-09-02
+   Keeps header / footer chrome and dark CTA contrast consistent across pages. */
+
+html body .site-header{
+  color:#111;
+  background:rgba(255,255,255,.96);
+  border-bottom-color:transparent;
+}
+html body .site-header.is-scrolled{border-bottom-color:#e7e7e7}
+html body .site-header a,
+html body .site-header button{color:inherit}
+html body .site-nav-dropdown{
+  color:#111;
+  background:#fff;
+}
+
+/* CTA sections use one shared dark treatment. This also prevents black-on-black text. */
+html body .cta{
+  background:#111!important;
+  color:#fff!important;
+  border-top-color:#111!important;
+}
+html body .cta .eyebrow,
+html body .cta .cta__title,
+html body .cta .cta__bottom,
+html body .cta .cta__bottom p,
+html body .cta p,
+html body .cta a,
+html body .cta .text-link,
+html body .cta span{
+  color:#fff!important;
+}
+html body .cta .eyebrow{color:#9a9a9a!important}
+html body .cta .text-link{border-bottom-color:rgba(255,255,255,.72)!important}
+
+/* Footer follows the same shell treatment on every public page. */
+html body .site-footer{
+  color:#111;
+  background:#fff;
+  border-top-color:#e7e7e7;
+}
+html body .site-footer a{color:inherit}
+html body .site-footer__links a{border-bottom-color:#ececec}
+
+@media(max-width:760px){
+  html body .site-header{background:rgba(255,255,255,.98)}
+}
