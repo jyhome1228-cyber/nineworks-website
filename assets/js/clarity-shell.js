@@ -4,6 +4,13 @@
   freshStyle.href = 'assets/css/clarity-20260814.css?v=20260902-1';
   document.head.appendChild(freshStyle);
 
+  if (document.body.classList.contains('recruit-page') && !document.body.classList.contains('design-academy-page')) {
+    const recruitHeroStyle = document.createElement('link');
+    recruitHeroStyle.rel = 'stylesheet';
+    recruitHeroStyle.href = 'assets/css/recruit-hero-20260904.css?v=20260904-1';
+    document.head.appendChild(recruitHeroStyle);
+  }
+
   const hasScript = (pattern) => Array.from(document.scripts).some((script) => pattern.test(script.src || ''));
 
   // Keep clarity-shell pages on the same SEO and global site shell as the main site.
