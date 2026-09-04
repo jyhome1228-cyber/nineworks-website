@@ -97,19 +97,19 @@
   border-top:1px solid #111;
 }
 .recruit-benefits__head{
-  display:grid;
-  grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);
-  gap:48px;
-  align-items:end;
-  margin-bottom:28px;
+  display:block;
+  margin-bottom:34px;
+  text-align:left;
 }
-.recruit-benefits__head .recruit-index{margin:0}
+.recruit-benefits__head .recruit-index{
+  margin:0 0 20px;
+}
 .recruit-benefits__head h3{
   margin:0;
-  font-size:clamp(24px,2.3vw,34px);
+  font-size:clamp(32px,3.2vw,48px);
   font-weight:500;
-  line-height:1.15;
-  letter-spacing:-.045em;
+  line-height:1.1;
+  letter-spacing:-.05em;
 }
 .recruit-benefits__grid{
   display:grid;
@@ -220,7 +220,7 @@
     max-width:680px;
     justify-self:start;
   }
-  .recruit-benefits__head,.recruit-data-policy__inner{grid-template-columns:1fr;gap:18px}
+  .recruit-data-policy__inner{grid-template-columns:1fr;gap:18px}
   .recruit-benefits__grid{grid-template-columns:1fr}
   .recruit-benefit{min-height:auto}
   .recruit-benefit h4{padding-top:34px}
@@ -248,6 +248,8 @@
     padding:14px 0;
   }
   .recruit-benefits{margin-top:54px;padding-top:26px}
+  .recruit-benefits__head{margin-bottom:28px}
+  .recruit-benefits__head .recruit-index{margin-bottom:16px}
   .recruit-benefits__grid{gap:8px}
   .recruit-benefit{padding:20px}
   .recruit-data-policy{padding:36px 0 44px}
