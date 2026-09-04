@@ -90,63 +90,112 @@
   backdrop-filter:blur(3px);
 }
 
-/* Designer Pool benefits */
-.recruit-benefits{
-  margin-top:78px;
-  padding-top:34px;
-  border-top:1px solid #111;
+/* -------------------------------------------------
+   Section hierarchy: HOW IT WORKS / BENEFITS
+-------------------------------------------------- */
+.recruit-page:not(.design-academy-page) .recruit-intro{
+  padding-top:92px;
+  padding-bottom:104px;
 }
-.recruit-benefits__head{
+.recruit-page:not(.design-academy-page) .recruit-intro__head,
+.recruit-page:not(.design-academy-page) .recruit-benefits__head{
   display:block;
-  margin-bottom:34px;
+  margin:0 0 40px;
   text-align:left;
 }
-.recruit-benefits__head .recruit-index{
-  margin:0 0 20px;
+.recruit-page:not(.design-academy-page) .recruit-intro__head .recruit-index,
+.recruit-page:not(.design-academy-page) .recruit-benefits__head .recruit-index{
+  margin:0 0 20px !important;
+  font-size:10px !important;
+  font-weight:600 !important;
+  line-height:1.2 !important;
+  letter-spacing:.08em !important;
+  color:#777 !important;
 }
-.recruit-benefits__head h3{
-  margin:0;
-  font-size:clamp(32px,3.2vw,48px);
-  font-weight:500;
-  line-height:1.1;
-  letter-spacing:-.05em;
+.recruit-page:not(.design-academy-page) .recruit-intro__head h2,
+.recruit-page:not(.design-academy-page) .recruit-benefits__head h3{
+  margin:0 !important;
+  max-width:none !important;
+  font-size:clamp(32px,3.2vw,48px) !important;
+  font-weight:500 !important;
+  line-height:1.1 !important;
+  letter-spacing:-.05em !important;
+  color:#161616 !important;
 }
-.recruit-benefits__grid{
+
+.recruit-page:not(.design-academy-page) .recruit-intro__grid,
+.recruit-page:not(.design-academy-page) .recruit-benefits__grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:12px;
+  margin-top:0;
 }
-.recruit-benefit{
-  min-height:220px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:24px;
+.recruit-page:not(.design-academy-page) .recruit-intro__card,
+.recruit-page:not(.design-academy-page) .recruit-benefit{
+  min-height:240px;
+  box-sizing:border-box;
+  padding:26px;
   border:1px solid #dedede;
-  background:#f9f9f8;
+  background:#fff;
 }
-.recruit-benefit__num{
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:.06em;
-  color:#8a8a8a;
+.recruit-page:not(.design-academy-page) .recruit-benefit{
+  display:block;
 }
-.recruit-benefit h4{
-  margin:auto 0 12px;
-  padding-top:54px;
-  font-size:20px;
-  font-weight:500;
-  line-height:1.25;
-  letter-spacing:-.035em;
+.recruit-page:not(.design-academy-page) .recruit-intro__card>span,
+.recruit-page:not(.design-academy-page) .recruit-benefit__num{
+  display:block;
+  font-size:10px !important;
+  font-weight:500 !important;
+  line-height:1.2;
+  letter-spacing:.05em !important;
+  color:#888 !important;
 }
-.recruit-benefit p{
+.recruit-page:not(.design-academy-page) .recruit-intro__card h3,
+.recruit-page:not(.design-academy-page) .recruit-benefit h4{
+  margin:64px 0 12px !important;
+  padding:0 !important;
+  font-size:21px !important;
+  font-weight:500 !important;
+  line-height:1.3 !important;
+  letter-spacing:-.03em !important;
+  color:#171717 !important;
+}
+.recruit-page:not(.design-academy-page) .recruit-intro__card p,
+.recruit-page:not(.design-academy-page) .recruit-benefit p{
+  max-width:420px;
   margin:0;
-  color:#696969;
-  font-size:13px;
-  line-height:1.75;
+  color:#666 !important;
+  font-size:13.5px !important;
+  line-height:1.75 !important;
   word-break:keep-all;
 }
-.recruit-benefit__coming{
+
+/* Audience bridge */
+.recruit-page:not(.design-academy-page) .recruit-audience{
+  margin-top:44px;
+  padding:28px 0 0;
+  border-top:1px solid #111;
+}
+.recruit-page:not(.design-academy-page) .recruit-audience strong{
+  font-size:clamp(20px,2vw,28px) !important;
+  font-weight:500 !important;
+  line-height:1.45 !important;
+  letter-spacing:-.035em !important;
+}
+.recruit-page:not(.design-academy-page) .recruit-audience p{
+  max-width:460px;
+  color:#777;
+  font-size:12.5px;
+  line-height:1.7;
+}
+
+/* Benefits = second full subsection */
+.recruit-benefits{
+  margin-top:72px;
+  padding-top:72px;
+  border-top:1px solid #111;
+}
+.recruit-benefits__coming{
   display:inline-flex;
   width:max-content;
   margin-top:14px;
@@ -206,9 +255,7 @@
 }
 
 @media(max-width:1040px){
-  .recruit-page:not(.design-academy-page) .recruit-hero{
-    min-height:640px;
-  }
+  .recruit-page:not(.design-academy-page) .recruit-hero{min-height:640px}
   .recruit-page:not(.design-academy-page) .recruit-hero__grid{
     grid-template-columns:1fr;
     gap:34px;
@@ -220,11 +267,15 @@
     max-width:680px;
     justify-self:start;
   }
+  .recruit-page:not(.design-academy-page) .recruit-intro__grid,
+  .recruit-page:not(.design-academy-page) .recruit-benefits__grid{grid-template-columns:1fr}
+  .recruit-page:not(.design-academy-page) .recruit-intro__card,
+  .recruit-page:not(.design-academy-page) .recruit-benefit{min-height:auto}
+  .recruit-page:not(.design-academy-page) .recruit-intro__card h3,
+  .recruit-page:not(.design-academy-page) .recruit-benefit h4{margin-top:36px !important}
   .recruit-data-policy__inner{grid-template-columns:1fr;gap:18px}
-  .recruit-benefits__grid{grid-template-columns:1fr}
-  .recruit-benefit{min-height:auto}
-  .recruit-benefit h4{padding-top:34px}
 }
+
 @media(max-width:680px){
   .recruit-page:not(.design-academy-page) .recruit-hero{
     min-height:620px;
@@ -247,10 +298,21 @@
     margin-top:20px;
     padding:14px 0;
   }
-  .recruit-benefits{margin-top:54px;padding-top:26px}
-  .recruit-benefits__head{margin-bottom:28px}
-  .recruit-benefits__head .recruit-index{margin-bottom:16px}
-  .recruit-benefits__grid{gap:8px}
-  .recruit-benefit{padding:20px}
+  .recruit-page:not(.design-academy-page) .recruit-intro{
+    padding-top:68px;
+    padding-bottom:78px;
+  }
+  .recruit-page:not(.design-academy-page) .recruit-intro__head,
+  .recruit-page:not(.design-academy-page) .recruit-benefits__head{margin-bottom:28px}
+  .recruit-page:not(.design-academy-page) .recruit-intro__head .recruit-index,
+  .recruit-page:not(.design-academy-page) .recruit-benefits__head .recruit-index{margin-bottom:16px !important}
+  .recruit-page:not(.design-academy-page) .recruit-intro__head h2,
+  .recruit-page:not(.design-academy-page) .recruit-benefits__head h3{font-size:clamp(30px,9vw,40px) !important}
+  .recruit-page:not(.design-academy-page) .recruit-intro__grid,
+  .recruit-page:not(.design-academy-page) .recruit-benefits__grid{gap:8px}
+  .recruit-page:not(.design-academy-page) .recruit-intro__card,
+  .recruit-page:not(.design-academy-page) .recruit-benefit{padding:22px}
+  .recruit-page:not(.design-academy-page) .recruit-audience{margin-top:32px;padding-top:22px}
+  .recruit-benefits{margin-top:54px;padding-top:54px}
   .recruit-data-policy{padding:36px 0 44px}
 }
