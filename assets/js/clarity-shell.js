@@ -7,7 +7,7 @@
   if (document.body.classList.contains('recruit-page') && !document.body.classList.contains('design-academy-page')) {
     const recruitHeroStyle = document.createElement('link');
     recruitHeroStyle.rel = 'stylesheet';
-    recruitHeroStyle.href = 'assets/css/recruit-hero-20260904.css?v=20260904-1';
+    recruitHeroStyle.href = 'assets/css/recruit-hero-20260904.css?v=20260904-3';
     document.head.appendChild(recruitHeroStyle);
   }
 
