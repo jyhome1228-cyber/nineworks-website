@@ -3,6 +3,8 @@
   if (!root) return;
   const AUTH_SDK = 'https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js';
 
+  const params = new URLSearchParams(location.search);
+  const migratedSource = (params.get('source') || '').trim();
   const escapeHTML = (value = '') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
   const currentReturn = `${location.pathname.split('/').pop() || 'magazine-detail.html'}${location.search}`;
 
@@ -22,7 +24,7 @@
     document.body.appendChild(script);
   });
 
-  const loadArticle = async () => {
+  const loadLegacyArticle = async () => {
     root.innerHTML = '<section class="portfolio-loading"><p>Loading article…</p></section>';
     const scripts = [
       'assets/js/magazine-data.js',
@@ -39,6 +41,12 @@
     for (const src of scripts) await loadScript(src);
   };
 
+  const loadMigratedArticle = async () => {
+    if (!/^(?:article|magazine)-[a-z0-9-]+\.html$/i.test(migratedSource)) throw new Error('Invalid migrated article source.');
+    root.innerHTML = '<section class="portfolio-loading"><p>Loading migrated article…</p></section>';
+    await loadScript('assets/js/source-archive-detail.js?v=20260905-1');
+  };
+
   Promise.all([import('./firebase-client.js'), import(AUTH_SDK)])
     .then(([client, authSdk]) => {
       if (!client.firebaseConfigReady || !client.auth) throw new Error('Firebase Authentication is not ready.');
@@ -47,8 +55,10 @@
           showLock();
           return;
         }
-        try { await loadArticle(); }
-        catch (error) {
+        try {
+          if (migratedSource) await loadMigratedArticle();
+          else await loadLegacyArticle();
+        } catch (error) {
           console.error('[NINEWORKS Design Articles] article load failed', error);
           showError('아티클을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.');
         }
