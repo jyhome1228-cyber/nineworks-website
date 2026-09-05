@@ -47,6 +47,32 @@
     }).filter(Boolean);
   };
 
+  const fetchMagazineFeed = async () => {
+    const response = await fetch(`${RAW_BASE}magazine-feed.json`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`magazine-feed.json: ${response.status}`);
+    const feed = await response.json();
+    if (!Array.isArray(feed)) return [];
+    return feed.map((item) => {
+      const href = String(item?.href || '').trim();
+      const title = String(item?.title || '').trim();
+      if (!href || !title || !/^magazine-[a-z0-9-]+\.html$/i.test(href)) return null;
+      const date = String(item?.date || '').trim();
+      const publishedAt = Date.parse(String(item?.publishedAt || ''));
+      return {
+        href,
+        title,
+        category: String(item?.category || '').trim(),
+        date,
+        sourceLabel: String(item?.label || 'MAGAZINE').trim(),
+        image: absoluteAsset(String(item?.image || '').trim()),
+        alt: String(item?.alt || title).trim(),
+        type: 'magazine',
+        label: 'MAGAZINE',
+        sortTime: Number.isFinite(publishedAt) ? publishedAt : parseDate(date)
+      };
+    }).filter(Boolean);
+  };
+
   const render = (items) => {
     grid.innerHTML = items.map((item, index) => `
       <article class="magazine-card" data-feed-type="${escapeHTML(item.type)}" data-category="${escapeHTML(item.category)}">
@@ -78,18 +104,13 @@
   };
 
   filters.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.magazineFilter || 'all')));
-
   grid.innerHTML = '<p class="archive-loading">AESOST 디자인 아티클과 매거진 데이터를 불러오는 중입니다.</p>';
 
-  Promise.all(SOURCES.map(fetchSource))
+  Promise.all([...SOURCES.map(fetchSource), fetchMagazineFeed()])
     .then((groups) => {
-      const seen = new Set();
-      const items = groups.flat()
-        .filter((item) => {
-          if (seen.has(item.href)) return false;
-          seen.add(item.href);
-          return true;
-        })
+      const merged = new Map();
+      groups.flat().forEach((item) => merged.set(item.href, item));
+      const items = Array.from(merged.values())
         .sort((a, b) => b.sortTime - a.sortTime || a.title.localeCompare(b.title, 'ko'));
       if (!items.length) throw new Error('No AESOST article or magazine items found.');
       render(items);
