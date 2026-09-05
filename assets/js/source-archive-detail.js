@@ -14,6 +14,10 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const cleanBrandText = (value = '') => String(value)
+    .replace(/AESOST/gi, 'NINEWORKS')
+    .replace(/WAVELAB/gi, 'NINEWORKS');
+
   const isReference = source.startsWith('reference-');
   const backHref = isReference ? 'global-references.html' : 'magazine.html';
   const backLabel = isReference ? 'Global References' : 'Design Articles';
@@ -41,6 +45,7 @@
     if (!main) return null;
 
     main.querySelectorAll('script, style, .article-actions, [data-article-save], [data-article-share]').forEach((node) => node.remove());
+
     main.querySelectorAll('img').forEach((img) => {
       const src = img.getAttribute('src') || '';
       img.setAttribute('src', normalizeAsset(src));
@@ -63,12 +68,16 @@
       }
     });
 
-    main.querySelectorAll('.article-meta-card dd, .reference-meta-card dd, .reference-analysis-label, .article-eyebrow').forEach((node) => {
-      node.textContent = node.textContent
-        .replace(/AESOST MAGAZINE/gi, 'NINEWORKS DESIGN ARTICLES')
-        .replace(/AESOST EDITORIAL/gi, 'NINEWORKS EDITORIAL')
-        .replace(/WAVELAB EDITORIAL/gi, 'NINEWORKS EDITORIAL')
-        .replace(/AESOST ANALYSIS/gi, 'NINEWORKS ANALYSIS');
+    const walker = doc.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    textNodes.forEach((node) => {
+      node.nodeValue = cleanBrandText(node.nodeValue || '');
+    });
+
+    main.querySelectorAll('[title], [aria-label]').forEach((node) => {
+      if (node.hasAttribute('title')) node.setAttribute('title', cleanBrandText(node.getAttribute('title') || ''));
+      if (node.hasAttribute('aria-label')) node.setAttribute('aria-label', cleanBrandText(node.getAttribute('aria-label') || ''));
     });
 
     return main;
@@ -92,8 +101,8 @@
       if (!imported) throw new Error('본문을 찾을 수 없습니다.');
 
       const sourceTitle = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || doc.querySelector('title')?.textContent || 'Archive';
-      const description = doc.querySelector('meta[name="description"]')?.getAttribute('content') || '';
-      document.title = `${sourceTitle.replace(/\s*[—|-]\s*(?:AESOST|WAVELAB).*$/i, '')} — NINEWORKS`;
+      const description = cleanBrandText(doc.querySelector('meta[name="description"]')?.getAttribute('content') || '');
+      document.title = `${cleanBrandText(sourceTitle).replace(/\s*[—|-]\s*NINEWORKS.*$/i, '')} — NINEWORKS`;
       const meta = document.querySelector('meta[name="description"]');
       if (meta && description) meta.setAttribute('content', description);
 
@@ -102,12 +111,11 @@
       root.innerHTML = `<div class="source-archive source-archive--${isReference ? 'reference' : 'editorial'}">
         <div class="source-archive__bar container"><a href="${backHref}">← ${backLabel}</a><span>${isReference ? 'GLOBAL REFERENCE' : source.startsWith('article-') ? 'DESIGN ARTICLE' : 'MAGAZINE'}</span></div>
         <div class="source-archive__content"></div>
-        <div class="source-archive__origin container"><span>MIGRATED ARCHIVE</span><p>Originally published by AESOST. Presented within the NINEWORKS editorial system.</p></div>
       </div>`;
       root.querySelector('.source-archive__content').append(...Array.from(imported.childNodes));
     })
     .catch((error) => {
-      console.error('[NINEWORKS] source archive detail load failed', error);
-      showError('이전된 콘텐츠를 불러오지 못했습니다.');
+      console.error('[NINEWORKS] archive detail load failed', error);
+      showError('콘텐츠를 불러오지 못했습니다.');
     });
 })();
