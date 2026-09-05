@@ -16,6 +16,12 @@
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 
+  const cleanBrandLabel = (value = '') => String(value)
+    .replace(/AESOST/gi, 'NINEWORKS')
+    .replace(/WAVELAB/gi, 'NINEWORKS')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
   const absoluteAsset = (value = '') => {
     if (!value) return '';
     if (/^(?:https?:)?\/\//i.test(value) || value.startsWith('data:')) return value;
@@ -39,7 +45,7 @@
       const category = card.getAttribute('data-category') || card.querySelector('.meta span')?.textContent?.trim() || '';
       const meta = Array.from(card.querySelectorAll('.meta span')).map((node) => node.textContent.trim()).filter(Boolean);
       const date = meta.at(-1) || '';
-      const sourceLabel = card.querySelector('.label')?.textContent?.trim() || label;
+      const sourceLabel = cleanBrandLabel(card.querySelector('.label')?.textContent?.trim() || label);
       const image = absoluteAsset(card.querySelector('img')?.getAttribute('src') || '');
       const alt = card.querySelector('img')?.getAttribute('alt') || title;
       if (!href || !title || !/^(?:article|magazine)-[a-z0-9-]+\.html$/i.test(href)) return null;
@@ -63,7 +69,7 @@
         title,
         category: String(item?.category || '').trim(),
         date,
-        sourceLabel: String(item?.label || 'MAGAZINE').trim(),
+        sourceLabel: cleanBrandLabel(String(item?.label || 'MAGAZINE').trim()),
         image: absoluteAsset(String(item?.image || '').trim()),
         alt: String(item?.alt || title).trim(),
         type: 'magazine',
@@ -104,7 +110,7 @@
   };
 
   filters.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.magazineFilter || 'all')));
-  grid.innerHTML = '<p class="archive-loading">AESOST 디자인 아티클과 매거진 데이터를 불러오는 중입니다.</p>';
+  grid.innerHTML = '<p class="archive-loading">디자인 아티클과 매거진을 불러오는 중입니다.</p>';
 
   Promise.all([...SOURCES.map(fetchSource), fetchMagazineFeed()])
     .then((groups) => {
@@ -112,12 +118,12 @@
       groups.flat().forEach((item) => merged.set(item.href, item));
       const items = Array.from(merged.values())
         .sort((a, b) => b.sortTime - a.sortTime || a.title.localeCompare(b.title, 'ko'));
-      if (!items.length) throw new Error('No AESOST article or magazine items found.');
+      if (!items.length) throw new Error('No article or magazine items found.');
       render(items);
       applyFilter('all');
     })
     .catch((error) => {
-      console.error('[NINEWORKS] AESOST design feed load failed', error);
+      console.error('[NINEWORKS] design feed load failed', error);
       grid.innerHTML = '<p class="archive-error">디자인 아티클 데이터를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>';
     });
 })();
