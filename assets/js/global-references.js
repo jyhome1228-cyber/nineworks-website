@@ -34,7 +34,7 @@
         <a class="reference-card__link" href="reference-detail.html?source=${encodeURIComponent(item.href)}" aria-label="${escapeHTML(item.title)} 레퍼런스 보기">
           <figure class="reference-card__media">
             <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.alt || item.title)}" loading="${index < 4 ? 'eager' : 'lazy'}">
-            <span class="reference-card__badge">AESOST ARCHIVE</span>
+            <span class="reference-card__badge">GLOBAL REFERENCE</span>
           </figure>
           <div class="reference-card__meta">
             <span>${String(index + 1).padStart(2, '0')}</span>
@@ -55,7 +55,7 @@
   };
 
   filters.forEach((button) => button.addEventListener('click', () => applyFilter(button.dataset.referenceFilter || 'all')));
-  grid.innerHTML = '<p class="archive-loading">AESOST 해외 디자인 레퍼런스 데이터를 불러오는 중입니다.</p>';
+  grid.innerHTML = '<p class="archive-loading">해외 디자인 레퍼런스를 불러오는 중입니다.</p>';
 
   fetch(`${RAW_BASE}${INDEX_FILE}`, { cache: 'no-store' })
     .then((response) => {
@@ -77,12 +77,12 @@
         return { href, title, summary, image, alt, source, field: fieldMap[href] || 'branding' };
       }).filter(Boolean);
 
-      if (!items.length) throw new Error('No AESOST reference items found.');
+      if (!items.length) throw new Error('No reference items found.');
       render(items);
       applyFilter('all');
     })
     .catch((error) => {
-      console.error('[NINEWORKS] AESOST reference feed load failed', error);
+      console.error('[NINEWORKS] reference feed load failed', error);
       grid.innerHTML = '<p class="archive-error">해외 디자인 레퍼런스를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</p>';
     });
 })();
