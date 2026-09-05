@@ -17,7 +17,7 @@
     .replaceAll("'", '&#039;');
 
   const renderNotFound = () => {
-    root.innerHTML = `<section class="portfolio-not-found"><p class="eyebrow">Magazine</p><h1>Article not found.</h1><a class="text-link" href="magazine.html">BACK TO MAGAZINE <span>↗</span></a></section>`;
+    root.innerHTML = `<section class="portfolio-not-found"><p class="eyebrow">Design Articles</p><h1>Article not found.</h1><a class="text-link" href="magazine.html">BACK TO DESIGN ARTICLES <span>↗</span></a></section>`;
   };
 
   const renderBlock = (block, imagePriority = 'lazy') => {
@@ -39,12 +39,12 @@
 
   if (!article) return renderNotFound();
 
-  document.title = `${article.title} — NINEWORKS Magazine`;
+  document.title = `${article.title} — NINEWORKS Design Articles`;
   const description = document.querySelector('meta[name="description"]');
   if (description) description.content = article.subtitle || article.summary || article.title;
 
   const sections = Array.isArray(article.sections) ? article.sections : [];
-  const category = labels[article.category] || article.category || 'Magazine';
+  const category = labels[article.category] || article.category || 'Design Article';
   const indexHTML = sections.map((section, index) => `<a href="#work-section-${index + 1}"><span>${String(index + 1).padStart(2, '0')}</span>${escapeHTML(section.title || section.label || `Chapter ${index + 1}`)}</a>`).join('');
 
   const introHTML = (article.intro || []).map((block, index) => renderBlock(block, index < 2 ? 'eager' : 'lazy')).join('');
@@ -62,7 +62,7 @@
   const currentIndex = list.findIndex((item) => item.id === id);
   const previous = currentIndex > 0 ? list[currentIndex - 1] : null;
   const next = currentIndex >= 0 && currentIndex < list.length - 1 ? list[currentIndex + 1] : null;
-  const endHTML = (previous || next) ? `<nav class="magazine-detail-end" aria-label="다른 매거진 글">
+  const endHTML = (previous || next) ? `<nav class="magazine-detail-end" aria-label="다른 디자인 아티클">
     ${previous ? `<a href="magazine-detail.html?article=${encodeURIComponent(previous.id)}"><span>Previous</span><strong>${escapeHTML(previous.title)}</strong></a>` : '<span></span>'}
     ${next ? `<a href="magazine-detail.html?article=${encodeURIComponent(next.id)}"><span>Next</span><strong>${escapeHTML(next.title)}</strong></a>` : ''}
   </nav>` : '';
@@ -70,17 +70,17 @@
   root.className = 'portfolio-split-detail';
   root.innerHTML = `<aside class="portfolio-detail-sidebar"><div class="portfolio-detail-sidebar__inner">
     <div class="portfolio-detail-sidebar__top">
-      <p class="portfolio-detail-kicker">Magazine / ${escapeHTML(category)}</p>
+      <p class="portfolio-detail-kicker">Design Article / ${escapeHTML(category)}</p>
       <h1>${escapeHTML(article.title)}</h1>
       <p class="portfolio-detail-scope">${escapeHTML(article.subtitle || '')}</p>
     </div>
     <div class="portfolio-detail-story"><p class="portfolio-detail-story__summary">${escapeHTML(article.summary || '')}</p></div>
     <dl class="portfolio-detail-facts">
       <div><dt>Category</dt><dd>${escapeHTML(category)}</dd></div>
-      <div><dt>Archive</dt><dd>NINEWORKS Magazine</dd></div>
+      <div><dt>Archive</dt><dd>NINEWORKS Design Articles</dd></div>
     </dl>
-    ${indexHTML ? `<nav class="portfolio-detail-index" aria-label="매거진 챕터">${indexHTML}</nav>` : ''}
-    <a class="portfolio-detail-back" href="magazine.html">← Back to Magazine</a>
+    ${indexHTML ? `<nav class="portfolio-detail-index" aria-label="아티클 챕터">${indexHTML}</nav>` : ''}
+    <a class="portfolio-detail-back" href="magazine.html">← Back to Design Articles</a>
   </div></aside>
   <article class="portfolio-detail-scroll">
     ${introHTML ? `<section class="magazine-detail-intro">${introHTML}</section>` : ''}

@@ -135,7 +135,6 @@
           <a href="/portfolio.html?filter=event"><span>이벤트 디자인</span><small>이벤트</small></a>
         </div>
       </div>
-      <a href="/magazine.html" data-nav-key="magazine">MAGAZINE</a>
       <div class="site-nav-item">
         <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
         <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
@@ -150,8 +149,10 @@
       <div class="site-nav-item">
         <a href="/recruit.html" data-nav-key="designer-network">DESIGNER <span class="site-nav-caret">▾</span></a>
         <div class="site-nav-dropdown" aria-label="디자이너 메뉴">
-          <a href="/recruit.html"><span>파트너 디자이너</span><small>프로젝트 협업 등록</small></a>
-          <a href="/design-academy.html"><span>디자인 아카데미 등록</span><small>교육 프로그램 등록</small></a>
+          <a href="/recruit.html"><span>파트너 디자이너 등록</span><small>협업 네트워크</small></a>
+          <a href="/design-academy.html"><span>디자인 아카데미 등록</span><small>교육 프로그램</small></a>
+          <a href="/magazine.html"><span>디자인 아티클</span><small>브랜드 · 디자인</small></a>
+          <a href="/global-references.html"><span>해외 디자인 레퍼런스</span><small>Global Archive</small></a>
         </div>
       </div>
       <a href="/contact.html" data-nav-key="contact">CONTACT</a>
@@ -197,7 +198,6 @@
           <a href="/portfolio.html?filter=event">이벤트 디자인</a>
         </div>
       </div>
-      <a class="menu-nav__main" href="/magazine.html">MAGAZINE</a>
       <div class="menu-nav__group" data-menu-group>
         <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
         <div class="menu-nav__sub" hidden>
@@ -212,8 +212,10 @@
       <div class="menu-nav__group" data-menu-group>
         <button class="menu-nav__toggle" type="button" aria-expanded="false">DESIGNER <span>+</span></button>
         <div class="menu-nav__sub" hidden>
-          <a href="/recruit.html">파트너 디자이너</a>
+          <a href="/recruit.html">파트너 디자이너 등록</a>
           <a href="/design-academy.html">디자인 아카데미 등록</a>
+          <a href="/magazine.html">디자인 아티클</a>
+          <a href="/global-references.html">해외 디자인 레퍼런스</a>
         </div>
       </div>
       <a class="menu-nav__main" href="/contact.html">CONTACT</a>
@@ -230,7 +232,7 @@
     about: 'about', designer: 'about', performance: 'about', partners: 'about',
     branding: 'process', 'project-operation': 'process', 'package-design': 'process', process: 'process',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
-    magazine: 'magazine', 'magazine-detail': 'magazine',
+    magazine: 'designer-network', 'magazine-detail': 'designer-network', 'global-references': 'designer-network',
     solutions: 'solutions', 'signature-project': 'solutions', develop: 'solutions', print: 'solutions',
     'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions',
     recruit: 'designer-network', 'design-academy': 'designer-network',
@@ -331,7 +333,8 @@
         <a href="/about.html">About</a>
         <a href="/process.html">Process</a>
         <a href="/portfolio.html?filter=major">Portfolio</a>
-        <a href="/magazine.html">Magazine</a>
+        <a href="/magazine.html">Design Articles</a>
+        <a href="/global-references.html">Global References</a>
         <a href="/solutions.html">Solutions</a>
         <a href="/recruit.html">Designer</a>
         <a href="/contact.html">Contact</a>
