@@ -14,37 +14,35 @@ html body .site-nav-dropdown{
   background:#fff;
 }
 
-/* Designer navigation: four functions in a compact 2 × 2 editorial grid. */
+/* Designer navigation: compact vertical dropdown. */
 html body .site-nav-dropdown[aria-label="디자이너 메뉴"]{
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  min-width:460px!important;
-  gap:0 14px!important;
-  padding:10px 12px!important;
+  display:block!important;
+  width:292px!important;
+  min-width:292px!important;
+  padding:8px 12px!important;
 }
 html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a{
+  display:flex!important;
   min-width:0!important;
+  min-height:42px!important;
+  padding:10px 6px!important;
   border-bottom:1px solid #efefed!important;
 }
-html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a:nth-last-child(-n+2){border-bottom:0!important}
-html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a > span{font-size:12px!important;white-space:nowrap!important}
-html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a > small{font-size:10px!important;white-space:nowrap!important}
+html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a:last-child{border-bottom:0!important}
+html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a > span{
+  font-size:12px!important;
+  white-space:nowrap!important;
+}
+html body .site-nav-dropdown[aria-label="디자이너 메뉴"] > a > small{
+  font-size:10px!important;
+  white-space:nowrap!important;
+}
 
-/* Designer navigation wording */
-html body .site-nav-dropdown a[href="/recruit.html"] > span{
-  font-size:0;
-}
-html body .site-nav-dropdown a[href="/recruit.html"] > span::after{
-  content:"파트너 디자이너 등록";
-  font-size:12px;
-}
-html body .menu-nav__sub a[href="/recruit.html"]{
-  font-size:0;
-}
-html body .menu-nav__sub a[href="/recruit.html"]::after{
-  content:"파트너 디자이너 등록";
-  font-size:14px;
-}
+/* Use the actual menu labels from main.js; remove old pseudo-label duplication. */
+html body .site-nav-dropdown a[href="/recruit.html"] > span{font-size:12px!important}
+html body .site-nav-dropdown a[href="/recruit.html"] > span::after{content:none!important}
+html body .menu-nav__sub a[href="/recruit.html"]{font-size:13px!important}
+html body .menu-nav__sub a[href="/recruit.html"]::after{content:none!important}
 
 /* CTA sections use one shared dark treatment. This also prevents black-on-black text. */
 html body .site-shell main .cta{
