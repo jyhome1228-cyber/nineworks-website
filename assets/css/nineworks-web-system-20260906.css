@@ -7,10 +7,10 @@
 :root{
   /* Layout */
   --layout-content:1040px;
-  --layout-wide:1280px;
+  --layout-wide:1440px;
   --layout-gutter-mobile:16px;
   --layout-gutter-tablet:24px;
-  --layout-gutter-desktop:32px;
+  --layout-gutter-desktop:24px;
 
   /* Spacing */
   --space-2:2px;
@@ -123,7 +123,8 @@ html body select{
 
 /* --------------------------------------------------------------------------
    LAYOUT / GRID RHYTHM
-   Standard pages use 1280px wide containers. Long-form copy remains narrower.
+   Standard pages use the same 1440px content line as the site header.
+   Long-form copy remains narrower.
    -------------------------------------------------------------------------- */
 html body:not(.portfolio-detail-page) .container,
 html body.nw-doc-page .nw-doc-content>.container,
@@ -138,7 +139,7 @@ html body .branding-projects,
 html body .branding-about,
 html body .category-nav.portfolio-filter,
 html body .category-nav.magazine-filter{
-  width:min(calc(100% - 64px),var(--layout-wide))!important;
+  width:min(calc(100% - 48px),var(--layout-wide))!important;
   max-width:var(--layout-wide)!important;
   margin-left:auto!important;
   margin-right:auto!important;
