@@ -5,6 +5,7 @@
   const portfolio = Array.isArray(window.NW_PORTFOLIO) ? window.NW_PORTFOLIO : [];
   const detailArchive = Array.isArray(window.NW_DETAILPAGE_ARCHIVE) ? window.NW_DETAILPAGE_ARCHIVE : [];
   const archive = Array.isArray(window.NW_PORTFOLIO_ARCHIVE) ? window.NW_PORTFOLIO_ARCHIVE : [];
+  const instagramArchive = Array.isArray(window.NW_INSTAGRAM_ARCHIVE) ? window.NW_INSTAGRAM_ARCHIVE : [];
 
   const archiveBy = (category) => archive.filter((item) => item.category === category);
   const vaquerIndex = portfolio.findIndex((item) => String(item.title || '').trim().toUpperCase() === 'VAQUER');
@@ -131,6 +132,7 @@
         <div class="archive-stat"><span>MAJOR</span><strong>${major.length}</strong><p>1 project / page</p></div>
         <div class="archive-stat"><span>DETAIL PAGE</span><strong>${detailArchive.length}</strong><p>6 projects / page</p></div>
         <div class="archive-stat"><span>WEB & SYSTEM</span><strong>${websites.length}</strong><p>3 projects / page</p></div>
+        <div class="archive-stat"><span>INSTAGRAM</span><strong>${instagramArchive.length}</strong><p>6 projects / page</p></div>
         <div class="archive-stat"><span>PACKAGE</span><strong>${packages.length}</strong><p>6 projects / page</p></div>
         <div class="archive-stat"><span>EDITORIAL</span><strong>${editorials.length}</strong><p>8 projects / page</p></div>
         <div class="archive-stat"><span>IR / PPT</span><strong>${ir.length}</strong><p>8 projects / page</p></div>
@@ -203,6 +205,7 @@
   majorPages();
   archivePages(detailArchive, 6, { title:'Detail Page', label:'DETAIL PAGE', cols:3, className:'detail-archive' });
   archivePages(websites, 3, { title:'Website & System', label:'DIGITAL', cols:3, className:'website-archive' });
+  archivePages(instagramArchive, 6, { title:'Instagram Feed', label:'SOCIAL CONTENT', cols:3, className:'instagram-archive' });
   archivePages(packages, 6, { title:'Package Design', label:'PACKAGE', cols:3, className:'package-archive' });
   archivePages(editorials, 8, { title:'Editorial Design', label:'EDITORIAL', cols:4, className:'editorial-archive' });
   archivePages(ir, 8, { title:'IR / PPT', label:'PRESENTATION', cols:4, className:'ir-archive' });
