@@ -138,10 +138,16 @@
     `, '10 / ARCHIVE INDEX'));
   };
 
+  const normalizeDetailUrl = (item) => {
+    if (!item.detailUrl) return `../portfolio-detail.html?work=${encodeURIComponent(item.id || '')}`;
+    if (/^(https?:)?\/\//.test(item.detailUrl) || item.detailUrl.startsWith('/')) return item.detailUrl;
+    return `../${item.detailUrl.replace(/^\.\//, '')}`;
+  };
+
   const majorPages = () => {
     major.forEach((item, index) => {
       const reverse = index % 4 === 2;
-      const detailUrl = item.detailUrl || `../portfolio-detail.html?work=${encodeURIComponent(item.id || '')}`;
+      const detailUrl = normalizeDetailUrl(item);
       page(`major-page${reverse ? ' is-reverse' : ''}`, shell(`
         <div class="major-shell">
           <div class="major-copy">
