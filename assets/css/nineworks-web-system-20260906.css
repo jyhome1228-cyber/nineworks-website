@@ -1,0 +1,324 @@
+/* NINEWORKS — public web design system / 2026-09-06
+   Structural rules follow the shared web system: grid, spacing, typography,
+   interaction, state, motion, accessibility and responsive behavior.
+   Brand exception: NINEWORKS uses square geometry. Radius is always 0.
+   Existing NINEWORKS brand colors remain authoritative. */
+
+:root{
+  /* Layout */
+  --layout-content:1040px;
+  --layout-wide:1280px;
+  --layout-gutter-mobile:16px;
+  --layout-gutter-tablet:24px;
+  --layout-gutter-desktop:32px;
+
+  /* Spacing */
+  --space-2:2px;
+  --space-4:4px;
+  --space-6:6px;
+  --space-8:8px;
+  --space-10:10px;
+  --space-12:12px;
+  --space-14:14px;
+  --space-16:16px;
+  --space-18:18px;
+  --space-20:20px;
+  --space-24:24px;
+  --space-28:28px;
+  --space-32:32px;
+  --space-36:36px;
+  --space-40:40px;
+  --space-48:48px;
+  --space-52:52px;
+  --space-56:56px;
+  --space-64:64px;
+
+  /* Type scale */
+  --font-size-11:11px;
+  --font-size-12:12px;
+  --font-size-13:13px;
+  --font-size-14:14px;
+  --font-size-16:16px;
+  --font-size-18:18px;
+  --font-size-20:20px;
+  --font-size-22:22px;
+  --font-size-24:24px;
+  --font-size-26:26px;
+  --font-size-28:28px;
+  --font-size-32:32px;
+  --font-size-40:40px;
+  --font-size-48:48px;
+  --font-weight-regular:400;
+  --font-weight-medium:500;
+  --font-weight-bold:700;
+
+  /* NINEWORKS geometry — intentionally square */
+  --radius-2:0px;
+  --radius-4:0px;
+  --radius-6:0px;
+  --radius-8:0px;
+  --radius-10:0px;
+  --radius-12:0px;
+  --radius-14:0px;
+  --radius-16:0px;
+  --radius-20:0px;
+  --radius-24:0px;
+  --radius-full:0px;
+  --radius-button:0px;
+  --radius-card:0px;
+  --radius-panel:0px;
+  --radius-chip:0px;
+
+  /* Motion */
+  --motion-duration-fast:120ms;
+  --motion-duration-base:150ms;
+  --motion-duration-macro:240ms;
+  --motion-easing-standard:cubic-bezier(.2,.8,.2,1);
+  --motion-easing-exit:cubic-bezier(.4,0,1,1);
+
+  /* Map legacy variables to the common system without replacing brand color. */
+  --gutter:clamp(var(--layout-gutter-mobile),2.2vw,var(--layout-gutter-desktop));
+  --ease:var(--motion-easing-standard);
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+html body{
+  font-family:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif!important;
+  font-weight:var(--font-weight-regular);
+  text-rendering:optimizeLegibility;
+}
+
+/* --------------------------------------------------------------------------
+   SQUARE GEOMETRY
+   NINEWORKS intentionally removes the rounded SEED-style visual language.
+   -------------------------------------------------------------------------- */
+html body .site-shell *,
+html body .site-header *,
+html body .menu-overlay *,
+html body dialog,
+html body [role="dialog"]{
+  border-radius:0!important;
+}
+
+/* Explicit legacy exceptions that previously used 4px+ radius. */
+html body .portfolio-card__media,
+html body .magazine-card__media,
+html body .project-visual,
+html body .project-random-media,
+html body .site-nav-dropdown,
+html body .category-nav,
+html body .nw-brand-slider__stage,
+html body .nw-brand-work-card figure,
+html body .cta,
+html body button,
+html body input,
+html body textarea,
+html body select{
+  border-radius:0!important;
+}
+
+/* --------------------------------------------------------------------------
+   LAYOUT / GRID RHYTHM
+   Standard pages use 1280px wide containers. Long-form copy remains narrower.
+   -------------------------------------------------------------------------- */
+html body:not(.portfolio-detail-page) .container,
+html body.nw-doc-page .nw-doc-content>.container,
+html body.nw-doc-page .nw-doc-content>section.container,
+html body .page-hero,
+html body .portfolio-hero,
+html body .magazine-hero,
+html body .portfolio-index-head,
+html body .portfolio-list,
+html body .magazine-archive,
+html body .branding-projects,
+html body .branding-about,
+html body .category-nav.portfolio-filter,
+html body .category-nav.magazine-filter{
+  width:min(calc(100% - 64px),var(--layout-wide))!important;
+  max-width:var(--layout-wide)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+html body .copy,
+html body .lead,
+html body .portfolio-hero__copy,
+html body .magazine-hero__copy,
+html body .article-body,
+html body .magazine-detail__body{
+  max-width:var(--layout-content);
+}
+
+/* 12-column compatible archive grids. Existing content count is preserved. */
+html body .project-grid,
+html body .portfolio-grid,
+html body .magazine-grid,
+html body .nw-brand-work-grid{
+  column-gap:var(--space-24)!important;
+}
+
+/* --------------------------------------------------------------------------
+   TYPOGRAPHY
+   Semantic roles are tightened into a predictable scale while preserving
+   the editorial character of the NINEWORKS brand.
+   -------------------------------------------------------------------------- */
+html body p,
+html body li,
+html body dd,
+html body dt{
+  text-wrap:pretty;
+}
+
+html body h1,
+html body h2,
+html body h3{
+  text-wrap:balance;
+}
+
+html body .eyebrow,
+html body .label,
+html body [class*="__label"]{
+  font-size:var(--font-size-12);
+  line-height:16px;
+  font-weight:var(--font-weight-medium);
+}
+
+html body .copy,
+html body .portfolio-hero__copy,
+html body .magazine-hero__copy{
+  font-size:var(--font-size-16)!important;
+  line-height:24px!important;
+}
+
+html body .page-title{
+  font-size:clamp(var(--font-size-32),3.4vw,var(--font-size-48));
+  line-height:1.08;
+  font-weight:var(--font-weight-bold);
+}
+
+html body .section-title{
+  font-size:clamp(var(--font-size-24),2.5vw,var(--font-size-40));
+  line-height:1.16;
+  font-weight:var(--font-weight-medium);
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT / INTERACTION STATE
+   -------------------------------------------------------------------------- */
+html body button,
+html body input,
+html body textarea,
+html body select,
+html body a,
+html body [role="button"]{
+  transition-duration:var(--motion-duration-base);
+  transition-timing-function:var(--motion-easing-standard);
+}
+
+html body button:disabled,
+html body input:disabled,
+html body textarea:disabled,
+html body select:disabled,
+html body [aria-disabled="true"]{
+  cursor:not-allowed!important;
+  pointer-events:none;
+  opacity:.45;
+}
+
+html body a:focus-visible,
+html body button:focus-visible,
+html body input:focus-visible,
+html body textarea:focus-visible,
+html body select:focus-visible,
+html body [role="button"]:focus-visible{
+  outline:2px solid currentColor!important;
+  outline-offset:3px!important;
+}
+
+/* Forms: consistent readable field rhythm. */
+html body input:not([type="checkbox"]):not([type="radio"]),
+html body select,
+html body textarea{
+  min-height:40px;
+}
+
+html body textarea{min-height:96px}
+
+/* Floating surfaces only may retain shadow; content cards stay flat. */
+html body [class*="card"]{
+  box-shadow:none;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BEHAVIOR
+   -------------------------------------------------------------------------- */
+@media(max-width:1279px){
+  html body:not(.portfolio-detail-page) .container,
+  html body.nw-doc-page .nw-doc-content>.container,
+  html body.nw-doc-page .nw-doc-content>section.container,
+  html body .page-hero,
+  html body .portfolio-hero,
+  html body .magazine-hero,
+  html body .portfolio-index-head,
+  html body .portfolio-list,
+  html body .magazine-archive,
+  html body .branding-projects,
+  html body .branding-about,
+  html body .category-nav.portfolio-filter,
+  html body .category-nav.magazine-filter{
+    width:calc(100% - 48px)!important;
+  }
+}
+
+@media(max-width:767px){
+  :root{--gutter:var(--layout-gutter-mobile)}
+
+  html body:not(.portfolio-detail-page) .container,
+  html body.nw-doc-page .nw-doc-content>.container,
+  html body.nw-doc-page .nw-doc-content>section.container,
+  html body .page-hero,
+  html body .portfolio-hero,
+  html body .magazine-hero,
+  html body .portfolio-index-head,
+  html body .portfolio-list,
+  html body .magazine-archive,
+  html body .branding-projects,
+  html body .branding-about,
+  html body .category-nav.portfolio-filter,
+  html body .category-nav.magazine-filter{
+    width:calc(100% - 32px)!important;
+  }
+
+  html body .project-grid,
+  html body .portfolio-grid,
+  html body .magazine-grid,
+  html body .nw-brand-work-grid{
+    grid-template-columns:1fr!important;
+    row-gap:var(--space-40)!important;
+  }
+
+  html body .menu-trigger,
+  html body button:not(.site-nav-dropdown button){
+    min-width:44px;
+    min-height:44px;
+  }
+
+  html body .page-title{font-size:var(--font-size-32)}
+  html body .section-title{font-size:var(--font-size-24)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+  html body *,
+  html body *::before,
+  html body *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
