@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="description" content="NINEWORKS partner workspace for project collaborators.">
   <title>Partners Workspace — NINEWORKS</title>
@@ -29,10 +32,10 @@
         <p class="partner-kicker">NINEWORKS / PARTNERS</p>
         <h2>Partner Login</h2>
         <p>나인웍스와 협업 중인 이메일을 입력해 주세요.</p>
-        <form class="partner-login-form" data-partner-login-form>
+        <form class="partner-login-form" data-partner-login-form autocomplete="off">
           <div class="partner-field">
             <label for="partner-email">EMAIL</label>
-            <input id="partner-email" type="email" name="email" autocomplete="email" placeholder="partner@email.com" required>
+            <input id="partner-email" type="email" name="email" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="partner@email.com" required>
           </div>
           <button class="partner-login-button" type="submit"><span>ENTER WORKSPACE</span><span>↗</span></button>
           <p class="partner-login-note" data-partner-login-note aria-live="polite"></p>
@@ -137,7 +140,8 @@
       </div>
     </main>
   </div>
-  <script src="/assets/js/partners-dashboard-20260824.js?v=20260824-12"></script>
+  <script src="/assets/js/partners-session-guard-20260908.js?v=20260908-1"></script>
+  <script src="/assets/js/partners-dashboard-20260824.js?v=20260908-1"></script>
   <script src="/assets/js/partners-approved-inquiries-20260824.js?v=20260824-1"></script>
 </body>
 </html>
