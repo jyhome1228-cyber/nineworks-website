@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ORIENT GROUP Business Launch Proposal — NINEWORKS</title>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="description" content="오리엔트그룹 숙박업 컨설팅 신규 비즈니스 통합 구축 제안서 — NINEWORKS">
+  <link rel="icon" type="image/png" href="/favicon.png?v=20260822-1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/navigation-ia-20260817.css?v=20260817-5">
+  <link rel="stylesheet" href="/assets/css/site-stable-20260817.css?v=20260818-1">
+  <link rel="stylesheet" href="/assets/css/mobile-ui-20260822.css?v=20260822-2">
+  <style>
+    :root{
+      --c:1440px;
+      --bg:#f7f7f5;
+      --ink:#171817;
+      --sub:#61625f;
+      --muted:#868783;
+      --line:#deded9;
+      --soft:#efefec;
+      --accent:#253044;
+      --display:clamp(36px,3.35vw,48px);
+      --h2:clamp(25px,2vw,31px);
+      --body:16px;
+      --label:12px;
+      --section:100px;
+    }
+    *{box-sizing:border-box}
+    body.proposal-page{margin:0;background:var(--bg);color:var(--ink);font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:var(--body);font-weight:400;line-height:1.72;letter-spacing:-.022em;word-break:keep-all;-webkit-font-smoothing:antialiased}
+    .proposal-page main{overflow:hidden}
+    .proposal-shell{width:min(calc(100% - 48px),var(--c))!important;max-width:var(--c)!important;margin-inline:auto!important;padding:0!important}
+    .proposal-section{padding:var(--section) 0;border-top:1px solid var(--line)}
+    .proposal-label{margin:0;color:var(--muted);font-size:var(--label);font-weight:650;line-height:1.4;letter-spacing:.11em;text-transform:uppercase}
+    .proposal-h1,.proposal-h2,.section-heading h2,.closing-copy h2,.action-head h2{text-wrap:balance;word-break:keep-all}
+    .proposal-hero__desc,.section-heading__body p,.intro-item p,.issue-row p,.scope-card li,.timeline-row p,.support-note p,.investment-notes p,.payment-note p,.option-card p,.closing-copy p,.action-head p,.action-desc{text-wrap:pretty;overflow-wrap:break-word}
+    .proposal-h1{margin:22px 0 0;max-width:800px;font-size:var(--display);font-weight:470;line-height:1.14;letter-spacing:-.048em}
+    .proposal-h2{margin:16px 0 0;max-width:940px;font-size:var(--h2);font-weight:500;line-height:1.38;letter-spacing:-.034em}
+    .section-heading{display:block;max-width:1040px;margin-bottom:48px}
+    .section-heading__body{max-width:960px}
+    .section-heading__body p{margin:18px 0 0;max-width:800px;color:#565753;font-size:16px;line-height:1.76}
+
+    .proposal-hero{padding:128px 0 96px;border-bottom:1px solid var(--line)}
+    .proposal-hero__inner{display:grid!important;grid-template-columns:minmax(0,800px) minmax(270px,320px)!important;justify-content:space-between!important;gap:80px!important;align-items:start!important}
+    .proposal-hero__eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--accent)}
+    .proposal-hero__eyebrow:before{content:"";width:24px;height:1px;background:var(--accent)}
+    .proposal-hero__desc{margin:28px 0 0;max-width:720px;color:#50514e;font-size:17px;line-height:1.78}
+    .proposal-hero__facts{width:100%;margin:0;border-top:1px solid var(--line)}
+    .proposal-fact{padding:17px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:92px 1fr;gap:16px}
+    .proposal-fact dt{margin:0;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.04em}
+    .proposal-fact dd{margin:0;font-size:14px;line-height:1.55;color:#292a28}
+
+    .intro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+    .intro-item{padding:28px 28px 32px 0;border-bottom:1px solid var(--line)}
+    .intro-item+.intro-item{padding-left:28px;border-left:1px solid var(--line)}
+    .intro-item__num{display:block;margin-bottom:36px;color:#8b8c88;font-size:12px}
+    .intro-item strong{display:block;font-size:20px;font-weight:520;letter-spacing:-.025em}
+    .intro-item p{margin:14px 0 0;color:#636460;font-size:16px;line-height:1.72}
+
+    .issue-list{border-top:1px solid var(--line)}
+    .issue-row{display:grid;grid-template-columns:54px minmax(190px,.72fr) minmax(0,1.5fr);gap:clamp(24px,3.5vw,56px);padding:28px 0;border-bottom:1px solid var(--line)}
+    .issue-row__no{font-size:12px;color:#8b8c88;padding-top:4px}
+    .issue-row h3{margin:0;font-size:20px;font-weight:520;letter-spacing:-.025em}
+    .issue-row p{margin:0;color:#565753;font-size:16px;line-height:1.76}
+
+    .approach-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .approach-item{min-height:230px;padding:25px 26px;display:flex;flex-direction:column;border-right:1px solid var(--line)}
+    .approach-item:first-child{padding-left:0}
+    .approach-item:last-child{border-right:0;padding-right:0}
+    .approach-item__no{color:#8b8c88;font-size:12px}
+    .approach-item h3{margin:auto 0 10px;font-size:21px;font-weight:520;letter-spacing:-.025em}
+    .approach-item p{margin:0;color:#62635f;font-size:15px;line-height:1.72}
+
+    .scope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .scope-card{background:rgba(255,255,255,.48);border:1px solid var(--line);padding:27px 28px;min-height:292px;display:flex;flex-direction:column}
+    .scope-card__top{display:flex;justify-content:space-between;gap:20px}
+    .scope-card__type{font-size:12px;font-weight:650;letter-spacing:.09em;color:#73746f;text-transform:uppercase}
+    .scope-card__no{font-size:12px;color:#989994}
+    .scope-card h3{margin:16px 0 0;font-size:21px;font-weight:530;letter-spacing:-.027em}
+    .scope-card ul{list-style:none;margin:auto 0 0;padding:32px 0 0}
+    .scope-card li{padding:8px 0;border-top:1px solid var(--soft);font-size:15px;color:#555652;line-height:1.58}
+
+    .timeline-list{border-top:1px solid var(--line)}
+    .timeline-row{display:grid;grid-template-columns:140px 205px minmax(0,1fr);gap:clamp(26px,4vw,64px);padding:26px 0;border-bottom:1px solid var(--line)}
+    .timeline-row time{font-size:12px;color:#777873;letter-spacing:.02em}
+    .timeline-row strong{font-size:18px;font-weight:520}
+    .timeline-row p{margin:0;color:#5d5e5a;font-size:15px;line-height:1.76}
+    .support-note{margin-top:40px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:210px minmax(0,1fr);gap:60px}
+    .support-note strong{font-size:20px;font-weight:520;color:var(--accent)}
+    .support-note p{margin:0;max-width:790px;color:#555652;font-size:16px}
+
+    .investment-main{border-top:1px solid var(--line);max-width:1120px}
+    .investment-price{padding:34px 0 30px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+    .investment-price strong{font-size:clamp(34px,3vw,44px);font-weight:470;letter-spacing:-.045em}
+    .investment-price span{font-size:13px;color:#777873}
+    .investment-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-top:30px}
+    .investment-notes article{padding-top:17px;border-top:1px solid var(--line)}
+    .investment-notes h3{margin:0;font-size:16px;font-weight:540}
+    .investment-notes p{margin:9px 0 0;color:#666762;font-size:15px;line-height:1.7}
+    .payment-note{margin-top:28px;padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:150px minmax(0,1fr);gap:30px}
+    .payment-note strong{font-size:15px;font-weight:540}
+    .payment-note p{margin:0;max-width:780px;color:var(--sub);font-size:15px}
+
+    .option-card{margin-top:50px;max-width:1120px;border:1px solid #cfd2d8;background:#f2f3f5;padding:30px 32px;display:grid;grid-template-columns:170px minmax(0,1fr) auto;gap:34px;align-items:start}
+    .option-card__label{font-size:11px;font-weight:700;letter-spacing:.11em;color:#6b7180;text-transform:uppercase;padding-top:5px}
+    .option-card h3{margin:0;font-size:21px;font-weight:530;letter-spacing:-.028em}
+    .option-card p{margin:11px 0 0;max-width:680px;color:#5a5d64;font-size:15px;line-height:1.72}
+    .option-card__price{text-align:right;white-space:nowrap}
+    .option-card__price strong{display:block;font-size:25px;font-weight:500;letter-spacing:-.035em;color:var(--accent)}
+    .option-card__price span{font-size:12px;color:#777c86}
+
+    .closing-copy{max-width:940px}
+    .closing-copy h2{margin:16px 0 0;max-width:850px;font-size:clamp(30px,2.5vw,38px);font-weight:470;line-height:1.3;letter-spacing:-.04em}
+    .closing-copy p{margin:22px 0 0;max-width:760px;color:#555652;font-size:16px}
+    .closing-thanks{margin-top:36px!important;padding-top:24px;border-top:1px solid var(--line);color:#252624!important;font-size:17px!important;font-weight:500!important}
+
+    .action-area{padding:92px 0 110px;border-top:1px solid var(--line)}
+    .action-area>.proposal-shell{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(0,1.1fr);gap:clamp(64px,7vw,120px);align-items:start}
+    .action-head{display:block;max-width:540px;margin:0}
+    .action-head h2{margin:20px 0 0;max-width:540px;font-size:clamp(30px,2.6vw,38px);font-weight:470;line-height:1.28;letter-spacing:-.04em}
+    .action-head p{margin:24px 0 0;max-width:500px;color:#656662;font-size:15px;line-height:1.75}
+    .action-grid{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+    .action-card{appearance:none;width:100%;padding:24px 0;border:0;border-bottom:1px solid var(--line);background:transparent;color:inherit;text-align:left;text-decoration:none;display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:18px;font-family:inherit;cursor:pointer;transition:opacity .18s ease}
+    .action-card:hover{opacity:.62}
+    .action-no{font-size:12px;color:#92938e}
+    .action-title{display:block;font-size:19px;font-weight:530}
+    .action-desc{display:block;margin-top:7px;color:#6a6b67;font-size:14px}
+    .action-arrow{font-size:16px;transition:transform .18s ease}
+    .action-card:hover .action-arrow{transform:translate(2px,-2px)}
+
+    .meeting-modal{position:fixed;z-index:9999;inset:0;display:none;align-items:center;justify-content:center;padding:24px}
+    .meeting-modal.is-open{display:flex}
+    .meeting-modal__dim{position:absolute;inset:0;border:0;background:rgba(17,17,17,.38)}
+    .meeting-modal__panel{position:relative;width:min(100%,560px);background:var(--bg);border:1px solid #d8d8d3;padding:34px}
+    .meeting-modal__close{position:absolute;top:19px;right:21px;border:0;background:none;font-size:23px;cursor:pointer}
+    .meeting-modal h3{margin:22px 0 0;font-size:25px;font-weight:510;line-height:1.4}
+    .meeting-modal p{margin:16px 0 0;color:var(--sub);font-size:15px}
+    .meeting-contact{margin-top:28px;border-top:1px solid var(--line)}
+    .meeting-contact a{display:grid;grid-template-columns:84px 1fr;padding:15px 0;border-bottom:1px solid var(--line);color:#161716;text-decoration:none}
+    .meeting-contact span{color:#858682;font-size:12px}
+
+    @media(max-width:980px){
+      .proposal-hero__inner{grid-template-columns:1fr!important;gap:54px!important}
+      .proposal-hero__facts{max-width:620px}
+      .intro-grid{grid-template-columns:1fr}
+      .intro-item,.intro-item+.intro-item{padding:26px 0;border-left:0}
+      .approach-grid{grid-template-columns:repeat(2,1fr)}
+      .timeline-row{grid-template-columns:120px 175px minmax(0,1fr)}
+      .option-card{grid-template-columns:150px minmax(0,1fr)}
+      .option-card__price{grid-column:2;text-align:left}
+      .action-area>.proposal-shell{grid-template-columns:1fr;gap:48px}
+    }
+    @media(max-width:760px){
+      :root{--display:clamp(31px,8.8vw,38px);--h2:clamp(23px,6.8vw,28px);--section:76px}
+      .proposal-shell{width:calc(100% - 32px)!important}
+      .proposal-hero{padding:88px 0 76px}
+      .proposal-hero__desc{font-size:16px}
+      .issue-row{grid-template-columns:38px 1fr;gap:16px}
+      .issue-row p{grid-column:2}
+      .approach-grid,.scope-grid,.investment-notes{grid-template-columns:1fr}
+      .approach-item{min-height:185px;border-right:0;border-bottom:1px solid var(--line);padding:24px 0}
+      .timeline-row{grid-template-columns:1fr;gap:7px}
+      .support-note,.payment-note{grid-template-columns:1fr;gap:10px}
+      .option-card{grid-template-columns:1fr;gap:18px;padding:25px 24px}
+      .option-card__price{grid-column:auto}
+      .action-area{padding:74px 0 88px}
+      .action-card{grid-template-columns:40px 1fr auto;padding:22px 0}
+      .meeting-modal__panel{padding:28px 24px}
+    }
+
+    @page{size:A4 portrait;margin:11mm 11mm 12mm}
+    @media print{
+      html,body{margin:0!important;padding:0!important;background:#fff!important}
+      body.proposal-page{background:#fff!important;color:#202020!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .site-header,.site-footer,.action-area,.meeting-modal{display:none!important}
+      .proposal-shell{width:100%!important;max-width:none!important}
+      .proposal-hero,.proposal-section{padding:16mm 0!important;break-inside:avoid-page}
+      .proposal-hero{padding-top:8mm!important}
+      .scope-card,.intro-item,.issue-row,.timeline-row,.option-card,.investment-main{break-inside:avoid}
+      .proposal-h1{font-size:28pt!important}
+      .proposal-h2{font-size:18pt!important}
+      .proposal-hero__desc,.section-heading__body p,.intro-item p,.issue-row p,.scope-card li,.timeline-row p,.support-note p,.investment-notes p,.payment-note p,.option-card p,.closing-copy p{font-size:10pt!important}
+    }
+  </style>
+</head>
+<body class="proposal-page">
+<div class="site-shell">
+  <header class="site-header"><a class="site-logo" href="/">NINEWORKS</a><button class="menu-trigger" type="button" data-menu-trigger aria-label="메뉴 열기"><span></span></button></header>
+  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+
+  <main>
+    <section class="proposal-hero">
+      <div class="proposal-shell proposal-hero__inner">
+        <div>
+          <p class="proposal-label proposal-hero__eyebrow">ORIENT GROUP / BUSINESS LAUNCH PROPOSAL</p>
+          <h1 class="proposal-h1">숙박업의 운영 경험을,<br>새로운 컨설팅 비즈니스로.</h1>
+          <p class="proposal-hero__desc">오리엔트그룹이 숙박시설을 직접 운영하며 축적해 온 경험과 노하우를 바탕으로, 신규 컨설팅 비즈니스가 보다 전문적이고 일관되게 전달될 수 있도록 브랜드, 홈페이지, 회사소개 및 영업 자료를 하나의 방향으로 구축합니다.</p>
+        </div>
+        <dl class="proposal-hero__facts">
+          <div class="proposal-fact"><dt>CLIENT</dt><dd>오리엔트그룹</dd></div>
+          <div class="proposal-fact"><dt>PROJECT</dt><dd>Hospitality Consulting Business Launch</dd></div>
+          <div class="proposal-fact"><dt>START</dt><dd>2026.09.16</dd></div>
+          <div class="proposal-fact"><dt>SCHEDULE</dt><dd>2026년 11월 중 완료 권장</dd></div>
+          <div class="proposal-fact"><dt>PROJECT FEE</dt><dd>₩15,000,000 / VAT 별도</dd></div>
+          <div class="proposal-fact"><dt>PREPARED BY</dt><dd>NINEWORKS</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading">
+          <p class="proposal-label">01 / PROJECT UNDERSTANDING</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">이미 검증된 숙박업 경험을, 고객이 이해하고 신뢰할 수 있는 하나의 사업 형태로 정리하는 프로젝트로 이해했습니다.</h2>
+            <p>현재 오리엔트그룹은 숙박시설을 직접 운영하고 판매하며 축적한 경험과 자체적인 판매 구조, 운영 노하우를 보유하고 있습니다. 이번 프로젝트에서는 그 경험을 새롭게 꾸며내기보다, 신규 컨설팅 사업에 맞게 정리하고 전문적인 기업 커뮤니케이션으로 연결하는 데 초점을 둡니다.</p>
+          </div>
+        </div>
+        <div class="intro-grid">
+          <article class="intro-item"><span class="intro-item__num">01</span><strong>Operating Experience</strong><p>객실 운영부터 판매, 마케팅과 운영 개선까지 실제 현장에서 축적한 경험을 핵심 자산으로 활용합니다.</p></article>
+          <article class="intro-item"><span class="intro-item__num">02</span><strong>Turnaround Structure</strong><p>진단, 브랜딩, 콘텐츠, 마케팅, 판매, 운영으로 이어지는 현재의 사업 구조를 고객 관점에서 이해하기 쉽게 정리합니다.</p></article>
+          <article class="intro-item"><span class="intro-item__num">03</span><strong>Business Communication</strong><p>홈페이지와 소개서, 영업용 제안서가 서로 다른 자료가 아니라 하나의 기업 인상으로 연결되도록 구축합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading">
+          <p class="proposal-label">02 / WHAT WE SEE</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">현재 자료의 내용은 충분합니다. 다만 외부 고객을 설득하는 사업 자료와 기업형 비주얼로 한 번 더 정리할 필요가 있습니다.</h2>
+          </div>
+        </div>
+        <div class="issue-list">
+          <article class="issue-row"><span class="issue-row__no">01</span><h3>Business Story</h3><p>운영 경험과 성공 사례가 여러 항목으로 나뉘어 있어, 고객이 처음 봤을 때 오리엔트가 어떤 문제를 해결하는 회사인지 빠르게 이해할 수 있는 흐름으로 재구성합니다.</p></article>
+          <article class="issue-row"><span class="issue-row__no">02</span><h3>Corporate Visual</h3><p>홈페이지, PPT, 소개서와 각종 영업 자료가 하나의 회사에서 만들어진 것처럼 보일 수 있도록 컬러, 타이포그래피, 그래픽과 레이아웃 기준을 통일합니다.</p></article>
+          <article class="issue-row"><span class="issue-row__no">03</span><h3>Sales Conversion</h3><p>단순한 회사 소개보다 운영 경험과 서비스 내용을 충분히 이해한 뒤 상담과 문의로 자연스럽게 이어지는 구조를 설계합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading">
+          <p class="proposal-label">03 / OUR APPROACH</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">브랜드를 따로 만들고, 웹을 따로 만들고, PPT를 따로 만드는 방식보다 하나의 방향을 먼저 정한 뒤 모든 결과물에 연결합니다.</h2>
+          </div>
+        </div>
+        <div class="approach-grid">
+          <article class="approach-item"><span class="approach-item__no">01</span><h3>Brand</h3><p>Business Direction<br>Visual Identity<br>Message System</p></article>
+          <article class="approach-item"><span class="approach-item__no">02</span><h3>Website</h3><p>Information Structure<br>UX/UI Design<br>Publishing</p></article>
+          <article class="approach-item"><span class="approach-item__no">03</span><h3>Sales Materials</h3><p>Company Profile<br>Sales Proposal<br>Presentation</p></article>
+          <article class="approach-item"><span class="approach-item__no">04</span><h3>Visual</h3><p>Infographic<br>Corporate Graphics<br>Content System</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading">
+          <p class="proposal-label">04 / SCOPE OF WORK</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">신규 비즈니스 런칭에 필요한 브랜딩, 홈페이지, 소개서와 제안서, PPT 디자인을 맞춤형으로 함께 구축합니다.</h2>
+            <p>세부 페이지 수와 제작 항목은 착수 후 실제 영업 방식과 보유 자료를 확인하여 최종 조정합니다.</p>
+          </div>
+        </div>
+        <div class="scope-grid">
+          <article class="scope-card">
+            <div class="scope-card__top"><span class="scope-card__type">Branding</span><span class="scope-card__no">01</span></div>
+            <h3>Brand & Visual Direction</h3>
+            <ul><li>신규 사업의 브랜드 방향 정리</li><li>핵심 메시지 및 서비스 표현 체계</li><li>Color / Typography / Graphic System</li><li>웹·PPT 공통 기업형 비주얼 기준</li></ul>
+          </article>
+          <article class="scope-card">
+            <div class="scope-card__top"><span class="scope-card__type">Website</span><span class="scope-card__no">02</span></div>
+            <h3>Corporate Website</h3>
+            <ul><li>정보구조 및 콘텐츠 흐름 기획</li><li>Responsive UX/UI Design</li><li>Frontend Publishing</li><li>상담·문의 중심의 사용자 동선 구축</li></ul>
+          </article>
+          <article class="scope-card">
+            <div class="scope-card__top"><span class="scope-card__type">Company Profile</span><span class="scope-card__no">03</span></div>
+            <h3>Company Introduction</h3>
+            <ul><li>회사 및 신규 사업 소개 구조 정리</li><li>운영 경험과 주요 강점 정리</li><li>서비스·프로세스 시각화</li><li>기업소개용 PPT 디자인</li></ul>
+          </article>
+          <article class="scope-card">
+            <div class="scope-card__top"><span class="scope-card__type">Sales Proposal</span><span class="scope-card__no">04</span></div>
+            <h3>Sales Deck & Proposal</h3>
+            <ul><li>영업용 제안서 흐름 구성</li><li>고객 문제·솔루션·서비스 구조 정리</li><li>Case / Process / Service Visualization</li><li>실제 미팅용 Presentation Design</li></ul>
+          </article>
+          <article class="scope-card">
+            <div class="scope-card__top"><span class="scope-card__type">Visual Contents</span><span class="scope-card__no">05</span></div>
+            <h3>Corporate Visual Contents</h3>
+            <ul><li>기업형 그래픽 및 인포그래픽</li><li>숫자·성과·프로세스 표현</li><li>웹·PPT 공통 비주얼 제작</li><li>필요 항목별 기본 응용 디자인</li></ul>
+          </article>
+          <article class="scope-card">
+            <div class="scope-card__top"><span class="scope-card__type">Finalization</span><span class="scope-card__no">06</span></div>
+            <h3>QA & Launch</h3>
+            <ul><li>Desktop / Mobile 반응형 QA</li><li>콘텐츠 및 링크 최종 점검</li><li>기본 SEO / Meta Setting</li><li>최종 결과물 정리 및 오픈 지원</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading">
+          <p class="proposal-label">05 / PROJECT TIMELINE</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">9월 16일 착수 기준, 충분한 검토와 완성도를 확보하기 위해 11월 중 최종 완료 일정을 권장드립니다.</h2>
+          </div>
+        </div>
+        <div class="timeline-list">
+          <article class="timeline-row"><time>WEEK 01</time><strong>Setup & Structure</strong><p>보유 자료를 검토하고 신규 사업의 핵심 메시지, 서비스 구성, 홈페이지 및 영업 자료의 전체 구조를 정리합니다.</p></article>
+          <article class="timeline-row"><time>WEEK 02–03</time><strong>Brand & Visual</strong><p>브랜드 표현 방향과 기업형 비주얼 기준을 정리하고 웹과 PPT에 공통 적용할 디자인 시스템을 구축합니다.</p></article>
+          <article class="timeline-row"><time>WEEK 03–05</time><strong>Website & Deck</strong><p>홈페이지 UX/UI와 회사소개서·영업 제안서 디자인을 병행하며 주요 콘텐츠와 시각 자료를 제작합니다.</p></article>
+          <article class="timeline-row"><time>WEEK 05–07</time><strong>Publishing & Build</strong><p>반응형 웹 퍼블리싱과 주요 인터랙션을 구축하고 확정된 콘텐츠를 실제 페이지에 적용합니다.</p></article>
+          <article class="timeline-row"><time>WEEK 08</time><strong>QA & Launch</strong><p>PC·모바일 환경을 점검하고 최종 수정, 자료 정리와 배포를 진행합니다.</p></article>
+        </div>
+        <div class="support-note"><strong>10.23<br>Fast-track</strong><p>요청하신 2026년 10월 23일 목표에 맞춘 빠른 진행도 가능합니다. 다만 브랜딩, 홈페이지, 소개서 및 영업용 PPT를 병렬로 진행해야 하므로 일반 일정 대비 디자인 검토와 고도화 기간이 제한될 수 있습니다. 결과물의 안정적인 완성도를 위해서는 11월 중 최종 완료 일정을 권장드립니다.</p></div>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell">
+        <div class="section-heading">
+          <p class="proposal-label">06 / INVESTMENT</p>
+          <div class="section-heading__body">
+            <h2 class="proposal-h2">ORIENT GROUP Integrated Business Launch Package</h2>
+          </div>
+        </div>
+        <div class="investment-main">
+          <div class="investment-price"><strong>₩15,000,000</strong><span>VAT 별도</span></div>
+          <div class="investment-notes">
+            <article><h3>Integrated Project</h3><p>브랜딩, 홈페이지, 회사소개서와 영업용 제안서를 개별 단건이 아닌 하나의 프로젝트로 통합해 진행합니다.</p></article>
+            <article><h3>Custom Scope</h3><p>현재 스토리보드를 기준으로 시작하되 실제 사업과 영업 환경에 맞춰 페이지와 콘텐츠 구조를 조정합니다.</p></article>
+            <article><h3>Corporate Visual</h3><p>웹과 PPT 전반에 공통 적용할 기업형 비주얼 시스템과 주요 그래픽 콘텐츠 제작을 포함합니다.</p></article>
+          </div>
+          <div class="payment-note"><strong>Project Fee</strong><p>세부 범위와 페이지 수는 착수 미팅 이후 최종 확정하며, 추가 기능이나 별도 개발 항목은 사전 협의를 통해 별도로 안내드립니다.</p></div>
+        </div>
+
+        <div class="option-card">
+          <div class="option-card__label">Optional Service</div>
+          <div>
+            <h3>기업 맞춤형 업무관리 시스템 구축</h3>
+            <p>향후 컨설팅 고객사와 내부 프로젝트가 증가할 경우, 고객사·상담·프로젝트·자료·일정 등의 업무 흐름을 관리할 수 있는 맞춤형 시스템을 별도 구축할 수 있습니다. 실제 필요한 기능 범위를 확인한 뒤 세부 견적을 산정합니다.</p>
+          </div>
+          <div class="option-card__price"><strong>₩5,000,000~</strong><span>VAT 별도 / 기능 범위에 따라 변동</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proposal-section">
+      <div class="proposal-shell closing-copy">
+        <p class="proposal-label">07 / CLOSING</p>
+        <h2>오리엔트가 이미 가지고 있는 경험을, 새로운 사업으로 명확하게 보여주는 것부터 시작하겠습니다.</h2>
+        <p>NINEWORKS는 이번 프로젝트에서 필요 이상으로 새로운 이야기를 덧붙이기보다, 오리엔트그룹이 실제로 축적해 온 숙박업 운영 경험과 서비스 구조를 정리하고 브랜드, 홈페이지, 회사소개서와 영업 자료까지 일관된 기업 커뮤니케이션으로 구축하겠습니다.</p>
+        <p class="closing-thanks">문의 주셔서 감사합니다. 신규 숙박업 컨설팅 비즈니스의 안정적인 출발을 함께 준비할 수 있기를 기대합니다.</p>
+      </div>
+    </section>
+
+    <section class="action-area">
+      <div class="proposal-shell">
+        <div class="action-head">
+          <p class="proposal-label">NEXT ACTION</p>
+          <h2>제안 내용을 저장하거나,<br>미팅을 요청하실 수 있습니다.</h2>
+          <p>현재 제안서 내용을 PDF로 저장해 내부 검토에 활용하거나, 세부 범위와 일정 협의를 위한 미팅을 요청해 주세요.</p>
+        </div>
+        <div class="action-grid">
+          <button class="action-card" onclick="window.print()"><span class="action-no">01</span><span><strong class="action-title">제안서 PDF 저장</strong><span class="action-desc">현재 제안서 전체를 PDF로 저장합니다.</span></span><span class="action-arrow">↗</span></button>
+          <button class="action-card" data-meeting-open><span class="action-no">02</span><span><strong class="action-title">미팅 요청하기</strong><span class="action-desc">프로젝트 범위와 일정에 대한 미팅을 요청합니다.</span></span><span class="action-arrow">↗</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container"></footer>
+</div>
+
+<div class="meeting-modal" data-meeting-modal aria-hidden="true">
+  <button class="meeting-modal__dim" data-meeting-close aria-label="닫기"></button>
+  <div class="meeting-modal__panel">
+    <button class="meeting-modal__close" data-meeting-close aria-label="닫기">×</button>
+    <p class="proposal-label">MEETING REQUEST</p>
+    <h3>프로젝트 범위와 일정을<br>함께 조율하겠습니다.</h3>
+    <p>가능한 일정과 미팅 방식을 아래 연락처로 전달해 주세요.</p>
+    <div class="meeting-contact">
+      <a href="tel:01054225650"><span>PHONE</span><strong>010-5422-5650</strong></a>
+      <a href="mailto:info@9works.kr?subject=%EC%98%A4%EB%A6%AC%EC%97%94%ED%8A%B8%EA%B7%B8%EB%A3%B9%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AF%B8%ED%8C%85%20%EC%9A%94%EC%B2%AD"><span>E-MAIL</span><strong>info@9works.kr</strong></a>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/main.js?v=20260817-8"></script>
+<script>
+(() => {
+  const modal = document.querySelector('[data-meeting-modal]');
+  if (!modal) return;
+  const openModal = () => { modal.classList.add('is-open'); modal.setAttribute('aria-hidden','false'); };
+  const closeModal = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden','true'); };
+  document.querySelectorAll('[data-meeting-open]').forEach(btn => btn.addEventListener('click', openModal));
+  document.querySelectorAll('[data-meeting-close]').forEach(btn => btn.addEventListener('click', closeModal));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+</body>
+</html>
