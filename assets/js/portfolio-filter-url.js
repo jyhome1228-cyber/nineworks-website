@@ -18,7 +18,7 @@
   const meta = {
     major: {
       title: 'Major Works',
-      copy: '나인웍스의 기존 주요 포트폴리오를 모아둔 대표 작업 아카이브입니다.'
+      copy: '나인웍스의 주요 브랜딩과 디자인 프로젝트를 선별해 소개하는 대표 작업 아카이브입니다.'
     },
     website: {
       title: 'Website / Site',
@@ -26,11 +26,15 @@
     },
     system: {
       title: 'System Build',
-      copy: '내부 운영 시스템 포트폴리오는 현재 정리 중입니다. 준비가 완료되는 대로 순차적으로 공개합니다.'
+      copy: '실제 업무 흐름을 기준으로 기획하고 구축한 운영 시스템과 웹 기반 업무 도구 프로젝트입니다.'
     },
     detailpage: {
       title: 'Detail Page',
       copy: '제품과 서비스의 핵심 내용을 구매와 이해의 흐름에 맞춰 설계한 상세페이지 작업입니다.'
+    },
+    instagram: {
+      title: 'Instagram Feed',
+      copy: '브랜드의 시각 언어와 캠페인 메시지를 일관된 흐름으로 설계한 인스타그램 피드 디자인 작업입니다.'
     },
     editorial: {
       title: 'Editorial Design',
@@ -90,22 +94,6 @@
       syncUrl(filter);
     });
   });
-
-  // SYSTEM은 관리자/운영 화면 포트폴리오 정리가 끝날 때까지 상세 진입을 막습니다.
-  document.addEventListener('click', (event) => {
-    const link = event.target.closest('.portfolio-card__link, .portfolio-card a');
-    if (!link) return;
-
-    const card = link.closest('.portfolio-card, [data-category]');
-    const categories = String(card?.dataset.category || '').split(/\s+/).filter(Boolean);
-    const systemFilterActive = Boolean(group.querySelector('[data-filter="system"].is-active'));
-    if (!systemFilterActive && !categories.includes('system')) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-    syncUrl('system');
-    window.alert('포트폴리오 준비중입니다.');
-  }, true);
 
   const initialFilter = normalizeFilter(new URLSearchParams(window.location.search).get('filter'));
   activate(initialFilter, false);
