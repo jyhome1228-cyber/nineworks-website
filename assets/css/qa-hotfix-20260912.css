@@ -1,0 +1,56 @@
+/* NINEWORKS QA hotfix — 2026-09-12
+   Site-wide text wrapping, overflow safety and navigation polish. */
+
+/* Keep Korean copy readable while still allowing long URLs / English tokens to wrap. */
+html body .site-shell :where(h1,h2,h3,h4,h5,h6,p,li,dt,dd,figcaption,blockquote){
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+html body .site-shell :where(h1,h2,h3,h4,h5,h6){
+  text-wrap:balance;
+}
+html body .site-shell :where(p,li,dt,dd,figcaption,blockquote){
+  text-wrap:pretty;
+}
+
+/* Prevent grid/flex children from forcing horizontal overflow. */
+html body .site-shell main,
+html body .site-shell main > *,
+html body .site-shell .container,
+html body .site-shell .container > *,
+html body .site-footer > *,
+html body .portfolio-card,
+html body .portfolio-card__info > *{
+  min-width:0;
+}
+
+/* Media must never escape its content column. */
+html body .site-shell :where(img,video,iframe,canvas){
+  max-width:100%;
+}
+
+/* Category labels and compact controls should not split in the middle. */
+html body .category-nav :where(button,a),
+html body .site-primary-nav a,
+html body .site-footer__links a,
+html body .text-link{
+  white-space:nowrap;
+}
+
+/* Keyboard users should always be able to identify focus. */
+html body :where(a,button,input,select,textarea):focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:3px;
+}
+
+/* Long copy on narrow screens: avoid awkward forced line breaks and edge collisions. */
+@media(max-width:760px){
+  html body .site-shell :where(.page-title,.cta__title,.portfolio-hero__copy,.lead){
+    max-width:100%;
+  }
+  html body .category-nav{
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  html body .category-nav::-webkit-scrollbar{display:none}
+}
