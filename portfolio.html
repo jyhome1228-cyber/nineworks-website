@@ -79,11 +79,14 @@
   <script src="assets/js/instagram-feed-data-4.js?v=20260827-1"></script>
   <script src="assets/js/instagram-feed-data-5.js?v=20260827-1"></script>
   <script src="assets/js/instagram-feed-data-6.js?v=20260828-1"></script>
-  <script src="assets/js/main.js?v=20260901-4"></script>
+  <script src="assets/js/main.js?v=20260912-1"></script>
   <script src="assets/js/local-branding-nav.js?v=20260901-1"></script>
   <script src="assets/js/portfolio.js?v=20260825-1"></script>
   <script>
     (()=>{
+      const crmLink=document.querySelector('.portfolio-card__link[href*="work=nineworks-crm"]');
+      if(crmLink)crmLink.href='portfolio-nineworks-crm.html';
+
       const live={fineb:'https://finebpkg.com/','tne-epc':'https://tneepc.com/',relim:'https://re-lim.com/',aesost:'https://aesost.com/index.html',kekomi:'https://kekomi.co.kr/','the-petrichor':'https://thepetrichor.co.kr/',thomastone:'https://thomastone.co.kr/',recelleclore:'https://recelleclore.co.kr/'};
       const detail={fineb:'portfolio-fineb.html','tne-epc':'portfolio-tne-epc.html',relim:'portfolio-relim.html',aesost:'portfolio-aesost.html',kekomi:'portfolio-kekomi.html','the-petrichor':'portfolio-the-petrichor.html',thomastone:'portfolio-thomastone.html',recelleclore:'portfolio-recelleclore.html'};
       document.querySelectorAll('.portfolio-card[data-category~="develop"]').forEach(card=>{
