@@ -36,7 +36,7 @@
   loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-4');
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
-  loadStyle('assets/css/site-shell-sync-20260902.css?v=20260902-1');
+  loadStyle('assets/css/site-shell-sync-20260902.css?v=20260912-1');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -125,6 +125,7 @@
           <a href="/majorportfolio/"><span>비즈니스 포트폴리오</span><small>기업용</small></a>
           <a href="/portfolio.html?filter=major"><span>메이저 프로젝트</span><small>주요 작업</small></a>
           <a href="/project.html"><span>브랜딩 프로젝트</span><small>브랜드</small></a>
+          <a href="/local-branding.html" data-local-branding-nav="true"><span>로컬 브랜딩</span><small>로컬</small></a>
           <a href="/portfolio.html?filter=website"><span>웹사이트</span><small>웹</small></a>
           <a href="/portfolio.html?filter=system"><span>시스템 구축</span><small>시스템</small></a>
           <a href="/portfolio.html?filter=detailpage"><span>상세페이지</span><small>상세</small></a>
@@ -188,6 +189,7 @@
           <a href="/majorportfolio/">비즈니스 포트폴리오</a>
           <a href="/portfolio.html?filter=major">메이저 프로젝트</a>
           <a href="/project.html">브랜딩 프로젝트</a>
+          <a href="/local-branding.html" data-local-branding-nav="true">로컬 브랜딩</a>
           <a href="/portfolio.html?filter=website">웹사이트</a>
           <a href="/portfolio.html?filter=system">시스템 구축</a>
           <a href="/portfolio.html?filter=detailpage">상세페이지</a>
@@ -231,14 +233,14 @@
   const navMap = {
     about: 'about', designer: 'about', performance: 'about', partners: 'about',
     branding: 'process', 'project-operation': 'process', 'package-design': 'process', process: 'process',
-    project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio',
+    project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
     magazine: 'designer-network', 'magazine-detail': 'designer-network', 'global-references': 'designer-network',
     solutions: 'solutions', 'signature-project': 'solutions', develop: 'solutions', print: 'solutions',
     'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions',
     recruit: 'designer-network', 'design-academy': 'designer-network',
     membership: 'solutions', 'client-register': 'solutions', contact: 'contact'
   };
-  const activeNav = navMap[pageKey];
+  const activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
   document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
     const active = link.dataset.navKey === activeNav;
     link.classList.toggle('is-current', active);
@@ -348,7 +350,7 @@
       <p>NINEWORKS Office, Room 916, 1039 Wondang-daero, Seo-gu, Incheon, Republic of Korea</p>
       <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
     </div>
-    <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="#">Instagram</a><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
+    <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
 
   const mailForm = document.querySelector('[data-mail-form]');
   mailForm?.addEventListener('submit', (event) => {
