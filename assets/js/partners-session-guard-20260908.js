@@ -5,7 +5,7 @@
   const loadContractOverrides = () => {
     if (document.querySelector('script[data-partner-contract-overrides]')) return;
     const script = document.createElement('script');
-    script.src = '/assets/js/partners-contract-overrides-20260915-v2.js?v=20260915-4';
+    script.src = '/assets/js/partners-contract-overrides-20260915-v2.js?v=20260915-5';
     script.defer = true;
     script.dataset.partnerContractOverrides = 'true';
     document.head.appendChild(script);
