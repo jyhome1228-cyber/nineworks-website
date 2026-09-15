@@ -16,7 +16,8 @@ service cloud.firestore {
       return email in [
         'seodw100@naver.com',
         's.nninyong@gmail.com',
-        'daytuio0329@naver.com'
+        'daytuio0329@naver.com',
+        'daac-oh@naver.com'
       ];
     }
 
@@ -157,7 +158,6 @@ service cloud.firestore {
       allow read, update, delete: if isAdmin();
     }
 
-    // 내부 CRM 원본: 관리자 전용. 파일 메타데이터 하위 컬렉션도 포함합니다.
     match /clients/{clientId} {
       allow read, write: if isAdmin();
 
@@ -166,7 +166,6 @@ service cloud.firestore {
       }
     }
 
-    // 비밀 링크에 노출할 최소 데이터만 별도 저장합니다.
     match /clientPortals/{portalKey} {
       allow get: if isAdmin() || resource.data.enabled == true;
       allow list: if isAdmin();
