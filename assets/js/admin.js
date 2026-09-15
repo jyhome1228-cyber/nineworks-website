@@ -86,8 +86,6 @@
       history.replaceState(null, '', `#${requested}`);
     }
 
-    // Async modules inject some panels after first paint. Keep the requested hash intact
-    // and show Dashboard only as a temporary visual fallback until that panel exists.
     showDashboardWithoutChangingURL();
     return false;
   };
@@ -161,7 +159,6 @@
     panelObserver.observe(main, { childList: true });
   };
 
-  // Navigation must never wait for Firebase or feature modules.
   bootNavigation();
   observeDynamicPanels();
 
@@ -186,7 +183,7 @@
     console.error('[NINEWORKS Admin] Partner assignment load failed', error);
   });
 
-  import('./admin-partner-contracts-20260915.js?v=20260915-2').then(refreshNavigation).catch((error) => {
+  import('./admin-partner-contracts-20260915.js?v=20260915-3').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Partner contracts load failed', error);
   });
 
