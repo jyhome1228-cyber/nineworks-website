@@ -3,152 +3,127 @@ import { doc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'https://www
 import { auth, db, firebaseConfigReady } from './firebase-client.js';
 
 const ADMIN_EMAIL = 'info@9works.kr';
-const CONTRACT = Object.freeze({
-  legacyId: 'internal-rpbio-shinminyong-20260915',
-  partnerEmail: 's.nninyong@gmail.com',
-  partnerName: '신민용',
-  company: '알피바이오',
-  projectName: '건강기능식품 신규 브랜드 런칭',
-  scope: '프로젝트 전반 어시스트',
-  feeAmount: 5000000,
-  paymentType: 'freelancer',
-  withholdingRate: 0.033,
-  withholdingAmount: 165000,
-  advanceAmount: 2500000,
-  balanceGrossAmount: 2500000,
-  balanceNetAmount: 2335000,
-  totalNetAmount: 4835000,
-  withholdingTiming: 'balance',
-  balanceCondition: '알피바이오 프로젝트 잔금 입금 시',
-  effectiveDate: '2026-09-15',
-  contractStatus: 'active',
-  internalOnly: true,
-  clientVisible: false,
-  linkedClient: 'rpbio',
-  source: 'INTERNAL_PARTNER_CONTRACT'
-});
+const CONTRACTS = [
+  {
+    id: 'internal-rpbio-shinminyong-20260915', partnerEmail: 's.nninyong@gmail.com', partnerName: '신민용',
+    company: '알피바이오', projectName: '건강기능식품 신규 브랜드 런칭', scope: '프로젝트 전반 어시스트',
+    feeAmount: 5000000, advanceAmount: 2500000, withholdingAmount: 165000, balanceGrossAmount: 2500000,
+    balanceNetAmount: 2335000, totalNetAmount: 4835000, balanceCondition: '알피바이오 프로젝트 잔금 입금 시',
+    linkedClient: 'rpbio', syntheticIfMissing: false
+  },
+  {
+    id: 'internal-phyto-odahe-20260915', partnerEmail: 'daac-oh@naver.com', partnerName: '오다혜',
+    company: 'PHYTO REVOLUTION', projectName: 'PHYTO REVOLUTION', scope: '프로젝트 전반 어시스트',
+    feeAmount: 1000000, advanceAmount: 500000, withholdingAmount: 33000, balanceGrossAmount: 500000,
+    balanceNetAmount: 467000, totalNetAmount: 967000, balanceCondition: 'PHYTO REVOLUTION 프로젝트 잔금 입금 시',
+    linkedClient: 'phyto', syntheticIfMissing: true
+  }
+];
 
-const workspaceId = encodeURIComponent(CONTRACT.partnerEmail.toLowerCase());
-let workspaceUnsub = null;
-let syncing = false;
-const inquirySyncDone = new Set();
-
+const unsubs = [];
+const syncing = new Set();
 const money = (value = 0) => `${Number(value || 0).toLocaleString('ko-KR')}원`;
 const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/\"/g, '&quot;').replace(/'/g, '&#039;');
+const workspaceKey = (email = '') => encodeURIComponent(String(email || '').trim().toLowerCase());
 
-const isRpBioAssignment = (item = {}) => {
-  const company = String(item.company || '').trim();
-  const title = String(item.projectName || '').trim();
-  return item.id !== CONTRACT.legacyId
-    && (company.includes(CONTRACT.company) || title.includes('건강기능식품 신규 브랜드 런칭'));
+const matchesContract = (item = {}, contract) => {
+  const company = String(item.company || '').toLowerCase();
+  const title = String(item.projectName || '').toLowerCase();
+  if (contract.linkedClient === 'rpbio') return company.includes('알피바이오') || title.includes('건강기능식품 신규 브랜드 런칭');
+  return company.includes('phyto') || title.includes('phyto') || title.includes('파이토');
 };
 
-const enrichAssignment = (item = {}) => ({
+const enrich = (item = {}, c) => ({
   ...item,
-  company: item.company || CONTRACT.company,
-  projectName: item.projectName || CONTRACT.projectName,
+  id: item.id || c.id,
+  company: c.company,
+  projectName: c.projectName,
+  service: '프로젝트 전반 어시스트',
+  projectType: '프로젝트 전반 어시스트',
+  status: 'open',
+  summary: `${c.projectName} 프로젝트 전반 어시스트`,
   projectStage: 'active',
-  status: item.status === 'done' ? 'open' : (item.status || 'open'),
-  feeAmount: CONTRACT.feeAmount,
-  paymentType: CONTRACT.paymentType,
-  withholdingRate: CONTRACT.withholdingRate,
-  withholdingAmount: CONTRACT.withholdingAmount,
-  advanceAmount: CONTRACT.advanceAmount,
-  balanceGrossAmount: CONTRACT.balanceGrossAmount,
-  balanceNetAmount: CONTRACT.balanceNetAmount,
-  totalNetAmount: CONTRACT.totalNetAmount,
-  withholdingTiming: CONTRACT.withholdingTiming,
-  balanceCondition: CONTRACT.balanceCondition,
-  scope: CONTRACT.scope,
-  effectiveDate: CONTRACT.effectiveDate,
-  contractStatus: CONTRACT.contractStatus,
+  feeAmount: c.feeAmount,
+  proposalUrl: item.proposalUrl || '',
+  paymentType: 'freelancer',
+  withholdingRate: 0.033,
+  withholdingAmount: c.withholdingAmount,
+  advanceAmount: c.advanceAmount,
+  balanceGrossAmount: c.balanceGrossAmount,
+  balanceNetAmount: c.balanceNetAmount,
+  totalNetAmount: c.totalNetAmount,
+  withholdingTiming: 'balance',
+  balanceCondition: c.balanceCondition,
+  scope: c.scope,
+  effectiveDate: '2026-09-15',
+  contractStatus: 'active',
   internalOnly: true,
   clientVisible: false,
-  linkedClient: CONTRACT.linkedClient,
-  contractSource: CONTRACT.source
+  linkedClient: c.linkedClient,
+  contractSource: 'INTERNAL_PARTNER_CONTRACT'
 });
 
-const relevantSignature = (item = {}) => JSON.stringify({
-  id: item.id || '',
-  company: item.company || '',
-  projectName: item.projectName || '',
-  projectStage: item.projectStage || '',
-  status: item.status || '',
-  feeAmount: Number(item.feeAmount || 0),
-  paymentType: item.paymentType || '',
-  withholdingRate: Number(item.withholdingRate || 0),
-  withholdingAmount: Number(item.withholdingAmount || 0),
-  advanceAmount: Number(item.advanceAmount || 0),
-  balanceGrossAmount: Number(item.balanceGrossAmount || 0),
-  balanceNetAmount: Number(item.balanceNetAmount || 0),
-  totalNetAmount: Number(item.totalNetAmount || 0),
-  withholdingTiming: item.withholdingTiming || '',
-  balanceCondition: item.balanceCondition || '',
-  scope: item.scope || '',
-  effectiveDate: item.effectiveDate || '',
-  contractStatus: item.contractStatus || '',
-  internalOnly: item.internalOnly === true,
-  clientVisible: item.clientVisible === false,
-  linkedClient: item.linkedClient || '',
-  contractSource: item.contractSource || ''
-});
-
-const syncInquiryState = async (assignment = {}) => {
-  const id = String(assignment.id || '').trim();
-  if (!id || id === CONTRACT.legacyId || inquirySyncDone.has(id)) return;
-  inquirySyncDone.add(id);
-  try {
-    await updateDoc(doc(db, 'inquiries', id), {
-      partnerProjectStage: 'active',
-      partnerFeeAmount: CONTRACT.feeAmount,
-      updatedAt: serverTimestamp()
-    });
-  } catch (error) {
-    inquirySyncDone.delete(id);
-    console.warn('[NINEWORKS Admin] RP Bio inquiry stage sync skipped', error);
-  }
-};
-
-const syncWorkspaceContract = () => {
-  workspaceUnsub?.();
-  workspaceUnsub = onSnapshot(doc(db, 'partnerWorkspaces', workspaceId), async (snapshot) => {
-    if (syncing) return;
+const syncContract = (c) => {
+  const key = workspaceKey(c.partnerEmail);
+  const unsub = onSnapshot(doc(db, 'partnerWorkspaces', key), async (snapshot) => {
+    if (syncing.has(key)) return;
     const data = snapshot.exists() ? (snapshot.data() || {}) : {};
-    const assignments = Array.isArray(data.assignments) ? data.assignments : [];
+    let assignments = Array.isArray(data.assignments) ? data.assignments.slice() : [];
 
-    const withoutLegacy = assignments.filter((item) => String(item?.id || '') !== CONTRACT.legacyId);
-    const baseIndex = withoutLegacy.findIndex(isRpBioAssignment);
-    if (baseIndex < 0) return;
+    if (c.linkedClient === 'rpbio') assignments = assignments.filter((item) => String(item?.id || '') !== c.id);
+    const index = assignments.findIndex((item) => matchesContract(item, c));
+    if (index >= 0) assignments[index] = enrich(assignments[index], c);
+    else if (c.syntheticIfMissing) assignments.push(enrich({ id: c.id }, c));
+    else return;
 
-    const original = withoutLegacy[baseIndex] || {};
-    const enriched = enrichAssignment(original);
-    const next = withoutLegacy.map((item, index) => index === baseIndex ? enriched : item);
-
-    const duplicateRemoved = withoutLegacy.length !== assignments.length;
-    const needsEnrichment = relevantSignature(original) !== relevantSignature(enriched);
-    if (!duplicateRemoved && !needsEnrichment) {
-      syncInquiryState(enriched);
-      return;
-    }
-
-    syncing = true;
+    syncing.add(key);
     try {
-      await setDoc(doc(db, 'partnerWorkspaces', workspaceId), {
-        name: CONTRACT.partnerName,
-        email: CONTRACT.partnerEmail,
-        assignments: next,
-        projectCount: next.length,
+      await setDoc(doc(db, 'partnerWorkspaces', key), {
+        name: c.partnerName,
+        email: c.partnerEmail,
+        assignments,
+        projectCount: assignments.length,
+        paymentType: 'freelancer',
         updatedAt: serverTimestamp()
       }, { merge: true });
-      await syncInquiryState(enriched);
+
+      const real = assignments.find((item) => matchesContract(item, c) && String(item.id || '') !== c.id);
+      if (real?.id) {
+        try {
+          await updateDoc(doc(db, 'inquiries', real.id), {
+            assignedPartnerEmail: c.partnerEmail,
+            assignedPartnerName: c.partnerName,
+            partnerProjectStage: 'active',
+            partnerFeeAmount: c.feeAmount,
+            updatedAt: serverTimestamp()
+          });
+        } catch (error) {
+          console.warn('[NINEWORKS Admin] contract inquiry sync skipped', error);
+        }
+      }
     } catch (error) {
-      console.warn('[NINEWORKS Admin] RP Bio partner contract merge skipped', error);
+      console.warn('[NINEWORKS Admin] partner contract workspace sync skipped', error);
     } finally {
-      syncing = false;
+      syncing.delete(key);
     }
-  }, (error) => console.warn('[NINEWORKS Admin] RP Bio partner workspace stream skipped', error));
+  }, (error) => console.warn('[NINEWORKS Admin] partner contract listener skipped', error));
+  unsubs.push(unsub);
+};
+
+const seedPartner = async (c) => {
+  try {
+    await setDoc(doc(db, 'partners', workspaceKey(c.partnerEmail)), {
+      name: c.partnerName,
+      email: c.partnerEmail,
+      status: 'active',
+      category: 'DESIGNER PARTNER',
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+  } catch (error) {
+    console.warn('[NINEWORKS Admin] partner seed skipped', error);
+  }
 };
 
 const injectStyle = () => {
@@ -156,58 +131,54 @@ const injectStyle = () => {
   const style = document.createElement('style');
   style.dataset.partnerContractAdminStyle = 'true';
   style.textContent = `
-    .nw-contracts-admin{grid-column:1/-1;margin-top:18px;padding-top:18px;border-top:1px solid var(--line,#ddd)}
-    .nw-contracts-admin__head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px}.nw-contracts-admin__head span{display:block;color:#8a8a8a;font-size:9px;letter-spacing:.08em;text-transform:uppercase}.nw-contracts-admin__head strong{display:block;margin-top:5px;font-size:16px;font-weight:500;letter-spacing:-.025em}.nw-contracts-admin__badge{padding:5px 8px;border:1px solid #cfd8cf;background:#f4f8f4;color:#426247;font-size:8px;letter-spacing:.04em;white-space:nowrap}
-    .nw-contracts-admin__grid{display:grid;grid-template-columns:1.35fr repeat(5,minmax(92px,.72fr));border:1px solid var(--line,#ddd);background:#fff}.nw-contracts-admin__cell{min-width:0;padding:12px;border-right:1px solid var(--line,#ddd)}.nw-contracts-admin__cell:last-child{border-right:0}.nw-contracts-admin__cell span{display:block;color:#929292;font-size:8px;letter-spacing:.04em}.nw-contracts-admin__cell b{display:block;margin-top:7px;font-size:12px;font-weight:500;line-height:1.45;word-break:keep-all}.nw-contracts-admin__note{margin-top:10px;padding:11px 12px;background:#f6f6f3;color:#666;font-size:9px;line-height:1.65}.nw-contracts-admin__note strong{color:#111;font-weight:600}
-    @media(max-width:1100px){.nw-contracts-admin__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nw-contracts-admin__cell{border-bottom:1px solid var(--line,#ddd)}}@media(max-width:720px){.nw-contracts-admin__grid{grid-template-columns:1fr}.nw-contracts-admin__cell{border-right:0}}
+    .nw-contracts-admin{grid-column:1/-1;margin-top:18px;padding-top:18px;border-top:1px solid var(--line,#ddd)}.nw-contracts-admin__head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px}.nw-contracts-admin__head span{display:block;color:#888;font-size:9px;letter-spacing:.08em}.nw-contracts-admin__head strong{display:block;margin-top:5px;font-size:16px;font-weight:500}.nw-contracts-admin__badge{padding:5px 8px;border:1px solid #cfd8cf;background:#f4f8f4;color:#426247;font-size:8px}.nw-contract-row{display:grid;grid-template-columns:1.4fr repeat(5,minmax(90px,.7fr));border:1px solid var(--line,#ddd);border-bottom:0;background:#fff}.nw-contract-row:last-of-type{border-bottom:1px solid var(--line,#ddd)}.nw-contract-cell{padding:12px;border-right:1px solid var(--line,#ddd)}.nw-contract-cell:last-child{border-right:0}.nw-contract-cell span{display:block;color:#999;font-size:8px}.nw-contract-cell b{display:block;margin-top:7px;font-size:11px;font-weight:500;line-height:1.45}.nw-contract-note{margin-top:10px;padding:11px 12px;background:#f6f6f3;color:#666;font-size:9px;line-height:1.65}.admin-partner-lite-card[data-extra-partner="odahe"]{border-color:#cfd8cf;background:#fafcf9}@media(max-width:1100px){.nw-contract-row{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.nw-contract-row{grid-template-columns:1fr}.nw-contract-cell{border-right:0}}
   `;
   document.head.appendChild(style);
 };
 
+const ensureOdaCard = () => {
+  const list = document.querySelector('[data-admin-partner-lite-list]');
+  if (!list || list.querySelector('[data-extra-partner="odahe"]') || String(list.textContent || '').includes('daac-oh@naver.com')) return;
+  const c = CONTRACTS[1];
+  const card = document.createElement('article');
+  card.className = 'admin-partner-lite-card';
+  card.dataset.extraPartner = 'odahe';
+  card.innerHTML = `<div><span>DESIGN PARTNER</span><strong>${escapeHTML(c.partnerName)}</strong><p>${escapeHTML(c.partnerEmail)}</p></div><div class="admin-partner-lite-card__stats"><div><small>ASSIGNED</small><b>1</b></div><div><small>ACTIVE</small><b>1</b></div></div><div class="admin-partner-lite-card__money"><span>예비금액 <b>0원</b></span><span>진행금액 <b>${money(c.feeAmount)}</b></span></div><a href="parters/" target="_blank" rel="noopener">WORKSPACE ↗</a>`;
+  list.appendChild(card);
+};
+
 const renderContractPanel = () => {
   injectStyle();
-  const partnersPanel = document.querySelector('[data-admin-panel="partners"]');
-  if (!partnersPanel) return false;
-  let box = partnersPanel.querySelector('[data-internal-partner-contracts]');
+  const panel = document.querySelector('[data-admin-panel="partners"]');
+  if (!panel) return;
+  ensureOdaCard();
+  let box = panel.querySelector('[data-internal-partner-contracts]');
   if (!box) {
     box = document.createElement('section');
     box.className = 'nw-contracts-admin';
     box.dataset.internalPartnerContracts = 'true';
-    const list = partnersPanel.querySelector('[data-admin-partner-lite-list]');
-    if (list) list.insertAdjacentElement('afterend', box);
-    else partnersPanel.appendChild(box);
+    const list = panel.querySelector('[data-admin-partner-lite-list]');
+    list ? list.insertAdjacentElement('afterend', box) : panel.appendChild(box);
   }
-  box.innerHTML = `
-    <div class="nw-contracts-admin__head">
-      <div><span>Freelancer Contract · Internal Only</span><strong>프리랜서 계약 / 프로젝트 연동</strong></div>
-      <em class="nw-contracts-admin__badge">CLIENT HIDDEN</em>
-    </div>
-    <div class="nw-contracts-admin__grid">
-      <div class="nw-contracts-admin__cell"><span>PARTNER / PROJECT</span><b>${escapeHTML(CONTRACT.partnerName)} · ${escapeHTML(CONTRACT.projectName)}<br>${escapeHTML(CONTRACT.scope)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>계약금액</span><b>${money(CONTRACT.feeAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>선금</span><b>${money(CONTRACT.advanceAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>원천징수 3.3%</span><b>${money(CONTRACT.withholdingAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>잔금 실지급</span><b>${money(CONTRACT.balanceNetAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>총 실지급</span><b>${money(CONTRACT.totalNetAmount)}</b></div>
-    </div>
-    <div class="nw-contracts-admin__note"><strong>프로젝트 통합</strong> · 기존 「건강기능식품 신규 브랜드 런칭」 배정 건을 알피바이오 프리랜서 계약 건으로 사용하며 별도의 중복 프로젝트를 만들지 않습니다. · <strong>지급 조건</strong> · 선금 ${money(CONTRACT.advanceAmount)} 지급 / ${escapeHTML(CONTRACT.balanceCondition)} 원천징수 ${money(CONTRACT.withholdingAmount)}를 잔금에서 공제 후 ${money(CONTRACT.balanceNetAmount)} 지급. · <strong>클라이언트 비노출</strong> · 신민용 파트너 워크스페이스와 관리자 Partners 영역에만 표시합니다.</div>`;
-  return true;
+  box.innerHTML = `<div class="nw-contracts-admin__head"><div><span>FREELANCER CONTRACT · INTERNAL ONLY</span><strong>프리랜서 계약 / 프로젝트 연동</strong></div><em class="nw-contracts-admin__badge">CLIENT HIDDEN</em></div>` + CONTRACTS.map((c) => `
+    <div class="nw-contract-row"><div class="nw-contract-cell"><span>PARTNER / PROJECT</span><b>${escapeHTML(c.partnerName)} · ${escapeHTML(c.projectName)}<br>${escapeHTML(c.scope)}</b></div><div class="nw-contract-cell"><span>계약금액</span><b>${money(c.feeAmount)}</b></div><div class="nw-contract-cell"><span>선금</span><b>${money(c.advanceAmount)}</b></div><div class="nw-contract-cell"><span>원천징수 3.3%</span><b>${money(c.withholdingAmount)}</b></div><div class="nw-contract-cell"><span>잔금 실지급</span><b>${money(c.balanceNetAmount)}</b></div><div class="nw-contract-cell"><span>총 실지급</span><b>${money(c.totalNetAmount)}</b></div></div>`).join('') + `<div class="nw-contract-note"><strong>클라이언트 비노출</strong> · 위 계약정보는 각 파트너 워크스페이스와 관리자 Partners 영역에서만 확인하며 알피바이오·PHYTO REVOLUTION 클라이언트 화면에는 전달하지 않습니다.</div>`;
 };
 
-const keepPanelMounted = () => {
+const keepMounted = () => {
   renderContractPanel();
   const observer = new MutationObserver(() => {
-    if (!document.querySelector('[data-admin-panel="partners"] [data-internal-partner-contracts]')) renderContractPanel();
+    renderContractPanel();
+    ensureOdaCard();
   });
   observer.observe(document.body, { childList: true, subtree: true });
-  window.addEventListener('nw-admin-panel', (event) => {
-    if (event.detail?.panel === 'partners') renderContractPanel();
-  });
 };
 
-const start = () => {
-  syncWorkspaceContract();
-  keepPanelMounted();
+const start = async () => {
+  for (const c of CONTRACTS) {
+    await seedPartner(c);
+    syncContract(c);
+  }
+  keepMounted();
 };
 
 if (firebaseConfigReady && auth && db) {
