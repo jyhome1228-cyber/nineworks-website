@@ -1,5 +1,6 @@
 (() => {
   const STORAGE_KEY = 'nw_partner_workspace_email';
+  const SHIN_EMAIL = 's.nninyong@gmail.com';
 
   const loadContractOverrides = () => {
     if (document.querySelector('script[data-partner-contract-overrides]')) return;
@@ -39,6 +40,11 @@
   // it can never be reused for automatic login on another visit or tab.
   document.addEventListener('submit', (event) => {
     if (!event.target?.matches?.('[data-partner-login-form]')) return;
+    const email = String(event.target.querySelector('input[name="email"]')?.value || '').trim().toLowerCase();
+    if (email === SHIN_EMAIL) {
+      try { localStorage.setItem(`nw_partner_payment_type_${SHIN_EMAIL}`, 'freelancer'); }
+      catch (error) { console.warn('[NINEWORKS PARTNERS] payment type lock skipped', error); }
+    }
     window.setTimeout(clearSavedLogin, 0);
   }, true);
 
