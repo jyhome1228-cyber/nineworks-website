@@ -147,6 +147,9 @@ const renderContractPanel = (contract = CONTRACT) => {
     if (list) list.insertAdjacentElement('afterend', box);
     else partnersPanel.appendChild(box);
   }
+  const signature = [contract.partnerName, contract.company, contract.scope, contract.feeAmount, contract.advanceAmount, contract.withholdingAmount, contract.balanceNetAmount, contract.totalNetAmount, contract.balanceCondition].join('|');
+  if (box.dataset.contractSignature === signature) return true;
+  box.dataset.contractSignature = signature;
   box.innerHTML = `
     <div class="nw-contracts-admin__head">
       <div><span>Freelancer Contract · Internal Only</span><strong>프리랜서 계약 / 프로젝트 연동</strong></div>
@@ -167,7 +170,10 @@ const renderContractPanel = (contract = CONTRACT) => {
 const keepPanelMounted = () => {
   const mount = () => renderContractPanel(lastRenderedContract || CONTRACT);
   mount();
-  const observer = new MutationObserver(() => mount());
+  const observer = new MutationObserver(() => {
+    const mounted = document.querySelector('[data-admin-panel="partners"] [data-internal-partner-contracts]');
+    if (!mounted) mount();
+  });
   observer.observe(document.body, { childList: true, subtree: true });
   window.addEventListener('nw-admin-panel', (event) => {
     if (event.detail?.panel === 'partners') mount();
