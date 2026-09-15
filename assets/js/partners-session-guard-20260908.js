@@ -1,6 +1,15 @@
 (() => {
   const STORAGE_KEY = 'nw_partner_workspace_email';
 
+  const loadContractOverrides = () => {
+    if (document.querySelector('script[data-partner-contract-overrides]')) return;
+    const script = document.createElement('script');
+    script.src = '/assets/js/partners-contract-overrides-20260915-v2.js?v=20260915-2';
+    script.defer = true;
+    script.dataset.partnerContractOverrides = 'true';
+    document.head.appendChild(script);
+  };
+
   const clearSavedLogin = () => {
     try {
       localStorage.removeItem(STORAGE_KEY);
@@ -13,6 +22,9 @@
     const input = document.querySelector('[data-partner-login-form] input[name="email"]');
     if (input) input.value = '';
   };
+
+  // Load internal partner-only contract UI before the login form is submitted.
+  loadContractOverrides();
 
   // Every fresh document load must begin from the login screen.
   clearSavedLogin();
