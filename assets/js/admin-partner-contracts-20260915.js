@@ -22,6 +22,7 @@ const CONTRACTS = [
 
 const unsubs = [];
 const syncing = new Set();
+let observer = null;
 const money = (value = 0) => `${Number(value || 0).toLocaleString('ko-KR')}원`;
 const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -65,18 +66,29 @@ const enrich = (item = {}, c) => ({
   contractSource: 'INTERNAL_PARTNER_CONTRACT'
 });
 
+const signatureOf = (items = []) => JSON.stringify(items.map((item) => ({
+  id: item.id || '', company: item.company || '', projectName: item.projectName || '', status: item.status || '',
+  projectStage: item.projectStage || '', feeAmount: Number(item.feeAmount || 0), advanceAmount: Number(item.advanceAmount || 0),
+  withholdingAmount: Number(item.withholdingAmount || 0), balanceNetAmount: Number(item.balanceNetAmount || 0),
+  internalOnly: item.internalOnly === true, clientVisible: item.clientVisible === false
+})));
+
 const syncContract = (c) => {
   const key = workspaceKey(c.partnerEmail);
   const unsub = onSnapshot(doc(db, 'partnerWorkspaces', key), async (snapshot) => {
     if (syncing.has(key)) return;
     const data = snapshot.exists() ? (snapshot.data() || {}) : {};
     let assignments = Array.isArray(data.assignments) ? data.assignments.slice() : [];
+    const before = signatureOf(assignments);
 
     if (c.linkedClient === 'rpbio') assignments = assignments.filter((item) => String(item?.id || '') !== c.id);
     const index = assignments.findIndex((item) => matchesContract(item, c));
     if (index >= 0) assignments[index] = enrich(assignments[index], c);
     else if (c.syntheticIfMissing) assignments.push(enrich({ id: c.id }, c));
     else return;
+
+    const after = signatureOf(assignments);
+    if (before === after && data.name === c.partnerName && data.email === c.partnerEmail) return;
 
     syncing.add(key);
     try {
@@ -147,6 +159,9 @@ const ensureOdaCard = () => {
   list.appendChild(card);
 };
 
+const contractPanelHTML = () => `<div class="nw-contracts-admin__head"><div><span>FREELANCER CONTRACT · INTERNAL ONLY</span><strong>프리랜서 계약 / 프로젝트 연동</strong></div><em class="nw-contracts-admin__badge">CLIENT HIDDEN</em></div>` + CONTRACTS.map((c) => `
+    <div class="nw-contract-row"><div class="nw-contract-cell"><span>PARTNER / PROJECT</span><b>${escapeHTML(c.partnerName)} · ${escapeHTML(c.projectName)}<br>${escapeHTML(c.scope)}</b></div><div class="nw-contract-cell"><span>계약금액</span><b>${money(c.feeAmount)}</b></div><div class="nw-contract-cell"><span>선금</span><b>${money(c.advanceAmount)}</b></div><div class="nw-contract-cell"><span>원천징수 3.3%</span><b>${money(c.withholdingAmount)}</b></div><div class="nw-contract-cell"><span>잔금 실지급</span><b>${money(c.balanceNetAmount)}</b></div><div class="nw-contract-cell"><span>총 실지급</span><b>${money(c.totalNetAmount)}</b></div></div>`).join('') + `<div class="nw-contract-note"><strong>클라이언트 비노출</strong> · 위 계약정보는 각 파트너 워크스페이스와 관리자 Partners 영역에서만 확인하며 알피바이오·PHYTO REVOLUTION 클라이언트 화면에는 전달하지 않습니다.</div>`;
+
 const renderContractPanel = () => {
   injectStyle();
   const panel = document.querySelector('[data-admin-panel="partners"]');
@@ -160,15 +175,21 @@ const renderContractPanel = () => {
     const list = panel.querySelector('[data-admin-partner-lite-list]');
     list ? list.insertAdjacentElement('afterend', box) : panel.appendChild(box);
   }
-  box.innerHTML = `<div class="nw-contracts-admin__head"><div><span>FREELANCER CONTRACT · INTERNAL ONLY</span><strong>프리랜서 계약 / 프로젝트 연동</strong></div><em class="nw-contracts-admin__badge">CLIENT HIDDEN</em></div>` + CONTRACTS.map((c) => `
-    <div class="nw-contract-row"><div class="nw-contract-cell"><span>PARTNER / PROJECT</span><b>${escapeHTML(c.partnerName)} · ${escapeHTML(c.projectName)}<br>${escapeHTML(c.scope)}</b></div><div class="nw-contract-cell"><span>계약금액</span><b>${money(c.feeAmount)}</b></div><div class="nw-contract-cell"><span>선금</span><b>${money(c.advanceAmount)}</b></div><div class="nw-contract-cell"><span>원천징수 3.3%</span><b>${money(c.withholdingAmount)}</b></div><div class="nw-contract-cell"><span>잔금 실지급</span><b>${money(c.balanceNetAmount)}</b></div><div class="nw-contract-cell"><span>총 실지급</span><b>${money(c.totalNetAmount)}</b></div></div>`).join('') + `<div class="nw-contract-note"><strong>클라이언트 비노출</strong> · 위 계약정보는 각 파트너 워크스페이스와 관리자 Partners 영역에서만 확인하며 알피바이오·PHYTO REVOLUTION 클라이언트 화면에는 전달하지 않습니다.</div>`;
+  const html = contractPanelHTML();
+  if (box.dataset.renderedHtml !== html) {
+    box.innerHTML = html;
+    box.dataset.renderedHtml = html;
+  }
 };
 
 const keepMounted = () => {
   renderContractPanel();
-  const observer = new MutationObserver(() => {
-    renderContractPanel();
-    ensureOdaCard();
+  if (observer) return;
+  observer = new MutationObserver(() => {
+    window.requestAnimationFrame(() => {
+      renderContractPanel();
+      ensureOdaCard();
+    });
   });
   observer.observe(document.body, { childList: true, subtree: true });
 };
