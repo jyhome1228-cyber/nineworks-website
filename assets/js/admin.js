@@ -186,6 +186,10 @@
     console.error('[NINEWORKS Admin] Partner assignment load failed', error);
   });
 
+  import('./admin-partner-contracts-20260915.js?v=20260915-2').then(refreshNavigation).catch((error) => {
+    console.error('[NINEWORKS Admin] Partner contracts load failed', error);
+  });
+
   import('./admin-partner-submissions-20260824.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Partner submissions load failed', error);
   });
