@@ -36,64 +36,56 @@ const CONTRACT = Object.freeze({
 
 const workspaceId = encodeURIComponent(CONTRACT.partnerEmail.toLowerCase());
 let workspaceUnsub = null;
-let contractUnsub = null;
-let lastRenderedContract = CONTRACT;
 
 const money = (value = 0) => `${Number(value || 0).toLocaleString('ko-KR')}원`;
 const escapeHTML = (value = '') => String(value)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   .replace(/\"/g, '&quot;').replace(/'/g, '&#039;');
 
-const workspaceAssignment = (contract = CONTRACT) => ({
-  id: contract.id,
-  company: contract.company,
-  projectName: contract.projectName,
-  service: contract.service,
-  projectType: contract.projectType,
-  status: contract.status,
-  summary: contract.summary,
-  feeAmount: contract.feeAmount,
-  projectStage: contract.projectStage,
+const workspaceAssignment = () => ({
+  id: CONTRACT.id,
+  company: CONTRACT.company,
+  projectName: CONTRACT.projectName,
+  service: CONTRACT.service,
+  projectType: CONTRACT.projectType,
+  status: CONTRACT.status,
+  summary: CONTRACT.summary,
+  feeAmount: CONTRACT.feeAmount,
+  projectStage: CONTRACT.projectStage,
   proposalUrl: '',
-  paymentType: contract.paymentType,
-  withholdingRate: contract.withholdingRate,
-  withholdingAmount: contract.withholdingAmount,
-  advanceAmount: contract.advanceAmount,
-  balanceGrossAmount: contract.balanceGrossAmount,
-  balanceNetAmount: contract.balanceNetAmount,
-  totalNetAmount: contract.totalNetAmount,
-  withholdingTiming: contract.withholdingTiming,
-  balanceCondition: contract.balanceCondition,
-  scope: contract.scope,
+  paymentType: CONTRACT.paymentType,
+  withholdingRate: CONTRACT.withholdingRate,
+  withholdingAmount: CONTRACT.withholdingAmount,
+  advanceAmount: CONTRACT.advanceAmount,
+  balanceGrossAmount: CONTRACT.balanceGrossAmount,
+  balanceNetAmount: CONTRACT.balanceNetAmount,
+  totalNetAmount: CONTRACT.totalNetAmount,
+  withholdingTiming: CONTRACT.withholdingTiming,
+  balanceCondition: CONTRACT.balanceCondition,
+  scope: CONTRACT.scope,
+  effectiveDate: CONTRACT.effectiveDate,
+  contractStatus: CONTRACT.contractStatus,
   internalOnly: true,
   clientVisible: false,
-  linkedClient: contract.linkedClient,
-  source: contract.source
+  linkedClient: CONTRACT.linkedClient,
+  source: CONTRACT.source
 });
 
 const sameAssignment = (a = {}, b = {}) => [
   'id', 'company', 'projectName', 'service', 'projectType', 'status', 'summary',
   'feeAmount', 'projectStage', 'paymentType', 'withholdingRate', 'withholdingAmount',
   'advanceAmount', 'balanceGrossAmount', 'balanceNetAmount', 'totalNetAmount',
-  'withholdingTiming', 'balanceCondition', 'scope', 'internalOnly', 'clientVisible',
-  'linkedClient', 'source'
+  'withholdingTiming', 'balanceCondition', 'scope', 'effectiveDate', 'contractStatus',
+  'internalOnly', 'clientVisible', 'linkedClient', 'source'
 ].every((key) => String(a?.[key] ?? '') === String(b?.[key] ?? ''));
-
-const syncContractRecord = async () => {
-  await setDoc(doc(db, 'partnerContracts', CONTRACT.id), {
-    ...CONTRACT,
-    updatedAt: serverTimestamp()
-  }, { merge: true });
-};
 
 const syncWorkspaceContract = () => {
   workspaceUnsub?.();
   workspaceUnsub = onSnapshot(doc(db, 'partnerWorkspaces', workspaceId), async (snapshot) => {
     const data = snapshot.exists() ? (snapshot.data() || {}) : {};
     const assignments = Array.isArray(data.assignments) ? data.assignments : [];
-    const wanted = workspaceAssignment(lastRenderedContract || CONTRACT);
-    const existingIndex = assignments.findIndex((item) => String(item?.id || '') === CONTRACT.id);
-    const existing = existingIndex >= 0 ? assignments[existingIndex] : null;
+    const wanted = workspaceAssignment();
+    const existing = assignments.find((item) => String(item?.id || '') === CONTRACT.id);
     if (existing && sameAssignment(existing, wanted)) return;
 
     const next = assignments.filter((item) => String(item?.id || '') !== CONTRACT.id);
@@ -107,9 +99,9 @@ const syncWorkspaceContract = () => {
         updatedAt: serverTimestamp()
       }, { merge: true });
     } catch (error) {
-      console.warn('[NINEWORKS Admin] internal partner workspace sync skipped', error);
+      console.warn('[NINEWORKS Admin] RP Bio partner contract sync skipped', error);
     }
-  }, (error) => console.warn('[NINEWORKS Admin] internal workspace stream skipped', error));
+  }, (error) => console.warn('[NINEWORKS Admin] RP Bio partner workspace stream skipped', error));
 };
 
 const injectStyle = () => {
@@ -134,7 +126,7 @@ const injectStyle = () => {
   document.head.appendChild(style);
 };
 
-const renderContractPanel = (contract = CONTRACT) => {
+const renderContractPanel = () => {
   injectStyle();
   const partnersPanel = document.querySelector('[data-admin-panel="partners"]');
   if (!partnersPanel) return false;
@@ -147,49 +139,37 @@ const renderContractPanel = (contract = CONTRACT) => {
     if (list) list.insertAdjacentElement('afterend', box);
     else partnersPanel.appendChild(box);
   }
-  const signature = [contract.partnerName, contract.company, contract.scope, contract.feeAmount, contract.advanceAmount, contract.withholdingAmount, contract.balanceNetAmount, contract.totalNetAmount, contract.balanceCondition].join('|');
-  if (box.dataset.contractSignature === signature) return true;
-  box.dataset.contractSignature = signature;
+  if (box.dataset.contractReady === 'true') return true;
+  box.dataset.contractReady = 'true';
   box.innerHTML = `
     <div class="nw-contracts-admin__head">
       <div><span>Freelancer Contract · Internal Only</span><strong>프리랜서 계약 / 프로젝트 연동</strong></div>
       <em class="nw-contracts-admin__badge">CLIENT HIDDEN</em>
     </div>
     <div class="nw-contracts-admin__grid">
-      <div class="nw-contracts-admin__cell"><span>PARTNER / PROJECT</span><b>${escapeHTML(contract.partnerName)} · ${escapeHTML(contract.company)}<br>${escapeHTML(contract.scope)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>계약금액</span><b>${money(contract.feeAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>선금</span><b>${money(contract.advanceAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>원천징수 3.3%</span><b>${money(contract.withholdingAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>잔금 실지급</span><b>${money(contract.balanceNetAmount)}</b></div>
-      <div class="nw-contracts-admin__cell"><span>총 실지급</span><b>${money(contract.totalNetAmount)}</b></div>
+      <div class="nw-contracts-admin__cell"><span>PARTNER / PROJECT</span><b>${escapeHTML(CONTRACT.partnerName)} · ${escapeHTML(CONTRACT.company)}<br>${escapeHTML(CONTRACT.scope)}</b></div>
+      <div class="nw-contracts-admin__cell"><span>계약금액</span><b>${money(CONTRACT.feeAmount)}</b></div>
+      <div class="nw-contracts-admin__cell"><span>선금</span><b>${money(CONTRACT.advanceAmount)}</b></div>
+      <div class="nw-contracts-admin__cell"><span>원천징수 3.3%</span><b>${money(CONTRACT.withholdingAmount)}</b></div>
+      <div class="nw-contracts-admin__cell"><span>잔금 실지급</span><b>${money(CONTRACT.balanceNetAmount)}</b></div>
+      <div class="nw-contracts-admin__cell"><span>총 실지급</span><b>${money(CONTRACT.totalNetAmount)}</b></div>
     </div>
-    <div class="nw-contracts-admin__note"><strong>지급 조건</strong> · 선금 ${money(contract.advanceAmount)} 지급. 잔금은 ${escapeHTML(contract.balanceCondition)} 전체 계약금액 기준 원천징수 3.3%(${money(contract.withholdingAmount)})를 잔금에서 공제한 ${money(contract.balanceNetAmount)} 지급. · <strong>클라이언트 비노출</strong> · 이 계약 데이터는 partnerContracts / partnerWorkspaces 내부 경로에만 연결하며 알피바이오 클라이언트 대시보드에는 전달하지 않습니다.</div>`;
+    <div class="nw-contracts-admin__note"><strong>지급 조건</strong> · 선금 ${money(CONTRACT.advanceAmount)} 지급. 잔금은 ${escapeHTML(CONTRACT.balanceCondition)} 전체 계약금액 기준 원천징수 3.3%(${money(CONTRACT.withholdingAmount)})를 잔금에서 공제한 ${money(CONTRACT.balanceNetAmount)} 지급. · <strong>클라이언트 비노출</strong> · 신민용 파트너 워크스페이스와 관리자 Partners 영역에만 연결하며 알피바이오 클라이언트 대시보드에는 전달하지 않습니다.</div>`;
   return true;
 };
 
 const keepPanelMounted = () => {
-  const mount = () => renderContractPanel(lastRenderedContract || CONTRACT);
-  mount();
+  renderContractPanel();
   const observer = new MutationObserver(() => {
-    const mounted = document.querySelector('[data-admin-panel="partners"] [data-internal-partner-contracts]');
-    if (!mounted) mount();
+    if (!document.querySelector('[data-admin-panel="partners"] [data-internal-partner-contracts]')) renderContractPanel();
   });
   observer.observe(document.body, { childList: true, subtree: true });
   window.addEventListener('nw-admin-panel', (event) => {
-    if (event.detail?.panel === 'partners') mount();
+    if (event.detail?.panel === 'partners') renderContractPanel();
   });
 };
 
-const start = async () => {
-  try { await syncContractRecord(); }
-  catch (error) { console.warn('[NINEWORKS Admin] partner contract seed skipped', error); }
-
-  contractUnsub?.();
-  contractUnsub = onSnapshot(doc(db, 'partnerContracts', CONTRACT.id), (snapshot) => {
-    lastRenderedContract = snapshot.exists() ? { ...CONTRACT, ...(snapshot.data() || {}) } : CONTRACT;
-    renderContractPanel(lastRenderedContract);
-  }, () => renderContractPanel(CONTRACT));
-
+const start = () => {
   syncWorkspaceContract();
   keepPanelMounted();
 };
