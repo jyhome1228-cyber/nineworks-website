@@ -179,8 +179,6 @@
     const adv = document.querySelector('[data-account-summary="advance"]'); if (adv) adv.textContent = money(c.advance);
     const bal = document.querySelector('[data-account-summary="finalNet"]'); if (bal) bal.textContent = money(c.balanceNet);
     setFixedAccountUI(c); ensureContractMenu(c);
-    history.replaceState?.(null, '', location.pathname);
-    window.scrollTo(0,0);
   };
 
   const applyExistingPartner = (c) => {
@@ -189,9 +187,12 @@
 
   const begin = () => {
     window.clearInterval(timer);
+    timer = null;
     currentContract = getContract(); if (!currentContract) return;
     const run = () => currentContract.customLogin ? renderCustomWorkspace(currentContract) : applyExistingPartner(currentContract);
-    run(); [100,350,900,1800].forEach((ms) => window.setTimeout(run, ms)); timer = window.setInterval(run, 1800);
+    run();
+    if (currentContract.customLogin) return;
+    [100, 350, 900, 1800, 3500, 6500].forEach((ms) => window.setTimeout(run, ms));
   };
 
   document.addEventListener('submit', (event) => {
