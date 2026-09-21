@@ -118,3 +118,125 @@ body.is-update-modal-open{overflow:hidden}.nw-update-modal{position:fixed;z-inde
   .nw-brand-practice,.nw-brand-work,.nw-brand-system,.nw-home-about,.nw-home-magazine{padding:72px 0}.nw-brand-practice__head h2,.nw-section-head h2,.nw-brand-system h2,.nw-home-about h2{font-size:29px}.nw-section-head{align-items:flex-start;flex-direction:column;margin-bottom:36px}.nw-brand-work-grid{grid-template-columns:1fr;gap:44px}.nw-brand-work-card>div{gap:14px}.nw-brand-work-card span{max-width:48%;font-size:12px}.nw-brand-process{grid-template-columns:repeat(2,1fr)}.nw-brand-process span:nth-child(2){border-right:0}.nw-brand-process span:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .nw-magazine-list a{display:block;padding:20px 0}.nw-magazine-list strong,.nw-magazine-list small{display:block;margin-top:8px}.nw-home-cta{padding:72px 0}.nw-home-cta__inner{display:block}.nw-home-cta .nw-button{margin-top:28px}.nw-update-modal__panel{padding:28px 22px}.nw-update-modal__panel h2{font-size:25px}
 }
+
+/* 2026-09-21 final hero carousel guard
+   Keep three image-only banners visible at desktop/tablet widths and
+   neutralize older responsive slider rules that appear earlier in this file. */
+html body.home-clarity .nw-home-hero{
+  padding:24px 0 54px!important;
+  overflow:hidden!important;
+}
+html body.home-clarity .nw-brand-slider{
+  width:100vw!important;
+  margin-left:calc(50% - 50vw)!important;
+  overflow:hidden!important;
+}
+html body.home-clarity .nw-brand-slider__stage{
+  position:relative!important;
+  width:100%!important;
+  height:clamp(300px,23vw,430px)!important;
+  aspect-ratio:auto!important;
+  overflow:hidden!important;
+  background:#fff!important;
+}
+html body.home-clarity .nw-brand-slide{
+  position:absolute!important;
+  top:0!important;
+  bottom:0!important;
+  inset-block:0!important;
+  height:100%!important;
+  overflow:hidden!important;
+  border-radius:14px!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:scale(.992)!important;
+  filter:saturate(.9) brightness(.96)!important;
+}
+html body.home-clarity .nw-brand-slide.is-prev,
+html body.home-clarity .nw-brand-slide.is-active,
+html body.home-clarity .nw-brand-slide.is-next{
+  visibility:visible!important;
+  opacity:1!important;
+}
+html body.home-clarity .nw-brand-slide.is-prev{
+  left:-8%!important;
+  right:auto!important;
+  width:30%!important;
+  z-index:1!important;
+  transform-origin:right center!important;
+  pointer-events:auto!important;
+}
+html body.home-clarity .nw-brand-slide.is-active{
+  left:23%!important;
+  right:auto!important;
+  width:54%!important;
+  z-index:3!important;
+  transform:scale(1)!important;
+  filter:none!important;
+  pointer-events:auto!important;
+}
+html body.home-clarity .nw-brand-slide.is-next{
+  left:auto!important;
+  right:-8%!important;
+  width:30%!important;
+  z-index:1!important;
+  transform-origin:left center!important;
+  pointer-events:auto!important;
+}
+html body.home-clarity .nw-brand-slide img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+html body.home-clarity .nw-brand-slider__meta,
+html body.home-clarity .nw-brand-slider__control,
+html body.home-clarity .nw-brand-slider [data-slider-title],
+html body.home-clarity .nw-brand-slider [data-slider-meta],
+html body.home-clarity .nw-brand-slider [data-slider-count],
+html body.home-clarity .nw-brand-slider [data-slider-next],
+html body.home-clarity .nw-brand-slider [data-slider-prev]{
+  display:none!important;
+}
+
+@media(max-width:980px){
+  html body.home-clarity .nw-home-hero{padding:20px 0 48px!important}
+  html body.home-clarity .nw-brand-slider__stage{
+    height:clamp(285px,39vw,390px)!important;
+    aspect-ratio:auto!important;
+  }
+  html body.home-clarity .nw-brand-slide.is-prev{
+    left:-10%!important;
+    width:32%!important;
+  }
+  html body.home-clarity .nw-brand-slide.is-active{
+    left:23%!important;
+    width:54%!important;
+  }
+  html body.home-clarity .nw-brand-slide.is-next{
+    right:-10%!important;
+    width:32%!important;
+  }
+}
+@media(max-width:680px){
+  html body.home-clarity .nw-home-hero{padding:12px 0 42px!important}
+  html body.home-clarity .nw-brand-slider__stage{
+    height:auto!important;
+    aspect-ratio:16/11!important;
+  }
+  html body.home-clarity .nw-brand-slide{
+    border-radius:10px!important;
+  }
+  html body.home-clarity .nw-brand-slide.is-prev{
+    left:-31%!important;
+    width:52%!important;
+  }
+  html body.home-clarity .nw-brand-slide.is-active{
+    left:22%!important;
+    width:56%!important;
+  }
+  html body.home-clarity .nw-brand-slide.is-next{
+    right:-31%!important;
+    width:52%!important;
+  }
+}
