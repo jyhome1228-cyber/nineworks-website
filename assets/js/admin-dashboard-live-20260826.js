@@ -33,7 +33,7 @@ const isRecruit = (item) => {
   return service.includes('RECRUIT') || source.includes('/recruit');
 };
 const isPortfolioView = (item) => String(item?.service || '').trim().toUpperCase() === VIEW_SERVICE;
-const shouldAlert = (item) => !isTrashed(item) && !isMemberSignup(item) && !isPortfolioView(item);
+const shouldAlert = (item) => !isTrashed(item) && !isMemberSignup(item) && !isPortfolioView(item) && !isRecruit(item);
 
 const asDate = (value) => {
   if (!value) return null;
@@ -85,17 +85,9 @@ const injectDashboardUI = () => {
   if (!dashboard || dashboard.querySelector('[data-dashboard-live-activity]')) return;
 
   const wrap = document.createElement('div');
-  wrap.className = 'admin-dashboard-live-grid';
+  wrap.className = 'admin-dashboard-live-grid admin-dashboard-live-grid--single';
   wrap.dataset.dashboardLiveActivity = 'true';
   wrap.innerHTML = `
-    <section class="admin-block">
-      <div class="admin-block__head">
-        <div><span class="admin-label">Recruit Activity</span><h3>최근 리크루잇 지원</h3></div>
-        <button type="button" data-dashboard-open-recruits>전체 지원 보기 ↗</button>
-      </div>
-      <div class="admin-dashboard-live-summary"><strong data-dashboard-recruit-total>0</strong><span data-dashboard-recruit-meta>신규 0건 · 전체 지원</span></div>
-      <div class="admin-dashboard-live-list" data-dashboard-recruit-list><div class="admin-dashboard-live-empty">지원 데이터를 불러오는 중입니다.</div></div>
-    </section>
     <section class="admin-block">
       <div class="admin-block__head">
         <div><span class="admin-label">Major Portfolio Access</span><h3>최근 포트폴리오 열람자</h3></div>
@@ -107,10 +99,6 @@ const injectDashboardUI = () => {
 
   dashboard.appendChild(wrap);
 
-  wrap.querySelector('[data-dashboard-open-recruits]')?.addEventListener('click', () => {
-    const target = document.querySelector('[data-admin-tab="recruits"]');
-    if (target) target.click();
-  });
   wrap.querySelector('[data-dashboard-open-portfolio]')?.addEventListener('click', () => {
     const target = document.querySelector('[data-portfolio-view-tab]');
     if (target) target.click();
@@ -217,18 +205,13 @@ const showToast = (title, detail = '', state = 'ok') => {
 };
 
 const alertLabel = (item) => {
-  if (isRecruit(item)) return '리크루잇 지원';
   const service = String(item?.service || '').trim();
   return service || '프로젝트 문의';
 };
 
-const openAlertTarget = (item) => {
+const openAlertTarget = () => {
   window.focus();
-  if (isRecruit(item)) {
-    document.querySelector('[data-admin-tab="recruits"]')?.click();
-  } else {
-    document.querySelector('[data-admin-tab="inquiry"]')?.click();
-  }
+  document.querySelector('[data-admin-tab="inquiry"]')?.click();
 };
 
 const showBrowserNotification = (items) => {
