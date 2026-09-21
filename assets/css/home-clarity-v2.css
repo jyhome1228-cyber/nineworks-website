@@ -619,3 +619,12 @@ html body.home-clarity .nw-home-solutions__grid{
     font-size:14.5px!important;
   }
 }
+
+
+/* Connected services separator cleanup — 2026-09-22 */
+html body.home-clarity .nw-brand-work{
+  border-bottom:0!important;
+}
+html body.home-clarity .nw-home-solutions{
+  border-top:0!important;
+}
