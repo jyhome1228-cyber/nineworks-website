@@ -102,11 +102,9 @@
     section.className = 'nw-client-showcase';
     section.innerHTML = `
       <div class="container nw-client-showcase__head reveal">
-        <div>
-          <p class="eyebrow">PROJECTS / PARTNERS / REVIEW</p>
-          <h2>다양한 기업·기관과 프로젝트와 협력을 이어왔습니다.</h2>
-        </div>
-        <p class="nw-client-showcase__copy">브랜드·디자인 프로젝트 수행을 비롯해 기업과 기관의 디자인 심사, 자문, 협력 프로그램에도 참여하며 다양한 방식으로 관계를 확장해 왔습니다.<br>단발성 결과물보다 실제 운영과 다음 단계까지 이어지는 협업을 중요하게 생각합니다.</p>
+        <p class="eyebrow">PROJECTS / PARTNERS / REVIEW</p>
+        <h2>다양한 기업·기관과 함께<br>프로젝트와 협력을 이어왔습니다.</h2>
+        <p class="nw-client-showcase__copy">브랜드·디자인 프로젝트 수행뿐 아니라 기업과 기관의 디자인 심사, 자문, 교육과 협력 프로그램에도 참여하고 있습니다.<br>서로 다른 분야의 파트너와 실제 업무를 연결하며 경험과 기준을 축적해 왔습니다.</p>
       </div>
       <div class="nw-client-marquee" aria-label="나인웍스와 함께한 기업 로고"></div>`;
     const about = document.querySelector('.nw-home-about');
