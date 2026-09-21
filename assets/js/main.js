@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-7');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-8');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -120,7 +120,7 @@
       </div>
     </div>
     <div class="site-header__main">
-      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}">${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}</a>
+      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS">${isPrintingPage ? '<span class="site-logo__suffix">PRINTING</span>' : ''}</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <div class="site-nav-item">
           <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
@@ -347,7 +347,7 @@
 
   footer.innerHTML = `
     <div class="site-footer__head">
-      <a class="site-footer__brand" href="/">NINEWORKS</a>
+      <a class="site-footer__brand" href="/" aria-label="나인웍스 홈"><img src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS"></a>
       <nav class="site-footer__links" aria-label="푸터 메뉴">
         <a href="/about.html">About</a>
         <a href="/process.html">Process</a>
