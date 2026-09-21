@@ -1,6 +1,6 @@
 (() => {
   const labels = {
-    dashboard: 'Dashboard', inquiry: 'Inquiries', clients: 'Clients', recruits: 'Recruits',
+    dashboard: 'Dashboard', inquiry: 'Inquiries', clients: 'Clients',
     members: 'Members', partners: 'Partners', visitors: 'Visitors',
     'portfolio-views': 'Portfolio Views', trash: 'Trash'
   };
