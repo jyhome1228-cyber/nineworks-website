@@ -39,7 +39,7 @@
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
   loadStyle('assets/css/site-shell-sync-20260902.css?v=20260921-2');
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-1');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-2');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -224,6 +224,7 @@
   const setMenu = (open) => {
     body.classList.toggle('is-menu-open', open);
     trigger?.setAttribute('aria-expanded', String(open));
+    trigger?.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
     overlay?.setAttribute('aria-hidden', String(!open));
     if (!open) {
       overlay?.querySelectorAll('[data-menu-group]').forEach((group) => {
@@ -257,6 +258,7 @@
     });
   });
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 820) setMenu(false); }, { passive: true });
 
   const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
   updateHeader();
