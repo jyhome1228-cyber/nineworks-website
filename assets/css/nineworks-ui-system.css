@@ -793,3 +793,37 @@ html body:not(.admin-page) .site-primary-nav .is-current::after{
   background:var(--nw-accent)!important;
   transform:none!important;
 }
+
+
+/* Remove navigation hover underlines — 2026-09-22 */
+/* Active state is communicated by orange text only. No underline on hover/current/dropdown items. */
+html body:not(.admin-page) .site-primary-nav a,
+html body:not(.admin-page) .site-primary-nav .site-nav-item>a{
+  text-decoration:none!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+html body:not(.admin-page) .site-primary-nav a::before,
+html body:not(.admin-page) .site-primary-nav a::after,
+html body:not(.admin-page) .site-primary-nav .is-current::before,
+html body:not(.admin-page) .site-primary-nav .is-current::after,
+html body:not(.admin-page) .site-nav-dropdown a::before,
+html body:not(.admin-page) .site-nav-dropdown a::after{
+  content:none!important;
+  display:none!important;
+}
+html body:not(.admin-page) .site-nav-dropdown a,
+html body:not(.admin-page) .site-nav-dropdown a:hover,
+html body:not(.admin-page) .site-nav-dropdown a:focus-visible{
+  text-decoration:none!important;
+  box-shadow:none!important;
+  border-bottom-color:#eeeeea!important;
+}
+html body:not(.admin-page) .site-nav-dropdown a:last-child{
+  border-bottom:0!important;
+}
+html body:not(.admin-page) .site-primary-nav>a.is-current,
+html body:not(.admin-page) .site-nav-item>a.is-current{
+  color:var(--nw-accent)!important;
+  background:transparent!important;
+}
