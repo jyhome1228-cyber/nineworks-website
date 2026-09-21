@@ -6,6 +6,11 @@
   const path = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
   const isHome = path === 'index.html' || window.location.pathname.endsWith('/');
   const pageKey = isHome ? 'home' : path.replace(/\.html$/i, '');
+  const printingPages = new Set([
+    'print', 'print-editorial', 'package-production', 'package-sample',
+    'print-partner', 'production'
+  ]);
+  const isPrintingPage = printingPages.has(pageKey);
 
   const assetPath = (value = '') => {
     try { return new URL(value, document.baseURI).pathname; }
@@ -97,7 +102,7 @@
   }
 
   header.innerHTML = `
-    <a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a>
+    <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}">${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}</a>
     <nav class="site-primary-nav" aria-label="주요 메뉴">
       <div class="site-nav-item">
         <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
