@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-10');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-11');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -176,7 +176,10 @@
       <div class="site-header__actions">
         <a class="site-header__action site-header__action--printing" href="/contact.html">프로젝트 문의 <span>↗</span></a>
       </div>
-      <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>
+      <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger>
+        <svg class="menu-trigger__icon menu-trigger__icon--menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="menu-trigger__icon menu-trigger__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
   `;
 
