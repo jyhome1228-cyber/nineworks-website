@@ -375,3 +375,108 @@ html body:not(.admin-page) .site-footer a:hover{color:var(--nw-accent)!important
     color:#fff!important;
   }
 }
+
+
+/* Header consistency + roomy dropdowns — 2026-09-22 */
+@media(min-width:821px){
+  html body:not(.admin-page) .site-header{
+    display:block!important;
+    height:108px!important;
+    min-height:108px!important;
+    padding:0!important;
+  }
+  html body:not(.admin-page) .site-header__top{
+    display:block!important;
+    width:100%!important;
+    height:34px!important;
+    min-height:34px!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  html body:not(.admin-page) .site-header__top-inner{
+    display:flex!important;
+    width:min(1440px,calc(100% - 80px))!important;
+    max-width:1440px!important;
+    height:34px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+  }
+  html body:not(.admin-page) .site-header__network{
+    position:static!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  html body:not(.admin-page) .site-header__utility{
+    position:static!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  html body:not(.admin-page) .site-header__main{
+    position:relative!important;
+    display:grid!important;
+    width:min(1440px,calc(100% - 80px))!important;
+    max-width:1440px!important;
+    height:74px!important;
+    min-height:74px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr)!important;
+    align-items:center!important;
+    gap:clamp(34px,4vw,70px)!important;
+    transform:none!important;
+  }
+  html body:not(.admin-page) .site-header__main>.site-logo{
+    position:static!important;
+    justify-self:start!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  html body:not(.admin-page) .site-header__main>.site-primary-nav{
+    position:static!important;
+    justify-self:center!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  html body:not(.admin-page) .site-header__main>.site-header__actions{
+    position:static!important;
+    justify-self:end!important;
+    margin:0!important;
+    transform:none!important;
+  }
+}
+
+/* Dropdown menus: slightly wider and taller, with comfortable two-column labels. */
+html body:not(.admin-page) .site-nav-dropdown{
+  width:344px!important;
+  min-width:344px!important;
+  padding:10px 12px!important;
+  border-radius:16px!important;
+}
+html body:not(.admin-page) .site-nav-dropdown--mega{
+  width:640px!important;
+  min-width:640px!important;
+  padding:10px 12px!important;
+  column-gap:18px!important;
+}
+html body:not(.admin-page) .site-nav-dropdown>a{
+  min-height:46px!important;
+  padding:10px 10px!important;
+  gap:22px!important;
+}
+html body:not(.admin-page) .site-nav-dropdown>a>span{
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+html body:not(.admin-page) .site-nav-dropdown>a>small{
+  font-size:10px!important;
+  line-height:1.2!important;
+  letter-spacing:.07em!important;
+}
