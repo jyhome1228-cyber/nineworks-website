@@ -757,3 +757,39 @@ html body.solutions-page .operation-flow article{
     font-size:clamp(34px,10vw,44px)!important;
   }
 }
+
+
+/* Final nav-state cleanup — 2026-09-22 */
+/* Only the current page uses orange text + underline. Hover stays subtle. */
+html body:not(.admin-page) .site-primary-nav>a::after,
+html body:not(.admin-page) .site-nav-item>a::after{
+  content:none!important;
+}
+html body:not(.admin-page) .site-primary-nav>a:hover:not(.is-current),
+html body:not(.admin-page) .site-nav-item>a:hover:not(.is-current){
+  background:var(--nw-accent-soft)!important;
+  color:#333!important;
+}
+html body:not(.admin-page) .site-primary-nav>a:hover:not(.is-current) .site-nav-caret,
+html body:not(.admin-page) .site-nav-item>a:hover:not(.is-current) .site-nav-caret{
+  color:var(--nw-accent)!important;
+}
+html body:not(.admin-page) .site-primary-nav>a.is-current,
+html body:not(.admin-page) .site-nav-item>a.is-current{
+  background:transparent!important;
+  color:var(--nw-accent)!important;
+}
+html body:not(.admin-page) .site-primary-nav>a.is-current::after,
+html body:not(.admin-page) .site-nav-item>a.is-current::after,
+html body:not(.admin-page) .site-primary-nav .is-current::after{
+  content:""!important;
+  position:absolute!important;
+  left:8px!important;
+  right:8px!important;
+  bottom:-16px!important;
+  width:auto!important;
+  height:2px!important;
+  border-radius:999px!important;
+  background:var(--nw-accent)!important;
+  transform:none!important;
+}
