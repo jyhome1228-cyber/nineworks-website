@@ -39,6 +39,7 @@
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
   loadStyle('assets/css/site-shell-sync-20260902.css?v=20260921-2');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-1');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -102,29 +103,19 @@
     <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}">${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}</a>
     <nav class="site-primary-nav" aria-label="주요 메뉴">
       <div class="site-nav-item">
-        <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
-        <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
-          <a href="/about.html"><span>나인웍스</span><small>회사소개</small></a>
-          <a href="/designer.html"><span>대표 디자이너</span><small>박재영</small></a>
-          <a href="/performance.html"><span>재무정보</span><small>사업정보</small></a>
-          <a href="/partners.html"><span>협력사</span><small>파트너 네트워크</small></a>
-        </div>
-      </div>
-      <div class="site-nav-item">
-        <a href="/process.html" data-nav-key="process">PROCESS <span class="site-nav-caret">▾</span></a>
-        <div class="site-nav-dropdown" aria-label="프로세스 메뉴">
-          <a href="/project-operation.html" style="margin-bottom:8px!important;padding-bottom:13px!important;border-bottom:1px solid #aaa9a3!important"><span>프로젝트 프로세스</span><small>진행 절차</small></a>
-          <a href="/branding.html"><span>브랜딩</span><small>브랜드</small></a>
-          <a href="/package-design.html"><span>패키지 디자인</span><small>패키지</small></a>
-          <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>파트너십</small></a>
-          <a href="/develop.html"><span>웹 &amp; 커머스</span><small>디지털</small></a>
-          <a href="/solutions.html"><span>콘텐츠 디자인</span><small>콘텐츠</small></a>
+        <a href="/solutions.html" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
+        <div class="site-nav-dropdown site-nav-dropdown--mega" aria-label="서비스 메뉴">
+          <a href="/branding.html"><span>브랜드 디자인</span><small>전략 · 네이밍 · 아이덴티티</small></a>
+          <a href="/package-design.html"><span>패키지 디자인</span><small>용기 · 라벨 · 박스 · 쇼핑백</small></a>
+          <a href="/develop.html"><span>웹·디지털</span><small>홈페이지 · 쇼핑몰 · 시스템</small></a>
+          <a href="/solutions.html#content"><span>콘텐츠·편집</span><small>상세페이지 · SNS · 소개서</small></a>
+          <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>월간 디자인 · 유지관리</small></a>
+          <a href="/project-operation.html"><span>진행 과정</span><small>상담부터 납품까지</small></a>
         </div>
       </div>
       <div class="site-nav-item">
         <a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
         <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-          <a href="/majorportfolio/"><span>비즈니스 포트폴리오</span><small>기업용</small></a>
           <a href="/portfolio.html?filter=major"><span>메이저 프로젝트</span><small>주요 작업</small></a>
           <a href="/project.html"><span>브랜딩 프로젝트</span><small>브랜드</small></a>
           <a href="/local-branding.html" data-local-branding-nav="true"><span>로컬 브랜딩</span><small>로컬</small></a>
@@ -139,50 +130,37 @@
         </div>
       </div>
       <div class="site-nav-item">
-        <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
-        <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-          <a href="/solutions.html"><span>서비스 전체보기</span><small>안내</small></a>
-          <a href="/signature-project.html"><span>시그니처 프로젝트</span><small>주요 구성</small></a>
-          <a href="/develop.html"><span>사이트 제작 · 시스템</span><small>웹</small></a>
-        </div>
-      </div>
-      <div class="site-nav-item">
-        <a href="/recruit.html" data-nav-key="designer-network">DESIGNER <span class="site-nav-caret">▾</span></a>
-        <div class="site-nav-dropdown" aria-label="디자이너 메뉴">
-          <a href="/recruit.html"><span>파트너 디자이너 등록</span><small>협업 네트워크</small></a>
-          <a href="/design-academy.html"><span>디자인 아카데미 등록</span><small>교육 프로그램</small></a>
+        <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
+        <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
+          <a href="/about.html"><span>나인웍스 소개</span><small>스튜디오</small></a>
+          <a href="/designer.html"><span>대표 디자이너</span><small>박재영</small></a>
+          <a href="/partners.html"><span>파트너 네트워크</span><small>협업</small></a>
+          <a href="/recruit.html"><span>파트너 디자이너</span><small>등록</small></a>
           <a href="/magazine.html"><span>디자인 아티클</span><small>브랜드 · 디자인</small></a>
-          <a href="/global-references.html"><span>해외 디자인 레퍼런스</span><small>Global Archive</small></a>
         </div>
       </div>
-      <a href="/contact.html" data-nav-key="contact">CONTACT</a>
+      <a href="/magazine.html" data-nav-key="magazine">MAGAZINE</a>
     </nav>
-    <div class="site-header__actions" aria-label="비즈니스 및 프린팅 바로가기">
-      <a class="site-header__action" href="/majorportfolio/">B2B <span>↗</span></a>
-      <a class="site-header__action site-header__action--printing" href="/print.html">PRINTING <span>↗</span></a>
+    <div class="site-header__utility" aria-label="특화 서비스 바로가기">
+      <a href="/support.html">정부지원사업</a>
+      <a href="/majorportfolio/">B2B</a>
+      <a href="/print.html">PRINTING</a>
+    </div>
+    <div class="site-header__actions">
+      <a class="site-header__action site-header__action--printing" href="/contact.html">프로젝트 문의 <span>↗</span></a>
     </div>
     <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>`;
 
   overlay.innerHTML = `
     <nav class="menu-nav" aria-label="모바일 주요 메뉴">
       <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">ABOUT <span>+</span></button>
+        <button class="menu-nav__toggle" type="button" aria-expanded="false">SERVICES <span>+</span></button>
         <div class="menu-nav__sub" hidden>
-          <a href="/about.html">나인웍스</a>
-          <a href="/designer.html">대표 디자이너 · 박재영</a>
-          <a href="/performance.html">재무정보</a>
-          <a href="/partners.html">협력사</a>
-        </div>
-      </div>
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">PROCESS <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/project-operation.html" style="margin-bottom:8px!important;padding-bottom:12px!important;border-bottom:1px solid rgba(255,255,255,.28)!important">프로젝트 프로세스</a>
-          <a href="/branding.html">브랜딩</a>
+          <a href="/branding.html">브랜드 디자인</a>
           <a href="/package-design.html">패키지 디자인</a>
+          <a href="/develop.html">웹·디지털</a>
+          <a href="/solutions.html#content">콘텐츠·편집</a>
           <a href="/solutions.html#brand-operation">브랜드 운영</a>
-          <a href="/develop.html">웹 &amp; 커머스</a>
-          <a href="/solutions.html">콘텐츠 디자인</a>
         </div>
       </div>
       <div class="menu-nav__group" data-menu-group>
@@ -203,25 +181,19 @@
         </div>
       </div>
       <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
+        <button class="menu-nav__toggle" type="button" aria-expanded="false">ABOUT <span>+</span></button>
         <div class="menu-nav__sub" hidden>
-          <a href="/solutions.html">서비스 전체보기</a>
-          <a href="/signature-project.html">시그니처 프로젝트</a>
-          <a href="/develop.html">사이트 제작 · 시스템</a>
-        </div>
-      </div>
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">DESIGNER <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
+          <a href="/about.html">나인웍스 소개</a>
+          <a href="/designer.html">대표 디자이너</a>
+          <a href="/partners.html">파트너 네트워크</a>
           <a href="/recruit.html">파트너 디자이너 등록</a>
-          <a href="/design-academy.html">디자인 아카데미 등록</a>
-          <a href="/magazine.html">디자인 아티클</a>
-          <a href="/global-references.html">해외 디자인 레퍼런스</a>
         </div>
       </div>
-      <a class="menu-nav__main" href="/contact.html">CONTACT</a>
+      <a class="menu-nav__main" href="/magazine.html">MAGAZINE</a>
+      <a class="menu-nav__main" href="/contact.html">PROJECT INQUIRY</a>
     </nav>
     <div class="menu-business-cta">
+      <a class="menu-business-cta__link" href="/support.html"><span>정부지원사업</span><span>↗</span></a>
       <a class="menu-business-cta__link" href="/majorportfolio/"><span>B2B</span><span>↗</span></a>
       <a class="menu-business-cta__link menu-business-cta__link--printing" href="/print.html"><span>PRINTING</span><span>↗</span></a>
     </div>
@@ -234,13 +206,11 @@
 
   const navMap = {
     about: 'about', designer: 'about', performance: 'about', partners: 'about',
-    branding: 'process', 'project-operation': 'process', 'package-design': 'process', process: 'process',
+    branding: 'services', 'project-operation': 'services', 'package-design': 'services', process: 'services',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
-    magazine: 'designer-network', 'magazine-detail': 'designer-network', 'global-references': 'designer-network',
-    solutions: 'solutions', 'signature-project': 'solutions', develop: 'solutions', print: 'solutions',
-    'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions',
-    recruit: 'designer-network', 'design-academy': 'designer-network',
-    membership: 'solutions', 'client-register': 'solutions', contact: 'contact'
+    magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
+    solutions: 'services', 'signature-project': 'services', develop: 'services',
+    recruit: 'about', 'design-academy': 'about', membership: 'services', 'client-register': 'services'
   };
   const activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
   document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
