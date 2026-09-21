@@ -551,3 +551,71 @@ html body.home-clarity .nw-home-about__gallery img{
     margin-top:22px!important;
   }
 }
+
+
+/* Simplified research + centered connected services — 2026-09-22 */
+html body.home-clarity .nw-home-about__intro{
+  max-width:1040px!important;
+}
+html body.home-clarity .nw-home-about__intro .nw-home-about__lead{
+  max-width:900px!important;
+}
+html body.home-clarity .nw-home-about__gallery{
+  margin-top:48px!important;
+}
+
+/* Connected services follows the same centered editorial hierarchy as the research section. */
+html body.home-clarity .nw-home-solutions{
+  padding:104px 0!important;
+  border-bottom:1px solid var(--line)!important;
+  background:#fff!important;
+}
+html body.home-clarity .nw-home-solutions__intro{
+  display:flex!important;
+  max-width:980px!important;
+  margin:0 auto 50px!important;
+  padding:0!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  gap:0!important;
+  text-align:center!important;
+}
+html body.home-clarity .nw-home-solutions__intro .eyebrow{
+  margin:0 0 20px!important;
+}
+html body.home-clarity .nw-home-solutions__intro h2{
+  max-width:19ch!important;
+  margin:0 auto!important;
+  font-size:clamp(36px,3.35vw,50px)!important;
+  font-weight:620!important;
+  line-height:1.18!important;
+  letter-spacing:-.045em!important;
+  text-align:center!important;
+  word-break:keep-all!important;
+  text-wrap:balance!important;
+}
+html body.home-clarity .nw-home-solutions__intro-copy{
+  max-width:820px!important;
+  margin:28px auto 0!important;
+  color:#666661!important;
+  font-size:15.5px!important;
+  line-height:1.82!important;
+  text-align:center!important;
+  word-break:keep-all!important;
+}
+html body.home-clarity .nw-home-solutions__grid{
+  margin-top:0!important;
+}
+@media(max-width:680px){
+  html body.home-clarity .nw-home-solutions{padding:74px 0!important}
+  html body.home-clarity .nw-home-solutions__intro{
+    margin-bottom:36px!important;
+  }
+  html body.home-clarity .nw-home-solutions__intro h2{
+    font-size:clamp(32px,9vw,40px)!important;
+  }
+  html body.home-clarity .nw-home-solutions__intro-copy{
+    margin-top:20px!important;
+    font-size:14.5px!important;
+  }
+}
