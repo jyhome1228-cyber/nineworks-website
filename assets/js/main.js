@@ -39,7 +39,7 @@
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
   loadStyle('assets/css/site-shell-sync-20260902.css?v=20260921-2');
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-4');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-5');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
