@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-8');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-9');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -236,7 +236,7 @@
       <a class="menu-business-cta__link menu-business-cta__link--printing" href="/print.html"><span>PRINTING</span><span>↗</span></a>
     </div>
     <div class="menu-footer">
-      <p>NINEWORKS<br>Design Studio · Incheon, Korea</p>
+      <div class="menu-footer__brand"><img src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS"><span>Design Studio · Incheon, Korea</span></div>
       <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
     </div>`;
 
