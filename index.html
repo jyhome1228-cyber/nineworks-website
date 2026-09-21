@@ -83,11 +83,12 @@
   originals.slice(-cloneCount).forEach((slide)=>track.insertBefore(slide.cloneNode(true),track.firstChild));
   originals.slice(0,cloneCount).forEach((slide)=>track.appendChild(slide.cloneNode(true)));
 
-  let items=[...track.querySelectorAll('.nw-hero-card')];
+  const items=[...track.querySelectorAll('.nw-hero-card')];
+  items.forEach((item)=>item.querySelectorAll('img').forEach((img)=>img.draggable=false));
+
   let position=cloneCount;
   let timer=null;
   let moving=false;
-
   let dragging=false;
   let dragged=false;
   let pointerId=null;
@@ -96,8 +97,6 @@
   let startTranslate=0;
   let currentTranslate=0;
   let dragStartedAt=0;
-
-  items.forEach((item)=>item.querySelectorAll('img').forEach((img)=>img.draggable=false));
 
   const mark=()=>{
     items.forEach((item,i)=>{
@@ -125,16 +124,7 @@
 
   const restart=()=>{
     clearInterval(timer);
-    if(!dragging) timer=setInterval(()=>go(1),4700);
-  };
-
-  const go=(delta)=>{
-    if(moving||dragging)return;
-    moving=true;
-    position+=delta;
-    mark();
-    center(true);
-    restart();
+    if(!dragging)timer=setInterval(()=>go(1),4700);
   };
 
   const normalize=()=>{
@@ -147,6 +137,15 @@
       mark();
       center(false);
     }
+  };
+
+  const go=(delta)=>{
+    if(moving||dragging)return;
+    moving=true;
+    position+=delta;
+    mark();
+    center(true);
+    restart();
   };
 
   track.addEventListener('transitionend',(event)=>{
@@ -164,14 +163,13 @@
       const idx=items.indexOf(item);
       if(idx===position)return;
       event.preventDefault();
-      if(idx<position)go(-1);
-      else go(1);
+      go(idx<position?-1:1);
     });
   });
 
-  const endDrag=(event)=>{
+  const finishDrag=(event)=>{
     if(!dragging)return;
-    if(pointerId!==null && event?.pointerId!==undefined && event.pointerId!==pointerId)return;
+    if(pointerId!==null && event.pointerId!==undefined && event.pointerId!==pointerId)return;
 
     const dx=lastX-startX;
     const elapsed=Math.max(1,performance.now()-dragStartedAt);
@@ -189,11 +187,11 @@
       position+=dx<0?1:-1;
       mark();
       center(true);
-      setTimeout(()=>{dragged=false},80);
     }else{
       center(true);
-      setTimeout(()=>{dragged=false},80);
     }
+
+    window.setTimeout(()=>{dragged=false},100);
     restart();
   };
 
@@ -220,8 +218,8 @@
     applyTranslate(startTranslate+dx,false);
   });
 
-  viewport.addEventListener('pointerup',endDrag);
-  viewport.addEventListener('pointercancel',endDrag);
+  viewport.addEventListener('pointerup',finishDrag);
+  viewport.addEventListener('pointercancel',finishDrag);
 
   root.addEventListener('mouseenter',()=>clearInterval(timer));
   root.addEventListener('mouseleave',()=>{if(!dragging)restart()});
