@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-10');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-11');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -131,7 +131,9 @@
             <a href="/recruit.html"><span>파트너 디자이너</span><small>등록</small></a>
           </div>
         </div>
+        <span class="site-nav-separator" aria-hidden="true">·</span>
         <a href="/process.html" data-nav-key="process">PROCESS</a>
+        <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
@@ -148,6 +150,7 @@
             <a href="/portfolio.html?filter=event"><span>이벤트 디자인</span><small>이벤트</small></a>
           </div>
         </div>
+        <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
@@ -157,6 +160,7 @@
             <a href="/print.html"><span>인쇄 · 패키지 제작</span><small>샘플 · 양산 · 납품</small></a>
           </div>
         </div>
+        <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/solutions.html#services" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown site-nav-dropdown--mega" aria-label="서비스 메뉴">
@@ -166,6 +170,7 @@
             <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>월간 디자인 · 유지관리</small></a>
           </div>
         </div>
+        <span class="site-nav-separator" aria-hidden="true">·</span>
         <a href="/magazine.html" data-nav-key="magazine">MAGAZINE</a>
       </nav>
       <div class="site-header__actions">
