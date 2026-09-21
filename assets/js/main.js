@@ -3,14 +3,11 @@
   window.__NW_MAIN_READY__ = true;
 
   const body = document.body;
-  const path = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
-  const isHome = path === 'index.html' || window.location.pathname.endsWith('/');
+  const currentPath = window.location.pathname.toLowerCase();
+  const path = currentPath.split('/').filter(Boolean).pop() || 'index.html';
+  const isHome = path === 'index.html' || currentPath === '/';
   const pageKey = isHome ? 'home' : path.replace(/\.html$/i, '');
-  const printingPages = new Set([
-    'print', 'print-editorial', 'package-production', 'package-sample',
-    'print-partner', 'production'
-  ]);
-  const isPrintingPage = printingPages.has(pageKey);
+  const isPrintingPage = /\/(?:print|print-editorial|print-partner|package-production|package-sample|production)(?:\.html)?\/?$/.test(currentPath);
 
   const assetPath = (value = '') => {
     try { return new URL(value, document.baseURI).pathname; }
@@ -41,7 +38,7 @@
   loadStyle('assets/css/mobile-ui-20260822.css?v=20260824-4');
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
-  loadStyle('assets/css/site-shell-sync-20260902.css?v=20260912-1');
+  loadStyle('assets/css/site-shell-sync-20260902.css?v=20260921-2');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -232,6 +229,8 @@
       <p>NINEWORKS<br>Design Studio · Incheon, Korea</p>
       <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
     </div>`;
+
+  document.querySelectorAll('.sector-code').forEach((label) => label.remove());
 
   const navMap = {
     about: 'about', designer: 'about', performance: 'about', partners: 'about',
