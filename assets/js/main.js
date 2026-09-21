@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-11');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-12');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -125,10 +125,10 @@
         <div class="site-nav-item">
           <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
-            <a href="/about.html"><span>나인웍스 소개</span><small>스튜디오</small></a>
-            <a href="/designer.html"><span>대표 디자이너</span><small>박재영</small></a>
-            <a href="/partners.html"><span>파트너 네트워크</span><small>협업</small></a>
-            <a href="/recruit.html"><span>파트너 디자이너</span><small>등록</small></a>
+            <a href="/about.html"><span>나인웍스 소개</span><small>STUDIO</small></a>
+            <a href="/designer.html"><span>대표 디자이너</span><small>DIRECTOR</small></a>
+            <a href="/partners.html"><span>파트너 네트워크</span><small>PARTNERS</small></a>
+            <a href="/recruit.html"><span>파트너 디자이너</span><small>RECRUIT</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
@@ -137,37 +137,37 @@
         <div class="site-nav-item">
           <a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-            <a href="/portfolio.html?filter=major"><span>메이저 프로젝트</span><small>주요 작업</small></a>
-            <a href="/project.html"><span>브랜딩 프로젝트</span><small>브랜드</small></a>
-            <a href="/local-branding.html" data-local-branding-nav="true"><span>로컬 브랜딩</span><small>로컬</small></a>
-            <a href="/portfolio.html?filter=website"><span>웹사이트</span><small>웹</small></a>
-            <a href="/portfolio.html?filter=system"><span>시스템 구축</span><small>시스템</small></a>
-            <a href="/portfolio.html?filter=detailpage"><span>상세페이지</span><small>상세</small></a>
-            <a href="/portfolio.html?filter=instagram"><span>인스타그램 피드</span><small>소셜</small></a>
-            <a href="/portfolio.html?filter=editorial"><span>편집 디자인</span><small>편집</small></a>
-            <a href="/portfolio.html?filter=ir"><span>IR · PPT</span><small>문서</small></a>
-            <a href="/portfolio.html?filter=package"><span>패키지 디자인</span><small>패키지</small></a>
-            <a href="/portfolio.html?filter=event"><span>이벤트 디자인</span><small>이벤트</small></a>
+            <a href="/portfolio.html?filter=major"><span>메이저 프로젝트</span><small>MAJOR</small></a>
+            <a href="/project.html"><span>브랜딩 프로젝트</span><small>BRANDING</small></a>
+            <a href="/local-branding.html" data-local-branding-nav="true"><span>로컬 브랜딩</span><small>LOCAL</small></a>
+            <a href="/portfolio.html?filter=website"><span>웹사이트</span><small>WEBSITE</small></a>
+            <a href="/portfolio.html?filter=system"><span>시스템 구축</span><small>SYSTEM</small></a>
+            <a href="/portfolio.html?filter=detailpage"><span>상세페이지</span><small>DETAIL PAGE</small></a>
+            <a href="/portfolio.html?filter=instagram"><span>인스타그램 피드</span><small>SOCIAL</small></a>
+            <a href="/portfolio.html?filter=editorial"><span>편집 디자인</span><small>EDITORIAL</small></a>
+            <a href="/portfolio.html?filter=ir"><span>IR · PPT</span><small>PRESENTATION</small></a>
+            <a href="/portfolio.html?filter=package"><span>패키지 디자인</span><small>PACKAGE</small></a>
+            <a href="/portfolio.html?filter=event"><span>이벤트 디자인</span><small>EVENT</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-            <a href="/solutions.html"><span>솔루션 전체보기</span><small>연결 서비스</small></a>
-            <a href="/develop.html"><span>웹사이트 · 시스템</span><small>개발 · 운영도구</small></a>
-            <a href="/support.html"><span>정부지원사업</span><small>범위 · 견적 · 수행</small></a>
-            <a href="/print.html"><span>인쇄 · 패키지 제작</span><small>샘플 · 양산 · 납품</small></a>
+            <a href="/solutions.html"><span>솔루션 전체보기</span><small>OVERVIEW</small></a>
+            <a href="/develop.html"><span>웹사이트 · 시스템</span><small>DIGITAL BUILD</small></a>
+            <a href="/support.html"><span>정부지원사업</span><small>GOVERNMENT SUPPORT</small></a>
+            <a href="/print.html"><span>인쇄 · 패키지 제작</span><small>PRODUCTION</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/solutions.html#services" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown site-nav-dropdown--mega" aria-label="서비스 메뉴">
-            <a href="/branding.html"><span>브랜드 디자인</span><small>전략 · 네이밍 · 아이덴티티</small></a>
-            <a href="/package-design.html"><span>패키지 디자인</span><small>용기 · 라벨 · 박스 · 쇼핑백</small></a>
-            <a href="/solutions.html#content"><span>콘텐츠 · 편집</span><small>상세페이지 · SNS · 소개서</small></a>
-            <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>월간 디자인 · 유지관리</small></a>
+            <a href="/branding.html"><span>브랜드 디자인</span><small>BRAND DESIGN</small></a>
+            <a href="/package-design.html"><span>패키지 디자인</span><small>PACKAGE DESIGN</small></a>
+            <a href="/solutions.html#content"><span>콘텐츠 · 편집</span><small>CONTENT</small></a>
+            <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>BRAND OPERATION</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
