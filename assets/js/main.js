@@ -142,9 +142,6 @@
           <a href="/solutions.html"><span>서비스 전체보기</span><small>안내</small></a>
           <a href="/signature-project.html"><span>시그니처 프로젝트</span><small>주요 구성</small></a>
           <a href="/develop.html"><span>사이트 제작 · 시스템</span><small>웹</small></a>
-          <a href="/print-editorial.html"><span>프린트 디자인</span><small>인쇄</small></a>
-          <a href="/package-production.html"><span>인쇄 · 패키지 제작</span><small>제작</small></a>
-          <a href="/package-sample.html"><span>패키지 샘플 제작</span><small>샘플</small></a>
         </div>
       </div>
       <div class="site-nav-item">
@@ -158,7 +155,10 @@
       </div>
       <a href="/contact.html" data-nav-key="contact">CONTACT</a>
     </nav>
-    <a class="site-header__action" href="/majorportfolio/">BUSINESS PORTFOLIO <span>↗</span></a>
+    <div class="site-header__actions" aria-label="비즈니스 및 프린팅 바로가기">
+      <a class="site-header__action" href="/majorportfolio/">B2B <span>↗</span></a>
+      <a class="site-header__action site-header__action--printing" href="/print.html">PRINTING <span>↗</span></a>
+    </div>
     <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>`;
 
   overlay.innerHTML = `
@@ -206,9 +206,6 @@
           <a href="/solutions.html">서비스 전체보기</a>
           <a href="/signature-project.html">시그니처 프로젝트</a>
           <a href="/develop.html">사이트 제작 · 시스템</a>
-          <a href="/print-editorial.html">프린트 디자인</a>
-          <a href="/package-production.html">인쇄 · 패키지 제작</a>
-          <a href="/package-sample.html">패키지 샘플 제작</a>
         </div>
       </div>
       <div class="menu-nav__group" data-menu-group>
@@ -223,7 +220,8 @@
       <a class="menu-nav__main" href="/contact.html">CONTACT</a>
     </nav>
     <div class="menu-business-cta">
-      <a class="menu-business-cta__link" href="/majorportfolio/"><span>BUSINESS PORTFOLIO</span><span>↗</span></a>
+      <a class="menu-business-cta__link" href="/majorportfolio/"><span>B2B</span><span>↗</span></a>
+      <a class="menu-business-cta__link menu-business-cta__link--printing" href="/print.html"><span>PRINTING</span><span>↗</span></a>
     </div>
     <div class="menu-footer">
       <p>NINEWORKS<br>Design Studio · Incheon, Korea</p>
