@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-2');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-3');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -251,7 +251,11 @@
     magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
     'design-academy': 'about'
   };
-  const activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
+  let activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
+  if (body.classList.contains('about-page')) activeNav = 'about';
+  else if (body.classList.contains('process-overview-page')) activeNav = 'process';
+  else if (body.classList.contains('solutions-page')) activeNav = 'solutions';
+  else if (body.classList.contains('portfolio-detail-page')) activeNav = 'portfolio';
   document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
     const active = link.dataset.navKey === activeNav;
     link.classList.toggle('is-current', active);
