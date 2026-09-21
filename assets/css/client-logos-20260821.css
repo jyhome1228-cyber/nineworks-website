@@ -53,3 +53,11 @@
     font-size:13px!important;
   }
 }
+
+
+/* Dynamic client intro visibility guard — 2026-09-22 */
+.home-clarity .nw-client-showcase__head{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
