@@ -120,3 +120,258 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--nw-text);outline
   :root{--nw-container:calc(100% - 28px)}
   html body .site-shell .site-header .site-header__main .site-logo{font-size:18px!important}html body .site-shell .site-header .site-header__main .site-logo--printing{font-size:15px!important}.page-title,.sector-hero h1{font-size:clamp(36px,11vw,46px)!important}.nw-support-hero{padding-top:42px}.nw-support-hero__kicker{margin-bottom:18px;font-size:12px}.nw-support-hero h1{font-size:clamp(34px,10vw,43px)}.nw-support-hero__copy{font-size:14px;line-height:1.72}.nw-support-hero__actions{width:100%;flex-direction:column}.nw-support-hero__actions a{width:100%;min-height:50px}.nw-support-hero__points{margin-top:40px}.nw-support-hero__points>div{padding:20px 18px}.nw-support-section{padding:54px 0}.nw-support-grid,.nw-support-flow{grid-template-columns:1fr}.nw-support-card,.nw-support-step{min-height:0;padding:22px}.nw-support-card h3,.nw-support-step h3{margin-top:24px}.nw-support-cta{padding:58px 0 68px!important}.quote-choice-grid,.quote-choice-grid--2,.quote-inline{grid-template-columns:1fr!important}
 }
+
+
+/* NINEWORKS orange design system — 2026-09-21
+   Manyfast-inspired UI language: warm accent, softer cards, compact controls,
+   clear typography hierarchy and filled primary actions. */
+:root{
+  --nw-accent:#ff5a1f;
+  --nw-accent-hover:#e94d15;
+  --nw-accent-soft:#fff2ec;
+  --nw-accent-soft-2:#fff8f5;
+  --nw-accent-line:#ffd2c0;
+  --nw-ui-bg:#fafaf8;
+  --nw-ui-card:#ffffff;
+  --nw-ui-line:#e7e7e2;
+  --nw-ui-text:#171717;
+  --nw-ui-muted:#777773;
+  --nw-ui-radius:14px;
+  --nw-ui-radius-lg:20px;
+  --nw-ui-shadow:0 14px 40px rgba(22,22,22,.07);
+}
+html body:not(.admin-page){background:#fff;color:var(--nw-ui-text)}
+html body:not(.admin-page) ::selection{background:var(--nw-accent);color:#fff}
+
+/* Header / navigation */
+html body:not(.admin-page) .site-header{
+  background:rgba(255,255,255,.97)!important;
+  border-bottom-color:#ecece8!important;
+}
+html body:not(.admin-page) .site-primary-nav>a,
+html body:not(.admin-page) .site-nav-item>a{
+  border-radius:10px!important;
+  transition:background-color .18s ease,color .18s ease!important;
+}
+html body:not(.admin-page) .site-primary-nav>a:hover,
+html body:not(.admin-page) .site-nav-item:hover>a,
+html body:not(.admin-page) .site-primary-nav .is-current{
+  background:var(--nw-accent-soft)!important;
+  color:var(--nw-accent)!important;
+}
+html body:not(.admin-page) .site-nav-item:hover>a .site-nav-caret,
+html body:not(.admin-page) .site-primary-nav .is-current .site-nav-caret{color:var(--nw-accent)!important}
+html body:not(.admin-page) .site-nav-dropdown{
+  border-color:var(--nw-ui-line)!important;
+  border-radius:14px!important;
+  box-shadow:var(--nw-ui-shadow)!important;
+}
+html body:not(.admin-page) .site-nav-dropdown a:hover{
+  background:var(--nw-accent-soft)!important;
+}
+html body:not(.admin-page) .site-nav-dropdown a:hover span{color:var(--nw-accent)!important}
+html body:not(.admin-page) .site-nav-dropdown small{color:#9a9a95!important}
+html body:not(.admin-page) .site-header .site-header__actions .site-header__action,
+html body:not(.admin-page) .site-header .site-header__actions .site-header__action--printing{
+  min-height:42px!important;
+  padding:0 18px!important;
+  border:1px solid var(--nw-accent)!important;
+  border-radius:12px!important;
+  background:var(--nw-accent)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+html body:not(.admin-page) .site-header .site-header__actions .site-header__action:hover{
+  border-color:var(--nw-accent-hover)!important;
+  background:var(--nw-accent-hover)!important;
+}
+html body:not(.admin-page) .site-header__utility a:hover{color:var(--nw-accent)!important;background:var(--nw-accent-soft)!important}
+
+/* Typography hierarchy */
+html body:not(.admin-page) .eyebrow{
+  color:var(--nw-accent)!important;
+  font-weight:700!important;
+  letter-spacing:.08em!important;
+}
+html body:not(.admin-page) .page-title,
+html body:not(.admin-page) .sector-hero h1,
+html body:not(.admin-page) .portfolio-hero h1,
+html body:not(.admin-page) .editorial-hero h1{
+  font-weight:650!important;
+}
+html body:not(.admin-page) .text-link{
+  color:inherit;
+  border-bottom-color:#cfcfca!important;
+  transition:color .18s ease,border-color .18s ease,gap .2s ease!important;
+}
+html body:not(.admin-page) .text-link:hover{
+  color:var(--nw-accent)!important;
+  border-bottom-color:var(--nw-accent)!important;
+}
+
+/* Primary / secondary action language */
+html body:not(.admin-page) .nw-button,
+html body:not(.admin-page) .nw-support-primary,
+html body:not(.admin-page) .nw-support-cta a,
+html body:not(.admin-page) .contact-page .form-submit,
+html body:not(.admin-page) button[type="submit"],
+html body:not(.admin-page) input[type="submit"]{
+  border:1px solid var(--nw-accent)!important;
+  border-radius:12px!important;
+  background:var(--nw-accent)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease!important;
+}
+html body:not(.admin-page) .nw-button:hover,
+html body:not(.admin-page) .nw-support-primary:hover,
+html body:not(.admin-page) .nw-support-cta a:hover,
+html body:not(.admin-page) .contact-page .form-submit:hover,
+html body:not(.admin-page) button[type="submit"]:hover,
+html body:not(.admin-page) input[type="submit"]:hover{
+  border-color:var(--nw-accent-hover)!important;
+  background:var(--nw-accent-hover)!important;
+  transform:translateY(-1px);
+}
+html body:not(.admin-page) .nw-support-secondary{
+  border:1px solid var(--nw-ui-line)!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  color:var(--nw-ui-text)!important;
+}
+html body:not(.admin-page) .nw-support-secondary:hover{
+  border-color:var(--nw-accent-line)!important;
+  background:var(--nw-accent-soft)!important;
+  color:var(--nw-accent)!important;
+}
+
+/* Inputs / selects / textareas */
+html body:not(.admin-page) input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+html body:not(.admin-page) select,
+html body:not(.admin-page) textarea{
+  min-height:52px!important;
+  padding:13px 15px!important;
+  border:1px solid var(--nw-ui-line)!important;
+  border-radius:12px!important;
+  background:var(--nw-ui-bg)!important;
+  color:var(--nw-ui-text)!important;
+  box-shadow:none!important;
+  transition:border-color .18s ease,background .18s ease,box-shadow .18s ease!important;
+}
+html body:not(.admin-page) textarea{min-height:148px!important}
+html body:not(.admin-page) input:not([type="checkbox"]):not([type="radio"]):focus,
+html body:not(.admin-page) select:focus,
+html body:not(.admin-page) textarea:focus{
+  outline:0!important;
+  border-color:var(--nw-accent)!important;
+  background:#fff!important;
+  box-shadow:0 0 0 3px rgba(255,90,31,.12)!important;
+}
+html body:not(.admin-page) input::placeholder,
+html body:not(.admin-page) textarea::placeholder{color:#a0a09b!important}
+html body:not(.admin-page) input[type="checkbox"],
+html body:not(.admin-page) input[type="radio"]{accent-color:var(--nw-accent)!important}
+
+/* Contact / inquiry form */
+html body:not(.admin-page) .field-block{
+  gap:8px!important;
+  padding:14px 0 18px!important;
+  border-bottom:0!important;
+}
+html body:not(.admin-page) .field-block label,
+html body:not(.admin-page) .contact-field-restored label{
+  color:#4f4f4c!important;
+  font-size:12px!important;
+  font-weight:650!important;
+}
+html body:not(.admin-page) .field-block input,
+html body:not(.admin-page) .field-block textarea,
+html body:not(.admin-page) .field-block select,
+html body:not(.admin-page) .contact-field-restored input,
+html body:not(.admin-page) .contact-field-restored textarea,
+html body:not(.admin-page) .contact-field-restored select{
+  width:100%!important;
+  padding:13px 15px!important;
+  border:1px solid var(--nw-ui-line)!important;
+  border-radius:12px!important;
+  background:var(--nw-ui-bg)!important;
+}
+html body:not(.admin-page) .compact-choice-grid{
+  gap:10px!important;
+  border:0!important;
+  background:transparent!important;
+}
+html body:not(.admin-page) .compact-choice-grid label{
+  min-height:76px!important;
+  border:1px solid var(--nw-ui-line)!important;
+  border-radius:12px!important;
+  background:#fff!important;
+}
+html body:not(.admin-page) .compact-choice-grid label:hover,
+html body:not(.admin-page) .compact-choice-grid label:has(input:checked){
+  border-color:var(--nw-accent-line)!important;
+  background:var(--nw-accent-soft)!important;
+}
+
+/* Cards / modules */
+html body:not(.admin-page) .nw-home-solution,
+html body:not(.admin-page) .nw-support-card,
+html body:not(.admin-page) .operation-scope,
+html body:not(.admin-page) .operation-flow,
+html body:not(.admin-page) .pricing-table,
+html body:not(.admin-page) .fit-list,
+html body:not(.admin-page) .execution-list{
+  border-color:var(--nw-ui-line)!important;
+  border-radius:var(--nw-ui-radius-lg)!important;
+  box-shadow:none!important;
+}
+html body:not(.admin-page) .nw-home-solution:hover,
+html body:not(.admin-page) .nw-support-card:hover{
+  border-color:var(--nw-accent-line)!important;
+  background:var(--nw-accent-soft-2)!important;
+}
+html body:not(.admin-page) .nw-support-card small,
+html body:not(.admin-page) .nw-home-solution__no{color:var(--nw-accent)!important}
+
+/* Home category navigation */
+html body.home-clarity .nw-portfolio-category__icon{
+  border-color:#ecece7!important;
+  border-radius:13px!important;
+  background:#f7f7f4!important;
+  color:#5f5f5b!important;
+}
+html body.home-clarity .nw-portfolio-category:hover .nw-portfolio-category__icon{
+  border-color:var(--nw-accent)!important;
+  background:var(--nw-accent)!important;
+  color:#fff!important;
+}
+html body.home-clarity .nw-portfolio-category:hover{color:var(--nw-accent)!important}
+
+/* CTA / highlighted surfaces */
+html body:not(.admin-page) .nw-home-cta,
+html body:not(.admin-page) .site-shell main .cta{
+  background:var(--nw-accent)!important;
+  color:#fff!important;
+  border-color:var(--nw-accent)!important;
+}
+html body:not(.admin-page) .nw-home-cta .eyebrow,
+html body:not(.admin-page) .site-shell main .cta .eyebrow{color:rgba(255,255,255,.72)!important}
+html body:not(.admin-page) .nw-home-cta p:not(.eyebrow){color:rgba(255,255,255,.82)!important}
+html body:not(.admin-page) .nw-home-cta .nw-button{
+  border-color:#fff!important;
+  background:#fff!important;
+  color:var(--nw-accent)!important;
+}
+html body:not(.admin-page) .nw-home-cta .nw-button:hover{
+  background:#fff7f3!important;
+  border-color:#fff7f3!important;
+}
+html body:not(.admin-page) .site-footer a:hover{color:var(--nw-accent)!important}
+
+@media(max-width:820px){
+  html body:not(.admin-page) .menu-business-cta__link--printing{
+    border-color:var(--nw-accent)!important;
+    background:var(--nw-accent)!important;
+    color:#fff!important;
+  }
+}
