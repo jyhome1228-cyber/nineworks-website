@@ -113,3 +113,17 @@
   .ai-model-modal__gallery{grid-template-columns:1fr}
   .ai-model-modal__head h2{font-size:24px}
 }
+
+
+/* Archive-first layout — 2026-09-22 */
+.ai-model-page main{padding-top:0!important}
+.ai-model-page .ai-archive{
+  padding:36px 0 96px!important;
+  border-bottom:1px solid #deded9;
+}
+.ai-model-page .ai-model-grid{
+  margin-top:0!important;
+}
+@media(max-width:720px){
+  .ai-model-page .ai-archive{padding:22px 0 72px!important}
+}
