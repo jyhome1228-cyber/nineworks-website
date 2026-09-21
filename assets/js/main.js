@@ -39,6 +39,13 @@
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
   loadStyle('assets/css/site-shell-sync-20260902.css?v=20260921-2');
+  if (!body.classList.contains('admin-page') && !document.querySelector('link[data-nw-typography-guard]')) {
+    const typographyGuard = document.createElement('link');
+    typographyGuard.rel = 'stylesheet';
+    typographyGuard.href = '/assets/css/typography-guard-20260820.css?v=20260824-2';
+    typographyGuard.dataset.nwTypographyGuard = 'true';
+    document.head.appendChild(typographyGuard);
+  }
   loadStyle('assets/css/nineworks-ui-system.css?v=20260921-8');
 
   loadScript('assets/js/seo.js?v=20260811-3');
