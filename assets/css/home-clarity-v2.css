@@ -345,3 +345,63 @@ html body.home-clarity .nw-hero-card img{
   user-select:none!important;
   -webkit-user-drag:none!important;
 }
+
+
+/* Centered home section composition — 2026-09-22 */
+html body.home-clarity .nw-brand-work .nw-section-head{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:20px!important;
+  margin-bottom:50px!important;
+  text-align:center!important;
+}
+html body.home-clarity .nw-brand-work .nw-section-head>div{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+html body.home-clarity .nw-brand-work .nw-section-head h2{
+  max-width:18ch!important;
+  margin:0 auto!important;
+  text-align:center!important;
+}
+html body.home-clarity .nw-brand-work .nw-section-head .text-link{
+  margin-top:4px!important;
+}
+html body.home-clarity .nw-home-about__grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:22px!important;
+  max-width:980px!important;
+  margin:0 auto!important;
+  text-align:center!important;
+}
+html body.home-clarity .nw-home-about__grid>div{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+}
+html body.home-clarity .nw-home-about h2{
+  max-width:18ch!important;
+  margin:0 auto!important;
+  text-align:center!important;
+}
+html body.home-clarity .nw-home-about__lead,
+html body.home-clarity .nw-home-about__grid>div:last-child>p{
+  max-width:760px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  text-align:center!important;
+}
+html body.home-clarity .nw-home-about .text-link{
+  margin-top:14px!important;
+}
+html body.home-clarity .nw-home-about__gallery{
+  margin-top:48px!important;
+}
+@media(max-width:680px){
+  html body.home-clarity .nw-brand-work .nw-section-head{margin-bottom:34px!important}
+  html body.home-clarity .nw-home-about__gallery{margin-top:34px!important}
+}
