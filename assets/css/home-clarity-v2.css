@@ -325,3 +325,23 @@ html body.home-clarity .nw-portfolio-categories{
   html body.home-clarity .nw-hero-card.is-active{transform:scale(1)!important}
   html body.home-clarity .nw-portfolio-categories{margin-top:16px!important}
 }
+
+
+/* Hero drag interaction — 2026-09-22 */
+html body.home-clarity .nw-hero-carousel__viewport{
+  cursor:grab!important;
+  touch-action:pan-y!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+}
+html body.home-clarity .nw-hero-carousel.is-dragging .nw-hero-carousel__viewport{
+  cursor:grabbing!important;
+}
+html body.home-clarity .nw-hero-carousel.is-dragging .nw-hero-carousel__track{
+  transition:none!important;
+}
+html body.home-clarity .nw-hero-card img{
+  pointer-events:none!important;
+  user-select:none!important;
+  -webkit-user-drag:none!important;
+}
