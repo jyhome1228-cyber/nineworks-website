@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"><link rel="canonical" href="https://9works.kr/">
 <link rel="icon" type="image/png" href="favicon.png?v=20260825-1"><link rel="alternate icon" type="image/svg+xml" href="favicon.svg?v=20260825-1">
 <meta property="og:type" content="website"><meta property="og:site_name" content="NINEWORKS"><meta property="og:title" content="NINEWORKS | Brand Strategy & Identity"><meta property="og:description" content="브랜드의 방향을 정하고 아이덴티티와 경험으로 확장합니다."><meta property="og:url" content="https://9works.kr/"><meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-8"><link rel="stylesheet" href="assets/css/home-clarity-v2.css?v=20260922-2"><link rel="stylesheet" href="assets/css/navigation-ia-20260817.css?v=20260817-5"><link rel="stylesheet" href="assets/css/site-stable-20260817.css?v=20260818-1"><link rel="stylesheet" href="assets/css/client-logos-20260821.css?v=20260821-1"><link rel="stylesheet" href="assets/css/mobile-ui-20260822.css?v=20260822-2">
+<link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/clarity-20260814.css?v=20260817-8"><link rel="stylesheet" href="assets/css/home-clarity-v2.css?v=20260922-3"><link rel="stylesheet" href="assets/css/navigation-ia-20260817.css?v=20260817-5"><link rel="stylesheet" href="assets/css/site-stable-20260817.css?v=20260818-1"><link rel="stylesheet" href="assets/css/client-logos-20260821.css?v=20260821-1"><link rel="stylesheet" href="assets/css/mobile-ui-20260822.css?v=20260822-2">
 <style>
 .nw-home-about__gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:56px}.nw-home-about__gallery figure{margin:0;overflow:hidden;background:#f5f5f3;aspect-ratio:4/3}.nw-home-about__gallery img{display:block;width:100%;height:100%;object-fit:cover}
 .nw-home-solutions{padding:0 0 92px;background:#fff}.nw-home-solutions__intro{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:72px;align-items:end;padding:58px 0 34px;border-top:1px solid var(--line,#d9d9d5)}.nw-home-solutions__intro h2{max-width:16ch;margin-top:13px;font-size:clamp(28px,2.45vw,38px);font-weight:500;line-height:1.16;letter-spacing:-.045em}.nw-home-solutions__intro-copy{max-width:650px;margin:0;color:#666;font-size:14px;line-height:1.8;letter-spacing:-.015em}.nw-home-solutions__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line,#d9d9d5);border-bottom:1px solid var(--line,#d9d9d5)}.nw-home-solution{position:relative;display:flex;min-height:300px;flex-direction:column;padding:28px 30px 30px;color:#111;border-left:1px solid var(--line,#d9d9d5);transition:background-color .22s ease}.nw-home-solution:last-child{border-right:1px solid var(--line,#d9d9d5)}.nw-home-solution:hover{background:#f6f6f3}.nw-home-solution__no{color:#777;font-size:10px;font-weight:600;letter-spacing:.08em}.nw-home-solution__no::after{content:"";display:block;width:22px;height:1px;margin-top:16px;background:#222}.nw-home-solution__body{margin-top:42px}.nw-home-solution h3{margin:0;font-size:clamp(24px,2vw,31px);font-weight:500;line-height:1.14;letter-spacing:-.045em}.nw-home-solution__sub{margin:8px 0 0;color:#777;font-size:14px;font-weight:500;line-height:1.45;letter-spacing:-.025em}.nw-home-solution__desc{max-width:31em;margin:20px 0 0;color:#777;font-size:12.5px;line-height:1.72;letter-spacing:-.012em}.nw-home-solution__arrow{position:absolute;right:28px;bottom:27px;font-size:14px}.nw-home-solution:focus-visible{outline:2px solid #111;outline-offset:-2px}
@@ -67,7 +67,7 @@
 </div></div></section>
 <section class="nw-home-cta"><div class="container nw-home-cta__inner"><div><p class="eyebrow">START A BRAND</p><h2>다음 브랜드의 장면을 함께 설계합니다.</h2><p>새 브랜드의 시작부터 리뉴얼과 확장까지, 현재 상황과 고민을 알려주시면 필요한 범위부터 정리합니다.</p></div><a class="nw-button" href="contact.html">PROJECT INQUIRY ↗</a></div></section>
 </main><footer class="site-footer container"></footer></div>
-<script src="assets/js/main.js?v=20260922-3"></script>
+<script src="assets/js/main.js?v=20260922-4"></script>
 <script src="assets/js/client-logos-20260821.js?v=20260901-1"></script>
 <script>
 (()=>{
@@ -88,6 +88,17 @@
   let timer=null;
   let moving=false;
 
+  let dragging=false;
+  let dragged=false;
+  let pointerId=null;
+  let startX=0;
+  let lastX=0;
+  let startTranslate=0;
+  let currentTranslate=0;
+  let dragStartedAt=0;
+
+  items.forEach((item)=>item.querySelectorAll('img').forEach((img)=>img.draggable=false));
+
   const mark=()=>{
     items.forEach((item,i)=>{
       const active=i===position;
@@ -98,21 +109,27 @@
     });
   };
 
-  const center=(animate=true)=>{
+  const targetTranslate=()=>{
     const active=items[position];
-    if(!active)return;
-    const x=(viewport.clientWidth/2)-(active.offsetLeft+active.offsetWidth/2);
+    if(!active)return 0;
+    return (viewport.clientWidth/2)-(active.offsetLeft+active.offsetWidth/2);
+  };
+
+  const applyTranslate=(x,animate=true)=>{
+    currentTranslate=x;
     track.style.transition=animate?'transform .68s cubic-bezier(.22,.75,.22,1)':'none';
     track.style.transform=`translate3d(${x}px,0,0)`;
   };
 
+  const center=(animate=true)=>applyTranslate(targetTranslate(),animate);
+
   const restart=()=>{
     clearInterval(timer);
-    timer=setInterval(()=>go(1),4700);
+    if(!dragging) timer=setInterval(()=>go(1),4700);
   };
 
   const go=(delta)=>{
-    if(moving)return;
+    if(moving||dragging)return;
     moving=true;
     position+=delta;
     mark();
@@ -120,8 +137,7 @@
     restart();
   };
 
-  track.addEventListener('transitionend',(event)=>{
-    if(event.target!==track||event.propertyName!=='transform')return;
+  const normalize=()=>{
     if(position<cloneCount){
       position+=count;
       mark();
@@ -131,11 +147,20 @@
       mark();
       center(false);
     }
+  };
+
+  track.addEventListener('transitionend',(event)=>{
+    if(event.target!==track||event.propertyName!=='transform')return;
+    normalize();
     moving=false;
   });
 
   items.forEach((item)=>{
     item.addEventListener('click',(event)=>{
+      if(dragged){
+        event.preventDefault();
+        return;
+      }
       const idx=items.indexOf(item);
       if(idx===position)return;
       event.preventDefault();
@@ -144,13 +169,67 @@
     });
   });
 
+  const endDrag=(event)=>{
+    if(!dragging)return;
+    if(pointerId!==null && event?.pointerId!==undefined && event.pointerId!==pointerId)return;
+
+    const dx=lastX-startX;
+    const elapsed=Math.max(1,performance.now()-dragStartedAt);
+    const velocity=dx/elapsed;
+    const threshold=Math.min(140,viewport.clientWidth*.075);
+
+    dragging=false;
+    root.classList.remove('is-dragging');
+    try{viewport.releasePointerCapture(pointerId)}catch(_){}
+    pointerId=null;
+
+    if(Math.abs(dx)>threshold || Math.abs(velocity)>.55){
+      dragged=true;
+      moving=true;
+      position+=dx<0?1:-1;
+      mark();
+      center(true);
+      setTimeout(()=>{dragged=false},80);
+    }else{
+      center(true);
+      setTimeout(()=>{dragged=false},80);
+    }
+    restart();
+  };
+
+  viewport.addEventListener('pointerdown',(event)=>{
+    if(event.pointerType==='mouse' && event.button!==0)return;
+    if(moving)return;
+    dragging=true;
+    dragged=false;
+    pointerId=event.pointerId;
+    startX=lastX=event.clientX;
+    startTranslate=currentTranslate;
+    dragStartedAt=performance.now();
+    root.classList.add('is-dragging');
+    clearInterval(timer);
+    track.style.transition='none';
+    viewport.setPointerCapture(event.pointerId);
+  });
+
+  viewport.addEventListener('pointermove',(event)=>{
+    if(!dragging||event.pointerId!==pointerId)return;
+    lastX=event.clientX;
+    const dx=lastX-startX;
+    if(Math.abs(dx)>4)dragged=true;
+    applyTranslate(startTranslate+dx,false);
+  });
+
+  viewport.addEventListener('pointerup',endDrag);
+  viewport.addEventListener('pointercancel',endDrag);
+
   root.addEventListener('mouseenter',()=>clearInterval(timer));
-  root.addEventListener('mouseleave',restart);
+  root.addEventListener('mouseleave',()=>{if(!dragging)restart()});
   root.addEventListener('keydown',(event)=>{
     if(event.key==='ArrowLeft'){event.preventDefault();go(-1)}
     if(event.key==='ArrowRight'){event.preventDefault();go(1)}
   });
-  window.addEventListener('resize',()=>center(false),{passive:true});
+  window.addEventListener('resize',()=>{if(!dragging)center(false)},{passive:true});
 
   root.setAttribute('tabindex','0');
   mark();
