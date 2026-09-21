@@ -1312,3 +1312,194 @@ html body:not(.admin-page) .site-footer__brand img{
     gap:0 12px!important;
   }
 }
+
+
+/* HARD MOBILE HEADER FIX — 2026-09-22 */
+/* High-specificity final override. Older mobile/desktop styles use !important,
+   so these selectors intentionally mirror the full shell/header chain. */
+@media(max-width:820px){
+  html body:not(.admin-page) .site-shell .site-header{
+    position:sticky!important;
+    top:0!important;
+    z-index:1000!important;
+    display:block!important;
+    width:100%!important;
+    height:64px!important;
+    min-height:64px!important;
+    max-height:64px!important;
+    margin:0!important;
+    padding:0!important;
+    border-bottom:1px solid #ecece8!important;
+    background:rgba(255,255,255,.985)!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__top{
+    display:none!important;
+    height:0!important;
+    min-height:0!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main{
+    position:relative!important;
+    display:flex!important;
+    width:calc(100% - 28px)!important;
+    max-width:none!important;
+    height:64px!important;
+    min-height:64px!important;
+    max-height:64px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:12px!important;
+    box-sizing:border-box!important;
+    transform:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main .site-primary-nav,
+  html body:not(.admin-page) .site-shell .site-header .site-header__main .site-header__actions,
+  html body:not(.admin-page) .site-shell .site-header .site-header__utility{
+    display:none!important;
+    visibility:hidden!important;
+    width:0!important;
+    height:0!important;
+    min-width:0!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    opacity:0!important;
+    pointer-events:none!important;
+    overflow:hidden!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.site-logo,
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.site-logo--printing{
+    position:static!important;
+    inset:auto!important;
+    display:flex!important;
+    flex:0 0 auto!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:calc(100% - 58px)!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    background:none!important;
+    transform:none!important;
+    text-indent:0!important;
+    overflow:visible!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.site-logo .site-logo__image{
+    display:block!important;
+    width:148px!important;
+    max-width:148px!important;
+    height:auto!important;
+    margin:0!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.site-logo .site-logo__suffix{
+    display:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.menu-trigger,
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>button.menu-trigger,
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>[data-menu-trigger]{
+    position:static!important;
+    inset:auto!important;
+    display:block!important;
+    flex:0 0 40px!important;
+    width:40px!important;
+    min-width:40px!important;
+    max-width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+    max-height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:10px!important;
+    background:transparent!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    transform:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.menu-trigger span{
+    position:absolute!important;
+    left:50%!important;
+    top:50%!important;
+    width:20px!important;
+    height:1.5px!important;
+    margin:0!important;
+    background:#171717!important;
+    transform:translate(-50%,-50%)!important;
+    transition:background .2s ease!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.menu-trigger span::before,
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.menu-trigger span::after{
+    position:absolute!important;
+    left:0!important;
+    top:0!important;
+    width:20px!important;
+    height:1.5px!important;
+    margin:0!important;
+    background:#171717!important;
+    content:""!important;
+  }
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.menu-trigger span::before{
+    transform:translateY(-6px)!important;
+  }
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.menu-trigger span::after{
+    transform:translateY(6px)!important;
+  }
+
+  html body:not(.admin-page).is-menu-open .site-shell .site-header .site-header__main>.menu-trigger span{
+    background:transparent!important;
+  }
+  html body:not(.admin-page).is-menu-open .site-shell .site-header .site-header__main>.menu-trigger span::before{
+    transform:rotate(45deg)!important;
+  }
+  html body:not(.admin-page).is-menu-open .site-shell .site-header .site-header__main>.menu-trigger span::after{
+    transform:rotate(-45deg)!important;
+  }
+
+  html body:not(.admin-page) .site-shell .menu-overlay{
+    inset:64px 0 0!important;
+    height:calc(100dvh - 64px)!important;
+  }
+
+  /* Footer: keep the same visual language, but tighter on small screens. */
+  html body:not(.admin-page) .site-shell .site-footer{
+    padding:40px 16px 24px!important;
+  }
+  html body:not(.admin-page) .site-shell .site-footer__brand img{
+    width:164px!important;
+  }
+  html body:not(.admin-page) .site-shell .site-footer__links{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:0 14px!important;
+    margin-top:26px!important;
+  }
+  html body:not(.admin-page) .site-shell .site-footer__links a{
+    min-height:40px!important;
+    font-size:12px!important;
+  }
+}
+
+@media(max-width:390px){
+  html body:not(.admin-page) .site-shell .site-header .site-header__main{
+    width:calc(100% - 22px)!important;
+  }
+  html body:not(.admin-page) .site-shell .site-header .site-header__main>.site-logo .site-logo__image{
+    width:138px!important;
+    max-width:138px!important;
+  }
+}
