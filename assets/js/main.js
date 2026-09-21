@@ -39,7 +39,7 @@
   loadStyle('assets/css/navigation-cleanup-20260824.css?v=20260824-1');
   loadStyle('assets/css/mobile-nav-refine-20260827.css?v=20260901-3');
   loadStyle('assets/css/site-shell-sync-20260902.css?v=20260921-2');
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-2');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260921-3');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -100,8 +100,19 @@
   }
 
   header.innerHTML = `
-    <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}">${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}</a>
-    <nav class="site-primary-nav" aria-label="주요 메뉴">
+    <div class="site-header__top">
+      <div class="site-header__top-inner">
+        <span class="site-header__descriptor">${isPrintingPage ? 'NINEWORKS / PRINT PRODUCTION' : 'NINEWORKS / BRANDING STUDIO'}</span>
+        <div class="site-header__utility" aria-label="특화 서비스 바로가기">
+          <a href="/support.html">정부지원사업</a>
+          <a href="/majorportfolio/">B2B</a>
+          <a href="/print.html">PRINTING</a>
+        </div>
+      </div>
+    </div>
+    <div class="site-header__main">
+      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}">${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}</a>
+      <nav class="site-primary-nav" aria-label="주요 메뉴">
       <div class="site-nav-item">
         <a href="/solutions.html" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
         <div class="site-nav-dropdown site-nav-dropdown--mega" aria-label="서비스 메뉴">
@@ -140,16 +151,13 @@
         </div>
       </div>
       <a href="/magazine.html" data-nav-key="magazine">MAGAZINE</a>
-    </nav>
-    <div class="site-header__utility" aria-label="특화 서비스 바로가기">
-      <a href="/support.html">정부지원사업</a>
-      <a href="/majorportfolio/">B2B</a>
-      <a href="/print.html">PRINTING</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="site-header__action site-header__action--printing" href="/contact.html">프로젝트 문의 <span>↗</span></a>
+      </div>
+      <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>
     </div>
-    <div class="site-header__actions">
-      <a class="site-header__action site-header__action--printing" href="/contact.html">프로젝트 문의 <span>↗</span></a>
-    </div>
-    <button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button>`;
+  `;
 
   overlay.innerHTML = `
     <nav class="menu-nav" aria-label="모바일 주요 메뉴">
