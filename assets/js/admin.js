@@ -3,7 +3,6 @@
     dashboard: 'Dashboard',
     inquiry: 'Inquiries',
     clients: 'Clients',
-    recruits: 'Recruits',
     members: 'Members',
     partners: 'Partners',
     proposals: 'Proposals',
@@ -189,10 +188,6 @@
 
   import('./admin-partner-submissions-20260824.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Partner submissions load failed', error);
-  });
-
-  import('./admin-recruit-partner-final-20260824.js?v=20260826-routerfix1').then(refreshNavigation).catch((error) => {
-    console.error('[NINEWORKS Admin] Recruit / approved inquiry sync load failed', error);
   });
 
   import('./admin-inquiry-crm-20260825.js?v=20260826-routerfix1').catch((error) => {
