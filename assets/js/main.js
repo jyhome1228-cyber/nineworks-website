@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-5');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-6');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -163,7 +163,7 @@
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/solutions.html#services" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown site-nav-dropdown--mega" aria-label="서비스 메뉴">
+          <div class="site-nav-dropdown" aria-label="서비스 메뉴">
             <a href="/branding.html"><span>브랜드 디자인</span><small>BRAND DESIGN</small></a>
             <a href="/package-design.html"><span>패키지 디자인</span><small>PACKAGE DESIGN</small></a>
             <a href="/solutions.html#content"><span>콘텐츠 · 편집</span><small>CONTENT</small></a>
