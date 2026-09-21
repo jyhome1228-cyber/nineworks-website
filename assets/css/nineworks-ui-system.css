@@ -827,3 +827,63 @@ html body:not(.admin-page) .site-nav-item>a.is-current{
   color:var(--nw-accent)!important;
   background:transparent!important;
 }
+
+
+/* Vertical dropdown + text-only hover — 2026-09-22 */
+/* All desktop dropdowns open vertically beneath the parent menu item. */
+@media(min-width:821px){
+  html body:not(.admin-page) .site-nav-item{
+    position:relative!important;
+  }
+  html body:not(.admin-page) .site-nav-dropdown,
+  html body:not(.admin-page) .site-nav-dropdown--mega{
+    position:absolute!important;
+    top:calc(100% + 8px)!important;
+    left:50%!important;
+    right:auto!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    width:360px!important;
+    min-width:360px!important;
+    max-width:360px!important;
+    padding:10px 12px!important;
+    column-gap:0!important;
+    row-gap:0!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:translate(-50%,8px)!important;
+  }
+  html body:not(.admin-page) .site-nav-item:hover>.site-nav-dropdown,
+  html body:not(.admin-page) .site-nav-item:focus-within>.site-nav-dropdown{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transform:translate(-50%,0)!important;
+  }
+  html body:not(.admin-page) .site-nav-dropdown--mega>a{
+    width:100%!important;
+  }
+}
+
+/* Text-only hover: no peach/gray pill backgrounds in the primary navigation. */
+html body:not(.admin-page) .site-primary-nav>a:hover,
+html body:not(.admin-page) .site-nav-item:hover>a,
+html body:not(.admin-page) .site-primary-nav>a:hover:not(.is-current),
+html body:not(.admin-page) .site-nav-item>a:hover:not(.is-current){
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--nw-accent)!important;
+}
+
+/* Dropdown rows also use text-only hover, keeping only the structural divider lines. */
+html body:not(.admin-page) .site-nav-dropdown a:hover,
+html body:not(.admin-page) .site-nav-dropdown a:focus-visible{
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--nw-accent)!important;
+}
+html body:not(.admin-page) .site-nav-dropdown a:hover span,
+html body:not(.admin-page) .site-nav-dropdown a:focus-visible span{
+  color:var(--nw-accent)!important;
+}
