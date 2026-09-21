@@ -240,3 +240,88 @@ html body.home-clarity .nw-brand-slider [data-slider-prev]{
     width:52%!important;
   }
 }
+
+
+/* NINEWORKS track carousel — 2026-09-22 */
+html body.home-clarity .nw-home-hero{
+  padding:22px 0 54px!important;
+  overflow:hidden!important;
+}
+html body.home-clarity .nw-hero-carousel{
+  width:100vw!important;
+  margin-left:calc(50% - 50vw)!important;
+  overflow:hidden!important;
+  outline:none!important;
+}
+html body.home-clarity .nw-hero-carousel__viewport{
+  width:100%!important;
+  overflow:hidden!important;
+  padding:12px 0 10px!important;
+}
+html body.home-clarity .nw-hero-carousel__track{
+  display:flex!important;
+  width:max-content!important;
+  align-items:center!important;
+  gap:18px!important;
+  will-change:transform;
+}
+html body.home-clarity .nw-hero-card{
+  position:relative!important;
+  display:block!important;
+  flex:0 0 min(54vw,980px)!important;
+  aspect-ratio:16/7!important;
+  overflow:hidden!important;
+  border-radius:16px!important;
+  background:#f2f2ef!important;
+  opacity:.48!important;
+  transform:scale(.86)!important;
+  transform-origin:center center!important;
+  transition:transform .5s cubic-bezier(.22,.75,.22,1),opacity .38s ease,filter .38s ease!important;
+  filter:saturate(.82) brightness(.95)!important;
+  pointer-events:auto!important;
+}
+html body.home-clarity .nw-hero-card.is-neighbor{
+  opacity:.78!important;
+  transform:scale(.91)!important;
+  filter:saturate(.9) brightness(.97)!important;
+  cursor:pointer!important;
+}
+html body.home-clarity .nw-hero-card.is-active{
+  opacity:1!important;
+  transform:scale(1)!important;
+  filter:none!important;
+  z-index:2!important;
+}
+html body.home-clarity .nw-hero-card img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+html body.home-clarity .nw-portfolio-categories{
+  margin-top:20px!important;
+}
+
+@media(max-width:980px){
+  html body.home-clarity .nw-home-hero{padding:18px 0 48px!important}
+  html body.home-clarity .nw-hero-carousel__track{gap:14px!important}
+  html body.home-clarity .nw-hero-card{
+    flex-basis:66vw!important;
+    aspect-ratio:16/9!important;
+    border-radius:14px!important;
+  }
+}
+@media(max-width:680px){
+  html body.home-clarity .nw-home-hero{padding:10px 0 42px!important}
+  html body.home-clarity .nw-hero-carousel__viewport{padding:8px 0!important}
+  html body.home-clarity .nw-hero-carousel__track{gap:10px!important}
+  html body.home-clarity .nw-hero-card{
+    flex-basis:72vw!important;
+    aspect-ratio:16/11!important;
+    border-radius:12px!important;
+    transform:scale(.9)!important;
+  }
+  html body.home-clarity .nw-hero-card.is-neighbor{transform:scale(.94)!important}
+  html body.home-clarity .nw-hero-card.is-active{transform:scale(1)!important}
+  html body.home-clarity .nw-portfolio-categories{margin-top:16px!important}
+}
