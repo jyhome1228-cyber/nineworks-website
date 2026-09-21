@@ -1503,3 +1503,379 @@ html body:not(.admin-page) .site-footer__brand img{
     max-width:138px!important;
   }
 }
+
+
+/* SIMPLE MOBILE NAV — 2026-09-22 */
+/* Plain, predictable mobile navigation. This block intentionally sits last and
+   overrides all older mobile-nav experiments. */
+@media(max-width:820px){
+  html body:not(.admin-page) .site-shell .site-header{
+    position:sticky!important;
+    top:0!important;
+    z-index:1000!important;
+    height:64px!important;
+    min-height:64px!important;
+    max-height:64px!important;
+    padding:0!important;
+    background:#fff!important;
+    border-bottom:1px solid #e8e8e4!important;
+    box-shadow:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__top{
+    display:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-header__main{
+    display:flex!important;
+    width:calc(100% - 28px)!important;
+    max-width:none!important;
+    height:64px!important;
+    min-height:64px!important;
+    max-height:64px!important;
+    margin:0 auto!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    gap:12px!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-primary-nav,
+  html body:not(.admin-page) .site-shell .site-header .site-header__actions,
+  html body:not(.admin-page) .site-shell .site-header .site-header__utility{
+    display:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-logo{
+    position:static!important;
+    display:inline-flex!important;
+    width:auto!important;
+    min-width:0!important;
+    max-width:calc(100% - 56px)!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    background:none!important;
+    transform:none!important;
+    text-indent:0!important;
+    overflow:visible!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-logo__image{
+    display:block!important;
+    width:148px!important;
+    max-width:148px!important;
+    height:auto!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-logo__suffix{
+    display:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .menu-trigger{
+    position:static!important;
+    inset:auto!important;
+    display:grid!important;
+    flex:0 0 40px!important;
+    width:40px!important;
+    min-width:40px!important;
+    max-width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+    max-height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    place-items:center!important;
+    border:0!important;
+    border-radius:8px!important;
+    background:transparent!important;
+    color:#171717!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+    transform:none!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .menu-trigger span,
+  html body:not(.admin-page) .site-shell .site-header .menu-trigger span::before,
+  html body:not(.admin-page) .site-shell .site-header .menu-trigger span::after{
+    display:none!important;
+    content:none!important;
+  }
+
+  html body:not(.admin-page) .menu-trigger__icon{
+    display:block!important;
+    width:24px!important;
+    height:24px!important;
+    fill:none!important;
+    stroke:currentColor!important;
+    stroke-width:1.8!important;
+    stroke-linecap:round!important;
+  }
+
+  html body:not(.admin-page) .menu-trigger__icon--close{
+    display:none!important;
+  }
+
+  html body:not(.admin-page).is-menu-open .menu-trigger__icon--menu{
+    display:none!important;
+  }
+
+  html body:not(.admin-page).is-menu-open .menu-trigger__icon--close{
+    display:block!important;
+  }
+
+  html body:not(.admin-page) .site-shell .menu-overlay{
+    position:fixed!important;
+    z-index:999!important;
+    inset:64px 0 0!important;
+    display:block!important;
+    width:100%!important;
+    height:calc(100dvh - 64px)!important;
+    padding:0 18px 24px!important;
+    overflow-y:auto!important;
+    background:#fff!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transform:none!important;
+    transition:opacity .16s ease,visibility 0s linear .16s!important;
+  }
+
+  html body:not(.admin-page).is-menu-open .site-shell .menu-overlay{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+    transition-delay:0s!important;
+  }
+
+  html body:not(.admin-page) .menu-nav{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    padding:0!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__group,
+  html body:not(.admin-page) .menu-nav__main{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    border-bottom:1px solid #ecece8!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__toggle,
+  html body:not(.admin-page) .menu-nav__main{
+    display:flex!important;
+    width:100%!important;
+    min-height:54px!important;
+    margin:0!important;
+    padding:0 2px!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    border:0!important;
+    background:transparent!important;
+    color:#171717!important;
+    font-size:16px!important;
+    font-weight:600!important;
+    line-height:1.2!important;
+    letter-spacing:0!important;
+    text-align:left!important;
+    text-decoration:none!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__toggle span{
+    font-size:18px!important;
+    font-weight:400!important;
+    line-height:1!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__sub{
+    display:block!important;
+    margin:0!important;
+    padding:0 0 10px!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__sub[hidden]{
+    display:none!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__sub a{
+    display:flex!important;
+    width:100%!important;
+    min-height:40px!important;
+    margin:0!important;
+    padding:0 10px!important;
+    align-items:center!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    color:#73736f!important;
+    font-size:13px!important;
+    font-weight:400!important;
+    line-height:1.4!important;
+    text-decoration:none!important;
+  }
+
+  html body:not(.admin-page) .menu-nav__sub a:active{
+    background:#f7f7f4!important;
+    color:#171717!important;
+  }
+
+  html body:not(.admin-page) .menu-business-cta{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    margin:18px 0 0!important;
+  }
+
+  html body:not(.admin-page) .menu-business-cta__link{
+    display:flex!important;
+    min-height:46px!important;
+    padding:0 13px!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    border:1px solid #e2e2dd!important;
+    border-radius:10px!important;
+    background:#fff!important;
+    color:#222!important;
+    font-size:11px!important;
+    font-weight:600!important;
+    text-decoration:none!important;
+  }
+
+  html body:not(.admin-page) .menu-business-cta__link:first-child{
+    grid-column:1/-1!important;
+  }
+
+  html body:not(.admin-page) .menu-business-cta__link--printing{
+    border-color:#ff5a1f!important;
+    background:#ff5a1f!important;
+    color:#fff!important;
+  }
+
+  html body:not(.admin-page) .menu-footer{
+    display:flex!important;
+    margin:24px 0 0!important;
+    padding:20px 0 0!important;
+    flex-direction:column!important;
+    gap:14px!important;
+    border-top:1px solid #ecece8!important;
+  }
+
+  html body:not(.admin-page) .menu-footer__brand{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:8px!important;
+  }
+
+  html body:not(.admin-page) .menu-footer__brand img{
+    width:156px!important;
+    height:auto!important;
+  }
+
+  html body:not(.admin-page) .menu-footer__brand span{
+    color:#8a8a85!important;
+    font-size:10px!important;
+  }
+
+  html body:not(.admin-page) .menu-social{
+    display:flex!important;
+    gap:16px!important;
+    font-size:11px!important;
+  }
+
+  html body:not(.admin-page) .menu-social a{
+    color:#555!important;
+    text-decoration:none!important;
+  }
+
+  /* Standard mobile footer */
+  html body:not(.admin-page) .site-footer{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:40px 16px 24px!important;
+    background:#f7f7f4!important;
+    border-top:1px solid #e3e3df!important;
+  }
+
+  html body:not(.admin-page) .site-footer__head{
+    display:block!important;
+    padding:0 0 28px!important;
+  }
+
+  html body:not(.admin-page) .site-footer__brand img{
+    width:168px!important;
+    height:auto!important;
+  }
+
+  html body:not(.admin-page) .site-footer__links{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:0 14px!important;
+    margin-top:26px!important;
+  }
+
+  html body:not(.admin-page) .site-footer__links a{
+    display:flex!important;
+    min-height:40px!important;
+    align-items:center!important;
+    border-bottom:1px solid #e5e5e1!important;
+    color:#444!important;
+    font-size:12px!important;
+    text-decoration:none!important;
+  }
+
+  html body:not(.admin-page) .site-footer__legal{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    padding:22px 0!important;
+    color:#777!important;
+    font-size:11px!important;
+    line-height:1.7!important;
+  }
+
+  html body:not(.admin-page) .site-footer__legal p{
+    margin:4px 0!important;
+  }
+
+  html body:not(.admin-page) .site-footer__phone{
+    display:block!important;
+    margin:3px 0 0!important;
+  }
+
+  html body:not(.admin-page) .site-footer__bottom{
+    display:flex!important;
+    padding-top:16px!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:10px!important;
+    border-top:1px solid #e3e3df!important;
+    color:#92928d!important;
+    font-size:10px!important;
+    line-height:1.6!important;
+  }
+}
+
+@media(max-width:390px){
+  html body:not(.admin-page) .site-shell .site-header .site-header__main{
+    width:calc(100% - 22px)!important;
+  }
+
+  html body:not(.admin-page) .site-shell .site-header .site-logo__image{
+    width:140px!important;
+    max-width:140px!important;
+  }
+
+  html body:not(.admin-page) .menu-business-cta{
+    grid-template-columns:1fr!important;
+  }
+
+  html body:not(.admin-page) .menu-business-cta__link:first-child{
+    grid-column:auto!important;
+  }
+}
