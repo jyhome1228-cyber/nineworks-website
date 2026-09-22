@@ -197,16 +197,35 @@
     const completed = current.filter((card) => card.dataset.completed === 'true');
     const remaining = current.filter((card) => card.dataset.completed !== 'true');
 
-    // Keep the requested featured sequence stable: Coventry first, TYTHONIC immediately after.
-    const featuredOrder = ['coventrycityfc', 'tythonicindustries'];
-    const featured = [];
-    featuredOrder.forEach((key) => {
-      const index = completed.findIndex((card) => normalize(titleOf(card)) === key);
-      if (index >= 0) featured.push(completed.splice(index, 1)[0]);
+    // Keep actual client work at the top of the branding archive.
+    // Independent / concept projects are intentionally mixed into rows 3–4.
+    const topOrder = ['relim', 'aesost', 'privion'];
+    const conceptOrder = ['coventrycityfc', 'tythonicindustries', 'westbromwichalbion'];
+
+    const takeByKey = (list, key) => {
+      const index = list.findIndex((card) => normalize(titleOf(card)) === key);
+      return index >= 0 ? list.splice(index, 1)[0] : null;
+    };
+
+    const featured = topOrder
+      .map((key) => takeByKey(completed, key) || takeByKey(remaining, key))
+      .filter(Boolean);
+
+    const concepts = conceptOrder
+      .map((key) => takeByKey(completed, key) || takeByKey(remaining, key))
+      .filter(Boolean);
+
+    const ordered = [...featured, ...completed, ...remaining];
+
+    // 3-column grid: place concept work across the 3rd and 4th rows.
+    const conceptPositions = [6, 9, 11];
+    concepts.forEach((card, index) => {
+      const target = Math.min(conceptPositions[index] ?? ordered.length, ordered.length);
+      ordered.splice(target, 0, card);
     });
 
     const fragment = document.createDocumentFragment();
-    [...featured, ...completed, ...remaining].forEach((card, index) => {
+    ordered.forEach((card, index) => {
       const image = card.querySelector('img');
       if (image) image.loading = index < 6 ? 'eager' : 'lazy';
       fragment.appendChild(card);
