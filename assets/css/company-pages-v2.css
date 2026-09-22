@@ -1,4 +1,4 @@
-/* NINEWORKS COMPANY PAGES — unified with print.html / 2026-09-22 */
+/* NINEWORKS COMPANY PAGES — unified with print.html / 2026-09-22 rev.2 */
 .about-page,
 .design-team-page,
 .designer-page{
@@ -16,13 +16,13 @@
 /* ---------------------------------------------------------
    ABOUT
 --------------------------------------------------------- */
-.company-hero{padding:112px 0 96px;border-bottom:1px solid var(--company-line)}
+.company-hero{padding:104px 0 90px;border-bottom:1px solid var(--company-line)}
 .company-hero__inner{max-width:1040px;margin:0 auto;text-align:center}
 .company-hero .eyebrow{margin-bottom:22px}
 .company-hero h1{max-width:920px;margin:0 auto;font-size:clamp(42px,5vw,72px);font-weight:620;line-height:1.08;letter-spacing:-.055em;word-break:keep-all}
-.company-hero__lead{max-width:830px;margin:30px auto 0;color:var(--company-muted);font-size:16px;line-height:1.85;word-break:keep-all}
+.company-hero__lead{max-width:840px;margin:28px auto 0;color:var(--company-muted);font-size:17px;line-height:1.78;word-break:keep-all}
 
-.company-section{padding:96px 0;border-bottom:1px solid var(--company-line)}
+.company-section{padding:100px 0;border-bottom:1px solid var(--company-line)}
 .company-section--soft{background:var(--company-soft)}
 .company-section--dark{background:#171717;color:#fff}
 .company-section-head{max-width:900px;margin:0 auto 42px;text-align:center}
@@ -33,12 +33,14 @@
 
 .company-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .company-grid--four{grid-template-columns:repeat(4,minmax(0,1fr))}
-.company-card{position:relative;min-height:265px;padding:26px;border:1px solid var(--company-line);border-radius:var(--company-radius);background:#fff;overflow:hidden}
+.company-card{position:relative;min-height:265px;padding:26px;border:1px solid var(--company-line);border-radius:var(--company-radius);background:#fff;overflow:hidden;transition:border-color .18s ease,background .18s ease}
+.company-card:hover{border-color:#c9c9c4;background:#fafaf8}
 .company-card>span{display:block;color:#8d8d87;font-size:10px;font-weight:700;letter-spacing:.08em}
 .company-card h3{margin:62px 0 12px;font-size:20px;font-weight:650;line-height:1.28;letter-spacing:-.03em}
 .company-card p{margin:0;color:var(--company-muted);font-size:13.5px;line-height:1.74;word-break:keep-all}
 .company-section--soft .company-card{background:#fff}
 .company-section--dark .company-card{border-color:#383835;background:#20201f}
+.company-section--dark .company-card:hover{border-color:#4a4a46;background:#242422}
 .company-section--dark .company-card>span{color:#d2d2cd}
 .company-section--dark .company-card p{color:#b9b9b4}
 
@@ -80,7 +82,7 @@
 .design-team-page .team-overview__head>p:last-child{max-width:760px;margin:0 auto;color:var(--company-muted);font-size:14px;line-height:1.78;text-align:center}
 
 .design-team-page .team-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.design-team-page .team-card{min-height:460px;padding:26px;border:1px solid var(--company-line);border-radius:var(--company-radius);background:#fff;transition:border-color .18s ease,background .18s ease}
+.design-team-page .team-card{min-height:440px;padding:26px;border:1px solid var(--company-line);border-radius:var(--company-radius);background:#fff;transition:border-color .18s ease,background .18s ease}
 .design-team-page .team-card:hover{transform:none;border-color:#c9c9c4;background:#fafaf8}
 .design-team-page .team-card--lead{background:var(--company-soft)}
 .design-team-page .team-card__index{color:#171717}
@@ -122,8 +124,8 @@
   padding-top:108px!important;
   padding-bottom:88px!important;
 }
-.designer-page .designer-hero__title{grid-column:1/span 5!important}
-.designer-page .designer-hero__intro{grid-column:7/-1!important}
+.designer-page .designer-hero__title{grid-column:1/span 5!important;padding:42px 40px;border:1px solid var(--company-line);border-radius:var(--company-radius);background:var(--company-soft)}
+.designer-page .designer-hero__intro{grid-column:7/-1!important;padding:42px 0;align-self:center}
 .designer-page .designer-hero h1{font-size:clamp(50px,5vw,76px);font-weight:620;line-height:.96}
 .designer-page .designer-hero__role{color:var(--company-muted)}
 .designer-page .designer-hero__intro .lead{font-size:clamp(20px,2vw,27px);font-weight:560;line-height:1.48;letter-spacing:-.035em}
@@ -184,6 +186,9 @@
 .designer-page .designer-contact h2{font-size:clamp(32px,3.5vw,50px);font-weight:620}
 .designer-page .designer-contact .copy{color:#aaa9a4!important}
 .designer-page .designer-contact a{color:#fff!important}
+.designer-page .designer-closing{margin-top:10px!important;margin-bottom:28px!important;padding:52px!important;border:1px solid var(--company-line)!important;border-radius:var(--company-radius)!important;background:var(--company-soft)!important}
+.designer-page .designer-closing .designer-section__head{margin-bottom:0!important}
+.designer-page .designer-closing .copy{color:var(--company-muted)!important}
 
 @media(max-width:980px){
   .company-grid--four,.company-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
