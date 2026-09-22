@@ -165,7 +165,7 @@
         <div class="site-nav-item">
           <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-            <a href="/develop.html#website-build"><span>웹사이트 / 관리페이지 제작</span><small>WEBSITE · ADMIN</small></a>
+            <a href="/develop.html"><span>웹사이트 / 관리페이지 제작</span><small>WEBSITE · ADMIN</small></a>
             <a href="/develop.html#crm-build"><span>기업 전용 관리 CRM 제작</span><small>BUSINESS CRM</small></a>
             <a href="/print.html"><span>인쇄 / 패키지 제작</span><small>PRINTING</small></a>
             <a href="/oneplan-solution.html"><span>인플루언서 원플랜 솔루션</span><small>ONE PLAN</small></a>
@@ -226,7 +226,7 @@
       <div class="menu-nav__group" data-menu-group>
         <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
         <div class="menu-nav__sub" hidden>
-          <a href="/develop.html#website-build">웹사이트 / 관리페이지 제작</a>
+          <a href="/develop.html">웹사이트 / 관리페이지 제작</a>
           <a href="/develop.html#crm-build">기업 전용 관리 CRM 제작</a>
           <a href="/print.html">인쇄 / 패키지 제작</a>
           <a href="/oneplan-solution.html">인플루언서 원플랜 솔루션</a>
