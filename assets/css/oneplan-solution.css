@@ -2,7 +2,22 @@
 .oneplan-solution-page{--develop-orange:#171717;--develop-orange-soft:#f1f1ee}
 .oneplan-solution-page .develop-button--primary{background:#171717;border-color:#171717}
 .oneplan-solution-page .develop-service-icon{background:#f1f1ee;color:#171717}
-.oneplan-solution-page .develop-difference-grid span{color:#d8d8d3}
+.oneplan-solution-page .develop-difference-grid span{
+  color:#555551;
+  background:#eeeeea;
+}
+.oneplan-solution-page .develop-difference-grid article::before{display:none!important}
+.oneplan-solution-page .develop-difference-grid article{
+  border-color:#deded8;
+  box-shadow:none;
+}
+.oneplan-solution-page .develop-difference-grid article:hover{
+  border-color:#c9c9c2;
+  background:#fafaf8;
+  box-shadow:none;
+}
+.oneplan-solution-page .develop-difference-grid h3{color:#1b1b1a}
+.oneplan-solution-page .develop-difference-grid p{color:#666661}
 .oneplan-solution-page .develop-cta{background:#111}
 .oneplan-solution-page .develop-problem-grid>article,
 .oneplan-solution-page .develop-service-grid>article,
