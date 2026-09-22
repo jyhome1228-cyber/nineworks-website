@@ -7,7 +7,7 @@
   const path = currentPath.split('/').filter(Boolean).pop() || 'index.html';
   const isHome = path === 'index.html' || currentPath === '/';
   const pageKey = isHome ? 'home' : path.replace(/\.html$/i, '');
-  const isPrintingPage = /\/(?:print|print-editorial|print-partner|package-production|package-sample|production)(?:\.html)?\/?$/.test(currentPath);
+  const isPrintingPage = /\/(?:print|printing-dashboard|print-editorial|print-partner|package-production|package-sample|production)(?:\.html)?\/?$/.test(currentPath);
 
   const assetPath = (value = '') => {
     try { return new URL(value, document.baseURI).pathname; }
@@ -116,12 +116,12 @@
         <div class="site-header__utility" aria-label="특화 서비스 바로가기">
           <a href="/support.html">정부지원사업</a>
           <a href="/majorportfolio/">B2B</a>
-          <a href="/print.html">PRINTING</a>
+          <a href="/printing-dashboard.html">PRINTING</a>
         </div>
       </div>
     </div>
     <div class="site-header__main">
-      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/print.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS">${isPrintingPage ? '<span class="site-logo__suffix">PRINTING</span>' : ''}</a>
+      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS">${isPrintingPage ? '<span class="site-logo__suffix">PRINTING</span>' : ''}</a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <div class="site-nav-item">
           <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
@@ -239,7 +239,7 @@
     <div class="menu-business-cta">
       <a class="menu-business-cta__link" href="/support.html"><span>정부지원사업</span><span>↗</span></a>
       <a class="menu-business-cta__link" href="/majorportfolio/"><span>B2B</span><span>↗</span></a>
-      <a class="menu-business-cta__link menu-business-cta__link--printing" href="/print.html"><span>PRINTING</span><span>↗</span></a>
+      <a class="menu-business-cta__link menu-business-cta__link--printing" href="/printing-dashboard.html"><span>PRINTING</span><span>↗</span></a>
     </div>
     <div class="menu-footer">
       <div class="menu-footer__brand"><img src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS"><span>Design Studio · Incheon, Korea</span></div>
@@ -252,7 +252,7 @@
     about: 'about', designer: 'about', 'design-team': 'about', performance: 'about', partners: 'about',
     process: 'process', 'project-operation': 'process',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
-    solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
+    solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'printing-dashboard': 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
     branding: 'process', 'package-design': 'process', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
     magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
     'design-academy': 'about'
@@ -374,6 +374,25 @@
       <p><strong>이메일</strong> · <a href="mailto:info@9works.kr">info@9works.kr</a></p>
     </div>
     <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} NINEWORKS · Design Studio. All rights reserved.</span><div class="site-footer__social"><a href="https://www.behance.net/the9works">Behance</a></div></div>`;
+
+  if (isPrintingPage && pageKey !== 'printing-dashboard') {
+    loadStyle('assets/css/printing-contact-cta.css?v=20260922-1');
+    body.classList.add('has-printing-contact-cta');
+    if (!document.querySelector('.printing-contact-cta')) {
+      const printingContact = document.createElement('a');
+      printingContact.className = 'printing-contact-cta';
+      printingContact.href = 'tel:01047587049';
+      printingContact.setAttribute('aria-label', '인쇄 담당자에게 전화 문의하기. 월요일부터 금요일 오전 10시부터 오후 7시까지 친절 상담');
+      printingContact.innerHTML = `
+        <span class="printing-contact-cta__copy">
+          <strong>인쇄 담당자에게 문의하기</strong>
+          <small>월–금 10:00–19:00 · 친절 상담</small>
+        </span>
+        <span class="printing-contact-cta__action">전화하기 <b>↗</b></span>
+      `;
+      body.appendChild(printingContact);
+    }
+  }
 
   const mailForm = document.querySelector('[data-mail-form]');
   mailForm?.addEventListener('submit', (event) => {
