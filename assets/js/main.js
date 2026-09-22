@@ -133,7 +133,15 @@
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
-        <a href="/process.html" data-nav-key="process">PROCESS</a>
+        <div class="site-nav-item">
+          <a href="/branding.html" data-nav-key="process">PROCESS <span class="site-nav-caret">▾</span></a>
+          <div class="site-nav-dropdown" aria-label="프로세스 메뉴">
+            <a href="/branding.html"><span>브랜딩 프로세스</span><small>BRANDING PROCESS</small></a>
+            <a href="/package-design.html"><span>패키지 프로세스</span><small>PACKAGE PROCESS</small></a>
+            <a href="/solutions.html#content"><span>콘텐츠 · 편집 프로세스</span><small>CONTENT PROCESS</small></a>
+            <a href="/solutions.html#brand-operation"><span>브랜드 운영 프로세스</span><small>BRAND OPERATION</small></a>
+          </div>
+        </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
@@ -152,15 +160,7 @@
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
-        <div class="site-nav-item">
-          <a href="/solutions.html#services" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="서비스 메뉴">
-            <a href="/branding.html"><span>브랜드 디자인</span><small>BRAND DESIGN</small></a>
-            <a href="/package-design.html"><span>패키지 디자인</span><small>PACKAGE DESIGN</small></a>
-            <a href="/solutions.html#content"><span>콘텐츠 · 편집</span><small>CONTENT</small></a>
-            <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>BRAND OPERATION</small></a>
-          </div>
-        </div>
+        <a href="/solutions.html" data-nav-key="services">SERVICES</a>
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
           <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
@@ -196,7 +196,15 @@
           <a href="/design-team.html">디자인 팀</a>
         </div>
       </div>
-      <a class="menu-nav__main" href="/process.html">PROCESS</a>
+      <div class="menu-nav__group" data-menu-group>
+        <button class="menu-nav__toggle" type="button" aria-expanded="false">PROCESS <span>+</span></button>
+        <div class="menu-nav__sub" hidden>
+          <a href="/branding.html">브랜딩 프로세스</a>
+          <a href="/package-design.html">패키지 프로세스</a>
+          <a href="/solutions.html#content">콘텐츠 · 편집 프로세스</a>
+          <a href="/solutions.html#brand-operation">브랜드 운영 프로세스</a>
+        </div>
+      </div>
       <div class="menu-nav__group" data-menu-group>
         <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
         <div class="menu-nav__sub" hidden>
@@ -214,15 +222,7 @@
           <a href="/portfolio.html?filter=event">이벤트 디자인</a>
         </div>
       </div>
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">SERVICES <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/branding.html">브랜드 디자인</a>
-          <a href="/package-design.html">패키지 디자인</a>
-          <a href="/solutions.html#content">콘텐츠 · 편집</a>
-          <a href="/solutions.html#brand-operation">브랜드 운영</a>
-        </div>
-      </div>
+      <a class="menu-nav__main" href="/solutions.html">SERVICES</a>
       <div class="menu-nav__group" data-menu-group>
         <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
         <div class="menu-nav__sub" hidden>
@@ -253,7 +253,7 @@
     process: 'process', 'project-operation': 'process',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
     solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
-    branding: 'services', 'package-design': 'services', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
+    branding: 'process', 'package-design': 'process', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
     magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
     'design-academy': 'about'
   };
@@ -356,7 +356,7 @@
       <a class="site-footer__brand" href="/" aria-label="나인웍스 홈"><img src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS"></a>
       <nav class="site-footer__links" aria-label="푸터 메뉴">
         <a href="/about.html">About</a>
-        <a href="/process.html">Process</a>
+        <a href="/branding.html">Process</a>
         <a href="/portfolio.html?filter=major">Portfolio</a>
         <a href="/magazine.html">Design Articles</a>
         <a href="/global-references.html">Global References</a>
