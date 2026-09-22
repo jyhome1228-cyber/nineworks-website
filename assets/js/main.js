@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-13');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-14');
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
 
   loadScript('assets/js/seo.js?v=20260811-3');
