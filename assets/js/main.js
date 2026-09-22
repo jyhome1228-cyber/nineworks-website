@@ -156,7 +156,6 @@
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
             <a href="/solutions.html"><span>솔루션 전체보기</span><small>OVERVIEW</small></a>
             <a href="/develop.html"><span>웹사이트 · 시스템</span><small>DIGITAL BUILD</small></a>
-            <a href="/support.html"><span>정부지원사업</span><small>GOVERNMENT SUPPORT</small></a>
             <a href="/print.html"><span>인쇄 · 패키지 제작</span><small>PRODUCTION</small></a>
           </div>
         </div>
@@ -217,7 +216,6 @@
         <div class="menu-nav__sub" hidden>
           <a href="/solutions.html">솔루션 전체보기</a>
           <a href="/develop.html">웹사이트 · 시스템</a>
-          <a href="/support.html">정부지원사업</a>
           <a href="/print.html">인쇄 · 패키지 제작</a>
         </div>
       </div>
