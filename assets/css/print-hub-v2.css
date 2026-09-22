@@ -90,3 +90,35 @@
   .print-landing-page .develop-faq>details{border-radius:20px!important}
   .print-landing-page .site-footer__brand>img{width:172px!important}
 }
+
+
+/* Unified rounded component system — 2026-09-22 */
+html body.print-landing-page .print-scope-grid>article,
+html body.print-landing-page .develop-problem-grid>article,
+html body.print-landing-page .develop-difference-grid>article,
+html body.print-landing-page .develop-process>article,
+html body.print-landing-page .develop-faq>details{
+  border-radius:24px!important;
+  overflow:hidden!important;
+}
+html body.print-landing-page .develop-button{
+  border-radius:999px!important;
+  overflow:hidden!important;
+}
+html body.print-landing-page .develop-tags>span,
+html body.print-landing-page .develop-function-grid>span{
+  border-radius:999px!important;
+  overflow:hidden!important;
+}
+html body.print-landing-page .develop-service-icon{
+  border-radius:12px!important;
+}
+@media(max-width:760px){
+  html body.print-landing-page .print-scope-grid>article,
+  html body.print-landing-page .develop-problem-grid>article,
+  html body.print-landing-page .develop-difference-grid>article,
+  html body.print-landing-page .develop-process>article,
+  html body.print-landing-page .develop-faq>details{
+    border-radius:20px!important;
+  }
+}
