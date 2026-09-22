@@ -137,7 +137,7 @@
         <div class="site-nav-item">
           <a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-            <a href="/portfolio.html?filter=major"><span>메이저 프로젝트</span><small>MAJOR</small></a>
+            <a href="/portfolio.html?filter=major"><span>대표 프로젝트</span><small>FEATURED</small></a>
             <a href="/project.html"><span>브랜딩 프로젝트</span><small>BRANDING</small></a>
             <a href="/local-branding.html" data-local-branding-nav="true"><span>로컬 브랜딩</span><small>LOCAL</small></a>
             <a href="/portfolio.html?filter=website"><span>웹사이트</span><small>WEBSITE</small></a>
@@ -200,7 +200,7 @@
         <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
         <div class="menu-nav__sub" hidden>
           <a href="/majorportfolio/">비즈니스 포트폴리오</a>
-          <a href="/portfolio.html?filter=major">메이저 프로젝트</a>
+          <a href="/portfolio.html?filter=major">대표 프로젝트</a>
           <a href="/project.html">브랜딩 프로젝트</a>
           <a href="/local-branding.html" data-local-branding-nav="true">로컬 브랜딩</a>
           <a href="/portfolio.html?filter=website">웹사이트</a>
