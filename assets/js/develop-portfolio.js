@@ -19,18 +19,19 @@
 
   const detailHref = (project) => project.detailUrl || `portfolio-detail.html?work=${encodeURIComponent(project.id)}`;
 
-  grid.innerHTML = projects.map((project) => `
+  grid.innerHTML = projects.map((project, index) => `
     <article class="develop-work-card">
       <a class="develop-work-card__link" href="${escapeHTML(detailHref(project))}">
-        <div class="develop-work-card__media">
-          <img src="${escapeHTML(project.thumbnail || '')}" alt="${escapeHTML(project.title)} develop project" loading="lazy">
-        </div>
         <div class="develop-work-card__meta">
-          <div>
+          <div class="develop-work-card__top">
+            <span class="develop-work-card__label">${String(index + 1).padStart(2, '0')} / DEVELOP CASE</span>
+            <span class="develop-work-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="develop-work-card__body">
             <h3 class="develop-work-card__title">${escapeHTML(project.title)}</h3>
             <p class="develop-work-card__copy">${escapeHTML(project.subtitle || project.scope || '')}</p>
           </div>
-          <span class="develop-work-card__tag">Develop Case ↗</span>
+          <span class="develop-work-card__tag">VIEW PROJECT</span>
         </div>
       </a>
     </article>`).join('');
