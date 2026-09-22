@@ -9,6 +9,35 @@
   <title>웹사이트 제작·웹개발·관리자 시스템 | NINEWORKS</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/develop-portfolio.css?v=20260922-5">
+  <style>
+    /* Hard override: unified rounded-card system */
+    .develop-page .develop-problem-grid > article,
+    .develop-page .develop-service-grid > article,
+    .develop-page .develop-difference-grid > article,
+    .develop-page .develop-process > article,
+    .develop-page .develop-work-card > .develop-work-card__link,
+    .develop-page .develop-faq > details{
+      border-radius:24px !important;
+      overflow:hidden !important;
+    }
+    .develop-page .develop-function-grid > span{
+      border-radius:18px !important;
+      overflow:hidden !important;
+    }
+    .develop-page .develop-service-icon{
+      border-radius:12px !important;
+    }
+    @media(max-width:760px){
+      .develop-page .develop-problem-grid > article,
+      .develop-page .develop-service-grid > article,
+      .develop-page .develop-difference-grid > article,
+      .develop-page .develop-process > article,
+      .develop-page .develop-work-card > .develop-work-card__link,
+      .develop-page .develop-faq > details{
+        border-radius:20px !important;
+      }
+    }
+  </style>
 
   <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
   <meta property="og:image:secure_url" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
