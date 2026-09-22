@@ -1,0 +1,40 @@
+/* NINEWORKS shared header integrity guard — loads last */
+html body:not(.admin-page) .site-shell>.site-header{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  flex:none!important;
+}
+html body:not(.admin-page) .site-shell>.site-header .site-header__top{
+  display:block!important;
+  width:100%!important;
+  flex:none!important;
+}
+html body:not(.admin-page) .site-shell>.site-header .site-header__top-inner,
+html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+  width:min(1440px,calc(100% - 80px))!important;
+  max-width:1440px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  flex:none!important;
+}
+html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+  grid-template-columns:minmax(180px,auto) minmax(0,1fr) auto!important;
+}
+html body:not(.admin-page) .site-shell>.site-header .site-primary-nav{
+  min-width:0!important;
+  justify-content:center!important;
+}
+@media(max-width:980px){
+  html body:not(.admin-page) .site-shell>.site-header .site-header__top{display:none!important}
+  html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+    width:calc(100% - 36px)!important;
+    grid-template-columns:1fr auto!important;
+  }
+  html body:not(.admin-page) .site-shell>.site-header .site-primary-nav,
+  html body:not(.admin-page) .site-shell>.site-header .site-header__actions{display:none!important}
+  html body:not(.admin-page) .site-shell>.site-header .menu-trigger{display:grid!important}
+}
+@media(max-width:390px){
+  html body:not(.admin-page) .site-shell>.site-header .site-header__main{width:calc(100% - 22px)!important}
+}
