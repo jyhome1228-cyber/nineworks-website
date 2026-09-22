@@ -129,7 +129,7 @@
             <a href="/about.html"><span>나인웍스 소개</span><small>STUDIO</small></a>
             <a href="/designer.html"><span>대표 디자이너</span><small>DIRECTOR</small></a>
             <a href="/partners.html"><span>파트너 네트워크</span><small>PARTNERS</small></a>
-            <a href="/designer.html#design-team"><span>디자인 팀</span><small>TEAM</small></a>
+            <a href="/design-team.html"><span>디자인 팀</span><small>TEAM</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
@@ -193,7 +193,7 @@
           <a href="/about.html">나인웍스 소개</a>
           <a href="/designer.html">대표 디자이너</a>
           <a href="/partners.html">파트너 네트워크</a>
-          <a href="/designer.html#design-team">디자인 팀</a>
+          <a href="/design-team.html">디자인 팀</a>
         </div>
       </div>
       <a class="menu-nav__main" href="/process.html">PROCESS</a>
@@ -249,7 +249,7 @@
   document.querySelectorAll('.sector-code').forEach((label) => label.remove());
 
   const navMap = {
-    about: 'about', designer: 'about', performance: 'about', partners: 'about',
+    about: 'about', designer: 'about', 'design-team': 'about', performance: 'about', partners: 'about',
     process: 'process', 'project-operation': 'process',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
     solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
@@ -361,7 +361,7 @@
         <a href="/magazine.html">Design Articles</a>
         <a href="/global-references.html">Global References</a>
         <a href="/solutions.html">Solutions</a>
-        <a href="/designer.html#design-team">Design Team</a>
+        <a href="/design-team.html">Design Team</a>
         <a href="/contact.html">Contact</a>
         <a href="/majorportfolio/">Business Portfolio</a>
         <a href="/privacy.html">Privacy</a>
