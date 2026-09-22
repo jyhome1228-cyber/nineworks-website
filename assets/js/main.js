@@ -163,10 +163,10 @@
         <a href="/solutions.html" data-nav-key="services">SERVICES</a>
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
-          <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
+          <a href="#" data-nav-key="solutions" data-dropdown-trigger aria-haspopup="true">SOLUTIONS <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
             <a href="/develop.html"><span>웹사이트 / 관리페이지 제작</span><small>WEBSITE · ADMIN</small></a>
-            <a href="/develop.html#crm-build"><span>기업 전용 관리 CRM 제작</span><small>BUSINESS CRM</small></a>
+            <a href="/crm.html"><span>기업 전용 관리 CRM 제작</span><small>BUSINESS CRM</small></a>
             <a href="/print.html"><span>인쇄 / 패키지 제작</span><small>PRINTING</small></a>
             <a href="/oneplan-solution.html"><span>인플루언서 원플랜 솔루션</span><small>ONE PLAN</small></a>
             <a href="/ai-model.html"><span>AI 모델 스튜디오</span><small>AI MODEL STUDIO</small></a>
@@ -227,7 +227,7 @@
         <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
         <div class="menu-nav__sub" hidden>
           <a href="/develop.html">웹사이트 / 관리페이지 제작</a>
-          <a href="/develop.html#crm-build">기업 전용 관리 CRM 제작</a>
+          <a href="/crm.html">기업 전용 관리 CRM 제작</a>
           <a href="/print.html">인쇄 / 패키지 제작</a>
           <a href="/oneplan-solution.html">인플루언서 원플랜 솔루션</a>
           <a href="/ai-model.html">AI 모델 스튜디오</a>
@@ -252,7 +252,7 @@
     about: 'about', designer: 'about', 'design-team': 'about', performance: 'about', partners: 'about',
     process: 'process', 'project-operation': 'process',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
-    solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'printing-dashboard': 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
+    solutions: 'solutions', develop: 'solutions', crm: 'solutions', support: 'solutions', print: 'solutions', 'printing-dashboard': 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
     branding: 'process', 'package-design': 'process', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
     magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
     'design-academy': 'about'
@@ -267,6 +267,9 @@
     link.classList.toggle('is-current', active);
     if (active) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
+  });
+  document.querySelectorAll('[data-dropdown-trigger]').forEach((link) => {
+    link.addEventListener('click', (event) => event.preventDefault());
   });
 
   const trigger = document.querySelector('[data-menu-trigger]');

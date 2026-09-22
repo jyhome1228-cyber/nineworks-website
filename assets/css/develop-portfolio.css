@@ -25,6 +25,7 @@
 .develop-hero__lead{max-width:800px;margin:28px auto 0;color:var(--develop-muted);font-size:18px;line-height:1.78;word-break:keep-all}
 .develop-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:34px}
 .develop-button{display:inline-flex;min-height:52px;align-items:center;justify-content:center;gap:22px;padding:0 22px;border-radius:12px;font-size:13px;font-weight:700;text-decoration:none;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.develop-page .develop-button{border-radius:16px!important;overflow:hidden!important}
 .develop-button:hover{transform:translateY(-1px)}
 .develop-button--primary{border:1px solid var(--develop-orange);background:var(--develop-orange);color:#fff}
 .develop-button--primary:hover{background:#e94d15;border-color:#e94d15}

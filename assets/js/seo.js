@@ -102,6 +102,12 @@
       canonical: `${BASE}/develop.html`, breadcrumb: [{ name: 'Solutions', url: `${BASE}/solutions.html` }, { name: 'Develop', url: `${BASE}/develop.html` }], pageType: 'WebPage', service: 'Website & Digital System Development',
       keywords: unique([...K.web, '기업 홈페이지 제작', '브랜드 홈페이지 제작', '쇼핑몰 디자인', '프론트엔드 개발'])
     },
+    'crm.html': {
+      title: '기업 전용 CRM·관리자 시스템 제작 | NINEWORKS',
+      description: '고객, 프로젝트, 계약, 일정, 문의와 문서를 한곳에서 관리하는 기업 맞춤형 CRM·관리자 시스템을 기획하고 구축합니다.',
+      canonical: `${BASE}/crm.html`, breadcrumb: [{ name: 'CRM', url: `${BASE}/crm.html` }], pageType: 'WebPage', service: 'Business CRM Development',
+      keywords: unique(['기업 CRM 제작', '고객관리 시스템', '프로젝트 관리 시스템', '관리자 페이지 제작', '맞춤형 업무 시스템', ...K.web.slice(0, 4)])
+    },
     'local-branding.html': {
       title: '로컬 브랜딩 | 지역·공간·상권 브랜드 디자인 | NINEWORKS',
       description: '지역과 장소의 맥락을 브랜드 전략, 아이덴티티, 콘텐츠, 공간 그래픽과 실제 경험으로 연결하는 나인웍스의 로컬·지역 브랜딩 프로젝트입니다.',
