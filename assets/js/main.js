@@ -46,7 +46,7 @@
     typographyGuard.dataset.nwTypographyGuard = 'true';
     document.head.appendChild(typographyGuard);
   }
-  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-12');
+  loadStyle('assets/css/nineworks-ui-system.css?v=20260922-13');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -167,7 +167,7 @@
             <a href="/develop.html#website-build"><span>웹사이트 / 관리페이지 제작</span><small>WEBSITE · ADMIN</small></a>
             <a href="/develop.html#crm-build"><span>기업 전용 관리 CRM 제작</span><small>BUSINESS CRM</small></a>
             <a href="/print.html"><span>인쇄 / 패키지 제작</span><small>PRINTING</small></a>
-            <a href="/1plan/"><span>인플루언서 원플랜 솔루션</span><small>ONE PLAN</small></a>
+            <a href="/oneplan-solution.html"><span>인플루언서 원플랜 솔루션</span><small>ONE PLAN</small></a>
             <a href="/ai-model.html"><span>AI 모델 스튜디오</span><small>AI MODEL STUDIO</small></a>
           </div>
         </div>
@@ -228,7 +228,7 @@
           <a href="/develop.html#website-build">웹사이트 / 관리페이지 제작</a>
           <a href="/develop.html#crm-build">기업 전용 관리 CRM 제작</a>
           <a href="/print.html">인쇄 / 패키지 제작</a>
-          <a href="/1plan/">인플루언서 원플랜 솔루션</a>
+          <a href="/oneplan-solution.html">인플루언서 원플랜 솔루션</a>
           <a href="/ai-model.html">AI 모델 스튜디오</a>
         </div>
       </div>
@@ -251,7 +251,7 @@
     about: 'about', designer: 'about', performance: 'about', partners: 'about',
     process: 'process', 'project-operation': 'process',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
-    solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
+    solutions: 'solutions', develop: 'solutions', support: 'solutions', print: 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
     branding: 'services', 'package-design': 'services', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
     magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
     'design-academy': 'about'
