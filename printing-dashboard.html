@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="견적 요청부터 제작 사양과 진행 현황까지 한곳에서 관리하는 NINEWORKS PRINTING 대시보드가 2026년 10월 오픈 예정입니다.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://9works.kr/printing-dashboard.html">
+  <title>프린팅 대시보드 오픈 준비 중 | NINEWORKS PRINTING</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/printing-dashboard.css?v=20260922-1">
+  <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
+</head>
+<body class="sector-page printing-dashboard-page">
+<div class="site-shell">
+  <header class="site-header"><a class="site-logo" href="/printing-dashboard.html">NINEWORKS PRINTING</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
+  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+  <main class="printing-dashboard">
+    <section class="printing-dashboard__hero">
+      <div class="container">
+        <p class="printing-dashboard__eyebrow">NINEWORKS PRINTING · DASHBOARD</p>
+        <div class="printing-dashboard__grid">
+          <h1>프린팅 제작을<br>더 쉽고 선명하게.</h1>
+          <div class="printing-dashboard__intro">
+            <p>견적 요청, 제작 사양, 진행 현황과 재주문까지 한곳에서 확인할 수 있는 프린팅 대시보드를 준비하고 있습니다.</p>
+            <div class="printing-dashboard__actions">
+              <a href="/print.html">인쇄·패키지 서비스 보기 <span>↗</span></a>
+              <a href="tel:01047587049">인쇄 담당자 전화 상담 <span>↗</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="printing-dashboard__preview" aria-hidden="true">
+          <div><span>01</span><strong>견적 요청</strong><small>품목과 제작 조건을 간편하게 전달</small></div>
+          <div><span>02</span><strong>진행 확인</strong><small>확정 사양과 제작 일정을 한눈에 확인</small></div>
+          <div><span>03</span><strong>재주문 관리</strong><small>이전 제작 내역을 기준으로 빠르게 요청</small></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer container"></footer>
+</div>
+
+<div class="printing-opening-modal is-open" data-printing-modal>
+  <button class="printing-opening-modal__backdrop" type="button" aria-label="팝업 닫기" data-printing-modal-close></button>
+  <section class="printing-opening-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="printing-opening-title">
+    <button class="printing-opening-modal__close" type="button" aria-label="팝업 닫기" data-printing-modal-close>×</button>
+    <p>OPENING SOON</p>
+    <h2 id="printing-opening-title">2026년 10월<br>오픈 예정입니다.</h2>
+    <strong>NINEWORKS PRINTING 대시보드</strong>
+    <span>현재 오픈 준비 중입니다.<br>조금만 기다려 주세요.</span>
+    <button class="printing-opening-modal__confirm" type="button" data-printing-modal-close>확인</button>
+  </section>
+</div>
+
+<script src="assets/js/main.js?v=20260922-17"></script>
+<script>
+  (() => {
+    const modal = document.querySelector('[data-printing-modal]');
+    document.querySelectorAll('[data-printing-modal-close]').forEach((button) => button.addEventListener('click', () => {
+      modal?.classList.remove('is-open');
+    }));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') modal?.classList.remove('is-open');
+    });
+  })();
+</script>
+</body>
+</html>
