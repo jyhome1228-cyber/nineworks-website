@@ -738,16 +738,22 @@ html body.home-clarity .site-footer__brand{
   flex:0 0 auto!important;
   width:220px!important;
   min-width:220px!important;
-  height:32px!important;
+  height:auto!important;
   padding:0!important;
-  overflow:hidden!important;
-  background:url('../nineworks-logo.svg?v=20260824-4') left center / contain no-repeat!important;
-  color:transparent!important;
+  overflow:visible!important;
+  background:none!important;
+  color:inherit!important;
   font-size:0!important;
   line-height:0!important;
   letter-spacing:0!important;
-  text-indent:-9999px!important;
+  text-indent:0!important;
   white-space:nowrap!important;
+}
+html body.home-clarity .site-footer__brand>img{
+  display:block!important;
+  width:220px!important;
+  max-width:100%!important;
+  height:auto!important;
 }
 html body.home-clarity .site-footer__brand::before,
 html body.home-clarity .site-footer__brand::after{
@@ -758,6 +764,9 @@ html body.home-clarity .site-footer__brand::after{
   html body.home-clarity .site-footer__brand{
     width:172px!important;
     min-width:172px!important;
-    height:25px!important;
+    height:auto!important;
+  }
+  html body.home-clarity .site-footer__brand>img{
+    width:172px!important;
   }
 }
