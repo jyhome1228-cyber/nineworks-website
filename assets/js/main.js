@@ -138,8 +138,7 @@
           <div class="site-nav-dropdown" aria-label="프로세스 메뉴">
             <a href="/branding.html"><span>브랜딩 프로세스</span><small>BRANDING PROCESS</small></a>
             <a href="/package-design.html"><span>패키지 프로세스</span><small>PACKAGE PROCESS</small></a>
-            <a href="/solutions.html#content"><span>콘텐츠 · 편집 프로세스</span><small>CONTENT PROCESS</small></a>
-            <a href="/solutions.html#brand-operation"><span>브랜드 운영 프로세스</span><small>BRAND OPERATION</small></a>
+            <a href="/develop.html#develop-process"><span>웹 개발 프로세스</span><small>WEB DEVELOPMENT</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
@@ -201,8 +200,7 @@
         <div class="menu-nav__sub" hidden>
           <a href="/branding.html">브랜딩 프로세스</a>
           <a href="/package-design.html">패키지 프로세스</a>
-          <a href="/solutions.html#content">콘텐츠 · 편집 프로세스</a>
-          <a href="/solutions.html#brand-operation">브랜드 운영 프로세스</a>
+          <a href="/develop.html#develop-process">웹 개발 프로세스</a>
         </div>
       </div>
       <div class="menu-nav__group" data-menu-group>
@@ -258,6 +256,7 @@
     'design-academy': 'about'
   };
   let activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
+  if (pageKey === 'develop' && window.location.hash === '#develop-process') activeNav = 'process';
   if (body.classList.contains('about-page')) activeNav = 'about';
   else if (body.classList.contains('process-overview-page')) activeNav = 'process';
   else if (body.classList.contains('solutions-page')) activeNav = 'solutions';
