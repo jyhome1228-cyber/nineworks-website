@@ -152,21 +152,23 @@
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
         <div class="site-nav-item">
-          <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-            <a href="/solutions.html"><span>솔루션 전체보기</span><small>OVERVIEW</small></a>
-            <a href="/develop.html"><span>웹사이트 · 시스템</span><small>DIGITAL BUILD</small></a>
-            <a href="/print.html"><span>인쇄 · 패키지 제작</span><small>PRODUCTION</small></a>
-          </div>
-        </div>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <div class="site-nav-item">
           <a href="/solutions.html#services" data-nav-key="services">SERVICES <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="서비스 메뉴">
             <a href="/branding.html"><span>브랜드 디자인</span><small>BRAND DESIGN</small></a>
             <a href="/package-design.html"><span>패키지 디자인</span><small>PACKAGE DESIGN</small></a>
             <a href="/solutions.html#content"><span>콘텐츠 · 편집</span><small>CONTENT</small></a>
             <a href="/solutions.html#brand-operation"><span>브랜드 운영</span><small>BRAND OPERATION</small></a>
+          </div>
+        </div>
+        <span class="site-nav-separator" aria-hidden="true">·</span>
+        <div class="site-nav-item">
+          <a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret">▾</span></a>
+          <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
+            <a href="/develop.html#website-build"><span>웹사이트 / 관리페이지 제작</span><small>WEBSITE · ADMIN</small></a>
+            <a href="/develop.html#crm-build"><span>기업 전용 관리 CRM 제작</span><small>BUSINESS CRM</small></a>
+            <a href="/print.html"><span>인쇄 / 패키지 제작</span><small>PRINTING</small></a>
+            <a href="/1plan/"><span>인플루언서 원플랜 솔루션</span><small>ONE PLAN</small></a>
+            <a href="/ai-model.html"><span>AI 모델 스튜디오</span><small>AI MODEL STUDIO</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
@@ -212,20 +214,22 @@
         </div>
       </div>
       <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/solutions.html">솔루션 전체보기</a>
-          <a href="/develop.html">웹사이트 · 시스템</a>
-          <a href="/print.html">인쇄 · 패키지 제작</a>
-        </div>
-      </div>
-      <div class="menu-nav__group" data-menu-group>
         <button class="menu-nav__toggle" type="button" aria-expanded="false">SERVICES <span>+</span></button>
         <div class="menu-nav__sub" hidden>
           <a href="/branding.html">브랜드 디자인</a>
           <a href="/package-design.html">패키지 디자인</a>
           <a href="/solutions.html#content">콘텐츠 · 편집</a>
           <a href="/solutions.html#brand-operation">브랜드 운영</a>
+        </div>
+      </div>
+      <div class="menu-nav__group" data-menu-group>
+        <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
+        <div class="menu-nav__sub" hidden>
+          <a href="/develop.html#website-build">웹사이트 / 관리페이지 제작</a>
+          <a href="/develop.html#crm-build">기업 전용 관리 CRM 제작</a>
+          <a href="/print.html">인쇄 / 패키지 제작</a>
+          <a href="/1plan/">인플루언서 원플랜 솔루션</a>
+          <a href="/ai-model.html">AI 모델 스튜디오</a>
         </div>
       </div>
       <a class="menu-nav__main" href="/magazine.html">MAGAZINE</a>
