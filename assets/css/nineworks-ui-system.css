@@ -1879,3 +1879,30 @@ html body:not(.admin-page) .site-footer__brand img{
     grid-column:auto!important;
   }
 }
+
+
+/* Header integrity guard — portfolio and legacy page compatibility / 2026-09-22 */
+html body .site-shell>.site-header{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  flex:none!important;
+}
+html body .site-shell>.site-header .site-header__top{
+  display:block!important;
+  width:100%!important;
+  flex:none!important;
+}
+html body .site-shell>.site-header .site-header__main{
+  width:min(1440px,calc(100% - 80px))!important;
+  max-width:1440px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  flex:none!important;
+}
+@media(max-width:980px){
+  html body .site-shell>.site-header .site-header__top{display:none!important}
+  html body .site-shell>.site-header .site-header__main{
+    width:calc(100% - 36px)!important;
+  }
+}
