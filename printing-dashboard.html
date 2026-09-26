@@ -3,66 +3,301 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="견적 요청부터 제작 사양과 진행 현황까지 한곳에서 관리하는 NINEWORKS PRINTING 대시보드가 2026년 10월 오픈 예정입니다.">
+  <meta name="description" content="브랜드와 비즈니스 상황에 맞는 프린팅 세트부터 패키지 샘플·양산, 나인웍스 고객사 전용 제작까지 한 번에 확인하는 NINEWORKS PRINTING.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://9works.kr/printing-dashboard.html">
-  <title>프린팅 대시보드 오픈 준비 중 | NINEWORKS PRINTING</title>
+  <title>NINEWORKS PRINTING</title>
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/printing-dashboard.css?v=20260922-1">
+  <link rel="stylesheet" href="assets/css/printing-dashboard.css?v=20260926-1">
   <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
 </head>
-<body class="sector-page printing-dashboard-page">
-<div class="site-shell">
-  <header class="site-header"><a class="site-logo" href="/printing-dashboard.html">NINEWORKS PRINTING</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
-  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
-  <main class="printing-dashboard">
-    <section class="printing-dashboard__hero">
-      <div class="container">
-        <p class="printing-dashboard__eyebrow">NINEWORKS PRINTING · DASHBOARD</p>
-        <div class="printing-dashboard__grid">
-          <h1>프린팅 제작을<br>더 쉽고 선명하게.</h1>
-          <div class="printing-dashboard__intro">
-            <p>견적 요청, 제작 사양, 진행 현황과 재주문까지 한곳에서 확인할 수 있는 프린팅 대시보드를 준비하고 있습니다.</p>
-            <div class="printing-dashboard__actions">
-              <a href="/print.html">인쇄·패키지 서비스 보기 <span>↗</span></a>
-              <a href="tel:01047587049">인쇄 담당자 전화 상담 <span>↗</span></a>
+<body class="printing-home-page">
+<div class="printing-shell">
+  <header class="printing-header">
+    <div class="printing-header__inner">
+      <a class="printing-brand" href="/printing-dashboard.html">NINEWORKS PRINTING</a>
+      <nav class="printing-nav" aria-label="프린팅 주요 메뉴">
+        <a href="#sets">프린팅 세트</a>
+        <a href="#package">패키지 제작</a>
+        <a href="#sample">샘플 제작</a>
+        <a href="#client">고객사 전용</a>
+        <a href="#business">기업·대량 문의</a>
+      </nav>
+      <div class="printing-header__actions">
+        <a href="tel:01047587049" class="printing-header__link">상담하기</a>
+        <a href="/" class="printing-header__back">NINEWORKS ↗</a>
+      </div>
+      <button class="printing-menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false" data-printing-menu>
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="printing-mobile-nav" data-printing-mobile-nav>
+      <a href="#sets">프린팅 세트</a>
+      <a href="#package">패키지 제작</a>
+      <a href="#sample">샘플 제작</a>
+      <a href="#client">고객사 전용</a>
+      <a href="#business">기업·대량 문의</a>
+      <a href="tel:01047587049">상담하기</a>
+      <a href="/">NINEWORKS로 돌아가기 ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="printing-hero">
+      <div class="printing-hero__slider" data-hero-slider>
+        <article class="printing-hero__slide is-active">
+          <div class="printing-hero__copy">
+            <p class="printing-kicker">PRINTING SET</p>
+            <h1>필요한 인쇄물을<br>한 번에 준비하세요.</h1>
+            <p>로컬 브랜드, 카페, 스타트업, 팝업스토어, 기업까지 목적에 맞는 인쇄 구성을 준비합니다.</p>
+            <a href="#sets" class="printing-cta">프린팅 세트 보기</a>
+          </div>
+          <div class="printing-hero__visual printing-hero__visual--set"><span>SET</span></div>
+        </article>
+
+        <article class="printing-hero__slide">
+          <div class="printing-hero__copy">
+            <p class="printing-kicker">SAMPLE PRINTING</p>
+            <h1>많이 만들기 전에,<br>먼저 확인하세요.</h1>
+            <p>본 제작 전에 색감과 소재, 실제 인쇄 결과를 샘플로 확인할 수 있습니다.</p>
+            <a href="#sample" class="printing-cta">샘플 제작 알아보기</a>
+          </div>
+          <div class="printing-hero__visual printing-hero__visual--sample"><span>SAMPLE</span></div>
+        </article>
+
+        <article class="printing-hero__slide">
+          <div class="printing-hero__copy">
+            <p class="printing-kicker">PACKAGE PRODUCTION</p>
+            <h1>패키지 샘플부터<br>대량 양산까지.</h1>
+            <p>구조와 소재를 확인하는 샘플부터 확정 사양의 본 인쇄·대량 생산까지 함께합니다.</p>
+            <a href="#package" class="printing-cta">패키지 제작 보기</a>
+          </div>
+          <div class="printing-hero__visual printing-hero__visual--package"><span>PACKAGE</span></div>
+        </article>
+
+        <article class="printing-hero__slide">
+          <div class="printing-hero__copy">
+            <p class="printing-kicker">CLIENT ONLY</p>
+            <h1>기존 고객사는<br>더 간편하게.</h1>
+            <p>나인웍스에서 진행한 명함과 포스터를 기존 데이터 기준으로 빠르게 추가 제작합니다.</p>
+            <a href="#client" class="printing-cta">고객사 전용 제작</a>
+          </div>
+          <div class="printing-hero__visual printing-hero__visual--client"><span>CLIENT</span></div>
+        </article>
+      </div>
+
+      <div class="printing-hero__controls">
+        <button type="button" aria-label="이전 배너" data-hero-prev>←</button>
+        <div class="printing-hero__dots" data-hero-dots>
+          <button class="is-active" type="button" aria-label="1번 배너"></button>
+          <button type="button" aria-label="2번 배너"></button>
+          <button type="button" aria-label="3번 배너"></button>
+          <button type="button" aria-label="4번 배너"></button>
+        </div>
+        <button type="button" aria-label="다음 배너" data-hero-next>→</button>
+      </div>
+    </section>
+
+    <section class="printing-section" id="sets">
+      <div class="printing-container">
+        <div class="printing-section__head">
+          <p class="printing-kicker">PRINTING SET</p>
+          <h2>어떤 인쇄물이 필요한지<br>하나씩 고민하지 마세요.</h2>
+          <p>사용 목적에 맞는 세트를 선택하고, 필요한 구성은 상담을 통해 조정합니다.</p>
+        </div>
+
+        <div class="printing-set-grid">
+          <article class="printing-set-card">
+            <div class="printing-set-card__image printing-set-card__image--local"><span>LOCAL BRAND</span></div>
+            <div class="printing-set-card__body">
+              <p>로컬 브랜드</p>
+              <h3>브랜드의 시작과 운영에 필요한 기본 인쇄 구성</h3>
+              <span>A · B · C 세트 준비 중</span>
+            </div>
+          </article>
+
+          <article class="printing-set-card printing-set-card--choice">
+            <div class="printing-set-card__image printing-set-card__image--cafe"><span>CAFE & F&amp;B</span></div>
+            <div class="printing-set-card__body">
+              <p>카페 · F&amp;B</p>
+              <h3>우리 매장에 필요한 제작물만 골라서 구성</h3>
+              <span>직접 구성형 세트</span>
+            </div>
+          </article>
+
+          <article class="printing-set-card">
+            <div class="printing-set-card__image printing-set-card__image--startup"><span>STARTUP</span></div>
+            <div class="printing-set-card__body">
+              <p>스타트업</p>
+              <h3>회사 소개와 영업에 필요한 인쇄 구성</h3>
+              <span>A · B · C 세트 준비 중</span>
+            </div>
+          </article>
+
+          <article class="printing-set-card printing-set-card--choice">
+            <div class="printing-set-card__image printing-set-card__image--popup"><span>POP-UP STORE</span></div>
+            <div class="printing-set-card__body">
+              <p>팝업스토어</p>
+              <h3>공간과 행사에 필요한 출력물을 골라서 구성</h3>
+              <span>직접 구성형 세트</span>
+            </div>
+          </article>
+
+          <article class="printing-set-card">
+            <div class="printing-set-card__image printing-set-card__image--corporate"><span>CORPORATE</span></div>
+            <div class="printing-set-card__body">
+              <p>기업 전용</p>
+              <h3>기업 운영과 반복 제작에 필요한 인쇄 구성</h3>
+              <span>A · B · C 세트 준비 중</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="printing-section printing-section--soft" id="package">
+      <div class="printing-container">
+        <div class="printing-section__head printing-section__head--row">
+          <div>
+            <p class="printing-kicker">PACKAGE</p>
+            <h2>패키지는 샘플부터<br>양산까지 이어서.</h2>
+          </div>
+          <p>사이즈와 구조, 소재를 확인하는 단계부터 확정 사양의 대량 생산까지 프로젝트 흐름에 맞춰 진행합니다.</p>
+        </div>
+
+        <div class="printing-wide-grid">
+          <article class="printing-wide-card">
+            <p>PACKAGE SAMPLE</p>
+            <h3>패키지 샘플 제작</h3>
+            <span>본 제작 전에 구조와 실제 결과물을 먼저 확인합니다.</span>
+            <a href="tel:01047587049">샘플 제작 문의 →</a>
+          </article>
+          <article class="printing-wide-card">
+            <p>PACKAGE PRODUCTION</p>
+            <h3>패키지 인쇄 · 대량 양산</h3>
+            <span>확정된 사양과 수량에 맞춰 본 인쇄와 양산을 진행합니다.</span>
+            <a href="tel:01047587049">양산 견적 문의 →</a>
+          </article>
+        </div>
+
+        <div class="printing-process">
+          <span>샘플 제작</span><i>→</i><span>사양 확인</span><i>→</i><span>수정·확정</span><i>→</i><span>본 제작</span><i>→</i><span>납품</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="printing-section" id="client">
+      <div class="printing-container">
+        <div class="printing-section__head">
+          <p class="printing-kicker">NINEWORKS CLIENT ONLY</p>
+          <h2>기존 고객사를 위한<br>간편 제작 서비스</h2>
+          <p>나인웍스에서 이미 진행한 디자인 데이터를 기준으로 빠르게 추가 제작합니다.</p>
+        </div>
+
+        <div class="printing-client-grid">
+          <article class="printing-client-card">
+            <span class="printing-badge">고객사 전용</span>
+            <p>BUSINESS CARD</p>
+            <h3>명함 제작</h3>
+            <p>기존 임직원 명함 재인쇄와 신규 임직원 추가 제작을 간편하게 요청할 수 있습니다.</p>
+            <a href="tel:01047587049">명함 제작 요청 →</a>
+          </article>
+          <article class="printing-client-card">
+            <span class="printing-badge">고객사 전용</span>
+            <p>POSTER</p>
+            <h3>포스터 제작</h3>
+            <p>기존 브랜드 디자인을 활용한 포스터 추가 제작과 인쇄를 빠르게 진행합니다.</p>
+            <a href="tel:01047587049">포스터 제작 요청 →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="printing-section printing-section--accent" id="sample">
+      <div class="printing-container printing-sample">
+        <div>
+          <p class="printing-kicker">SAMPLE PRINTING</p>
+          <h2>처음이라면,<br>바로 많이 만들지 않아도 됩니다.</h2>
+        </div>
+        <div>
+          <p>종이, 컬러, 후가공과 실제 완성도가 궁금하다면 먼저 샘플을 제작해 확인해보세요.</p>
+          <a href="tel:01047587049" class="printing-cta printing-cta--light">샘플 제작 상담</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="printing-section" id="business">
+      <div class="printing-container">
+        <div class="printing-business">
+          <div>
+            <p class="printing-kicker">BUSINESS PRINTING</p>
+            <h2>수량이 많거나<br>지속적인 제작이 필요한가요?</h2>
+          </div>
+          <div>
+            <p>기업·기관·프랜차이즈의 반복적인 인쇄 및 제작 업무를 프로젝트 단위로 관리합니다.</p>
+            <div class="printing-business__actions">
+              <a href="tel:01047587049">기업·대량 견적 문의</a>
+              <span>월–금 10:00–19:00 상담</span>
             </div>
           </div>
-        </div>
-        <div class="printing-dashboard__preview" aria-hidden="true">
-          <div><span>01</span><strong>견적 요청</strong><small>품목과 제작 조건을 간편하게 전달</small></div>
-          <div><span>02</span><strong>진행 확인</strong><small>확정 사양과 제작 일정을 한눈에 확인</small></div>
-          <div><span>03</span><strong>재주문 관리</strong><small>이전 제작 내역을 기준으로 빠르게 요청</small></div>
         </div>
       </div>
     </section>
   </main>
-  <footer class="site-footer container"></footer>
+
+  <footer class="printing-footer">
+    <div class="printing-container printing-footer__grid">
+      <div>
+        <strong>NINEWORKS PRINTING</strong>
+        <p>브랜드와 비즈니스에 필요한 인쇄 제작을 더 간단하게.</p>
+      </div>
+      <div class="printing-footer__links">
+        <a href="#sets">프린팅 세트</a>
+        <a href="#package">패키지 제작</a>
+        <a href="#sample">샘플 제작</a>
+        <a href="#client">고객사 전용</a>
+        <a href="#business">기업·대량 문의</a>
+      </div>
+      <a class="printing-footer__back" href="/">← NINEWORKS 메인으로 돌아가기</a>
+    </div>
+  </footer>
 </div>
 
-<div class="printing-opening-modal is-open" data-printing-modal>
-  <button class="printing-opening-modal__backdrop" type="button" aria-label="팝업 닫기" data-printing-modal-close></button>
-  <section class="printing-opening-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="printing-opening-title">
-    <button class="printing-opening-modal__close" type="button" aria-label="팝업 닫기" data-printing-modal-close>×</button>
-    <p>OPENING SOON</p>
-    <h2 id="printing-opening-title">2026년 10월<br>오픈 예정입니다.</h2>
-    <strong>NINEWORKS PRINTING 대시보드</strong>
-    <span>현재 오픈 준비 중입니다.<br>조금만 기다려 주세요.</span>
-    <button class="printing-opening-modal__confirm" type="button" data-printing-modal-close>확인</button>
-  </section>
-</div>
-
-<script src="assets/js/main.js?v=20260922-17"></script>
 <script>
-  (() => {
-    const modal = document.querySelector('[data-printing-modal]');
-    document.querySelectorAll('[data-printing-modal-close]').forEach((button) => button.addEventListener('click', () => {
-      modal?.classList.remove('is-open');
-    }));
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') modal?.classList.remove('is-open');
-    });
-  })();
+(() => {
+  const slides = [...document.querySelectorAll('.printing-hero__slide')];
+  const dots = [...document.querySelectorAll('[data-hero-dots] button')];
+  let index = 0;
+  let timer;
+
+  const show = (next) => {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+  };
+
+  const restart = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(index + 1), 6500);
+  };
+
+  document.querySelector('[data-hero-next]')?.addEventListener('click', () => { show(index + 1); restart(); });
+  document.querySelector('[data-hero-prev]')?.addEventListener('click', () => { show(index - 1); restart(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); restart(); }));
+  restart();
+
+  const menuButton = document.querySelector('[data-printing-menu]');
+  const mobileNav = document.querySelector('[data-printing-mobile-nav]');
+  menuButton?.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!open));
+    mobileNav?.classList.toggle('is-open', !open);
+  });
+  mobileNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    menuButton?.setAttribute('aria-expanded', 'false');
+    mobileNav?.classList.remove('is-open');
+  }));
+})();
 </script>
 </body>
 </html>
