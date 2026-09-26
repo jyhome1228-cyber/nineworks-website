@@ -1,0 +1,20 @@
+/* NINEWORKS PRINTING — quote pages visual refresh */
+.printing-quote-page .sector-hero{padding-top:92px;padding-bottom:72px}
+.printing-quote-page .sector-hero__title h1{font-weight:500;letter-spacing:-.055em}
+.printing-quote-page .quote-builder{padding-bottom:120px}
+.printing-quote-page .quote-builder__head{border-radius:24px}
+.printing-quote-page .quote-step{border-radius:24px!important;overflow:hidden}
+.printing-quote-page .quote-summary{border-radius:24px!important;overflow:hidden}
+.printing-quote-page .quote-choice span,
+.printing-quote-page .quote-field input,
+.printing-quote-page .quote-field select,
+.printing-quote-page .quote-field textarea{border-radius:14px!important}
+.printing-quote-page .quote-choice span{overflow:hidden}
+.printing-quote-page .intake-submit{border-radius:14px!important;overflow:hidden}
+.printing-quote-page .package-option-card__inner,
+.printing-quote-page .paper-option-card__inner,
+.printing-quote-page .quote-visual-card{border-radius:18px!important;overflow:hidden}
+.printing-quote-page .package-option-card__media,
+.printing-quote-page .quote-visual-card__image{overflow:hidden}
+.printing-quote-page .quote-back{display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border:1px solid var(--line,#deded9);border-radius:12px;text-decoration:none}
+@media(max-width:760px){.printing-quote-page .sector-hero{padding-top:64px}.printing-quote-page .quote-step,.printing-quote-page .quote-summary{border-radius:20px!important}}
