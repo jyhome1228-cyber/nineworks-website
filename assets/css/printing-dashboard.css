@@ -138,3 +138,38 @@
  .printing-home-page .printing-business{border-radius:20px}
  .printing-home-page .printing-set-card__image{border-radius:19px 19px 0 0}
 }
+
+/* Force rounded component geometry above shared NINEWORKS overrides */
+body.printing-home-page .printing-hero__visual{
+  border-radius:24px !important;
+  overflow:hidden !important;
+}
+body.printing-home-page .printing-set-card{
+  border-radius:24px !important;
+  overflow:hidden !important;
+}
+body.printing-home-page .printing-set-card__image{
+  border-radius:0 !important;
+  overflow:hidden !important;
+}
+body.printing-home-page .printing-wide-card,
+body.printing-home-page .printing-client-card,
+body.printing-home-page .printing-business{
+  border-radius:24px !important;
+  overflow:hidden !important;
+}
+body.printing-home-page a.printing-cta,
+body.printing-home-page .printing-business__actions a{
+  border-radius:14px !important;
+  overflow:hidden !important;
+}
+body.printing-home-page .printing-hero__controls>button{
+  border-radius:12px !important;
+}
+@media(max-width:680px){
+ body.printing-home-page .printing-hero__visual,
+ body.printing-home-page .printing-set-card,
+ body.printing-home-page .printing-wide-card,
+ body.printing-home-page .printing-client-card,
+ body.printing-home-page .printing-business{border-radius:20px !important}
+}
