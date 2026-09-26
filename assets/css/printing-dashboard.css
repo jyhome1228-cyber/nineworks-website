@@ -115,3 +115,26 @@
   .printing-wide-card,.printing-client-card{min-height:260px;padding:24px;border-radius:20px}
   .printing-business{padding:26px;border-radius:20px}
 }
+
+/* 2026-09-26 printing header + rounding correction */
+.printing-home-page .site-shell.printing-site-shell{padding-top:0!important}
+.printing-home-page .site-shell.printing-site-shell>.site-header{display:none!important}
+.printing-home-page .printing-header{top:0!important}
+.printing-home-page .printing-hero__visual,
+.printing-home-page .printing-set-card,
+.printing-home-page .printing-set-card__image,
+.printing-home-page .printing-wide-card,
+.printing-home-page .printing-client-card,
+.printing-home-page .printing-business{border-radius:24px}
+.printing-home-page .printing-set-card__image{border-radius:23px 23px 0 0}
+.printing-home-page .printing-cta,
+.printing-home-page .printing-business__actions a{border-radius:14px}
+.printing-home-page .printing-header__back{border-radius:14px}
+@media(max-width:680px){
+ .printing-home-page .printing-hero__visual,
+ .printing-home-page .printing-set-card,
+ .printing-home-page .printing-wide-card,
+ .printing-home-page .printing-client-card,
+ .printing-home-page .printing-business{border-radius:20px}
+ .printing-home-page .printing-set-card__image{border-radius:19px 19px 0 0}
+}
