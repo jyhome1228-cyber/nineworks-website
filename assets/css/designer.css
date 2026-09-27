@@ -378,3 +378,12 @@
   .designer-resume-footer{align-items:stretch;flex-direction:column;padding:24px;border-radius:20px}
   .designer-resume-footer .develop-button{width:100%}
 }
+
+/* Designer CTA contrast fix — 2026-09-27 */
+.designer-page .develop-cta .eyebrow,
+.designer-page .develop-cta h2,
+.designer-page .develop-cta > .container > p:not(.eyebrow){color:#fff!important}
+.designer-page .develop-cta .eyebrow::before{color:#fff!important}
+.designer-page .develop-cta .develop-button--light{background:#fff!important;color:var(--designer-accent)!important;border-color:#fff!important}
+.designer-page .develop-cta .designer-button--outline{color:#fff!important;border-color:rgba(255,255,255,.72)!important}
+.designer-page .develop-cta .designer-button--outline:hover{background:#fff!important;color:var(--designer-accent)!important;border-color:#fff!important}
