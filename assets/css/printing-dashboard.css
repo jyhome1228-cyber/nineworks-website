@@ -195,11 +195,11 @@ a.printing-set-card{display:block;color:inherit;text-decoration:none;transition:
 /* 2026-09-27 — align all PRINTING page hierarchy with develop.html */
 body.printing-home-page .printing-subhero{padding:96px 0 78px;border-bottom:1px solid var(--line,#e7e7e2)}
 body.printing-home-page .printing-subhero__inner{max-width:980px;text-align:center}
-body.printing-home-page .printing-subhero .printing-kicker{margin:0 auto 24px;color:var(--nw-accent,#ff5a1f);font-size:11px;font-weight:700;letter-spacing:.14em}
+body.printing-home-page .printing-subhero .printing-kicker{margin:0 auto 24px;color:var(--nw-accent,#6ad192);font-size:11px;font-weight:700;letter-spacing:.14em}
 body.printing-home-page .printing-subhero h1{max-width:980px;margin:0 auto;font-size:clamp(46px,4.8vw,72px);font-weight:650;line-height:1.08;letter-spacing:-.055em;text-wrap:balance}
 body.printing-home-page .printing-subhero__inner>p:last-child{max-width:800px;margin:28px auto 0;color:#6b6b67;font-size:18px;line-height:1.78}
 body.printing-home-page .printing-section{padding:104px 0}
-body.printing-home-page .printing-section__head .printing-kicker{color:var(--nw-accent,#ff5a1f);font-weight:700}
+body.printing-home-page .printing-section__head .printing-kicker{color:var(--nw-accent,#6ad192);font-weight:700}
 body.printing-home-page .printing-section__head h2{font-size:clamp(34px,3.3vw,50px);font-weight:630;line-height:1.16;letter-spacing:-.045em}
 body.printing-home-page .printing-section__head>p:last-child{font-size:15.5px;line-height:1.8}
 body.printing-home-page .printing-set-card__body h3,
