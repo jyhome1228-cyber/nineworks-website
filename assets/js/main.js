@@ -251,6 +251,37 @@
     });
   }
 
+  if (isPrintingPage && !sessionStorage.getItem('nw-printing-update-notice-seen')) {
+    const notice = document.createElement('div');
+    notice.className = 'printing-update-notice';
+    notice.setAttribute('role', 'dialog');
+    notice.setAttribute('aria-modal', 'true');
+    notice.setAttribute('aria-labelledby', 'printingUpdateNoticeTitle');
+    notice.innerHTML = `
+      <div class="printing-update-notice__panel">
+        <span class="printing-update-notice__eyebrow">NINEWORKS PRINTING</span>
+        <h2 id="printingUpdateNoticeTitle">현재 프린팅 페이지를 업데이트하고 있습니다.</h2>
+        <p>패키지 샘플·양산과 상담 기능은 정상적으로 이용할 수 있습니다. 프린팅 세트 일부 구성은 현재 준비 중이며, 순차적으로 업데이트될 예정입니다.</p>
+        <div class="printing-update-notice__status">현재 이용 가능 · 일부 프린팅 세트 준비 중</div>
+        <div class="printing-update-notice__actions">
+          <button class="printing-update-notice__close" type="button">확인하고 계속하기</button>
+        </div>
+      </div>
+    `;
+    const closeNotice = () => {
+      sessionStorage.setItem('nw-printing-update-notice-seen', '1');
+      notice.remove();
+    };
+    notice.querySelector('.printing-update-notice__close')?.addEventListener('click', closeNotice);
+    notice.addEventListener('click', (event) => {
+      if (event.target === notice) closeNotice();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.contains(notice)) closeNotice();
+    }, { once: true });
+    body.appendChild(notice);
+  }
+
   document.querySelectorAll('.sector-code').forEach((label) => label.remove());
 
   const navMap = {
