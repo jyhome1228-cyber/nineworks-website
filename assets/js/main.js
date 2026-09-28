@@ -244,6 +244,13 @@
       <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
     </div>`;
 
+  if (isPrintingPage) {
+    document.querySelectorAll('.printing-brand').forEach((brand) => {
+      brand.innerHTML = '<img class="printing-brand__logo" src="/assets/nineworks-printing-logo.svg?v=20260929-1" alt="NINEWORKS PRINTING">';
+      brand.setAttribute('aria-label', '나인웍스 프린팅 홈');
+    });
+  }
+
   document.querySelectorAll('.sector-code').forEach((label) => label.remove());
 
   const navMap = {
@@ -355,7 +362,7 @@
 
   footer.innerHTML = `
     <div class="site-footer__head">
-      <a class="site-footer__brand" href="/" aria-label="나인웍스 홈"><img src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS"></a>
+      <a class="site-footer__brand${isPrintingPage ? ' site-footer__brand--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20260929-1' : '/assets/nineworks-wordmark-20260922.svg?v=20260922-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-footer__links" aria-label="푸터 메뉴">
         <a href="/about.html">About</a>
         <a href="/branding.html">Process</a>
