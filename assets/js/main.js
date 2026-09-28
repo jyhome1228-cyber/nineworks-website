@@ -7,7 +7,7 @@
   const path = currentPath.split('/').filter(Boolean).pop() || 'index.html';
   const isHome = path === 'index.html' || currentPath === '/';
   const pageKey = isHome ? 'home' : path.replace(/\.html$/i, '');
-  const isPrintingPage = /\/(?:print|printing-dashboard|print-editorial|print-partner|package-production|package-sample|production)(?:\.html)?\/?$/.test(currentPath);
+  const isPrintingPage = /\/(?:print(?:-editorial|-partner)?|printing-[^/]+|package-(?:production|sample)|production)(?:\.html)?\/?$/.test(currentPath);
 
   const assetPath = (value = '') => {
     try { return new URL(value, document.baseURI).pathname; }
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="site-header__main">
-      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS">${isPrintingPage ? '<span class="site-logo__suffix">PRINTING</span>' : ''}</a>
+      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20260929-1' : '/assets/nineworks-wordmark-20260922.svg?v=20260922-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <div class="site-nav-item">
           <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
@@ -240,7 +240,7 @@
       <a class="menu-business-cta__link menu-business-cta__link--printing" href="/printing-dashboard.html"><span>PRINTING</span><span>↗</span></a>
     </div>
     <div class="menu-footer">
-      <div class="menu-footer__brand"><img src="/assets/nineworks-wordmark-20260922.svg?v=20260922-2" alt="NINEWORKS"><span>Design Studio · Incheon, Korea</span></div>
+      <div class="menu-footer__brand"><img src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20260929-1' : '/assets/nineworks-wordmark-20260922.svg?v=20260922-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"><span>Design Studio · Incheon, Korea</span></div>
       <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
     </div>`;
 
