@@ -212,3 +212,35 @@ body.printing-home-page .printing-client-card h3{font-weight:620}
  body.printing-home-page .printing-section{padding:76px 0}
  body.printing-home-page .printing-section__head h2{font-size:clamp(30px,8vw,38px)}
 }
+
+
+/* 2026-09-29 — NINEWORKS PRINTING logo */
+body.printing-home-page .printing-brand{
+  display:inline-flex;
+  align-items:center;
+  width:220px;
+  max-width:22vw;
+  line-height:0;
+}
+body.printing-home-page .printing-brand__logo{
+  display:block;
+  width:100%;
+  height:auto;
+}
+body.printing-home-page .site-footer__brand--printing{
+  display:inline-flex;
+  align-items:center;
+  width:min(360px,42vw);
+}
+body.printing-home-page .site-footer__brand--printing img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+@media(max-width:980px){
+  body.printing-home-page .printing-brand{width:210px;max-width:52vw}
+}
+@media(max-width:680px){
+  body.printing-home-page .printing-brand{width:180px;max-width:58vw}
+  body.printing-home-page .site-footer__brand--printing{width:min(280px,72vw)}
+}
