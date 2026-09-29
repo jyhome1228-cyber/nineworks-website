@@ -16,12 +16,12 @@
 .support-page .support-project-visual img{height:100%;object-fit:cover}
 .support-page .support-project-visual figcaption{position:absolute;left:18px;bottom:18px;padding:9px 13px;border-radius:999px;background:rgba(255,255,255,.9);font-size:11px}
 
-.support-page .support-note{max-width:900px;margin:38px auto 0;padding:24px 28px;border:1px solid var(--develop-line);border-radius:24px;background:#fff;color:var(--develop-muted);font-size:13.5px;line-height:1.8;text-align:center}
+.support-ready-modal{position:fixed;z-index:1000;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(17,17,17,.42);backdrop-filter:blur(8px)}.support-ready-modal[hidden]{display:none}.support-ready-modal__box{width:min(100%,520px);padding:38px;border-radius:26px;background:#fff;box-shadow:0 24px 80px rgba(0,0,0,.16);text-align:center}.support-ready-modal__box .eyebrow{margin-bottom:18px}.support-ready-modal__box h2{font-size:clamp(28px,3vw,38px);line-height:1.12;letter-spacing:-.05em}.support-ready-modal__box p{margin:18px auto 26px;max-width:420px;color:#777;font-size:14px;line-height:1.75;word-break:keep-all}.support-ready-modal__actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.support-ready-modal__actions a,.support-ready-modal__actions button{padding:13px 18px;border-radius:999px;font-size:13px;font-weight:600}.support-ready-modal__actions a{background:#111;color:#fff}.support-ready-modal__actions button{border:1px solid #ddd;background:#fff}.support-page .support-note{max-width:900px;margin:38px auto 0;padding:24px 28px;border:1px solid var(--develop-line);border-radius:24px;background:#fff;color:var(--develop-muted);font-size:13.5px;line-height:1.8;text-align:center}
 @media(max-width:760px){.support-page .support-project-visual{grid-template-columns:1fr}.support-page .support-project-visual figure{height:320px}.support-page .support-budget__bar{grid-template-columns:1fr}.support-page .support-note{text-align:left}.support-page .develop-problem-grid>article,.support-page .develop-service-grid>article,.support-page .develop-difference-grid>article,.support-page .develop-process>article,.support-page .develop-faq>details{border-radius:20px!important}}
 </style>
 <meta property="og:type" content="website"><meta property="og:site_name" content="NINEWORKS"><meta property="og:title" content="정부지원사업 디자인 수행 파트너 | NINEWORKS"><meta property="og:url" content="https://9works.kr/support.html"><meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
 </head>
-<body class="sector-page develop-page support-page">
+<body class="sector-page develop-page support-page">\n<div class="support-ready-modal" id="support-ready-modal" role="dialog" aria-modal="true" aria-labelledby="support-ready-title"><div class="support-ready-modal__box"><p class="eyebrow">NINEWORKS SUPPORT PROJECT</p><h2 id="support-ready-title">정부지원사업 안내 페이지를<br>준비하고 있습니다.</h2><p>현재 세부 수행사업과 안내 내용을 정리 중입니다. 정부지원사업 관련 디자인 수행에 관심이 있으시면 이메일로 문의를 남겨주세요.</p><div class="support-ready-modal__actions"><a href="contact.html?type=support">이메일 문의하기 ↗</a><button type="button" id="support-ready-close">페이지 둘러보기</button></div></div></div>
 <div class="site-shell">
 <header class="site-header"><a class="site-logo" href="index.html" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
 <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
@@ -77,8 +77,8 @@
 </div></div></section>
 
 <section class="develop-section develop-section--soft"><div class="container">
-<div class="develop-section-head develop-center"><p class="eyebrow">PROJECT TYPES</p><h2>주요 디자인 지원사업을 검토합니다.</h2><p>사업명을 정확히 모르셔도 괜찮습니다. 공고문이나 협약서를 보내주시면 나인웍스에서 수행 가능 범위부터 확인합니다.</p></div>
-<div class="develop-function-grid"><span>중소기업 제조혁신바우처</span><span>인천 디자인 지원사업</span><span>창업·사업화 지원사업</span><span>수출·판로 지원사업</span><span>브랜드 개발</span><span>패키지 개발</span><span>웹·콘텐츠</span><span>인쇄·제작</span></div>
+<div class="develop-section-head develop-center"><p class="eyebrow">PROJECT TYPES</p><h2>나인웍스가 수행해온 주요 지원사업군입니다.</h2><p>정부지원사업별 수행 조건과 범위는 서로 다를 수 있으며, 실제 진행 시 해당 연도의 공고문과 협약 기준을 확인합니다.</p></div>
+<div class="develop-function-grid"><span>제조혁신바우처</span><span>수출바우처</span><span>중소기업 디자인 지원사업</span><span>인천 디자인 지원사업군</span></div>
 <div class="support-note">사업별로 공급기관 등록 여부, 수행 가능 분야, 자부담, 계약 방식과 결과보고 기준이 다를 수 있습니다. 상담 시 최신 공고문 또는 협약서를 기준으로 실제 진행 가능 범위를 확인합니다.</div>
 </div></section>
 
@@ -95,5 +95,5 @@
 </main>
 <footer class="site-footer container"></footer>
 </div>
-<script src="assets/js/main.js?v=20260922-17"></script>
+<script src="assets/js/main.js?v=20260922-17"></script><script>document.getElementById("support-ready-close")?.addEventListener("click",function(){document.getElementById("support-ready-modal").hidden=true;});</script>
 </body></html>
