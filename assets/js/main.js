@@ -127,6 +127,7 @@
           <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
             <a href="/about.html"><span>나인웍스 소개</span><small>STUDIO</small></a>
+            <a href="/performance.html"><span>기업 현황</span><small>COMPANY STATUS</small></a>
             <a href="/designer.html"><span>대표 디자이너</span><small>DIRECTOR</small></a>
             <a href="/partners.html"><span>파트너 네트워크</span><small>PARTNERS</small></a>
             <a href="/design-team.html"><span>디자인 팀</span><small>TEAM</small></a>
@@ -190,6 +191,7 @@
         <button class="menu-nav__toggle" type="button" aria-expanded="false">ABOUT <span>+</span></button>
         <div class="menu-nav__sub" hidden>
           <a href="/about.html">나인웍스 소개</a>
+          <a href="/performance.html">기업 현황</a>
           <a href="/designer.html">대표 디자이너</a>
           <a href="/partners.html">파트너 네트워크</a>
           <a href="/design-team.html">디자인 팀</a>
