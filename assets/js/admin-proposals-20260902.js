@@ -21,8 +21,24 @@ const FALLBACK_REPO_ITEMS = [
 const TITLE_OVERRIDES = {
   iskey: 'ISKEY',
   migung365: '미궁365',
+  myv: 'MyV',
   rpbio: 'RPBIO',
   welcare: 'WELCARE'
+};
+const ITEM_DEFAULTS = {
+  myv: {
+    client: '브이랩스 (V Labs)',
+    owner: 'NINEWORKS',
+    status: 'won',
+    workScope: `01. 기존 브랜드·기초자료 분석 및 브이랩스/MyV 정보·BM 구조 정리
+02. 브이랩스 국·영문 회사소개서 및 브로슈어 기획·편집
+03. MyV 소개 카탈로그 국·영문 콘텐츠 구성 및 디자인
+04. MyV 브랜드 홈페이지 정보구조·UI/UX·국·영문 반응형 퍼블리싱
+05. 영문 홍보영상 제작 및 영문 자막·편집
+06. 제품 상세페이지·포스터·웹/모바일 배너 등 마케팅 제작물
+07. 통합 수정·영문 검수·웹 QA 및 최종 납품`,
+    memo: '4개 견적/비교견적 기준으로 통합 관리 · 최종 납품 목표 2026-10-31'
+  }
 };
 const STATUS_LABELS = {
   ready: 'READY / 준비',
@@ -70,7 +86,7 @@ const injectStylesheet = () => {
   if (document.querySelector('link[data-admin-proposals-style]')) return;
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/admin-proposals-20260902.css?v=20260902-1';
+  link.href = 'assets/css/admin-proposals-20260902.css?v=20261002-1';
   link.dataset.adminProposalsStyle = 'true';
   document.head.appendChild(link);
 };
@@ -168,16 +184,18 @@ const ensureUI = () => {
 const mergedItems = () => {
   const metadataMap = new Map(metadataItems.map((item) => [item.id, item]));
   const rows = repoItems.map((repoItem) => {
+    const defaults = ITEM_DEFAULTS[repoItem.id] || {};
     const meta = metadataMap.get(repoItem.id) || {};
     return {
       ...repoItem,
+      ...defaults,
       ...meta,
       id: repoItem.id,
       slug: repoItem.slug,
       source: 'repo',
-      title: safeText(meta.title) || repoItem.title,
+      title: safeText(meta.title) || safeText(defaults.title) || repoItem.title,
       url: safeURL(meta.url) || repoURL(repoItem.slug),
-      status: normalizeStatus(meta.status)
+      status: normalizeStatus(meta.status || defaults.status)
     };
   });
 
@@ -200,7 +218,7 @@ const filteredItems = () => mergedItems().filter((item) => {
   const status = normalizeStatus(item.status);
   if (activeStatus !== 'all' && status !== activeStatus) return false;
   if (!searchTerm) return true;
-  const haystack = [item.title, item.client, item.owner, item.slug, item.url, item.memo, status].join(' ').toLowerCase();
+  const haystack = [item.title, item.client, item.owner, item.slug, item.url, item.workScope, item.memo, status].join(' ').toLowerCase();
   return haystack.includes(searchTerm);
 });
 
@@ -232,6 +250,7 @@ const itemRowHTML = (item) => {
       <label><span>OWNER</span><input data-proposal-field="owner" value="${escapeHTML(item.owner || '')}" placeholder="담당자"${disabled}></label>
       <label><span>SENT DATE</span><input type="date" data-proposal-field="sentDate" value="${escapeHTML(item.sentDate || '')}"${disabled}></label>
     </div>
+    <label class="admin-proposal-memo admin-proposal-workscope"><span>WORK SCOPE</span><textarea rows="7" data-proposal-field="workScope" placeholder="공통 작업 범위, 산출물, 진행 항목을 정리하세요."${disabled}>${escapeHTML(item.workScope || '')}</textarea></label>
     <label class="admin-proposal-memo"><span>INTERNAL MEMO <b>PRIVATE</b></span><textarea rows="3" data-proposal-field="memo" placeholder="견적 피드백, 회신 상황, 후속 연락 메모"${disabled}>${escapeHTML(item.memo || '')}</textarea></label>
   </article>`;
 };
@@ -409,7 +428,7 @@ const bindControls = () => {
   });
 
   document.addEventListener('focusout', (event) => {
-    const field = event.target.closest('textarea[data-proposal-field="memo"], input[data-proposal-field="client"], input[data-proposal-field="owner"]');
+    const field = event.target.closest('textarea[data-proposal-field="memo"], textarea[data-proposal-field="workScope"], input[data-proposal-field="client"], input[data-proposal-field="owner"]');
     if (!field) return;
     const row = field.closest('[data-proposal-id]');
     if (!row) return;
