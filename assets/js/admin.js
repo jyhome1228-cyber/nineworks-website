@@ -168,7 +168,7 @@
     console.error('[NINEWORKS Admin] Clients workspace load failed', error);
   });
 
-  import('./admin-proposals-20260902.js?v=20260902-1').then(refreshNavigation).catch((error) => {
+  import('./admin-proposals-20260902.js?v=20261002-1').then(refreshNavigation).catch((error) => {
     console.error('[NINEWORKS Admin] Proposals workspace load failed', error);
   });
 
