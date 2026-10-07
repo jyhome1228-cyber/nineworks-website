@@ -458,3 +458,47 @@
   .design-team-page .team-cta h2{font-size:34px}
   .design-team-page .team-cta__button{width:100%}
 }
+
+
+/* WITH US CTA — aligned with NINEWORKS cards / 2026-10-08 */
+.design-team-page .team-partner-cta{padding:88px 0 12px;background:#fff}
+.design-team-page .team-partner-card{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  overflow:hidden;
+  min-height:360px;
+  padding:0;
+  border:1px solid var(--company-line);
+  border-radius:24px;
+  background:var(--company-soft);
+}
+.design-team-page .team-partner-card__media{min-height:360px;overflow:hidden}
+.design-team-page .team-partner-card__media img{width:100%;height:100%;object-fit:cover}
+.design-team-page .team-partner-card__content{display:flex;flex-direction:column;justify-content:center;padding:42px 46px}
+.design-team-page .team-partner-card__content .eyebrow{margin:0 0 22px;color:#ff5a1f;font-size:12px}
+.design-team-page .team-partner-card__content h2{max-width:620px;margin:0;font-size:clamp(34px,3.4vw,50px);font-weight:620;line-height:1.12;letter-spacing:-.045em;word-break:keep-all}
+.design-team-page .team-partner-card__content>p{max-width:590px;margin:22px 0 0;color:var(--company-muted);font-size:15px;line-height:1.8;word-break:keep-all}
+.design-team-page .team-partner-card__button{display:inline-flex;width:max-content;min-height:50px;align-items:center;justify-content:center;gap:24px;margin-top:30px;padding:0 20px;border-radius:16px;background:#ff5a1f;color:#fff;font-size:13px;font-weight:700}
+
+.design-team-page .team-cta{padding:12px 0 88px;background:#fff}
+.design-team-page .team-cta__inner{padding:44px 46px;border:1px solid var(--company-line);border-radius:24px;background:#f6f6f3;color:#171717}
+.design-team-page .team-cta .eyebrow{margin-bottom:20px;color:#ff5a1f;font-size:12px}
+.design-team-page .team-cta h2{font-size:clamp(32px,3.2vw,46px);color:#171717}
+.design-team-page .team-cta p{color:var(--company-muted);font-size:15px}
+.design-team-page .team-cta__meta{margin-top:28px;color:#8a8a84;font-size:11px}
+.design-team-page .team-cta__button{min-height:50px;border:0;border-radius:16px;background:#171717;color:#fff;font-size:13px}
+
+@media(max-width:900px){
+  .design-team-page .team-partner-card{grid-template-columns:1fr}
+  .design-team-page .team-partner-card__media{min-height:300px}
+}
+@media(max-width:760px){
+  .design-team-page .team-partner-cta{padding:64px 0 8px}
+  .design-team-page .team-partner-card{min-height:0;border-radius:20px}
+  .design-team-page .team-partner-card__media{min-height:250px}
+  .design-team-page .team-partner-card__content{padding:30px 24px}
+  .design-team-page .team-partner-card__content h2{font-size:36px}
+  .design-team-page .team-partner-card__button{width:100%}
+  .design-team-page .team-cta{padding:8px 0 64px}
+  .design-team-page .team-cta__inner{padding:30px 24px;border-radius:20px}
+}
