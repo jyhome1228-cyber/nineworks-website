@@ -52,3 +52,43 @@
   .with-us-field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .with-us-field-grid span{font-size:13px}
 }
+
+/* Simplified application section — 2026-10-08 */
+.with-us-apply{
+  padding:104px 0;
+  border-top:1px solid var(--develop-line);
+  background:#fff;
+}
+.with-us-apply__inner{
+  max-width:900px;
+  margin:0 auto;
+}
+.with-us-apply .eyebrow{
+  margin-bottom:18px;
+  color:var(--develop-orange)!important;
+}
+.with-us-apply h2{
+  max-width:780px;
+  margin:0 auto;
+  font-size:clamp(36px,3.7vw,54px);
+  font-weight:630;
+  line-height:1.14;
+  letter-spacing:-.048em;
+  word-break:keep-all;
+}
+.with-us-apply p{
+  max-width:720px;
+  margin:22px auto 0;
+  color:var(--develop-muted);
+  font-size:16px;
+  line-height:1.8;
+  word-break:keep-all;
+}
+.with-us-apply .develop-button{
+  margin-top:30px;
+}
+@media(max-width:760px){
+  .with-us-apply{padding:76px 0}
+  .with-us-apply h2{font-size:34px}
+  .with-us-apply p{font-size:15px}
+}
