@@ -1,7 +1,7 @@
 /* NINEWORKS MOBILE FINAL QA GUARD — 2026-10-08 */
 @media(max-width:980px){
   html,body{max-width:100%;overflow-x:clip}
-  body.is-menu-open{overflow:hidden!important}
+  body.is-menu-open{overflow:hidden!important;touch-action:auto!important}
 
   html body:not(.admin-page)[data-nw-navigation] .site-shell .site-header{
     position:fixed!important;
