@@ -3,6 +3,7 @@
   window.__NW_MAIN_READY__ = true;
 
   const body = document.body;
+  body.setAttribute('data-nw-navigation', '20261008');
   const currentPath = window.location.pathname.toLowerCase();
   const path = currentPath.split('/').filter(Boolean).pop() || 'index.html';
   const isHome = path === 'index.html' || currentPath === '/';
@@ -48,7 +49,7 @@
   }
   loadStyle('assets/css/nineworks-ui-system.css?v=20260922-14');
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
-  loadStyle('assets/css/mobile-final-20261008.css?v=20261008-1');
+  loadStyle('assets/css/mobile-final-20261008.css?v=20261008-2');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -186,66 +187,60 @@
     </div>
   `;
 
-  overlay.innerHTML = `
-    <nav class="menu-nav" aria-label="모바일 주요 메뉴">
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">ABOUT <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/about.html">나인웍스 소개</a>
-          <a href="/performance.html">기업 현황</a>
-          <a href="/designer.html">대표 디자이너</a>
-          <a href="/partners.html">파트너 네트워크</a>
-          <a href="/design-team.html">디자인 팀</a>
-        </div>
-      </div>
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">PROCESS <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/branding.html">브랜딩 프로세스</a>
-          <a href="/package-design.html">패키지 프로세스</a>
-          <a href="/develop.html#develop-process">웹 개발 프로세스</a>
-        </div>
-      </div>
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">PORTFOLIO <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/majorportfolio/">비즈니스 포트폴리오</a>
-          <a href="/portfolio.html?filter=major">대표 프로젝트</a>
-          <a href="/project.html">브랜딩 프로젝트</a>
-          <a href="/local-branding.html" data-local-branding-nav="true">로컬 브랜딩</a>
-          <a href="/portfolio.html?filter=website">웹사이트</a>
-          <a href="/portfolio.html?filter=system">시스템 구축</a>
-          <a href="/portfolio.html?filter=detailpage">상세페이지</a>
-          <a href="/portfolio.html?filter=instagram">인스타그램 피드</a>
-          <a href="/portfolio.html?filter=editorial">편집 디자인</a>
-          <a href="/portfolio.html?filter=ir">IR · PPT</a>
-          <a href="/portfolio.html?filter=package">패키지 디자인</a>
-          <a href="/portfolio.html?filter=event">이벤트 디자인</a>
-        </div>
-      </div>
-      <a class="menu-nav__main" href="/solutions.html">SERVICES</a>
-      <div class="menu-nav__group" data-menu-group>
-        <button class="menu-nav__toggle" type="button" aria-expanded="false">SOLUTIONS <span>+</span></button>
-        <div class="menu-nav__sub" hidden>
-          <a href="/develop.html">웹사이트 / 관리페이지 제작</a>
-          <a href="/crm.html">기업 전용 관리 CRM 제작</a>
-          <a href="/print.html">인쇄 / 패키지 제작</a>
-          <a href="/oneplan-solution.html">인플루언서 원플랜 솔루션</a>
-          <a href="/ai-model.html">AI 모델 스튜디오</a>
-        </div>
-      </div>
-      <a class="menu-nav__main" href="/magazine.html">MAGAZINE</a>
-      <a class="menu-nav__main" href="/contact.html">PROJECT INQUIRY</a>
-    </nav>
-    <div class="menu-business-cta">
-      <a class="menu-business-cta__link" href="/support.html"><span>정부지원사업</span><span>↗</span></a>
-      <a class="menu-business-cta__link" href="/majorportfolio/"><span>B2B</span><span>↗</span></a>
-      <a class="menu-business-cta__link menu-business-cta__link--printing" href="/printing-dashboard.html"><span>PRINTING</span><span>↗</span></a>
-    </div>
-    <div class="menu-footer">
-      <div class="menu-footer__brand"><img src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20260929-1' : '/assets/nineworks-wordmark-20260922.svg?v=20260922-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"><span>Design Studio · Incheon, Korea</span></div>
-      <div class="menu-social"><a href="https://www.behance.net/the9works">Behance</a><a href="https://www.brunch.co.kr/@jaeywriter">Brunch</a><a href="mailto:info@9works.kr">Email</a></div>
-    </div>`;
+  // Derive both menu levels from the desktop navigation so labels, order and
+  // destinations cannot drift between desktop and mobile.
+  const mobileNav = document.createElement('nav');
+  mobileNav.className = 'menu-nav';
+  mobileNav.setAttribute('aria-label', '모바일 주요 메뉴');
+  header.querySelectorAll('.site-primary-nav > .site-nav-item, .site-primary-nav > a').forEach((item, index) => {
+    const primary = item.matches('a') ? item : item.querySelector(':scope > a');
+    const dropdown = item.querySelector('.site-nav-dropdown');
+    const label = primary.childNodes[0].textContent.trim();
+    if (!dropdown) {
+      const link = document.createElement('a');
+      link.className = 'menu-nav__main';
+      link.href = primary.getAttribute('href');
+      link.textContent = label;
+      mobileNav.appendChild(link);
+      return;
+    }
+    const group = document.createElement('div');
+    group.className = 'menu-nav__group';
+    group.setAttribute('data-menu-group', '');
+    const button = document.createElement('button');
+    button.className = 'menu-nav__toggle';
+    button.type = 'button';
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = `${label} <span aria-hidden="true">+</span>`;
+    const sub = document.createElement('div');
+    sub.className = 'menu-nav__sub';
+    sub.id = `nw-mobile-sub-${index}`;
+    sub.hidden = true;
+    button.setAttribute('aria-controls', sub.id);
+    dropdown.querySelectorAll('a').forEach((source) => {
+      const link = document.createElement('a');
+      link.href = source.getAttribute('href');
+      link.textContent = source.querySelector('span')?.textContent || source.textContent;
+      sub.appendChild(link);
+    });
+    group.append(button, sub);
+    mobileNav.appendChild(group);
+  });
+  const inquiry = document.createElement('a');
+  inquiry.className = 'menu-nav__main';
+  inquiry.href = '/contact.html';
+  inquiry.textContent = '프로젝트 문의';
+  mobileNav.appendChild(inquiry);
+  overlay.replaceChildren(mobileNav);
+  const utility = document.createElement('div');
+  utility.className = 'menu-business-cta';
+  header.querySelectorAll('.site-header__utility > a').forEach((source) => {
+    const link = source.cloneNode(true);
+    link.className = 'menu-business-cta__link';
+    utility.appendChild(link);
+  });
+  overlay.appendChild(utility);
+  overlay.inert = true;
 
   if (isPrintingPage) {
     document.querySelectorAll('.printing-brand').forEach((brand) => {
@@ -318,6 +313,8 @@
     trigger?.setAttribute('aria-expanded', String(open));
     trigger?.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
     overlay?.setAttribute('aria-hidden', String(!open));
+    if (overlay) overlay.inert = !open;
+    if (!open && overlay?.contains(document.activeElement)) trigger?.focus();
 
     overlay?.querySelectorAll('[data-menu-group]').forEach((group) => {
       const button = group.querySelector('.menu-nav__toggle');
@@ -354,7 +351,7 @@
     });
   });
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
-  window.addEventListener('resize', () => { if (window.innerWidth > 820) setMenu(false); }, { passive: true });
+  window.addEventListener('resize', () => { if (window.innerWidth > 980) setMenu(false); }, { passive: true });
 
   const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
   updateHeader();
