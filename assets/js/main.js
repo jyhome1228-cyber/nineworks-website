@@ -48,6 +48,7 @@
   }
   loadStyle('assets/css/nineworks-ui-system.css?v=20260922-14');
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
+  loadStyle('assets/css/mobile-final-20261008.css?v=20261008-1');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
