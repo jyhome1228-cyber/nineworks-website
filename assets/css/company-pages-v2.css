@@ -502,3 +502,52 @@
   .design-team-page .team-cta{padding:8px 0 64px}
   .design-team-page .team-cta__inner{padding:30px 24px;border-radius:20px}
 }
+
+/* Design Team partner CTA final simplification — 2026-10-08 */
+.design-team-page .team-partner-cta{
+  padding:88px 0;
+  background:#fff;
+}
+.design-team-page .team-partner-card{
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  min-height:340px;
+  border:1px solid var(--company-line);
+  border-radius:24px;
+  background:#fff;
+}
+.design-team-page .team-partner-card__media{min-height:340px}
+.design-team-page .team-partner-card__content{
+  padding:44px 48px;
+  background:#fff;
+}
+.design-team-page .team-partner-card__content .eyebrow{
+  margin-bottom:20px;
+  font-size:12px;
+  color:#ff5a1f;
+}
+.design-team-page .team-partner-card__content h2{
+  font-size:clamp(32px,3.2vw,46px);
+}
+.design-team-page .team-partner-card__content>p{
+  margin-top:20px;
+  font-size:15px;
+}
+.design-team-page .team-partner-card__button{
+  min-height:48px;
+  margin-top:28px;
+  padding:0 18px;
+  border:1px solid var(--company-line);
+  border-radius:16px;
+  background:#fff;
+  color:#171717;
+}
+.design-team-page .team-partner-card:hover .team-partner-card__button{
+  border-color:#ff5a1f;
+  color:#ff5a1f;
+}
+.design-team-page .team-cta{display:none!important}
+@media(max-width:760px){
+  .design-team-page .team-partner-cta{padding:64px 0}
+  .design-team-page .team-partner-card{border-radius:20px}
+  .design-team-page .team-partner-card__content{padding:30px 24px}
+}
