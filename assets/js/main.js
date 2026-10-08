@@ -317,14 +317,18 @@
     trigger?.setAttribute('aria-expanded', String(open));
     trigger?.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
     overlay?.setAttribute('aria-hidden', String(!open));
-    if (!open) {
-      overlay?.querySelectorAll('[data-menu-group]').forEach((group) => {
-        const button = group.querySelector('.menu-nav__toggle');
-        const sub = group.querySelector('.menu-nav__sub');
-        button?.setAttribute('aria-expanded', 'false');
-        if (button) button.querySelector('span').textContent = '+';
-        if (sub) sub.hidden = true;
-      });
+
+    overlay?.querySelectorAll('[data-menu-group]').forEach((group) => {
+      const button = group.querySelector('.menu-nav__toggle');
+      const sub = group.querySelector('.menu-nav__sub');
+      button?.setAttribute('aria-expanded', 'false');
+      if (button) button.querySelector('span').textContent = '+';
+      if (sub) sub.hidden = true;
+    });
+
+    if (open && overlay) {
+      overlay.scrollTop = 0;
+      requestAnimationFrame(() => { overlay.scrollTop = 0; });
     }
   };
 
