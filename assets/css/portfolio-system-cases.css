@@ -16,3 +16,5 @@
 .portfolio-card--system .portfolio-system-card__links a{border:1px solid #ddd;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 13px;border-radius:9px;color:#222;font-size:12px;font-weight:600;text-decoration:none;transition:background .2s,border-color .2s}
 .portfolio-card--system .portfolio-system-card__links a:hover{background:#fff;border-color:#f07831;color:#e66e2b}
 @media(max-width:760px){.portfolio-card--system{min-height:auto;padding:23px;border-radius:14px}.portfolio-card--system .portfolio-system-card__body{padding:28px 0}.portfolio-card--system .portfolio-system-card__subtitle{font-size:16px}.portfolio-card--system .portfolio-system-card__links a{flex:1}}
+
+.portfolio-card--system[hidden]{display:none!important}
