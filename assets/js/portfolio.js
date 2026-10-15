@@ -10,7 +10,7 @@
     return true;
   }).map((project) => ({
     ...project,
-    filters: [...new Set(['major', ...(Array.isArray(project.filters) ? project.filters : [])])],
+    filters: [...new Set([...(project.systemCard ? [] : ['major']), ...(Array.isArray(project.filters) ? project.filters : [])])],
     archive: false
   }));
 
@@ -106,6 +106,24 @@
     const subtitle = escapeHTML(project.subtitle || '');
     const scope = escapeHTML(project.scope || '');
     const thumbnail = escapeHTML(project.thumbnail || project.image || (project.images || [])[0] || '');
+
+    if (project.systemCard) {
+      const details = escapeHTML(project.detailUrl || '#');
+      const live = escapeHTML(project.liveUrl || '#');
+      const features = (project.features || []).map((feature) => '<li>' + escapeHTML(feature) + '</li>').join('');
+      return `
+        <article class="portfolio-card portfolio-card--system portfolio-filter-item is-visible" data-category="${categories}">
+          <div class="portfolio-system-card__top"><span class="portfolio-system-card__eyebrow">CLIENT SYSTEM / 2026</span><span class="portfolio-system-card__arrow" aria-hidden="true">↗</span></div>
+          <div class="portfolio-system-card__body">
+            <h3>${title}</h3><p class="portfolio-system-card__client">${escapeHTML(project.client || '')}</p>
+            <p class="portfolio-system-card__subtitle">${subtitle}</p>
+            <ul class="portfolio-system-card__features">${features}</ul>
+          </div>
+          <div class="portfolio-system-card__footer"><span class="portfolio-card__scope">${scope}</span>
+            <div class="portfolio-system-card__links"><a href="${details}">CASE STUDY ↗</a><a href="${live}" target="_blank" rel="noopener noreferrer">LIVE SITE ↗</a></div>
+          </div>
+        </article>`;
+    }
 
     if (project.archive) {
       const quickLabel = (project.filters || []).includes('detailpage') ? 'VIEW DETAIL' : 'QUICK VIEW';
