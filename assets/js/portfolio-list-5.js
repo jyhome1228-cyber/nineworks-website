@@ -99,3 +99,65 @@ window.NW_PORTFOLIO=(window.NW_PORTFOLIO||[]).concat([
     }
   }
 })();
+
+
+// Client-facing system case studies. Text-first presentation; no thumbnail assets.
+window.NW_PORTFOLIO=(window.NW_PORTFOLIO||[]).concat([
+  {
+    "id": "system-relim",
+    "title": "RE:LIM",
+    "client": "RE:LIM / 리림",
+    "subtitle": "고객 문의와 예약 전환을 연결하는 디지털 운영 시스템",
+    "scope": "FAQ DATABASE · RESERVATION · COMMUNITY · ADMIN",
+    "filters": [
+      "system"
+    ],
+    "systemCard": true,
+    "detailUrl": "portfolio-relim.html",
+    "liveUrl": "https://re-lim.com/",
+    "features": [
+      "FAQ 검색 데이터베이스",
+      "예약 연동 및 고객 안내",
+      "회원·리뷰·문의 관리",
+      "운영 대시보드"
+    ]
+  },
+  {
+    "id": "system-fineb",
+    "title": "FINE.B",
+    "client": "FINE.B / 파인비",
+    "subtitle": "패키지 제작 사양을 견적과 관리자 업무로 연결",
+    "scope": "QUOTE SYSTEM · PRODUCTION DATA · ADMIN",
+    "filters": [
+      "system"
+    ],
+    "systemCard": true,
+    "detailUrl": "portfolio-fineb.html",
+    "liveUrl": "https://finebpkg.com/",
+    "features": [
+      "5단계 제작 견적 접수",
+      "샘플·제작문의 분기",
+      "제작 사양 데이터 구조화",
+      "견적·문의 상태 관리"
+    ]
+  },
+  {
+    "id": "system-taepyung",
+    "title": "TAEPYUNG PAPER",
+    "client": "TAEPYUNG PAPER / 태평제지",
+    "subtitle": "기업의 제품 정보와 문의를 통합 관리하는 운영 환경",
+    "scope": "PRODUCT DATA · INQUIRY · ADMIN",
+    "filters": [
+      "system"
+    ],
+    "systemCard": true,
+    "detailUrl": "portfolio-taepyung-system.html",
+    "liveUrl": "https://tp1977.com/",
+    "features": [
+      "제품 데이터 및 검색",
+      "문의·제휴 접수 관리",
+      "제품 등록·노출 관리",
+      "방문자 현황 대시보드"
+    ]
+  }
+]);
