@@ -13,7 +13,7 @@
   const website = new Set([
     'fineb','tne-epc','relim','aesost','kekomi','the-petrichor','thomastone','recelleclore'
   ]);
-  const dedicatedSystem = new Set(['nineworks-crm']);
+  const dedicatedSystem = new Set(['system-relim','system-fineb','system-taepyung']);
 
   const petrichor = window.NW_PORTFOLIO.find((project) => project?.id === 'the-petrichor');
   if (petrichor) Object.assign(petrichor, {
