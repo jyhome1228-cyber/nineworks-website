@@ -1,128 +1,90 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="좋은 디자인을 넘어 브랜드가 실제 비즈니스에서 작동하고 성장할 수 있도록 전략, 디자인, 제작과 운영을 연결하는 나인웍스의 업무 철학을 소개합니다.">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-  <link rel="canonical" href="https://9works.kr/about.html">
-  <title>About NINEWORKS | 브랜드를 움직이게 만드는 디자인 파트너</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/company-pages-v2.css?v=20260922-3">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="NINEWORKS">
-  <meta property="og:title" content="About NINEWORKS | 브랜드를 움직이게 만드는 디자인 파트너">
-  <meta property="og:description" content="보기 좋은 결과물에 머무르지 않고 브랜드가 실제로 움직이고 성장할 수 있는 구조를 만듭니다.">
-  <meta property="og:url" content="https://9works.kr/about.html">
-  <meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
-  <meta name="twitter:card" content="summary_large_image">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="나인웍스는 디자인을 중심으로 브랜드 기획, 제작, 인쇄, 자체 웹 개발, 운영과 관리까지 기업에 필요한 일을 함께 해결하는 디자인 전문회사입니다.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<link rel="canonical" href="https://9works.kr/about.html">
+<title>About NINEWORKS | 디자인부터 운영까지 함께하는 파트너</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/company-pages-v2.css?v=20260922-3">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NINEWORKS">
+<meta property="og:title" content="About NINEWORKS | 디자인부터 운영까지 함께하는 파트너">
+<meta property="og:description" content="브랜드에 필요한 일을 먼저 찾고, 디자인·제작·자체 개발·운영까지 실제 업무에 연결합니다.">
+<meta property="og:url" content="https://9works.kr/about.html">
+<meta property="og:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+/* About-only styling; no global CSS or other page changes */
+.about-page{--about-accent:#f47721;--about-line:#e7e7e3;--about-muted:#626262}
+.about-page main{background:#fff;color:#202020}
+.about-page .about-intro{padding:100px 0 88px;border-bottom:1px solid var(--about-line);background:#fff}
+.about-page .about-wrap{max-width:1120px;margin:0 auto}
+.about-page .about-eyebrow{margin:0 0 20px;color:var(--about-accent);font-size:12px;line-height:1.5;font-weight:700;letter-spacing:.085em}
+.about-page .about-intro h1{max-width:930px;margin:0;font-size:clamp(34px,4.2vw,56px);line-height:1.2;letter-spacing:-.047em;font-weight:650;word-break:keep-all}
+.about-page .about-intro__description{max-width:800px;margin:26px 0 0;color:var(--about-muted);font-size:17px;line-height:1.8;letter-spacing:-.022em;word-break:keep-all}
+.about-page .about-capabilities{padding:88px 0 100px;background:#fff}
+.about-page .about-section-heading{margin-bottom:34px}
+.about-page .about-section-heading h2{margin:0;font-size:clamp(28px,3vw,39px);line-height:1.24;letter-spacing:-.04em;font-weight:650;word-break:keep-all}
+.about-page .about-section-heading p:last-child{max-width:740px;margin:14px 0 0;font-size:16px;line-height:1.72;color:var(--about-muted);word-break:keep-all}
+.about-page .about-benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.about-page .about-benefit{display:flex;flex-direction:column;min-height:255px;padding:30px;border:1px solid var(--about-line);border-radius:22px;background:#fff;transition:border-color .2s ease,transform .2s ease}
+.about-page .about-benefit:hover{border-color:#f0b58e;transform:translateY(-2px)}
+.about-page .about-benefit__icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:13px;background:#fff2e8;color:var(--about-accent)}
+.about-page .about-benefit__icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.about-page .about-benefit h3{margin:24px 0 10px;font-size:20px;line-height:1.3;font-weight:650;letter-spacing:-.03em;word-break:keep-all}
+.about-page .about-benefit p{margin:0;font-size:15px;line-height:1.72;color:var(--about-muted);word-break:keep-all}
+.about-page .about-partnership{padding:86px 0;background:#f7f7f5;border-top:1px solid var(--about-line);border-bottom:1px solid var(--about-line)}
+.about-page .about-partnership__inner{max-width:1120px;margin:0 auto}
+.about-page .about-partnership h2{max-width:840px;margin:0;font-size:clamp(28px,3.2vw,41px);line-height:1.28;letter-spacing:-.04em;font-weight:650;word-break:keep-all}
+.about-page .about-partnership p:not(.about-eyebrow){max-width:820px;margin:22px 0 0;font-size:16px;line-height:1.82;color:var(--about-muted);word-break:keep-all}
+.about-page .about-cta{padding:78px 0 98px;background:#fff}
+.about-page .about-cta__inner{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:38px 44px;border:1px solid var(--about-line);border-radius:24px;background:#fff}
+.about-page .about-cta h2{margin:0;font-size:clamp(25px,2.6vw,34px);font-weight:650;letter-spacing:-.04em;line-height:1.28;word-break:keep-all}
+.about-page .about-cta p{margin:10px 0 0;color:var(--about-muted);font-size:15px;line-height:1.65;word-break:keep-all}
+.about-page .about-links{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.about-page .about-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid #deded9;border-radius:999px;color:#202020;background:#fff;font-size:14px;font-weight:650;text-decoration:none;white-space:nowrap;transition:background .2s ease,border-color .2s ease}
+.about-page .about-link:hover{border-color:#a4a4a0;background:#f8f8f6}
+.about-page .about-link--primary{background:var(--about-accent);border-color:var(--about-accent);color:#fff}
+.about-page .about-link--primary:hover{background:#df6514;border-color:#df6514;color:#fff}
+@media(max-width:900px){.about-page .about-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-page .about-cta__inner{align-items:flex-start;flex-direction:column}.about-page .about-intro{padding:80px 0 72px}}
+@media(max-width:600px){.about-page .about-intro{padding:66px 0 58px}.about-page .about-intro h1{font-size:clamp(30px,8.5vw,39px)}.about-page .about-intro__description{margin-top:18px;font-size:16px}.about-page .about-capabilities{padding:64px 0 74px}.about-page .about-section-heading{margin-bottom:25px}.about-page .about-benefit-grid{grid-template-columns:1fr;gap:10px}.about-page .about-benefit{min-height:0;padding:24px;border-radius:18px}.about-page .about-benefit h3{margin-top:17px;font-size:19px}.about-page .about-partnership{padding:64px 0}.about-page .about-partnership p:not(.about-eyebrow){font-size:15px}.about-page .about-cta{padding:60px 0 78px}.about-page .about-cta__inner{padding:27px 23px;border-radius:20px}.about-page .about-links{width:100%;flex-wrap:wrap}.about-page .about-link{flex:1}}
+@media(prefers-reduced-motion:reduce){.about-page .about-benefit,.about-page .about-link{transition:none}.about-page .about-benefit:hover{transform:none}}
+</style>
 </head>
 <body class="about-page">
 <div class="site-shell">
-  <header class="site-header"><a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
-  <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
-
-  <main>
-    <section class="company-hero">
-      <div class="container company-hero__inner">
-        <p class="eyebrow reveal">ABOUT NINEWORKS</p>
-        <h1 class="reveal">보기 좋은 디자인에서 끝나지 않도록.</h1>
-        <p class="company-hero__lead reveal">아무리 좋은 디자인도 실제 비즈니스의 흐름과 연결되지 않는다면 결국 잘 만든 하나의 포트폴리오로만 남을 수 있습니다. 나인웍스는 우리가 만든 결과물이 현장에서 활용되고, 클라이언트의 브랜드가 성장하며, 그 성장이 새로운 고객과 기회, 협업으로 이어질 때 비로소 디자인의 의미가 완성된다고 생각합니다.</p>
-      </div>
-    </section>
-
-    <section class="company-section">
-      <div class="container">
-        <div class="company-section-head reveal">
-          <p class="eyebrow">01 / WHY WE WORK</p>
-          <h2>디자인을 만드는 것보다 브랜드가 실제로 움직이게 만드는 일.</h2>
-          <p>브랜드는 로고 하나, 패키지 하나, 웹사이트 하나만으로 완성되지 않습니다. 기획과 전략, 디자인, 콘텐츠, 제작, 개발, 운영과 영업이 하나의 방향으로 연결될 때 브랜드는 비로소 하나의 비즈니스로 작동하기 시작합니다. 그래서 나인웍스는 요청받은 결과물을 만드는 데 머무르지 않고 무엇이 필요한지 함께 정리하고, 필요한 구조를 만들고, 실제 실행과 운영까지 이어질 수 있도록 돕습니다. 우리는 스스로를 단순한 디자인 스튜디오보다 브랜드를 함께 구축하는 <strong>Brand Builder &amp; Execution Partner</strong>에 가깝다고 생각합니다.</p>
-        </div>
-        <div class="company-grid company-grid--four">
-          <article class="company-card reveal"><span>01 / DIRECTION</span><h3>방향을 먼저 정리합니다.</h3><p>브랜드와 사업의 현재 상태, 시장과 고객, 목표를 함께 확인해 무엇을 만들기 전에 무엇을 해결해야 하는지 정의합니다.</p></article>
-          <article class="company-card reveal"><span>02 / SYSTEM</span><h3>반복해서 사용할 기준을 만듭니다.</h3><p>하나의 결과물보다 타이포그래피, 컬러, 이미지, 정보 구조와 운영 방식이 같은 방향을 유지할 수 있는 시스템을 설계합니다.</p></article>
-          <article class="company-card reveal"><span>03 / EXECUTION</span><h3>실제 사용되는 결과까지 연결합니다.</h3><p>패키지는 생산과 양산을, 웹은 개발과 운영을, 콘텐츠는 판매와 커뮤니케이션 환경을 함께 고려하며 실행합니다.</p></article>
-          <article class="company-card reveal"><span>04 / GROWTH</span><h3>다음 단계까지 함께 봅니다.</h3><p>완성된 디자인이 사업 안에서 어떻게 쓰이고 확장될지 살피며 브랜드가 다음 기회로 이어질 수 있는 기반을 만듭니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="company-section company-section--dark">
-      <div class="container">
-        <div class="company-section-head reveal">
-          <p class="eyebrow">02 / FROM PLAN TO BRAND</p>
-          <h2>많은 브랜드는 한 장의 사업계획서에서 시작합니다.</h2>
-          <p>아직 완벽하게 정리되지 않은 아이디어 안에서 가능성을 읽고, 브랜드가 어떤 모습이어야 하는지, 누구에게 어떤 가치를 전달해야 하는지, 그것을 현실에서 어떻게 구현할지를 함께 설계합니다. 한 장의 계획이 실제 브랜드와 비즈니스로 완성되는 과정을 디렉션하고 실행하는 것이 나인웍스의 역할입니다.</p>
-        </div>
-        <div class="company-grid company-grid--four">
-          <article class="company-card reveal"><span>01 / IDEA</span><h3>사업과 아이디어를 이해합니다.</h3><p>사업계획, 제품과 서비스, 현재 자료를 검토하고 프로젝트가 실제로 해결해야 할 문제와 가능성을 찾습니다.</p></article>
-          <article class="company-card reveal"><span>02 / DEFINE</span><h3>브랜드의 기준을 정의합니다.</h3><p>포지셔닝과 메시지, 이름과 시각 언어, 고객에게 전달되어야 할 인상을 하나의 방향으로 정리합니다.</p></article>
-          <article class="company-card reveal"><span>03 / BUILD</span><h3>필요한 접점을 구축합니다.</h3><p>아이덴티티, 패키지, 웹사이트, 콘텐츠와 인쇄·제작물을 실제 사용 환경에 맞춰 하나의 시스템으로 구현합니다.</p></article>
-          <article class="company-card reveal"><span>04 / OPERATE</span><h3>운영과 확장까지 연결합니다.</h3><p>브랜드가 출시 이후에도 일관되게 활용될 수 있도록 운영 자료와 구조를 정리하고 필요한 다음 실행을 함께 만듭니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="company-section company-section--soft">
-      <div class="container">
-        <div class="company-section-head reveal">
-          <p class="eyebrow">03 / WHAT WE BUILD</p>
-          <h2>브랜드에 필요한 여러 접점을 하나의 방향으로 연결합니다.</h2>
-          <p>프로젝트에 따라 필요한 영역만 선택하거나, 초기 기획부터 실제 제작과 운영까지 하나의 흐름으로 묶어 진행합니다.</p>
-        </div>
-        <div class="company-grid">
-          <article class="company-card reveal"><span>01</span><h3>Brand Strategy &amp; Identity</h3><p>시장과 고객 분석, 포지셔닝, 네이밍, 버벌 브랜딩, 로고와 브랜드 가이드 시스템을 구축합니다.</p></article>
-          <article class="company-card reveal"><span>02</span><h3>Package &amp; Print</h3><p>용기, 라벨, 박스, 지류와 인쇄 사양을 설계하고 샘플, 양산, 납품까지 실제 제작 흐름을 연결합니다.</p></article>
-          <article class="company-card reveal"><span>03</span><h3>Website &amp; Digital</h3><p>웹사이트 기획과 정보 구조, 반응형 UI, 커머스, 관리자와 업무 시스템 등 디지털 환경을 설계하고 구현합니다.</p></article>
-          <article class="company-card reveal"><span>04</span><h3>Content &amp; Commerce</h3><p>상세페이지, 프로모션, 캠페인 비주얼, 제품 이미지와 판매 과정에 필요한 콘텐츠를 브랜드 기준에 맞춰 만듭니다.</p></article>
-          <article class="company-card reveal"><span>05</span><h3>Corporate Communication</h3><p>회사소개서, IR, 제안서, 보고서, 카탈로그와 발표자료처럼 기업이 반복해서 사용하는 커뮤니케이션 도구를 구조화합니다.</p></article>
-          <article class="company-card reveal"><span>06</span><h3>Operation &amp; System</h3><p>프로젝트 문서, 운영 템플릿, 데이터와 관리 구조를 정리해 완성된 브랜드가 실무에서 지속적으로 활용되도록 돕습니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="company-section">
-      <div class="container">
-        <div class="company-section-head reveal">
-          <p class="eyebrow">04 / OUR TEAM</p>
-          <h2>우리 역시 많은 시행착오를 딛고 계속 성장하는 팀입니다.</h2>
-          <p>처음부터 모든 답을 알고 시작한 팀은 아닙니다. 잘되지 않았던 방식은 다시 고치고, 잘 작동했던 방식은 시스템으로 만들며 프로젝트마다 더 나은 방법을 찾아왔습니다. 완벽함을 이야기하기보다 좋은 디자인과 더 나은 구조를 제공하고, 클라이언트가 자신의 비즈니스에 집중할 수 있도록 필요한 곳에서 한 걸음 더 움직이는 팀이 되고자 합니다.</p>
-        </div>
-        <div class="company-flow">
-          <article class="reveal"><span>01 / LEARN</span><h3>계속 배우고 고칩니다.</h3><p>프로젝트에서 발견한 문제와 시행착오를 다음 작업의 기준으로 축적합니다.</p></article>
-          <article class="reveal"><span>02 / CONNECT</span><h3>역할을 연결합니다.</h3><p>전략, 디자인, 개발, 제작과 운영이 서로 끊기지 않도록 필요한 역할을 구성합니다.</p></article>
-          <article class="reveal"><span>03 / ASSIST</span><h3>필요한 곳에서 돕습니다.</h3><p>정해진 산출물 밖에서도 브랜드가 실제로 움직이기 위해 필요한 문제를 함께 살핍니다.</p></article>
-          <article class="reveal"><span>04 / GROW</span><h3>함께 성장하는 관계를 만듭니다.</h3><p>한 번의 납품보다 프로젝트 이후에도 서로 좋은 기회와 시너지를 만들 수 있는 관계를 지향합니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="company-section company-section--dark">
-      <div class="container company-quote reveal">
-        <p class="eyebrow">05 / OUR PHILOSOPHY</p>
-        <h2>좋은 일을 만들고, 좋은 관계를 남깁니다.</h2>
-        <p>우리가 만든 결과가 누군가의 새로운 시작이 되고, 브랜드를 사용하는 사람에게 좋은 경험이 되며, 함께한 파트너에게는 “나인웍스와 함께해서 좋았다”는 기억으로 남기를 바랍니다. 즐겁게 일하고, 좋은 영향력을 만들고, 파트너사의 웃음을 만들어내는 것. 그리고 함께 만든 브랜드가 오래 건강하게 성장하는 모습을 보는 것이 나인웍스가 일을 하는 이유입니다.</p>
-        <div class="company-values"><span>ENJOYABLE WORK</span><span>GOOD INFLUENCE</span><span>PARTNER'S SMILE</span><span>LONG-TERM GROWTH</span></div>
-      </div>
-    </section>
-
-    <section class="company-cta">
-      <div class="container company-cta__inner reveal">
-        <div>
-          <p class="eyebrow">BUILD WITH NINEWORKS</p>
-          <h2>좋은 디자인을 넘어, 브랜드가 실제로 움직일 수 있는 구조를 만듭니다.</h2>
-          <p>아직 필요한 결과물이 정확하지 않아도 괜찮습니다. 사업과 브랜드의 현재 상태부터 확인하고 필요한 범위와 다음 단계를 함께 정리합니다.</p>
-        </div>
-        <div class="company-actions">
-          <a class="company-button company-button--ghost" href="/design-team.html">팀 소개 <span>↗</span></a>
-          <a class="company-button" href="/contact.html">프로젝트 문의 <span>↗</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer container"></footer>
+<header class="site-header"><a class="site-logo" href="/" aria-label="나인웍스 홈">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
+<aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
+<main>
+<section class="about-intro"><div class="container about-wrap">
+<p class="about-eyebrow reveal">ABOUT NINEWORKS</p>
+<h1 class="reveal">디자인부터 운영까지,<br>기업에 필요한 일을 함께합니다.</h1>
+<p class="about-intro__description reveal">나인웍스는 브랜드 디자인을 중심으로 기획, 제작, 개발, 운영 및 관리까지 지원하는 디자인 전문회사입니다. 요청받은 작업만 수행하는 데 그치지 않고, 기업의 상황을 이해해 필요한 일을 먼저 제안하고 실제 업무까지 연결합니다.</p>
+</div></section>
+<section class="about-capabilities"><div class="container about-wrap">
+<div class="about-section-heading reveal"><p class="about-eyebrow">HOW WE WORK</p><h2>나인웍스가 일하는 방식</h2><p>단순한 디자인 제작을 넘어, 브랜드를 운영하는 과정에서 필요한 업무를 함께 해결합니다.</p></div>
+<div class="about-benefit-grid">
+<article class="about-benefit reveal"><div class="about-benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M8 10.5l1.8 1.8L13.5 8.5"/></svg></div><h3>필요한 일을 먼저 찾습니다</h3><p>브랜드의 상황과 운영 흐름을 살펴보고, 요청하지 않은 부분이라도 개선이 필요한 일을 찾아 제안합니다.</p></article>
+<article class="about-benefit reveal"><div class="about-benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="6" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/><path d="M10 7h5a3 3 0 0 1 3 3v4M7 10v7h7"/></svg></div><h3>실제 업무와 연결합니다</h3><p>디자인이 홍보, 판매, 고객 관리와 내부 업무에 제대로 사용되도록 실무 과정을 함께 고려합니다.</p></article>
+<article class="about-benefit reveal"><div class="about-benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6zM17 12h1"/></svg></div><h3>제작과 인쇄까지 지원합니다</h3><p>패키지, 홍보물, 카탈로그 등 디자인부터 사양 검토, 샘플 제작, 인쇄와 양산까지 연결합니다.</p></article>
+<article class="about-benefit reveal"><div class="about-benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="15" rx="2"/><path d="M8.5 9 5.5 12l3 3M15.5 9l3 3-3 3M13.2 8l-2.4 8"/></svg></div><h3>필요한 시스템을 직접 개발합니다</h3><p>기업 홈페이지, 쇼핑몰, 관리자 페이지와 CRM 등 운영에 필요한 디지털 시스템을 자체 개발합니다.</p></article>
+<article class="about-benefit reveal"><div class="about-benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9a7 7 0 0 1 12-2l2.5 5M4 12l2.5 5a7 7 0 0 0 12 0"/></svg></div><h3>운영 이후까지 함께합니다</h3><p>웹사이트 업데이트, 콘텐츠 제작, 상품 등록과 자료 관리 등 지속적으로 발생하는 업무를 지원합니다.</p></article>
+<article class="about-benefit reveal"><div class="about-benefit__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20v-2.5A5.5 5.5 0 0 1 8 12h1a5.5 5.5 0 0 1 5.5 5.5V20M15 14.5h2a4.5 4.5 0 0 1 4.5 4.5v1"/></svg></div><h3>하나의 팀처럼 협업합니다</h3><p>일회성 제작은 물론 장기적인 협업을 통해 브랜드의 업무 흐름을 이해하고 필요한 순간에 함께 대응합니다.</p></article>
+</div></div></section>
+<section class="about-partnership"><div class="container about-partnership__inner reveal">
+<p class="about-eyebrow">BEYOND DESIGN</p>
+<h2>필요한 디자인만 만드는 것이 아니라,<br>필요한 일을 함께 해결합니다.</h2>
+<p>브랜드를 운영하다 보면 계획하지 않았던 업무가 계속 생깁니다. 나인웍스는 그런 일을 먼저 파악하고 가능한 방법을 제안합니다. 디자인, 개발, 인쇄, 운영을 각각 따로 맡기는 번거로움을 줄이고 하나의 방향으로 연결해 드립니다.</p>
+</div></section>
+<section class="about-cta"><div class="container about-wrap"><div class="about-cta__inner reveal">
+<div><h2>어떤 일부터 시작해야 할지 고민이신가요?</h2><p>현재 상황과 필요한 업무를 알려주시면 함께 정리하겠습니다.</p></div>
+<div class="about-links"><a class="about-link" href="/design-team.html">팀 소개</a><a class="about-link about-link--primary" href="/contact.html">프로젝트 문의</a></div>
+</div></div></section>
+</main>
+<footer class="site-footer container"></footer>
 </div>
 <script src="assets/js/main.js?v=20260922-18"></script>
-</body>
-</html>
+</body></html>
