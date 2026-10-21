@@ -3,7 +3,7 @@
   --develop-card-radius:24px;
   --designer-line:var(--develop-line,#e7e7e2);
   --designer-soft:var(--develop-soft,#fafaf8);
-  --designer-accent:var(--develop-orange,#ff5a1f);
+  --designer-accent:var(--develop-orange,#111111);
   --designer-muted:var(--develop-muted,#6b6b67);
 }
 
