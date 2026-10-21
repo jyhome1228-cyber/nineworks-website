@@ -123,7 +123,7 @@
       </div>
     </div>
     <div class="site-header__main">
-      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20260929-1' : '/assets/nineworks-wordmark-20260922.svg?v=20260922-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
+      <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20261021-2' : '/assets/nineworks-wordmark-20260922.svg?v=20261021-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
         <div class="site-nav-item">
           <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
@@ -244,7 +244,7 @@
 
   if (isPrintingPage) {
     document.querySelectorAll('.printing-brand').forEach((brand) => {
-      brand.innerHTML = '<img class="printing-brand__logo" src="/assets/nineworks-printing-logo.svg?v=20260929-1" alt="NINEWORKS PRINTING">';
+      brand.innerHTML = '<img class="printing-brand__logo" src="/assets/nineworks-printing-logo.svg?v=20261021-2" alt="NINEWORKS PRINTING">';
       brand.setAttribute('aria-label', '나인웍스 프린팅 홈');
     });
   }
@@ -397,7 +397,7 @@
 
   footer.innerHTML = `
     <div class="site-footer__head">
-      <a class="site-footer__brand${isPrintingPage ? ' site-footer__brand--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20260929-1' : '/assets/nineworks-wordmark-20260922.svg?v=20260922-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
+      <a class="site-footer__brand${isPrintingPage ? ' site-footer__brand--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20261021-2' : '/assets/nineworks-wordmark-20260922.svg?v=20261021-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-footer__links" aria-label="푸터 메뉴">
         <a href="/about.html">About</a>
         <a href="/branding.html">Process</a>
