@@ -1,8 +1,8 @@
 /* NINEWORKS DEVELOP LANDING — 2026-09-22 */
 
 .develop-page{
-  --develop-orange:var(--nw-accent,#ff5a1f);
-  --develop-orange-soft:var(--nw-accent-soft,#fff2ec);
+  --develop-orange:var(--nw-accent,#111111);
+  --develop-orange-soft:var(--nw-accent-soft,#f3f3f3);
   --develop-line:var(--nw-ui-line,#e7e7e2);
   --develop-soft:var(--nw-ui-bg,#fafaf8);
   --develop-text:#171717;
@@ -28,9 +28,9 @@
 .develop-page .develop-button{border-radius:16px!important;overflow:hidden!important}
 .develop-button:hover{transform:translateY(-1px)}
 .develop-button--primary{border:1px solid var(--develop-orange);background:var(--develop-orange);color:#fff}
-.develop-button--primary:hover{background:#e94d15;border-color:#e94d15}
+.develop-button--primary:hover{background:#2b2b2b;border-color:#2b2b2b}
 .develop-button--secondary{border:1px solid var(--develop-line);background:#fff;color:#222}
-.develop-button--secondary:hover{border-color:#ffd2c0;background:#fff8f5;color:var(--develop-orange)}
+.develop-button--secondary:hover{border-color:#d8d8d8;background:#fafafa;color:var(--develop-orange)}
 .develop-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;max-width:920px;margin:34px auto 0}
 .develop-tags span{padding:9px 13px;border:1px solid var(--develop-line);border-radius:999px;background:#fff;color:#595955;font-size:11.5px;font-weight:600}
 
@@ -48,7 +48,7 @@
 /* Problem cards */
 .develop-problem-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--develop-card-gap)}
 .develop-problem-grid article{min-height:260px;padding:25px;border:var(--develop-card-border);border-radius:var(--develop-card-radius);background:#fff;transition:transform .18s ease,border-color .18s ease,background .18s ease}
-.develop-problem-grid article:hover{transform:translateY(-2px);border-color:#ffd2c0;background:#fffaf7}
+.develop-problem-grid article:hover{transform:translateY(-2px);border-color:#d8d8d8;background:#fffaf7}
 .develop-problem-grid span{color:var(--develop-orange);font-size:10px;font-weight:700;letter-spacing:.08em}
 .develop-problem-grid h3{margin:56px 0 12px;font-size:21px;font-weight:620;line-height:1.35;letter-spacing:-.03em;word-break:keep-all}
 .develop-problem-grid p{margin:0;color:#666;font-size:13.5px;line-height:1.72;word-break:keep-all}
@@ -67,7 +67,7 @@
 .develop-difference-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--develop-card-gap);overflow:visible;border:0;background:transparent}
 .develop-difference-grid article{position:relative;min-height:270px;padding:28px;border:1px solid var(--develop-line);border-radius:var(--develop-card-radius);background:#fff;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
 .develop-difference-grid article::before{display:none;content:none}
-.develop-difference-grid article:hover{transform:translateY(-2px);border-color:#ffd2c0;box-shadow:0 14px 34px rgba(25,25,20,.055)}
+.develop-difference-grid article:hover{transform:translateY(-2px);border-color:#d8d8d8;box-shadow:0 14px 34px rgba(25,25,20,.055)}
 .develop-difference-grid span{display:inline-flex;align-items:center;min-height:28px;padding:0 10px;border-radius:999px;background:var(--develop-orange-soft);color:var(--develop-orange);font-size:10px;font-weight:700;letter-spacing:.07em}
 .develop-difference-grid h3{margin:58px 0 12px;font-size:20px;font-weight:600;line-height:1.45;letter-spacing:-.03em;word-break:keep-all}
 .develop-difference-grid p{margin:0;color:#6b6b67;font-size:13px;line-height:1.75;word-break:keep-all}
@@ -82,7 +82,7 @@
 /* Function grid */
 .develop-function-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;max-width:1100px;margin:0 auto}
 .develop-function-grid span{display:flex;min-height:74px;align-items:center;justify-content:center;padding:10px;border:var(--develop-card-border);border-radius:16px;background:#fff;color:#40403d;font-size:12px;font-weight:650;text-align:center;transition:background .18s ease,border-color .18s ease,color .18s ease}
-.develop-function-grid span:hover{border-color:#ffd2c0;background:#fff7f2;color:var(--develop-orange)}
+.develop-function-grid span:hover{border-color:#d8d8d8;background:#f7f7f7;color:var(--develop-orange)}
 
 /* Work */
 .develop-work{padding-top:104px;padding-bottom:104px}
@@ -95,7 +95,7 @@
 .develop-work__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--develop-card-gap)}
 .develop-work-card{min-width:0}
 .develop-work-card__link{display:block;min-height:250px;height:100%;padding:24px;border:var(--develop-card-border);border-radius:var(--develop-card-radius);background:#fff;color:inherit;text-decoration:none;transition:transform .18s ease,border-color .18s ease,background .18s ease}
-.develop-work-card__link:hover{transform:translateY(-2px);border-color:#ffd2c0;background:#fffaf7}
+.develop-work-card__link:hover{transform:translateY(-2px);border-color:#d8d8d8;background:#fffaf7}
 .develop-work-card__media{display:none!important}
 .develop-work-card__meta{display:flex;min-height:200px;height:100%;flex-direction:column;text-align:left}
 .develop-work-card__top{display:flex;align-items:center;justify-content:space-between;gap:20px}
@@ -121,7 +121,7 @@
 .develop-cta h2{max-width:780px;margin:0 auto;font-size:clamp(38px,3.8vw,58px);font-weight:650;line-height:1.12;letter-spacing:-.05em;word-break:keep-all;text-wrap:balance}
 .develop-cta p{max-width:700px;margin:24px auto 0;color:rgba(255,255,255,.84);font-size:15.5px;line-height:1.8;word-break:keep-all}
 .develop-button--light{margin-top:32px;border:1px solid #fff;background:#fff;color:var(--develop-orange)}
-.develop-button--light:hover{background:#fff7f3;border-color:#fff7f3}
+.develop-button--light:hover{background:#f7f7f7;border-color:#f7f7f7}
 
 /* Responsive */
 @media(max-width:1100px){
