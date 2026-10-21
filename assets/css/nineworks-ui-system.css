@@ -363,8 +363,8 @@ html body:not(.admin-page) .nw-home-cta .nw-button{
   color:var(--nw-accent)!important;
 }
 html body:not(.admin-page) .nw-home-cta .nw-button:hover{
-  background:#fff7f3!important;
-  border-color:#fff7f3!important;
+  background:#f7f7f7!important;
+  border-color:#f7f7f7!important;
 }
 html body:not(.admin-page) .site-footer a:hover{color:var(--nw-accent)!important}
 
