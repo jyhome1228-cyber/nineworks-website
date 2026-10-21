@@ -1,4 +1,4 @@
-.crm-page{--crm-orange:var(--nw-accent,#ff5a1f);--crm-line:#e7e7e2;--crm-soft:#f7f7f4;--crm-ink:#171717;--crm-muted:#696965;background:#fff;color:var(--crm-ink)}
+.crm-page{--crm-orange:var(--nw-accent,#111111);--crm-line:#e7e7e2;--crm-soft:#f7f7f4;--crm-ink:#171717;--crm-muted:#696965;background:#fff;color:var(--crm-ink)}
 .crm-page main{background:#fff}.crm-page .eyebrow{color:var(--crm-orange)!important}
 .crm-hero{padding:108px 0 88px;border-bottom:1px solid var(--crm-line)}
 .crm-hero__inner{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(340px,.7fr);gap:clamp(54px,8vw,124px);align-items:end}
