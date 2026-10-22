@@ -140,6 +140,7 @@
           <a href="/branding-projects.html" data-nav-key="project-guide">PROJECT <span class="site-nav-caret">▾</span></a>
           <div class="site-nav-dropdown" aria-label="프로젝트 메뉴">
             <a href="/branding-projects.html"><span>브랜딩 프로젝트</span><small>BRANDING PROJECT</small></a>
+            <a href="/website-projects.html"><span>사이트 구축 프로젝트</span><small>WEB & DIGITAL</small></a>
           </div>
         </div>
         <span class="site-nav-separator" aria-hidden="true">·</span>
@@ -291,7 +292,7 @@
 
   const navMap = {
     about: 'about', designer: 'about', 'design-team': 'about', performance: 'about', partners: 'about',
-    process: 'process', 'project-operation': 'process', 'branding-projects': 'project-guide',
+    process: 'process', 'project-operation': 'process', 'branding-projects': 'project-guide', 'website-projects': 'project-guide',
     project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
     solutions: 'solutions', develop: 'solutions', crm: 'solutions', support: 'solutions', print: 'solutions', 'printing-dashboard': 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
     branding: 'process', 'package-design': 'process', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
