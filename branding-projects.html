@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="나인웍스 브랜딩 프로젝트 안내. 신규 브랜드 구축, 월간·연간 브랜드 디벨롭, 스타트업 전용 브랜드 디자인의 작업 범위와 진행 과정을 확인하세요.">
+<meta name="description" content="나인웍스 브랜딩 프로젝트 안내. 신규 브랜드 구축, 리브랜딩, 월간·연간 브랜드 디벨롭, 스타트업 전용 브랜드 디자인의 작업 범위와 진행 과정을 확인하세요.">
 <link rel="canonical" href="https://9works.kr/branding-projects.html">
 <title>브랜딩 프로젝트 안내 | NINEWORKS</title>
 <link rel="stylesheet" href="/assets/css/style.css">
@@ -137,6 +137,18 @@
 .brand-guide .bp-detail-block li strong{display:block;font-size:14px;font-weight:620}
 .brand-guide .bp-detail-block li span{display:block;color:var(--bp-muted);font-size:13px;margin-top:3px}
 @media(max-width:760px){.brand-guide .bp-hero{padding:55px 0}.brand-guide .bp-section{padding:55px 0}.brand-guide .bp-tab{padding:16px 19px;min-height:0}.brand-guide .bp-panel{padding:23px 19px}.brand-guide .bp-detail-grid{grid-template-columns:1fr;gap:10px;margin-top:28px}.brand-guide .bp-detail-block{padding:21px}}
+
+/* Stable square-corner layout: intentionally no rounded boxes.
+   !important prevents asynchronously loaded global CSS from morphing corners after first paint. */
+html body.brand-guide .bp-tab,
+html body.brand-guide .bp-panel,
+html body.brand-guide .bp-meta>div,
+html body.brand-guide .bp-detail-block,
+html body.brand-guide .bp-process>article,
+html body.brand-guide .bp-contact-inner,
+html body.brand-guide .bp-button{border-radius:0!important}
+html body.brand-guide .bp-tab{transition:background-color .15s ease,color .15s ease,border-color .15s ease!important}
+html body.brand-guide .bp-panel,html body.brand-guide .bp-detail-block{box-shadow:none!important}
 </style>
 </head>
 <body class="brand-guide">
@@ -159,17 +171,17 @@
 <button class="bp-tab" id="bp-tab-3" type="button" role="tab" aria-controls="bp-panel-3" aria-selected="false" tabindex="-1"><span class="bp-number">04 / STARTUP</span><strong>스타트업 전용<br>브랜드 디자인</strong></button>
 </div>
 <section class="bp-panel" id="bp-panel-1" role="tabpanel" aria-labelledby="bp-tab-1">
-<div class="bp-panel-header"><p class="bp-kicker">01 / NEW BRAND BUILDING</p><h2>신규 브랜드 구축 디자인 프로젝트</h2><p>새로운 사업과 제품·서비스를 시장에 선보이기 위한 통합 브랜딩입니다. 브랜드 전략과 아이덴티티를 구축한 뒤 실제 고객이 만나는 패키지, 각종 출력물, 홍보물, 브랜드 웹사이트와 쇼핑몰 등 필요한 접점까지 하나의 방향으로 디자인·제작합니다.</p></div>
+<div class="bp-panel-header"><p class="bp-kicker">01 / NEW BRAND BUILDING</p><h2>신규 브랜드 구축 디자인 프로젝트</h2><p>새로운 사업과 제품·서비스를 시장에 선보이기 위한 통합 브랜딩입니다. 브랜드 전략과 아이덴티티를 구축하면서 실제 사업에 필요한 패키지, 인쇄 홍보물, 브랜드 웹사이트와 쇼핑몰 등 모든 디자인 적용 범위를 초기에 함께 체크해 하나의 프로젝트로 진행합니다. 디자인부터 웹·커머스 구축까지 통합 수행하며 실물 인쇄·생산비만 별도로 산정합니다.</p></div>
 <div class="bp-meta"><div><span>추천 대상</span><strong>신규 브랜드 · 신사업 론칭</strong></div><div><span>예상 진행 기간</span><strong>약 6~12주부터 (범위별 협의)</strong></div><div><span>계약 형태</span><strong>범위별 프로젝트 계약</strong></div></div>
-<div class="bp-columns"><div><h3>주요 작업 내용</h3><ul><li>브랜드 현황 및 시장·고객 맥락 파악</li><li>브랜드 콘셉트와 핵심 메시지 정리</li><li>네이밍·슬로건 검토(선택 범위)</li><li>로고 / BI 및 컬러·서체 디자인</li><li>기본 브랜드 디자인 시스템</li><li>브랜딩 애플리케이션: 명함·리플렛·홍보물·패키지·출력물 등</li><li>브랜드 소개 웹페이지 및 홈페이지 구축(협의)</li><li>카페24 쇼핑몰 개설·초기 디자인 세팅(협의)</li></ul></div><div><h3>이렇게 진행합니다</h3><ul><li>01. 상담 및 사전 자료 검토</li><li>02. 수행 범위·견적·일정 확정</li><li>03. 브랜드 전략 및 디자인 방향 설정</li><li>04. 디자인 시안 제안 및 피드백</li><li>05. 최종 디자인 정리·가이드 제공</li><li>06. 패키지·인쇄 제작 및 웹·쇼핑몰 구축 연계</li></ul></div></div>
-<p class="bp-note">※ 기간은 참고용이며 조사 범위, 네이밍 포함 여부, 응용 제작물의 수에 따라 달라집니다.</p>
-<div class="bp-detail-grid"><section class="bp-detail-block"><h3>세부 수행 단계</h3><ol><li><strong>01. 진단과 킥오프</strong><span>사업 배경, 고객, 제품·서비스, 경쟁 환경과 기존 자산을 검토합니다. 핵심 과제와 의사결정 기준을 정합니다.</span></li><li><strong>02. 브랜드 방향 수립</strong><span>포지셔닝, 브랜드 성격, 핵심 메시지, 네이밍 필요 여부를 결정하고 시각 콘셉트의 기준을 합의합니다.</span></li><li><strong>03. 디자인 개발</strong><span>로고·심볼·워드마크와 색상, 서체, 그래픽 원칙을 설계합니다. 실제 적용 환경에서 검토하며 보완합니다.</span></li><li><strong>04. 브랜딩 애플리케이션 제작</strong><span>명함·문서·패키지·각종 인쇄물·광고 소재 등 실제로 필요한 브랜드 접점을 디자인합니다. 매체별 규격과 제작 조건도 함께 검토합니다.</span></li><li><strong>05. 웹·커머스 연계</strong><span>필요하면 브랜드 소개 웹페이지 또는 홈페이지, 카페24 쇼핑몰 개설과 디자인 세팅까지 별도 협의해 수행합니다.</span></li></ol></section><section class="bp-detail-block"><h3>산출물과 협업 기준</h3><ul><li><strong>브랜드 방향 요약 문서</strong><span>프로젝트 목표, 고객과 차별화 방향, 디자인 콘셉트 기준</span></li><li><strong>아이덴티티 디자인 파일</strong><span>확정된 로고 구성, 기본 컬러·서체, 기본 조합 및 사용 예시</span></li><li><strong>브랜드 응용 디자인·제작</strong><span>계약에 포함된 패키지·명함·리플렛·홍보 출력물 등 실제 사용 목적의 디자인과 제작 데이터</span></li><li><strong>웹사이트·커머스 구축(선택)</strong><span>브랜드 페이지·기업 사이트·카페24 쇼핑몰 및 초기 콘텐츠 구성을 프로젝트 범위에 따라 연결</span></li><li><strong>검토 및 전달 방식</strong><span>단계별 제안·피드백·수정 후 최종 파일 전달. 시안 수와 수정 횟수는 계약 시 결정</span></li><li><strong>별도 협의 항목</strong><span>상표 출원, 사진 촬영, 웹사이트·쇼핑몰 개발 범위, 패키지 샘플·양산 수량, 인쇄 실비 등은 필요에 따라 산정</span></li></ul></section></div></section>
+<div class="bp-columns"><div><h3>주요 작업 내용</h3><ul><li>브랜드 현황 및 시장·고객 맥락 파악</li><li>브랜드 콘셉트와 핵심 메시지 정리</li><li>네이밍·슬로건 검토(선택 범위)</li><li>로고 / BI 및 컬러·서체 디자인</li><li>기본 브랜드 디자인 시스템</li><li>브랜딩 애플리케이션: 명함·리플렛·홍보물·패키지·출력물 등</li><li>브랜드 소개 웹페이지 및 홈페이지 기획·디자인·구축</li><li>카페24 쇼핑몰 개설·구축·초기 디자인 세팅</li></ul></div><div><h3>이렇게 진행합니다</h3><ul><li>01. 상담 및 사전 자료 검토</li><li>02. 브랜드·패키지·출력물·웹·쇼핑몰 업무범위 통합 체크 및 견적 확정</li><li>03. 브랜드 전략 및 디자인 방향 설정</li><li>04. 디자인 시안 제안 및 피드백</li><li>05. 최종 디자인 정리·가이드 제공</li><li>06. 패키지·인쇄 제작 및 웹·쇼핑몰 구축 연계</li></ul></div></div>
+<p class="bp-note">※ BI·CI, 패키지·출력물 디자인, 홈페이지·카페24 구축 중 필요한 업무를 처음부터 하나의 수행 범위에 포함해 견적을 구성합니다. 실물 인쇄·샘플·양산 실비만 별도 산정하며 기간은 선정 범위에 따라 달라집니다.</p>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>세부 수행 단계</h3><ol><li><strong>01. 진단과 킥오프</strong><span>사업 배경, 고객, 제품·서비스, 경쟁 환경과 기존 자산을 검토합니다. 핵심 과제와 의사결정 기준을 정합니다.</span></li><li><strong>02. 브랜드 방향 수립</strong><span>포지셔닝, 브랜드 성격, 핵심 메시지, 네이밍 필요 여부를 결정하고 시각 콘셉트의 기준을 합의합니다.</span></li><li><strong>03. 디자인 개발</strong><span>로고·심볼·워드마크와 색상, 서체, 그래픽 원칙을 설계합니다. 실제 적용 환경에서 검토하며 보완합니다.</span></li><li><strong>04. 브랜딩 애플리케이션 제작</strong><span>명함·문서·패키지·각종 인쇄물·광고 소재 등 실제로 필요한 브랜드 접점을 디자인합니다. 매체별 규격과 제작 조건도 함께 검토합니다.</span></li><li><strong>05. 웹·커머스 연계</strong><span>필요하면 브랜드 소개 웹페이지 또는 홈페이지, 카페24 쇼핑몰 개설과 디자인 세팅까지 별도 협의해 수행합니다.</span></li></ol></section><section class="bp-detail-block"><h3>산출물과 협업 기준</h3><ul><li><strong>브랜드 방향 요약 문서</strong><span>프로젝트 목표, 고객과 차별화 방향, 디자인 콘셉트 기준</span></li><li><strong>아이덴티티 디자인 파일</strong><span>확정된 로고 구성, 기본 컬러·서체, 기본 조합 및 사용 예시</span></li><li><strong>브랜드 응용 디자인·제작</strong><span>계약에 포함된 패키지·명함·리플렛·홍보 출력물 등 실제 사용 목적의 디자인과 제작 데이터</span></li><li><strong>웹사이트·커머스 구축(선택)</strong><span>브랜드 페이지·기업 사이트·카페24 쇼핑몰 및 초기 콘텐츠 구성을 프로젝트 범위에 따라 연결</span></li><li><strong>검토 및 전달 방식</strong><span>단계별 제안·피드백·수정 후 최종 파일 전달. 시안 수와 수정 횟수는 계약 시 결정</span></li><li><strong>업무범위 확정 및 제작비 구분</strong><span>홈페이지·쇼핑몰·패키지 등 디자인·개발 업무는 최초 범위에 함께 반영합니다. 실물 인쇄·샘플·양산 실비와 외부 비용은 별도로 안내합니다.</span></li></ul></section></div></section>
 <section class="bp-panel" id="bp-panel-4" role="tabpanel" aria-labelledby="bp-tab-4" hidden>
-<div class="bp-panel-header"><p class="bp-kicker">02 / REBRANDING</p><h2>리브랜딩 디자인 프로젝트</h2><p>사업 변화, 시장 확장, 브랜드 노후화 또는 고객 경험의 불일치를 개선하기 위한 프로젝트입니다. 기존 브랜드가 쌓아온 인지도와 자산을 먼저 검토하고, 유지할 가치와 바꿀 요소를 구분해 새로운 브랜드 기준을 만듭니다. 로고뿐 아니라 패키지, 출력물, 웹사이트·쇼핑몰 등 실제 운영 접점까지 재정비할 수 있습니다.</p></div>
+<div class="bp-panel-header"><p class="bp-kicker">02 / REBRANDING</p><h2>리브랜딩 디자인 프로젝트</h2><p>사업 변화, 시장 확장, 브랜드 노후화 또는 고객 경험의 불일치를 개선하기 위한 프로젝트입니다. 기존 브랜드가 쌓아온 인지도와 자산을 먼저 검토하고, 유지할 가치와 바꿀 요소를 구분해 새로운 브랜드 기준을 만듭니다. 로고에 국한하지 않고 패키지·홍보 출력물·홈페이지·카페24 쇼핑몰 등 교체가 필요한 접점을 초기에 함께 점검하여 통합 리브랜딩 업무로 구성합니다. 실물 인쇄와 양산 비용은 사양에 따라 구분합니다.</p></div>
 <div class="bp-meta"><div><span>추천 대상</span><strong>기존 브랜드 · 사업 전환 · 리뉴얼</strong></div><div><span>예상 진행 기간</span><strong>약 6~12주부터 (범위별 협의)</strong></div><div><span>계약 형태</span><strong>진단 후 맞춤 프로젝트 계약</strong></div></div>
-<div class="bp-columns"><div><h3>주요 작업 내용</h3><ul><li>현재 브랜드 진단 및 기존 자산 검토</li><li>리브랜딩 목표와 유지·변경 범위 설정</li><li>브랜드 콘셉트, 메시지 및 BI·CI 개선</li><li>컬러·서체·그래픽 시스템 재구축</li><li>패키지·출력물·홍보물 등 응용 디자인 전환</li><li>브랜드 사이트·홈페이지 개선 또는 구축(협의)</li><li>카페24 쇼핑몰 리뉴얼·개설 및 콘텐츠 세팅(협의)</li></ul></div><div><h3>이렇게 진행합니다</h3><ul><li>01. 기존 브랜드·사업 현황 및 문제 파악</li><li>02. 유지할 자산과 개선 우선순위 합의</li><li>03. 새로운 방향성과 아이덴티티 제안</li><li>04. 단계별 디자인 검토·수정·확정</li><li>05. 기존 매체·출력물·패키지 전환 설계</li><li>06. 웹·쇼핑몰 반영과 최종 자료 정리</li></ul></div></div>
-<p class="bp-note">※ 운영 중인 브랜드의 변경 범위를 검토한 뒤 실제 산출물과 전환 일정을 협의합니다. 인쇄·양산 실비 및 웹·쇼핑몰 기능 개발은 범위에 따라 별도 산정합니다.</p>
-<div class="bp-detail-grid"><section class="bp-detail-block"><h3>세부 수행 단계</h3><ol><li><strong>01. 현황 분석</strong><span>기존 브랜드의 인지도, 시각 일관성, 경쟁 환경과 실제 사용 자산을 검토해 개선 이유를 명확히 합니다.</span></li><li><strong>02. 전환 방향 설정</strong><span>기존 브랜드의 유지 요소와 변경 요소를 구분하고 고객에게 전달할 새로운 인상을 정리합니다.</span></li><li><strong>03. 아이덴티티 재설계</strong><span>로고·컬러·서체·그래픽·사용 규정을 개선하고 주요 매체에 테스트합니다.</span></li><li><strong>04. 실무 적용</strong><span>기존 패키지·인쇄물·영업자료·디지털 콘텐츠와 온라인 채널을 새로운 기준에 맞게 전환합니다.</span></li><li><strong>05. 론칭 및 운영 연계</strong><span>필요 시 브랜드 홈페이지와 카페24 쇼핑몰의 디자인을 업데이트하거나 새로 구축하고 이후 운영 방식까지 협의합니다.</span></li></ol></section><section class="bp-detail-block"><h3>산출물과 범위 조율</h3><ul><li><strong>브랜드 진단 및 개선 방향</strong><span>현황, 핵심 문제, 유지·변경 원칙 및 디자인 방향 정리</span></li><li><strong>리브랜딩 아이덴티티</strong><span>확정된 로고·컬러·서체·그래픽 시스템과 기초 사용 기준</span></li><li><strong>브랜딩 애플리케이션</strong><span>필요한 패키지, 명함, 리플렛, 각종 출력물, 브랜드 소개자료 및 홍보물 디자인</span></li><li><strong>웹·커머스 연계(선택)</strong><span>브랜드 홈페이지 제작·개선, 카페24 쇼핑몰 개설·리뉴얼과 초기 세팅</span></li><li><strong>전환 및 제작 협의</strong><span>기존 재고, 교체 일정, 인쇄·양산 수량, 웹 기능과 운영 범위를 확인하여 별도 견적 구성</span></li></ul></section></div>
+<div class="bp-columns"><div><h3>주요 작업 내용</h3><ul><li>현재 브랜드 진단 및 기존 자산 검토</li><li>리브랜딩 목표와 유지·변경 범위 설정</li><li>브랜드 콘셉트, 메시지 및 BI·CI 개선</li><li>컬러·서체·그래픽 시스템 재구축</li><li>패키지·출력물·홍보물 등 응용 디자인 전환</li><li>브랜드 사이트·홈페이지 개선 및 구축</li><li>카페24 쇼핑몰 리뉴얼·개설 및 콘텐츠 세팅</li></ul></div><div><h3>이렇게 진행합니다</h3><ul><li>01. 기존 브랜드·사업 현황 및 문제 파악</li><li>02. 유지·변경 요소와 패키지·인쇄물·웹·쇼핑몰 적용 범위 통합 확정</li><li>03. 새로운 방향성과 아이덴티티 제안</li><li>04. 단계별 디자인 검토·수정·확정</li><li>05. 기존 매체·출력물·패키지 전환 설계</li><li>06. 웹·쇼핑몰 반영과 최종 자료 정리</li></ul></div></div>
+<p class="bp-note">※ 기존 브랜드의 변경 대상과 패키지·출력물 디자인·홈페이지·쇼핑몰 적용 업무를 함께 점검하여 통합 프로젝트 범위와 견적을 확정합니다. 실물 인쇄·샘플·양산 비용만 제작 사양·수량에 따라 별도 산정합니다.</p>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>세부 수행 단계</h3><ol><li><strong>01. 현황 분석</strong><span>기존 브랜드의 인지도, 시각 일관성, 경쟁 환경과 실제 사용 자산을 검토해 개선 이유를 명확히 합니다.</span></li><li><strong>02. 전환 방향 설정</strong><span>기존 브랜드의 유지 요소와 변경 요소를 구분하고 고객에게 전달할 새로운 인상을 정리합니다.</span></li><li><strong>03. 아이덴티티 재설계</strong><span>로고·컬러·서체·그래픽·사용 규정을 개선하고 주요 매체에 테스트합니다.</span></li><li><strong>04. 실무 적용</strong><span>기존 패키지·인쇄물·영업자료·디지털 콘텐츠와 온라인 채널을 새로운 기준에 맞게 전환합니다.</span></li><li><strong>05. 론칭 및 운영 연계</strong><span>필요 시 브랜드 홈페이지와 카페24 쇼핑몰의 디자인을 업데이트하거나 새로 구축하고 이후 운영 방식까지 협의합니다.</span></li></ol></section><section class="bp-detail-block"><h3>산출물과 범위 조율</h3><ul><li><strong>브랜드 진단 및 개선 방향</strong><span>현황, 핵심 문제, 유지·변경 원칙 및 디자인 방향 정리</span></li><li><strong>리브랜딩 아이덴티티</strong><span>확정된 로고·컬러·서체·그래픽 시스템과 기초 사용 기준</span></li><li><strong>브랜딩 애플리케이션</strong><span>필요한 패키지, 명함, 리플렛, 각종 출력물, 브랜드 소개자료 및 홍보물 디자인</span></li><li><strong>웹·커머스 연계(선택)</strong><span>브랜드 홈페이지 제작·개선, 카페24 쇼핑몰 개설·리뉴얼과 초기 세팅</span></li><li><strong>업무 범위와 실물 제작비 구분</strong><span>리브랜딩 대상 디자인·웹·쇼핑몰 업무는 초기 계약에 함께 구성합니다. 기존 재고·교체 일정·실물 인쇄·양산비는 별도 검토합니다.</span></li></ul></section></div>
 </section>
 <section class="bp-panel" id="bp-panel-2" role="tabpanel" aria-labelledby="bp-tab-2" hidden>
 <div class="bp-panel-header"><p class="bp-kicker">03 / BRAND DEVELOPMENT</p><h2>월간 / 연간 브랜드 디벨롭 프로젝트</h2><p>브랜드 운영 중 새롭게 생기는 디자인 과제를 함께 해결하는 장기 협업 방식입니다. 단순한 제작 요청 대응을 넘어 브랜드 현황을 살펴 필요한 개선과 콘텐츠를 제안하고, 하나의 팀처럼 지속적으로 관리합니다.</p></div>
@@ -185,20 +197,20 @@
 <div class="bp-detail-grid"><section class="bp-detail-block"><h3>실제 진행 구성</h3><ol><li><strong>01. 사업 이해</strong><span>어떤 제품·서비스를 누구에게 제공하는지 확인하고 초기 론칭에 필요한 항목을 구분합니다.</span></li><li><strong>02. 핵심 콘셉트 도출</strong><span>경쟁 브랜드와 고객 특성을 참고해 간결한 브랜드 방향과 기본 인상을 정합니다.</span></li><li><strong>03. 기본 아이덴티티 개발</strong><span>로고, 컬러, 서체와 기본 그래픽을 디자인하고 대표 사용 환경에 적용해 확인합니다.</span></li><li><strong>04. 초기 운영 적용</strong><span>합의된 필수 응용 디자인과 기초 파일을 전달하고 활용 방법을 설명합니다.</span></li></ol></section><section class="bp-detail-block"><h3>초기 사업을 위한 현실적인 범위</h3><ul><li><strong>필수 구축</strong><span>핵심 브랜드 콘셉트, 로고 기본형, 컬러·서체 기준, 기본 활용 예시</span></li><li><strong>선택 제작</strong><span>명함, 간단한 SNS 프로필, 패키지 라벨, 소개자료 등 우선순위에 맞춰 선택</span></li><li><strong>전달 파일</strong><span>계약 범위의 최종 로고 파일과 기본 활용 가이드</span></li><li><strong>효율적인 협업</strong><span>피드백 담당자를 정하고 론칭 필수 항목부터 확정해 제작 기간과 비용을 관리</span></li><li><strong>확장 단계</strong><span>사업 성장에 따라 정식 브랜드 가이드, 웹사이트, 패키지·인쇄, 정기 운영으로 확장 가능</span></li></ul></section></div></section>
 </div></section>
 <section class="bp-section"><div class="bp-wrap">
-<p class="bp-kicker">OUR WORKFLOW</p><h2>브랜드를 이해하는 것부터 시작합니다.</h2><p class="bp-intro">프로젝트 유형은 달라도, 먼저 브랜드의 상황을 파악하고 필요한 작업 범위를 정리하는 원칙은 같습니다.</p>
+<p class="bp-kicker">OUR WORKFLOW</p><h2>브랜드를 이해하는 것부터 시작합니다.</h2><p class="bp-intro">프로젝트 유형은 달라도, 먼저 브랜드와 사업 상황을 먼저 이해하고, BI·CI·브랜딩 애플리케이션·웹사이트·커머스 등 실제 필요한 업무를 함께 확인해 수행 범위와 일정을 구성합니다. 인쇄·양산 실비는 별도로 산정합니다.</p>
 <div class="bp-process">
 <article><span>STEP 01</span><strong>상담 및 이해</strong><p>사업 현황과 목표, 필요한 사항을 확인합니다.</p></article>
-<article><span>STEP 02</span><strong>범위 및 일정</strong><p>작업 항목, 산출물, 예산과 일정을 정합니다.</p></article>
+<article><span>STEP 02</span><strong>통합 업무 범위 확정</strong><p>로고·패키지·인쇄물 디자인·웹·쇼핑몰 필요 항목을 함께 체크하고 견적과 일정을 정합니다.</p></article>
 <article><span>STEP 03</span><strong>기획 및 디자인</strong><p>방향을 정리하고 디자인을 제안합니다.</p></article>
 <article><span>STEP 04</span><strong>피드백 및 보완</strong><p>합의된 검토 과정을 거쳐 완성도를 높입니다.</p></article>
-<article><span>STEP 05</span><strong>납품 및 연계</strong><p>결과물을 전달하고 후속 활용을 돕습니다.</p></article>
+<article><span>STEP 05</span><strong>적용·납품·운영</strong><p>합의된 디자인과 웹·커머스 결과물을 반영합니다. 실물 인쇄·양산은 별도 제작비 기준으로 진행합니다.</p></article>
 </div></div></section>
 <section class="bp-section"><div class="bp-wrap bp-faq">
 <p class="bp-kicker">FREQUENTLY ASKED QUESTIONS</p><h2>자주 묻는 질문</h2>
 <details><summary>어떤 프로젝트가 저희 회사에 맞을까요?</summary><p>신규 론칭은 신규 브랜드 구축, 운영 중인 브랜드의 방향·이미지 변경은 리브랜딩, 지속적인 디자인·운영 지원은 월간·연간 브랜드 디벨롭, 초기 창업의 필수 요소만 우선 구축하려면 스타트업 전용 프로젝트가 적합합니다.</p></details>
 <details><summary>기획이 정리되지 않았는데 의뢰할 수 있나요?</summary><p>네. 사업 현황과 현재 고민을 확인한 후 우선적으로 필요한 범위부터 정리합니다. 조사·전략 수립이 많이 필요한 경우 별도 기획 범위를 협의합니다.</p></details>
 <details><summary>제작 기간과 견적은 어떻게 정해지나요?</summary><p>위 기간은 일반적인 안내 기준이며 확정 일정은 아닙니다. 필요한 산출물, 기존 자료, 검토 단계, 수정 범위를 확인한 후 견적과 일정을 안내합니다.</p></details>
-<details><summary>패키지·웹사이트·인쇄까지 함께 진행할 수 있나요?</summary><p>가능합니다. 신규 브랜딩과 리브랜딩 모두 브랜드 아이덴티티를 기준으로 패키지, 명함·리플렛·각종 출력물, 브랜드 홈페이지나 소개 페이지, 카페24 쇼핑몰 개설·리뉴얼까지 연계할 수 있습니다. 필요한 산출물과 제작 수량, 웹·쇼핑몰 기능 범위는 상담 후 맞춤 구성하며 인쇄·양산 비용은 별도로 산정합니다.</p></details>
+<details><summary>패키지·웹사이트·인쇄까지 함께 진행할 수 있나요?</summary><p>네. 신규 브랜드 구축과 리브랜딩 모두 상담 단계에서 필요한 업무를 함께 체크해 하나의 프로젝트 수행 범위로 구성합니다. BI·CI뿐 아니라 패키지 디자인, 명함·리플렛·각종 홍보물 디자인, 브랜드 홈페이지·소개 페이지, 카페24 쇼핑몰 구축과 초기 디자인 세팅도 필요한 만큼 포함해 통합 기획·디자인·진행할 수 있습니다. 다만 실물 인쇄·패키지 샘플·양산 등 제작 실비는 디자인 업무 범위와 구분하여 수량·사양을 확인한 뒤 별도 산정합니다.</p></details>
 </div></section>
 <section class="bp-contact"><div class="bp-wrap"><div class="bp-contact-inner"><div><p class="bp-kicker">LET'S WORK TOGETHER</p><h2>브랜드의 다음 단계를 함께 설계합니다.</h2><p>상황에 맞는 프로젝트 방식부터 상담해 드립니다.</p></div><a class="bp-button" href="/contact.html">프로젝트 문의하기 ↗</a></div></div></section>
 </main>
