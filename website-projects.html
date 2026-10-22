@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="나인웍스 사이트 구축 프로젝트. 랜딩페이지, 기업·브랜드 홈페이지, 쇼핑몰·커머스, 관리자·업무 시스템 구축의 진행 방식과 업무 범위를 안내합니다.">
+<link rel="canonical" href="https://9works.kr/website-projects.html">
+<title>사이트 구축 프로젝트 안내 | NINEWORKS</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+.brand-guide{background:#fff;color:#161616;--bp-line:#e8e8e8;--bp-muted:#686868}
+.brand-guide *{box-sizing:border-box}
+.brand-guide .bp-wrap{max-width:1140px;margin:auto;padding:0 28px}
+.brand-guide .bp-kicker{font-size:12px;letter-spacing:.13em;font-weight:650;color:#747474;margin:0 0 20px}
+.brand-guide h1,.brand-guide h2,.brand-guide h3,.brand-guide p{word-break:keep-all}
+.brand-guide h1{font-size:clamp(36px,5vw,64px);font-weight:650;letter-spacing:-.055em;line-height:1.2;margin:0}
+.brand-guide h2{font-size:clamp(27px,3.4vw,40px);font-weight:650;letter-spacing:-.045em;line-height:1.3;margin:0 0 15px}
+.brand-guide h3{font-size:20px;font-weight:650;letter-spacing:-.035em;margin:0 0 12px}
+.brand-guide p{font-size:16px;line-height:1.8;letter-spacing:-.018em}
+.brand-guide .bp-hero{padding:104px 0 83px;border-bottom:1px solid var(--bp-line)}
+.brand-guide .bp-lead{margin:25px 0 0;max-width:800px;color:var(--bp-muted);font-size:18px}
+.brand-guide .bp-section{padding:85px 0;border-bottom:1px solid var(--bp-line)}
+.brand-guide .bp-intro{max-width:770px;color:var(--bp-muted);margin:0 0 36px}
+.brand-guide .bp-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 32px}
+.brand-guide .bp-tab{font-family:inherit;cursor:pointer;text-align:left;background:#fff;border:1px solid #dedede;border-radius:20px;padding:24px 22px;color:#242424;min-height:144px;transition:background .18s,border-color .18s}
+.brand-guide .bp-tab .bp-number{display:block;font-size:12px;color:#777;margin-bottom:19px;letter-spacing:.07em}
+.brand-guide .bp-tab strong{display:block;font-size:18px;line-height:1.5;letter-spacing:-.035em;word-break:keep-all}
+.brand-guide .bp-tab[aria-selected="true"]{background:#191919;color:#fff;border-color:#191919}
+.brand-guide .bp-tab[aria-selected="true"] .bp-number{color:#c6c6c6}
+.brand-guide .bp-tab:focus-visible{outline:3px solid #888;outline-offset:4px}
+.brand-guide .bp-panel{border:1px solid var(--bp-line);border-radius:24px;padding:clamp(26px,4vw,52px);background:#fff}
+.brand-guide .bp-panel[hidden]{display:none}
+.brand-guide .bp-panel-header{max-width:830px;padding-bottom:32px;border-bottom:1px solid var(--bp-line)}
+.brand-guide .bp-panel-header p:last-child{color:var(--bp-muted);margin:14px 0 0}
+.brand-guide .bp-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0 42px}
+.brand-guide .bp-meta div{padding:23px;border-radius:18px;background:#f7f7f7}
+.brand-guide .bp-meta span{display:block;font-size:12px;color:#757575;margin-bottom:10px}
+.brand-guide .bp-meta strong{font-size:17px;font-weight:650;line-height:1.5;word-break:keep-all}
+.brand-guide .bp-columns{display:grid;grid-template-columns:1fr 1fr;gap:38px}
+.brand-guide .bp-columns ul{padding:0;margin:0;list-style:none}
+.brand-guide .bp-columns li{border-bottom:1px solid var(--bp-line);padding:12px 0;font-size:16px;line-height:1.6}
+.brand-guide .bp-columns li:first-child{border-top:1px solid var(--bp-line)}
+.brand-guide .bp-note{font-size:13px!important;color:var(--bp-muted);margin:25px 0 0}
+.brand-guide .bp-process{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:30px 0 0}
+.brand-guide .bp-process article{padding:23px 18px;border:1px solid var(--bp-line);border-radius:18px;min-width:0}
+.brand-guide .bp-process article span{font-size:12px;color:#777;display:block;margin-bottom:22px}
+.brand-guide .bp-process article strong{display:block;font-size:16px;line-height:1.5}
+.brand-guide .bp-process article p{font-size:14px;line-height:1.7;color:var(--bp-muted);margin:9px 0 0}
+.brand-guide .bp-faq{max-width:900px}
+.brand-guide .bp-faq details{border-bottom:1px solid var(--bp-line);padding:22px 0}
+.brand-guide .bp-faq summary{font-size:17px;font-weight:600;cursor:pointer;line-height:1.5}
+.brand-guide .bp-faq details p{color:var(--bp-muted);margin:16px 0 0}
+.brand-guide .bp-contact{padding:76px 0 100px}
+.brand-guide .bp-contact-inner{border:1px solid var(--bp-line);border-radius:24px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:28px}
+.brand-guide .bp-contact-inner p{color:var(--bp-muted);margin:0}
+.brand-guide .bp-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 25px;border-radius:100px;background:#161616;color:#fff!important;text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px}
+@media(max-width:850px){.brand-guide .bp-tabs{gap:8px}.brand-guide .bp-tab{padding:20px 15px}.brand-guide .bp-tab strong{font-size:16px}.brand-guide .bp-process{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.brand-guide .bp-wrap{padding:0 20px}.brand-guide .bp-hero{padding:70px 0 60px}.brand-guide .bp-lead{font-size:16px}.brand-guide .bp-section{padding:62px 0}.brand-guide .bp-tabs{grid-template-columns:1fr;gap:9px}.brand-guide .bp-tab{min-height:auto;padding:16px 19px;border-radius:16px}.brand-guide .bp-tab .bp-number{margin-bottom:5px}.brand-guide .bp-panel{padding:23px 19px;border-radius:19px}.brand-guide .bp-meta{grid-template-columns:1fr;gap:8px;margin:23px 0 30px}.brand-guide .bp-meta div{padding:17px 19px}.brand-guide .bp-columns{grid-template-columns:1fr;gap:30px}.brand-guide .bp-process{grid-template-columns:1fr 1fr;gap:9px}.brand-guide .bp-process article{padding:18px 15px}.brand-guide .bp-contact{padding:58px 0 80px}.brand-guide .bp-contact-inner{padding:27px 22px;align-items:flex-start;flex-direction:column}}
+
+/* Align to the 1440px shared header/container and package-design process language. */
+.brand-guide .bp-wrap{width:var(--nw-container,min(1440px,calc(100vw - 80px)));max-width:1440px;padding:0;margin-inline:auto}
+.brand-guide .bp-hero{padding:clamp(92px,9vw,142px) 0 96px}
+.brand-guide .bp-hero .bp-wrap{display:grid;grid-template-columns:minmax(220px,.36fr) minmax(0,1fr);column-gap:clamp(40px,6vw,110px);align-items:start}
+.brand-guide .bp-hero .bp-kicker{margin-top:12px}
+.brand-guide .bp-hero h1{font-size:clamp(38px,4.6vw,68px);max-width:900px}
+.brand-guide .bp-hero .bp-lead{grid-column:2;max-width:790px;margin:24px 0 0}
+.brand-guide .bp-section{padding:95px 0}
+.brand-guide .bp-section>.bp-wrap>.bp-kicker{margin-bottom:16px}
+.brand-guide h2{font-size:clamp(29px,3.2vw,43px)}
+.brand-guide .bp-intro{max-width:820px;margin-bottom:42px}
+.brand-guide .bp-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.brand-guide .bp-tab{border-radius:20px;min-height:152px;padding:26px 30px}
+.brand-guide .bp-tab strong{font-size:20px}
+.brand-guide .bp-panel{border-radius:24px;padding:clamp(30px,4vw,64px)}
+.brand-guide .bp-panel-header{max-width:100%;padding-bottom:40px}
+.brand-guide .bp-panel-header p:last-child{max-width:890px}
+.brand-guide .bp-meta{margin:32px 0 50px;gap:16px}
+.brand-guide .bp-meta div{background:#f7f7f6;border-radius:18px;padding:28px 30px}
+.brand-guide .bp-columns{gap:clamp(36px,5vw,100px)}
+.brand-guide .bp-columns li{padding:16px 0}
+.brand-guide .bp-process{gap:16px}
+.brand-guide .bp-process article{border-radius:20px;padding:27px 24px;min-height:190px}
+.brand-guide .bp-process article strong{font-size:18px}
+.brand-guide .bp-contact-inner{border-radius:24px}
+@media(max-width:1050px){.brand-guide .bp-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .brand-guide .bp-hero .bp-wrap{grid-template-columns:1fr;gap:0}
+ .brand-guide .bp-hero .bp-lead{grid-column:1}
+ .brand-guide .bp-process{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .brand-guide .bp-wrap{width:calc(100% - 40px);padding:0}
+ .brand-guide .bp-hero{padding:68px 0 65px}
+ .brand-guide .bp-section{padding:65px 0}
+ .brand-guide .bp-tabs{grid-template-columns:1fr;gap:10px}
+ .brand-guide .bp-tab{min-height:0;padding:19px 22px;border-radius:17px}
+ .brand-guide .bp-tab .bp-number{margin-bottom:7px}
+ .brand-guide .bp-tab strong{font-size:17px}
+ .brand-guide .bp-panel{padding:28px 22px;border-radius:19px}
+ .brand-guide .bp-panel-header{padding-bottom:28px}
+ .brand-guide .bp-meta{grid-template-columns:1fr;gap:9px;margin:23px 0 35px}
+ .brand-guide .bp-meta div{padding:19px 22px}
+ .brand-guide .bp-columns{grid-template-columns:1fr;gap:34px}
+ .brand-guide .bp-process{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .brand-guide .bp-process article{padding:19px 17px;min-height:0}
+ .brand-guide .bp-process article strong{font-size:16px}
+ .brand-guide .bp-contact-inner{padding:27px 24px;align-items:flex-start;flex-direction:column}
+}
+
+/* 2026-10-22: compact editorial hierarchy aligned to the reference process page */
+.brand-guide .bp-hero{padding:76px 0 66px}
+.brand-guide .bp-hero h1{font-size:clamp(30px,3.1vw,46px);line-height:1.3;letter-spacing:-.04em;font-weight:620}
+.brand-guide .bp-hero .bp-lead{font-size:16px;line-height:1.8;margin-top:18px}
+.brand-guide .bp-section{padding:68px 0}
+.brand-guide h2{font-size:clamp(24px,2.45vw,32px);line-height:1.4;font-weight:620;letter-spacing:-.035em}
+.brand-guide h3{font-size:18px;line-height:1.45}
+.brand-guide .bp-kicker{font-size:11px;letter-spacing:.09em;margin-bottom:14px}
+.brand-guide .bp-intro{font-size:15px;line-height:1.8;margin-bottom:28px}
+.brand-guide .bp-tab{min-height:126px;padding:20px 18px}
+.brand-guide .bp-tab .bp-number{margin-bottom:12px}
+.brand-guide .bp-tab strong{font-size:17px;font-weight:620}
+.brand-guide .bp-panel{padding:clamp(26px,3.2vw,46px)}
+.brand-guide .bp-panel-header{padding-bottom:27px}
+.brand-guide .bp-panel-header p:last-child{font-size:15px;line-height:1.85;margin-top:10px}
+.brand-guide .bp-meta{margin:24px 0 36px}
+.brand-guide .bp-meta div{padding:21px 23px}
+.brand-guide .bp-meta strong{font-size:15px}
+.brand-guide .bp-columns li{font-size:15px;padding:13px 0}
+.brand-guide .bp-process article{min-height:150px;padding:20px}
+.brand-guide .bp-process article strong{font-size:16px}
+.brand-guide .bp-process article p{font-size:13px}
+.brand-guide .bp-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px}
+.brand-guide .bp-detail-block{border:1px solid var(--bp-line);border-radius:18px;padding:25px}
+.brand-guide .bp-detail-block h3{margin-bottom:12px}
+.brand-guide .bp-detail-block p{font-size:14px;color:var(--bp-muted);margin:0 0 12px}
+.brand-guide .bp-detail-block ol,.brand-guide .bp-detail-block ul{list-style:none;margin:0;padding:0}
+.brand-guide .bp-detail-block li{font-size:14px;line-height:1.7;padding:10px 0;border-top:1px solid var(--bp-line)}
+.brand-guide .bp-detail-block li strong{display:block;font-size:14px;font-weight:620}
+.brand-guide .bp-detail-block li span{display:block;color:var(--bp-muted);font-size:13px;margin-top:3px}
+@media(max-width:760px){.brand-guide .bp-hero{padding:55px 0}.brand-guide .bp-section{padding:55px 0}.brand-guide .bp-tab{padding:16px 19px;min-height:0}.brand-guide .bp-panel{padding:23px 19px}.brand-guide .bp-detail-grid{grid-template-columns:1fr;gap:10px;margin-top:28px}.brand-guide .bp-detail-block{padding:21px}}
+
+/* Stable square-corner layout: intentionally no rounded boxes.
+   !important prevents asynchronously loaded global CSS from morphing corners after first paint. */
+html body.brand-guide .bp-tab,
+html body.brand-guide .bp-panel,
+html body.brand-guide .bp-meta>div,
+html body.brand-guide .bp-detail-block,
+html body.brand-guide .bp-process>article,
+html body.brand-guide .bp-contact-inner,
+html body.brand-guide .bp-button{border-radius:0!important}
+html body.brand-guide .bp-tab{transition:background-color .15s ease,color .15s ease,border-color .15s ease!important}
+html body.brand-guide .bp-panel,html body.brand-guide .bp-detail-block{box-shadow:none!important}
+</style>
+</head>
+<body class="brand-guide">
+<div class="site-shell">
+<header class="site-header"><a href="/" class="site-logo">NINEWORKS</a></header>
+<aside class="menu-overlay" data-menu-overlay aria-hidden="true"></aside>
+<main>
+<section class="bp-hero"><div class="bp-wrap">
+<p class="bp-kicker">NINEWORKS / PROJECT / WEB & DIGITAL</p>
+<h1>사이트 구축 프로젝트</h1>
+<p class="bp-lead">목적에 맞는 웹사이트에서 실제 운영에 필요한 시스템까지. 기획·디자인·개발·초기 설정을 하나의 프로젝트로 구성합니다.</p>
+</div></section>
+<section class="bp-section"><div class="bp-wrap">
+<p class="bp-kicker">CHOOSE YOUR PROJECT</p><h2>어떤 사이트를 구축하시나요?</h2>
+<p class="bp-intro">필요한 제작 유형을 선택해 수행 업무, 개발 절차, 결과물과 예상 일정을 확인할 수 있습니다.</p>
+<div class="bp-tabs" role="tablist" aria-label="사이트 구축 프로젝트 유형"><button class="bp-tab" id="bp-tab-1" type="button" role="tab" aria-controls="bp-panel-1" aria-selected="true"><span class="bp-number">01 / LANDING</span><strong>랜딩페이지 구축 프로젝트</strong></button>
+<button class="bp-tab" id="bp-tab-2" type="button" role="tab" aria-controls="bp-panel-2" aria-selected="false" tabindex="-1"><span class="bp-number">02 / WEBSITE</span><strong>기업·브랜드 홈페이지 구축 프로젝트</strong></button>
+<button class="bp-tab" id="bp-tab-3" type="button" role="tab" aria-controls="bp-panel-3" aria-selected="false" tabindex="-1"><span class="bp-number">03 / COMMERCE</span><strong>쇼핑몰·커머스 구축 프로젝트</strong></button>
+<button class="bp-tab" id="bp-tab-4" type="button" role="tab" aria-controls="bp-panel-4" aria-selected="false" tabindex="-1"><span class="bp-number">04 / SYSTEM</span><strong>관리자·업무 시스템 구축 프로젝트</strong></button></div>
+<section class="bp-panel" id="bp-panel-1" role="tabpanel" aria-labelledby="bp-tab-1">
+<div class="bp-panel-header"><p class="bp-kicker">01 / LANDING</p><h2>랜딩페이지 구축 프로젝트</h2><p>하나의 서비스, 제품, 행사 또는 캠페인을 명확하게 소개하고 문의·신청·구매 등 특정 행동으로 연결하는 페이지를 구축합니다. 메시지 구성부터 키비주얼, 반응형 UI와 신청 기능까지 목적에 맞춰 한 번에 설계합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>캠페인 · 상품 홍보 · 문의 유도</strong></div><div><span>예상 제작 기간</span><strong>약 2~4주</strong></div><div><span>진행 방식</span><strong>단일 목적 맞춤 제작</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>홍보 목표와 고객 행동 정의</li><li>페이지 기획·카피 구조·콘텐츠 정리</li><li>키비주얼·그래픽·UI 디자인</li><li>PC·모바일 반응형 개발</li><li>문의·신청·외부 링크 및 분석 도구 연동</li><li>게시·검수·초기 수정</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 목표와 전환 동선 확인</li><li>02. 섹션 및 필요한 콘텐츠 확정</li><li>03. 디자인 시안 제작·검토</li><li>04. 반응형 구현과 기능 연결</li><li>05. 기기·폼 테스트 및 오픈</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>사전 협의해 확정한 범위에 따라 제공됩니다.</p><p>프로젝트 목표·주요 메시지·디자인 파일·반응형 페이지·합의된 신청/문의 기능·배포 관련 안내</p></section><section class="bp-detail-block"><h3>구축 및 운영 시 확인할 사항</h3><p>광고 집행과 연동하거나 별도 홈페이지로 확장할 수 있습니다. 사진 촬영, 유료 서비스 사용료 및 외부 솔루션 비용은 범위에 따라 구분합니다.</p><p>검토·수정 횟수와 유지보수 조건은 견적 및 계약 단계에서 안내합니다.</p></section></div>
+<p class="bp-note">※ 위 제작 기간은 일반적인 안내 기준입니다. 페이지 수, 콘텐츠 준비 상태, 연동 기능, 고객 피드백 일정에 따라 조정됩니다.</p>
+</section>
+<section class="bp-panel" id="bp-panel-2" role="tabpanel" aria-labelledby="bp-tab-2" hidden>
+<div class="bp-panel-header"><p class="bp-kicker">02 / WEBSITE</p><h2>기업·브랜드 홈페이지 구축 프로젝트</h2><p>기업 소개, 브랜드 스토리, 서비스, 포트폴리오, 뉴스 및 문의를 하나의 정보 구조로 정리합니다. 단순한 화면 제작이 아니라 사업 내용을 이해해 고객이 필요한 정보를 찾고 실제 문의로 이어지는 웹사이트를 구축합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>기업 홈페이지 · 브랜드 사이트 · 리뉴얼</strong></div><div><span>예상 제작 기간</span><strong>약 4~8주</strong></div><div><span>진행 방식</span><strong>기획·디자인·개발 통합</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>현황 진단과 메뉴·페이지 구조 기획</li><li>브랜드에 맞춘 UI/UX·핵심 비주얼 디자인</li><li>소개·사업·제품·포트폴리오 콘텐츠 구성</li><li>반응형 웹사이트 개발</li><li>문의 양식·기본 검색 노출·공유 이미지 설정</li><li>도메인·배포·기본 운영 안내</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 목표·기존 자료·페이지 수 확인</li><li>02. 사이트맵과 주요 화면 기획</li><li>03. 디자인·콘텐츠 시안 확정</li><li>04. 프론트엔드 및 합의 기능 개발</li><li>05. PC·모바일 검수·오픈</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>사전 협의해 확정한 범위에 따라 제공됩니다.</p><p>사이트맵·최종 웹디자인·반응형 웹사이트·기본 문의 기능·필요한 이미지 세팅·오픈 안내 자료</p></section><section class="bp-detail-block"><h3>구축 및 운영 시 확인할 사항</h3><p>브랜딩 작업, 회사 소개서, 상품 상세페이지, 촬영 및 관리자 기능도 프로젝트 초기 업무 범위에 함께 포함해 구성할 수 있습니다.</p><p>검토·수정 횟수와 유지보수 조건은 견적 및 계약 단계에서 안내합니다.</p></section></div>
+<p class="bp-note">※ 위 제작 기간은 일반적인 안내 기준입니다. 페이지 수, 콘텐츠 준비 상태, 연동 기능, 고객 피드백 일정에 따라 조정됩니다.</p>
+</section>
+<section class="bp-panel" id="bp-panel-3" role="tabpanel" aria-labelledby="bp-tab-3" hidden>
+<div class="bp-panel-header"><p class="bp-kicker">03 / COMMERCE</p><h2>쇼핑몰·커머스 구축 프로젝트</h2><p>카페24·Shopify 등 사업에 맞는 플랫폼을 선택해 상품 탐색부터 구매까지의 경험을 설계합니다. 브랜드 비주얼, 상품 카테고리, 상세 콘텐츠, 판매·운영에 필요한 초기 설정을 함께 점검해 실제 판매 가능한 쇼핑몰을 구축합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>D2C · 브랜드 쇼핑몰 · 기존몰 개선</strong></div><div><span>예상 제작 기간</span><strong>약 4~10주</strong></div><div><span>진행 방식</span><strong>플랫폼 기반 구축·커스터마이징</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>플랫폼·판매 방식·운영 요건 검토</li><li>카테고리·메뉴·상품 탐색 구조 설계</li><li>메인·목록·상세·프로모션 UI 디자인</li><li>테마 구축·디자인 커스터마이징</li><li>상품 등록 기준·배송·결제 등 초기 설정 지원</li><li>구매 동선과 모바일 환경 테스트</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 브랜드·상품 수·판매 방식 확인</li><li>02. 쇼핑몰 구조 및 플랫폼 범위 확정</li><li>03. 디자인·상품 콘텐츠 준비</li><li>04. 플랫폼 구축 및 초기 세팅</li><li>05. 결제·주문·모바일 검수 후 오픈</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>사전 협의해 확정한 범위에 따라 제공됩니다.</p><p>스토어 화면 구성·상품 카테고리·기본 디자인 시스템·합의된 초기 상품 세팅·운영 체크리스트</p></section><section class="bp-detail-block"><h3>구축 및 운영 시 확인할 사항</h3><p>플랫폼 이용료, PG 수수료, 앱 구독료 등 제3자 비용은 별도로 발생할 수 있습니다. 상세페이지·상품 촬영·등록 대량 작업은 초기 업무 범위를 함께 정해 진행합니다.</p><p>검토·수정 횟수와 유지보수 조건은 견적 및 계약 단계에서 안내합니다.</p></section></div>
+<p class="bp-note">※ 위 제작 기간은 일반적인 안내 기준입니다. 페이지 수, 콘텐츠 준비 상태, 연동 기능, 고객 피드백 일정에 따라 조정됩니다.</p>
+</section>
+<section class="bp-panel" id="bp-panel-4" role="tabpanel" aria-labelledby="bp-tab-4" hidden>
+<div class="bp-panel-header"><p class="bp-kicker">04 / SYSTEM</p><h2>관리자·업무 시스템 구축 프로젝트</h2><p>고객·프로젝트·계약·견적·문의·일정·재고 등 반복되는 업무를 한곳에서 관리할 수 있는 맞춤형 웹 프로그램을 설계·개발합니다. 기존 엑셀·노션·수기 관리 방식부터 확인한 뒤 필요한 기능과 데이터 흐름을 실제 업무에 맞춰 구성합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>기업 관리자 · CRM · 운영 대시보드</strong></div><div><span>예상 제작 기간</span><strong>약 6~14주 이상</strong></div><div><span>진행 방식</span><strong>기능 정의 기반 맞춤 개발</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>업무 흐름 및 사용자 권한 정의</li><li>기능 목록·데이터 구조·관리 화면 기획</li><li>관리자 UX/UI·대시보드 설계</li><li>등록·검색·수정·상태 관리 기능 개발</li><li>필요 시 문서 생성·알림·외부 서비스 연동</li><li>테스트·사용 가이드·배포 및 개선</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 업무·기존 데이터·사용자 조사</li><li>02. 요구사항 및 개발 범위 문서화</li><li>03. 관리 화면·데이터 모델 설계</li><li>04. 핵심 기능 우선 개발·검증</li><li>05. 통합 테스트·배포·운영 교육</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>사전 협의해 확정한 범위에 따라 제공됩니다.</p><p>확정 기능 명세·관리자 화면·데이터 관리 기능·사용 권한 구조·사용 안내 및 배포</p></section><section class="bp-detail-block"><h3>구축 및 운영 시 확인할 사항</h3><p>추가 API, 고급 권한 체계, 기존 데이터 이관, 클라우드 사용료, 지속 운영·유지관리 범위는 사전 협의해 계약에 반영합니다.</p><p>검토·수정 횟수와 유지보수 조건은 견적 및 계약 단계에서 안내합니다.</p></section></div>
+<p class="bp-note">※ 위 제작 기간은 일반적인 안내 기준입니다. 페이지 수, 콘텐츠 준비 상태, 연동 기능, 고객 피드백 일정에 따라 조정됩니다.</p>
+</section>
+</div></section>
+<section class="bp-section"><div class="bp-wrap">
+<p class="bp-kicker">OUR WORKFLOW</p><h2>기획부터 디자인·개발·오픈까지 함께합니다.</h2><p class="bp-intro">브랜드와 사업의 현재 상황, 고객에게 보여줄 콘텐츠, 운영자가 실제로 사용해야 할 기능을 함께 확인합니다. 처음부터 필요한 업무 범위를 정해 진행하며, 구축 후 운영과 업데이트 방식도 사전에 협의합니다.</p>
+<div class="bp-process"><article><span>STEP 01</span><strong>상담·현황 확인</strong><p>목적, 사업 현황, 콘텐츠, 기존 사이트의 문제를 확인합니다.</p></article><article><span>STEP 02</span><strong>범위·견적 확정</strong><p>페이지 수, 디자인·개발·관리 기능과 일정을 정리합니다.</p></article><article><span>STEP 03</span><strong>UX/UI·콘텐츠</strong><p>사이트맵과 주요 화면, 이미지·문구·반응형 구조를 설계합니다.</p></article><article><span>STEP 04</span><strong>구축·검수</strong><p>기능 구현과 콘텐츠 세팅 후 PC·모바일 환경에서 확인합니다.</p></article><article><span>STEP 05</span><strong>오픈·운영 인계</strong><p>배포·도메인·관리 방법을 정리하고 합의된 유지보수를 진행합니다.</p></article></div></div></section>
+<section class="bp-section"><div class="bp-wrap bp-faq">
+<p class="bp-kicker">FREQUENTLY ASKED QUESTIONS</p><h2>자주 묻는 질문</h2>
+<details><summary>어떤 구축 방식이 적합한지 아직 모르겠습니다.</summary><p>사이트를 통해 달성하려는 목표부터 확인합니다. 광고 유입과 신청이 목적이면 랜딩페이지, 기업·브랜드 소개가 필요하면 홈페이지, 온라인 판매라면 쇼핑몰, 내부 업무 자동화라면 관리자·업무 시스템이 적합할 수 있습니다. 필요한 기능을 상담에서 함께 정리합니다.</p></details>
+<details><summary>사이트 기획이나 디자인 자료가 없어도 시작할 수 있나요?</summary><p>가능합니다. 사업 내용과 기존 자료를 확인한 뒤 사이트맵, 콘텐츠 구성, 디자인 방향부터 정리합니다. 이미지 보정과 기본 비주얼 디자인도 합의된 수행 범위에 포함해 진행할 수 있습니다.</p></details>
+<details><summary>관리자 페이지와 문의·예약 기능도 제작하나요?</summary><p>네. 단순 문의 양식부터 콘텐츠 관리, 예약, 고객 데이터베이스, 견적·계약·업무 관리까지 필요한 수준으로 설계할 수 있습니다. 기능과 권한, 데이터 저장·운영 방식을 먼저 정의해 개발 범위를 확정합니다.</p></details>
+<details><summary>제작 범위와 비용은 어떻게 정하나요?</summary><p>기획, UX/UI 디자인, 콘텐츠 편집, 반응형 개발, 관리자 기능, 초기 세팅 등 필요한 업무를 처음부터 함께 체크해 하나의 견적에 반영합니다. 호스팅·도메인·플랫폼·유료 앱·PG 등 외부 서비스 실비는 구분하여 안내합니다.</p></details>
+<details><summary>사이트를 오픈한 후에도 업데이트할 수 있나요?</summary><p>가능합니다. 오픈 후 오류 보완과 기본 유지보수 범위는 계약 시 정하며, 상시 콘텐츠 업데이트나 기능 추가가 필요하다면 월간·연간 유지관리 계약으로 운영할 수 있습니다.</p></details>
+</div></section>
+<section class="bp-contact"><div class="bp-wrap"><div class="bp-contact-inner"><div><p class="bp-kicker">LET'S WORK TOGETHER</p><h2>필요한 사이트와 운영 환경을 함께 설계합니다.</h2><p>현재 상황과 필요한 기능을 알려주시면 구축 범위부터 정리하겠습니다.</p></div><a class="bp-button" href="/contact.html">프로젝트 문의하기 ↗</a></div></div></section>
+</main>
+<footer class="site-footer container"></footer>
+</div>
+<script src="/assets/js/main.js?v=20261022-project"></script>
+<script>
+(()=>{const tabs=[...document.querySelectorAll('.bp-tab')];const select=(tab,focus=false)=>{tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});if(focus)tab.focus();};tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(t));t.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;select(tabs[next],true);});});})();
+</script>
+</body></html>
