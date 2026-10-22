@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="나인웍스 패키지 디자인·제작 프로젝트. 판매를 위한 패키지 기획, 그래픽 디자인, 실물 샘플 제작과 양산까지 안내합니다.">
+<link rel="canonical" href="https://9works.kr/package-projects.html">
+<title>사이트 구축 프로젝트 안내 | NINEWORKS</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+.brand-guide{background:#fff;color:#161616;--bp-line:#e8e8e8;--bp-muted:#686868}
+.brand-guide *{box-sizing:border-box}
+.brand-guide .bp-wrap{max-width:1140px;margin:auto;padding:0 28px}
+.brand-guide .bp-kicker{font-size:12px;letter-spacing:.13em;font-weight:650;color:#747474;margin:0 0 20px}
+.brand-guide h1,.brand-guide h2,.brand-guide h3,.brand-guide p{word-break:keep-all}
+.brand-guide h1{font-size:clamp(36px,5vw,64px);font-weight:650;letter-spacing:-.055em;line-height:1.2;margin:0}
+.brand-guide h2{font-size:clamp(27px,3.4vw,40px);font-weight:650;letter-spacing:-.045em;line-height:1.3;margin:0 0 15px}
+.brand-guide h3{font-size:20px;font-weight:650;letter-spacing:-.035em;margin:0 0 12px}
+.brand-guide p{font-size:16px;line-height:1.8;letter-spacing:-.018em}
+.brand-guide .bp-hero{padding:104px 0 83px;border-bottom:1px solid var(--bp-line)}
+.brand-guide .bp-lead{margin:25px 0 0;max-width:800px;color:var(--bp-muted);font-size:18px}
+.brand-guide .bp-section{padding:85px 0;border-bottom:1px solid var(--bp-line)}
+.brand-guide .bp-intro{max-width:770px;color:var(--bp-muted);margin:0 0 36px}
+.brand-guide .bp-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 32px}
+.brand-guide .bp-tab{font-family:inherit;cursor:pointer;text-align:left;background:#fff;border:1px solid #dedede;border-radius:20px;padding:24px 22px;color:#242424;min-height:144px;transition:background .18s,border-color .18s}
+.brand-guide .bp-tab .bp-number{display:block;font-size:12px;color:#777;margin-bottom:19px;letter-spacing:.07em}
+.brand-guide .bp-tab strong{display:block;font-size:18px;line-height:1.5;letter-spacing:-.035em;word-break:keep-all}
+.brand-guide .bp-tab[aria-selected="true"]{background:#191919;color:#fff;border-color:#191919}
+.brand-guide .bp-tab[aria-selected="true"] .bp-number{color:#c6c6c6}
+.brand-guide .bp-tab:focus-visible{outline:3px solid #888;outline-offset:4px}
+.brand-guide .bp-panel{border:1px solid var(--bp-line);border-radius:24px;padding:clamp(26px,4vw,52px);background:#fff}
+.brand-guide .bp-panel[hidden]{display:none}
+.brand-guide .bp-panel-header{max-width:830px;padding-bottom:32px;border-bottom:1px solid var(--bp-line)}
+.brand-guide .bp-panel-header p:last-child{color:var(--bp-muted);margin:14px 0 0}
+.brand-guide .bp-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0 42px}
+.brand-guide .bp-meta div{padding:23px;border-radius:18px;background:#f7f7f7}
+.brand-guide .bp-meta span{display:block;font-size:12px;color:#757575;margin-bottom:10px}
+.brand-guide .bp-meta strong{font-size:17px;font-weight:650;line-height:1.5;word-break:keep-all}
+.brand-guide .bp-columns{display:grid;grid-template-columns:1fr 1fr;gap:38px}
+.brand-guide .bp-columns ul{padding:0;margin:0;list-style:none}
+.brand-guide .bp-columns li{border-bottom:1px solid var(--bp-line);padding:12px 0;font-size:16px;line-height:1.6}
+.brand-guide .bp-columns li:first-child{border-top:1px solid var(--bp-line)}
+.brand-guide .bp-note{font-size:13px!important;color:var(--bp-muted);margin:25px 0 0}
+.brand-guide .bp-process{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:30px 0 0}
+.brand-guide .bp-process article{padding:23px 18px;border:1px solid var(--bp-line);border-radius:18px;min-width:0}
+.brand-guide .bp-process article span{font-size:12px;color:#777;display:block;margin-bottom:22px}
+.brand-guide .bp-process article strong{display:block;font-size:16px;line-height:1.5}
+.brand-guide .bp-process article p{font-size:14px;line-height:1.7;color:var(--bp-muted);margin:9px 0 0}
+.brand-guide .bp-faq{max-width:900px}
+.brand-guide .bp-faq details{border-bottom:1px solid var(--bp-line);padding:22px 0}
+.brand-guide .bp-faq summary{font-size:17px;font-weight:600;cursor:pointer;line-height:1.5}
+.brand-guide .bp-faq details p{color:var(--bp-muted);margin:16px 0 0}
+.brand-guide .bp-contact{padding:76px 0 100px}
+.brand-guide .bp-contact-inner{border:1px solid var(--bp-line);border-radius:24px;padding:45px;display:flex;justify-content:space-between;align-items:center;gap:28px}
+.brand-guide .bp-contact-inner p{color:var(--bp-muted);margin:0}
+.brand-guide .bp-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 25px;border-radius:100px;background:#161616;color:#fff!important;text-decoration:none;white-space:nowrap;font-weight:600;font-size:15px}
+@media(max-width:850px){.brand-guide .bp-tabs{gap:8px}.brand-guide .bp-tab{padding:20px 15px}.brand-guide .bp-tab strong{font-size:16px}.brand-guide .bp-process{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.brand-guide .bp-wrap{padding:0 20px}.brand-guide .bp-hero{padding:70px 0 60px}.brand-guide .bp-lead{font-size:16px}.brand-guide .bp-section{padding:62px 0}.brand-guide .bp-tabs{grid-template-columns:1fr;gap:9px}.brand-guide .bp-tab{min-height:auto;padding:16px 19px;border-radius:16px}.brand-guide .bp-tab .bp-number{margin-bottom:5px}.brand-guide .bp-panel{padding:23px 19px;border-radius:19px}.brand-guide .bp-meta{grid-template-columns:1fr;gap:8px;margin:23px 0 30px}.brand-guide .bp-meta div{padding:17px 19px}.brand-guide .bp-columns{grid-template-columns:1fr;gap:30px}.brand-guide .bp-process{grid-template-columns:1fr 1fr;gap:9px}.brand-guide .bp-process article{padding:18px 15px}.brand-guide .bp-contact{padding:58px 0 80px}.brand-guide .bp-contact-inner{padding:27px 22px;align-items:flex-start;flex-direction:column}}
+
+/* Align to the 1440px shared header/container and package-design process language. */
+.brand-guide .bp-wrap{width:var(--nw-container,min(1440px,calc(100vw - 80px)));max-width:1440px;padding:0;margin-inline:auto}
+.brand-guide .bp-hero{padding:clamp(92px,9vw,142px) 0 96px}
+.brand-guide .bp-hero .bp-wrap{display:grid;grid-template-columns:minmax(220px,.36fr) minmax(0,1fr);column-gap:clamp(40px,6vw,110px);align-items:start}
+.brand-guide .bp-hero .bp-kicker{margin-top:12px}
+.brand-guide .bp-hero h1{font-size:clamp(38px,4.6vw,68px);max-width:900px}
+.brand-guide .bp-hero .bp-lead{grid-column:2;max-width:790px;margin:24px 0 0}
+.brand-guide .bp-section{padding:95px 0}
+.brand-guide .bp-section>.bp-wrap>.bp-kicker{margin-bottom:16px}
+.brand-guide h2{font-size:clamp(29px,3.2vw,43px)}
+.brand-guide .bp-intro{max-width:820px;margin-bottom:42px}
+.brand-guide .bp-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.brand-guide .bp-tab{border-radius:20px;min-height:152px;padding:26px 30px}
+.brand-guide .bp-tab strong{font-size:20px}
+.brand-guide .bp-panel{border-radius:24px;padding:clamp(30px,4vw,64px)}
+.brand-guide .bp-panel-header{max-width:100%;padding-bottom:40px}
+.brand-guide .bp-panel-header p:last-child{max-width:890px}
+.brand-guide .bp-meta{margin:32px 0 50px;gap:16px}
+.brand-guide .bp-meta div{background:#f7f7f6;border-radius:18px;padding:28px 30px}
+.brand-guide .bp-columns{gap:clamp(36px,5vw,100px)}
+.brand-guide .bp-columns li{padding:16px 0}
+.brand-guide .bp-process{gap:16px}
+.brand-guide .bp-process article{border-radius:20px;padding:27px 24px;min-height:190px}
+.brand-guide .bp-process article strong{font-size:18px}
+.brand-guide .bp-contact-inner{border-radius:24px}
+@media(max-width:1050px){.brand-guide .bp-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .brand-guide .bp-hero .bp-wrap{grid-template-columns:1fr;gap:0}
+ .brand-guide .bp-hero .bp-lead{grid-column:1}
+ .brand-guide .bp-process{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .brand-guide .bp-wrap{width:calc(100% - 40px);padding:0}
+ .brand-guide .bp-hero{padding:68px 0 65px}
+ .brand-guide .bp-section{padding:65px 0}
+ .brand-guide .bp-tabs{grid-template-columns:1fr;gap:10px}
+ .brand-guide .bp-tab{min-height:0;padding:19px 22px;border-radius:17px}
+ .brand-guide .bp-tab .bp-number{margin-bottom:7px}
+ .brand-guide .bp-tab strong{font-size:17px}
+ .brand-guide .bp-panel{padding:28px 22px;border-radius:19px}
+ .brand-guide .bp-panel-header{padding-bottom:28px}
+ .brand-guide .bp-meta{grid-template-columns:1fr;gap:9px;margin:23px 0 35px}
+ .brand-guide .bp-meta div{padding:19px 22px}
+ .brand-guide .bp-columns{grid-template-columns:1fr;gap:34px}
+ .brand-guide .bp-process{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .brand-guide .bp-process article{padding:19px 17px;min-height:0}
+ .brand-guide .bp-process article strong{font-size:16px}
+ .brand-guide .bp-contact-inner{padding:27px 24px;align-items:flex-start;flex-direction:column}
+}
+
+/* 2026-10-22: compact editorial hierarchy aligned to the reference process page */
+.brand-guide .bp-hero{padding:76px 0 66px}
+.brand-guide .bp-hero h1{font-size:clamp(30px,3.1vw,46px);line-height:1.3;letter-spacing:-.04em;font-weight:620}
+.brand-guide .bp-hero .bp-lead{font-size:16px;line-height:1.8;margin-top:18px}
+.brand-guide .bp-section{padding:68px 0}
+.brand-guide h2{font-size:clamp(24px,2.45vw,32px);line-height:1.4;font-weight:620;letter-spacing:-.035em}
+.brand-guide h3{font-size:18px;line-height:1.45}
+.brand-guide .bp-kicker{font-size:11px;letter-spacing:.09em;margin-bottom:14px}
+.brand-guide .bp-intro{font-size:15px;line-height:1.8;margin-bottom:28px}
+.brand-guide .bp-tab{min-height:126px;padding:20px 18px}
+.brand-guide .bp-tab .bp-number{margin-bottom:12px}
+.brand-guide .bp-tab strong{font-size:17px;font-weight:620}
+.brand-guide .bp-panel{padding:clamp(26px,3.2vw,46px)}
+.brand-guide .bp-panel-header{padding-bottom:27px}
+.brand-guide .bp-panel-header p:last-child{font-size:15px;line-height:1.85;margin-top:10px}
+.brand-guide .bp-meta{margin:24px 0 36px}
+.brand-guide .bp-meta div{padding:21px 23px}
+.brand-guide .bp-meta strong{font-size:15px}
+.brand-guide .bp-columns li{font-size:15px;padding:13px 0}
+.brand-guide .bp-process article{min-height:150px;padding:20px}
+.brand-guide .bp-process article strong{font-size:16px}
+.brand-guide .bp-process article p{font-size:13px}
+.brand-guide .bp-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px}
+.brand-guide .bp-detail-block{border:1px solid var(--bp-line);border-radius:18px;padding:25px}
+.brand-guide .bp-detail-block h3{margin-bottom:12px}
+.brand-guide .bp-detail-block p{font-size:14px;color:var(--bp-muted);margin:0 0 12px}
+.brand-guide .bp-detail-block ol,.brand-guide .bp-detail-block ul{list-style:none;margin:0;padding:0}
+.brand-guide .bp-detail-block li{font-size:14px;line-height:1.7;padding:10px 0;border-top:1px solid var(--bp-line)}
+.brand-guide .bp-detail-block li strong{display:block;font-size:14px;font-weight:620}
+.brand-guide .bp-detail-block li span{display:block;color:var(--bp-muted);font-size:13px;margin-top:3px}
+@media(max-width:760px){.brand-guide .bp-hero{padding:55px 0}.brand-guide .bp-section{padding:55px 0}.brand-guide .bp-tab{padding:16px 19px;min-height:0}.brand-guide .bp-panel{padding:23px 19px}.brand-guide .bp-detail-grid{grid-template-columns:1fr;gap:10px;margin-top:28px}.brand-guide .bp-detail-block{padding:21px}}
+
+/* Stable square-corner layout: intentionally no rounded boxes.
+   !important prevents asynchronously loaded global CSS from morphing corners after first paint. */
+html body.brand-guide .bp-tab,
+html body.brand-guide .bp-panel,
+html body.brand-guide .bp-meta>div,
+html body.brand-guide .bp-detail-block,
+html body.brand-guide .bp-process>article,
+html body.brand-guide .bp-contact-inner,
+html body.brand-guide .bp-button{border-radius:0!important}
+html body.brand-guide .bp-tab{transition:background-color .15s ease,color .15s ease,border-color .15s ease!important}
+html body.brand-guide .bp-panel,html body.brand-guide .bp-detail-block{box-shadow:none!important}
+
+/* Unified left-aligned hero for project pages */
+html body.brand-guide .bp-hero .bp-wrap{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:0!important}
+html body.brand-guide .bp-hero .bp-kicker{margin:0 0 22px!important;grid-column:auto!important}
+html body.brand-guide .bp-hero h1{grid-column:auto!important;width:100%!important;max-width:none!important;margin:0!important;text-align:left!important}
+html body.brand-guide .bp-hero .bp-lead{grid-column:auto!important;width:100%!important;max-width:820px!important;margin:19px 0 0!important;text-align:left!important}
+html body.brand-guide .bp-hero{padding:82px 0 73px!important}
+@media(max-width:760px){html body.brand-guide .bp-hero{padding:55px 0 51px!important}html body.brand-guide .bp-hero .bp-kicker{margin-bottom:16px!important}html body.brand-guide .bp-hero .bp-lead{margin-top:14px!important}}
+</style>
+</head>
+<body class="brand-guide">
+<div class="site-shell">
+<header class="site-header"><a href="/" class="site-logo">NINEWORKS</a></header>
+<aside class="menu-overlay" data-menu-overlay aria-hidden="true"></aside>
+<main>
+<section class="bp-hero"><div class="bp-wrap">
+<p class="bp-kicker">NINEWORKS / PROJECT / PACKAGE & PRODUCTION</p>
+<h1>사이트 구축 프로젝트</h1>
+<p class="bp-lead">제품이 소비자에게 전달되고 판매되는 순간까지 고려합니다. 포장 형태와 소재, 소비자에게 보여줄 정보, 그래픽 디자인부터 실물 샘플과 양산까지 목적에 맞게 구현합니다.</p>
+</div></section>
+<section class="bp-section"><div class="bp-wrap">
+<p class="bp-kicker">CHOOSE YOUR PROJECT</p><h2>패키지를 어떻게 구현해야 할까요?</h2>
+<p class="bp-intro">제품의 판매 방식과 준비 단계에 맞춰 디자인·샘플·양산 중 필요한 프로젝트를 선택해 확인하세요.</p>
+<div class="bp-tabs" role="tablist" aria-label="패키지 프로젝트 유형">
+<button class="bp-tab" id="bp-tab-1" type="button" role="tab" aria-controls="bp-panel-1" aria-selected="true" ><span class="bp-number">01 / DESIGN</span><strong>패키지 디자인 프로젝트</strong></button>
+<button class="bp-tab" id="bp-tab-2" type="button" role="tab" aria-controls="bp-panel-2" aria-selected="false" tabindex="-1"><span class="bp-number">02 / SAMPLE</span><strong>패키지 샘플 제작 프로젝트</strong></button>
+<button class="bp-tab" id="bp-tab-3" type="button" role="tab" aria-controls="bp-panel-3" aria-selected="false" tabindex="-1"><span class="bp-number">03 / PRODUCTION</span><strong>패키지 양산 제작 프로젝트</strong></button>
+</div>
+<section class="bp-panel" id="bp-panel-1" role="tabpanel" aria-labelledby="bp-tab-1" >
+<div class="bp-panel-header"><p class="bp-kicker">01 / DESIGN</p><h2>제품의 매력을 구매 결정으로 연결하는 패키지 디자인</h2><p>제품이 누구에게, 어디서, 어떻게 판매되는지부터 검토합니다. 소비자가 진열대나 온라인 썸네일에서 제품을 알아보고 선택할 수 있도록 패키지 구조, 정보 우선순위, 브랜드 표현과 실제 인쇄 조건을 함께 설계합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>신제품 · 기존 패키지 개선</strong></div><div><span>예상 진행 기간</span><strong>약 3~6주</strong></div><div><span>수행 방식</span><strong>디자인·사양 통합 기획</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>제품·타깃 소비자·판매 채널 확인</li><li>용기·박스·파우치 등 포장 형태와 규격 검토</li><li>제품명·효능/특성·필수 표기 정보 정리</li><li>브랜드 그래픽·컬러·전면/후면 레이아웃</li><li>칼선 기반 인쇄 데이터 및 제품군 베리에이션</li><li>필요 시 상세페이지·홍보 비주얼까지 업무범위 구성</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 판매 환경과 제품 자료 파악</li><li>02. 적합한 포장 형식·소재·규격 협의</li><li>03. 디자인 방향과 시안 제안</li><li>04. 실물 크기·표시 정보·인쇄 적합성 검토</li><li>05. 확정 디자인·최종 제작 파일 정리</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>확정된 패키지 그래픽, 칼선 적용 도안, 계약된 SKU별 전개 파일, 기본 목업과 인쇄용 데이터</p></section><section class="bp-detail-block"><h3>제작 전 확인할 사항</h3><p>인쇄·용기·식품/화장품 등 품목별 법정 표시 사항은 고객사 및 관련 전문가의 최종 확인이 필요합니다. 실물 샘플과 양산 제작비는 별도입니다.</p></section></div>
+<p class="bp-note">※ 일정과 산출물은 디자인 복잡도, 제작 수량, 소재·공법과 검토 일정에 따라 조정됩니다.</p>
+</section>
+<section class="bp-panel" id="bp-panel-2" role="tabpanel" aria-labelledby="bp-tab-2" hidden>
+<div class="bp-panel-header"><p class="bp-kicker">02 / SAMPLE</p><h2>화면 속 디자인을 실제 손에 잡히는 패키지로 확인</h2><p>양산 전에 실제 크기, 개봉 구조, 접힘, 재질, 인쇄 색상과 후가공이 의도대로 구현되는지 확인합니다. 설계가 완성되지 않았다면 샘플 제작에 필요한 기본 구조와 칼선부터 함께 검토합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>시제품 · 품평 · 바이어 제안 · 전시</strong></div><div><span>예상 진행 기간</span><strong>약 2~5주</strong></div><div><span>수행 방식</span><strong>사양 확인 후 제작·검수</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>샘플 목적과 수량·납기 확인</li><li>기존 도면/칼선 검토 및 필요 시 보완</li><li>종이·필름·보드·코팅 등 소재 선정</li><li>디지털 출력·목업·실물 가공 방식 협의</li><li>조립감·표현력·제품 수납성 점검</li><li>양산 시 조정할 사항 기록</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 샘플 목적·예산·실물 제품 확인</li><li>02. 규격·칼선·재질·후가공 협의</li><li>03. 시제품 제작 사양 확정</li><li>04. 샘플 출력·가공·조립</li><li>05. 실물 검수 및 수정 사항 정리</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>협의된 실물 샘플, 샘플 사양과 제작 검토 의견, 필요 시 보완된 최종 도안</p></section><section class="bp-detail-block"><h3>제작 전 확인할 사항</h3><p>샘플은 양산 인쇄 장비·재료와 차이가 있을 수 있어 실제 생산품과 색상·마감이 완전히 동일하지 않을 수 있습니다. 실물 샘플 제작비는 사양·수량에 따라 별도 산정합니다.</p></section></div>
+<p class="bp-note">※ 일정과 산출물은 디자인 복잡도, 제작 수량, 소재·공법과 검토 일정에 따라 조정됩니다.</p>
+</section>
+<section class="bp-panel" id="bp-panel-3" role="tabpanel" aria-labelledby="bp-tab-3" hidden>
+<div class="bp-panel-header"><p class="bp-kicker">03 / PRODUCTION</p><h2>판매·납품 일정에 맞춰 실제 패키지를 생산</h2><p>확정된 디자인을 실제 판매 제품의 포장재로 제작합니다. 수량, 용기·포장 구조, 소재, 후가공, 인쇄 공법과 납품 조건을 검토해 발주부터 제작·검수·납품까지 연결합니다.</p></div>
+<div class="bp-meta"><div><span>추천 대상</span><strong>정식 판매 · 유통 · 반복 발주</strong></div><div><span>예상 진행 기간</span><strong>사양·수량별 일정 협의</strong></div><div><span>수행 방식</span><strong>생산 발주 및 납품 관리</strong></div></div>
+<div class="bp-columns"><div><h3>주요 수행 업무</h3><ul><li>최종 디자인·제품 규격·발주 수량 확인</li><li>재질·인쇄 방식·색상·후가공 확정</li><li>제작 단가·최소 수량·납기 협의</li><li>생산용 도안·칼선 및 교정 데이터 검토</li><li>제작 발주·일정·품질 확인</li><li>포장·납품 및 재발주 기준 정리</li></ul></div><div><h3>진행 절차</h3><ul><li>01. 수량·유통 조건·납기 파악</li><li>02. 생산 사양과 견적 확정</li><li>03. 인쇄용 최종 데이터 점검</li><li>04. 필요 시 교정·샘플 승인 후 발주</li><li>05. 생산·검수·납품</li></ul></div></div>
+<div class="bp-detail-grid"><section class="bp-detail-block"><h3>주요 결과물</h3><p>확정 사양의 양산 패키지, 최종 생산 데이터, 제작·납품 내역</p></section><section class="bp-detail-block"><h3>제작 전 확인할 사항</h3><p>수량·재질·후가공·금형 여부에 따라 최소 발주 수량과 단가, 제작 기간이 달라집니다. 디자인 업무와 실물 인쇄·양산 비용은 구분해 안내합니다.</p></section></div>
+<p class="bp-note">※ 일정과 산출물은 디자인 복잡도, 제작 수량, 소재·공법과 검토 일정에 따라 조정됩니다.</p>
+</section>
+</div></section>
+<section class="bp-section"><div class="bp-wrap">
+<p class="bp-kicker">OUR WORKFLOW</p><h2>판매 환경을 이해하고, 실제 제작 가능한 패키지로 연결합니다.</h2><p class="bp-intro">제품의 특성, 소비자의 구매 순간, 온라인·오프라인 유통 환경부터 확인합니다. 패키지 디자인과 샘플·양산 업무는 처음부터 필요한 범위를 함께 검토하되, 실물 출력·인쇄·제작 비용은 디자인 수행비와 구분해 산정합니다.</p>
+<div class="bp-process">
+<article><span>STEP 01</span><strong>제품·시장 이해</strong><p>제품, 소비자, 판매 채널, 가격대와 필수 정보를 파악합니다.</p></article>
+<article><span>STEP 02</span><strong>포장 사양 검토</strong><p>형태, 규격, 내용물 보호, 소재와 인쇄 조건을 협의합니다.</p></article>
+<article><span>STEP 03</span><strong>디자인 개발</strong><p>브랜드 표현, 구매 정보, 그래픽과 칼선 도안을 정리합니다.</p></article>
+<article><span>STEP 04</span><strong>실물 확인</strong><p>필요한 경우 샘플로 조립·크기·색상·마감을 검토합니다.</p></article>
+<article><span>STEP 05</span><strong>생산·납품</strong><p>선택 범위에 따라 최종 데이터 전달 또는 양산까지 진행합니다.</p></article>
+</div></div></section>
+<section class="bp-section"><div class="bp-wrap bp-faq">
+<p class="bp-kicker">FREQUENTLY ASKED QUESTIONS</p><h2>자주 묻는 질문</h2>
+<details><summary>제품은 준비됐는데 어떤 패키지를 만들어야 할지 모르겠습니다.</summary><p>제품의 크기, 취급·보관 방식, 판매 가격, 유통 채널과 구매 고객부터 확인합니다. 이에 맞춰 단상자, 파우치, 라벨, 슬리브 등 후보 포장 형태와 디자인 방향을 제안하고 가능한 제작 사양을 검토합니다.</p></details>
+<details><summary>패키지 디자인과 샘플·양산을 한 번에 의뢰할 수 있나요?</summary><p>가능합니다. 상담 시 필요한 패키지 디자인, 제품군 전개, 실물 샘플 및 양산 업무를 함께 체크해 진행 범위를 구성합니다. 디자인 수행비와 실물 인쇄·가공·생산 비용은 구분하여 견적에 안내합니다.</p></details>
+<details><summary>기존 로고나 패키지 디자인을 활용해 제작만 할 수 있나요?</summary><p>가능합니다. 기존 디자인 파일과 칼선, 인쇄 사양을 검토한 뒤 제작에 필요한 보완 사항을 확인합니다. 별도의 신규 디자인 없이 샘플 또는 양산만 진행할 수도 있습니다.</p></details>
+<details><summary>판매용 패키지에 필요한 법정 표시도 검토해 주나요?</summary><p>정보의 시각적 위계와 배치는 디자인 범위에서 검토합니다. 다만 원재료, 전성분, 용량, 제조·유통 정보 등 법정 표기의 정확성과 적법성은 고객사 및 해당 분야 전문가가 최종 확인해야 합니다.</p></details>
+<details><summary>제작 기간과 비용은 어떤 기준으로 정해지나요?</summary><p>디자인 범위, SKU 수, 구조 복잡도, 재질, 인쇄 공법, 후가공, 샘플 여부와 양산 수량에 따라 달라집니다. 실물 제작은 사양과 최소 발주 수량을 확인한 후 비용과 납기를 안내합니다.</p></details>
+</div></section>
+<section class="bp-contact"><div class="bp-wrap"><div class="bp-contact-inner"><div><p class="bp-kicker">LET'S WORK TOGETHER</p><h2>제품의 판매를 위한 패키지를 함께 구현합니다.</h2><p>제품과 판매 방식, 준비된 자료를 알려주시면 디자인부터 샘플·양산까지 필요한 범위를 정리하겠습니다.</p></div><a class="bp-button" href="/contact.html">프로젝트 문의하기 ↗</a></div></div></section>
+</main>
+<footer class="site-footer container"></footer>
+</div>
+<script src="/assets/js/main.js?v=20261022-project"></script>
+<script>
+(()=>{const tabs=[...document.querySelectorAll('.bp-tab')];const select=(tab,focus=false)=>{tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});if(focus)tab.focus();};tabs.forEach((t,i)=>{t.addEventListener('click',()=>select(t));t.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;select(tabs[next],true);});});})();
+</script>
+</body></html>
