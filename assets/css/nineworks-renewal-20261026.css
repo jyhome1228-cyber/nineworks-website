@@ -124,3 +124,15 @@ body:not(.admin-page):not(.proposal-page) button:focus-visible{outline:2px solid
     justify-content:flex-end!important;
   }
 }
+
+/* Airier desktop nav spacing; keep aligned to shared 1440px container. */
+@media(min-width:981px){
+ html body:not(.admin-page) .site-shell>.site-header .site-primary-nav{
+  gap:clamp(20px,1.8vw,32px)!important;
+ }
+}
+@media(min-width:981px) and (max-width:1250px){
+ html body:not(.admin-page) .site-shell>.site-header .site-primary-nav{
+  gap:clamp(14px,1.3vw,20px)!important;
+ }
+}
