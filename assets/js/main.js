@@ -50,7 +50,7 @@
   loadStyle('assets/css/nineworks-ui-system.css?v=20261021-1');
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
   loadStyle('assets/css/mobile-final-20261008.css?v=20261021-1');
-  loadStyle('/assets/css/nineworks-renewal-20261026.css?v=2');
+  loadStyle('/assets/css/nineworks-renewal-20261026.css?v=3');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -126,6 +126,15 @@
     <div class="site-header__main">
       <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20261021-2' : '/assets/nineworks-wordmark-20260922.svg?v=20261021-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
+        <div class="site-nav-item"><a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="ABOUT 하위 메뉴">
+          <a href="/about.html"><span>나인웍스 소개</span></a>
+          <a href="/design-team.html"><span>디자인팀·구성원</span></a>
+          <a href="/designer.html"><span>대표 디자이너</span></a>
+          <a href="/performance.html"><span>기업 현황</span></a>
+          <a href="/partners.html"><span>파트너 네트워크</span></a>
+          <a href="/process.html"><span>업무 프로세스</span></a>
+          <a href="/with-us.html"><span>With Us</span></a>
+        </div></div>
         <div class="site-nav-item"><a href="/branding-projects.html" data-nav-key="projects">PROJECTS <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="PROJECTS 하위 메뉴">
           <a href="/branding-projects.html"><span>브랜드 신규 구축</span></a>
           <a href="/branding-projects.html"><span>브랜드 리뉴얼</span></a>
@@ -170,15 +179,6 @@
           <a href="/magazine.html"><span>매거진</span></a>
           <a href="/global-references.html"><span>디자인 연구·인사이트</span></a>
           <a href="/process.html"><span>프로세스·방법론</span></a>
-        </div></div>
-        <div class="site-nav-item"><a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="ABOUT 하위 메뉴">
-          <a href="/about.html"><span>나인웍스 소개</span></a>
-          <a href="/design-team.html"><span>디자인팀·구성원</span></a>
-          <a href="/designer.html"><span>대표 디자이너</span></a>
-          <a href="/performance.html"><span>기업 현황</span></a>
-          <a href="/partners.html"><span>파트너 네트워크</span></a>
-          <a href="/process.html"><span>업무 프로세스</span></a>
-          <a href="/with-us.html"><span>With Us</span></a>
         </div></div>
         <a href="/contact.html" data-nav-key="contact">CONTACT</a>
       </nav>
