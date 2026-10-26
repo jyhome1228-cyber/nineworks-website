@@ -62,3 +62,23 @@ body:not(.admin-page):not(.proposal-page) button:focus-visible{outline:2px solid
   .site-header__main .site-primary-nav{margin-left:auto!important;justify-content:flex-end!important}
   .site-header__main .site-header__actions{display:none!important}
 }
+
+/* Conventional header: logo left, links at the right edge, without duplicate CTA. */
+@media (min-width:981px){
+  html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+    display:flex!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    width:100%!important;
+  }
+  html body:not(.admin-page) .site-shell>.site-header .site-header__main>.site-logo{flex:0 0 auto!important}
+  html body:not(.admin-page) .site-shell>.site-header .site-primary-nav{
+    display:flex!important;
+    flex:0 1 auto!important;
+    width:max-content!important;
+    margin:0 0 0 auto!important;
+    justify-content:flex-end!important;
+    align-items:center!important;
+  }
+  html body:not(.admin-page) .site-shell>.site-header .site-header__actions{display:none!important}
+}
