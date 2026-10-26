@@ -1,0 +1,57 @@
+/* NINEWORKS unified editorial design system — 2026-10-26
+   Clay-inspired clarity, Koto-inspired portfolio rhythm.
+   Applies to public marketing pages, not internal dashboards/proposals. */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+:root{
+  --bg:#fff;--paper:#f7f7f7;--ink:#111;--muted:#666;--line:#e8e8e8;--white:#fff;
+  --gutter:clamp(20px,3vw,48px);--section-y:clamp(76px,9vw,144px);
+  --body:17px;--display:clamp(48px,6vw,88px);--title:clamp(40px,4.6vw,68px);
+  --subtitle:clamp(30px,3.2vw,46px);
+  --nw-content-width:1440px;--nw-radius:14px;
+}
+html{scroll-padding-top:110px}
+body:not(.admin-page):not(.proposal-page){background:#fff;color:#111;font-family:Pretendard,-apple-system,BlinkMacSystemFont,'Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;letter-spacing:-.022em;word-break:keep-all}
+body:not(.admin-page):not(.proposal-page) .site-shell{background:#fff}
+body:not(.admin-page):not(.proposal-page) .container{max-width:calc(var(--nw-content-width) + var(--gutter)*2);margin-left:auto;margin-right:auto}
+body:not(.admin-page):not(.proposal-page) .eyebrow{font-size:12px;letter-spacing:.07em;color:#6a6a6a}
+body:not(.admin-page):not(.proposal-page) :is(.display-title,.page-title,.section-title){letter-spacing:-.05em;line-height:1.13}
+body:not(.admin-page):not(.proposal-page) .copy{color:#555;line-height:1.75}
+body:not(.admin-page):not(.proposal-page) :is(.nw-button,.button,.btn-primary){border-radius:12px}
+body:not(.admin-page):not(.proposal-page) :is(.nw-home-solution,.project-card__visual,.portfolio-card__media,.nw-home-about__gallery figure){border-radius:var(--nw-radius)}
+body:not(.admin-page):not(.proposal-page) .nw-home-solution{border-color:#e8e8e8;background:#fff}
+body:not(.admin-page):not(.proposal-page) .nw-home-solution:hover{background:#f8f8f8}
+body:not(.admin-page):not(.proposal-page) :is(.site-header,.site-header__main,.site-header__top){background-color:#fff}
+body:not(.admin-page):not(.proposal-page) .site-header{border-color:#ebebeb}
+.site-primary-nav{gap:clamp(11px,1.1vw,19px)!important}
+.site-primary-nav>.site-nav-item>a,.site-primary-nav>a{font-size:clamp(11px,.82vw,13px)!important;font-weight:550!important;letter-spacing:-.01em!important}
+.site-nav-separator{display:none!important}
+.site-nav-dropdown{min-width:270px!important;max-height:min(70vh,680px);overflow:auto;border-radius:12px!important;padding:10px!important;box-shadow:0 18px 55px rgba(0,0,0,.08)!important}
+.site-nav-dropdown a{min-height:40px!important;padding:9px 12px!important;font-size:13px!important;letter-spacing:-.018em!important;line-height:1.45!important;border-radius:7px}
+.site-nav-dropdown small{display:none}
+.site-header__actions a{border-radius:10px}
+body:not(.admin-page):not(.proposal-page) .menu-overlay{background:#fff;color:#111}
+body:not(.admin-page):not(.proposal-page) .menu-nav__main,
+body:not(.admin-page):not(.proposal-page) .menu-nav__toggle{color:#111;font-weight:550!important;letter-spacing:-.035em!important}
+body:not(.admin-page):not(.proposal-page) .menu-nav__sub a{color:#555!important;font-size:15px!important;line-height:1.6!important}
+body:not(.admin-page):not(.proposal-page) .menu-nav__sub a:hover{color:#111!important}
+body:not(.admin-page):not(.proposal-page) .menu-trigger__icon{stroke:#111}
+body:not(.admin-page):not(.proposal-page) .site-footer{background:#fff}
+body:not(.admin-page):not(.proposal-page) a:focus-visible,
+body:not(.admin-page):not(.proposal-page) button:focus-visible{outline:2px solid #111;outline-offset:3px}
+@media (max-width:1200px){
+  .site-primary-nav{gap:10px!important}
+  .site-primary-nav>.site-nav-item>a,.site-primary-nav>a{font-size:11px!important}
+}
+@media (max-width:980px){
+  body:not(.admin-page):not(.proposal-page){font-size:16px}
+  body:not(.admin-page):not(.proposal-page) .menu-overlay{overflow-y:auto}
+  body:not(.admin-page):not(.proposal-page) .menu-nav__main,
+  body:not(.admin-page):not(.proposal-page) .menu-nav__toggle{font-size:22px!important}
+  body:not(.admin-page):not(.proposal-page) .menu-nav__group{border-bottom:1px solid #eee}
+}
+@media (max-width:680px){
+  :root{--gutter:18px;--section-y:72px;--title:clamp(34px,9vw,48px)}
+  body:not(.admin-page):not(.proposal-page) .nw-home-solutions__intro{grid-template-columns:1fr}
+  body:not(.admin-page):not(.proposal-page) .nw-home-solutions__grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
