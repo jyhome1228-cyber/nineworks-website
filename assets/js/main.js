@@ -50,6 +50,7 @@
   loadStyle('assets/css/nineworks-ui-system.css?v=20261021-1');
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
   loadStyle('assets/css/mobile-final-20261008.css?v=20261021-1');
+  loadStyle('/assets/css/nineworks-renewal-20261026.css?v=1');
 
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
@@ -125,66 +126,61 @@
     <div class="site-header__main">
       <a class="site-logo${isPrintingPage ? ' site-logo--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img class="site-logo__image" src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20261021-2' : '/assets/nineworks-wordmark-20260922.svg?v=20261021-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-primary-nav" aria-label="주요 메뉴">
-        <div class="site-nav-item">
-          <a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="어바웃 메뉴">
-            <a href="/about.html"><span>나인웍스 소개</span><small>STUDIO</small></a>
-            <a href="/performance.html"><span>기업 현황</span><small>COMPANY STATUS</small></a>
-            <a href="/designer.html"><span>대표 디자이너</span><small>DIRECTOR</small></a>
-            <a href="/partners.html"><span>파트너 네트워크</span><small>PARTNERS</small></a>
-            <a href="/design-team.html"><span>디자인 팀</span><small>TEAM</small></a>
-          </div>
-        </div>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <div class="site-nav-item">
-          <a href="/branding-projects.html" data-nav-key="project-guide">PROJECT <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="프로젝트 메뉴">
-            <a href="/branding-projects.html"><span>브랜딩 프로젝트</span><small>BRANDING PROJECT</small></a>
-            <a href="/website-projects.html"><span>사이트 구축 프로젝트</span><small>WEB & DIGITAL</small></a>
-            <a href="/package-projects.html"><span>패키지 디자인·제작 프로젝트</span><small>PACKAGE & PRODUCTION</small></a>
-          </div>
-        </div>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <div class="site-nav-item">
-          <a href="/branding.html" data-nav-key="process">PROCESS <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="프로세스 메뉴">
-            <a href="/branding.html"><span>브랜딩 프로세스</span><small>BRANDING PROCESS</small></a>
-            <a href="/package-design.html"><span>패키지 프로세스</span><small>PACKAGE PROCESS</small></a>
-            <a href="/develop.html#develop-process"><span>웹 개발 프로세스</span><small>WEB DEVELOPMENT</small></a>
-          </div>
-        </div>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <div class="site-nav-item">
-          <a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="포트폴리오 카테고리">
-            <a href="/portfolio.html?filter=major"><span>대표 프로젝트</span><small>FEATURED</small></a>
-            <a href="/project.html"><span>브랜딩 프로젝트</span><small>BRANDING</small></a>
-            <a href="/local-branding.html" data-local-branding-nav="true"><span>로컬 브랜딩</span><small>LOCAL</small></a>
-            <a href="/portfolio.html?filter=website"><span>웹사이트</span><small>WEBSITE</small></a>
-            <a href="/portfolio.html?filter=system"><span>시스템 구축</span><small>SYSTEM</small></a>
-            <a href="/portfolio.html?filter=detailpage"><span>상세페이지</span><small>DETAIL PAGE</small></a>
-            <a href="/portfolio.html?filter=instagram"><span>인스타그램 피드</span><small>SOCIAL</small></a>
-            <a href="/portfolio.html?filter=editorial"><span>편집 디자인</span><small>EDITORIAL</small></a>
-            <a href="/portfolio.html?filter=ir"><span>IR · PPT</span><small>PRESENTATION</small></a>
-            <a href="/portfolio.html?filter=package"><span>패키지 디자인</span><small>PACKAGE</small></a>
-            <a href="/portfolio.html?filter=event"><span>이벤트 디자인</span><small>EVENT</small></a>
-          </div>
-        </div>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <a href="/solutions.html" data-nav-key="services">SERVICES</a>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <div class="site-nav-item">
-          <a href="#" data-nav-key="solutions" data-dropdown-trigger aria-haspopup="true">SOLUTIONS <span class="site-nav-caret">▾</span></a>
-          <div class="site-nav-dropdown" aria-label="솔루션 메뉴">
-            <a href="/develop.html"><span>웹사이트 / 관리페이지 제작</span><small>WEBSITE · ADMIN</small></a>
-            <a href="/crm.html"><span>기업 전용 관리 CRM 제작</span><small>BUSINESS CRM</small></a>
-            <a href="/print.html"><span>인쇄 / 패키지 제작</span><small>PRINTING</small></a>
-            <a href="/oneplan-solution.html"><span>인플루언서 원플랜 솔루션</span><small>ONE PLAN</small></a>
-            <a href="/ai-model.html"><span>AI 모델 스튜디오</span><small>AI MODEL STUDIO</small></a>
-          </div>
-        </div>
-        <span class="site-nav-separator" aria-hidden="true">·</span>
-        <a href="/magazine.html" data-nav-key="magazine">MAGAZINE</a>
+        <div class="site-nav-item"><a href="/branding-projects.html" data-nav-key="projects">PROJECTS <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="PROJECTS 하위 메뉴">
+          <a href="/branding-projects.html"><span>브랜드 신규 구축</span></a>
+          <a href="/branding-projects.html"><span>브랜드 리뉴얼</span></a>
+          <a href="/website-projects.html"><span>웹사이트 구축 프로젝트</span></a>
+          <a href="/package-projects.html"><span>패키지 디자인·제작 프로젝트</span></a>
+          <a href="/crm.html"><span>기업 운영 시스템</span></a>
+          <a href="/membership.html"><span>브랜드 운영·관리</span></a>
+        </div></div>
+        <div class="site-nav-item"><a href="/solutions.html" data-nav-key="services">SERVICES <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="SERVICES 하위 메뉴">
+          <a href="/solutions.html"><span>서비스 전체보기</span></a>
+          <a href="/branding.html"><span>브랜드 전략·BI/BX</span></a>
+          <a href="/develop.html"><span>웹사이트·쇼핑몰</span></a>
+          <a href="/package-design.html"><span>패키지 디자인</span></a>
+          <a href="/print.html"><span>인쇄·제작</span></a>
+          <a href="/portfolio.html?filter=detailpage"><span>상세페이지·콘텐츠</span></a>
+          <a href="/portfolio.html?filter=editorial"><span>편집디자인·IR/PPT</span></a>
+          <a href="/crm.html"><span>기업 시스템·CRM</span></a>
+        </div></div>
+        <div class="site-nav-item"><a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="SOLUTIONS 하위 메뉴">
+          <a href="/solutions.html"><span>통합 솔루션 소개</span></a>
+          <a href="/oneplan-solution.html"><span>인플루언서 원플랜</span></a>
+          <a href="/printing-dashboard.html"><span>나인웍스 프린팅</span></a>
+          <a href="/support.html"><span>정부지원사업</span></a>
+          <a href="/crm.html"><span>기업 운영 솔루션</span></a>
+          <a href="/membership.html"><span>상시 디자인 파트너십</span></a>
+          <a href="/ai-model.html"><span>AI 모델 스튜디오</span></a>
+        </div></div>
+        <div class="site-nav-item"><a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="PORTFOLIO 하위 메뉴">
+          <a href="/portfolio.html?filter=major"><span>대표 디자인 프로젝트</span></a>
+          <a href="/project.html"><span>브랜딩 프로젝트</span></a>
+          <a href="/local-branding.html"><span>로컬브랜딩</span></a>
+          <a href="/portfolio.html?filter=website"><span>웹사이트</span></a>
+          <a href="/portfolio.html?filter=system"><span>시스템</span></a>
+          <a href="/portfolio.html?filter=package"><span>패키지 디자인</span></a>
+          <a href="/portfolio.html?filter=detailpage"><span>상세페이지 디자인</span></a>
+          <a href="/portfolio.html?filter=instagram"><span>SNS 콘텐츠</span></a>
+          <a href="/portfolio.html?filter=editorial"><span>편집디자인</span></a>
+          <a href="/portfolio.html?filter=ir"><span>IR / PPT</span></a>
+          <a href="/portfolio.html?filter=event"><span>행사·전시 디자인</span></a>
+        </div></div>
+        <div class="site-nav-item"><a href="/magazine.html" data-nav-key="insights">INSIGHTS <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="INSIGHTS 하위 메뉴">
+          <a href="/magazine.html"><span>매거진</span></a>
+          <a href="/global-references.html"><span>디자인 연구·인사이트</span></a>
+          <a href="/process.html"><span>프로세스·방법론</span></a>
+        </div></div>
+        <div class="site-nav-item"><a href="/about.html" data-nav-key="about">ABOUT <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="ABOUT 하위 메뉴">
+          <a href="/about.html"><span>나인웍스 소개</span></a>
+          <a href="/design-team.html"><span>디자인팀·구성원</span></a>
+          <a href="/designer.html"><span>대표 디자이너</span></a>
+          <a href="/performance.html"><span>기업 현황</span></a>
+          <a href="/partners.html"><span>파트너 네트워크</span></a>
+          <a href="/process.html"><span>업무 프로세스</span></a>
+          <a href="/with-us.html"><span>With Us</span></a>
+        </div></div>
+        <a href="/contact.html" data-nav-key="contact">CONTACT</a>
       </nav>
       <div class="site-header__actions">
         <a class="site-header__action site-header__action--printing" href="/contact.html">프로젝트 문의 <span>↗</span></a>
@@ -292,16 +288,17 @@
   document.querySelectorAll('.sector-code').forEach((label) => label.remove());
 
   const navMap = {
-    about: 'about', designer: 'about', 'design-team': 'about', performance: 'about', partners: 'about',
-    process: 'process', 'project-operation': 'process', 'branding-projects': 'project-guide', 'website-projects': 'project-guide', 'package-projects': 'project-guide',
-    project: 'portfolio', portfolio: 'portfolio', 'portfolio-detail': 'portfolio', 'local-branding': 'portfolio', 'local-branding-detail': 'portfolio',
-    solutions: 'solutions', develop: 'solutions', crm: 'solutions', support: 'solutions', print: 'solutions', 'printing-dashboard': 'solutions', 'oneplan-solution': 'solutions', 'print-editorial': 'solutions', 'print-partner': 'solutions', 'package-production': 'solutions', 'package-sample': 'solutions', production: 'solutions',
-    branding: 'process', 'package-design': 'process', 'signature-project': 'services', membership: 'services', 'client-register': 'services',
-    magazine: 'magazine', 'magazine-detail': 'magazine', 'global-references': 'magazine',
-    'design-academy': 'about'
+    about:'about', designer:'about', 'design-team':'about', performance:'about', partners:'about', 'with-us':'about', recruit:'about', 'design-academy':'about',
+    'branding-projects':'projects', 'website-projects':'projects', 'package-projects':'projects',
+    project:'portfolio', portfolio:'portfolio', 'portfolio-detail':'portfolio', 'local-branding':'portfolio', 'local-branding-detail':'portfolio',
+    solutions:'solutions', 'oneplan-solution':'solutions', support:'solutions', 'printing-dashboard':'solutions', print:'solutions',
+    'print-editorial':'solutions', 'print-partner':'solutions', 'package-production':'solutions', 'package-sample':'solutions', production:'solutions', 'ai-model':'solutions',
+    develop:'services', crm:'services', branding:'services', 'package-design':'services', membership:'services', 'signature-project':'services', 'client-register':'services',
+    magazine:'insights', 'magazine-detail':'insights', 'global-references':'insights', process:'insights', 'project-operation':'insights',
+    contact:'contact'
   };
   let activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
-  if (pageKey === 'develop' && window.location.hash === '#develop-process') activeNav = 'process';
+  if (pageKey === 'develop' && window.location.hash === '#develop-process') activeNav = 'services';
   if (body.classList.contains('about-page')) activeNav = 'about';
   else if (body.classList.contains('process-overview-page')) activeNav = 'process';
   else if (body.classList.contains('solutions-page')) activeNav = 'solutions';
@@ -409,9 +406,10 @@
       <a class="site-footer__brand${isPrintingPage ? ' site-footer__brand--printing' : ''}" href="${isPrintingPage ? '/printing-dashboard.html' : '/'}" aria-label="${isPrintingPage ? '나인웍스 프린팅 홈' : '나인웍스 홈'}"><img src="${isPrintingPage ? '/assets/nineworks-printing-logo.svg?v=20261021-2' : '/assets/nineworks-wordmark-20260922.svg?v=20261021-2'}" alt="${isPrintingPage ? 'NINEWORKS PRINTING' : 'NINEWORKS'}"></a>
       <nav class="site-footer__links" aria-label="푸터 메뉴">
         <a href="/about.html">About</a>
-        <a href="/branding.html">Process</a>
+        <a href="/branding-projects.html">Projects</a>
+        <a href="/solutions.html">Services</a>
         <a href="/portfolio.html?filter=major">Portfolio</a>
-        <a href="/magazine.html">Design Articles</a>
+        <a href="/magazine.html">Insights</a>
         <a href="/global-references.html">Global References</a>
         <a href="/solutions.html">Solutions</a>
         <a href="/design-team.html">Design Team</a>
