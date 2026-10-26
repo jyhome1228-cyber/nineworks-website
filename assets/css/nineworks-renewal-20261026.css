@@ -99,3 +99,28 @@ body:not(.admin-page):not(.proposal-page) button:focus-visible{outline:2px solid
   margin-right:0!important;padding-right:0!important;
  }
 }
+
+/* Match the actual content edges of both header rows, not the viewport edge.
+   Previous width:100% + horizontal padding caused the misalignment. */
+@media(min-width:981px){
+  html body:not(.admin-page) .site-shell>.site-header .site-header__top-inner,
+  html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+    width:min(1440px,calc(100% - 80px))!important;
+    max-width:1440px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    box-sizing:border-box!important;
+  }
+  html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+  }
+  html body:not(.admin-page) .site-shell>.site-header .site-primary-nav{
+    margin-left:auto!important;
+    margin-right:0!important;
+    justify-content:flex-end!important;
+  }
+}
