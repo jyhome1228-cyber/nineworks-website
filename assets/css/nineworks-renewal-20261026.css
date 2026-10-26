@@ -82,3 +82,20 @@ body:not(.admin-page):not(.proposal-page) button:focus-visible{outline:2px solid
   }
   html body:not(.admin-page) .site-shell>.site-header .site-header__actions{display:none!important}
 }
+
+/* Header optical alignment: match the logo and CONTACT outer gutters */
+@media(min-width:981px){
+ html body:not(.admin-page) .site-shell>.site-header .site-header__main{
+  box-sizing:border-box!important;
+  padding-left:var(--gutter)!important;
+  padding-right:var(--gutter)!important;
+ }
+ html body:not(.admin-page) .site-shell>.site-header .site-primary-nav{
+  margin-left:auto!important;margin-right:0!important;
+  padding-right:0!important;
+  gap:clamp(14px,1.2vw,22px)!important;
+ }
+ html body:not(.admin-page) .site-shell>.site-header .site-primary-nav>a:last-child{
+  margin-right:0!important;padding-right:0!important;
+ }
+}
