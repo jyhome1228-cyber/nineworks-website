@@ -27,8 +27,39 @@
   <meta name="twitter:image" content="https://9works.kr/assets/kakao-preview.png?v=20260825-2">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:image:type" content="image/png">
+<style id="nw-notice-popup-style">
+.nw-notice-overlay{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:28px;background:rgba(0,0,0,.53);overflow-y:auto;box-sizing:border-box}
+.nw-notice-overlay.is-visible{display:flex}
+.nw-notice-card[hidden]{display:none!important}
+.nw-notice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:min(100%,990px);margin:auto;align-items:stretch}
+.nw-notice-card{position:relative;display:flex;flex-direction:column;min-width:0;min-height:480px;padding:36px 36px 0;background:#111;color:#fff;border:1px solid #333;border-radius:12px;box-sizing:border-box;box-shadow:0 16px 54px rgba(0,0,0,.18);font-family:inherit}
+.nw-notice-card *{box-sizing:border-box}
+.nw-notice-kicker{font-size:11px;font-weight:600;letter-spacing:.09em;color:#aaa;margin:0 0 28px}
+.nw-notice-card h2{font-size:clamp(21px,2vw,26px);font-weight:600;line-height:1.36;letter-spacing:-.045em;margin:0 0 22px;color:#fff;word-break:keep-all}
+.nw-notice-card p.nw-notice-desc{font-size:13px;line-height:1.85;letter-spacing:-.012em;color:#c9c9c9;margin:0 0 13px;word-break:keep-all}
+.nw-notice-card strong{font-weight:600;color:#fff}
+.nw-notice-link{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:13px;font-weight:600;text-decoration:none;color:#fff!important;border-bottom:1px solid #888;padding:0 0 5px;margin:12px 0 28px}
+.nw-notice-link:hover{border-color:#fff}
+.nw-notice-spacer{flex:1}
+.nw-notice-actions{display:flex;justify-content:space-between;gap:12px;align-items:center;min-height:61px;border-top:1px solid #393939}
+.nw-notice-actions button{border:0;background:none;color:#ddd;cursor:pointer;font:inherit;font-size:12px;letter-spacing:-.02em;padding:12px 0}
+.nw-notice-actions button:hover{color:#fff}
+.nw-notice-actions .nw-notice-close{font-weight:600;color:#fff}
+@media(max-width:760px){.nw-notice-overlay{padding:18px 16px;align-items:flex-start}.nw-notice-grid{grid-template-columns:1fr;max-width:480px;gap:12px}.nw-notice-card{min-height:0;padding:26px 24px 0}.nw-notice-kicker{margin-bottom:18px}.nw-notice-card h2{font-size:22px;margin-bottom:16px}.nw-notice-card p.nw-notice-desc{font-size:12.5px;margin-bottom:10px}.nw-notice-link{margin:10px 0 24px}.nw-notice-actions{min-height:56px}}
+.nw-notice-grid--single{grid-template-columns:minmax(0,1fr);max-width:488px}
+</style>
 </head>
-<body class="portfolio-page">
+<body class="portfolio-page"><div class="nw-notice-overlay" id="nwPortfolioNoticeOverlay" aria-label="사이트 업데이트 안내"><div class="nw-notice-grid nw-notice-grid--single">    <section class="nw-notice-card" data-nw-notice="portfolio" aria-labelledby="nwNoticePortfolioTitle">
+      <p class="nw-notice-kicker">WEBSITE &amp; PORTFOLIO UPDATE</p>
+      <h2 id="nwNoticePortfolioTitle">나인웍스<br>사이트 업데이트 안내</h2>
+      <p class="nw-notice-desc"><strong>2026.11.01 — 2026.12.01</strong></p>
+      <p class="nw-notice-desc">나인웍스는 보다 체계적인 프로젝트 소개와 서비스 안내를 위해 공식 웹사이트와 포트폴리오 업데이트를 진행합니다.</p>
+      <p class="nw-notice-desc">그동안 수행한 <strong>약 60건의 프로젝트 포트폴리오</strong>를 순차적으로 공개하고, 웹사이트의 콘텐츠 구성과 디자인, 이용 편의성도 함께 개선할 예정입니다.</p>
+      <p class="nw-notice-desc">업데이트 기간에도 사이트 이용과 프로젝트 문의는 정상적으로 가능합니다.</p>
+      <div class="nw-notice-spacer"></div>
+      <a class="nw-notice-link" href="/portfolio.html">포트폴리오 살펴보기 <span aria-hidden="true">↗</span></a>
+      <div class="nw-notice-actions"><button type="button" data-nw-hide-today="portfolio">오늘 하루 보지 않기</button><button type="button" class="nw-notice-close" data-nw-close="portfolio">닫기 ×</button></div>
+    </section></div></div>
   <div class="site-shell">
     <header class="site-header"><a class="site-logo" href="/">NINEWORKS</a><button class="menu-trigger" type="button" aria-label="메뉴 열기" aria-expanded="false" data-menu-trigger><span></span></button></header>
     <aside class="menu-overlay" aria-hidden="true" data-menu-overlay></aside>
@@ -109,5 +140,24 @@
   <script src="assets/js/portfolio-filter-url.js?v=20260912-1"></script>
   <script src="assets/js/portfolio-major-structure-20260826.js?v=20260901-1"></script>
   <script src="assets/js/portfolio-instagram-feed.js?v=20260828-1"></script>
-</body>
+<script id="nw-portfolio-notice-script">
+(function(){
+  const overlay=document.getElementById('nwPortfolioNoticeOverlay');
+  if(!overlay)return;
+  const card=overlay.querySelector('[data-nw-notice="portfolio"]');
+  const day=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+  const key='nw-notice-hide-portfolio',once='nw-portfolio-notice-seen';
+  let hide=false,seen=false;
+  try{hide=localStorage.getItem(key)===day();seen=sessionStorage.getItem(once)==='1'}catch(e){}
+  if(hide||seen)return;
+  overlay.classList.add('is-visible');
+  overlay.setAttribute('aria-hidden','false');
+  try{sessionStorage.setItem(once,'1')}catch(e){}
+  const dismiss=()=>{overlay.classList.remove('is-visible');overlay.setAttribute('aria-hidden','true')};
+  card.querySelector('[data-nw-hide-today]').addEventListener('click',()=>{try{localStorage.setItem(key,day())}catch(e){}dismiss()});
+  card.querySelector('[data-nw-close]').addEventListener('click',dismiss);
+  overlay.addEventListener('click',event=>{if(event.target===overlay)dismiss()});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape')dismiss()});
+})();
+</script></body>
 </html>
