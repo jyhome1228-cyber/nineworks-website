@@ -1,32 +1,46 @@
 /* NINEWORKS consulting landing, scoped */
 .nw-consulting{font-family:inherit;color:#17191c;background:#fff;letter-spacing:-.025em}.nw-consulting *{box-sizing:border-box}.nw-consulting a{text-decoration:none}.nw-consulting .consult-wrap{max-width:1280px;margin:auto;padding:0 36px}.consult-hero{background:#eff1f0;min-height:350px;display:flex;align-items:center;border-bottom:1px solid #e3e5e5}.consult-hero .consult-wrap{width:100%;padding-top:90px;padding-bottom:75px}.consult-eyebrow{display:block;font-size:12px;letter-spacing:.12em;font-weight:700;color:#5e665f;margin-bottom:20px}.consult-hero h1{max-width:850px;font-size:clamp(34px,4vw,60px);font-weight:600;line-height:1.23;letter-spacing:-.055em;margin:0 0 23px}.consult-hero p{max-width:790px;color:#545a59;font-size:17px;line-height:1.9;margin:0}.consult-hero .consult-kicker{font-size:13px;margin:0 0 12px;color:#57635e}.consult-tabs{background:#fff;border-bottom:1px solid #e9e9e9;position:sticky;top:var(--header-height,72px);z-index:30}.consult-tabs .consult-wrap{display:flex;align-items:center;gap:32px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}.consult-tabs a{color:#6c7074;font-size:13px;font-weight:500;display:block;padding:21px 0;border-bottom:2px solid transparent}.consult-tabs a:hover,.consult-tabs a[aria-current=page]{color:#111;border-color:#111}.consult-content{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:64px;padding-top:72px!important;padding-bottom:130px!important;align-items:start}.consult-main{min-width:0}.consult-section{padding:0 0 88px;scroll-margin-top:160px}.consult-num{font-size:12px;color:#757b7e;font-weight:700;letter-spacing:.11em;margin:0 0 20px}.consult-section h2{font-size:clamp(25px,2.25vw,38px);line-height:1.3;font-weight:600;letter-spacing:-.048em;margin:0 0 22px}.consult-section .consult-lead{font-size:16px;line-height:2;color:#54595d;margin:0 0 30px}.consult-feature{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.consult-feature>div{background:#f6f6f4;padding:24px;min-height:155px}.consult-feature strong{display:block;font-size:15px;margin-bottom:12px}.consult-feature p{font-size:13px;color:#62676a;line-height:1.8;margin:0}.consult-profile{background:#f5f5f3;padding:32px}.consult-profile h3{font-size:25px;margin:0 0 4px}.consult-profile .role{font-size:13px;margin:0 0 22px;color:#62676a}.consult-profile p{font-size:14px;line-height:1.95;color:#454a4d}.consult-profile dl{border-top:1px solid #d9dbd9;margin:28px 0 0}.consult-profile dl div{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:15px 0;border-bottom:1px solid #dedfdd;font-size:13px;line-height:1.7}.consult-profile dt{color:#7b7f80}.consult-profile dd{margin:0}.consult-steps{counter-reset:steps;list-style:none;margin:0;padding:0;border-top:1px solid #d9dddd}.consult-steps li{display:grid;grid-template-columns:40px 1fr;gap:15px;border-bottom:1px solid #e2e3e1;padding:25px 0}.consult-steps li:before{counter-increment:steps;content:counter(steps,decimal-leading-zero);color:#8e9595;font-size:12px}.consult-steps strong{display:block;font-size:17px;margin-bottom:8px}.consult-steps p{margin:0;font-size:14px;line-height:1.9;color:#636a6a}.consult-note{background:#f5f6f6;padding:24px;font-size:13px;line-height:1.9;color:#575b5d}.consult-card{position:sticky;top:155px;border:1px solid #e0e2e3;border-radius:12px;padding:29px;background:white;box-shadow:0 8px 28px rgba(0,0,0,.035)}.consult-card h3{margin:0 0 18px;font-size:22px;line-height:1.45}.consult-card .tag{font-size:12px;font-weight:600;color:#66726b}.consult-card ul{list-style:none;padding:20px 0;margin:10px 0;border-top:1px solid #e2e3e2;border-bottom:1px solid #e2e3e2}.consult-card li{font-size:13px;line-height:1.8;margin:9px 0;color:#555c60}.consult-card .price{font-size:20px;font-weight:700;margin:21px 0}.consult-cta{display:block;text-align:center;background:#17191c;color:white!important;padding:17px 15px;font-size:14px;font-weight:600}.consult-cta:hover{background:#41464b}.consult-card small{display:block;margin-top:16px;color:#7c8184;line-height:1.8;font-size:11px}.consult-example{background:#222629;color:white;min-height:250px;padding:32px;display:flex;flex-direction:column;justify-content:space-between}.consult-example .label{letter-spacing:.1em;font-size:11px;color:#afb7b8}.consult-example p{font-size:22px;font-weight:500;line-height:1.45;max-width:520px}.consult-faq details{border-bottom:1px solid #e2e2e2;padding:18px 0}.consult-faq summary{cursor:pointer;font-size:15px;font-weight:600}.consult-faq details p{font-size:14px;line-height:1.9;color:#696969}.consult-program{border:1px solid #dedede;padding:27px;margin:15px 0}.consult-program h3{font-size:19px;margin:0 0 10px}.consult-program p{font-size:13px;color:#666;line-height:1.8}.consult-cross{margin-top:24px;font-size:13px;color:#666}.consult-cross a{text-decoration:underline;color:#222}.consult-mobile-cta{display:none}@media(max-width:950px){.consult-content{grid-template-columns:1fr;gap:15px;padding-top:42px!important}.consult-card{position:static;order:-1}.consult-hero{min-height:300px}.consult-hero .consult-wrap{padding-top:65px}.consult-tabs{top:60px}}@media(max-width:600px){.nw-consulting .consult-wrap{padding-left:20px;padding-right:20px}.consult-hero h1{font-size:33px}.consult-hero p{font-size:14px}.consult-tabs .consult-wrap{gap:23px}.consult-feature{grid-template-columns:1fr}.consult-section{padding-bottom:62px}.consult-profile{padding:24px}.consult-profile dl div{grid-template-columns:75px 1fr}.consult-card{padding:22px}}
 
-/* UI 2.0 — editorial consulting pages: one reading axis, no cramped side rail */
-.nw-consulting .consult-wrap{max-width:1200px}
-.nw-consulting .consult-hero{background:#fff;border-bottom:1px solid #ededed}
-.nw-consulting .consult-hero h1{max-width:950px;font-weight:700;line-height:1.2;text-wrap:balance;word-break:keep-all}
-.nw-consulting .consult-hero p{max-width:720px;font-size:clamp(16px,1.5vw,19px);line-height:1.75}
-.nw-consulting .consult-content{display:flex;flex-direction:column;gap:0;align-items:stretch;max-width:1200px;padding-top:92px!important;padding-bottom:120px!important}
-.nw-consulting .consult-main{width:100%;min-width:0}
-.nw-consulting .consult-section{max-width:960px;padding-bottom:112px;scroll-margin-top:160px}
-.nw-consulting .consult-section h2{max-width:850px;line-height:1.27;letter-spacing:-.045em;text-wrap:balance;word-break:keep-all}
-.nw-consulting .consult-lead{max-width:720px;font-size:clamp(16px,1.5vw,19px);line-height:1.75;word-break:keep-all;text-wrap:pretty}
-.nw-consulting .consult-feature{display:grid;grid-template-columns:1fr;gap:0;background:transparent;border:0}
-.nw-consulting .consult-feature>div{min-height:0;padding:28px 0;background:transparent!important;border:0!important;border-bottom:1px solid #e8e8e8!important;border-radius:0!important}
-.nw-consulting .consult-feature>div strong{font-size:clamp(18px,1.75vw,23px);line-height:1.45;word-break:keep-all}
-.nw-consulting .consult-feature>div p{font-size:clamp(15px,1.2vw,17px);line-height:1.7}
+
+/* NINEWORKS UI 2.0 — preserve original desktop 2-column consulting layout. */
+.nw-consulting .consult-wrap{max-width:1280px}
+.nw-consulting .consult-hero{background:#fff;border-color:#ededed}
+.nw-consulting .consult-hero h1{font-weight:650;line-height:1.2;text-wrap:balance;word-break:keep-all}
+.nw-consulting .consult-hero p{font-size:clamp(16px,1.45vw,19px);line-height:1.75}
+.nw-consulting .consult-content{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,340px);
+  align-items:start;gap:clamp(32px,4vw,64px);
+  max-width:1280px;padding-top:72px!important;padding-bottom:130px!important;
+}
+.nw-consulting .consult-main{min-width:0}
+.nw-consulting .consult-section{padding-bottom:96px}
+.nw-consulting .consult-section h2{line-height:1.28;text-wrap:balance;word-break:keep-all}
+.nw-consulting .consult-lead{font-size:clamp(16px,1.2vw,18px);line-height:1.8;word-break:keep-all;text-wrap:pretty}
+.nw-consulting .consult-feature{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.nw-consulting .consult-feature>div{padding:24px;min-height:155px;background:#f7f7f7;border-radius:16px}
+.nw-consulting .consult-feature strong{font-size:16px;line-height:1.5}
+.nw-consulting .consult-feature p{font-size:14px;line-height:1.7}
 .nw-consulting :is(.consult-program,.consult-profile,.consult-example){border-radius:20px;overflow:hidden}
-.nw-consulting .consult-program{padding:clamp(24px,3vw,36px);margin:16px 0;border:1px solid #eaeaea}
-.nw-consulting .consult-program h3{font-size:clamp(20px,2vw,26px);line-height:1.35;word-break:keep-all}
-.nw-consulting .consult-program p{font-size:16px;line-height:1.75}
-.nw-consulting .consult-card{position:static!important;top:auto!important;width:100%;max-width:960px;order:2;border-radius:22px;padding:clamp(24px,4vw,42px);margin-top:0}
+.nw-consulting .consult-program{border-radius:18px;padding:clamp(24px,2.5vw,34px);border-color:#e8e8e8}
+.nw-consulting .consult-program h3{font-size:clamp(19px,1.6vw,24px);line-height:1.4}
+.nw-consulting .consult-program p{font-size:15px;line-height:1.8}
+.nw-consulting .consult-card{
+  position:sticky!important;top:155px!important;order:initial;
+  width:auto;max-width:none;border-radius:22px;padding:30px;
+}
+.nw-consulting .consult-cta{
+  display:flex;justify-content:center;align-items:center;
+  min-height:54px;padding:15px 20px;border-radius:14px!important;
+}
 .nw-consulting .consult-tabs a{font-size:14px}
-.nw-consulting :is(.consult-card a,.consult-card button){border-radius:12px}
-@media(max-width:760px){
-  .nw-consulting .consult-content{padding-top:56px!important;padding-bottom:80px!important}
-  .nw-consulting .consult-section{padding-bottom:76px}
-  .nw-consulting .consult-hero h1{font-size:clamp(33px,8vw,44px)}
+@media(max-width:950px){
+  .nw-consulting .consult-content{display:flex;flex-direction:column;gap:32px;padding-top:48px!important}
+  .nw-consulting .consult-main{width:100%;order:1}
+  .nw-consulting .consult-card{position:static!important;top:auto!important;width:100%;order:0}
+}
+@media(max-width:600px){
+  .nw-consulting .consult-wrap{padding-left:20px;padding-right:20px}
+  .nw-consulting .consult-feature{grid-template-columns:1fr}
+  .nw-consulting .consult-section{padding-bottom:70px}
   .nw-consulting .consult-hero h1 br,.nw-consulting .consult-section h2 br{display:none}
-  .nw-consulting .consult-feature>div{padding:22px 0}
-  .nw-consulting .consult-card{order:2}
 }
