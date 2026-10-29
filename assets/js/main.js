@@ -65,6 +65,13 @@
     }
   }
 
+  // Design Team: put its scoped stylesheet after late-loaded global sheets.
+  // The page-specific rules otherwise flash briefly and get overwritten.
+  if (body.classList.contains('design-team-page')) {
+    const teamStyles = document.getElementById('nw-team-ui2');
+    if (teamStyles) document.head.appendChild(teamStyles);
+  }
+
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
