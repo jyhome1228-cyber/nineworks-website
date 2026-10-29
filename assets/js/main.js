@@ -178,8 +178,8 @@
           <a href="/crm.html"><span>기업 운영 시스템</span></a>
           <a href="/membership.html"><span>브랜드 운영·관리</span></a>
         </div></div>
-        <div class="site-nav-item"><a href="/solutions.html" data-nav-key="services">SERVICES <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="SERVICES 하위 메뉴">
-          <a href="/solutions.html"><span>서비스 전체보기</span></a>
+        <div class="site-nav-item"><a href="/branding.html" data-nav-key="services">SERVICES <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="SERVICES 하위 메뉴">
+          
           <a href="/branding.html"><span>브랜드 전략·BI/BX</span></a>
           <a href="/develop.html"><span>웹사이트·쇼핑몰</span></a>
           <a href="/package-design.html"><span>패키지 디자인</span></a>
@@ -187,15 +187,6 @@
           <a href="/portfolio.html?filter=detailpage"><span>상세페이지·콘텐츠</span></a>
           <a href="/portfolio.html?filter=editorial"><span>편집디자인·IR/PPT</span></a>
           <a href="/crm.html"><span>기업 시스템·CRM</span></a>
-        </div></div>
-        <div class="site-nav-item"><a href="/solutions.html" data-nav-key="solutions">SOLUTIONS <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="SOLUTIONS 하위 메뉴">
-          <a href="/solutions.html"><span>통합 솔루션 소개</span></a>
-          <a href="/oneplan-solution.html"><span>인플루언서 원플랜</span></a>
-          <a href="/printing-dashboard.html"><span>나인웍스 프린팅</span></a>
-          <a href="/support.html"><span>정부지원사업</span></a>
-          <a href="/crm.html"><span>기업 운영 솔루션</span></a>
-          <a href="/membership.html"><span>상시 디자인 파트너십</span></a>
-          <a href="/ai-model.html"><span>AI 모델 스튜디오</span></a>
         </div></div>
         <div class="site-nav-item"><a href="/portfolio.html?filter=major" data-nav-key="portfolio">PORTFOLIO <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="PORTFOLIO 하위 메뉴">
           <a href="/portfolio.html?filter=major"><span>대표 디자인 프로젝트</span></a>
