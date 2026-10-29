@@ -175,6 +175,10 @@
           <a href="/portfolio.html?filter=ir"><span>IR / PPT</span></a>
           <a href="/portfolio.html?filter=event"><span>행사·전시 디자인</span></a>
         </div></div>
+        <div class="site-nav-item"><a href="/consulting-business.html" data-nav-key="consulting">CONSULTING <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="CONSULTING 하위 메뉴">
+          <a href="/consulting-business.html"><span>AI 비즈니스 업무구조화</span></a>
+          <a href="/consulting-designer.html"><span>AI 디자인·포트폴리오·커리어</span></a>
+        </div></div>
         <div class="site-nav-item"><a href="/magazine.html" data-nav-key="insights">INSIGHTS <span class="site-nav-caret" aria-hidden="true">▾</span></a><div class="site-nav-dropdown" aria-label="INSIGHTS 하위 메뉴">
           <a href="/magazine.html"><span>매거진</span></a>
           <a href="/global-references.html"><span>디자인 연구·인사이트</span></a>
