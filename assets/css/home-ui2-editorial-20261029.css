@@ -1,0 +1,32 @@
+/* NINEWORKS Home editorial UI 2.0 — scoped, no header/popup/script changes */
+body .nw-home-hero .nw-home-introduction{max-width:1280px;margin:0 auto 44px;padding:62px 0 0;text-align:left}
+body .nw-home-hero .nw-home-introduction .eyebrow{font-size:13px;letter-spacing:.08em;color:#777;margin:0 0 20px}
+body .nw-home-hero .nw-home-introduction h1{font-size:clamp(36px,3.6vw,52px);line-height:1.24;letter-spacing:-.045em;font-weight:650;max-width:950px;margin:0;color:#191919;word-break:keep-all;text-wrap:balance}
+body .nw-home-hero .nw-home-introduction p.nw-home-introduction__lead{max-width:760px;font-size:18px;line-height:1.75;margin:25px 0 0;color:#626262;word-break:keep-all;text-wrap:pretty}
+body .nw-home-hero .nw-home-introduction__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+body .nw-home-hero .nw-home-introduction__actions a{display:inline-flex;align-items:center;justify-content:center;min-height:52px;border-radius:14px;padding:12px 22px;font-size:15px;font-weight:600;line-height:1.4;text-decoration:none;border:1px solid #e8e8e8;background:white;color:#191919}
+body .nw-home-hero .nw-home-introduction__actions a:first-child{background:#191919;color:#fff;border-color:#191919}
+body .nw-home-hero .nw-hero-carousel{margin-top:0}
+body .nw-portfolio-categories__intro h2,body .nw-home-about__intro h2,body .nw-section-head h2,body .nw-home-solutions__intro h2,body .nw-home-cta h2{font-size:clamp(29px,2.6vw,39px);font-weight:650;line-height:1.3;letter-spacing:-.042em;word-break:keep-all;text-wrap:balance}
+body .nw-portfolio-categories__intro>p:last-child,body .nw-home-about__intro>p:not(.eyebrow),body .nw-home-solutions__intro-copy,body .nw-home-cta p:not(.eyebrow){font-size:17px;line-height:1.75;color:#666;word-break:keep-all;text-wrap:pretty}
+body .nw-portfolio-categories__intro{margin-bottom:36px}
+body .nw-portfolio-categories__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+body .nw-portfolio-category{min-height:112px;border:1px solid #e8e8e8;border-radius:18px;padding:22px;display:flex;align-items:center;justify-content:space-between;gap:14px;background:#fff;font-size:18px;font-weight:600}
+body .nw-portfolio-category__icon{flex:0 0 auto;opacity:.6}
+body .nw-portfolio-category:hover{background:#f8f8f8;border-color:#d5d5d5}
+body .nw-home-about__gallery figure,body .nw-brand-work-card figure{border-radius:20px;overflow:hidden}
+body .nw-brand-work-grid{gap:18px}
+body .nw-brand-work-card{min-width:0}
+body .nw-brand-work-card strong{font-size:19px}
+body .nw-brand-work-card p{font-size:15px;line-height:1.65}
+body .nw-home-solutions__intro{display:block}
+body .nw-home-solutions__intro h2{max-width:850px}
+body .nw-home-solutions__intro-copy{max-width:760px;margin-top:22px}
+body .nw-home-solutions__grid{gap:14px}
+body .nw-home-solution{border-radius:20px;min-height:275px}
+body .nw-home-solution h3{font-size:25px;line-height:1.35}
+body .nw-home-solution__desc{font-size:15px;line-height:1.7}
+body .nw-home-cta__inner{border:1px solid #e8e8e8;border-radius:24px;padding:44px 48px;gap:36px}
+body .nw-home-cta .nw-button{border-radius:14px;min-height:52px;padding:12px 24px;font-size:15px}
+@media(max-width:1000px){body .nw-portfolio-categories__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){body .nw-home-hero .nw-home-introduction{padding:40px 0 0;margin-bottom:28px}body .nw-home-hero .nw-home-introduction h1{font-size:34px}body .nw-home-hero .nw-home-introduction p.nw-home-introduction__lead{font-size:16px}body .nw-home-hero .nw-home-introduction__actions a{flex:1}body .nw-portfolio-categories__grid{gap:9px}body .nw-portfolio-category{min-height:84px;padding:16px;font-size:16px;border-radius:14px}body .nw-home-solutions__grid{grid-template-columns:1fr}body .nw-home-cta__inner{padding:28px 24px;border-radius:20px}}
