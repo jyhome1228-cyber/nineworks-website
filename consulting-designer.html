@@ -8,6 +8,32 @@
 .nw-consult-ready__close{position:absolute;right:17px;top:15px;display:flex;align-items:center;justify-content:center;border:0;background:none;color:#777;font-size:25px;width:35px;height:35px;border-radius:10px;cursor:pointer}
 .nw-consult-ready__btn{display:block;width:100%;background:#17191c;color:#fff;border:0;border-radius:12px;padding:17px 12px;font:inherit;font-size:13px;cursor:pointer}
 @media(max-width:540px){.nw-consult-ready__panel{padding:52px 24px 28px}}
+
+/* Popup-specific controls: the shared CTA selector does not target these buttons.
+   Explicit selectors override legacy button rules loaded asynchronously. */
+html body.consulting-page #nwConsultReady .nw-consult-ready__panel{
+ border-radius:22px!important;
+ overflow:hidden;
+}
+html body.consulting-page #nwConsultReady button.nw-consult-ready__btn{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ width:100%!important;min-height:52px!important;
+ border:0!important;border-radius:14px!important;
+ background:#191919!important;color:#fff!important;
+ padding:14px 20px!important;font-size:15px!important;font-weight:600!important;
+ box-shadow:none!important;appearance:none!important;
+}
+html body.consulting-page #nwConsultReady button.nw-consult-ready__close{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ position:absolute!important;right:18px!important;top:18px!important;
+ width:38px!important;height:38px!important;
+ padding:0!important;border:0!important;border-radius:12px!important;
+ outline:0;background:transparent!important;color:#777!important;
+ box-shadow:none!important;appearance:none!important;
+ font-size:25px!important;font-weight:400!important;
+}
+html body.consulting-page #nwConsultReady button.nw-consult-ready__close:hover{background:#f3f3f3!important}
+html body.consulting-page #nwConsultReady button:focus-visible{outline:2px solid #191919!important;outline-offset:2px!important}
 </style>
 <div class="nw-consult-ready" id="nwConsultReady" role="dialog" aria-modal="true" aria-labelledby="nwConsultReadyTitle" aria-describedby="nwConsultReadyDesc">
  <div class="nw-consult-ready__panel">
