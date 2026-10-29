@@ -16,12 +16,27 @@
   };
   const hasAsset = (selector, attr, value) => Array.from(document.querySelectorAll(selector))
     .some((node) => assetPath(node.getAttribute(attr) || '') === assetPath(value));
+  // Preserve CSS cascade: legacy shared styles must precede page-specific styles.
+  // Appending them at runtime after inline page CSS caused the 1-second shape flash.
+  const pageStyleAnchor = (() => {
+    const links = Array.from(document.head.querySelectorAll('link[rel="stylesheet"]'));
+    return links.find((node) => !/\/assets\/css\/style\.css(?:\?|$)/.test(
+      new URL(node.href, document.baseURI).pathname + location.search.slice(0,0)
+    )) || document.head.querySelector('style') || null;
+  })();
+  const insertSharedStyle = (node) => {
+    if (pageStyleAnchor && pageStyleAnchor.parentNode === document.head) {
+      document.head.insertBefore(node, pageStyleAnchor);
+    } else {
+      document.head.appendChild(node);
+    }
+  };
   const loadStyle = (href) => {
     if (hasAsset('link[rel="stylesheet"]', 'href', href)) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
-    document.head.appendChild(link);
+    insertSharedStyle(link);
   };
   const loadScript = (src) => {
     if (hasAsset('script[src]', 'src', src)) return;
@@ -45,7 +60,7 @@
     typographyGuard.rel = 'stylesheet';
     typographyGuard.href = '/assets/css/typography-guard-20260820.css?v=20260824-2';
     typographyGuard.dataset.nwTypographyGuard = 'true';
-    document.head.appendChild(typographyGuard);
+    insertSharedStyle(typographyGuard);
   }
   loadStyle('assets/css/nineworks-ui-system.css?v=20261021-1');
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
