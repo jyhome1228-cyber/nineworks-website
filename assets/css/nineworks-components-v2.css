@@ -38,3 +38,34 @@
 @media(prefers-reduced-motion:reduce){
  :is(.about-page,.consulting-page) :is(.about-link,.consult-cta,.nw-ui-button){transition:none}
 }
+
+/* Stable marketing controls: resist legacy runtime CSS overrides. */
+html body.about-page main .about-cta .about-cta__inner{
+ border-radius:24px!important;
+ border:1px solid #e8e8e8!important;
+ background:#fff!important;
+}
+html body.about-page main .about-cta .about-links>a.about-link,
+html body.consulting-page main.nw-consulting .consult-card>a.consult-cta{
+ box-sizing:border-box!important;
+ display:inline-flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ min-height:52px!important;
+ border-radius:14px!important;
+ padding:12px 22px!important;
+ font-size:15px!important;
+ font-weight:600!important;
+ text-decoration:none!important;
+}
+html body.about-page main .about-cta .about-links>a.about-link:not(.about-link--primary){
+ background:#fff!important;color:#191919!important;border:1px solid #e8e8e8!important;
+}
+html body.about-page main .about-cta .about-links>a.about-link--primary,
+html body.consulting-page main.nw-consulting .consult-card>a.consult-cta{
+ background:#191919!important;color:#fff!important;border:1px solid #191919!important;
+}
+html body.consulting-page main.nw-consulting .consult-card{border-radius:20px!important}
+@media(max-width:600px){
+ html body.about-page main .about-cta .about-cta__inner{border-radius:20px!important}
+}
