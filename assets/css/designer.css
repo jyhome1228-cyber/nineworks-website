@@ -574,3 +574,46 @@
  .designer-page .designer-resume-footer{border-radius:20px}
  .designer-page .designer-photo-grid figure{border-radius:16px}
 }
+
+/* Hero alignment correction — isolate the shared centered .develop-center pattern.
+   Every hero child shares one left edge; no inherited auto margins. */
+html body.designer-page main .designer-profile-hero > .container.develop-center{
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ justify-content:flex-start;
+ text-align:left!important;
+ width:min(calc(100% - 80px),1240px);
+ max-width:1240px;
+ margin-inline:auto;
+}
+html body.designer-page main .designer-profile-hero > .container.develop-center > :is(.eyebrow,h1,.designer-profile-role,.develop-hero__lead,.develop-actions,.develop-tags){
+ margin-left:0!important;
+ margin-right:0!important;
+ text-align:left!important;
+ justify-self:start;
+}
+html body.designer-page main .designer-profile-hero > .container.develop-center > .eyebrow{align-self:flex-start}
+html body.designer-page main .designer-profile-hero > .container.develop-center > h1{
+ align-self:flex-start;
+ max-width:950px;
+ width:100%;
+}
+html body.designer-page main .designer-profile-hero > .container.develop-center > .designer-profile-role{align-self:flex-start}
+html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-hero__lead{
+ width:100%;max-width:760px;margin-top:25px!important;
+}
+html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-actions{
+ width:auto;
+ display:flex;justify-content:flex-start;align-items:center;
+ margin-top:34px!important;
+}
+html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-tags{
+ display:flex;align-self:flex-start;justify-content:flex-start;
+ max-width:100%;margin-top:32px!important;
+}
+@media(max-width:640px){
+ html body.designer-page main .designer-profile-hero > .container.develop-center{width:calc(100% - 40px)}
+ html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-actions{width:100%;align-items:stretch}
+ html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-tags{width:100%}
+}
