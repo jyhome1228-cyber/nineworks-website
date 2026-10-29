@@ -52,6 +52,18 @@
   loadStyle('assets/css/mobile-final-20261008.css?v=20261021-1');
   loadStyle('/assets/css/nineworks-renewal-20261026.css?v=3');
 
+  // Keep page-specific UI 2.0 last in the cascade.
+  // Legacy stylesheets are injected above at runtime; without this,
+  // buttons/cards may visibly revert after the page first renders.
+  if (body.classList.contains('about-page') || body.classList.contains('consulting-page')) {
+    const componentCss = document.querySelector('link[href*="nineworks-components-v2.css"]');
+    if (componentCss) {
+      document.head.appendChild(componentCss);
+    } else {
+      loadStyle('/assets/css/nineworks-components-v2.css?v=20261029-2');
+    }
+  }
+
   loadScript('assets/js/seo.js?v=20260811-3');
   loadScript('assets/js/site-firebase.js?v=20260819-1');
   if (pageKey === 'designer') loadScript('assets/js/designer-projects-v1.js?v=20260811-1');
