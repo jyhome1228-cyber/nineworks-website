@@ -1,0 +1,40 @@
+/* NINEWORKS UI 2.0 — shared marketing components. 2026-10-29
+   Scope: public About and consulting landing pages. Extend by opting in,
+   never blanket-style forms, admin interfaces or project-specific layouts. */
+:root{
+ --nw-ui-ink:#191919;--nw-ui-line:#e8e8e8;--nw-ui-muted:#666;
+ --nw-ui-card-radius:20px;--nw-ui-cta-radius:24px;
+ --nw-ui-button-radius:14px;--nw-ui-button-height:52px;
+}
+:is(.about-page,.consulting-page) :is(.about-link,.consult-cta,.nw-ui-button){
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:var(--nw-ui-button-height);border-radius:var(--nw-ui-button-radius)!important;
+ font-size:15px;font-weight:600;line-height:1.4;
+ padding:12px 22px;text-decoration:none;
+ transition:background-color .2s ease,border-color .2s ease,color .2s ease;
+}
+.about-page .about-link:not(.about-link--primary){
+ background:#fff;color:var(--nw-ui-ink);border:1px solid var(--nw-ui-line);
+}
+:is(.about-page,.consulting-page) :is(.about-link--primary,.consult-cta){
+ background:var(--nw-ui-ink);border:1px solid var(--nw-ui-ink);
+ color:#fff!important;
+}
+:is(.about-page,.consulting-page) :is(.about-link--primary,.consult-cta):hover{background:#333;border-color:#333;color:#fff}
+.about-page .about-link:not(.about-link--primary):hover{background:#f7f7f7;border-color:#ccc}
+.about-page .about-cta__inner{border:1px solid var(--nw-ui-line);border-radius:var(--nw-ui-cta-radius)!important;padding:46px 48px;gap:36px;background:#fff}
+.about-page .about-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.about-page .about-links .about-link{min-width:140px;white-space:nowrap}
+.consulting-page .nw-consulting :is(.consult-card,.consult-profile,.consult-example){border-radius:var(--nw-ui-card-radius)!important}
+.consulting-page .nw-consulting :is(.consult-feature>div,.consult-program){border-radius:18px}
+.consulting-page .nw-consulting .consult-cta{width:100%}
+:is(.about-page,.consulting-page) :is(a,button):focus-visible{outline:2px solid #191919;outline-offset:3px}
+@media(max-width:950px){.about-page .about-cta__inner{padding:34px 30px}}
+@media(max-width:600px){
+ .about-page .about-cta__inner{padding:28px 24px}
+ .about-page .about-links{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .about-page .about-links .about-link{min-width:0;white-space:normal;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+ :is(.about-page,.consulting-page) :is(.about-link,.consult-cta,.nw-ui-button){transition:none}
+}
