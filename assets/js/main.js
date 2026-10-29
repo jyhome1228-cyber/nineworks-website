@@ -66,6 +66,7 @@
   loadStyle('assets/css/header-integrity-20260922.css?v=20260922-1');
   loadStyle('assets/css/mobile-final-20261008.css?v=20261021-1');
   loadStyle('/assets/css/nineworks-renewal-20261026.css?v=3');
+  if (!body.matches('.admin-page,.proposal-page,.partners-page,.member-page')) loadStyle('/assets/css/header-unified-20261030.css?v=1');
   if (!body.matches('.admin-page,.proposal-page,.partners-page,.member-page')) loadStyle('/assets/css/nineworks-cta-global-20261029.css?v=1');
 
   // Keep page-specific UI 2.0 last in the cascade.
