@@ -180,3 +180,55 @@
  .performance-page .pf-bar-value{font-size:12px}
  .performance-page .pf-table td{font-size:14px}
 }
+
+/* Company status UI 2.0 — typography, readable data, soft corners */
+.performance-page{--pf-border:#e8e8e8;--pf-muted:#666;background:#fff}
+.performance-page .pf-container{width:min(1200px,calc(100% - 80px))}
+.performance-page .pf-hero{padding:104px 0 88px}
+.performance-page .pf-hero__meta{margin-bottom:34px}
+.performance-page :is(.pf-kicker,.pf-index,.pf-label){font-size:13px;line-height:1.5;letter-spacing:.065em}
+.performance-page .pf-hero__grid{grid-template-columns:minmax(0,1fr);gap:24px}
+.performance-page .pf-hero h1{max-width:none;font-size:clamp(36px,3.5vw,52px);font-weight:650;line-height:1.25;letter-spacing:-.045em}
+.performance-page .pf-hero__copy{font-size:18px;line-height:1.8;max-width:760px;word-break:keep-all;text-wrap:pretty}
+.performance-page .pf-summary{padding:28px 0 0;border-bottom:0}
+.performance-page .pf-summary__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.performance-page .pf-stat,.performance-page .pf-stat:first-child{min-height:172px;padding:27px 24px;border:1px solid var(--pf-border);border-radius:20px;background:#fff}
+.performance-page .pf-stat strong{font-size:clamp(25px,2.3vw,34px);font-weight:650;line-height:1.2}
+.performance-page .pf-stat span{font-size:14px;line-height:1.65;letter-spacing:-.01em}
+.performance-page .pf-section{padding:95px 0}
+.performance-page .pf-section__head{grid-template-columns:190px minmax(0,1fr);gap:44px;margin-bottom:44px}
+.performance-page .pf-section__title h2{max-width:830px;font-size:clamp(29px,2.55vw,38px);font-weight:650;line-height:1.3;letter-spacing:-.04em;word-break:keep-all;text-wrap:balance}
+.performance-page .pf-section__title p{max-width:760px;font-size:17px;line-height:1.75;word-break:keep-all;text-wrap:pretty}
+.performance-page :is(.pf-company-card,.pf-registration-card,.pf-transaction,.pf-chart,.pf-source__box,.pf-growth-note){border-radius:20px;overflow:hidden;border-color:var(--pf-border)}
+.performance-page .pf-table-wrap{border-radius:18px;overflow-x:auto;border:1px solid var(--pf-border)}
+.performance-page .pf-table{min-width:690px}
+.performance-page .pf-table :is(th,td){font-size:15px;line-height:1.65}
+.performance-page .pf-chart{padding:32px}
+.performance-page .pf-bar-track{border-radius:8px}
+.performance-page .pf-bar-fill{border-radius:8px}
+.performance-page .pf-bar-year{font-size:15px}
+.performance-page .pf-bar-value{font-size:15px;font-weight:600}
+.performance-page .pf-company-card p,.performance-page .pf-registration-card p,.performance-page .pf-transaction p,.performance-page .pf-source p,.performance-page .pf-source__box span{font-size:15px;line-height:1.75}
+.performance-page .pf-note{font-size:14px;line-height:1.7}
+@media(max-width:1000px){
+ .performance-page .pf-summary__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .performance-page .pf-section__head{grid-template-columns:1fr;gap:20px}
+}
+@media(max-width:650px){
+ .performance-page .pf-container{width:calc(100% - 40px)}
+ .performance-page .pf-hero{padding:72px 0 60px}
+ .performance-page .pf-hero__meta{flex-direction:column;gap:6px}
+ .performance-page .pf-hero h1{font-size:34px}
+ .performance-page .pf-hero__copy{font-size:16px}
+ .performance-page .pf-summary__grid{gap:10px}
+ .performance-page .pf-stat,.performance-page .pf-stat:first-child{min-height:150px;padding:20px 16px;border-radius:16px}
+ .performance-page .pf-stat strong{font-size:25px}
+ .performance-page .pf-stat span{font-size:13px}
+ .performance-page .pf-section{padding:68px 0}
+ .performance-page .pf-section__title h2{font-size:28px}
+ .performance-page .pf-section__title p{font-size:16px}
+ .performance-page :is(.pf-company-card,.pf-registration-card,.pf-transaction,.pf-chart,.pf-source__box){border-radius:16px}
+ .performance-page .pf-chart{padding:20px 16px}
+ .performance-page .pf-bar-row{grid-template-columns:42px minmax(0,1fr);gap:8px}
+ .performance-page .pf-bar-value{grid-column:2;text-align:left}
+}
