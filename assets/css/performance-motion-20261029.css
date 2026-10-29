@@ -1,0 +1,4 @@
+/* Subtle entry motion; default remains visible if scripts fail */
+.performance-page .pf-motion-ready{opacity:0;transform:translateY(14px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+.performance-page .pf-motion-ready.pf-motion-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.performance-page .pf-motion-ready{opacity:1;transform:none;transition:none!important}.performance-page .pf-bar-fill{transition:none!important;transform:none!important}}
