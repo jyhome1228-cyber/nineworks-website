@@ -1,0 +1,24 @@
+/* NINEWORKS public-site CTA standard, 2026-10-29.
+   Explicit CTA classes only; excludes admin, members, proposal, forms and menu controls. */
+:root{--nw-cta-radius:14px;--nw-cta-height:52px}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page)
+:is(main a,main button):is(
+ .cta,.cta-button,.btn-primary,.btn-secondary,.button-primary,.button-secondary,
+ .nw-button,.nw-cta,.nw-cta-button,.about-link,.consult-cta,
+ .project-cta,.service-cta,.contact-cta,.primary-cta,.secondary-cta,
+ .company-button,.nw-support-primary,.nw-support-secondary
+){
+ border-radius:var(--nw-cta-radius)!important;
+ min-height:var(--nw-cta-height);
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page)
+:is(main a,main button)[class*="cta-"]:not([class*="cta__"]):not([class*="cta-wrap"]):not([class*="cta-card"]):not([class*="cta-box"]):not([class*="cta-section"]):not([class*="cta-group"]){
+ border-radius:var(--nw-cta-radius)!important;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page)
+:is(main a,main button):is([class$="-cta"],[class$="-button"]):not(.menu-trigger):not(.menu-nav__toggle){
+ border-radius:var(--nw-cta-radius)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ body:not(.admin-page):not(.proposal-page) main a{transition-duration:0s}
+}
