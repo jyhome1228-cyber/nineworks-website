@@ -52,6 +52,37 @@
 .design-team-page .team-partner-card__button{border-radius:14px!important;font-size:15px;min-height:52px}
 @media(max-width:800px){.design-team-page .team-grid{grid-template-columns:1fr}.design-team-page .team-overview__head{display:block}.design-team-page .team-overview__head>p:last-child{margin-top:16px;text-align:left}}
 @media(max-width:600px){.design-team-page .team-hero{padding:76px 0}.design-team-page .team-hero h1{font-size:34px}.design-team-page .team-hero__lead{font-size:16px}.design-team-page .team-overview{padding:70px 0}.design-team-page .team-card{padding:26px;border-radius:18px!important}.design-team-page .team-card__summary{font-size:15px}.design-team-page .team-card__facts dd{font-size:14px}.design-team-page .team-principles{padding:70px 0}}
+
+/* Definitive team UI: only visual panels, not navigation or forms. */
+html body.design-team-page main .team-grid > article.team-card{
+ border-radius:20px!important;
+ overflow:hidden!important;
+ background:#fff;
+}
+html body.design-team-page main .team-grid > article.team-card--lead{background:#f8f8f8}
+html body.design-team-page main .team-principles__grid > article{
+ border-radius:20px!important;
+ overflow:hidden!important;
+}
+html body.design-team-page main .team-partner-cta .team-partner-card{
+ border-radius:24px!important;
+ overflow:hidden!important;
+}
+html body.design-team-page main .team-partner-card__media{
+ border-radius:20px!important;
+ overflow:hidden!important;
+}
+html body.design-team-page main .team-partner-card__button{
+ display:inline-flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ min-height:52px!important;
+ border-radius:14px!important;
+ padding:12px 22px!important;
+}
+@media(max-width:600px){
+ html body.design-team-page main .team-grid > article.team-card{border-radius:18px!important}
+}
 </style></head>
 <body class="design-team-page">
   <div class="site-shell">
@@ -181,6 +212,6 @@
 
     <footer class="site-footer container"></footer>
   </div>
-  <script src="assets/js/main.js?v=team-ui2-20261029"></script>
+  <script src="assets/js/main.js?v=team-cascade-20261029-2"></script>
 </body>
 </html>
