@@ -1205,3 +1205,60 @@ body:not(.printing-home-page) .site-shell{
 body:not(.printing-home-page) .menu-overlay{
   z-index:990!important;
 }
+
+
+/* NINEWORKS UI 2.0 — public-site foundation, 2026-10-29.
+   Text rhythm, Korean word wrapping, calm surfaces and selective rounding.
+   Keep internal admin, proposals and form controls unmodified. */
+:root{
+  --nw2-ink:#191919;--nw2-secondary:#626262;--nw2-surface:#f7f7f7;
+  --nw2-line:#e8e8e8;--nw2-radius-sm:12px;--nw2-radius:18px;
+  --nw2-radius-lg:24px;--nw2-read:720px;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) {
+  -webkit-font-smoothing:antialiased;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main :is(h1,h2,h3) {
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  text-wrap:balance;
+  letter-spacing:-.04em;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main p {
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  text-wrap:pretty;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main :is(.section-title,.page-title) {
+  line-height:1.25;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main :is(.button,.btn,.btn-primary,.nw-button,.cta-button,.about-link,.consult-btn) {
+  border-radius:var(--nw2-radius-sm);
+  min-height:44px;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main :is(.project-card__visual,.portfolio-card__media,.nw-home-about__gallery figure,.nw-home-solution,.about-benefit,.about-cta__inner,.consult-feature,.consult-program) {
+  border-radius:var(--nw2-radius);
+  overflow:hidden;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main img {
+  max-width:100%;
+}
+body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) :is(a,button):focus-visible {
+  outline:2px solid var(--nw2-ink);
+  outline-offset:3px;
+}
+@media (max-width:767px){
+  body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main :is(h1,h2,h3){
+    text-wrap:balance;
+  }
+  body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) main .nw-desktop-break{
+    display:none;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  body:not(.admin-page):not(.proposal-page):not(.partners-page):not(.member-page) :is(a,button){
+    transition:none!important;
+  }
+}
