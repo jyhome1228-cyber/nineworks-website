@@ -44,3 +44,53 @@
   .nw-consulting .consult-section{padding-bottom:70px}
   .nw-consulting .consult-hero h1 br,.nw-consulting .consult-section h2 br{display:none}
 }
+
+/* UI 2.0 type calibration: restrained, coherent type scale */
+.nw-consulting{
+ --consult-display:clamp(36px,3.2vw,48px);
+ --consult-heading:clamp(28px,2.35vw,36px);
+ --consult-subheading:clamp(21px,1.6vw,25px);
+ --consult-body:17px;
+ --consult-meta:14px;
+}
+.nw-consulting .consult-hero h1{font-size:var(--consult-display);line-height:1.28;letter-spacing:-.045em;max-width:900px}
+.nw-consulting .consult-hero p{font-size:18px;line-height:1.7;max-width:770px}
+.nw-consulting .consult-eyebrow,.nw-consulting .consult-num{font-size:13px;line-height:1.5;letter-spacing:.07em;margin-bottom:20px}
+.nw-consulting .consult-section h2{font-size:var(--consult-heading);font-weight:650;line-height:1.32;margin-bottom:24px}
+.nw-consulting .consult-section .consult-lead,.nw-consulting .consult-profile p{font-size:var(--consult-body);line-height:1.75}
+.nw-consulting .consult-steps strong{font-size:var(--consult-subheading);font-weight:650;line-height:1.4;margin-bottom:10px}
+.nw-consulting .consult-steps p{font-size:16px;line-height:1.75}
+.nw-consulting .consult-steps li{padding:28px 0}
+.nw-consulting .consult-note{border-radius:14px;font-size:15px;line-height:1.75;padding:24px 28px}
+.nw-consulting .consult-profile h3,.nw-consulting .consult-card h3{font-size:var(--consult-subheading);line-height:1.4}
+.nw-consulting .consult-profile .role,.nw-consulting .consult-profile dl div{font-size:15px;line-height:1.7}
+.nw-consulting .consult-card li{font-size:15px;line-height:1.7}
+.nw-consulting .consult-card .tag{font-size:13px}
+.nw-consulting .consult-card small{font-size:13px;line-height:1.7}
+.nw-consulting .consult-cta{font-size:16px;font-weight:600}
+.nw-consulting .consult-example{min-height:230px;padding:32px}
+.nw-consulting .consult-example p{font-size:clamp(20px,1.8vw,25px);line-height:1.5}
+.nw-consulting .consult-example .label{font-size:13px}
+.nw-consulting .consult-faq details{padding:0;border-bottom:1px solid #e7e7e7}
+.nw-consulting .consult-faq summary{position:relative;list-style:none;cursor:pointer;font-size:18px;font-weight:600;line-height:1.5;padding:22px 38px 22px 0}
+.nw-consulting .consult-faq summary::-webkit-details-marker{display:none}
+.nw-consulting .consult-faq summary::after{content:'+';position:absolute;right:5px;top:50%;transform:translateY(-50%);font-size:23px;font-weight:400;color:#777}
+.nw-consulting .consult-faq details[open] summary::after{content:'−'}
+.nw-consulting .consult-faq details p{font-size:16px;line-height:1.75;color:#555;padding:0 28px 24px 0}
+.nw-consulting .consult-cross{font-size:16px;line-height:1.7;margin-top:32px}
+.nw-consulting .consult-cross a{text-underline-offset:4px}
+.nw-consulting .consult-section{padding-bottom:88px}
+@media(max-width:950px){
+ .nw-consulting .consult-card{max-width:100%}
+}
+@media(max-width:600px){
+ .nw-consulting{--consult-display:34px;--consult-heading:28px;--consult-subheading:21px;--consult-body:16px}
+ .nw-consulting .consult-hero h1{font-size:var(--consult-display);line-height:1.3}
+ .nw-consulting .consult-hero p{font-size:16px;line-height:1.7}
+ .nw-consulting .consult-section h2{font-size:var(--consult-heading)}
+ .nw-consulting .consult-faq summary{font-size:17px;padding:19px 34px 19px 0}
+ .nw-consulting .consult-faq details p{font-size:15px}
+ .nw-consulting .consult-steps strong{font-size:20px}
+ .nw-consulting .consult-steps p{font-size:15px}
+ .nw-consulting .consult-note{font-size:14px;padding:20px}
+}
