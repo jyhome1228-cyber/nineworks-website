@@ -99,3 +99,84 @@
   .pf-registration-card{min-height:0;padding:22px}
   .pf-registration-card h3{margin-top:46px;font-size:21px}
 }
+
+/* Performance UI 2.0 — scoped editorial and financial data readability. */
+.performance-page{--pf-line:#e8e8e8;--pf-muted:#606060;--pf-radius:20px;background:#fff;color:#191919}
+.performance-page .pf-container{width:min(1200px,calc(100% - 80px))}
+.performance-page .pf-hero{padding:108px 0 94px}
+.performance-page .pf-hero__meta{margin-bottom:36px}
+.performance-page :is(.pf-kicker,.pf-index,.pf-label){font-size:13px;line-height:1.5;letter-spacing:.06em}
+.performance-page .pf-hero__grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px;align-items:start}
+.performance-page .pf-hero h1{font-size:clamp(36px,3.7vw,52px);line-height:1.24;font-weight:650;letter-spacing:-.04em;max-width:none;word-break:keep-all}
+.performance-page .pf-hero__copy{font-size:17px;line-height:1.75;color:var(--pf-muted);max-width:650px;text-wrap:pretty}
+.performance-page .pf-summary{padding:42px 0 48px}
+.performance-page .pf-summary__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.performance-page .pf-stat,.performance-page .pf-stat:first-child,.performance-page .pf-stat:nth-child(3){border:1px solid var(--pf-line);border-radius:20px;min-height:172px;padding:28px 24px;gap:26px}
+.performance-page .pf-stat strong{font-size:clamp(26px,2.3vw,36px);font-weight:650;line-height:1.2}
+.performance-page .pf-stat span{font-size:14px;line-height:1.65}
+.performance-page .pf-section{padding:100px 0}
+.performance-page .pf-section__head{grid-template-columns:150px minmax(0,1fr);gap:44px;margin-bottom:44px}
+.performance-page .pf-section__title h2{max-width:850px;font-size:clamp(29px,2.7vw,38px);font-weight:650;line-height:1.32;text-wrap:balance;word-break:keep-all}
+.performance-page .pf-section__title p{font-size:17px;line-height:1.75;max-width:750px}
+.performance-page .pf-company-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;border:0}
+.performance-page .pf-company-card{border:1px solid var(--pf-line);border-radius:20px;min-height:175px;padding:28px}
+.performance-page .pf-company-card>span,.performance-page .pf-registration-card span{font-size:13px}
+.performance-page .pf-company-card strong{font-size:24px;font-weight:650;margin-top:30px}
+.performance-page .pf-company-card p{font-size:15px;line-height:1.7}
+.performance-page .pf-chart{border:1px solid var(--pf-line);border-radius:20px;padding:36px}
+.performance-page .pf-chart__rows{gap:26px}
+.performance-page .pf-bar-row{grid-template-columns:62px minmax(0,1fr) 160px}
+.performance-page .pf-bar-year{font-size:15px}
+.performance-page .pf-bar-value{font-size:16px;font-weight:600}
+.performance-page .pf-bar-track{height:26px;border-radius:8px}
+.performance-page .pf-bar-fill{border-radius:8px}
+.performance-page .pf-table-wrap{border:1px solid var(--pf-line);border-radius:18px;overflow-x:auto}
+.performance-page .pf-table{border-top:0;min-width:790px}
+.performance-page .pf-table th{font-size:13px}
+.performance-page .pf-table td{font-size:15px;line-height:1.6}
+.performance-page .pf-table th,.performance-page .pf-table td{padding:21px 18px}
+.performance-page .pf-transactions{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;border:0}
+.performance-page .pf-transaction{border:1px solid var(--pf-line);border-radius:20px;min-height:185px;padding:28px}
+.performance-page .pf-transaction__period{font-size:13px;margin-bottom:30px}
+.performance-page .pf-transaction strong{font-size:26px;font-weight:650}
+.performance-page .pf-transaction dt,.performance-page .pf-transaction dd{font-size:15px}
+.performance-page .pf-registration-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;border:0}
+.performance-page .pf-registration-card{border:1px solid var(--pf-line);border-radius:20px;min-height:215px;padding:30px}
+.performance-page .pf-registration-card em{font-size:13px}
+.performance-page .pf-registration-card h3{font-size:23px;font-weight:650;margin:45px 0 12px}
+.performance-page .pf-registration-card p{font-size:16px;line-height:1.75}
+.performance-page .pf-note{font-size:14px;line-height:1.7}
+.performance-page .pf-source{grid-template-columns:150px minmax(0,1.1fr) minmax(280px,.8fr);gap:40px}
+.performance-page .pf-source h2{font-size:30px;font-weight:650;line-height:1.35}
+.performance-page .pf-source p{font-size:16px;line-height:1.75}
+.performance-page .pf-source__box{border:1px solid var(--pf-line);border-radius:20px;padding:28px}
+.performance-page .pf-source__box strong{font-size:22px;font-weight:650}
+.performance-page .pf-source__box span{font-size:14px;line-height:1.75}
+.performance-page .pf-update{font-size:12px;line-height:1.6}
+@media(max-width:980px){
+ .performance-page .pf-container{width:calc(100% - 48px)}
+ .performance-page .pf-hero__grid,.performance-page .pf-source{grid-template-columns:1fr;gap:24px}
+ .performance-page .pf-section__head{grid-template-columns:1fr;gap:18px}
+ .performance-page .pf-summary__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+ .performance-page .pf-container{width:calc(100% - 40px)}
+ .performance-page .pf-hero{padding:75px 0 60px}
+ .performance-page .pf-hero h1{font-size:34px}
+ .performance-page .pf-hero__copy{font-size:16px}
+ .performance-page .pf-summary{padding:28px 0}
+ .performance-page .pf-summary__grid{gap:10px}
+ .performance-page .pf-stat,.performance-page .pf-stat:first-child,.performance-page .pf-stat:nth-child(3){min-height:140px;padding:19px 16px;border-radius:16px}
+ .performance-page .pf-stat strong{font-size:clamp(20px,5vw,27px)}
+ .performance-page .pf-stat span{font-size:12px}
+ .performance-page .pf-section{padding:73px 0}
+ .performance-page .pf-section__title h2{font-size:28px}
+ .performance-page .pf-section__title p{font-size:16px}
+ .performance-page .pf-company-grid,.performance-page .pf-transactions,.performance-page .pf-registration-grid{grid-template-columns:1fr}
+ .performance-page :is(.pf-company-card,.pf-transaction,.pf-registration-card){border-radius:18px}
+ .performance-page .pf-chart{padding:22px 16px}
+ .performance-page .pf-bar-row{grid-template-columns:42px minmax(0,1fr) 108px;gap:10px}
+ .performance-page .pf-bar-year{font-size:13px}
+ .performance-page .pf-bar-value{font-size:12px}
+ .performance-page .pf-table td{font-size:14px}
+}
