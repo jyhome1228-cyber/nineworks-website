@@ -617,3 +617,62 @@ html body.designer-page main .designer-profile-hero > .container.develop-center 
  html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-actions{width:100%;align-items:stretch}
  html body.designer-page main .designer-profile-hero > .container.develop-center > .develop-tags{width:100%}
 }
+
+
+/* Resume responsive layout refinement — 2026-10-31 */
+@media (max-width:950px){
+  .designer-page .designer-resume-group{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    column-gap:0;
+    row-gap:0;
+    padding:44px 0;
+  }
+  .designer-page .designer-resume-title{
+    grid-row:auto;
+    grid-column:1;
+    position:static;
+    margin-bottom:22px;
+  }
+  .designer-page .designer-record-list,
+  .designer-page .designer-resume-subtitle{grid-column:1;min-width:0}
+  .designer-page .designer-resume-subtitle{margin-top:30px}
+  .designer-page .designer-record{min-width:0}
+  .designer-page .designer-record>strong,
+  .designer-page .designer-record>p{min-width:0;overflow-wrap:anywhere}
+}
+@media (max-width:640px){
+  .designer-page .designer-resume{padding:64px 0}
+  .designer-page .designer-resume-head{gap:22px;padding-bottom:28px}
+  .designer-page .designer-resume-head h2{font-size:clamp(28px,7.5vw,34px)}
+  .designer-page .designer-resume-group{padding:32px 0}
+  .designer-page .designer-resume-title{margin-bottom:17px}
+  .designer-page .designer-resume-title>span{margin-bottom:8px}
+  .designer-page .designer-resume-title h3{font-size:21px}
+  .designer-page .designer-resume-title p{font-size:12px}
+  .designer-page .designer-record{
+    grid-template-columns:72px minmax(0,1fr);
+    column-gap:12px;
+    row-gap:5px;
+    padding:17px 0;
+  }
+  .designer-page .designer-record time{font-size:12px}
+  .designer-page .designer-record>strong{font-size:14px;line-height:1.5}
+  .designer-page .designer-record>strong small{font-size:11px;line-height:1.5}
+  .designer-page .designer-record>p{
+    grid-column:2;
+    margin:0;
+    font-size:13px;
+    line-height:1.65;
+  }
+  .designer-page .designer-record>p b{font-size:13px}
+  .designer-page .designer-resume-subtitle{font-size:15px}
+  .designer-page .designer-resume-footer{gap:16px;padding:20px}
+  .designer-page .designer-resume-footer p{font-size:14px}
+  .designer-page .designer-resume-footer .develop-button{max-width:100%}
+}
+@media (max-width:380px){
+  .designer-page .designer-record{grid-template-columns:64px minmax(0,1fr);column-gap:10px}
+  .designer-page .designer-record>strong{font-size:13px}
+  .designer-page .designer-record>p{font-size:12.5px}
+}
