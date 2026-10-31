@@ -262,11 +262,7 @@
     group.append(button, sub);
     mobileNav.appendChild(group);
   });
-  const inquiry = document.createElement('a');
-  inquiry.className = 'menu-nav__main';
-  inquiry.href = '/contact.html';
-  inquiry.textContent = '프로젝트 문의';
-  mobileNav.appendChild(inquiry);
+  // CONTACT already exists in the primary navigation; avoid a duplicate mobile link.
   overlay.replaceChildren(mobileNav);
   const utility = document.createElement('div');
   utility.className = 'menu-business-cta';
@@ -322,17 +318,18 @@
     about:'about', designer:'about', 'design-team':'about', performance:'about', partners:'about', 'with-us':'about', recruit:'about', 'design-academy':'about',
     'branding-projects':'projects', 'website-projects':'projects', 'package-projects':'projects',
     project:'portfolio', portfolio:'portfolio', 'portfolio-detail':'portfolio', 'local-branding':'portfolio', 'local-branding-detail':'portfolio',
-    solutions:'solutions', 'oneplan-solution':'solutions', support:'solutions', 'printing-dashboard':'solutions', print:'solutions',
-    'print-editorial':'solutions', 'print-partner':'solutions', 'package-production':'solutions', 'package-sample':'solutions', production:'solutions', 'ai-model':'solutions',
+    solutions:'services', 'oneplan-solution':'services', support:'services', 'printing-dashboard':'services', print:'services',
+    'print-editorial':'services', 'print-partner':'services', 'package-production':'services', 'package-sample':'services', production:'services', 'ai-model':'services',
     develop:'services', crm:'services', branding:'services', 'package-design':'services', membership:'services', 'signature-project':'services', 'client-register':'services',
     magazine:'insights', 'magazine-detail':'insights', 'global-references':'insights', process:'insights', 'project-operation':'insights',
+    'consulting-business':'consulting', 'consulting-designer':'consulting',
     contact:'contact'
   };
   let activeNav = navMap[pageKey] || (pageKey.startsWith('portfolio-') ? 'portfolio' : null);
   if (pageKey === 'develop' && window.location.hash === '#develop-process') activeNav = 'services';
   if (body.classList.contains('about-page')) activeNav = 'about';
   else if (body.classList.contains('process-overview-page')) activeNav = 'process';
-  else if (body.classList.contains('solutions-page')) activeNav = 'solutions';
+  else if (body.classList.contains('solutions-page')) activeNav = 'services';
   else if (body.classList.contains('portfolio-detail-page')) activeNav = 'portfolio';
   document.querySelectorAll('.site-primary-nav [data-nav-key]').forEach((link) => {
     const active = link.dataset.navKey === activeNav;
