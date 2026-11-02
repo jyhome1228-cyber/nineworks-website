@@ -1,0 +1,58 @@
+/* NINEWORKS Portfolio editorial refinement — 2026-11-02 */
+/* Keep category controls and JS rendering unchanged. */
+@media(min-width:981px){
+  html body.portfolio-page .portfolio-hero.container{
+    display:block!important;
+    min-height:0!important;
+    padding-top:62px!important;
+    padding-bottom:44px!important;
+  }
+  html body.portfolio-page .portfolio-hero>div{max-width:none!important}
+  html body.portfolio-page .portfolio-hero__copy{
+    width:auto!important;max-width:640px!important;
+    margin:20px 0 0!important;font-size:16px!important;line-height:1.65!important;
+  }
+  html body.portfolio-page .portfolio-index-head.container{
+    display:flex!important;align-items:baseline!important;justify-content:space-between!important;
+    gap:24px!important;padding-top:37px!important;padding-bottom:24px!important;
+  }
+  html body.portfolio-page .portfolio-index-head__title{display:flex!important;align-items:baseline!important;gap:20px!important}
+  html body.portfolio-page .portfolio-index-head__meta{display:flex!important;align-items:baseline!important;gap:20px!important}
+  html body.portfolio-page .portfolio-index-head__meta p{display:none!important}
+  html body.portfolio-page .portfolio-list{padding-top:27px!important}
+}
+html body.portfolio-page .portfolio-index-head__title>.eyebrow{display:none!important}
+html body.portfolio-page .portfolio-index-head h2{
+  max-width:none!important;margin:0!important;font-size:clamp(27px,2.5vw,38px)!important;
+  font-weight:500!important;line-height:1.2!important;letter-spacing:-.05em!important;
+}
+html body.portfolio-page .portfolio-index-head__count{
+  font-size:12px!important;color:#777!important;letter-spacing:.02em!important;
+}
+html body.portfolio-page .portfolio-hero .page-title{margin:10px 0 0!important}
+html body.portfolio-page .category-nav.portfolio-filter{
+  width:min(calc(100% - 48px),1440px)!important;max-width:1440px!important;
+  margin-left:auto!important;margin-right:auto!important;
+}
+@media(max-width:980px){
+ html body.portfolio-page .portfolio-hero.container{
+   display:block!important;min-height:0!important;padding-top:48px!important;padding-bottom:32px!important;
+ }
+ html body.portfolio-page .portfolio-hero__copy{
+   margin:16px 0 0!important;max-width:600px!important;font-size:15px!important;line-height:1.65!important;
+ }
+ html body.portfolio-page .portfolio-index-head.container{
+   display:flex!important;gap:12px!important;flex-wrap:wrap!important;align-items:baseline!important;
+   padding-top:28px!important;padding-bottom:20px!important;
+ }
+ html body.portfolio-page .portfolio-index-head__meta p{display:none!important}
+ html body.portfolio-page .portfolio-index-head__meta{display:flex!important;align-items:baseline!important}
+ html body.portfolio-page .portfolio-list{padding-top:22px!important}
+}
+@media(max-width:760px){
+ html body.portfolio-page .portfolio-hero.container{padding-top:34px!important;padding-bottom:26px!important}
+ html body.portfolio-page .portfolio-index-head.container{justify-content:space-between!important}
+ html body.portfolio-page .portfolio-index-head h2{font-size:29px!important}
+ html body.portfolio-page .portfolio-hero__copy{font-size:14px!important}
+ html body.portfolio-page .category-nav.portfolio-filter{width:calc(100% - 32px)!important}
+}
