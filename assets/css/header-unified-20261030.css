@@ -7,9 +7,9 @@
  }
  html body:not(.admin-page):not(.proposal-page) .site-shell > .site-header .site-header__main{
    display:flex!important;align-items:center!important;justify-content:space-between!important;
-   box-sizing:border-box!important;width:100%!important;max-width:1440px!important;
+   box-sizing:border-box!important;width:min(calc(100% - 48px),1440px)!important;max-width:1440px!important;
    min-height:74px!important;height:74px!important;margin:0 auto!important;
-   padding:0 clamp(24px,3vw,48px)!important;gap:36px!important;
+   padding:0!important;gap:36px!important;
  }
  html body:not(.admin-page):not(.proposal-page) .site-shell > .site-header .site-logo{
    margin:0!important;flex:0 0 auto!important;
