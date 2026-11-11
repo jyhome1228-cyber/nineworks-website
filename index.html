@@ -96,9 +96,9 @@ body.modal-open{overflow:hidden}
 <div class="modal-field"><label for="interestName">담당자명</label><input id="interestName" name="name" autocomplete="name" required maxlength="60"></div>
 <div class="modal-field"><label for="interestEmail">이메일</label><input id="interestEmail" type="email" name="email" autocomplete="email" required maxlength="150"></div>
 <div class="modal-field"><label for="interestCategory">관심 분야</label><select id="interestCategory" name="category" required><option value="">선택해 주세요</option><option>브랜딩·아이덴티티</option><option>패키지 디자인</option><option>웹사이트·디지털</option><option>상세페이지·콘텐츠</option><option>기획·운영·기타</option></select></div>
-<label class="modal-consent"><input type="checkbox" required><span>2027년 프로젝트 사전 등록 안내를 위해 기재한 정보를 이메일로 전달하는 데 동의합니다. 사전 등록은 계약이나 프로젝트 진행 확정을 의미하지 않습니다.</span></label>
-<button class="modal-submit" type="submit">2027 프로젝트 사전 등록 요청</button>
-<p class="modal-hint">제출을 누르면 이메일 앱이 열립니다. 메일을 직접 발송해야 요청이 전달되며, 사이트에 정보가 자동 저장되지는 않습니다.</p>
+<label class="modal-consent"><input type="checkbox" required><span>2027년 프로젝트 일정 및 혜택 안내를 위한 개인정보 수집·이용에 동의합니다. 수집 항목: 회사명, 담당자명, 이메일, 관심 분야. 보유 기간: 안내 완료 후 1년 이내 또는 삭제 요청 시까지. 사전 등록은 계약을 의미하지 않습니다.</span></label>
+<button class="modal-submit" type="submit">2027 프로젝트 사전 등록하기</button>
+<p class="modal-hint" id="interestStatus" role="status" aria-live="polite">등록 내용은 나인웍스에 전달되며 관리자에서 확인합니다. 프로젝트 계약 또는 진행이 확정되는 것은 아닙니다.</p>
 </form>
 </div></div>
 <div class="modal" id="careerModal" role="dialog" aria-modal="true" aria-labelledby="careerTitle" hidden>
@@ -122,8 +122,9 @@ function closeAll(){Object.keys(modals).forEach(function(k){modals[k].hidden=tru
 document.querySelectorAll('[data-open-modal]').forEach(function(btn){btn.addEventListener('click',function(){lastTrigger=btn;var m=modals[btn.getAttribute('data-open-modal')];if(!m)return;m.hidden=false;document.body.classList.add('modal-open');m.querySelector('.modal-close').focus()})});
 Object.keys(modals).forEach(function(key){var m=modals[key];m.querySelector('[data-close-modal]').addEventListener('click',closeAll);m.addEventListener('click',function(e){if(e.target===m)closeAll()});m.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var all=Array.from(m.querySelectorAll('button,input,select,textarea,a[href]')).filter(function(el){return !el.disabled});if(!all.length)return;var first=all[0],last=all[all.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}})});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
-document.getElementById('interestForm').addEventListener('submit',function(e){e.preventDefault();var fd=new FormData(e.target);var subject='나인웍스 2027년 신규 프로젝트 사전 등록 요청';var body=['안녕하세요. 2027년 프로젝트 사전 등록과 접수 일정 및 혜택 안내를 희망합니다.','','회사/브랜드명: '+fd.get('company'),'담당자명: '+fd.get('name'),'이메일: '+fd.get('email'),'관심 분야: '+fd.get('category'),'','※ 사전 등록은 계약 또는 프로젝트 진행 확정이 아닙니다.'].join('\n');window.location.href='mailto:info@9works.kr?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)});
+
 })();
 </script>
+<script type="module" src="/assets/js/renewal-interest-20261111.js"></script>
 </body>
 </html>
