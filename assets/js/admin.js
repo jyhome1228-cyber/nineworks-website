@@ -2,6 +2,7 @@
   const panelLabels = {
     dashboard: 'Dashboard',
     inquiry: 'Inquiries',
+    preregistration: '2027 프로젝트 사전 등록',
     clients: 'Clients',
     members: 'Members',
     partners: 'Partners',
