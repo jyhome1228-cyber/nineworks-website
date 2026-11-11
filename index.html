@@ -101,6 +101,45 @@ body.modal-open{overflow:hidden}
 .career-portfolio p{margin-bottom:11px}
 .career-portfolio .career-apply{background:transparent;color:#fff!important;border:1px solid #666}
 .career-portfolio .career-apply:hover{background:#222}
+
+/* Mobile reading and form usability for long recruitment notice */
+.modal-panel{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.modal-panel,.career-story,.career-information{min-width:0;overflow-wrap:break-word}
+.career-story,.career-information{word-break:keep-all}
+@media(max-width:600px){
+  .modal{padding:0;align-items:stretch}
+  .modal-panel,.modal:has(#careerTitle) .modal-panel{
+    width:100%;max-width:none;height:100dvh;max-height:100dvh;
+    border:0;box-shadow:none;padding:68px 23px max(35px,env(safe-area-inset-bottom));
+    overflow-x:hidden;overflow-y:auto;
+  }
+  .modal-close{
+    position:sticky;float:right;top:0;right:auto;margin:-47px -5px 10px 0;
+    width:40px;height:40px;border:1px solid #383838;background:#101010;
+    display:flex;align-items:center;justify-content:center;z-index:2;
+  }
+  .modal-panel h2{font-size:21px;line-height:1.52;letter-spacing:-.05em;margin:0 0 26px;clear:both;text-wrap:pretty}
+  #careerTitle br{display:none}
+  .career-story{font-size:14px;line-height:1.92;letter-spacing:-.025em}
+  .career-story p{margin-bottom:25px}
+  .career-information{margin-top:31px;padding-top:25px}
+  .career-information dl>div{grid-template-columns:95px minmax(0,1fr);gap:10px;padding:11px 0;border-bottom:1px solid #252525}
+  .career-information dt{font-size:12px}
+  .career-information dd{font-size:13px;overflow-wrap:anywhere}
+  .career-closing{font-size:13px}
+  .career-application{padding-top:27px}
+  .career-application>h3{font-size:17px}
+  .career-application>p,.career-portfolio p{font-size:13px}
+  .career-form .modal-field input,.career-form .modal-field textarea,
+  .modal-form input,.modal-form select{font-size:16px;min-height:48px}
+  .career-form .modal-field textarea{line-height:1.7}
+  .modal-submit,.career-portfolio .career-apply{min-height:50px;font-size:13px}
+}
+@media(max-width:360px){
+  .modal-panel,.modal:has(#careerTitle) .modal-panel{padding-left:19px;padding-right:19px}
+  .modal-panel h2{font-size:19px}
+  .career-information dl>div{grid-template-columns:83px minmax(0,1fr);gap:8px}
+}
 </style>
 </head>
 <body>
@@ -142,7 +181,7 @@ body.modal-open{overflow:hidden}
 <div class="modal" id="careerModal" role="dialog" aria-modal="true" aria-labelledby="careerTitle" hidden>
 <div class="modal-panel" tabindex="-1">
 <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
-<h2 id="careerTitle">2027년, 스케일업을 추구하는<br>사고하는 디자이너를 찾습니다.</h2>
+<h2 id="careerTitle">2027년, 스케일업을 추구하는<br> 사고하는 디자이너를 찾습니다.</h2>
 <div class="career-story">
 <p>23살, 프리랜서 디자이너로 일을 시작해 어느덧 사업 7년 차에 접어들고 있습니다. 그동안 많은 디자이너를 만나 함께 일했고, 다양한 프로젝트와 시행착오를 경험했습니다. 그 과정에서 회사 일을 자신의 일처럼 생각하는 사람은 사실 직원이라기보다 대표에 가까운 인재라는 것을 알게 되었습니다. 저 역시 다른 회사의 직원으로 일해봤기에 그것이 얼마나 어려운 일인지 잘 알고 있습니다. 그렇기에 누군가에게 회사에 대한 무조건적인 헌신이나 주인의식을 요구할 생각은 없습니다. 다만, <strong>회사 일이 아닌 자신의 미래를 위해 일할 사람</strong>을 만나고 싶습니다.</p>
 <p>세상에는 디자인 툴을 능숙하게 다루는 디자이너가 많습니다. 하지만 툴을 잘 다루는 것과 디자인을 잘하는 것은 조금 다른 이야기라고 생각합니다. 주어진 작업을 수행하는 데만 익숙하다면 업무의 범위와 성장에도 한계가 생기기 마련입니다. 나인웍스가 원하는 사람은 단순히 결과물을 만드는 사람이 아닙니다. <strong>고객이 무엇을 필요로 하는지 이해하고, 왜 이 디자인이 필요한지 질문하며, 그 이유를 해결 방법과 실제 결과물로 연결할 수 있는 사람</strong>입니다. 처음부터 그런 능력을 갖추고 있을 필요는 없습니다. 학생이어도 좋고, 경험이 부족해도 괜찮습니다. 다만 스스로 사고하고 배우려는 의지, 자신의 전문성을 높이기 위해 몇 년쯤은 진지하게 투자해 보고 싶은 마음이 있었으면 좋겠습니다.</p>
