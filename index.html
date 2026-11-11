@@ -172,8 +172,12 @@ body.modal-open{overflow:hidden}
 <div class="modal-field"><label for="interestCompany">회사 또는 브랜드명</label><input id="interestCompany" name="company" autocomplete="organization" required maxlength="100"></div>
 <div class="modal-field"><label for="interestName">담당자명</label><input id="interestName" name="name" autocomplete="name" required maxlength="60"></div>
 <div class="modal-field"><label for="interestEmail">이메일</label><input id="interestEmail" type="email" name="email" autocomplete="email" required maxlength="150"></div>
-<div class="modal-field"><label for="interestCategory">관심 분야</label><select id="interestCategory" name="category" required><option value="">선택해 주세요</option><option>브랜딩·아이덴티티</option><option>패키지 디자인</option><option>웹사이트·디지털</option><option>상세페이지·콘텐츠</option><option>기획·운영·기타</option></select></div>
-<label class="modal-consent"><input type="checkbox" required><span>2027년 프로젝트 일정 및 혜택 안내를 위한 개인정보 수집·이용에 동의합니다. 수집 항목: 회사명, 담당자명, 이메일, 관심 분야. 보유 기간: 안내 완료 후 1년 이내 또는 삭제 요청 시까지. 사전 등록은 계약을 의미하지 않습니다.</span></label>
+<div class="modal-field"><label for="interestIndustry">회사 업태</label><select id="interestIndustry" name="industry" required>
+<option value="">업태를 선택해 주세요</option>
+<option>제조업</option><option>도소매·유통업</option><option>IT·소프트웨어</option><option>전문 서비스업</option><option>뷰티·화장품</option><option>식품·외식업</option><option>교육·문화·콘텐츠</option><option>건설·부동산</option><option>기타</option>
+</select></div>
+<div class="modal-field"><label for="interestMessage">문의사항</label><textarea id="interestMessage" name="message" rows="5" maxlength="1000" placeholder="2027년 준비 중인 프로젝트나 궁금하신 내용을 자유롭게 작성해 주세요." required></textarea></div>
+<label class="modal-consent"><input type="checkbox" required><span>2027년 프로젝트 일정 및 혜택 안내를 위한 개인정보 수집·이용에 동의합니다. 수집 항목: 회사명, 담당자명, 이메일, 회사 업태, 문의사항. 보유 기간: 안내 완료 후 1년 이내 또는 삭제 요청 시까지. 사전 등록은 계약을 의미하지 않습니다.</span></label>
 <button class="modal-submit" type="submit">2027 프로젝트 사전 등록하기</button>
 <p class="modal-hint" id="interestStatus" role="status" aria-live="polite">등록 내용은 나인웍스에 전달되며 관리자에서 확인합니다. 프로젝트 계약 또는 진행이 확정되는 것은 아닙니다.</p>
 </form>
