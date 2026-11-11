@@ -24,7 +24,7 @@ function render() {
   const active = entries.filter((item) => !item.trashedAt);
   const keyword = String(search?.value || '').trim().toLowerCase();
   const filtered = active.filter((item) => [
-    item.company,item.contactName,item.email,item.projectType,item.details
+    item.company,item.contactName,item.email,item.projectType,item.industry,item.message,item.details
   ].some((v) => String(v || '').toLowerCase().includes(keyword)));
   for (const key of ['total','new','done']) {
     const node = document.querySelector('[data-pre-stat="' + key + '"]');
@@ -42,7 +42,7 @@ function render() {
       <div class="pre-row-info">
         <div class="pre-row-title"><strong>${escapeHTML(item.company || '회사명 미입력')}</strong><span>${escapeHTML(time(item.createdAt))}</span></div>
         <p>${escapeHTML(item.contactName || '-')} · <a href="mailto:${encodeURIComponent(item.email || '')}">${escapeHTML(item.email || '-')}</a></p>
-        <p>관심 분야: ${escapeHTML(item.projectType || '-')}</p>
+        <p>회사 업태: ${escapeHTML(item.industry || item.projectType || '-')}</p><p>문의사항: ${escapeHTML(item.message || '-')}</p>
       </div>
       <div class="pre-row-actions"><label>진행 상태
         <select data-pre-status="${escapeHTML(item.id)}">
@@ -68,9 +68,9 @@ list?.addEventListener('change', async (event) => {
 });
 search?.addEventListener('input',render);
 exportButton?.addEventListener('click', () => {
-  const cols = ['등록일','회사명','담당자','이메일','관심 분야','상태'];
+  const cols = ['등록일','회사명','담당자','이메일','회사 업태','문의사항','상태'];
   const rows = entries.filter((item) => !item.trashedAt).map((i) => [
-    time(i.createdAt), i.company||'',i.contactName||'',i.email||'',i.projectType||'',i.status||'new'
+    time(i.createdAt), i.company||'',i.contactName||'',i.email||'',i.industry||i.projectType||'',i.message||'',i.status||'new'
   ]);
   const quote = (v) => '"' + String(v).replace(/"/g,'""') + '"';
   const csv = '\uFEFF' + [cols,...rows].map((row)=>row.map(quote).join(',')).join('\r\n');
