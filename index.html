@@ -89,6 +89,18 @@ body.modal-open{overflow:hidden}
 @media(hover:none),(pointer:coarse){.ambient::before{transform:translate3d(calc(50vw - 50%),calc(58vh - 50%),0);filter:blur(75px);opacity:.65}.ambient::after{mask-image:radial-gradient(ellipse 250px 280px at 50% 60%,#000,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 250px 280px at 50% 60%,#000,transparent 100%);opacity:.32}}
 @media(prefers-reduced-motion:reduce){.ambient::before{transform:translate3d(calc(50vw - 50%),calc(55vh - 50%),0);will-change:auto}.ambient::after{mask-image:radial-gradient(ellipse 320px 300px at 50% 55%,#000,transparent);-webkit-mask-image:radial-gradient(ellipse 320px 300px at 50% 55%,#000,transparent)}}
 
+
+.career-application{margin-top:29px;padding-top:29px;border-top:1px solid #353535}
+.career-application>h3{margin:0 0 13px;font-size:18px;font-weight:500}
+.career-application>p,.career-portfolio p{font-size:12.5px;line-height:1.85;color:#b8b8b8;margin:0 0 21px}
+.career-application>p strong{color:#fff;font-weight:500}
+.career-form{display:grid;gap:16px}
+.career-form .modal-field label{display:flex;justify-content:space-between;gap:10px}
+.career-counter{font-size:11px;color:#999}
+.career-portfolio{margin-top:23px;padding-top:22px;border-top:1px solid #303030}
+.career-portfolio p{margin-bottom:11px}
+.career-portfolio .career-apply{background:transparent;color:#fff!important;border:1px solid #666}
+.career-portfolio .career-apply:hover{background:#222}
 </style>
 </head>
 <body>
@@ -148,7 +160,23 @@ body.modal-open{overflow:hidden}
 <div><dt>제출처</dt><dd><a href="mailto:info@9works.kr">info@9works.kr</a></dd></div>
 </dl>
 <p class="career-closing">기술은 배우면 됩니다. 중요한 것은 스스로 생각하고, 배우고, 성장하려는 의지입니다.</p>
-<a class="career-apply" href="mailto:info@9works.kr?subject=NINEWORKS%20%EC%8B%A0%EC%9E%85%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%20%EC%A7%80%EC%9B%90">포트폴리오 제출하기</a>
+<section class="career-application" aria-labelledby="careerApplyTitle">
+<h3 id="careerApplyTitle">지원 신청</h3>
+<p>아래 기본 정보를 남겨주시면 지원 내역이 접수됩니다. 포트폴리오는 별도로 <strong>info@9works.kr</strong>로 보내주세요.</p>
+<form id="careerForm" class="career-form">
+<div class="modal-field"><label for="careerName">성함 *</label><input id="careerName" name="name" required maxlength="60" autocomplete="name"></div>
+<div class="modal-field"><label for="careerPhone">연락처 *</label><input id="careerPhone" name="phone" type="tel" required maxlength="30" autocomplete="tel" placeholder="010-0000-0000"></div>
+<div class="modal-field"><label for="careerEmail">이메일 *</label><input id="careerEmail" name="email" type="email" required maxlength="150" autocomplete="email"></div>
+<div class="modal-field"><label for="careerIntroduction">간단한 자기소개 * <span class="career-counter" id="careerCount">0 / 500자</span></label><textarea id="careerIntroduction" name="introduction" rows="7" minlength="20" maxlength="500" required placeholder="어떤 디자인을 좋아하고, 앞으로 어떤 디자이너로 성장하고 싶은지 자유롭게 작성해 주세요."></textarea></div>
+<label class="modal-consent"><input type="checkbox" name="consent" required><span>채용 지원 검토를 위한 개인정보 수집·이용에 동의합니다. 수집 항목: 성함, 연락처, 이메일, 자기소개. 지원 검토 종료 후 1년 이내 또는 삭제 요청 시 파기합니다.</span></label>
+<button class="modal-submit" type="submit">채용 지원 신청하기</button>
+<p class="modal-hint" id="careerStatus" role="status" aria-live="polite">지원 신청과 포트폴리오 이메일 제출을 모두 완료해 주세요.</p>
+</form>
+<div class="career-portfolio">
+<p>포트폴리오는 이메일로 보내주세요.</p>
+<a class="career-apply" id="careerPortfolioEmail" href="mailto:info@9works.kr?subject=NINEWORKS%20%EC%8B%A0%EC%9E%85%20%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%20%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4">포트폴리오 이메일 보내기</a>
+</div>
+</section>
 </div>
 </div></div>
 <script>
@@ -192,5 +220,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()})
 })();
 </script>
 <script type="module" src="/assets/js/renewal-interest-20261111.js"></script>
+<script type="module" src="/assets/js/renewal-career-20261111.js"></script>
 </body>
 </html>
