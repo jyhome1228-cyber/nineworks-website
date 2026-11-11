@@ -32,13 +32,13 @@ function chart(){
 function render(){
  stats();chart();
  const terms=el('search').value.trim().toLowerCase();
- const selected=chosen().filter(i=>[i.company,i.contactName,i.email,i.phone,i.projectType,i.message].some(v=>String(v||'').toLowerCase().includes(terms))).sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
+ const selected=chosen().filter(i=>[i.company,i.contactName,i.email,i.phone,i.projectType,i.industry,i.message].some(v=>String(v||'').toLowerCase().includes(terms))).sort((a,b)=>(dateOf(b)?.getTime()||0)-(dateOf(a)?.getTime()||0));
  el('resultCount').textContent=selected.length+'건';
  if(!selected.length){el('applicationList').innerHTML='<p class="empty">접수 내역이 없습니다.</p>';return}
  el('applicationList').innerHTML=selected.map(i=>{
  const type=category(i)==='business'?'기업 신청':'채용 신청';
- const info=category(i)==='business'?i.projectType||'-':'자기소개';
- const msg=category(i)==='career'?i.message||'-':'관심 분야: '+(i.projectType||'-');
+ const info=category(i)==='business'?'회사 업태: '+(i.industry||i.projectType||'-'):'자기소개';
+ const msg=category(i)==='career'?i.message||'-':'문의사항: '+(i.message||'-');
  const current=['new','open','done'].includes(i.status)?i.status:'new';
  return '<article class="row"><div><strong>'+esc(i.company||i.contactName||'-')+'</strong><p>'+esc(type)+' · '+esc(i.contactName||'-')+'</p><p class="date">'+esc(format(dateOf(i)))+'</p></div><div><p>'+esc(i.email||'-')+'</p><p>'+esc(i.phone||'')+'</p></div><div><strong>'+esc(info)+'</strong><p>'+esc(msg)+'</p></div><div><select data-change-id="'+esc(i.id)+'" aria-label="진행 상태"><option value="new" '+(current==='new'?'selected':'')+'>신규</option><option value="open" '+(current==='open'?'selected':'')+'>검토 중</option><option value="done" '+(current==='done'?'selected':'')+'>완료</option></select></div><div class="detail">'+esc(category(i)==='career'?'자기소개\n'+(i.message||''):'등록 정보\n'+(i.details||''))+'</div></article>'
  }).join('');
@@ -65,8 +65,8 @@ el('applicationList').addEventListener('change',async(e)=>{
  finally{s.disabled=false}
 });
 el('download').addEventListener('click',()=>{
- const headers=['구분','접수일','이름','회사명','연락처','이메일','관심 분야','자기소개','상태'];
- const rows=chosen().map(i=>[category(i)==='business'?'기업':'채용',format(dateOf(i)),i.contactName||'',i.company||'',i.phone||'',i.email||'',i.projectType||'',i.message||'',i.status||'new']);
+ const headers=['구분','접수일','이름','회사명','연락처','이메일','회사 업태/지원 분야','문의사항/자기소개','상태'];
+ const rows=chosen().map(i=>[category(i)==='business'?'기업':'채용',format(dateOf(i)),i.contactName||'',i.company||'',i.phone||'',i.email||'',(i.industry||i.projectType||''),i.message||'',i.status||'new']);
  // Neutralize spreadsheet formula injection while preserving UTF-8 and quotes.
  const csvCell=v=>{const s=String(v).replace(/^([=+@-])/,"'$1");return '"'+s.replace(/"/g,'""')+'"'};
  const blob=new Blob(['\uFEFF'+[headers,...rows].map(row=>row.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});
