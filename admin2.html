@@ -76,6 +76,7 @@ input:focus,select:focus{border-color:#aaa}
 <button type="button" data-tab="overview" class="active">대시보드</button>
 <button type="button" data-tab="business">기업 신청</button>
 <button type="button" data-tab="career">채용 신청</button>
+<button type="button" data-tab="visitors">메인 방문 로그</button>
 </nav>
 <div class="sidebar-end"><button type="button" id="signOut">로그아웃</button></div>
 </aside>
@@ -87,6 +88,23 @@ input:focus,select:focus{border-color:#aaa}
 <article class="stat"><span>전체 기업 신청</span><strong data-stat="businessAll">0</strong></article>
 <article class="stat"><span>전체 채용 신청</span><strong data-stat="careerAll">0</strong></article>
 </div>
+<section class="box" id="visitorBox" hidden>
+<h2>메인 페이지 방문 로그</h2>
+<p class="muted">메인에 처음 진입한 브라우저를 하루 1회 집계합니다. 접속 횟수나 실제 인원 수와는 다를 수 있습니다.</p>
+<div class="stats" style="margin-top:20px">
+<article class="stat"><span>오늘 메인 방문자</span><strong id="mainToday">0</strong></article>
+<article class="stat"><span>최근 7일</span><strong id="mainSeven">0</strong></article>
+<article class="stat"><span>최근 30일</span><strong id="mainThirty">0</strong></article>
+<article class="stat"><span>누적 기록</span><strong id="mainAll">0</strong></article>
+</div>
+<h2>최근 14일 메인 방문 추이</h2><div id="mainDaily" class="daily"></div>
+<div class="toolbar" style="margin-top:25px">
+<input id="mainSearch" type="search" placeholder="방문일 / 유입 출처 검색" aria-label="방문 로그 검색">
+<button type="button" id="mainExport">방문 로그 CSV 다운로드</button>
+</div>
+<div class="muted" id="mainCount">데이터 로딩 중</div>
+<div id="mainLogList" aria-live="polite"></div>
+</section>
 <section class="box" id="dailyBox"><h2>일별 신청 현황 · 최근 14일</h2><div class="toolbar"><select id="dailyType" aria-label="집계 유형"><option value="all">전체 신청</option><option value="business">기업 신청</option><option value="career">채용 신청</option></select></div><div class="daily" id="dailyChart"></div></section>
 <section class="box">
 <h2 id="listTitle">최근 신청 내역</h2>
@@ -97,4 +115,5 @@ input:focus,select:focus{border-color:#aaa}
 </main>
 </div>
 <script type="module" src="/assets/js/admin2-20261111.js"></script>
+<script type="module" src="/assets/js/admin2-visitors-20261111.js"></script>
 </body></html>
