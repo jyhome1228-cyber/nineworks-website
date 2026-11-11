@@ -21,8 +21,9 @@ if (form) {
     const company = String(fd.get('company') || '').trim();
     const contactName = String(fd.get('name') || '').trim();
     const email = String(fd.get('email') || '').trim();
-    const category = String(fd.get('category') || '').trim();
-    if (!company || !contactName || !email || !category) {
+    const industry = String(fd.get('industry') || '').trim();
+    const inquiry = String(fd.get('message') || '').trim();
+    if (!company || !contactName || !email || !industry || !inquiry) {
       setStatus('필수 항목을 모두 입력해 주세요.', true);
       return;
     }
@@ -39,9 +40,10 @@ if (form) {
         email: email.slice(0, 240),
         phone: '',
         projectName: '2027년 신규 프로젝트 사전 등록',
-        projectType: category.slice(0, 200),
-        message: '2027년 신규 프로젝트 접수 일정 및 사전 등록 혜택 안내 요청',
-        details: '관심 분야: ' + category.slice(0, 200) + '\n사전 등록 유형: 2027년 프로젝트\n개인정보 수집·이용: 동의',
+        projectType: industry.slice(0, 200),
+        industry: industry.slice(0, 200),
+        message: inquiry.slice(0, 1000),
+        details: '회사 업태: ' + industry.slice(0, 200) + '\n문의사항: ' + inquiry.slice(0, 1000) + '\n사전 등록 유형: 2027년 프로젝트\n개인정보 수집·이용: 동의',
         pageTitle: document.title.slice(0, 240),
         createdAt: serverTimestamp()
       });
