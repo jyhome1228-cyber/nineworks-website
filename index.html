@@ -35,14 +35,35 @@ h1{font-size:clamp(27px,2.65vw,36px);line-height:1.45;letter-spacing:-.055em;fon
 .copy p{margin:0 0 16px}
 .copy strong{color:#eee;font-weight:500}
 .actions{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:29px}
-.actions a{display:inline-flex;justify-content:center;align-items:center;min-height:43px;padding:0 19px;border:1px solid #555;color:#f5f5f5;background:transparent;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:-.025em;transition:background-color .2s,border-color .2s,color .2s}
-.actions a:hover,.actions a:focus-visible{background:#f5f5f5;border-color:#f5f5f5;color:#080808}
-.actions a:first-child{border-color:#f0f0f0;background:#f0f0f0;color:#080808}
-.actions a:first-child:hover{background:#cfcfcf;border-color:#cfcfcf}
+.actions a,.actions button{display:inline-flex;justify-content:center;align-items:center;min-height:43px;padding:0 19px;border:1px solid #555;color:#f5f5f5;background:transparent;text-decoration:none;font-family:inherit;cursor:pointer;font-size:12px;font-weight:500;letter-spacing:-.025em;transition:background-color .2s,border-color .2s,color .2s}
+.actions a:hover,.actions a:focus-visible,.actions button:hover,.actions button:focus-visible{background:#f5f5f5;border-color:#f5f5f5;color:#080808}
+.actions button:first-child{border-color:#f0f0f0;background:#f0f0f0;color:#080808}
+.actions button:first-child:hover{background:#cfcfcf;border-color:#cfcfcf}
 .period{color:#858585;font-size:12px;letter-spacing:.015em;margin-top:27px}
 .footer{padding:0 20px 34px;color:#666;font-size:10px;letter-spacing:.03em;text-align:center}
-@media(max-width:600px){.header{padding-top:38px}.logo{width:125px}.splash .logo{width:154px}.content{width:min(100% - 42px,460px);padding:65px 0 90px}h1{font-size:clamp(25px,6.1vw,30px);margin-bottom:24px}.copy{font-size:13.5px;line-height:1.9}.copy p{margin-bottom:17px}.copy br{display:none}.actions{width:100%;max-width:360px;gap:8px;margin-top:25px}.actions a{flex:1 1 calc(50% - 5px);min-height:43px;padding:0 11px;font-size:12px}.actions a:last-child{flex-basis:100%}.period{font-size:11px;margin-top:19px}.footer{padding-bottom:25px}}
+@media(max-width:600px){.header{padding-top:38px}.logo{width:125px}.splash .logo{width:154px}.content{width:min(100% - 42px,460px);padding:65px 0 90px}h1{font-size:clamp(25px,6.1vw,30px);margin-bottom:24px}.copy{font-size:13.5px;line-height:1.9}.copy p{margin-bottom:17px}.copy br{display:none}.actions{width:100%;max-width:360px;gap:8px;margin-top:25px}.actions a,.actions button{flex:1 1 calc(50% - 5px);min-height:43px;padding:0 11px;font-size:12px}.actions a:last-child{flex-basis:100%}.period{font-size:11px;margin-top:19px}.footer{padding-bottom:25px}}
 @media(prefers-reduced-motion:reduce){.splash{display:none}.page{opacity:1}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Minimal black announcement dialogs */
+body.modal-open{overflow:hidden}
+.modal[hidden]{display:none!important}
+.modal{position:fixed;inset:0;z-index:30;display:flex;justify-content:center;align-items:center;padding:22px;background:rgba(0,0,0,.78)}
+.modal-panel{position:relative;width:min(100%,540px);max-height:min(90svh,780px);overflow-y:auto;background:#101010;border:1px solid #353535;padding:39px 39px 36px;color:#f5f5f5;box-shadow:0 20px 70px rgba(0,0,0,.4)}
+.modal-close{position:absolute;right:19px;top:14px;border:0;background:transparent;color:#eee;font-size:25px;line-height:1;cursor:pointer;padding:7px}
+.modal-panel h2{font-size:23px;font-weight:500;letter-spacing:-.04em;line-height:1.5;margin:0 35px 17px 0}
+.modal-intro{font-size:13.5px;line-height:1.85;color:#b8b8b8;margin:0 0 28px}
+.modal-form{display:grid;gap:17px}
+.modal-field{display:grid;gap:7px;text-align:left}
+.modal-field label{font-size:12px;color:#e5e5e5}
+.modal-field input,.modal-field select,.modal-field textarea{display:block;width:100%;border:1px solid #444;border-radius:0;background:#171717;color:#f5f5f5;padding:11px 12px;font:inherit;font-size:13px;outline:none;min-height:43px}
+.modal-field textarea{resize:vertical;min-height:78px}
+.modal-field input:focus,.modal-field select:focus,.modal-field textarea:focus{border-color:#ddd}
+.modal-consent{display:flex;align-items:flex-start;gap:10px;font-size:11px;color:#adadad;line-height:1.75}
+.modal-consent input{accent-color:#fff;margin-top:4px;flex:none}
+.modal-submit{min-height:45px;width:100%;border:1px solid #f5f5f5;background:#f5f5f5;color:#111;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.modal-hint{font-size:11px;color:#929292;line-height:1.7;margin:0}
+.career-note{border:1px solid #333;padding:20px;font-size:13px;line-height:1.9;color:#c5c5c5}
+@media(max-width:600px){.actions button,.actions a{font-size:12px}.modal{padding:14px}.modal-panel{padding:31px 21px 25px}.modal-panel h2{font-size:21px}.modal-intro{font-size:13px}}
 </style>
 </head>
 <body>
@@ -57,20 +78,51 @@ h1{font-size:clamp(27px,2.65vw,36px);line-height:1.45;letter-spacing:-.055em;fon
 <p>현재 진행 중인 프로젝트에 최선을 다해<br>더 좋은 결과로 보답하겠습니다. 감사합니다.</p>
 </div>
 <nav class="actions" aria-label="나인웍스 바로가기">
-<a href="mailto:info@9works.kr?subject=%EB%82%98%EC%9D%B8%EC%9B%8D%EC%8A%A4%20%EA%B4%80%EC%8B%AC%EA%B3%A0%EA%B0%9D%20%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D&body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94.%20%EB%82%98%EC%9D%B8%EC%9B%8D%EC%8A%A4%20%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80%20%EA%B0%9C%ED%8E%B8%20%EC%9D%B4%ED%9B%84%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%83%81%EB%8B%B4%20%EC%95%88%EB%82%B4%EB%A5%BC%20%EB%B0%9B%EA%B3%A0%20%EC%8B%B6%EC%8A%B5%EB%8B%88%EB%8B%A4.%0A%0A%ED%9A%8C%EC%82%AC%2F%EB%B8%8C%EB%9E%9C%EB%93%9C%EB%AA%85%3A%20%0A%EB%8B%B4%EB%8B%B9%EC%9E%90%EB%AA%85%3A%20%0A%ED%9A%8C%EC%8B%A0%20%EC%9D%B4%EB%A9%94%EC%9D%BC%3A%20%0A%EA%B4%80%EC%8B%AC%20%EB%B6%84%EC%95%BC%3A%20%0A%0A%E2%80%BB%20%EB%B3%B8%20%EB%A9%94%EC%9D%BC%EC%9D%80%20%EC%8B%A0%EA%B7%9C%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EC%A0%91%EC%88%98%EA%B0%80%20%EC%95%84%EB%8B%8C%20%ED%96%A5%ED%9B%84%20%EC%83%81%EB%8B%B4%20%EC%95%88%EB%82%B4%EB%A5%BC%20%EC%9C%84%ED%95%9C%20%EC%82%AC%EC%A0%84%20%EA%B4%80%EC%8B%AC%20%EB%93%B1%EB%A1%9D%20%EC%9A%94%EC%B2%AD%EC%9E%85%EB%8B%88%EB%8B%A4.">관심고객 등록하기</a>
-<a href="/with-us.html">디자이너 채용</a>
+<button type="button" data-open-modal="interest">관심고객 등록하기</button>
+<button type="button" data-open-modal="career">채용안내</button>
 <a href="https://www.behance.net/the9works" target="_blank" rel="noopener noreferrer">Behance 포트폴리오 ↗</a>
 </nav>
 <p class="period">2026. 11. 10 – 12. 10</p>
 </main>
 <footer class="footer">© 2026 NINEWORKS</footer>
 </div>
+<div class="modal" id="interestModal" role="dialog" aria-modal="true" aria-labelledby="interestTitle" hidden>
+<div class="modal-panel" tabindex="-1">
+<button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+<h2 id="interestTitle">관심고객 등록</h2>
+<p class="modal-intro">현재 신규 프로젝트 접수는 마감되었습니다.<br>홈페이지 개편 이후 상담 안내를 원하시면 아래 정보를 남겨주세요.</p>
+<form class="modal-form" id="interestForm">
+<div class="modal-field"><label for="interestCompany">회사 또는 브랜드명</label><input id="interestCompany" name="company" autocomplete="organization" required maxlength="100"></div>
+<div class="modal-field"><label for="interestName">담당자명</label><input id="interestName" name="name" autocomplete="name" required maxlength="60"></div>
+<div class="modal-field"><label for="interestEmail">이메일</label><input id="interestEmail" type="email" name="email" autocomplete="email" required maxlength="150"></div>
+<div class="modal-field"><label for="interestCategory">관심 분야</label><select id="interestCategory" name="category" required><option value="">선택해 주세요</option><option>브랜딩·아이덴티티</option><option>패키지 디자인</option><option>웹사이트·디지털</option><option>상세페이지·콘텐츠</option><option>기획·운영·기타</option></select></div>
+<label class="modal-consent"><input type="checkbox" required><span>상담 안내를 위해 기재한 정보를 이메일로 전달하는 데 동의합니다. 본 요청은 신규 프로젝트 접수가 아닙니다.</span></label>
+<button class="modal-submit" type="submit">이메일로 등록 요청하기</button>
+<p class="modal-hint">제출을 누르면 이메일 앱이 열립니다. 메일을 직접 발송해야 요청이 전달되며, 사이트에 정보가 자동 저장되지는 않습니다.</p>
+</form>
+</div></div>
+<div class="modal" id="careerModal" role="dialog" aria-modal="true" aria-labelledby="careerTitle" hidden>
+<div class="modal-panel" tabindex="-1">
+<button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+<h2 id="careerTitle">채용안내</h2>
+<p class="modal-intro">나인웍스와 함께할 디자이너를 위한 안내 페이지입니다.</p>
+<div class="career-note">상세 모집 내용은 현재 정리 중입니다.<br>채용 분야 및 지원 방법은 확정되는 대로 이곳에 안내하겠습니다.</div>
+</div></div>
 <script>
 (function(){
 var splash=document.getElementById('splash'),page=document.getElementById('page');
 if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){splash.hidden=true;page.classList.add('show');return;}
 window.setTimeout(function(){page.classList.add('show');splash.classList.add('done')},1350);
 window.setTimeout(function(){splash.hidden=true},2050);
+})();
+(function(){
+var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal')};
+var lastTrigger=null;
+function closeAll(){Object.keys(modals).forEach(function(k){modals[k].hidden=true});document.body.classList.remove('modal-open');if(lastTrigger)lastTrigger.focus()}
+document.querySelectorAll('[data-open-modal]').forEach(function(btn){btn.addEventListener('click',function(){lastTrigger=btn;var m=modals[btn.getAttribute('data-open-modal')];if(!m)return;m.hidden=false;document.body.classList.add('modal-open');m.querySelector('.modal-close').focus()})});
+Object.keys(modals).forEach(function(key){var m=modals[key];m.querySelector('[data-close-modal]').addEventListener('click',closeAll);m.addEventListener('click',function(e){if(e.target===m)closeAll()});m.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var all=Array.from(m.querySelectorAll('button,input,select,textarea,a[href]')).filter(function(el){return !el.disabled});if(!all.length)return;var first=all[0],last=all[all.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
+document.getElementById('interestForm').addEventListener('submit',function(e){e.preventDefault();var fd=new FormData(e.target);var subject='나인웍스 관심고객 사전 등록 요청';var body=['안녕하세요. 홈페이지 개편 이후 상담 안내를 희망합니다.','','회사/브랜드명: '+fd.get('company'),'담당자명: '+fd.get('name'),'이메일: '+fd.get('email'),'관심 분야: '+fd.get('category'),'','※ 신규 프로젝트 접수가 아닌 사전 관심 등록 요청입니다.'].join('\n');window.location.href='mailto:info@9works.kr?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)});
 })();
 </script>
 </body>
