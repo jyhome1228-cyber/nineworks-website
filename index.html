@@ -78,9 +78,20 @@ body.modal-open{overflow:hidden}
 .career-apply:hover{background:#dcdcdc}
 @media(max-width:600px){.career-story{font-size:12.5px;line-height:1.95}.career-story p{margin-bottom:21px}.career-information dl>div{grid-template-columns:90px minmax(0,1fr);gap:8px}.career-information dt,.career-information dd{font-size:11.5px}}
 @media(max-width:600px){.actions button,.actions a{font-size:12px}.modal{padding:14px}.modal-panel{padding:31px 21px 25px}.modal-panel h2{font-size:21px}.modal-intro{font-size:13px}}
+
+/* Subtle cursor-responsive ambient volume, behind all UI */
+.ambient{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;isolation:isolate;background:radial-gradient(ellipse 55% 46% at 50% 65%,rgba(23,25,30,.36) 0%,transparent 78%)}
+.ambient::before{content:"";position:absolute;left:0;top:0;width:min(80vw,1040px);height:min(78vw,900px);border-radius:50%;transform:translate3d(calc(var(--ambient-x,50vw) - 50%),calc(var(--ambient-y,50vh) - 50%),0) scale(var(--ambient-scale,1));background:radial-gradient(ellipse at 48% 43%,rgba(104,109,122,.16) 0%,rgba(61,66,80,.12) 17%,rgba(32,34,42,.065) 43%,transparent 70%);filter:blur(65px);opacity:var(--ambient-opacity,.85);will-change:transform}
+.ambient::after{content:"";position:absolute;inset:-25%;background:radial-gradient(ellipse 30% 32% at 64% 75%,rgba(61,66,79,.08),transparent 90%);filter:blur(50px)}
+.page{position:relative;z-index:1}
+.splash{z-index:5}
+.modal{z-index:30}
+@media(hover:none),(pointer:coarse){.ambient::before{transform:translate3d(calc(50vw - 50%),calc(58vh - 50%),0);filter:blur(80px);opacity:.55}}
+@media(prefers-reduced-motion:reduce){.ambient::before{transform:translate3d(calc(50vw - 50%),calc(55vh - 50%),0);will-change:auto}}
 </style>
 </head>
 <body>
+<div class="ambient" aria-hidden="true"></div>
 <div class="splash" id="splash" aria-hidden="true"><img class="logo" src="/assets/nineworks-renewal-logo.svg" alt=""></div>
 <div class="page" id="page">
 <header class="header"><img class="logo" src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS"></header>
@@ -154,6 +165,29 @@ document.querySelectorAll('[data-open-modal]').forEach(function(btn){btn.addEven
 Object.keys(modals).forEach(function(key){var m=modals[key];m.querySelector('[data-close-modal]').addEventListener('click',closeAll);m.addEventListener('click',function(e){if(e.target===m)closeAll()});m.addEventListener('keydown',function(e){if(e.key!=='Tab')return;var all=Array.from(m.querySelectorAll('button,input,select,textarea,a[href]')).filter(function(el){return !el.disabled});if(!all.length)return;var first=all[0],last=all[all.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}})});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
 
+})();
+</script>
+
+<script>
+(function(){
+  if(!window.matchMedia || !window.matchMedia('(hover:hover) and (pointer:fine)').matches ||
+     window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ambient=document.querySelector('.ambient');
+  if(!ambient)return;
+  let x=innerWidth*.5,y=innerHeight*.56,tx=x,ty=y,raf=0,lastMove=0;
+  const move=(event)=>{tx=event.clientX;ty=event.clientY;lastMove=performance.now();if(!raf)raf=requestAnimationFrame(tick)};
+  function tick(){
+    x+=(tx-x)*.065;y+=(ty-y)*.065;
+    ambient.style.setProperty('--ambient-x',x+'px');
+    ambient.style.setProperty('--ambient-y',y+'px');
+    if(Math.abs(tx-x)+Math.abs(ty-y)>.35){
+      raf=requestAnimationFrame(tick);
+    }else{raf=0}
+  }
+  window.addEventListener('pointermove',move,{passive:true});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0}
+  });
 })();
 </script>
 <script type="module" src="/assets/js/renewal-interest-20261111.js"></script>
