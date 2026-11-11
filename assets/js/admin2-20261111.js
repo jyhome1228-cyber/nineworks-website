@@ -45,9 +45,14 @@ function render(){
 }
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
  tab=b.dataset.tab;document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));
- el('pageTitle').textContent=tab==='overview'?'신청 관리 대시보드':tab==='business'?'기업 신청 관리':'채용 신청 관리';
- el('listTitle').textContent=tab==='overview'?'최근 신청 내역':tab==='business'?'기업 신청 목록':'채용 신청 목록';
- el('dailyBox').hidden=tab!=='overview';render();
+ el('pageTitle').textContent=tab==='overview'?'신청 관리 대시보드':tab==='business'?'기업 신청 관리':tab==='career'?'채용 신청 관리':'메인 방문 로그';
+ el('listTitle').textContent=tab==='overview'?'최근 신청 내역':tab==='business'?'기업 신청 목록':tab==='career'?'채용 신청 목록':'방문 로그';
+ el('dailyBox').hidden=tab!=='overview';
+ el('visitorBox').hidden=tab!=='visitors';
+ el('applicationList').closest('.box').hidden=tab==='visitors';
+ document.querySelector('.main > .stats').hidden=tab==='visitors';
+ window.dispatchEvent(new CustomEvent('nw-admin2-tab',{detail:{tab}}));
+ if(tab!=='visitors')render();
 }));
 el('search').addEventListener('input',render);
 el('dailyType').addEventListener('change',chart);
