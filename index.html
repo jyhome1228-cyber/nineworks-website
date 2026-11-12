@@ -140,6 +140,16 @@ body.modal-open{overflow:hidden}
   .modal-panel h2{font-size:19px}
   .career-information dl>div{grid-template-columns:83px minmax(0,1fr);gap:8px}
 }
+
+.secondary-actions{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:18px}
+.secondary-actions button{padding:6px 0;border:0;border-bottom:1px solid #595959;background:transparent;color:#aaa;font:inherit;font-size:12px;letter-spacing:-.02em;cursor:pointer;transition:color .2s,border-color .2s}
+.secondary-actions button:hover,.secondary-actions button:focus-visible{color:#fff;border-color:#fff}
+.info-panel{width:min(100%,560px)}
+.info-copy{font-size:14px;line-height:1.95;letter-spacing:-.024em;color:#bdbdbd;word-break:keep-all}
+.info-copy p{margin:0 0 20px}
+.info-link{display:flex;align-items:center;justify-content:space-between;margin-top:30px;padding:15px 0;border-top:1px solid #424242;color:#fff;text-decoration:none;font-size:13px}
+.info-link:hover{color:#c8c8c8}
+@media(max-width:600px){.secondary-actions{gap:26px;margin-top:16px}.secondary-actions button{font-size:12px}.info-copy{font-size:14px;line-height:1.9}.info-panel{max-width:none}}
 </style>
 </head>
 <body>
@@ -159,10 +169,34 @@ body.modal-open{overflow:hidden}
 <button type="button" data-open-modal="career">채용안내</button>
 <a href="https://www.behance.net/the9works" target="_blank" rel="noopener noreferrer">Behance 포트폴리오 ↗</a>
 </nav>
+<nav class="secondary-actions" aria-label="기업 정보와 비전">
+<button type="button" data-open-modal="company">기업현황</button>
+<button type="button" data-open-modal="vision">나인웍스의 비전</button>
+</nav>
 <p class="period">2026. 11. 10 – 12. 10</p>
 </main>
 <footer class="footer">© 2026 NINEWORKS</footer>
 </div>
+<div class="modal" id="companyModal" role="dialog" aria-modal="true" aria-labelledby="companyTitle" hidden>
+<div class="modal-panel info-panel" tabindex="-1">
+<button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+<h2 id="companyTitle">나인웍스 기업현황</h2>
+<div class="info-copy">
+<p>나인웍스는 브랜드 기획과 디자인을 중심으로 패키지·인쇄 제작, 웹·시스템 개발, 운영 지원까지 연결하는 디자인 전문회사입니다.</p>
+<p>디자인 전문회사 등록 현황, 연도별 매출 추이, 주요 거래 및 지원사업 수행 기록을 공개 가능한 범위에서 정리하고 있습니다.</p>
+</div>
+<a class="info-link" href="/performance.html">기업현황 상세 보기 <span aria-hidden="true">↗</span></a>
+</div></div>
+<div class="modal" id="visionModal" role="dialog" aria-modal="true" aria-labelledby="visionTitle" hidden>
+<div class="modal-panel info-panel" tabindex="-1">
+<button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+<h2 id="visionTitle">나인웍스의 비전</h2>
+<div class="info-copy">
+<p>나인웍스는 좋은 디자인을 만드는 데서 그치지 않고, 브랜드와 기업이 실제로 성장할 수 있는 구조를 함께 만드는 회사를 지향합니다.</p>
+<p>고객의 상황과 필요를 먼저 이해하고, 기획에서 디자인, 제작, 개발과 운영까지 필요한 방법을 판단하고 실행합니다. 개별 결과물보다 브랜드가 지속적으로 활용할 수 있는 경험과 시스템을 남기고자 합니다.</p>
+<p>2027년에는 디자인과 기술, AI 활용 역량을 더 깊이 연결해 문제를 정의하고 해결하는 팀으로 성장해 나가겠습니다.</p>
+</div>
+</div></div>
 <div class="modal" id="interestModal" role="dialog" aria-modal="true" aria-labelledby="interestTitle" hidden>
 <div class="modal-panel" tabindex="-1">
 <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
@@ -230,7 +264,7 @@ window.setTimeout(function(){page.classList.add('show');splash.classList.add('do
 window.setTimeout(function(){splash.hidden=true},2050);
 })();
 (function(){
-var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal')};
+var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal'),company:document.getElementById('companyModal'),vision:document.getElementById('visionModal')};
 var lastTrigger=null;
 function closeAll(){Object.keys(modals).forEach(function(k){modals[k].hidden=true});document.body.classList.remove('modal-open');if(lastTrigger)lastTrigger.focus()}
 document.querySelectorAll('[data-open-modal]').forEach(function(btn){btn.addEventListener('click',function(){lastTrigger=btn;var m=modals[btn.getAttribute('data-open-modal')];if(!m)return;m.hidden=false;document.body.classList.add('modal-open');m.querySelector('.modal-close').focus()})});
