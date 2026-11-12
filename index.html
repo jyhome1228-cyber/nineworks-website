@@ -141,15 +141,24 @@ body.modal-open{overflow:hidden}
   .career-information dl>div{grid-template-columns:83px minmax(0,1fr);gap:8px}
 }
 
-.secondary-actions{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:18px}
-.secondary-actions button{padding:6px 0;border:0;border-bottom:1px solid #595959;background:transparent;color:#aaa;font:inherit;font-size:12px;letter-spacing:-.02em;cursor:pointer;transition:color .2s,border-color .2s}
-.secondary-actions button:hover,.secondary-actions button:focus-visible{color:#fff;border-color:#fff}
+.secondary-actions{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;margin-top:10px}
+.secondary-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:43px;min-width:151px;padding:0 19px;border:1px solid #555;background:transparent;color:#f5f5f5;font:inherit;font-size:12px;font-weight:500;letter-spacing:-.025em;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.secondary-actions button:hover,.secondary-actions button:focus-visible{background:#f5f5f5;border-color:#f5f5f5;color:#080808}
 .info-panel{width:min(100%,560px)}
 .info-copy{font-size:14px;line-height:1.95;letter-spacing:-.024em;color:#bdbdbd;word-break:keep-all}
 .info-copy p{margin:0 0 20px}
 .info-link{display:flex;align-items:center;justify-content:space-between;margin-top:30px;padding:15px 0;border-top:1px solid #424242;color:#fff;text-decoration:none;font-size:13px}
 .info-link:hover{color:#c8c8c8}
-@media(max-width:600px){.secondary-actions{gap:26px;margin-top:16px}.secondary-actions button{font-size:12px}.info-copy{font-size:14px;line-height:1.9}.info-panel{max-width:none}}
+@media(max-width:600px){.secondary-actions{width:100%;max-width:360px;gap:8px;margin-top:8px}.secondary-actions button{flex:1 1 calc(50% - 4px);min-width:0;min-height:43px;padding:0 11px;font-size:12px}.info-copy{font-size:14px;line-height:1.9}.info-panel{max-width:none}.company-sales-row{grid-template-columns:46px 1fr auto;gap:8px}.company-sales-row strong{font-size:11px}.company-sales-track{min-width:0}}
+
+.company-sales{margin-top:26px;padding-top:23px;border-top:1px solid #343434}
+.company-sales-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:19px}
+.company-sales-heading h3{margin:0;font-size:15px;font-weight:500}.company-sales-heading span{color:#8c8c8c;font-size:10px}
+.company-sales-row{display:grid;grid-template-columns:88px minmax(60px,1fr) 110px;gap:12px;align-items:center;margin:13px 0;font-size:11px;color:#aaa}
+.company-sales-row strong{font-weight:500;color:#ececec;text-align:right;font-size:11px}
+.company-sales-track{height:5px;background:#292929;overflow:hidden}
+.company-sales-track i{display:block;height:100%;background:#b5b5b5}
+.company-sales-caption{font-size:11px;color:#888;line-height:1.8;margin:21px 0 0;word-break:keep-all}
 </style>
 </head>
 <body>
@@ -182,8 +191,17 @@ body.modal-open{overflow:hidden}
 <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
 <h2 id="companyTitle">나인웍스 기업현황</h2>
 <div class="info-copy">
-<p>나인웍스는 브랜드 기획과 디자인을 중심으로 패키지·인쇄 제작, 웹·시스템 개발, 운영 지원까지 연결하는 디자인 전문회사입니다.</p>
-<p>디자인 전문회사 등록 현황, 연도별 매출 추이, 주요 거래 및 지원사업 수행 기록을 공개 가능한 범위에서 정리하고 있습니다.</p>
+<p>나인웍스는 브랜드 기획과 디자인을 중심으로 제작·개발·운영까지 연결하는 디자인 전문회사입니다.</p>
+<p>사업의 성장 기록과 연도별 매출 추이를 공개 가능한 범위에서 소개합니다.</p>
+</div>
+<div class="company-sales" aria-label="2022년부터 2026년 상반기까지 매출 현황">
+<div class="company-sales-heading"><h3>연도별 매출</h3><span>기존 공개 자료 기준</span></div>
+<div class="company-sales-row"><span>2022</span><div class="company-sales-track"><i style="width:41%"></i></div><strong>1억 7,850만원</strong></div>
+<div class="company-sales-row"><span>2023</span><div class="company-sales-track"><i style="width:47.5%"></i></div><strong>2억 660만원</strong></div>
+<div class="company-sales-row"><span>2024</span><div class="company-sales-track"><i style="width:77.2%"></i></div><strong>3억 3,590만원</strong></div>
+<div class="company-sales-row"><span>2025</span><div class="company-sales-track"><i style="width:100%"></i></div><strong>4억 3,510만원</strong></div>
+<div class="company-sales-row"><span>2026 상반기</span><div class="company-sales-track"><i style="width:22.4%"></i></div><strong>9,760만원</strong></div>
+<p class="company-sales-caption">2026년은 상반기 실적만 포함합니다. 2022~2025년 연간 매출은 약 2.44배 성장했습니다.</p>
 </div>
 <a class="info-link" href="/performance.html">기업현황 상세 보기 <span aria-hidden="true">↗</span></a>
 </div></div>
