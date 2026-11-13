@@ -39,8 +39,8 @@ function render(){
  if(!selected.length){el('applicationList').innerHTML='<p class="empty">접수 내역이 없습니다.</p>';return}
  el('applicationList').innerHTML=selected.map(i=>{
  const type=category(i)==='business'?'기업 신청':category(i)==='career'?'채용 신청':'협력 프리랜서';
- const info=category(i)==='business'?'회사 업태: '+(i.industry||i.projectType||'-'):category(i)==='freelancer'?'협업 분야: '+(i.projectType||'-'):'자기소개';
- const msg=category(i)==='career'?i.message||'-':category(i)==='freelancer'?'경력 및 가능 업무: '+(i.message||'-'):'문의사항: '+(i.message||'-');
+ const info=category(i)==='business'?'회사 업태: '+(i.industry||i.projectType||'-'):category(i)==='freelancer'?'협업 분야: '+(i.projectType||'-')+' / '+(i.region||'지역 미입력'):'자기소개';
+ const msg=category(i)==='career'?i.message||'-':category(i)==='freelancer'?'업무 시작 가능일: '+(i.availableFrom||'미입력')+' / 대면 미팅: '+(i.meetingAvailable?'가능':'미확인')+' / '+(i.message||'-'):'문의사항: '+(i.message||'-');
  const current=['new','open','done'].includes(i.status)?i.status:'new';
  return '<article class="row"><div><strong>'+esc(i.company||i.contactName||'-')+'</strong><p>'+esc(type)+' · '+esc(i.contactName||'-')+'</p><p class="date">'+esc(format(dateOf(i)))+'</p></div><div><p>'+esc(i.email||'-')+'</p><p>'+esc(i.phone||'')+'</p></div><div><strong>'+esc(info)+'</strong><p>'+esc(msg)+'</p></div><div><select data-change-id="'+esc(i.id)+'" aria-label="진행 상태"><option value="new" '+(current==='new'?'selected':'')+'>신규</option><option value="open" '+(current==='open'?'selected':'')+'>검토 중</option><option value="done" '+(current==='done'?'selected':'')+'>완료</option></select></div><div class="detail">'+esc(category(i)==='career'?'자기소개\n'+(i.message||''):'등록 정보\n'+(i.details||''))+'</div></article>'
  }).join('');
@@ -67,8 +67,8 @@ el('applicationList').addEventListener('change',async(e)=>{
  finally{s.disabled=false}
 });
 el('download').addEventListener('click',()=>{
- const headers=['구분','접수일','이름','회사명','연락처','이메일','회사 업태/지원 분야','문의사항/자기소개','포트폴리오','상태'];
- const rows=chosen().map(i=>[category(i)==='business'?'기업':category(i)==='career'?'채용':'협력 프리랜서',format(dateOf(i)),i.contactName||'',i.company||'',i.phone||'',i.email||'',(i.industry||i.projectType||''),i.message||'',i.portfolioUrl||'',i.status||'new']);
+ const headers=['구분','접수일','이름','회사명','연락처','이메일','회사 업태/지원 분야','문의사항/자기소개','포트폴리오','활동 지역','업무 시작 가능일','대면 미팅','상태'];
+ const rows=chosen().map(i=>[category(i)==='business'?'기업':category(i)==='career'?'채용':'협력 프리랜서',format(dateOf(i)),i.contactName||'',i.company||'',i.phone||'',i.email||'',(i.industry||i.projectType||''),i.message||'',i.portfolioUrl||'',i.region||'',i.availableFrom||'',i.meetingAvailable?'가능':'미확인',i.status||'new']);
  // Neutralize spreadsheet formula injection while preserving UTF-8 and quotes.
  const csvCell=v=>{const s=String(v).replace(/^([=+@-])/,"'$1");return '"'+s.replace(/"/g,'""')+'"'};
  const blob=new Blob(['\uFEFF'+[headers,...rows].map(row=>row.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});
