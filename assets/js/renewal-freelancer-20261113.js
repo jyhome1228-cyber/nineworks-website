@@ -15,7 +15,10 @@ form?.addEventListener('submit',async(event)=>{
   const field=String(fd.get('field')||'').trim();
   const portfolio=String(fd.get('portfolio')||'').trim();
   const introduction=String(fd.get('introduction')||'').trim();
-  if(!name||!email||!phone||!field||!introduction){inform('필수 항목을 입력해 주세요.',true);return}
+  const region=String(fd.get('region')||'').trim();
+  const availableFrom=String(fd.get('availableFrom')||'').trim();
+  const meetingConsent=fd.get('meetingConsent')!==null;
+  if(!name||!email||!phone||!field||!introduction||!['서울','경기','인천'].includes(region)||!/^\d{4}-\d{2}-\d{2}$/.test(availableFrom)||!meetingConsent){inform('필수 항목을 입력해 주세요.',true);return}
   submit.disabled=true;submit.textContent='등록 중...';inform('등록 요청을 전송하고 있습니다.');
   try{
     await addDoc(collection(db,'inquiries'),{
@@ -23,8 +26,8 @@ form?.addEventListener('submit',async(event)=>{
       source:'/#freelancer-registration',status:'new',
       company:'',contactName:name.slice(0,60),email:email.slice(0,150),phone:phone.slice(0,30),
       projectName:'협력 프리랜서 등록',projectType:field.slice(0,150),
-      portfolioUrl:portfolio.slice(0,500),message:introduction.slice(0,1000),
-      details:'협업 분야: '+field.slice(0,150)+'\n포트폴리오: '+portfolio.slice(0,500)+'\n경력·협업 가능 업무: '+introduction.slice(0,1000)+'\n개인정보 수집·이용: 동의',
+      portfolioUrl:portfolio.slice(0,500),region,availableFrom,meetingAvailable:true,message:introduction.slice(0,1000),
+      details:'협업 분야: '+field.slice(0,150)+'\n활동 지역: '+region+'\n업무 시작 가능일: '+availableFrom+'\n대면 미팅: 가능\n포트폴리오: '+portfolio.slice(0,500)+'\n경력·협업 가능 업무: '+introduction.slice(0,1000)+'\n개인정보 수집·이용: 동의',
       pageTitle:document.title.slice(0,240),createdAt:serverTimestamp()
     });
     form.reset();submit.textContent='등록 완료';
