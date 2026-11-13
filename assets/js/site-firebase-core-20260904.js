@@ -254,5 +254,5 @@
     }
   }, true);
 
-  trackDailyVisitor();
+  import('./traffic-tracker-v2.js').catch(error => console.warn('[NINEWORKS] traffic module unavailable', error));
 })();
