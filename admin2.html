@@ -56,6 +56,7 @@ input:focus,select:focus{border-color:#aaa}
 .empty{padding:28px 0;font-size:13px;color:#888}
 @media(max-width:1000px){.stats{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr 1fr}.daily{gap:5px}}
 @media(max-width:700px){.shell{display:block}.sidebar{position:static;height:auto;padding:23px 20px;gap:20px;border-right:0;border-bottom:1px solid #333}.nav{display:flex;flex-wrap:wrap}.nav button{font-size:12px}.sidebar-end{display:none}.main{padding:26px 20px 50px}.top{display:block}.meta{text-align:left;margin-top:12px}.row{grid-template-columns:1fr}.detail{grid-column:1}.daily{overflow-x:auto;grid-template-columns:repeat(14,minmax(28px,1fr))}.box{padding:18px}}
+@media(max-width:700px){#visitorBox .stats[style*="grid-template-columns"]{grid-template-columns:1fr!important}#visitorBox .daily{overflow-x:auto}#visitorBox .toolbar{align-items:stretch}#visitorBox .toolbar>*{min-width:0}#visitorBox .row{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
@@ -91,21 +92,34 @@ input:focus,select:focus{border-color:#aaa}
 <article class="stat"><span>협력 프리랜서 등록</span><strong data-stat="freelancerAll">0</strong></article>
 </div>
 <section class="box" id="visitorBox" hidden>
-<h2>메인 페이지 방문 로그</h2>
-<p class="muted">메인에 처음 진입한 브라우저를 하루 1회 집계합니다. 접속 횟수나 실제 인원 수와는 다를 수 있습니다.</p>
+<h2>홈페이지 방문 통계</h2>
+<p class="muted">전체 사이트와 메인 방문자를 구분합니다. UV는 같은 브라우저 기준 하루 한 번, PV는 페이지를 열 때마다 집계됩니다.</p>
 <div class="stats" style="margin-top:20px">
-<article class="stat"><span>오늘 메인 방문자</span><strong id="mainToday">0</strong></article>
-<article class="stat"><span>최근 7일</span><strong id="mainSeven">0</strong></article>
-<article class="stat"><span>최근 30일</span><strong id="mainThirty">0</strong></article>
-<article class="stat"><span>누적 기록</span><strong id="mainAll">0</strong></article>
+<article class="stat"><span>오늘 전체 방문자 · UV</span><strong id="trafficSiteToday">0</strong></article>
+<article class="stat"><span>오늘 메인 방문자 · UV</span><strong id="trafficHomeToday">0</strong></article>
+<article class="stat"><span>오늘 페이지 조회 · PV</span><strong id="trafficPvToday">0</strong></article>
+<article class="stat"><span>최근 30일 전체 방문 · UV 합계</span><strong id="trafficSiteThirty">0</strong></article>
 </div>
-<h2>최근 14일 메인 방문 추이</h2><div id="mainDaily" class="daily"></div>
-<div class="toolbar" style="margin-top:25px">
-<input id="mainSearch" type="search" placeholder="방문일 / 유입 출처 검색" aria-label="방문 로그 검색">
-<button type="button" id="mainExport">방문 로그 CSV 다운로드</button>
+<div class="toolbar">
+<label class="muted" for="trafficMetric">방문 추이 기준</label>
+<select id="trafficMetric" aria-label="방문자 지표"><option value="site">전체 사이트 UV</option><option value="home">메인페이지 UV</option><option value="pv">전체 PV</option><option value="homePv">메인 PV</option></select>
+<label class="muted" for="trafficRange">기간</label>
+<select id="trafficRange" aria-label="조회 기간"><option value="14">최근 14일</option><option value="30">최근 30일</option></select>
 </div>
-<div class="muted" id="mainCount">데이터 로딩 중</div>
+<div id="mainDaily" class="daily"></div>
+<p id="trafficQuality" class="muted" style="margin-top:17px">기록을 불러오는 중입니다.</p>
+<div class="stats" style="margin-top:24px;grid-template-columns:repeat(2,minmax(0,1fr))">
+<div class="box" style="margin:0"><h2>유입 출처 TOP 10</h2><div id="trafficReferrers"></div></div>
+<div class="box" style="margin:0"><h2>조회 페이지 TOP 10</h2><div id="trafficPages"></div></div>
+</div>
+<div class="toolbar" style="margin-top:26px">
+<input id="mainSearch" type="search" placeholder="날짜, 페이지, 유입 출처 검색" aria-label="방문 로그 검색">
+<select id="trafficLogType" aria-label="로그 유형"><option value="pv">페이지 조회</option><option value="site">전체 사이트 UV</option><option value="home">메인페이지 UV</option></select>
+<button type="button" id="mainExport">CSV 다운로드</button>
+</div>
+<div class="muted" id="mainCount">방문 기록 로딩 중</div>
 <div id="mainLogList" aria-live="polite"></div>
+<p class="muted">브라우저 저장소 차단·광고 차단기·Firebase 보안 규칙 등에 따라 일부 기록은 누락될 수 있습니다. 과거 PV는 소급 생성되지 않습니다.</p>
 </section>
 <section class="box" id="dailyBox"><h2>일별 신청 현황 · 최근 14일</h2><div class="toolbar"><select id="dailyType" aria-label="집계 유형"><option value="all">전체 신청</option><option value="business">기업 신청</option><option value="career">채용 신청</option><option value="freelancer">협력 프리랜서</option></select></div><div class="daily" id="dailyChart"></div></section>
 <section class="box">
@@ -117,5 +131,5 @@ input:focus,select:focus{border-color:#aaa}
 </main>
 </div>
 <script type="module" src="/assets/js/admin2-20261111.js"></script>
-<script type="module" src="/assets/js/admin2-visitors-20261111.js"></script>
+<script type="module" src="/assets/js/admin2-visitors-v2.js"></script>
 </body></html>
