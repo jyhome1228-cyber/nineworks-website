@@ -244,6 +244,12 @@ body.modal-open{overflow:hidden}
 .mentor-records--compact .mentor-record-row dt{color:#9c9c9c;line-height:1.55}
 .mentor-records--compact .mentor-record-row dd{margin:0;color:#dadada;line-height:1.55;word-break:keep-all}
 @media(max-width:600px){.mentor-records--compact{font-size:11.7px!important}.mentor-records--compact .mentor-record-row{grid-template-columns:90px minmax(0,1fr);gap:9px;padding:7px 0}.mentor-profile span{font-size:11px}}
+
+/* Hide visual scrollbars in modal header tabs without disabling scrolling. */
+.hub-modal .hub-tabs{scrollbar-width:none!important;-ms-overflow-style:none;overflow-y:hidden}
+.hub-modal .hub-tabs::-webkit-scrollbar{display:none;width:0;height:0}
+.hub-modal .hub-panel{scrollbar-width:none;-ms-overflow-style:none}
+.hub-modal .hub-panel::-webkit-scrollbar{display:none;width:0;height:0}
 </style>
 </head>
 <body>
@@ -343,7 +349,7 @@ body.modal-open{overflow:hidden}
 </form>
 </div>
 </details>
-<details class="mentor-expand prereg-legacy"><summary>2027년 신규 프로젝트 사전 등록 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary><div id="preregisterSlot"></div></details>
+
 </section>
 <section class="hub-section" data-hub-section="mentoring" role="tabpanel" hidden>
 <h3 class="hub-section-heading">툴을 잘 다루는 것을 넘어, 사고하는 디자이너로 성장하기 위해.</h3>
@@ -542,12 +548,11 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()})
     ['visionModal','companyHubModal','vision'],
     ['companyModal','companyHubModal','performance'],
     ['careerModal','peopleHubModal','career'],
-    ['freelancerModal','peopleHubModal','freelancer'],
-    ['interestModal','consultHubModal','preregister']
+    ['freelancerModal','peopleHubModal','freelancer']
   ];
   for(const [sourceId,hubId,key] of moves){
     const source=document.getElementById(sourceId)?.querySelector('.modal-panel');
-    const target=key==='preregister'?document.getElementById('preregisterSlot'):document.getElementById(hubId)?.querySelector('[data-hub-section="'+key+'"]');
+    const target=document.getElementById(hubId)?.querySelector('[data-hub-section="'+key+'"]');
     if(!source||!target)continue;
     for(const node of [...source.children]){
       if(node.matches?.('.modal-close'))continue;
