@@ -78,6 +78,7 @@ input:focus,select:focus{border-color:#aaa}
 <button type="button" data-tab="business">기업 신청</button>
 <button type="button" data-tab="career">채용 신청</button>
 <button type="button" data-tab="freelancer">협력 프리랜서</button>
+<button type="button" data-tab="consulting">컨설팅·멘토링</button>
 <button type="button" data-tab="visitors">메인 방문 로그</button>
 </nav>
 <div class="sidebar-end"><button type="button" id="signOut">로그아웃</button></div>
@@ -90,6 +91,7 @@ input:focus,select:focus{border-color:#aaa}
 <article class="stat"><span>전체 기업 신청</span><strong data-stat="businessAll">0</strong></article>
 <article class="stat"><span>전체 채용 신청</span><strong data-stat="careerAll">0</strong></article>
 <article class="stat"><span>협력 프리랜서 등록</span><strong data-stat="freelancerAll">0</strong></article>
+<article class="stat"><span>컨설팅·멘토링 신청</span><strong data-stat="consultingAll">0</strong></article>
 </div>
 <section class="box" id="visitorBox" hidden>
 <h2>홈페이지 방문 통계</h2>
@@ -121,7 +123,7 @@ input:focus,select:focus{border-color:#aaa}
 <div id="mainLogList" aria-live="polite"></div>
 <p class="muted">브라우저 저장소 차단·광고 차단기·Firebase 보안 규칙 등에 따라 일부 기록은 누락될 수 있습니다. 과거 PV는 소급 생성되지 않습니다.</p>
 </section>
-<section class="box" id="dailyBox"><h2>일별 신청 현황 · 최근 14일</h2><div class="toolbar"><select id="dailyType" aria-label="집계 유형"><option value="all">전체 신청</option><option value="business">기업 신청</option><option value="career">채용 신청</option><option value="freelancer">협력 프리랜서</option></select></div><div class="daily" id="dailyChart"></div></section>
+<section class="box" id="dailyBox"><h2>일별 신청 현황 · 최근 14일</h2><div class="toolbar"><select id="dailyType" aria-label="집계 유형"><option value="all">전체 신청</option><option value="business">기업 신청</option><option value="career">채용 신청</option><option value="freelancer">협력 프리랜서</option><option value="consulting">컨설팅·멘토링</option></select></div><div class="daily" id="dailyChart"></div></section>
 <section class="box">
 <h2 id="listTitle">최근 신청 내역</h2>
 <div class="toolbar"><input id="search" type="search" placeholder="이름, 기업명, 이메일 검색" aria-label="신청 검색"><button id="download" type="button">CSV 다운로드</button></div>
