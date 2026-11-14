@@ -208,6 +208,28 @@ body.modal-open{overflow:hidden}
   .hub-section>.info-copy{font-size:14px;line-height:1.9}
 }
 @media(max-width:360px){.hub-modal .hub-panel{padding-left:18px;padding-right:18px}.hub-tabs{gap:16px}}
+
+.company-narrative{font-size:13.5px;line-height:1.99;letter-spacing:-.015em}
+.company-narrative p{margin-bottom:23px}
+.company-narrative strong{color:#eee;font-weight:500}
+.mentor-expand{border-top:1px solid #383838;margin-top:25px;color:#eee}
+.mentor-expand+ .mentor-expand{margin-top:0}
+.mentor-expand summary{display:flex;align-items:center;justify-content:space-between;gap:18px;list-style:none;padding:20px 0;font-size:13px;font-weight:500;cursor:pointer}
+.mentor-expand summary::-webkit-details-marker{display:none}
+.mentor-chevron{font-size:19px;line-height:1;transition:transform .2s}
+.mentor-expand[open] .mentor-chevron{transform:rotate(180deg)}
+.mentor-expand summary:focus-visible{outline:2px solid #ddd;outline-offset:2px}
+.mentor-records{padding:0 0 24px;color:#bbb;font-size:12.5px;line-height:1.9}
+.mentor-records h4{color:#fff;font-size:14px;font-weight:500;margin:0 0 10px}
+.mentor-records p{margin:0 0 18px}
+.mentor-records dl{margin:0}
+.mentor-records dl>div{display:grid;grid-template-columns:95px 1fr;gap:12px;border-top:1px solid #292929;padding:10px 0}
+.mentor-records dt{color:#999}.mentor-records dd{margin:0;color:#ddd;word-break:keep-all}
+.mentor-form-wrap{padding:0 0 25px}
+.mentor-form-note{font-size:12px;line-height:1.8;color:#aaa;margin:0 0 20px}
+.prereg-legacy .modal-panel{width:auto;padding:0;border:0;box-shadow:none;background:transparent;max-height:none;overflow:visible}
+.prereg-legacy .modal-panel h2{font-size:17px}
+@media(max-width:600px){.company-narrative{font-size:14px;line-height:1.94}.mentor-expand summary{font-size:13px;padding:18px 0}.mentor-records dl>div{grid-template-columns:74px minmax(0,1fr);gap:9px}.mentor-form-wrap input,.mentor-form-wrap select,.mentor-form-wrap textarea{font-size:16px}}
 </style>
 </head>
 <body>
@@ -242,11 +264,13 @@ body.modal-open{overflow:hidden}
       <button type="button" role="tab" data-hub-tab="performance" aria-selected="false">기업현황</button>
     </div>
     <section class="hub-section" data-hub-section="intro" role="tabpanel">
-      <h3 class="hub-section-heading">디자인에서 시작해 기업의 성장까지 함께합니다.</h3>
-      <div class="info-copy">
-        <p>나인웍스는 브랜드 기획과 시각디자인을 중심으로 시작한 디자인 에이전시입니다. 이제는 결과물을 제작하는 것에 그치지 않고, 기업의 상황과 비즈니스 모델을 함께 고민하며 필요한 방향을 설계합니다.</p>
-        <p>브랜드 전략과 아이덴티티, 패키지·인쇄 제작, 웹·시스템 개발과 운영까지 분야별 전문 역량을 연결해 하나의 프로젝트를 실행합니다. 클라이언트가 시장에서 실제로 활용하고 성장할 수 있는 결과를 만드는 것이 목표입니다.</p>
-      </div>
+      <h3 class="hub-section-heading">클라이언트의 성장이, 나인웍스가 성장하는 이유입니다.</h3>
+<div class="info-copy company-narrative"><p>나인웍스는 디자인과 브랜딩을 중심으로 기업의 성장을 돕는 에이전시입니다. 우리는 좋은 디자인을 만들고 완성도 높은 결과물을 전달하는 일이 디자인 회사의 기본적인 역할이라고 생각합니다. 하지만 여러 기업과 프로젝트를 경험하면서 디자인의 진정한 가치는 결과물 자체보다 그것이 실제 사업에서 어떤 역할을 하고, 어떤 변화를 만들어내는지에 있다는 것을 알게 되었습니다. 아무리 좋은 디자인이라도 기업의 매출과 브랜드 인지도, 제품의 경쟁력이나 사업 활성화에 기여하지 못한다면 그 가치는 제한적일 수밖에 없기 때문입니다.</p>
+<p>그렇기에 나인웍스는 단순히 요청받은 디자인을 제작하고 납품하는 관계에서 벗어나고자 합니다. 클라이언트가 현재 어떤 상황에 놓여 있는지, 어떤 문제를 해결해야 하는지, 앞으로 어떤 방향으로 성장하고 싶은지를 함께 고민하는 것부터 시작합니다. 때로는 디자인보다 사업 구조를 정리하는 일이 먼저일 수도 있고, 브랜드의 방향을 다시 설정하거나 기존 비즈니스 모델(BM)을 강화하는 과정이 필요할 수도 있습니다. 우리는 주어진 업무를 그대로 수행하기보다 <strong>그 일이 왜 필요하고, 실제 사업에 어떤 도움이 되어야 하는지 함께 판단하는 과정</strong>을 중요하게 생각합니다.</p>
+<p>나인웍스의 가장 중요한 전문성은 디자인과 브랜드의 구조를 설계하는 데 있습니다. 기업의 사업 방향과 고객의 니즈를 이해하고, 이를 브랜드 전략과 아이덴티티, 제품과 서비스 경험으로 구체화합니다. 나아가 패키지·인쇄 제작, 웹사이트와 시스템 개발, 콘텐츠 제작 및 운영 지원까지 프로젝트에 필요한 여러 분야의 전문 역량을 연결합니다. 이는 단순히 많은 업무를 수행할 수 있다는 의미가 아닙니다. <strong>브랜드의 방향과 디자인, 실제 실행 과정이 서로 분리되지 않고 하나의 목표를 향해 작동하도록 만드는 것</strong>이 우리가 추구하는 방식입니다.</p>
+<p>우리는 클라이언트의 사업을 대신 운영하는 회사가 아니라, 사업을 더 잘 운영하고 성장시킬 수 있도록 필요한 기반을 함께 만드는 파트너가 되고 싶습니다. 새로운 사업을 준비하는 기업에는 방향과 실행 구조를, 성장 과정에 있는 기업에는 브랜드 경쟁력과 확장 가능성을, 운영 중인 기업에는 비효율을 개선하고 새로운 기회를 발견할 수 있는 방법을 제안하고자 합니다. 이를 위해 디자인뿐만 아니라 기획, 기술, AI 활용과 다양한 실무 경험을 지속적으로 확장하며, 기업마다 다른 상황에 맞춰 필요한 역할을 수행하고 있습니다.</p>
+<p><strong>클라이언트의 성장은 나인웍스의 성장을 이끄는 가장 중요한 밑거름입니다.</strong> 우리가 함께 고민하고 설계한 일이 실제 사업의 성과로 이어지고, 그 성과가 다음 프로젝트와 더 깊은 신뢰로 연결되는 관계를 만들고 싶습니다. 하나의 프로젝트를 완료하는 것으로 관계가 끝나기보다, 기업이 성장하는 과정에서 새로운 문제를 함께 해결하고 더 큰 가능성을 만들어가는 파트너로 자리 잡고자 합니다.</p>
+<p>나인웍스는 디자인을 잘하는 회사에서 한 걸음 더 나아가, <strong>디자인을 기반으로 기업의 성장 구조를 함께 설계하고 실행하는 파트너 에이전시</strong>로 성장해 나가겠습니다.</p></div>
       <a class="info-link" href="/about.html">나인웍스 더 알아보기 <span aria-hidden="true">↗</span></a>
     </section>
     <section class="hub-section" data-hub-section="vision" role="tabpanel" hidden></section>
@@ -266,33 +290,89 @@ body.modal-open{overflow:hidden}
   </div>
 </div>
 <div class="modal hub-modal" id="consultHubModal" role="dialog" aria-modal="true" aria-labelledby="consultHubTitle" hidden>
-  <div class="modal-panel hub-panel" tabindex="-1">
-    <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
-    <h2 class="hub-title" id="consultHubTitle">컨설팅·멘토링</h2>
-    <div class="hub-tabs" role="tablist" aria-label="컨설팅 및 멘토링 안내">
-      <button type="button" role="tab" data-hub-tab="consulting" aria-selected="true">기업 컨설팅</button>
-      <button type="button" role="tab" data-hub-tab="mentoring" aria-selected="false">멘토링</button>
-      <button type="button" role="tab" data-hub-tab="preregister" aria-selected="false">프로젝트 사전등록</button>
-    </div>
-    <section class="hub-section" data-hub-section="consulting" role="tabpanel">
-      <h3 class="hub-section-heading">사업의 방향을 함께 고민합니다.</h3>
-      <div class="info-copy">
-        <p>좋은 디자인을 만드는 것만큼 그 디자인이 사업에서 어떤 역할을 해야 하는지 고민합니다. 브랜드의 현재 상황과 고객의 니즈, 비즈니스 모델(BM)을 함께 살펴보고 더 나은 사업 방향과 실행 구조를 구상합니다.</p>
-        <p>기획·브랜딩·제품 출시·디지털 채널·운영을 서로 연결하는 관점에서 필요한 과제를 찾습니다. 구체적인 컨설팅 범위와 진행 방식은 상담을 통해 협의합니다.</p>
-      </div>
-      <button type="button" class="hub-inline-link" data-go-hub-tab="preregister">2027 프로젝트 사전등록</button>
-    </section>
-    <section class="hub-section" data-hub-section="mentoring" role="tabpanel" hidden>
-      <h3 class="hub-section-heading">디자인을 넘어 실무와 사업을 함께 생각합니다.</h3>
-      <div class="info-copy">
-        <p>디자인의 기획과 문제 해결, 클라이언트와의 커뮤니케이션, 실무 제작 과정 등 현장에서 쌓아온 경험을 바탕으로 성장 방향을 함께 고민하는 멘토링을 지향합니다.</p>
-        <p>멘토링 프로그램의 세부 대상과 일정, 운영 방식은 준비 중입니다. 정식 신청을 열기 전까지는 이메일로 문의할 수 있습니다.</p>
-      </div>
-      <a class="info-link" href="mailto:info@9works.kr?subject=NINEWORKS%20%EB%A9%98%ED%86%A0%EB%A7%81%20%EB%AC%B8%EC%9D%98">멘토링 문의하기 <span aria-hidden="true">↗</span></a>
-    </section>
-    <section class="hub-section" data-hub-section="preregister" role="tabpanel" hidden></section>
-  </div>
+<div class="modal-panel hub-panel" tabindex="-1">
+<button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+<h2 class="hub-title" id="consultHubTitle">컨설팅·멘토링</h2>
+<div class="hub-tabs" role="tablist" aria-label="컨설팅 및 멘토링 안내">
+<button type="button" role="tab" data-hub-tab="consulting" aria-selected="true">브랜드 컨설팅</button>
+<button type="button" role="tab" data-hub-tab="mentoring" aria-selected="false">디자이너 멘토링</button>
 </div>
+<section class="hub-section" data-hub-section="consulting" role="tabpanel">
+<h3 class="hub-section-heading">브랜드와 사업이 함께 성장할 수 있는 방향을 고민합니다.</h3>
+<div class="info-copy"><p>브랜드 컨설팅은 시각적인 디자인을 제안하는 데서 끝나지 않습니다. 기업의 니즈와 시장 상황, 비즈니스 모델(BM)을 살펴보고 브랜드의 구조와 사업의 방향을 함께 구체화합니다.</p><p>신규 브랜드 기획과 리브랜딩, 제품·서비스 출시, 사업 모델 고도화 등 현재의 과제를 중심으로 필요한 실행 방향을 함께 설계합니다.</p></div>
+<details class="mentor-expand" data-mentor-details>
+<summary>진행자 이력 및 주요 경험 확인 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
+<div class="mentor-records">
+<h4>박재영 · 나인웍스 Founder &amp; Director</h4>
+<p>브랜드 전략·시각디자인과 실제 사업 실행을 연결하는 실무, 교육, 연구 및 스타트업 컨설팅 경험을 바탕으로 진행합니다.</p>
+<dl>
+<div><dt>2020—</dt><dd>나인웍스 대표 · 브랜드 디자인 및 프로젝트 기획·실행 총괄</dd></div>
+<div><dt>2022—</dt><dd>주식회사 더 나인웍스 대표 총괄</dd></div>
+<div><dt>2024—</dt><dd>서일대학교 전공 강의 · AI 콘텐츠 및 실무 디자인 교육</dd></div>
+<div><dt>2024—</dt><dd>청운대학교 디자인센터 연구교수</dd></div>
+<div><dt>학력</dt><dd>국민대학교 시각디자인 석사 · 서울과학기술대학교 IT디자인융합전공 박사과정</dd></div>
+<div><dt>관련 경험</dt><dd>스타트업 브랜드·IR 컨설팅, 로컬브랜딩 교육 및 멘토링, 디자인 심사</dd></div>
+</dl>
+<a href="/designer.html" class="info-link">전체 이력과 수행 프로젝트 보기 <span aria-hidden="true">↗</span></a>
+</div>
+</details>
+<details class="mentor-expand mentor-apply-details">
+<summary>브랜드 컨설팅 신청하기 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
+<div class="mentor-form-wrap">
+<p class="mentor-form-note">아래 정보를 접수하면 내용을 검토해 진행 가능 여부와 방식을 개별 안내드립니다. 접수만으로 일정이나 계약이 확정되지는 않습니다.</p>
+<form class="modal-form mentoring-form" data-mentoring-kind="brand">
+<div class="modal-field"><label>성함 / 담당자명 *</label><input name="name" autocomplete="name" maxlength="70" required></div>
+<div class="modal-field"><label>회사·브랜드명 *</label><input name="organization" autocomplete="organization" maxlength="120" required></div>
+<div class="modal-field"><label>이메일 *</label><input name="email" type="email" autocomplete="email" maxlength="150" required></div>
+<div class="modal-field"><label>연락처 *</label><input name="phone" type="tel" autocomplete="tel" maxlength="35" required></div>
+<div class="modal-field"><label>사업 단계 *</label><select name="stage" required><option value="">선택해 주세요</option><option>사업 구상·창업 준비</option><option>브랜드 론칭 준비</option><option>운영 중·성장 단계</option><option>리브랜딩·사업 고도화</option><option>기타</option></select></div>
+<div class="modal-field"><label>상담을 원하는 내용 *</label><textarea name="request" rows="5" maxlength="1000" required placeholder="현재 고민과 BM·브랜드·사업 관련 질문을 작성해 주세요."></textarea></div>
+<label class="modal-consent"><input name="consent" type="checkbox" required><span><a href="/privacy.html" target="_blank" rel="noopener noreferrer">개인정보 처리방침</a>을 확인했으며, 신청 검토 및 회신을 위한 개인정보 수집·이용에 동의합니다. 수집 항목: 성함, 소속, 이메일, 연락처, 현재 단계, 신청 내용.</span></label>
+<button class="modal-submit" type="submit">신청 내용 접수하기</button>
+<p class="modal-hint" data-mentoring-status role="status" aria-live="polite">진행 일정·방식·비용은 검토 후 개별 협의합니다.</p>
+</form>
+</div>
+</details>
+<details class="mentor-expand prereg-legacy"><summary>2027년 신규 프로젝트 사전 등록 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary><div id="preregisterSlot"></div></details>
+</section>
+<section class="hub-section" data-hub-section="mentoring" role="tabpanel" hidden>
+<h3 class="hub-section-heading">툴을 잘 다루는 것을 넘어, 사고하는 디자이너로 성장하기 위해.</h3>
+<div class="info-copy"><p>디자이너 멘토링은 포트폴리오와 디자인의 방향, 프로젝트 기획, 실무 과정에서의 판단과 커뮤니케이션을 함께 고민하는 자리입니다.</p><p>디자인 전공 학생과 신입·현업 디자이너, 프리랜서로 독립을 준비하는 분까지 각자의 상황에 맞춰 성장 방향을 살펴봅니다.</p></div>
+<details class="mentor-expand" data-mentor-details="designer">
+<summary>진행자 이력 및 주요 경험 확인 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
+<div class="mentor-records">
+<h4>박재영 · 나인웍스 Founder &amp; Director</h4>
+<p>브랜드 전략·시각디자인과 실제 사업 실행을 연결하는 실무, 교육, 연구 및 스타트업 컨설팅 경험을 바탕으로 진행합니다.</p>
+<dl>
+<div><dt>2020—</dt><dd>나인웍스 대표 · 브랜드 디자인 및 프로젝트 기획·실행 총괄</dd></div>
+<div><dt>2022—</dt><dd>주식회사 더 나인웍스 대표 총괄</dd></div>
+<div><dt>2024—</dt><dd>서일대학교 전공 강의 · AI 콘텐츠 및 실무 디자인 교육</dd></div>
+<div><dt>2024—</dt><dd>청운대학교 디자인센터 연구교수</dd></div>
+<div><dt>학력</dt><dd>국민대학교 시각디자인 석사 · 서울과학기술대학교 IT디자인융합전공 박사과정</dd></div>
+<div><dt>관련 경험</dt><dd>스타트업 브랜드·IR 컨설팅, 로컬브랜딩 교육 및 멘토링, 디자인 심사</dd></div>
+</dl>
+<a href="/designer.html" class="info-link">전체 이력과 수행 프로젝트 보기 <span aria-hidden="true">↗</span></a>
+</div>
+</details>
+<details class="mentor-expand mentor-apply-details">
+<summary>디자이너 멘토링 신청하기 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
+<div class="mentor-form-wrap">
+<p class="mentor-form-note">아래 정보를 접수하면 내용을 검토해 진행 가능 여부와 방식을 개별 안내드립니다. 접수만으로 일정이나 계약이 확정되지는 않습니다.</p>
+<form class="modal-form mentoring-form" data-mentoring-kind="designer">
+<div class="modal-field"><label>성함 / 담당자명 *</label><input name="name" autocomplete="name" maxlength="70" required></div>
+<div class="modal-field"><label>소속 또는 활동 분야</label><input name="organization" autocomplete="organization" maxlength="120" ></div>
+<div class="modal-field"><label>이메일 *</label><input name="email" type="email" autocomplete="email" maxlength="150" required></div>
+<div class="modal-field"><label>연락처 *</label><input name="phone" type="tel" autocomplete="tel" maxlength="35" required></div>
+<div class="modal-field"><label>현재 단계 *</label><select name="stage" required><option value="">선택해 주세요</option><option>대학생·졸업 예정</option><option>취업·포트폴리오 준비</option><option>신입 디자이너</option><option>프리랜서·창업 준비</option><option>현업 디자이너</option><option>기타</option></select></div>
+<div class="modal-field"><label>멘토링을 원하는 내용 *</label><textarea name="request" rows="5" maxlength="1000" required placeholder="궁금한 점, 현재 고민, 앞으로 성장하고 싶은 방향을 작성해 주세요."></textarea></div>
+<label class="modal-consent"><input name="consent" type="checkbox" required><span><a href="/privacy.html" target="_blank" rel="noopener noreferrer">개인정보 처리방침</a>을 확인했으며, 신청 검토 및 회신을 위한 개인정보 수집·이용에 동의합니다. 수집 항목: 성함, 소속, 이메일, 연락처, 현재 단계, 신청 내용.</span></label>
+<button class="modal-submit" type="submit">신청 내용 접수하기</button>
+<p class="modal-hint" data-mentoring-status role="status" aria-live="polite">진행 일정·방식·비용은 검토 후 개별 협의합니다.</p>
+</form>
+</div>
+</details>
+</section>
+</div></div>
 <div class="modal" id="freelancerModal" role="dialog" aria-modal="true" aria-labelledby="freelancerTitle" hidden>
 <div class="modal-panel" tabindex="-1">
 <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
@@ -461,7 +541,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()})
   ];
   for(const [sourceId,hubId,key] of moves){
     const source=document.getElementById(sourceId)?.querySelector('.modal-panel');
-    const target=document.getElementById(hubId)?.querySelector('[data-hub-section="'+key+'"]');
+    const target=key==='preregister'?document.getElementById('preregisterSlot'):document.getElementById(hubId)?.querySelector('[data-hub-section="'+key+'"]');
     if(!source||!target)continue;
     for(const node of [...source.children]){
       if(node.matches?.('.modal-close'))continue;
@@ -512,6 +592,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()})
   });
 })();
 </script>
+<script type="module" src="/assets/js/renewal-mentoring-20261114.js"></script>
 <script type="module" src="/assets/js/renewal-interest-20261111.js"></script>
 <script type="module" src="/assets/js/renewal-career-20261111.js"></script>
 <script type="module" src="/assets/js/renewal-freelancer-20261113.js"></script>
