@@ -179,6 +179,35 @@ body.modal-open{overflow:hidden}
 .freelancer-intro p{margin:0 0 17px}
 .freelancer-intro strong{color:#f4f4f4;font-weight:500}
 @media(max-width:600px){.freelancer-intro{font-size:13px;line-height:1.86;margin-bottom:24px}.freelancer-intro p{margin-bottom:17px}}
+
+/* Four top-level choices and nested editorial content tabs */
+.actions-grid.actions-grid--four{grid-template-columns:repeat(4,minmax(0,1fr));width:min(100%,840px);gap:10px}
+.actions-grid.actions-grid--four button,.actions-grid.actions-grid--four a{min-height:54px;padding:12px 10px;font-size:12.5px}
+.hub-modal .hub-panel{width:min(100%,750px);max-height:88svh;max-height:88dvh;padding-top:35px}
+.hub-title{font-size:21px!important;font-weight:500!important;letter-spacing:-.045em!important;margin:0 40px 22px 0!important}
+.hub-tabs{display:flex;gap:22px;overflow-x:auto;white-space:nowrap;scrollbar-width:thin;border-bottom:1px solid #3c3c3c;margin:0 0 27px}
+.hub-tabs button{flex:none;position:relative;border:0;border-bottom:2px solid transparent;margin:0 0 -1px;padding:0 0 13px;background:transparent;color:#949494;cursor:pointer;font:inherit;font-size:13px;font-weight:400}
+.hub-tabs button[aria-selected="true"]{color:#fff;border-bottom-color:#fff;font-weight:500}
+.hub-tabs button:focus-visible,.hub-inline-link:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.hub-section[hidden]{display:none!important}
+.hub-section-heading{font-size:18px;letter-spacing:-.04em;line-height:1.5;font-weight:500;margin:0 0 24px;color:#f5f5f5;word-break:keep-all}
+.hub-section>.info-copy{font-size:13.5px;line-height:1.97}
+.hub-inline-link{width:100%;min-height:46px;text-align:center;border:1px solid #666;color:#f5f5f5;background:transparent;font:inherit;font-size:12px;cursor:pointer;margin-top:7px}
+.hub-inline-link:hover{background:#252525}
+.hub-section .company-sales{margin-top:22px}
+.hub-section .vision-headline{margin-top:0}
+.hub-section .career-story{font-size:13.5px}
+@media(max-width:600px){
+  .actions-grid.actions-grid--four{width:100%;max-width:430px;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .actions-grid.actions-grid--four button,.actions-grid.actions-grid--four a{min-height:51px;padding:10px 8px;font-size:12px}
+  .hub-modal .hub-panel{width:100%;height:100dvh;max-height:100dvh;padding:67px 22px max(40px,env(safe-area-inset-bottom));border:0}
+  .hub-title{font-size:20px!important;margin-bottom:19px!important;clear:both}
+  .hub-tabs{gap:19px;margin-bottom:24px}
+  .hub-tabs button{font-size:12.5px;padding-bottom:12px}
+  .hub-section-heading{font-size:17px;margin-bottom:20px}
+  .hub-section>.info-copy{font-size:14px;line-height:1.9}
+}
+@media(max-width:360px){.hub-modal .hub-panel{padding-left:18px;padding-right:18px}.hub-tabs{gap:16px}}
 </style>
 </head>
 <body>
@@ -193,17 +222,76 @@ body.modal-open{overflow:hidden}
 <p>많은 성원 덕분에 <strong>2026년 프로젝트 일정은 조기 마감</strong>되었습니다.<br>개편 기간에는 신규 프로젝트 접수를 진행하지 않습니다.</p>
 <p>현재 진행 중인 프로젝트에 최선을 다해<br>더 좋은 결과로 보답하겠습니다. 감사합니다.</p>
 </div>
-<nav class="actions actions-grid" aria-label="나인웍스 바로가기">
-<button type="button" data-open-modal="interest">관심고객 등록하기</button>
-<button type="button" data-open-modal="career">채용안내</button>
+<nav class="actions actions-grid actions-grid--four" aria-label="나인웍스 바로가기">
+<button type="button" data-open-modal="companyHub">회사소개</button>
+<button type="button" data-open-modal="peopleHub">채용·협업안내</button>
+<button type="button" data-open-modal="consultHub">컨설팅·멘토링</button>
 <a href="https://www.behance.net/the9works" target="_blank" rel="noopener noreferrer">Behance 포트폴리오 ↗</a>
-<button type="button" data-open-modal="company">기업현황</button>
-<button type="button" data-open-modal="vision">나인웍스의 비전</button>
-<button type="button" data-open-modal="freelancer">협력 프리랜서 등록</button>
 </nav>
 <p class="period">2026. 11. 10 – 12. 10</p>
 </main>
 <footer class="footer">© 2026 NINEWORKS</footer>
+</div>
+<div class="modal hub-modal" id="companyHubModal" role="dialog" aria-modal="true" aria-labelledby="companyHubTitle" hidden>
+  <div class="modal-panel hub-panel" tabindex="-1">
+    <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+    <h2 class="hub-title" id="companyHubTitle">회사소개</h2>
+    <div class="hub-tabs" role="tablist" aria-label="회사소개 내용 선택">
+      <button type="button" role="tab" data-hub-tab="intro" aria-selected="true">회사소개</button>
+      <button type="button" role="tab" data-hub-tab="vision" aria-selected="false">비전</button>
+      <button type="button" role="tab" data-hub-tab="performance" aria-selected="false">기업현황</button>
+    </div>
+    <section class="hub-section" data-hub-section="intro" role="tabpanel">
+      <h3 class="hub-section-heading">디자인에서 시작해 기업의 성장까지 함께합니다.</h3>
+      <div class="info-copy">
+        <p>나인웍스는 브랜드 기획과 시각디자인을 중심으로 시작한 디자인 에이전시입니다. 이제는 결과물을 제작하는 것에 그치지 않고, 기업의 상황과 비즈니스 모델을 함께 고민하며 필요한 방향을 설계합니다.</p>
+        <p>브랜드 전략과 아이덴티티, 패키지·인쇄 제작, 웹·시스템 개발과 운영까지 분야별 전문 역량을 연결해 하나의 프로젝트를 실행합니다. 클라이언트가 시장에서 실제로 활용하고 성장할 수 있는 결과를 만드는 것이 목표입니다.</p>
+      </div>
+      <a class="info-link" href="/about.html">나인웍스 더 알아보기 <span aria-hidden="true">↗</span></a>
+    </section>
+    <section class="hub-section" data-hub-section="vision" role="tabpanel" hidden></section>
+    <section class="hub-section" data-hub-section="performance" role="tabpanel" hidden></section>
+  </div>
+</div>
+<div class="modal hub-modal" id="peopleHubModal" role="dialog" aria-modal="true" aria-labelledby="peopleHubTitle" hidden>
+  <div class="modal-panel hub-panel" tabindex="-1">
+    <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+    <h2 class="hub-title" id="peopleHubTitle">채용·협업안내</h2>
+    <div class="hub-tabs" role="tablist" aria-label="채용 및 협업 선택">
+      <button type="button" role="tab" data-hub-tab="career" aria-selected="true">디자이너 채용</button>
+      <button type="button" role="tab" data-hub-tab="freelancer" aria-selected="false">협력 프리랜서</button>
+    </div>
+    <section class="hub-section" data-hub-section="career" role="tabpanel"></section>
+    <section class="hub-section" data-hub-section="freelancer" role="tabpanel" hidden></section>
+  </div>
+</div>
+<div class="modal hub-modal" id="consultHubModal" role="dialog" aria-modal="true" aria-labelledby="consultHubTitle" hidden>
+  <div class="modal-panel hub-panel" tabindex="-1">
+    <button class="modal-close" type="button" data-close-modal aria-label="닫기">×</button>
+    <h2 class="hub-title" id="consultHubTitle">컨설팅·멘토링</h2>
+    <div class="hub-tabs" role="tablist" aria-label="컨설팅 및 멘토링 안내">
+      <button type="button" role="tab" data-hub-tab="consulting" aria-selected="true">기업 컨설팅</button>
+      <button type="button" role="tab" data-hub-tab="mentoring" aria-selected="false">멘토링</button>
+      <button type="button" role="tab" data-hub-tab="preregister" aria-selected="false">프로젝트 사전등록</button>
+    </div>
+    <section class="hub-section" data-hub-section="consulting" role="tabpanel">
+      <h3 class="hub-section-heading">사업의 방향을 함께 고민합니다.</h3>
+      <div class="info-copy">
+        <p>좋은 디자인을 만드는 것만큼 그 디자인이 사업에서 어떤 역할을 해야 하는지 고민합니다. 브랜드의 현재 상황과 고객의 니즈, 비즈니스 모델(BM)을 함께 살펴보고 더 나은 사업 방향과 실행 구조를 구상합니다.</p>
+        <p>기획·브랜딩·제품 출시·디지털 채널·운영을 서로 연결하는 관점에서 필요한 과제를 찾습니다. 구체적인 컨설팅 범위와 진행 방식은 상담을 통해 협의합니다.</p>
+      </div>
+      <button type="button" class="hub-inline-link" data-go-hub-tab="preregister">2027 프로젝트 사전등록</button>
+    </section>
+    <section class="hub-section" data-hub-section="mentoring" role="tabpanel" hidden>
+      <h3 class="hub-section-heading">디자인을 넘어 실무와 사업을 함께 생각합니다.</h3>
+      <div class="info-copy">
+        <p>디자인의 기획과 문제 해결, 클라이언트와의 커뮤니케이션, 실무 제작 과정 등 현장에서 쌓아온 경험을 바탕으로 성장 방향을 함께 고민하는 멘토링을 지향합니다.</p>
+        <p>멘토링 프로그램의 세부 대상과 일정, 운영 방식은 준비 중입니다. 정식 신청을 열기 전까지는 이메일로 문의할 수 있습니다.</p>
+      </div>
+      <a class="info-link" href="mailto:info@9works.kr?subject=NINEWORKS%20%EB%A9%98%ED%86%A0%EB%A7%81%20%EB%AC%B8%EC%9D%98">멘토링 문의하기 <span aria-hidden="true">↗</span></a>
+    </section>
+    <section class="hub-section" data-hub-section="preregister" role="tabpanel" hidden></section>
+  </div>
 </div>
 <div class="modal" id="freelancerModal" role="dialog" aria-modal="true" aria-labelledby="freelancerTitle" hidden>
 <div class="modal-panel" tabindex="-1">
@@ -328,7 +416,7 @@ window.setTimeout(function(){page.classList.add('show');splash.classList.add('do
 window.setTimeout(function(){splash.hidden=true},2050);
 })();
 (function(){
-var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal'),company:document.getElementById('companyModal'),vision:document.getElementById('visionModal'),freelancer:document.getElementById('freelancerModal')};
+var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal'),company:document.getElementById('companyModal'),vision:document.getElementById('visionModal'),freelancer:document.getElementById('freelancerModal'),companyHub:document.getElementById('companyHubModal'),peopleHub:document.getElementById('peopleHubModal'),consultHub:document.getElementById('consultHubModal')};
 var lastTrigger=null;
 function closeAll(){Object.keys(modals).forEach(function(k){modals[k].hidden=true});document.body.classList.remove('modal-open');if(lastTrigger)lastTrigger.focus()}
 document.querySelectorAll('[data-open-modal]').forEach(function(btn){btn.addEventListener('click',function(){lastTrigger=btn;var m=modals[btn.getAttribute('data-open-modal')];if(!m)return;m.hidden=false;document.body.classList.add('modal-open');m.querySelector('.modal-close').focus()})});
@@ -357,6 +445,62 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()})
   window.addEventListener('pointermove',move,{passive:true});
   document.addEventListener('visibilitychange',()=>{
     if(document.hidden&&raf){cancelAnimationFrame(raf);raf=0}
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // Reuse the existing verified popup content and form nodes; don't create duplicate forms.
+  const moves=[
+    ['visionModal','companyHubModal','vision'],
+    ['companyModal','companyHubModal','performance'],
+    ['careerModal','peopleHubModal','career'],
+    ['freelancerModal','peopleHubModal','freelancer'],
+    ['interestModal','consultHubModal','preregister']
+  ];
+  for(const [sourceId,hubId,key] of moves){
+    const source=document.getElementById(sourceId)?.querySelector('.modal-panel');
+    const target=document.getElementById(hubId)?.querySelector('[data-hub-section="'+key+'"]');
+    if(!source||!target)continue;
+    for(const node of [...source.children]){
+      if(node.matches?.('.modal-close'))continue;
+      target.appendChild(node);
+    }
+  }
+  function activate(hub,key,focusTab=false){
+    const tabs=[...hub.querySelectorAll('[data-hub-tab]')];
+    const sections=[...hub.querySelectorAll('[data-hub-section]')];
+    const requested=tabs.some(x=>x.dataset.hubTab===key)?key:tabs[0]?.dataset.hubTab;
+    for(const tab of tabs){
+      const active=tab.dataset.hubTab===requested;
+      tab.setAttribute('aria-selected',String(active));
+      tab.tabIndex=active?0:-1;
+      if(active&&focusTab)tab.focus();
+    }
+    for(const section of sections)section.hidden=section.dataset.hubSection!==requested;
+    const panel=hub.querySelector('.modal-panel');
+    if(panel)panel.scrollTop=0;
+  }
+  document.querySelectorAll('.hub-modal').forEach(hub=>{
+    activate(hub,hub.querySelector('[data-hub-tab]')?.dataset.hubTab);
+    hub.querySelectorAll('[data-hub-tab]').forEach(tab=>{
+      tab.addEventListener('click',()=>activate(hub,tab.dataset.hubTab));
+      tab.addEventListener('keydown',event=>{
+        if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft'&&event.key!=='Home'&&event.key!=='End')return;
+        const tabs=[...hub.querySelectorAll('[data-hub-tab]')];
+        const pos=tabs.indexOf(tab);
+        const next=event.key==='Home'?0:event.key==='End'?tabs.length-1:(pos+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;
+        event.preventDefault();activate(hub,tabs[next].dataset.hubTab,true);
+      });
+    });
+    hub.querySelectorAll('[data-go-hub-tab]').forEach(btn=>btn.addEventListener('click',()=>activate(hub,btn.dataset.goHubTab,true)));
+  });
+  document.querySelectorAll('[data-open-modal="companyHub"],[data-open-modal="peopleHub"],[data-open-modal="consultHub"]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const hub=document.getElementById(btn.dataset.openModal+'Modal');
+      if(hub)activate(hub,hub.querySelector('[data-hub-tab]')?.dataset.hubTab);
+    });
   });
 })();
 </script>
