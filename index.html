@@ -250,6 +250,24 @@ body.modal-open{overflow:hidden}
 .hub-modal .hub-tabs::-webkit-scrollbar{display:none;width:0;height:0}
 .hub-modal .hub-panel{scrollbar-width:none;-ms-overflow-style:none}
 .hub-modal .hub-panel::-webkit-scrollbar{display:none;width:0;height:0}
+
+/* Concise process and expandable program scope within consulting / mentoring popup */
+#consultHubModal .mentor-service-intro p{margin:0 0 15px;line-height:1.82}
+#consultHubModal .mentor-service-intro p:last-child{margin-bottom:0}
+#consultHubModal .mentor-service-intro strong{font-weight:500;color:#eee}
+#consultHubModal .mentor-process{display:grid;grid-template-columns:72px minmax(0,1fr);align-items:baseline;gap:12px;padding:16px 0;margin-top:22px;border-top:1px solid #353535}
+#consultHubModal .mentor-process-label{font-size:12px;color:#aaa;white-space:nowrap}
+#consultHubModal .mentor-process p{margin:0;font-size:12px;line-height:1.8;color:#ddd;word-break:keep-all}
+#consultHubModal .mentor-process p span{color:#777;margin:0 3px}
+#consultHubModal .mentor-service-details{margin-top:0}
+#consultHubModal .mentor-service-detail-body{padding:0 0 19px}
+#consultHubModal .mentor-service-detail-body ul{list-style:none;margin:0;padding:0}
+#consultHubModal .mentor-service-detail-body li{display:grid;grid-template-columns:136px minmax(0,1fr);gap:14px;padding:10px 0;border-top:1px solid #292929;font-size:12.5px;line-height:1.6}
+#consultHubModal .mentor-service-detail-body li:first-child{border-top:0}
+#consultHubModal .mentor-service-detail-body li strong{color:#eee;font-weight:500}
+#consultHubModal .mentor-service-detail-body li span{color:#bbb}
+#consultHubModal .mentor-service-footnote{margin:12px 0 0;color:#999;font-size:11.5px;line-height:1.8}
+@media(max-width:600px){#consultHubModal .mentor-process{grid-template-columns:1fr;gap:4px}#consultHubModal .mentor-service-detail-body li{grid-template-columns:1fr;gap:3px;padding:10px 0}#consultHubModal .mentor-service-intro p{line-height:1.9}}
 </style>
 </head>
 <body>
@@ -318,8 +336,25 @@ body.modal-open{overflow:hidden}
 <button type="button" role="tab" data-hub-tab="mentoring" aria-selected="false">디자이너 멘토링</button>
 </div>
 <section class="hub-section" data-hub-section="consulting" role="tabpanel">
-<h3 class="hub-section-heading">브랜드와 사업이 함께 성장할 수 있는 방향을 고민합니다.</h3>
-<div class="info-copy"><p>브랜드 컨설팅은 시각적인 디자인을 제안하는 데서 끝나지 않습니다. 기업의 니즈와 시장 상황, 비즈니스 모델(BM)을 살펴보고 브랜드의 구조와 사업의 방향을 함께 구체화합니다.</p><p>신규 브랜드 기획과 리브랜딩, 제품·서비스 출시, 사업 모델 고도화 등 현재의 과제를 중심으로 필요한 실행 방향을 함께 설계합니다.</p></div>
+<h3 class="hub-section-heading">기업의 문제를 진단하고, 매출과 성장으로 이어질 방향을 설계합니다.</h3>
+<div class="info-copy mentor-service-intro">
+<p>나인웍스의 브랜드 컨설팅은 기업의 현재 사업과 브랜드를 살펴보고, <strong>더 많은 고객의 선택과 매출로 이어지기 위해 무엇을 개선해야 하는지</strong> 함께 판단하는 자문 서비스입니다. 로고나 디자인만 평가하는 것이 아니라 제품·서비스와 고객, 시장, 비즈니스 모델(BM)을 종합적으로 검토합니다.</p>
+<p>먼저 사업의 현황과 고민을 듣고 주요 고객, 경쟁 환경, 가격·제품 구성, 판매 채널과 기존 브랜드 경험을 확인합니다. 이후 문제의 우선순위를 정해 브랜드 포지셔닝, 메시지, 고객 접점, 수익 구조 등 실질적으로 개선할 부분을 논의합니다.</p>
+<p>진단을 바탕으로 바로 실행할 과제와 중장기 과제를 구분해 제안합니다. <strong>디자인을 지출이 아닌 사업 성장에 기여하는 투자로 만드는 것</strong>이 목표이며, 필요시 브랜딩·제작·개발 등의 실행 업무는 별도 범위로 협의합니다.</p>
+</div>
+<div class="mentor-process" aria-label="브랜드 컨설팅 진행 절차"><span class="mentor-process-label">진행 절차</span><p>신청·사전 검토 <span>→</span> 현황 진단 <span>→</span> 컨설팅 미팅 <span>→</span> 개선 과제 정리</p></div>
+<details class="mentor-expand mentor-service-details">
+<summary>컨설팅 주요 내용 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
+<div class="mentor-service-detail-body">
+<ul>
+<li><strong>사업·브랜드 진단</strong><span>사업 현황, 고객·시장 구조, 브랜드 경쟁력과 문제 확인</span></li>
+<li><strong>BM·수익 구조 검토</strong><span>제품 구성, 가격, 판매 방식, 새로운 사업 기회 검토</span></li>
+<li><strong>브랜드 전략</strong><span>포지셔닝, 핵심 메시지, 아이덴티티·차별화 방향 설정</span></li>
+<li><strong>디자인·고객 경험</strong><span>패키지, 웹사이트, 상세페이지 등 주요 고객 접점 점검</span></li>
+<li><strong>실행 계획</strong><span>과제의 우선순위와 단계별 개선 방향 정리</span></li>
+</ul>
+<p class="mentor-service-footnote">컨설팅의 범위와 진행 방식은 사전 검토 후 협의합니다. 실제 디자인·개발 제작 업무는 별도로 진행합니다.</p>
+</div></details>
 <details class="mentor-expand" data-mentor-details>
 <summary>전문가 이력 보기 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
 <div class="mentor-records mentor-records--compact">
@@ -352,8 +387,26 @@ body.modal-open{overflow:hidden}
 
 </section>
 <section class="hub-section" data-hub-section="mentoring" role="tabpanel" hidden>
-<h3 class="hub-section-heading">툴을 잘 다루는 것을 넘어, 사고하는 디자이너로 성장하기 위해.</h3>
-<div class="info-copy"><p>디자이너 멘토링은 포트폴리오와 디자인의 방향, 프로젝트 기획, 실무 과정에서의 판단과 커뮤니케이션을 함께 고민하는 자리입니다.</p><p>디자인 전공 학생과 신입·현업 디자이너, 프리랜서로 독립을 준비하는 분까지 각자의 상황에 맞춰 성장 방향을 살펴봅니다.</p></div>
+<h3 class="hub-section-heading">사고하고 책임지며, 스스로 일할 수 있는 디자이너로 성장하도록 돕습니다.</h3>
+<div class="info-copy mentor-service-intro">
+<p>나인웍스의 디자이너 멘토링은 참여자의 현재 역량과 목표를 진단하고, 실무에서 필요한 성장 방향을 함께 찾는 프로그램입니다. 단순한 툴 수업이나 포트폴리오 첨삭에 머물지 않고 <strong>사고력·기획력·실행력·소통력·사업 이해력·책임감</strong>을 갖춘 육각형 전문가로 성장하도록 돕습니다.</p>
+<p>기존 작업물과 디자인 프로세스, 실무 경험, 진로 목표를 함께 살펴 강점과 보완점을 정리합니다. 취업 준비, 실무 적응, 프리랜서 독립, 스튜디오 창업 등 각자의 상황에 따라 필요한 내용을 선택해 피드백합니다.</p>
+<p>실제 프로젝트를 기준으로 문제 정의와 기획, 제안서·견적·계약, 고객 소통, 일정·품질 관리, 제작·납품, AI 활용까지 다룹니다. <strong>정답을 대신 제시하기보다 스스로 판단하고 끝까지 책임질 수 있도록 만드는 것</strong>이 멘토링의 목표입니다.</p>
+</div>
+<div class="mentor-process" aria-label="디자이너 멘토링 진행 절차"><span class="mentor-process-label">진행 절차</span><p>신청·목표 확인 <span>→</span> 역량 진단 <span>→</span> 맞춤형 피드백 <span>→</span> 개선 과제 제안</p></div>
+<details class="mentor-expand mentor-service-details">
+<summary>멘토링 주요 내용 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
+<div class="mentor-service-detail-body">
+<ul>
+<li><strong>디자인 사고·기획</strong><span>문제 정의, 리서치, 콘셉트와 디자인 의사결정</span></li>
+<li><strong>디자인 실무</strong><span>브랜딩·패키지·제작·웹 프로젝트의 실제 진행 과정</span></li>
+<li><strong>포트폴리오·커리어</strong><span>작업물 진단, 역량 분석, 취업과 커리어 방향 설정</span></li>
+<li><strong>프리랜서·창업</strong><span>고객 확보, 제안서, 견적·계약, 세금 및 운영 기초</span></li>
+<li><strong>AI·업무 생산성</strong><span>생성형 AI, Figma·Notion을 활용한 업무 방식</span></li>
+<li><strong>책임과 커뮤니케이션</strong><span>고객 설득, 수정 대응, 일정·품질 관리 및 납품</span></li>
+</ul>
+<p class="mentor-service-footnote">개인의 경험과 목표에 맞춰 상담 범위와 방식은 사전 검토 후 협의합니다.</p>
+</div></details>
 <details class="mentor-expand" data-mentor-details="designer">
 <summary>전문가 이력 보기 <span class="mentor-chevron" aria-hidden="true">⌄</span></summary>
 <div class="mentor-records mentor-records--compact">
