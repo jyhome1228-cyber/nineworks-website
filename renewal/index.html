@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#ffffff">
+<title>NINEWORKS — Website Renewal Preview</title>
+<meta name="description" content="나인웍스 홈페이지 개편 작업용 미리보기 페이지">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="./" aria-label="나인웍스 신규 홈페이지 메인">NINEWORKS.</a>
+    <button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false" aria-label="메뉴 열기">☰</button>
+    <nav class="nav" id="navigation" aria-label="주 메뉴">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">NINEWORKS — GROWTH ARCHITECTURE COMPANY</p>
+    <h1>디자인을 넘어,<br>기업의 성장을 설계합니다.</h1>
+    <p class="lead">나인웍스는 브랜드의 방향을 정의하고, 제품과 고객 접점을 만들며, 실제 사업 운영까지 연결하는 디자인 파트너입니다.</p>
+    <a class="arrow-link" href="#about">나인웍스 알아보기</a>
+  </div>
+</section>
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-title">About NINEWORKS</p>
+      <div><h2>좋은 디자인의 기준은<br>실제 비즈니스에 작동하는가입니다.</h2>
+      <p class="section-description">보기 좋은 결과물에 머무르지 않습니다. 고객이 무엇을 판매하고 누구에게 선택받아야 하는지부터 고민합니다. 전략, 디자인, 제작, 개발, 운영을 연결해 실행 가능한 결과를 만듭니다.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head"><p class="section-title">What We Do</p><div><h2>필요한 일을 구분하지 않고,<br>성장에 필요한 과정을 연결합니다.</h2></div></div>
+    <div class="service-list">
+      <div class="service"><span class="no">01</span><h3>Brand Strategy & Identity</h3><p>브랜드 기획, 포지셔닝, 네이밍, BI·CI</p><span class="arr">↗</span></div>
+      <div class="service"><span class="no">02</span><h3>Package & Commerce Design</h3><p>제품 패키지, 상세페이지, 커머스 콘텐츠</p><span class="arr">↗</span></div>
+      <div class="service"><span class="no">03</span><h3>Web & Digital Experience</h3><p>홈페이지, 쇼핑몰, UX/UI, 웹 시스템 개발</p><span class="arr">↗</span></div>
+      <div class="service"><span class="no">04</span><h3>Business Support & Operation</h3><p>제작·인쇄 연계, 운영 관리, 실무 지원</p><span class="arr">↗</span></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="approach">
+ <div class="wrap">
+  <div class="section-head"><p class="section-title">Our Approach</p><div><h2>판단하고, 책임지고,<br>끝까지 실행합니다.</h2><p class="section-description">디자인은 기업의 문제를 해결하는 수단입니다. 요구사항만 수행하기보다 무엇이 필요한지를 판단하고, 제작 이후의 활용과 성과까지 고려합니다.</p></div></div>
+  <div class="feature-grid">
+   <div class="feature"><h3>01. Understand</h3><p>사업 구조, 고객, 시장을 이해하고 해결해야 할 문제를 정의합니다.</p></div>
+   <div class="feature"><h3>02. Build</h3><p>전략을 브랜드, 제품, 디지털 경험과 실제 제작물로 구체화합니다.</p></div>
+   <div class="feature"><h3>03. Grow</h3><p>운영 환경과 성장 단계에 맞춰 필요한 부분을 지속적으로 개선합니다.</p></div>
+  </div>
+  <p class="preview-note">본 페이지는 신규 메인 구성과 디자인 시스템 검토를 위한 1차 작업본입니다. 실적, 프로젝트, 컨설팅 및 멘토링 콘텐츠는 검증 후 추가 예정입니다.</p>
+ </div>
+</section>
+<section class="cta" id="contact"><div class="wrap"><h2>기업에 필요한 것은<br>결과를 만드는 파트너입니다.</h2><a class="arrow-link" href="mailto:info@9works.kr">프로젝트 문의하기</a></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><strong>NINEWORKS.</strong><span>© NINEWORKS. All rights reserved.</span></div></footer>
+<script>
+const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기')});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','메뉴 열기')}));
+</script>
+</body>
+</html>
