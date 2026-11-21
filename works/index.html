@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<meta name="description" content="NINEWORKS 포트폴리오 아카이브. Branding, Design, Development 프로젝트를 한 곳에서 확인하세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Selected Works | NINEWORKS">
+<meta property="og:description" content="브랜딩, 디자인, 개발 프로젝트를 아카이브합니다.">
+<meta property="og:url" content="https://9works.kr/works/">
+<link rel="canonical" href="https://9works.kr/works/">
+<link rel="icon" href="/favicon.png">
+<title>Works | NINEWORKS</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+:root{color-scheme:dark;--bg:#080808;--text:#f3f3f3;--muted:#a9a9a9;--line:#323232}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Pretendard,Arial,sans-serif;letter-spacing:-.025em;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(calc(100% - 76px),1440px);margin:auto}
+.header{height:72px;position:sticky;top:0;z-index:10;background:rgba(8,8,8,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:100%;gap:16px}
+.brand{font-weight:700;font-size:19px;letter-spacing:-.082em}
+.header-right{display:flex;gap:28px;align-items:center;font-size:13px}
+.header-right a:hover{text-decoration:underline;text-underline-offset:5px}
+.intro{padding:66px 0 46px}
+.intro h1{font-weight:500;font-size:clamp(30px,3.2vw,45px);line-height:1.25;margin:0 0 18px;letter-spacing:-.055em}
+.intro p{font-size:15px;color:#c3c3c3;line-height:1.8;max-width:720px;margin:0}
+.filters{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;min-height:67px}
+.tabs{display:flex;gap:34px;align-items:center;min-height:67px}
+.tabs button{border:0;border-bottom:2px solid transparent;background:transparent;color:#888;padding:22px 0 20px;font-size:14px;cursor:pointer;transition:color .2s}
+.tabs button:hover{color:#f4f4f4}.tabs button[aria-pressed=true]{border-bottom-color:white;color:white}
+.count{font-size:12px;color:#a8a8a8;white-space:nowrap;font-variant-numeric:tabular-nums}
+.projects{padding-top:30px;padding-bottom:100px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 28px}
+.project{min-width:0;display:block}
+.project .media{aspect-ratio:1.65;background:#171717;overflow:hidden;position:relative;border:1px solid #292929}
+.project .media img{height:100%;width:100%;object-fit:cover;display:block;transition:transform .55s ease,opacity .4s ease}
+.project:hover .media img{transform:scale(1.035)}
+.project .media:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.04);pointer-events:none}
+.project .placeholder{display:none;position:absolute;inset:0;align-items:center;justify-content:center;font-size:25px;font-weight:500;letter-spacing:-.04em;background:linear-gradient(130deg,#171717,#252525)}
+.project .media.fallback img{display:none}.project .media.fallback .placeholder{display:flex}
+.project .details{display:flex;gap:20px;justify-content:space-between;padding-top:19px;align-items:start}
+.project h2{font-size:21px;letter-spacing:-.045em;font-weight:500;line-height:1.35;margin:0 0 9px}
+.project p{font-size:13px;color:#b8b8b8;line-height:1.8;margin:0;word-break:keep-all}
+.project .type{white-space:nowrap;font-size:12px;color:#9b9b9b;padding-top:4px}
+.project:hover h2{text-decoration:underline;text-underline-offset:5px}
+.empty{display:none;grid-column:1/-1;padding:85px 0;border-bottom:1px solid var(--line);font-size:14px;color:#aaa}
+.empty[aria-hidden=false]{display:block}
+.footer{border-top:1px solid var(--line);font-size:12px;color:#999;padding:33px 0 43px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.footer a:hover{color:#fff}
+@media(max-width:900px){.wrap{width:calc(100% - 40px)}.intro{padding:47px 0 37px}.projects{gap:42px 20px}.project .details{display:block}.project .type{display:block;margin-top:9px}.project h2{font-size:19px}}
+@media(max-width:640px){.header{height:64px}.brand{font-size:18px}.header-right{font-size:12px}.intro h1{font-size:30px}.intro p{font-size:14px}.filters{display:block;min-height:0}.tabs{gap:24px;min-height:60px}.tabs button{font-size:13px;padding:18px 0}.count{padding-bottom:15px}.projects{grid-template-columns:1fr;gap:40px;padding-top:22px;padding-bottom:65px}.project .media{aspect-ratio:1.55}.footer-inner{display:block}.footer-inner span{display:block;margin-top:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="NINEWORKS 홈페이지">NINEWORKS</a><div class="header-right"><a href="/works/" aria-current="page">Works</a><a href="/">Home</a></div></div></header>
+<main class="wrap">
+<section class="intro"><h1>Selected Works.</h1><p>나인웍스의 프로젝트를 모아두는 아카이브입니다. 브랜딩, 디자인, 개발을 중심으로 완성된 작업을 순차적으로 기록합니다.</p></section>
+<div class="filters"><div class="tabs" role="group" aria-label="프로젝트 분류"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="branding" aria-pressed="false">Branding</button><button type="button" data-filter="design" aria-pressed="false">Design</button><button type="button" data-filter="development" aria-pressed="false">Development</button></div><div class="count" id="count" aria-live="polite"></div></div>
+<section id="projects" class="projects" aria-label="프로젝트 목록"><div class="empty" id="empty" aria-hidden="true">아직 등록된 프로젝트가 없습니다.</div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><strong>NINEWORKS</strong><span>Branding · Design · Development</span><a href="/">홈페이지로 돌아가기</a></div></footer>
+<script>
+/* 새 프로젝트 추가: 아래 배열에 slug, title, client, description, type, image, category를 입력합니다.
+   포트폴리오가 공개된 작업만 등록하세요. */
+const workItems=[{"slug":"fineb","title":"FINE.B","client":"파인비","description":"패키지 제작 견적과 소량 샘플 신청을 위한 웹서비스","type":"Service Website","image":"https://cdn.imweb.me/upload/S2023030963558ef55ba8e/c5acf880c9b79.png"},{"slug":"taepyung","title":"TAEPYUNG PAPER","client":"태평제지","description":"제조기업 사업·제품 정보의 다중 페이지 웹사이트","type":"Corporate Website","image":"https://cdn.imweb.me/upload/S2025061194bb8d274d3cd/a08e6868cebcd.jpg"},{"slug":"privion","title":"PRIVION","client":"동원산업","description":"산업용 FMCW LiDAR 기술과 제품을 소개하는 다국어 웹","type":"Technology Website","image":"https://www.privionlidar.com/assets/images/logo/home-hero.png"},{"slug":"recelleclore","title":"RECELLÉCLORE","client":"리셀에클로","description":"브랜드·제품·연구·리뷰를 연결하는 더마 웹사이트","type":"Brand Website","image":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261008-024256-main-up-1-e5e42ab9.webp"},{"slug":"pentagon","title":"PENTAGON","client":"펜타곤 법률세무회계","description":"전문 서비스·업무사례·상담 시스템을 통합한 웹사이트","type":"Professional Website","image":"https://cdn.imweb.me/upload/S2025061194bb8d274d3cd/fceaf38a6ad29.jpg"},{"slug":"terrasave","title":"TerraSAVE","client":"테라세이브","description":"농산물 신선도 비교 콘텐츠와 국·영·중문 솔루션 웹","type":"Solution Website","image":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261012-002708-1-083ec8f4.webp"},{"slug":"kaisuncell","title":"KAISUNCELL","client":"카이선셀","description":"바이오 소재·브랜드·연구를 연결하는 다국어 기업 웹","type":"Corporate Website","image":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261029-035143-3-f908b266.webp"},{"slug":"myv","title":"MYV","client":"마이브이","description":"가치소비 브랜드 웹사이트와 콘텐츠·문의 운영 시스템","type":"Brand & Admin","image":"https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261106-015753-kakaotalk-photo-2026-11-06-10-57-44-2fe530dc.webp"}].map(item=>({...item,category:"development"}));
+const container=document.querySelector("#projects"),empty=document.querySelector("#empty"),count=document.querySelector("#count");
+let activeFilter="all";
+function render(){
+ container.querySelectorAll(".project").forEach(n=>n.remove());
+ const filtered=workItems.filter(item=>activeFilter==="all"||item.category===activeFilter);
+ const fragment=document.createDocumentFragment();
+ filtered.forEach(item=>{
+  const a=document.createElement("a");a.className="project";a.href="/works/"+encodeURIComponent(item.slug)+"/";a.setAttribute("aria-label",item.title+" 포트폴리오 상세보기");
+  const media=document.createElement("div");media.className="media";
+  const img=document.createElement("img");img.loading="lazy";img.decoding="async";img.alt=item.title+" 프로젝트 대표 이미지";img.src=item.image;img.onerror=()=>media.classList.add("fallback");
+  const fallback=document.createElement("div");fallback.className="placeholder";fallback.textContent=item.title;
+  media.append(img,fallback);
+  const details=document.createElement("div");details.className="details";
+  const info=document.createElement("div");const h=document.createElement("h2");h.textContent=item.title;const p=document.createElement("p");p.textContent=item.description;info.append(h,p);
+  const type=document.createElement("span");type.className="type";type.textContent=item.type;details.append(info,type);
+  a.append(media,details);fragment.append(a);
+ });
+ container.insertBefore(fragment,empty);
+ count.textContent=filtered.length+" Projects";
+ empty.setAttribute("aria-hidden",String(filtered.length!==0));
+}
+document.querySelectorAll("[data-filter]").forEach(button=>button.addEventListener("click",()=>{
+ activeFilter=button.dataset.filter;
+ document.querySelectorAll("[data-filter]").forEach(el=>el.setAttribute("aria-pressed",String(el===button)));
+ render();
+}));
+render();
+</script>
+</body>
+</html>
