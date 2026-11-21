@@ -59,6 +59,34 @@
 .eyebrow,.micro,.number,.screen-tag,.screens-intro{display:none!important}
 @media(max-width:800px){.hero h1{font-size:clamp(28px,5vw,42px)}.hero{padding-top:39px}}
 @media(max-width:430px){.hero h1{font-size:30px}}
+</style><style>
+/* Reading density: fix empty first grid column after removing section labels */
+.case-section .section-heading,
+#experience .section-heading{display:block;max-width:1100px;margin:0 0 25px}
+.case-section .section-heading>div,
+#experience .section-heading>div{width:100%;max-width:1040px}
+.case-section .section-heading h2,
+#experience .section-heading h2{max-width:1000px;font-size:clamp(22px,2.2vw,30px);line-height:1.5;letter-spacing:-.04em}
+.case-section .section-heading .body-copy,
+#experience .section-heading .body-copy{max-width:980px;width:100%;font-size:15px;line-height:1.85;letter-spacing:-.02em;margin-top:17px;color:#c4c4c4}
+.case-section.section,#experience.section{padding-top:54px;padding-bottom:54px}
+.case-section .architecture{margin-top:22px}
+.case-section .workflow{margin-top:26px}
+.case-section .project-index{margin-top:24px}
+.featured-preview{padding-bottom:50px}
+.screen-collection{gap:52px 24px}
+.screen-description{line-height:1.85}
+@media(max-width:1100px){
+.case-section .section-heading,#experience .section-heading{max-width:100%}
+.case-section .section-heading .body-copy,#experience .section-heading .body-copy{max-width:100%}
+.case-section.section,#experience.section{padding-top:42px;padding-bottom:42px}
+.case-section .section-heading h2,#experience .section-heading h2{font-size:clamp(21px,2.8vw,27px)}
+}
+@media(max-width:600px){
+.case-section.section,#experience.section{padding-top:37px;padding-bottom:37px}
+.case-section .section-heading .body-copy,#experience .section-heading .body-copy{font-size:14px;line-height:1.8}
+.case-section .section-heading h2,#experience .section-heading h2{font-size:22px}
+}
 </style></head>
 <body>
 <header class="site-header"><div class="wrap header-inner"><a class="wordmark" href="/" aria-label="NINEWORKS 홈">NINEWORKS</a><nav class="nav"><a href="#overview">Overview</a><a href="#experience">Experience</a><a href="#system">System</a><a href="https://finebpkg.com/" target="_blank" rel="noopener noreferrer">Live Website ↗</a></nav></div></header>
