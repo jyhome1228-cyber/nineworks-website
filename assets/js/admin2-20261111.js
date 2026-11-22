@@ -69,8 +69,8 @@ el('applicationList').addEventListener('change',async(e)=>{
  finally{s.disabled=false}
 });
 el('download').addEventListener('click',()=>{
- const headers=['구분','접수일','이름','회사명','연락처','이메일','회사 업태/지원 분야','문의사항/자기소개','포트폴리오','활동 지역','업무 시작 가능일','대면 미팅','상태'];
- const rows=chosen().map(i=>[category(i)==='business'?'기업':category(i)==='career'?'채용':category(i)==='freelancer'?'협력 프리랜서':i.service===BRAND_CONSULTING?'브랜드 컨설팅':'디자이너 멘토링',format(dateOf(i)),i.contactName||'',i.company||'',i.phone||'',i.email||'',(i.industry||i.projectType||''),i.message||'',i.portfolioUrl||'',i.region||'',i.availableFrom||'',i.meetingAvailable?'가능':'미확인',i.status||'new']);
+ const headers=['구분','접수일','이름','회사명','연락처','이메일','회사 업태/지원 분야','문의사항/자기소개','지원서 상세','포트폴리오','활동 지역','업무 시작 가능일','대면 미팅','상태'];
+ const rows=chosen().map(i=>[category(i)==='business'?'기업':category(i)==='career'?'채용':category(i)==='freelancer'?'협력 프리랜서':i.service===BRAND_CONSULTING?'브랜드 컨설팅':'디자이너 멘토링',format(dateOf(i)),i.contactName||'',i.company||'',i.phone||'',i.email||'',(i.industry||i.projectType||''),i.message||'',i.details||'',i.portfolioUrl||'',i.region||'',i.availableFrom||'',i.meetingAvailable?'가능':'미확인',i.status||'new']);
  // Neutralize spreadsheet formula injection while preserving UTF-8 and quotes.
  const csvCell=v=>{const s=String(v).replace(/^([=+@-])/,"'$1");return '"'+s.replace(/"/g,'""')+'"'};
  const blob=new Blob(['\uFEFF'+[headers,...rows].map(row=>row.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8'});
