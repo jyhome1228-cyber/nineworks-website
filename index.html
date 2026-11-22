@@ -272,7 +272,7 @@ body.modal-open{overflow:hidden}
 </head>
 <body>
 <div class="ambient" aria-hidden="true"></div>
-<div class="splash" id="splash" aria-label="나인웍스 인트로"><div class="splash-message" id="splashFirst">더 나은 내일을 위해,</div><div class="splash-message" id="splashSecond">나인웍스는 새롭게 준비하고 있습니다.</div><button class="splash-skip" id="splashSkip" type="button" aria-label="인트로 건너뛰기">SKIP</button></div>
+<div class="splash" id="splash" aria-label="나인웍스 인트로"><div class="splash-message" id="splashFirst">디자인을 넘어, 그다음을 생각합니다.</div><div class="splash-message" id="splashSecond">나인웍스는 새롭게 준비하고 있습니다.</div><div class="splash-message" id="splashThird">홈페이지 업데이트 중으로 불편을 드려 죄송합니다.</div><button class="splash-skip" id="splashSkip" type="button" aria-label="인트로 건너뛰기">SKIP</button></div>
 <div class="page" id="page">
 <header class="header"><img class="logo" src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS"></header>
 <main class="content">
@@ -556,7 +556,7 @@ body.modal-open{overflow:hidden}
 <script>
 (function(){
 var splash=document.getElementById('splash'),page=document.getElementById('page');
-var first=document.getElementById('splashFirst'),second=document.getElementById('splashSecond'),skip=document.getElementById('splashSkip');
+var first=document.getElementById('splashFirst'),second=document.getElementById('splashSecond'),third=document.getElementById('splashThird'),skip=document.getElementById('splashSkip');
 var timers=[],finished=false;
 function later(fn,ms){timers.push(window.setTimeout(fn,ms));}
 function finish(){if(finished)return;finished=true;timers.forEach(window.clearTimeout);page.classList.add('show');splash.classList.add('done');window.setTimeout(function(){splash.hidden=true;},650);}
@@ -566,7 +566,9 @@ later(function(){first.classList.add('active');},120);
 later(function(){first.classList.remove('active');},1450);
 later(function(){second.classList.add('active');},2050);
 later(function(){second.classList.remove('active');},3550);
-later(finish,4200);
+later(function(){third.classList.add('active');},4150);
+later(function(){third.classList.remove('active');},5650);
+later(finish,6300);
 })();
 (function(){
 var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal'),company:document.getElementById('companyModal'),vision:document.getElementById('visionModal'),freelancer:document.getElementById('freelancerModal'),companyHub:document.getElementById('companyHubModal'),peopleHub:document.getElementById('peopleHubModal'),consultHub:document.getElementById('consultHubModal')};
