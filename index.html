@@ -24,7 +24,7 @@ html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg)}
 body{font-family:'Noto Sans KR',Arial,sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all}
 .logo{display:block;width:145px;height:auto;filter:brightness(0) invert(1)}
 .splash{position:fixed;inset:0;z-index:5;display:grid;place-items:center;background:var(--bg);transition:opacity .6s ease,visibility .6s}
-.splash .logo{width:172px;animation:appear 1.1s ease both}
+.splash{z-index:50;background:#050505}.splash .logo{display:none}.splash-message{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px 24px;color:#fff;text-align:center;font-size:clamp(24px,3.2vw,43px);line-height:1.5;letter-spacing:-.055em;font-weight:500;opacity:0;transform:translateY(12px);transition:opacity .65s ease,transform .65s ease;word-break:keep-all}.splash-message.active{opacity:1;transform:translateY(0)}.splash-skip{position:absolute;top:max(28px,env(safe-area-inset-top));right:max(28px,env(safe-area-inset-right));padding:10px 4px;border:0;background:none;color:#fff;font:inherit;font-size:13px;font-weight:400;letter-spacing:0;cursor:pointer;z-index:2}.splash-skip:focus-visible{outline:2px solid #fff;outline-offset:5px}@media(max-width:600px){.splash-message{font-size:clamp(23px,6vw,30px);padding:30px 26px}.splash-skip{top:24px;right:24px}}
 .splash.done{opacity:0;visibility:hidden;pointer-events:none}
 @keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 .page{min-height:100svh;display:flex;flex-direction:column;align-items:center;opacity:0;transition:opacity .7s ease}
@@ -272,7 +272,7 @@ body.modal-open{overflow:hidden}
 </head>
 <body>
 <div class="ambient" aria-hidden="true"></div>
-<div class="splash" id="splash" aria-hidden="true"><img class="logo" src="/assets/nineworks-renewal-logo.svg" alt=""></div>
+<div class="splash" id="splash" aria-label="나인웍스 인트로"><div class="splash-message" id="splashFirst">더 나은 내일을 위해,</div><div class="splash-message" id="splashSecond">나인웍스는 새롭게 준비하고 있습니다.</div><button class="splash-skip" id="splashSkip" type="button" aria-label="인트로 건너뛰기">SKIP</button></div>
 <div class="page" id="page">
 <header class="header"><img class="logo" src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS"></header>
 <main class="content">
@@ -556,9 +556,17 @@ body.modal-open{overflow:hidden}
 <script>
 (function(){
 var splash=document.getElementById('splash'),page=document.getElementById('page');
-if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){splash.hidden=true;page.classList.add('show');return;}
-window.setTimeout(function(){page.classList.add('show');splash.classList.add('done')},1350);
-window.setTimeout(function(){splash.hidden=true},2050);
+var first=document.getElementById('splashFirst'),second=document.getElementById('splashSecond'),skip=document.getElementById('splashSkip');
+var timers=[],finished=false;
+function later(fn,ms){timers.push(window.setTimeout(fn,ms));}
+function finish(){if(finished)return;finished=true;timers.forEach(window.clearTimeout);page.classList.add('show');splash.classList.add('done');window.setTimeout(function(){splash.hidden=true;},650);}
+skip.addEventListener('click',finish);
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){finish();return;}
+later(function(){first.classList.add('active');},120);
+later(function(){first.classList.remove('active');},1450);
+later(function(){second.classList.add('active');},2050);
+later(function(){second.classList.remove('active');},3550);
+later(finish,4200);
 })();
 (function(){
 var modals={interest:document.getElementById('interestModal'),career:document.getElementById('careerModal'),company:document.getElementById('companyModal'),vision:document.getElementById('visionModal'),freelancer:document.getElementById('freelancerModal'),companyHub:document.getElementById('companyHubModal'),peopleHub:document.getElementById('peopleHubModal'),consultHub:document.getElementById('consultHubModal')};
