@@ -7,6 +7,7 @@ function feedback(s,error=false){status.textContent=s;status.style.color=error?'
 
 const limits={appMotivation:3000,appGoal:3000,appSkills:1500,appExperience:2000,appAwards:1500};
 for(const [id,max] of Object.entries(limits)){const el=document.getElementById(id),count=document.getElementById(id+'Count');if(!el||!count)continue;const update=()=>{count.textContent=Array.from(el.value).length.toLocaleString('ko-KR')+' / '+max.toLocaleString('ko-KR')};el.addEventListener('input',update);update()}
+document.getElementById('applyDnaRemove')?.addEventListener('click',()=>{const box=document.getElementById('applyDnaBox');if(box)box.hidden=true;window.nwDnaSummary=null});
 form.addEventListener('submit',async event=>{
 event.preventDefault();if(!form.reportValidity()){feedback('필수 입력 항목을 확인해 주세요. 빈칸 또는 이메일 형식 오류가 있습니다.',true);return}
 if(!firebaseConfigReady||firebaseInitError||!db){feedback('접수 시스템에 연결할 수 없습니다. 잠시 후 다시 시도해 주세요. 문제가 계속되면 이메일로 문의해 주세요.',true);return}
@@ -15,9 +16,10 @@ v.email=v.email.toLowerCase();
 if(!v.name||!v.email||!v.phone||!v.motivation||!v.goal||!v.skills||!v.education||fd.get('consent')!=='on'){feedback('필수 항목과 개인정보 동의 여부를 확인해 주세요.',true);return}
 button.disabled=true;button.textContent='제출 중...';feedback('지원서를 접수하고 있습니다.');
 try{
-const details=['이름: '+v.name,'이메일: '+v.email,'연락처: '+v.phone,'지원 동기: '+v.motivation,'목표: '+v.goal,'주력 기술: '+v.skills,'최종학력: '+v.education,'경력: '+(v.experience||'없음'),'수상경력: '+(v.awards||'없음'),'개인정보 수집·이용: 동의'].join('\n\n');
+const dnaBox=document.getElementById('applyDnaBox');const dnaSummary=dnaBox&&!dnaBox.hidden?document.getElementById('applyDnaSummary')?.textContent:'';
+const details=['이름: '+v.name,'이메일: '+v.email,'연락처: '+v.phone,'지원 동기: '+v.motivation,'목표: '+v.goal,'주력 기술: '+v.skills,'최종학력: '+v.education,'경력: '+(v.experience||'없음'),'수상경력: '+(v.awards||'없음'),'개인정보 수집·이용: 동의',...(dnaSummary?['WORK DNA 진단 요약 (지원자 선택 첨부):\n'+dnaSummary]:[])].join('\n\n');
 const ref=await addDoc(collection(db,'inquiries'),{service:'2027 DESIGNER APPLICATION',source:'/renewal/recruit.html',status:'new',company:'',contactName:v.name,email:v.email,phone:v.phone,projectName:'2027 신입 디자이너 채용',projectType:'Recruitment',message:v.motivation,details,pageTitle:document.title,createdAt:serverTimestamp()});
-form.reset();for(const [id,max] of Object.entries(limits)){const count=document.getElementById(id+'Count');if(count)count.textContent='0 / '+max.toLocaleString('ko-KR')}button.textContent='제출 완료';feedback('제출이 완료되었습니다.\n접수번호: '+ref.id.slice(0,8)+'\n지원서가 정상 접수되었습니다. 포트폴리오는 아래 이메일로 보내주세요.');
+form.reset();if(dnaBox)dnaBox.hidden=true;window.nwDnaSummary=null;for(const [id,max] of Object.entries(limits)){const count=document.getElementById(id+'Count');if(count)count.textContent='0 / '+max.toLocaleString('ko-KR')}button.textContent='제출 완료';feedback('제출이 완료되었습니다.\n접수번호: '+ref.id.slice(0,8)+'\n지원서가 정상 접수되었습니다. 포트폴리오는 아래 이메일로 보내주세요.');
 portfolio.href='mailto:info@9works.kr?subject='+encodeURIComponent('[NINEWORKS 포트폴리오] '+v.name+' / '+ref.id.slice(0,8))+'&body='+encodeURIComponent('지원자: '+v.name+'\n접수번호: '+ref.id+'\n\n포트폴리오를 첨부하거나 링크를 작성해 주세요.');
 }catch(err){console.error('Application submit failed',err);button.disabled=false;button.textContent='지원서 제출하기';feedback(err?.code==='permission-denied'?'접수 실패: Firebase 저장 권한이 거부되었습니다. 관리자에게 문의해 주세요.':err?.code==='unavailable'?'접수 실패: 네트워크 또는 Firebase 연결이 불안정합니다. 잠시 후 다시 시도해 주세요.':'접수 실패: '+(err?.code||'저장 오류')+'. 잠시 후 다시 시도하거나 이메일로 문의해 주세요.',true)}
 });
