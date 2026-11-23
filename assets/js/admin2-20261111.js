@@ -60,6 +60,14 @@ document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()
 }));
 el('search').addEventListener('input',render);
 el('dailyType').addEventListener('change',chart);
+el('applicationList').addEventListener('click',async(e)=>{
+ const b=e.target.closest('[data-trash-id]');if(!b)return;
+ const item=entries.find(x=>x.id===b.dataset.trashId&&x.service===CAREER&&!x.trashedAt);if(!item)return;
+ if(!confirm((item.contactName||'해당 지원자')+'의 지원서를 삭제하시겠습니까?\n삭제한 지원서는 일반 목록에서 숨겨지며 Firebase에 복구 가능한 상태로 보관됩니다.'))return;
+ b.disabled=true;b.textContent='삭제 중...';
+ try{await updateDoc(doc(db,'inquiries',item.id),{trashedAt:new Date().toISOString()})}
+ catch(error){console.error(error);alert('지원서 삭제에 실패했습니다. 관리자 권한을 확인해 주세요.');b.disabled=false;b.textContent='지원서 삭제'}
+});
 el('applicationList').addEventListener('change',async(e)=>{
  const s=e.target.closest('[data-change-id]');if(!s)return;
  const item=entries.find(x=>x.id===s.dataset.changeId);if(!item)return;
