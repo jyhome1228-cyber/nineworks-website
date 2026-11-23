@@ -56,6 +56,78 @@ button:focus-visible,a:focus-visible{outline:2px solid #171717;outline-offset:4p
 @media(max-width:760px){.nw-header{height:62px;padding:0 15px}.nw-logo{font-size:19px}.nw-header__left,.nw-header__right{gap:10px}.nw-header__left a,.nw-header__right a{font-size:9px}.nw-header__left a:nth-child(2),.nw-header__right a:first-child{display:none}.collection-bar{padding:12px 15px;display:flex;align-items:flex-start;flex-direction:column;gap:6px}.collection-bar__left,.collection-bar__right{width:100%;justify-content:space-between;gap:12px}.filter,.sort{gap:14px}.filter button,.sort button{padding:8px 0;font-size:9px}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.collection-card__caption{min-height:120px;padding:18px 8px 24px}.collection-card__caption strong{font-size:10px}.collection-card__caption span{font-size:9px;margin-top:5px}.collection-card__caption small{font-size:9px;margin-top:11px}.collection-footer{padding:30px 15px 35px;flex-direction:column;align-items:flex-start;gap:24px}.collection-footer p{font-size:11px}}
 @media(max-width:380px){.nw-logo{font-size:17px}.filter,.sort{gap:10px}.filter button,.sort button{letter-spacing:0}.collection-card__caption{min-height:112px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.collection-card__visual img{transition:none}}
+
+/* NINEWORKS brand collection refinement 2027-11 */
+:root{--nw-h:62px}
+::selection{background:#161616;color:#fff}
+.nw-header{height:var(--nw-h);position:sticky;top:0;z-index:80;padding-inline:clamp(16px,1.7vw,34px);border-bottom:1px solid #ededed;background:rgba(255,255,255,.98);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.nw-header__left,.nw-header__right{gap:clamp(17px,1.6vw,34px)}
+.nw-header__left a,.nw-header__right a{font-size:10px;font-weight:650;letter-spacing:.07em;line-height:1.2}
+.nw-header .nw-logo{display:inline-flex;align-items:center;justify-content:center;width:154px;min-width:0;line-height:1}
+.nw-logo img{display:block;width:100%;height:auto;max-height:28px;object-fit:contain}
+.collection-bar{min-height:48px;padding-inline:clamp(16px,1.7vw,34px);border-top:0;border-bottom:1px solid #e9e9e9;background:#fff}
+.collection-bar__left{gap:19px}
+.collection-bar__right{gap:25px}
+.collection-label{font-size:10px;letter-spacing:.062em;font-weight:740}
+.collection-count{font-size:10px;letter-spacing:.035em;color:#777}
+.filter,.sort{gap:17px}
+.sort{padding-left:24px;border-left:1px solid #dedede}
+.filter button,.sort button{position:relative;padding:15px 0 14px;font-size:10px;line-height:1.2;letter-spacing:.04em;font-weight:650;color:#838383;text-decoration:none!important;transition:color .2s}
+.filter button::after,.sort button::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left center;transition:transform .22s}
+.filter button[aria-pressed=true]::after,.sort button[aria-pressed=true]::after{transform:scaleX(1)}
+.filter button[aria-pressed=true],.sort button[aria-pressed=true]{color:#111}
+.collection-grid{align-items:start}
+.collection-card__visual{background:#eeeeec}
+.collection-card__visual img{object-position:50% 48%;transition:transform .7s cubic-bezier(.22,.8,.25,1)}
+.collection-card__link:hover .collection-card__visual img{transform:scale(1.026)}
+.collection-card__caption{min-height:118px;padding:22px 10px 24px}
+.collection-card__caption strong{font-size:11px;font-weight:740;line-height:1.55;letter-spacing:.012em}
+.collection-card__caption span{margin-top:6px;font-size:10px;color:#555;letter-spacing:0;line-height:1.5}
+.collection-card__caption small{margin-top:11px;font-size:9px;font-weight:550;line-height:1.4;letter-spacing:.07em;color:#888}
+.collection-card__link:hover .collection-card__caption strong{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.collection-footer{margin-top:1px}
+@media (min-width:1650px){
+ .collection-card__caption{min-height:124px;padding-top:24px}
+ .collection-card__caption strong{font-size:12px}
+}
+@media (max-width:1100px){
+ .nw-header{padding-inline:20px}
+ .collection-bar{padding-inline:20px}
+ .nw-header .nw-logo{width:142px}
+ .collection-bar__right{gap:15px}
+ .sort{padding-left:15px}
+ .filter,.sort{gap:12px}
+}
+@media (max-width:760px){
+ :root{--nw-h:56px}
+ .nw-header{height:var(--nw-h);padding:0 14px}
+ .nw-header .nw-logo{width:116px}
+ .nw-logo img{max-height:23px}
+ .nw-header__left a,.nw-header__right a{font-size:9px;letter-spacing:.035em}
+ .collection-bar{min-height:0;padding:10px 14px 8px;gap:7px}
+ .collection-bar__left,.collection-bar__right{align-items:center;gap:12px}
+ .collection-bar__right{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .collection-bar__right::-webkit-scrollbar{display:none}
+ .collection-label,.collection-count{font-size:9px}
+ .sort{padding-left:13px}
+ .filter,.sort{gap:12px;flex-shrink:0}
+ .filter button,.sort button{font-size:9px;letter-spacing:.02em;padding:8px 0 9px}
+ .filter button::after,.sort button::after{bottom:5px}
+ .collection-card__caption{min-height:105px;padding:18px 7px 21px}
+ .collection-card__caption strong{font-size:10px}
+ .collection-card__caption span{font-size:9px}
+ .collection-card__caption small{font-size:8px;margin-top:10px}
+}
+@media (max-width:390px){
+ .nw-header .nw-logo{width:104px}
+ .nw-header__left a,.nw-header__right a{font-size:8px}
+ .collection-bar__right{gap:9px}
+ .filter,.sort{gap:9px}
+}
+@media (prefers-reduced-motion:reduce){
+ .collection-card__visual img,.filter button::after,.sort button::after{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -64,7 +136,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #171717;outline-offset:4p
     <a href="brand-collection.html" aria-current="page">WORK</a>
     <a href="about.html">STUDIO</a>
   </nav>
-  <a href="index.html" class="nw-logo" aria-label="NINEWORKS 홈">NINEWORKS</a>
+  <a href="renewal-2027.html" class="nw-logo" aria-label="NINEWORKS 리뉴얼 홈"><img src="assets/nineworks-logo.svg" alt="NINEWORKS" width="154" height="22" decoding="async"></a>
   <nav class="nw-header__right" aria-label="오른쪽 메뉴">
     <a href="magazine.html">JOURNAL</a>
     <a href="contact.html">CONTACT</a>
