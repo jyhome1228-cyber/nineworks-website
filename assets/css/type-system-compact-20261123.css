@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+
 /* NINEWORKS | Compact typography standard | 2026-11-23
    Applies to the NINEWORKS site only. Maintains image-led editorial layout.
    Font size ceilings: desktop page headings 32px, section headings 23px,
@@ -139,4 +141,11 @@ body :is(.recruit-hero h1,.recruit-hero-grid h1){
   body :is(.recruit-stat-value,.recruit-deadline-date){
     font-size:clamp(21px,5.4vw,27px)!important;
   }
+}
+
+
+/* Unified brand typography. -3% tracking across text and controls. */
+html,body,body *{
+  font-family:"Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif!important;
+  letter-spacing:-0.03em!important;
 }
