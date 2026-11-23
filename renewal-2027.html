@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="NINEWORKS 2027 브랜드 홈페이지 리뉴얼 미리보기. 브랜드 아이덴티티와 디자인 프로젝트를 전시합니다.">
+<title>NINEWORKS — 2027 Renewal Preview</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+:root{--ink:#111;--paper:#fff;--line:#e7e7e7;--soft:#f5f5f3;--gutter:clamp(18px,2.1vw,40px);font-synthesis:none}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:66px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid #111;outline-offset:3px}
+button,a{-webkit-tap-highlight-color:transparent}
+.site-header{height:62px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--gutter);position:fixed;inset:0 0 auto;z-index:100;background:rgba(255,255,255,.87);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
+.site-header.is-scrolled{background:rgba(255,255,255,.96);border-bottom-color:var(--line)}
+.site-header__left,.site-header__right{display:flex;align-items:center;gap:clamp(16px,2.2vw,42px)}
+.site-header__right{justify-content:flex-end}
+.site-header__left a,.site-header__right a{font-size:10px;line-height:1;letter-spacing:.09em;font-weight:650;white-space:nowrap;transition:opacity .2s}
+.site-header a:hover{opacity:.5}
+.site-logo{font-size:clamp(18px,1.45vw,24px);font-weight:800;line-height:1;letter-spacing:-.07em;white-space:nowrap}
+.site-header .nav-contact{font-weight:700}
+.hero{margin:0}
+.hero-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.hero-item{display:block;min-width:0}
+.visual{overflow:hidden;position:relative;background:var(--tone,#e5e4e1)}
+.hero-item .visual{height:100svh;min-height:600px;max-height:1300px}
+.visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0;transition:opacity .45s ease,transform .75s cubic-bezier(.2,.65,.2,1)}
+.visual.has-image img{opacity:1}
+.visual.has-image:hover img{transform:scale(1.026)}
+.visual__placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--tone,#e5e4e1);transition:opacity .4s}
+.visual__placeholder::after{content:"";position:absolute;inset:-35%;background:radial-gradient(ellipse at 50% 44%,rgba(255,255,255,.38),transparent 46%);pointer-events:none}
+.visual__placeholder strong{position:relative;z-index:1;display:block;max-width:90%;font-size:clamp(20px,2.1vw,42px);font-weight:690;line-height:1.05;letter-spacing:-.055em;text-align:center;overflow-wrap:anywhere;color:rgba(27,27,27,.42)}
+.visual.has-image .visual__placeholder{opacity:0;pointer-events:none}
+.hero-caption{height:116px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:7px;text-align:center;padding:27px 12px 20px;background:#fff}
+.hero-caption strong{font-size:11px;line-height:1.4;font-weight:730;letter-spacing:.035em}
+.hero-caption span{font-size:10px;line-height:1.4;font-weight:450;letter-spacing:.015em;color:#4e4e4e}
+.section-head{min-height:90px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:18px;border-top:1px solid var(--line)}
+.section-head h2{font-size:13px;font-weight:720;line-height:1.4;letter-spacing:.065em;margin:0}
+.section-head a{font-size:11px;font-weight:640;letter-spacing:.02em;padding:12px 0;border-bottom:1px solid #151515;transition:opacity .2s}
+.section-head a:hover{opacity:.5}
+.work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.work-card{display:block;min-width:0}
+.work-card .visual{aspect-ratio:4 / 5}
+.work-card .visual__placeholder strong{font-size:clamp(17px,1.8vw,34px)}
+.work-card__caption{display:flex;flex-direction:column;align-items:center;text-align:center;min-height:122px;padding:24px 12px 20px;gap:7px}
+.work-card__caption strong{font-size:11px;font-weight:730;line-height:1.5;letter-spacing:.025em}
+.work-card__caption span{font-size:10px;line-height:1.5;color:#555}
+.view-all{min-height:80px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--line)}
+.view-all a{font-size:11px;letter-spacing:.035em;font-weight:700;border-bottom:1px solid #111;padding-bottom:5px}
+.studio{padding:clamp(90px,11vw,185px) var(--gutter) clamp(75px,9vw,145px);background:#101010;color:#fff;scroll-margin-top:62px}
+.studio-label{margin:0 0 clamp(36px,6.8vw,105px);font-size:11px;font-weight:680;letter-spacing:.055em}
+.studio-statement{max-width:1230px;margin:0;font-size:clamp(27px,4.1vw,65px);font-weight:630;letter-spacing:-.065em;line-height:1.42;word-break:keep-all}
+.studio-bottom{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:clamp(72px,10vw,150px);border-top:1px solid #4c4c4c;padding-top:25px}
+.studio-bottom p{margin:0;max-width:550px;font-size:clamp(12px,1.05vw,15px);line-height:1.9;color:#d5d5d5;word-break:keep-all}
+.studio-bottom a{justify-self:end;align-self:start;font-size:12px;font-weight:650;border-bottom:1px solid #fff;padding-bottom:6px}
+.expertise{padding:0 var(--gutter)}
+.expertise-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.expertise-item{padding:30px 18px 46px 0;border-right:1px solid var(--line);min-width:0}
+.expertise-item:not(:first-child){padding-left:24px}
+.expertise-item:last-child{border-right:0}
+.expertise-item strong{display:block;font-size:clamp(14px,1.4vw,22px);font-weight:650;letter-spacing:-.035em}
+.expertise-item p{font-size:12px;line-height:1.75;color:#595959;margin:15px 0 0;word-break:keep-all}
+.journal{padding-bottom:90px;scroll-margin-top:62px}
+.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.journal-item{padding:46px var(--gutter) 58px;border-right:1px solid var(--line);min-height:265px;display:flex;flex-direction:column;align-items:flex-start}
+.journal-item:last-child{border-right:0}
+.journal-item .journal-kind{font-size:10px;font-weight:680;letter-spacing:.09em;color:#555}
+.journal-item h3{font-size:clamp(17px,1.8vw,26px);line-height:1.4;letter-spacing:-.05em;font-weight:620;margin:30px 0 13px}
+.journal-item p{font-size:12px;line-height:1.75;color:#5a5a5a;margin:0;max-width:320px;word-break:keep-all}
+.journal-item a{margin-top:auto;display:inline-block;border-bottom:1px solid #111;padding:29px 0 5px;font-size:11px;font-weight:690}
+.contact{background:#f3f3f0;padding:clamp(65px,8vw,140px) var(--gutter) clamp(65px,7vw,118px);scroll-margin-top:62px}
+.contact p{font-size:11px;font-weight:690;letter-spacing:.07em;margin:0 0 clamp(35px,4.4vw,75px)}
+.contact h2{margin:0;max-width:1200px;font-size:clamp(29px,4.4vw,76px);font-weight:640;letter-spacing:-.075em;line-height:1.33;word-break:keep-all}
+.contact-link{display:inline-block;margin-top:clamp(36px,5vw,75px);font-size:clamp(17px,1.9vw,29px);font-weight:570;letter-spacing:-.04em;border-bottom:1px solid #111;padding-bottom:7px}
+.footer{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;padding:42px var(--gutter) 39px}
+.footer strong{font-size:18px;font-weight:800;letter-spacing:-.07em}
+.footer small{display:block;color:#555;font-size:11px;margin-top:13px}
+.footer-links{display:flex;gap:24px;align-items:center;font-size:11px;font-weight:640}
+.footer-links a:hover,.contact-link:hover{opacity:.55}
+@media (min-width:1600px){.hero-caption{height:128px;padding-top:31px}.hero-caption strong,.work-card__caption strong{font-size:12px}.hero-caption span,.work-card__caption span{font-size:11px}}
+@media (max-width:1000px){
+ .hero-grid,.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .hero-item .visual{height:min(66svh,760px);min-height:420px}
+ .hero-caption{height:97px;padding-top:20px}
+ .expertise-grid{grid-template-columns:repeat(2,1fr)}
+ .expertise-item:nth-child(2){border-right:0}
+ .expertise-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .journal-item{padding-inline:22px}
+}
+@media (max-width:640px){
+ html{scroll-padding-top:56px}
+ .site-header{height:56px;padding:0 16px}
+ .site-header__left a,.site-header__right a{font-size:9px}
+ .site-header__left a:nth-child(2),.site-header__right a:nth-child(1){display:none}
+ .site-logo{font-size:19px}
+ .hero-item .visual{height:57svh;min-height:310px;max-height:550px}
+ .hero-caption{height:88px;padding:18px 6px 12px;gap:5px}
+ .hero-caption strong{font-size:10px}
+ .hero-caption span{font-size:9px}
+ .visual__placeholder strong{font-size:clamp(17px,5vw,26px)}
+ .section-head{min-height:73px;padding:0 16px}
+ .section-head h2{font-size:11px}
+ .section-head a{font-size:10px}
+ .work-card__caption{min-height:95px;padding:18px 6px}
+ .work-card__caption strong{font-size:10px}
+ .work-card__caption span{font-size:9px}
+ .work-card .visual__placeholder strong{font-size:clamp(15px,4.7vw,25px)}
+ .view-all{min-height:72px}
+ .studio{padding:85px 16px 72px;scroll-margin-top:56px}
+ .studio-statement{font-size:clamp(27px,7.25vw,38px);line-height:1.45}
+ .studio-label{margin-bottom:55px}
+ .studio-bottom{margin-top:75px;grid-template-columns:1fr;gap:28px}
+ .studio-bottom p{font-size:12px}
+ .studio-bottom a{justify-self:start}
+ .expertise{padding:0 16px}
+ .expertise-item{padding:25px 12px 32px 0}
+ .expertise-item:not(:first-child){padding-left:12px}
+ .expertise-item:nth-child(3){padding-left:0}
+ .expertise-item strong{font-size:16px}
+ .expertise-item p{font-size:11px}
+ .journal{padding-bottom:35px}
+ .journal-grid{grid-template-columns:1fr}
+ .journal-item{padding:28px 16px 33px;min-height:0;border-right:0;border-bottom:1px solid var(--line)}
+ .journal-item h3{font-size:20px;margin:20px 0 8px}
+ .journal-item a{padding-top:18px}
+ .contact{padding:72px 16px 80px}
+ .contact h2{font-size:clamp(30px,8vw,45px)}
+ .contact-link{font-size:20px}
+ .footer{padding:35px 16px;flex-direction:column;align-items:flex-start;gap:27px}
+ .footer-links{gap:18px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.visual img{transition:opacity .2s}}
+</style>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <nav class="site-header__left" aria-label="메인 메뉴">
+    <a href="brand-collection.html">WORK</a>
+    <a href="#studio">STUDIO</a>
+  </nav>
+  <a class="site-logo" href="#top" aria-label="NINEWORKS 메인">NINEWORKS</a>
+  <nav class="site-header__right" aria-label="추가 메뉴">
+    <a href="#journal">JOURNAL</a>
+    <a class="nav-contact" href="#contact">CONTACT</a>
+  </nav>
+</header>
+<main id="top">
+  <section class="hero" aria-label="NINEWORKS 브랜드 프로젝트 컬렉션">
+    <div class="hero-grid">
+      <a class="hero-item" href="portfolio-detail.html?work=hollys" aria-label="HOLLYS 브랜드 프로젝트">
+        <div class="visual" data-image-key="hero-hollys" style="--tone:#e6e0d8">
+          <div class="visual__placeholder" aria-hidden="true"><strong>HOLLYS</strong></div>
+          <img alt="HOLLYS 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+        </div>
+        <div class="hero-caption"><strong>HOLLYS</strong><span>Brand &amp; Package</span></div>
+      </a>
+      <a class="hero-item" href="portfolio-detail.html?work=vaquer" aria-label="VAQUER 브랜드 프로젝트">
+        <div class="visual" data-image-key="hero-vaquer" style="--tone:#d8d7d3">
+          <div class="visual__placeholder" aria-hidden="true"><strong>VAQUER</strong></div>
+          <img alt="VAQUER 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+        </div>
+        <div class="hero-caption"><strong>VAQUER</strong><span>Fragrance Identity</span></div>
+      </a>
+      <a class="hero-item" href="portfolio-detail.html?work=yoriko" aria-label="YORIKO 브랜드 프로젝트">
+        <div class="visual" data-image-key="hero-yoriko" style="--tone:#efeee9">
+          <div class="visual__placeholder" aria-hidden="true"><strong>YORIKO</strong></div>
+          <img alt="YORIKO 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+        </div>
+        <div class="hero-caption"><strong>YORIKO</strong><span>Brand &amp; Package</span></div>
+      </a>
+      <a class="hero-item" href="portfolio-detail.html?work=jewood" aria-label="JEWOOD 브랜드 프로젝트">
+        <div class="visual" data-image-key="hero-jewood" style="--tone:#cfd1cf">
+          <div class="visual__placeholder" aria-hidden="true"><strong>JEWOOD</strong></div>
+          <img alt="JEWOOD 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+        </div>
+        <div class="hero-caption"><strong>JEWOOD</strong><span>Skincare Identity</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="selected" id="collection" aria-labelledby="selectedTitle">
+    <div class="section-head">
+      <h2 id="selectedTitle">SELECTED WORKS</h2>
+      <a href="brand-collection.html">VIEW ALL WORK</a>
+    </div>
+    <div class="work-grid">
+      <a class="work-card" href="portfolio-detail.html?work=ouga" aria-label="OUGA 프로젝트">
+        <div class="visual" data-image-key="work-ouga" style="--tone:#e4ddd4">
+          <div class="visual__placeholder" aria-hidden="true"><strong>OUGA</strong></div>
+          <img alt="OUGA 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>OUGA</strong><span>Brand Identity</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=centellian-24" aria-label="CENTELLIAN 24+ 프로젝트">
+        <div class="visual" data-image-key="work-centellian" style="--tone:#e6e5e9">
+          <div class="visual__placeholder" aria-hidden="true"><strong>CENTELLIAN 24+</strong></div>
+          <img alt="CENTELLIAN 24+ 제품 비주얼 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>CENTELLIAN 24+</strong><span>Product Visual</span></div>
+      </a>
+      <a class="work-card" href="portfolio-recelleclore.html" aria-label="RECELLÉCLORE 프로젝트">
+        <div class="visual" data-image-key="work-recell" style="--tone:#e1e0de">
+          <div class="visual__placeholder" aria-hidden="true"><strong>RECELLÉCLORE</strong></div>
+          <img alt="RECELLÉCLORE 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>RECELLÉCLORE</strong><span>Beauty Brand</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=myv" aria-label="MYV 프로젝트">
+        <div class="visual" data-image-key="work-myv" style="--tone:#d6dbdf">
+          <div class="visual__placeholder" aria-hidden="true"><strong>MYV</strong></div>
+          <img alt="MYV 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>MYV</strong><span>Brand Identity</span></div>
+      </a>
+      <a class="work-card" href="portfolio-relim-branding.html" aria-label="RE:LIM 프로젝트">
+        <div class="visual" data-image-key="work-relim" style="--tone:#ddd9d3">
+          <div class="visual__placeholder" aria-hidden="true"><strong>RE:LIM</strong></div>
+          <img alt="RE:LIM 브랜드 아이덴티티 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>RE:LIM</strong><span>Hospitality Brand</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=cocos-matcha" aria-label="COCO'S MATCHA 프로젝트">
+        <div class="visual" data-image-key="work-cocos" style="--tone:#dfe2db">
+          <div class="visual__placeholder" aria-hidden="true"><strong>COCO'S MATCHA</strong></div>
+          <img alt="COCO'S MATCHA 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>COCO'S MATCHA</strong><span>Cafe Identity</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=pausenality" aria-label="PAUSE NALITY 프로젝트">
+        <div class="visual" data-image-key="work-pausenality" style="--tone:#e9e2df">
+          <div class="visual__placeholder" aria-hidden="true"><strong>PAUSE NALITY</strong></div>
+          <img alt="PAUSE NALITY 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>PAUSE NALITY</strong><span>Fragrance Brand</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=gong-cha" aria-label="GONG CHA 프로젝트">
+        <div class="visual" data-image-key="work-gongcha" style="--tone:#e3dbd6">
+          <div class="visual__placeholder" aria-hidden="true"><strong>GONG CHA</strong></div>
+          <img alt="GONG CHA 패키지 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>GONG CHA</strong><span>Package Design</span></div>
+      </a>
+    </div>
+    <div class="view-all"><a href="brand-collection.html">EXPLORE BRAND COLLECTION</a></div>
+  </section>
+
+  <section class="studio" id="studio" aria-labelledby="studioTitle">
+    <p class="studio-label">NINEWORKS STUDIO</p>
+    <h2 id="studioTitle" class="studio-statement">우리는 브랜드를 만들고,<br>브랜드가 실제로 사용되는 경험까지 설계합니다.</h2>
+    <div class="studio-bottom">
+      <p>나인웍스는 브랜드 아이덴티티와 패키지 디자인을 시작으로 웹사이트, 디지털 서비스, 브랜드 운영에 필요한 시스템까지 구축하는 디자인 스튜디오입니다.</p>
+      <a href="about.html">ABOUT NINEWORKS</a>
+    </div>
+  </section>
+
+  <section class="expertise" aria-label="디자인 서비스">
+    <div class="section-head"><h2>EXPERTISE</h2></div>
+    <div class="expertise-grid">
+      <div class="expertise-item"><strong>Brand Identity</strong><p>브랜드 전략, 네이밍, 로고 및 시각 시스템</p></div>
+      <div class="expertise-item"><strong>Packaging</strong><p>패키지 구조, 제품 비주얼, 인쇄 디자인</p></div>
+      <div class="expertise-item"><strong>Digital Experience</strong><p>홈페이지, 커머스, 디지털 제품 경험</p></div>
+      <div class="expertise-item"><strong>Brand Operations</strong><p>운영 시스템, 콘텐츠, 브랜드 실행 환경</p></div>
+    </div>
+  </section>
+
+  <section class="journal" id="journal" aria-labelledby="journalTitle">
+    <div class="section-head"><h2 id="journalTitle">JOURNAL</h2><a href="magazine.html">VIEW JOURNAL</a></div>
+    <div class="journal-grid">
+      <article class="journal-item">
+        <span class="journal-kind">DESIGN RESEARCH</span>
+        <h3>디자인을 연구하는 방식</h3>
+        <p>디자인 방법론과 브랜드를 바라보는 관점을 기록합니다.</p>
+        <a href="magazine.html">EXPLORE JOURNAL</a>
+      </article>
+      <article class="journal-item">
+        <span class="journal-kind">STUDIO NOTES</span>
+        <h3>브랜드를 만드는 과정</h3>
+        <p>기획부터 제작과 실제 구현까지 이어지는 실무의 기록입니다.</p>
+        <a href="magazine.html">EXPLORE JOURNAL</a>
+      </article>
+      <article class="journal-item">
+        <span class="journal-kind">PERSPECTIVE</span>
+        <h3>디자인과 비즈니스</h3>
+        <p>브랜드가 지속적으로 운영되기 위해 필요한 구조를 생각합니다.</p>
+        <a href="magazine.html">EXPLORE JOURNAL</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p>WORK WITH NINEWORKS</p>
+    <h2>새로운 프로젝트를<br>함께 만들어가고 싶습니다.</h2>
+    <a class="contact-link" href="mailto:info@9works.kr">info@9works.kr</a>
+  </section>
+</main>
+<footer class="footer">
+  <div><a href="#top"><strong>NINEWORKS</strong></a><small>© 2027 NINEWORKS. All rights reserved.</small></div>
+  <nav class="footer-links" aria-label="푸터 메뉴">
+    <a href="brand-collection.html">WORK</a><a href="about.html">STUDIO</a><a href="magazine.html">JOURNAL</a><a href="contact.html">CONTACT</a>
+  </nav>
+</footer>
+<script src="assets/js/renewal-2027-images.js"></script>
+<script>
+(function(){
+  var header=document.getElementById('siteHeader');
+  var updateHeader=function(){header.classList.toggle('is-scrolled',window.scrollY>16)};
+  updateHeader();
+  window.addEventListener('scroll',updateHeader,{passive:true});
+  var urls=window.NW_RENEWAL_IMAGES||{};
+  var positions=window.NW_RENEWAL_IMAGE_POSITIONS||{};
+  document.querySelectorAll('[data-image-key]').forEach(function(slot){
+    var key=slot.getAttribute('data-image-key');
+    var url=urls[key];
+    if(typeof url!=='string'||!url.trim())return;
+    var img=slot.querySelector('img');
+    if(!img)return;
+    if(positions[key])img.style.objectPosition=positions[key];
+    img.addEventListener('load',function(){slot.classList.add('has-image')},{once:true});
+    img.addEventListener('error',function(){slot.classList.remove('has-image')},{once:true});
+    img.src=url;
+    if(img.complete&&img.naturalWidth>0)slot.classList.add('has-image');
+  });
+})();
+</script>
+</body>
+</html>
