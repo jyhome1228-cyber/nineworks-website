@@ -9,6 +9,7 @@ window.NW_RENEWAL_IMAGES = {
   "hero-vaquer": "",
   "hero-yoriko": "",
   "hero-jewood": "",
+  "hero-wooje": "",
   "work-ouga": "",
   "work-centellian": "",
   "work-recell": "",
@@ -16,7 +17,9 @@ window.NW_RENEWAL_IMAGES = {
   "work-relim": "",
   "work-cocos": "",
   "work-pausenality": "",
-  "work-gongcha": ""
+  "work-gongcha": "",
+  "work-greedy-scent": "",
+  "work-the-spa": ""
 };
 
 /* Optional image focus, e.g. "hero-hollys": "50% 35%" */
