@@ -35,10 +35,10 @@ const scoreTrack=add('div','dna-score-track','',scoreBox);
 const scoreFill=add('span','dna-score-fill','',scoreTrack);scoreFill.style.width=percentage+'%';
 add('p','dna-score-caption','5가지 업무 상황의 선택과 나인웍스가 제시한 업무 원칙을 비교한 참고 수치입니다. 실제 채용 적합도나 합격 가능성을 뜻하지 않습니다.',scoreBox);
 const panel=add('div','dna-result-summary','');add('h4','','나인웍스와 나의 업무 방식 비교',panel);
-let differences=0;
+let differences=0;const choices=[];
 principles.forEach((p,i)=>{
 const chosen=scenarios[i].options[answers[i]];
-const match=p.preferred.includes(answers[i]);
+const match=p.preferred.includes(answers[i]);choices.push({area:p.title,choice:chosen[1],aligned:match});
 if(!match)differences++;
 const item=add('div','dna-comparison-item','',panel);
 add('strong','',p.title,item);
@@ -49,12 +49,13 @@ add('p','dna-comparison-feedback',match?'접점이 있습니다. 실제 업무�
 const summary=add('div','dna-result-summary','');
 add('h4','',differences>=3?'업무 방식에서 차이가 있는 영역이 있습니다.':differences>=1?'공통점과 차이점이 함께 보입니다.':'나인웍스의 업무 방향과 여러 접점이 있습니다.',summary);
 add('p','','다섯 가지 상황에서 '+differences+'개 영역의 접근 방식이 달랐습니다. 이는 자기 탐색용 비교이며, 개인의 능력이나 채용 적격성을 판정하지 않습니다. 실제 적합성은 직무 경험과 면접에서 상호 확인해야 합니다.',summary);
+window.nwDnaSummary={percentage,values:[...selected],choices,differences};
 updateHeader();
 }
 $('dnaStart').addEventListener('click',()=>{if(selected.length!==5)return;step=0;renderQuestion()});
 $('dnaPrev').addEventListener('click',()=>{if(step===0){step=-1;questionView.hidden=true;valuesView.hidden=false;updateHeader()}else{step--;renderQuestion()}});
 $('dnaNext').addEventListener('click',()=>{if(answers[step]===undefined)return;step++;step===5?renderResult():renderQuestion()});
-$('dnaReset').addEventListener('click',()=>{selected=[];answers={};step=-1;resultView.hidden=true;questionView.hidden=true;valuesView.hidden=false;renderValues();card?.scrollTo({top:0,behavior:'smooth'})});
-$('dnaApply').addEventListener('click',()=>{const panel=$('applicationSection'),button=$('showApplication');if(panel){closeModal();panel.hidden=false;button?.setAttribute('aria-expanded','true');panel.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'})}});
+$('dnaReset').addEventListener('click',()=>{selected=[];answers={};step=-1;window.nwDnaSummary=null;resultView.hidden=true;questionView.hidden=true;valuesView.hidden=false;renderValues();card?.scrollTo({top:0,behavior:'smooth'})});
+$('dnaApply').addEventListener('click',()=>{const panel=$('applicationSection'),button=$('showApplication');if(panel){if(window.nwDnaSummary){const box=$('applyDnaBox'),summary=$('applyDnaSummary');if(box&&summary){const d=window.nwDnaSummary;summary.textContent='업무 방식 일치도 '+d.percentage+'%\\n핵심 가치: '+d.values.join(' · ')+'\\n'+d.choices.map(x=>x.area+': '+x.choice).join('\\n')+'\\n차이가 있는 영역: '+(d.choices.filter(x=>!x.aligned).map(x=>x.area).join(' · ')||'없음');box.hidden=false;}}closeModal();panel.hidden=false;button?.setAttribute('aria-expanded','true');panel.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'})}});
 renderValues();
 })();
