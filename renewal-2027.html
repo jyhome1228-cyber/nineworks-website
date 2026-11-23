@@ -481,10 +481,10 @@ button,a{-webkit-tap-highlight-color:transparent}
   const active=button.getAttribute('data-rail-filter');
   filters.forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
   all.forEach(card=>{card.hidden=active!=='all'&&card.getAttribute('data-rail-category')!==active;});
-  rail.scrollTo({left:0,behavior:'instant'});
+  rail.scrollTo({left:0,behavior:'auto'});
   requestAnimationFrame(update);
  }));
- prev?.addEventListener('click',()=>rail.scrollBy({left:-step(),behavior:reduced?'instant':'smooth'}));
+ prev?.addEventListener('click',()=>rail.scrollBy({left:-step(),behavior:reduced?'auto':'smooth'}));
  next?.addEventListener('click',()=>rail.scrollBy({left:step(),behavior:reduced?'instant':'smooth'}));
  rail.addEventListener('scroll',update,{passive:true});
  window.addEventListener('resize',update,{passive:true});
