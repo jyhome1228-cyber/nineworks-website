@@ -118,3 +118,25 @@ body .visual__placeholder strong{font-size:clamp(17px,1.8vw,25px)!important}
     .hero-caption strong){font-size:10px!important}
   body .visual__placeholder strong{font-size:clamp(16px,4.2vw,21px)!important}
 }
+
+
+/* Special layouts with non-heading display typography */
+body .splash-message{
+  font-size:clamp(20px,2.15vw,29px)!important;
+  line-height:1.55!important;
+  letter-spacing:-.04em!important;
+}
+body :is(.recruit-stat-value,.recruit-deadline-date){
+  font-size:clamp(22px,2.4vw,31px)!important;
+  line-height:1.25!important;
+}
+body :is(.recruit-hero h1,.recruit-hero-grid h1){
+  font-size:var(--nw-font-page)!important;
+  line-height:1.48!important;
+}
+@media(max-width:760px){
+  body .splash-message{font-size:clamp(19px,5.1vw,24px)!important}
+  body :is(.recruit-stat-value,.recruit-deadline-date){
+    font-size:clamp(21px,5.4vw,27px)!important;
+  }
+}
