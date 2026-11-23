@@ -4,7 +4,7 @@
 .nw-renewal-header button{font:inherit;cursor:pointer;color:inherit}
 .nw-renewal-header [hidden]{display:none!important}
 .nw-renewal-header a:focus-visible,.nw-renewal-header button:focus-visible{outline:2px solid #1a1a1a;outline-offset:3px}
-.nw-new-main{max-width:1510px;margin:auto;height:70px;padding:0 clamp(17px,2.3vw,36px);display:grid;grid-template-columns:minmax(0,1fr) 154px minmax(0,1fr);align-items:center;column-gap:18px}
+.nw-new-main{width:100%;max-width:none;margin:0;height:70px;padding:0 clamp(17px,2.3vw,36px);display:grid;grid-template-columns:minmax(0,1fr) 154px minmax(0,1fr);align-items:center;column-gap:18px}
 .nw-new-logo{display:flex;align-items:center;justify-self:center;justify-content:center;width:154px;min-width:0}
 .nw-new-logo img{width:100%;height:auto;max-height:27px;object-fit:contain;display:block}
 .nw-new-primary{display:flex;align-items:center;gap:clamp(10px,1.28vw,22px);height:100%;min-width:0}.nw-new-primary--left{justify-content:flex-start}.nw-new-primary--right{justify-content:flex-end}
