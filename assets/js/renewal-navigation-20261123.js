@@ -4,10 +4,12 @@ const items=[{"key":"about","href":"/about.html","label":"ABOUT","children":[{"h
 const headers=document.querySelectorAll('[data-nw-renewal-nav]');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const rootLink=(x,klass='')=>'<a class="'+klass+'" href="'+esc(x.href)+'">'+esc(x.label)+'</a>';
-const desktop=items.map(item=>{
+const renderDesktop=item=>{
  if(!item.children)return '<a class="nw-new-direct" href="'+esc(item.href)+'">'+esc(item.label)+'</a>';
  return '<div class="nw-new-item"><a class="nw-new-parent" href="'+esc(item.href)+'" aria-haspopup="true" aria-expanded="false">'+esc(item.label)+'<span aria-hidden="true" class="nw-new-caret"></span></a><div class="nw-new-dropdown">'+item.children.map(child=>rootLink(child,'nw-new-sub-link')).join('')+'</div></div>';
-}).join('');
+};
+const desktopLeft=items.slice(0,3).map(renderDesktop).join('');
+const desktopRight=items.slice(3).map(renderDesktop).join('');
 const mobile=items.map((item,i)=>{
  if(!item.children)return '<div class="nw-new-mobile-line">'+rootLink(item,'nw-new-mobile-parent')+'</div>';
  const id='nw-new-sub-'+i;
@@ -15,7 +17,7 @@ const mobile=items.map((item,i)=>{
 }).join('');
 headers.forEach(header=>{
  const drawerId='nw-renewal-mobile-menu';
- header.innerHTML='<div class="nw-new-main"><a class="nw-new-logo" href="/renewal-2027.html" aria-label="NINEWORKS 리뉴얼 메인"><img src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS" width="150" height="19"></a><nav class="nw-new-primary" aria-label="주요 메뉴">'+desktop+'</nav><button type="button" class="nw-new-toggle" aria-label="전체 메뉴 열기" aria-controls="'+drawerId+'" aria-expanded="false"><span></span><span></span><span></span></button></div><nav class="nw-new-mobile" id="'+drawerId+'" aria-label="모바일 주요 메뉴" hidden>'+mobile+'</nav>';
+ header.innerHTML='<div class="nw-new-main"><nav class="nw-new-primary nw-new-primary--left" aria-label="회사 및 서비스 메뉴">'+desktopLeft+'</nav><a class="nw-new-logo" href="/renewal-2027.html" aria-label="NINEWORKS 리뉴얼 메인"><img src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS" width="150" height="19"></a><nav class="nw-new-primary nw-new-primary--right" aria-label="포트폴리오 및 문의 메뉴">'+desktopRight+'</nav><button type="button" class="nw-new-toggle" aria-label="전체 메뉴 열기" aria-controls="'+drawerId+'" aria-expanded="false"><span></span><span></span><span></span></button></div><nav class="nw-new-mobile" id="'+drawerId+'" aria-label="모바일 주요 메뉴" hidden>'+mobile+'</nav>';
  const toggle=header.querySelector('.nw-new-toggle');
  const drawer=header.querySelector('.nw-new-mobile');
  function close(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','전체 메뉴 열기');drawer.hidden=true;header.classList.remove('nw-menu-open');}
