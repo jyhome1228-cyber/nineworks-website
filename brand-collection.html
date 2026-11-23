@@ -128,8 +128,19 @@ button:focus-visible,a:focus-visible{outline:2px solid #171717;outline-offset:4p
  .collection-card__visual img,.filter button::after,.sort button::after{transition:none}
 }
 
+
+/* Improve small labels without changing five-column editorial density */
+body .collection-label{font-size:12px!important}
+.collection-count{font-size:11px!important}
+.filter button,.sort button{font-size:12px!important}
+@media(max-width:760px){
+ body .collection-label{font-size:11px!important}
+ .collection-count{font-size:10px!important}
+ .filter button,.sort button{font-size:11px!important}
+}
+
 </style>
-<link rel="stylesheet" href="/assets/css/type-system-compact-20261123.css?v=1">
+<link rel="stylesheet" href="/assets/css/type-system-compact-20261123.css?v=2">
 <link rel="stylesheet" href="/assets/css/renewal-navigation-20261123.css?v=4">
 </head>
 <body>
