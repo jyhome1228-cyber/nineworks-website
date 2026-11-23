@@ -26,6 +26,14 @@ const principles=[
 {title:'학습과 전문성 확장',ideal:'개인의 강점을 발전시키면서 새로운 실무에도 도전합니다.',preferred:[0,1,2]},
 {title:'지속가능한 실행',ideal:'업무 범위와 품질, 팀의 지속가능성을 함께 고려합니다.',preferred:[0,1,2]}
 ];
+const matches=principles.reduce((n,p,i)=>n+(p.preferred.includes(answers[i])?1:0),0);
+const percentage=Math.round(matches/principles.length*100);
+const scoreBox=add('div','dna-score-box','');
+add('div','dna-score-label','나인웍스 업무 방식 일치도',scoreBox);
+add('strong','dna-score-value',percentage+'%',scoreBox);
+const scoreTrack=add('div','dna-score-track','',scoreBox);
+const scoreFill=add('span','dna-score-fill','',scoreTrack);scoreFill.style.width=percentage+'%';
+add('p','dna-score-caption','5가지 업무 상황의 선택과 나인웍스가 제시한 업무 원칙을 비교한 참고 수치입니다. 실제 채용 적합도나 합격 가능성을 뜻하지 않습니다.',scoreBox);
 const panel=add('div','dna-result-summary','');add('h4','','나인웍스와 나의 업무 방식 비교',panel);
 let differences=0;
 principles.forEach((p,i)=>{
