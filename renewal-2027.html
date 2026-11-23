@@ -136,6 +136,34 @@ button,a{-webkit-tap-highlight-color:transparent}
  .footer-links{gap:18px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.visual img{transition:opacity .2s}}
+
+/* Shared masthead identity and final editorial refinements */
+::selection{background:#141414;color:#fff}
+.site-header{height:62px;padding-inline:clamp(16px,1.7vw,34px);background:rgba(255,255,255,.95);border-bottom:1px solid rgba(20,20,20,.08)}
+.site-header.is-scrolled{background:rgba(255,255,255,.985)}
+.site-logo{display:flex;align-items:center;justify-content:center;width:154px;line-height:1}
+.site-logo img{display:block;width:100%;height:auto;max-height:28px;object-fit:contain}
+.site-header__left a,.site-header__right a{font-size:10px;font-weight:650;letter-spacing:.07em}
+.hero-item .visual{height:100svh}
+.hero-caption{min-height:115px}
+.work-card__caption{min-height:115px}
+.visual.has-image:hover img{transform:scale(1.025)}
+.section-head a,.view-all a,.journal-item a,.studio-bottom a{transition:opacity .2s}
+.section-head a:hover,.view-all a:hover,.journal-item a:hover,.studio-bottom a:hover{opacity:.5}
+@media(max-width:1000px){
+ .site-logo{width:142px}
+ .hero-item .visual{height:min(66svh,760px)}
+}
+@media(max-width:640px){
+ .site-header{height:56px;padding-inline:14px}
+ .site-logo{width:116px}
+ .site-logo img{max-height:23px}
+ .site-header__left a,.site-header__right a{font-size:9px;letter-spacing:.035em}
+ .hero-item .visual{height:57svh}
+ .hero-caption{min-height:88px}
+}
+@media(max-width:380px){.site-logo{width:104px}}
+
 </style>
 </head>
 <body>
@@ -144,7 +172,7 @@ button,a{-webkit-tap-highlight-color:transparent}
     <a href="brand-collection.html">WORK</a>
     <a href="#studio">STUDIO</a>
   </nav>
-  <a class="site-logo" href="#top" aria-label="NINEWORKS 메인">NINEWORKS</a>
+  <a class="site-logo" href="#top" aria-label="NINEWORKS 메인"><img src="assets/nineworks-logo.svg" alt="NINEWORKS" width="154" height="22" decoding="async"></a>
   <nav class="site-header__right" aria-label="추가 메뉴">
     <a href="#journal">JOURNAL</a>
     <a class="nav-contact" href="#contact">CONTACT</a>
