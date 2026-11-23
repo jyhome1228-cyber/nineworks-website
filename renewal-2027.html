@@ -167,6 +167,51 @@ button,a{-webkit-tap-highlight-color:transparent}
 }
 @media(max-width:380px){.site-logo{width:104px}}
 
+
+/* 2027 editorial collection: reference-led, full-bleed horizontal image rail */
+.hero--editorial{width:100%;margin:0;background:#fff}
+.hero-editorial-head{min-height:143px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:35px 18px 23px;gap:41px;text-align:center}
+.hero-editorial-head__title{font-size:11px;font-weight:700;letter-spacing:.06em;line-height:1.4;margin:0}
+.hero-editorial-filters{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
+.hero-editorial-filters button{font-size:10px;font-weight:550;letter-spacing:.075em;line-height:1.5;border:0;background:none;color:#7e7e7e;padding:4px 0 6px;cursor:pointer;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.hero-editorial-filters button:hover,.hero-editorial-filters button[aria-pressed="true"]{color:#111}
+.hero-editorial-filters button[aria-pressed="true"]{border-bottom-color:#111}
+.hero-editorial-frame{position:relative;width:100%;overflow:hidden}
+.hero--editorial .hero-grid{display:flex;gap:5px;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.hero--editorial .hero-grid::-webkit-scrollbar{display:none}
+.hero--editorial .hero-item{flex:0 0 clamp(235px,15.6vw,360px);width:clamp(235px,15.6vw,360px);scroll-snap-align:start;display:block}
+.hero--editorial .hero-item[hidden]{display:none!important}
+.hero--editorial .hero-item .visual{aspect-ratio:2 / 3!important;height:auto!important;min-height:0!important;max-height:none!important;background:var(--tone,#eae9e6)}
+.hero--editorial .visual__placeholder::after{background:radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.22),transparent 55%)}
+.hero--editorial .visual__placeholder strong{font-size:clamp(14px,1.25vw,21px)!important;letter-spacing:-.035em;color:rgba(20,20,20,.37)}
+.hero--editorial .visual.has-image:hover img{transform:scale(1.017)}
+.hero-rail-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:56px;background:rgba(255,255,255,.32);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(35,35,35,.6);font-size:30px;font-weight:250;line-height:1;transition:background .2s,color .2s}
+.hero-rail-arrow:hover{background:rgba(255,255,255,.8);color:#111}
+.hero-rail-arrow:disabled{opacity:0;pointer-events:none}
+.hero-rail-arrow--prev{left:4px}.hero-rail-arrow--next{right:4px}
+.hero-editorial-explore{display:flex;align-items:center;justify-content:center;min-height:115px}
+.hero-editorial-explore a{font-size:10px;letter-spacing:.13em;font-weight:650;padding:12px 3px;border-bottom:1px solid transparent;transition:border-color .2s}
+.hero-editorial-explore a:hover{border-bottom-color:#111}
+@media(max-width:1100px){
+ .hero-editorial-head{min-height:125px;padding-top:29px;gap:31px}
+ .hero--editorial .hero-item{flex-basis:clamp(220px,29vw,310px);width:clamp(220px,29vw,310px)}
+ .hero-editorial-explore{min-height:88px}
+}
+@media(max-width:640px){
+ .hero-editorial-head{min-height:116px;padding:27px 10px 17px;gap:29px}
+ .hero-editorial-head__title{font-size:10px}
+ .hero-editorial-filters{gap:20px}
+ .hero-editorial-filters button{font-size:9px}
+ .hero--editorial .hero-item{flex-basis:64vw;width:64vw}
+ .hero-rail-arrow{width:33px;height:45px;font-size:25px}
+ .hero-editorial-explore{min-height:76px}
+ .hero-editorial-explore a{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero--editorial .hero-grid{scroll-behavior:auto}
+ .hero-editorial-filters button,.hero-rail-arrow,.hero-editorial-explore a{transition:none}
+}
+
 </style>
 <link rel="stylesheet" href="/assets/css/type-system-compact-20261123.css?v=1">
 <link rel="stylesheet" href="/assets/css/renewal-navigation-20261123.css?v=4">
@@ -174,43 +219,84 @@ button,a{-webkit-tap-highlight-color:transparent}
 <body>
 <header class="nw-renewal-header" id="siteHeader" data-nw-renewal-nav><a class="nw-new-logo" href="/renewal-2027.html" aria-label="NINEWORKS 리뉴얼 메인"><img src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS" width="150" height="19"></a></header>
 <main id="top">
-  <section class="hero" aria-label="NINEWORKS 브랜드 프로젝트 컬렉션">
-    <div class="hero-grid">
-      <a class="hero-item" href="portfolio-detail.html?work=hollys" aria-label="HOLLYS 브랜드 프로젝트">
+  <section class="hero hero--editorial" aria-label="NINEWORKS 브랜드 디자인 컬렉션" id="featured">
+    <div class="hero-editorial-head">
+      <p class="hero-editorial-head__title">NINEWORKS SELECTED COLLECTION</p>
+      <div class="hero-editorial-filters" role="group" aria-label="컬렉션 분류">
+        <button type="button" data-rail-filter="all" aria-pressed="true">ALL</button>
+        <button type="button" data-rail-filter="identity" aria-pressed="false">IDENTITY</button>
+        <button type="button" data-rail-filter="package" aria-pressed="false">PACKAGE</button>
+        <button type="button" data-rail-filter="visual" aria-pressed="false">VISUAL</button>
+      </div>
+    </div>
+    <div class="hero-editorial-frame">
+      <button class="hero-rail-arrow hero-rail-arrow--prev" type="button" aria-label="이전 프로젝트 보기" data-rail-prev><span aria-hidden="true">‹</span></button>
+      <div class="hero-grid" id="heroEditorialRail" role="region" aria-label="브랜드 프로젝트 가로 갤러리" tabindex="0">
+      <a class="hero-item" href="portfolio-detail.html?work=hollys" data-rail-category="package" aria-label="HOLLYS 프로젝트 보기">
         <div class="visual" data-image-key="hero-hollys" style="--tone:#e6e0d8">
           <div class="visual__placeholder" aria-hidden="true"><strong>HOLLYS</strong></div>
-          <img alt="HOLLYS 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+          <img alt="HOLLYS 프로젝트 대표 이미지" fetchpriority="high" decoding="async">
         </div>
-        <div class="hero-caption"><strong>HOLLYS</strong><span>Brand &amp; Package</span></div>
       </a>
-      <a class="hero-item" href="portfolio-detail.html?work=vaquer" aria-label="VAQUER 브랜드 프로젝트">
+      <a class="hero-item" href="portfolio-detail.html?work=vaquer" data-rail-category="identity" aria-label="VAQUER 프로젝트 보기">
         <div class="visual" data-image-key="hero-vaquer" style="--tone:#d8d7d3">
           <div class="visual__placeholder" aria-hidden="true"><strong>VAQUER</strong></div>
-          <img alt="VAQUER 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+          <img alt="VAQUER 프로젝트 대표 이미지" fetchpriority="high" decoding="async">
         </div>
-        <div class="hero-caption"><strong>VAQUER</strong><span>Fragrance Identity</span></div>
       </a>
-      <a class="hero-item" href="portfolio-detail.html?work=yoriko" aria-label="YORIKO 브랜드 프로젝트">
+      <a class="hero-item" href="portfolio-detail.html?work=yoriko" data-rail-category="package" aria-label="YORIKO 프로젝트 보기">
         <div class="visual" data-image-key="hero-yoriko" style="--tone:#efeee9">
           <div class="visual__placeholder" aria-hidden="true"><strong>YORIKO</strong></div>
-          <img alt="YORIKO 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+          <img alt="YORIKO 프로젝트 대표 이미지" fetchpriority="high" decoding="async">
         </div>
-        <div class="hero-caption"><strong>YORIKO</strong><span>Brand &amp; Package</span></div>
       </a>
-      <a class="hero-item" href="portfolio-detail.html?work=jewood" aria-label="JEWOOD 브랜드 프로젝트">
+      <a class="hero-item" href="portfolio-detail.html?work=jewood" data-rail-category="identity" aria-label="JEWOOD 프로젝트 보기">
         <div class="visual" data-image-key="hero-jewood" style="--tone:#cfd1cf">
           <div class="visual__placeholder" aria-hidden="true"><strong>JEWOOD</strong></div>
-          <img alt="JEWOOD 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+          <img alt="JEWOOD 프로젝트 대표 이미지" fetchpriority="high" decoding="async">
         </div>
-        <div class="hero-caption"><strong>JEWOOD</strong><span>Skincare Identity</span></div>
       </a>
-      <a class="hero-item" href="portfolio-detail.html?work=wooje-stay" aria-label="WOOJE STAY 브랜드 프로젝트">
+      <a class="hero-item" href="portfolio-detail.html?work=wooje-stay" data-rail-category="identity" aria-label="WOOJE STAY 프로젝트 보기">
         <div class="visual" data-image-key="hero-wooje" style="--tone:#ddd8d1">
           <div class="visual__placeholder" aria-hidden="true"><strong>WOOJE STAY</strong></div>
-          <img alt="WOOJE STAY 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+          <img alt="WOOJE STAY 프로젝트 대표 이미지" loading="lazy" decoding="async">
         </div>
-        <div class="hero-caption"><strong>WOOJE STAY</strong><span>Hospitality Identity</span></div>
       </a>
+      <a class="hero-item" href="portfolio-detail.html?work=cocos-matcha" data-rail-category="package" aria-label="COCO'S MATCHA 프로젝트 보기">
+        <div class="visual" data-image-key="hero-cocos" style="--tone:#dce0d6">
+          <div class="visual__placeholder" aria-hidden="true"><strong>COCO'S MATCHA</strong></div>
+          <img alt="COCO'S MATCHA 프로젝트 대표 이미지" loading="lazy" decoding="async">
+        </div>
+      </a>
+      <a class="hero-item" href="portfolio-detail.html?work=pausenality" data-rail-category="identity" aria-label="PAUSE NALITY 프로젝트 보기">
+        <div class="visual" data-image-key="hero-pausenality" style="--tone:#e8e0dd">
+          <div class="visual__placeholder" aria-hidden="true"><strong>PAUSE NALITY</strong></div>
+          <img alt="PAUSE NALITY 프로젝트 대표 이미지" loading="lazy" decoding="async">
+        </div>
+      </a>
+      <a class="hero-item" href="portfolio-detail.html?work=ouga" data-rail-category="package" aria-label="OUGA 프로젝트 보기">
+        <div class="visual" data-image-key="hero-ouga" style="--tone:#e1d9d1">
+          <div class="visual__placeholder" aria-hidden="true"><strong>OUGA</strong></div>
+          <img alt="OUGA 프로젝트 대표 이미지" loading="lazy" decoding="async">
+        </div>
+      </a>
+      <a class="hero-item" href="portfolio-relim-branding.html" data-rail-category="identity" aria-label="RE:LIM 프로젝트 보기">
+        <div class="visual" data-image-key="hero-relim" style="--tone:#dbd7d0">
+          <div class="visual__placeholder" aria-hidden="true"><strong>RE:LIM</strong></div>
+          <img alt="RE:LIM 프로젝트 대표 이미지" loading="lazy" decoding="async">
+        </div>
+      </a>
+      <a class="hero-item" href="portfolio-detail.html?work=centellian-24" data-rail-category="visual" aria-label="CENTELLIAN 24+ 프로젝트 보기">
+        <div class="visual" data-image-key="hero-centellian" style="--tone:#e5e4e8">
+          <div class="visual__placeholder" aria-hidden="true"><strong>CENTELLIAN 24+</strong></div>
+          <img alt="CENTELLIAN 24+ 프로젝트 대표 이미지" loading="lazy" decoding="async">
+        </div>
+      </a>
+      </div>
+      <button class="hero-rail-arrow hero-rail-arrow--next" type="button" aria-label="다음 프로젝트 보기" data-rail-next><span aria-hidden="true">›</span></button>
+    </div>
+    <div class="hero-editorial-explore">
+      <a href="brand-collection.html">EXPLORE COLLECTION</a>
     </div>
   </section>
 
@@ -373,5 +459,38 @@ button,a{-webkit-tap-highlight-color:transparent}
 })();
 </script>
 <script src="/assets/js/renewal-navigation-20261123.js?v=3"></script>
+
+<script>
+/* Editorial rail controls: native scrolling, category filters and disabled-state arrows */
+(()=>{
+ const rail=document.getElementById('heroEditorialRail');
+ if(!rail)return;
+ const filters=Array.from(document.querySelectorAll('[data-rail-filter]'));
+ const prev=document.querySelector('[data-rail-prev]');
+ const next=document.querySelector('[data-rail-next]');
+ const all=Array.from(rail.querySelectorAll('[data-rail-category]'));
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const step=()=>{const item=all.find(x=>!x.hidden);return item?item.getBoundingClientRect().width+5:rail.clientWidth*.7;};
+ const update=()=>{
+  if(!prev||!next)return;
+  const max=rail.scrollWidth-rail.clientWidth;
+  prev.disabled=rail.scrollLeft<=2;
+  next.disabled=max<=2||rail.scrollLeft>=max-2;
+ };
+ filters.forEach(button=>button.addEventListener('click',()=>{
+  const active=button.getAttribute('data-rail-filter');
+  filters.forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
+  all.forEach(card=>{card.hidden=active!=='all'&&card.getAttribute('data-rail-category')!==active;});
+  rail.scrollTo({left:0,behavior:'instant'});
+  requestAnimationFrame(update);
+ }));
+ prev?.addEventListener('click',()=>rail.scrollBy({left:-step(),behavior:reduced?'instant':'smooth'}));
+ next?.addEventListener('click',()=>rail.scrollBy({left:step(),behavior:reduced?'instant':'smooth'}));
+ rail.addEventListener('scroll',update,{passive:true});
+ window.addEventListener('resize',update,{passive:true});
+ update();
+})();
+</script>
+
 </body>
 </html>
