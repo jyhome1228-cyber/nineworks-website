@@ -26,7 +26,7 @@ button,a{-webkit-tap-highlight-color:transparent}
 .site-logo{font-size:clamp(18px,1.45vw,24px);font-weight:800;line-height:1;letter-spacing:-.07em;white-space:nowrap}
 .site-header .nav-contact{font-weight:700}
 .hero{margin:0}
-.hero-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.hero-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
 .hero-item{display:block;min-width:0}
 .visual{overflow:hidden;position:relative;background:var(--tone,#e5e4e1)}
 .hero-item .visual{height:100svh;min-height:600px;max-height:1300px}
@@ -44,7 +44,7 @@ button,a{-webkit-tap-highlight-color:transparent}
 .section-head h2{font-size:13px;font-weight:720;line-height:1.4;letter-spacing:.065em;margin:0}
 .section-head a{font-size:11px;font-weight:640;letter-spacing:.02em;padding:12px 0;border-bottom:1px solid #151515;transition:opacity .2s}
 .section-head a:hover{opacity:.5}
-.work-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.work-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
 .work-card{display:block;min-width:0}
 .work-card .visual{aspect-ratio:4 / 5}
 .work-card .visual__placeholder strong{font-size:clamp(17px,1.8vw,34px)}
@@ -84,14 +84,17 @@ button,a{-webkit-tap-highlight-color:transparent}
 .footer-links{display:flex;gap:24px;align-items:center;font-size:11px;font-weight:640}
 .footer-links a:hover,.contact-link:hover{opacity:.55}
 @media (min-width:1600px){.hero-caption{height:128px;padding-top:31px}.hero-caption strong,.work-card__caption strong{font-size:12px}.hero-caption span,.work-card__caption span{font-size:11px}}
-@media (max-width:1000px){
- .hero-grid,.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:1100px){
+ .hero-grid,.work-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
  .hero-item .visual{height:min(66svh,760px);min-height:420px}
  .hero-caption{height:97px;padding-top:20px}
  .expertise-grid{grid-template-columns:repeat(2,1fr)}
  .expertise-item:nth-child(2){border-right:0}
  .expertise-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
  .journal-item{padding-inline:22px}
+}
+@media (max-width:760px){
+ .hero-grid,.work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:640px){
  html{scroll-padding-top:56px}
@@ -210,6 +213,13 @@ button,a{-webkit-tap-highlight-color:transparent}
         </div>
         <div class="hero-caption"><strong>JEWOOD</strong><span>Skincare Identity</span></div>
       </a>
+      <a class="hero-item" href="portfolio-detail.html?work=wooje-stay" aria-label="WOOJE STAY 브랜드 프로젝트">
+        <div class="visual" data-image-key="hero-wooje" style="--tone:#ddd8d1">
+          <div class="visual__placeholder" aria-hidden="true"><strong>WOOJE STAY</strong></div>
+          <img alt="WOOJE STAY 브랜드 디자인 프로젝트 대표 이미지" fetchpriority="high">
+        </div>
+        <div class="hero-caption"><strong>WOOJE STAY</strong><span>Hospitality Identity</span></div>
+      </a>
     </div>
   </section>
 
@@ -274,6 +284,20 @@ button,a{-webkit-tap-highlight-color:transparent}
           <img alt="GONG CHA 패키지 디자인 프로젝트 대표 이미지" loading="lazy">
         </div>
         <div class="work-card__caption"><strong>GONG CHA</strong><span>Package Design</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=greedy-scent" aria-label="GREEDY SCENT 프로젝트">
+        <div class="visual" data-image-key="work-greedy-scent" style="--tone:#ddd8d6">
+          <div class="visual__placeholder" aria-hidden="true"><strong>GREEDY SCENT</strong></div>
+          <img alt="GREEDY SCENT 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>GREEDY SCENT</strong><span>Fragrance Identity</span></div>
+      </a>
+      <a class="work-card" href="portfolio-detail.html?work=the-spa" aria-label="THE SPA 프로젝트">
+        <div class="visual" data-image-key="work-the-spa" style="--tone:#e8e8e5">
+          <div class="visual__placeholder" aria-hidden="true"><strong>THE SPA</strong></div>
+          <img alt="THE SPA 브랜드 디자인 프로젝트 대표 이미지" loading="lazy">
+        </div>
+        <div class="work-card__caption"><strong>THE SPA</strong><span>Bath Care Branding</span></div>
       </a>
     </div>
     <div class="view-all"><a href="brand-collection.html">EXPLORE BRAND COLLECTION</a></div>
