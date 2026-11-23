@@ -1,6 +1,6 @@
 /* NINEWORKS 2027 renewal | image slots
  * Add photo URLs or paths here as images become available.
- * Recommended image ratio: 4:5 or portrait; center crop by default.
+ * Recommended hero rail image ratio: 2:3 portrait; Selected Works ratio: 4:5.
  * Example: "hero-hollys": "assets/images/renewal/hollys-cover.jpg"
  * Images left blank remain intentional editorial placeholders.
  */
@@ -10,6 +10,11 @@ window.NW_RENEWAL_IMAGES = {
   "hero-yoriko": "",
   "hero-jewood": "",
   "hero-wooje": "",
+  "hero-cocos": "",
+  "hero-pausenality": "",
+  "hero-ouga": "",
+  "hero-relim": "",
+  "hero-centellian": "",
   "work-ouga": "",
   "work-centellian": "",
   "work-recell": "",
