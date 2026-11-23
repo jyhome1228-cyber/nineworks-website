@@ -4,7 +4,6 @@ const items=[{"key":"about","href":"/about.html","label":"ABOUT","children":[{"h
 const headers=document.querySelectorAll('[data-nw-renewal-nav]');
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const rootLink=(x,klass='')=>'<a class="'+klass+'" href="'+esc(x.href)+'">'+esc(x.label)+'</a>';
-const util='<div class="nw-new-utility"><div class="nw-new-utility__inner"><div class="nw-new-network"><a href="/renewal-2027.html">NINEWORKS</a><span class="nw-new-separator" aria-hidden="true"></span><a href="https://aesost.com/" target="_blank" rel="noopener noreferrer">AESOST</a></div><nav aria-label="특화 서비스" class="nw-new-shortcuts"><a href="/support.html">정부지원사업</a><a href="/majorportfolio/">B2B</a><a href="/printing-dashboard.html">PRINTING</a></nav></div></div>';
 const desktop=items.map(item=>{
  if(!item.children)return '<a class="nw-new-direct" href="'+esc(item.href)+'">'+esc(item.label)+'</a>';
  return '<div class="nw-new-item"><a class="nw-new-parent" href="'+esc(item.href)+'" aria-haspopup="true" aria-expanded="false">'+esc(item.label)+'<span aria-hidden="true" class="nw-new-caret"></span></a><div class="nw-new-dropdown">'+item.children.map(child=>rootLink(child,'nw-new-sub-link')).join('')+'</div></div>';
@@ -16,7 +15,7 @@ const mobile=items.map((item,i)=>{
 }).join('');
 headers.forEach(header=>{
  const drawerId='nw-renewal-mobile-menu';
- header.innerHTML=util+'<div class="nw-new-main"><a class="nw-new-logo" href="/renewal-2027.html" aria-label="NINEWORKS 리뉴얼 메인"><img src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS" width="150" height="19"></a><nav class="nw-new-primary" aria-label="주요 메뉴">'+desktop+'</nav><button type="button" class="nw-new-toggle" aria-label="전체 메뉴 열기" aria-controls="'+drawerId+'" aria-expanded="false"><span></span><span></span><span></span></button></div><nav class="nw-new-mobile" id="'+drawerId+'" aria-label="모바일 주요 메뉴" hidden>'+mobile+'</nav>';
+ header.innerHTML='<div class="nw-new-main"><a class="nw-new-logo" href="/renewal-2027.html" aria-label="NINEWORKS 리뉴얼 메인"><img src="/assets/nineworks-renewal-logo.svg" alt="NINEWORKS" width="150" height="19"></a><nav class="nw-new-primary" aria-label="주요 메뉴">'+desktop+'</nav><button type="button" class="nw-new-toggle" aria-label="전체 메뉴 열기" aria-controls="'+drawerId+'" aria-expanded="false"><span></span><span></span><span></span></button></div><nav class="nw-new-mobile" id="'+drawerId+'" aria-label="모바일 주요 메뉴" hidden>'+mobile+'</nav>';
  const toggle=header.querySelector('.nw-new-toggle');
  const drawer=header.querySelector('.nw-new-mobile');
  function close(){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','전체 메뉴 열기');drawer.hidden=true;header.classList.remove('nw-menu-open');}
