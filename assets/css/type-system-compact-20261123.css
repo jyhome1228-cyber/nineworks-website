@@ -1,0 +1,120 @@
+/* NINEWORKS | Compact typography standard | 2026-11-23
+   Applies to the NINEWORKS site only. Maintains image-led editorial layout.
+   Font size ceilings: desktop page headings 32px, section headings 23px,
+   content headings 18px. Mobile page headings 25px.
+*/
+:root{
+  --nw-font-text:14px;
+  --nw-font-page:clamp(23px,2.2vw,32px);
+  --nw-font-section:clamp(18px,1.55vw,23px);
+  --nw-font-sub:clamp(15px,1.17vw,18px);
+  --nw-font-caption:11px;
+}
+html{scroll-padding-top:64px}
+body{font-size:var(--nw-font-text);line-height:1.7}
+body main h1{
+  font-size:var(--nw-font-page)!important;
+  line-height:1.43!important;
+  letter-spacing:-.04em!important;
+}
+body main h2{
+  font-size:var(--nw-font-section)!important;
+  line-height:1.48!important;
+  letter-spacing:-.035em!important;
+}
+body main h3{
+  font-size:var(--nw-font-sub)!important;
+  line-height:1.5!important;
+  letter-spacing:-.025em!important;
+}
+/* Typography used by sections implemented as text elements, not heading tags */
+body :is(
+  .page-title,.category-intro__title,.company-hero__title,
+  .about-preview__statement,.large-statement,
+  .cta__title,.contact-title,.hero__title,.hero-title,
+  .hero-copy__headline,.headline,.statement,
+  .designer-summary__statement,.capability-row__title,
+  .next-project__title,.portfolio-scroll-section__title,
+  .portfolio-detail-story__lead,.editorial-hero__title,
+  .project-overview__title,.service-tab__name,
+  .service-hero__title,.section-title,.project-visual>span,
+  .academy-coming__title
+){
+  font-size:var(--nw-font-page)!important;
+  line-height:1.46!important;
+  letter-spacing:-.038em!important;
+}
+body :is(
+  .company-section-head h2,.company-quote h2,.company-cta h2,
+  .team-partner-card__content h2,.team-partner-card__body h2,
+  .team-principles__head h2,.team-cta h2,.team-card h2,
+  .designer-section__head h2,.designer-contact h2,
+  .portfolio-scroll-section__head h2,
+  .portfolio-detail-sidebar h1,.portfolio-not-found h1,
+  .editorial-page .page-title,.category-intro__title,
+  .studio-statement,.contact h2
+){
+  font-size:var(--nw-font-page)!important;
+  line-height:1.46!important;
+  letter-spacing:-.038em!important;
+}
+body :is(.menu-nav a,.site-menu__link){
+  font-size:clamp(20px,2.15vw,29px)!important;
+  line-height:1.4!important;
+}
+body .project-visual>span{
+  font-size:clamp(20px,2.25vw,32px)!important;
+}
+body :is(.section-head h2,.portfolio-index-head__title h2,.eyebrow,.collection-label){
+  font-size:clamp(10px,.85vw,12px)!important;
+  line-height:1.45!important;
+  letter-spacing:.035em!important;
+}
+/* Preserve editorial poster proportions while reducing giant content blocks */
+body :is(.cta__title,.large-statement,.category-intro__title,
+ .portfolio-detail-sidebar h1,.next-project__title){
+  max-width:min(100%,980px)!important;
+}
+body :is(.company-hero,.company-cta,.company-quote,.editorial-hero){
+  padding-top:clamp(52px,5vw,85px)!important;
+  padding-bottom:clamp(52px,5vw,85px)!important;
+}
+body :is(.company-section-head,.category-intro,.about-preview){
+  margin-bottom:clamp(24px,3.2vw,50px);
+}
+body .cta{
+  padding-block:clamp(54px,6vw,96px)!important;
+}
+body :is(.service-tab__name,.capability-row__title){
+  font-size:var(--nw-font-section)!important;
+  line-height:1.45!important;
+}
+body :is(.contact-link,.contact-email){
+  font-size:clamp(15px,1.15vw,19px)!important;
+  line-height:1.5!important;
+}
+body .academy-coming__title{
+  font-size:var(--nw-font-page)!important;
+}
+body .footer strong,body .site-footer strong{font-size:clamp(13px,1.2vw,17px)}
+/* The 2027 preview and portfolio cards already use restrained image captions. */
+body :is(.work-card__caption strong,.collection-card__caption strong,
+ .hero-caption strong){font-size:11px!important}
+body .visual__placeholder strong{font-size:clamp(17px,1.8vw,25px)!important}
+@media(max-width:760px){
+  :root{
+    --nw-font-text:13px;
+    --nw-font-page:clamp(21px,5.5vw,25px);
+    --nw-font-section:clamp(16px,4.2vw,20px);
+    --nw-font-sub:clamp(14px,3.8vw,17px);
+  }
+  body :is(.company-hero,.company-cta,.company-quote,.editorial-hero){
+    padding-top:clamp(36px,7vw,54px)!important;
+    padding-bottom:clamp(36px,7vw,54px)!important;
+  }
+  body .cta{padding-block:clamp(40px,8vw,65px)!important}
+  body :is(.menu-nav a,.site-menu__link){font-size:clamp(20px,5.2vw,25px)!important}
+  body :is(.work-card__caption strong,.collection-card__caption strong,
+    .hero-caption strong){font-size:10px!important}
+  body .visual__placeholder strong{font-size:clamp(16px,4.2vw,21px)!important}
+}
